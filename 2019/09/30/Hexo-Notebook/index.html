@@ -1,0 +1,940 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Hexo-Notebook | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="A Primitive Post of ipynb&amp;#182;
+
+
+
+
+
+In&amp;nbsp;[&amp;nbsp;]:
+
+    
+!sudo ln -sf `which python` /usr/bin/python
+!cd ~/hexo/node_modules &amp;amp;&amp;amp; rm -rf hex">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo-Notebook">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Hexo-Notebook</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-Primitive-Post-of-ipynb">A Primitive Post of ipynb<a class="anchor-link" href="#A-Primitive-Post-of-ipynb">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo ln -sf <span class="sb">`</span>which python<span class="sb">`</span> /usr/bin/python
+<span class="o">!</span><span class="nb">cd</span> ~/hexo/node_modules <span class="o">&amp;&amp;</span> rm -rf hexo-ipynb
+<span class="o">!</span><span class="nb">cd</span> ~/hexo/node_modules <span class="o">&amp;&amp;</span> git clone --branch fix/freeman https://github.com/seii-saintway/hexo-ipynb.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cloning into &#39;hexo-ipynb&#39;...
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 67 (delta 0), reused 7 (delta 0), pack-reused 58
+Unpacking objects: 100% (67/67), done.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>rm ~/hexo/source/_posts/Hexo-Notebook.md
+<span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo new post Hexo-Notebook
+<span class="o">!</span><span class="nb">echo</span> <span class="s1">&#39;{% asset_ipynb notebooks/Hexo-Notebook.ipynb %}&#39;</span> &gt;&gt; ~/hexo/source/_posts/Hexo-Notebook.md
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(node:3618) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.
+<span class="ansi-green-fg">INFO </span> Created: <span class="ansi-magenta-fg">~/hexo/source/_posts/Hexo-Notebook.md</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo clean
+<span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo server --debug
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(node:3650) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.
+<span class="ansi-green-fg">INFO </span> Deleted database.
+<span class="ansi-green-fg">INFO </span> Deleted public folder.
+<span class="ansi-black-intense-fg">08:38:42.004</span> <span class="ansi-black-intense-fg">DEBUG</span> Writing database to /home/jupyter-sheng_wei/hexo/db.json
+<span class="ansi-black-intense-fg">08:38:42.030</span> <span class="ansi-black-intense-fg">DEBUG</span> Hexo version: <span class="ansi-magenta-fg">3.9.0</span>
+<span class="ansi-black-intense-fg">08:38:42.031</span> <span class="ansi-black-intense-fg">DEBUG</span> Working directory: <span class="ansi-magenta-fg">~/hexo/</span>
+<span class="ansi-black-intense-fg">08:38:42.122</span> <span class="ansi-black-intense-fg">DEBUG</span> Config loaded: <span class="ansi-magenta-fg">~/hexo/_config.yml</span>
+<span class="ansi-black-intense-fg">08:38:42.203</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-deployer-git</span>
+(node:3662) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.
+<span class="ansi-black-intense-fg">08:38:42.206</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-generator-archive</span>
+<span class="ansi-black-intense-fg">08:38:42.210</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-generator-category</span>
+<span class="ansi-black-intense-fg">08:38:42.211</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-generator-index</span>
+<span class="ansi-black-intense-fg">08:38:42.212</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-generator-tag</span>
+<span class="ansi-black-intense-fg">08:38:42.213</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.216</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-renderer-ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.221</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-renderer-marked</span>
+<span class="ansi-black-intense-fg">08:38:42.222</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-renderer-stylus</span>
+<span class="ansi-black-intense-fg">08:38:42.266</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-server</span>
+<span class="ansi-black-intense-fg">08:38:42.267</span> <span class="ansi-black-intense-fg">DEBUG</span> Plugin loaded: <span class="ansi-magenta-fg">hexo-util</span>
+<span class="ansi-black-intense-fg">08:38:42.275</span> <span class="ansi-black-intense-fg">DEBUG</span> Loading database.
+<span class="ansi-black-intense-fg">08:38:42.284</span> <span class="ansi-green-fg">INFO </span> Start processing
+<span class="ansi-black-intense-fg">08:38:42.326</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">favicon.png</span>
+<span class="ansi-black-intense-fg">08:38:42.395</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Remove-Duplicated-Notebook-CSS.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.395</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-BigTable.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.396</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Colab.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.397</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Digdag.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.397</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-FUSE.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.398</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-GCloud-ML-Engine.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.399</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Google-AI-Platform.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.399</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-IPython-Magics.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.400</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-JS-Promise.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.401</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-LightGBM.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.401</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-NTERACT.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.402</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-OpenBridge-Google-Bigquery.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.403</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-TensorFlow.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.403</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-paperboy.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.459</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Hexo-Notebook.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.492</span> <span class="ansi-black-intense-fg">DEBUG</span> Theme config loaded.
+<span class="ansi-black-intense-fg">08:38:42.493</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_config.yml</span>
+<span class="ansi-black-intense-fg">08:38:42.497</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Kubernetes/Kubernetes-Tips.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.498</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Kubernetes/Try-Cluster-Autoscaling.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.499</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Kubernetes/Try-Skaffold.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.499</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Kubernetes/Try-Spinnaker-Operator.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.500</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Kubernetes/Try-Volcano.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.500</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/Readme-Datalab.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.501</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/Solve-Py37-PyDatalab.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.502</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/Try-Datalab.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.502</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Jupyter-Images.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.503</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Jupyter-Magic.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.504</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Jupyter-Tips.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.504</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Try-Jupyter-Diff-Merge.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.505</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Try-Jupyter-Frontends.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.506</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Try-JupyterHub.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.506</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Try-NBViewer.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.507</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Dashboard/Try-IPython-Dashboard.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.507</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Dashboard/Try-Jupyter-Dashboards.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.508</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/Importing Notebooks.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.509</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/Try-Notebook-Import.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.509</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/Try_To_Import_Python.py</span>
+<span class="ansi-black-intense-fg">08:38:42.517</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/bootstrap-responsive.css</span>
+<span class="ansi-black-intense-fg">08:38:42.517</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/comment.css</span>
+<span class="ansi-black-intense-fg">08:38:42.518</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/font-awesome.css</span>
+<span class="ansi-black-intense-fg">08:38:42.518</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/google-fonts.css</span>
+<span class="ansi-black-intense-fg">08:38:42.519</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/highlight-default.min.css</span>
+<span class="ansi-black-intense-fg">08:38:42.520</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/highlight.css</span>
+<span class="ansi-black-intense-fg">08:38:42.532</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/responsive.css</span>
+<span class="ansi-black-intense-fg">08:38:42.533</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/style.css</span>
+<span class="ansi-black-intense-fg">08:38:42.533</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fancybox/blank.gif</span>
+<span class="ansi-black-intense-fg">08:38:42.534</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fancybox/fancybox_loading.gif</span>
+<span class="ansi-black-intense-fg">08:38:42.534</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fancybox/fancybox_loading@2x.gif</span>
+<span class="ansi-black-intense-fg">08:38:42.535</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fancybox/fancybox_overlay.png</span>
+<span class="ansi-black-intense-fg">08:38:42.535</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fancybox/fancybox_sprite.png</span>
+<span class="ansi-black-intense-fg">08:38:42.536</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fancybox/fancybox_sprite@2x.png</span>
+<span class="ansi-black-intense-fg">08:38:42.536</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fancybox/jquery.fancybox.css</span>
+<span class="ansi-black-intense-fg">08:38:42.537</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fancybox/jquery.fancybox.pack.js</span>
+<span class="ansi-black-intense-fg">08:38:42.538</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/fontawesome-webfont.eot</span>
+<span class="ansi-black-intense-fg">08:38:42.538</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/fontawesome-webfont.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.543</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/img/github-sprite.png</span>
+<span class="ansi-black-intense-fg">08:38:42.545</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/img/glyphicons-halflings-white.png</span>
+<span class="ansi-black-intense-fg">08:38:42.546</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/img/glyphicons-halflings.png</span>
+<span class="ansi-black-intense-fg">08:38:42.546</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/img/grid-18px-masked.png</span>
+<span class="ansi-black-intense-fg">08:38:42.547</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/img/grid-baseline-20px.png</span>
+<span class="ansi-black-intense-fg">08:38:42.547</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/bootstrap.min.js</span>
+<span class="ansi-black-intense-fg">08:38:42.548</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/comment.js</span>
+<span class="ansi-black-intense-fg">08:38:42.549</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/dbapi.js</span>
+<span class="ansi-black-intense-fg">08:38:42.549</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/gallery.js</span>
+<span class="ansi-black-intense-fg">08:38:42.550</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/github.js</span>
+<span class="ansi-black-intense-fg">08:38:42.550</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/highlight.min.js</span>
+<span class="ansi-black-intense-fg">08:38:42.551</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/jquery.imagesloaded.min.js</span>
+<span class="ansi-black-intense-fg">08:38:42.551</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/main.js</span>
+<span class="ansi-black-intense-fg">08:38:42.552</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/marked.js</span>
+<span class="ansi-black-intense-fg">08:38:42.552</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/search.js</span>
+<span class="ansi-black-intense-fg">08:38:42.552</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/spin.min.js</span>
+<span class="ansi-black-intense-fg">08:38:42.553</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/timeago.min.js</span>
+<span class="ansi-black-intense-fg">08:38:42.582</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/bootstrap.min.css</span>
+<span class="ansi-black-intense-fg">08:38:42.583</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/common.css</span>
+<span class="ansi-black-intense-fg">08:38:42.583</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/FontAwesome.otf</span>
+<span class="ansi-black-intense-fg">08:38:42.583</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/fontawesome-webfont.ttf</span>
+<span class="ansi-black-intense-fg">08:38:42.584</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/js/jquery-2.0.3.min.js</span>
+<span class="ansi-black-intense-fg">08:38:42.634</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/archive.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.634</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/categories.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.634</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/index.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.634</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/layout.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.634</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/page.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.635</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/post.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.635</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/tags.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.664</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_drafts/問題.md</span>
+<span class="ansi-black-intense-fg">08:38:42.672</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">about/index.html</span>
+<span class="ansi-black-intense-fg">08:38:42.672</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">languages/default.yml</span>
+<span class="ansi-black-intense-fg">08:38:42.672</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">languages/pt-BR.yml</span>
+<span class="ansi-black-intense-fg">08:38:42.672</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">languages/zh-CN.yml</span>
+<span class="ansi-black-intense-fg">08:38:42.672</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">languages/zh-TW.yml</span>
+<span class="ansi-black-intense-fg">08:38:42.674</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_drafts/孤独之美.md</span>
+<span class="ansi-black-intense-fg">08:38:42.674</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">categories/index.html</span>
+<span class="ansi-black-intense-fg">08:38:42.675</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/A-Real-time-Automatic-Level-Bar-Calibration-Based-on-Canny-Edge-Detection-and-Weighted-Least-Squares-Method.md</span>
+<span class="ansi-black-intense-fg">08:38:42.675</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">tags/index.html</span>
+<span class="ansi-black-intense-fg">08:38:42.676</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/Hexo-Notebook.md</span>
+<span class="ansi-black-intense-fg">08:38:42.678</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/Hexo-研究.md</span>
+<span class="ansi-black-intense-fg">08:38:42.679</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/JavaScript.md</span>
+<span class="ansi-black-intense-fg">08:38:42.684</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/My-First-Test.md</span>
+<span class="ansi-black-intense-fg">08:38:42.686</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/Preface.md</span>
+<span class="ansi-black-intense-fg">08:38:42.687</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/Reference.md</span>
+<span class="ansi-black-intense-fg">08:38:42.688</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/Skype授業.md</span>
+<span class="ansi-black-intense-fg">08:38:42.689</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/Snippet.md</span>
+<span class="ansi-black-intense-fg">08:38:42.691</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/feelings-I-m-missing-you.md</span>
+<span class="ansi-black-intense-fg">08:38:42.692</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/hello-world.md</span>
+<span class="ansi-black-intense-fg">08:38:42.692</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/Hello World.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.693</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/中國人前輩努力為我洗腦之後.md</span>
+<span class="ansi-black-intense-fg">08:38:42.694</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/LICENSE.txt</span>
+<span class="ansi-black-intense-fg">08:38:42.695</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/关于意义疗法.md</span>
+<span class="ansi-black-intense-fg">08:38:42.696</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/心情糟透了.md</span>
+<span class="ansi-black-intense-fg">08:38:42.697</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/Readme.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.698</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/心理防卫机制.md</span>
+<span class="ansi-black-intense-fg">08:38:42.699</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/情殺.md</span>
+<span class="ansi-black-intense-fg">08:38:42.700</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/戀愛交往的兩個原則.md</span>
+<span class="ansi-black-intense-fg">08:38:42.701</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/我發現脫離了人群我就不能活.md</span>
+<span class="ansi-black-intense-fg">08:38:42.704</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/探索研究.md</span>
+<span class="ansi-black-intense-fg">08:38:42.705</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/日本語レッスン進捗.md</span>
+<span class="ansi-black-intense-fg">08:38:42.706</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/死蔭的幽谷.md</span>
+<span class="ansi-black-intense-fg">08:38:42.707</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/爱的吸引.md</span>
+<span class="ansi-black-intense-fg">08:38:42.709</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/睡不着.md</span>
+<span class="ansi-black-intense-fg">08:38:42.710</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/被开发环境的设计实现验证的问题困扰了三天之久.md</span>
+<span class="ansi-black-intense-fg">08:38:42.710</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/除了我的妻子以外，凡拉黑我的都去屎。.md</span>
+<span class="ansi-black-intense-fg">08:38:42.711</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/面膜.md</span>
+<span class="ansi-black-intense-fg">08:38:42.711</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/nbpackage/mynotebook.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.716</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/default.css</span>
+<span class="ansi-black-intense-fg">08:38:42.716</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/google-fonts/0AKsP294HTD-nvJgucYTaIbN6UDyHWBl620a-IRfuBk.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.717</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/google-fonts/2UX7WLTfW3W8TclTUvlFyQ.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.717</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/google-fonts/LKf8nhXsWg5ybwEGXk8UBQ.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.718</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/google-fonts/PIPMHY90P7jtyjpXuZ2cLD8E0i7KZn-EPnyo3HZu7kw.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.718</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/google-fonts/UyYrYy3ltEffJV9QueSi4RdbPw3QSf9R-kE0EsQUn2A.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.718</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/google-fonts/cj2hUnSRBhwmSPr9kS5899kZXW4sYc4BjuAIFc1SXII.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.719</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/google-fonts/lILlYDvubYemzYzN7GbLkHhCUOGz7vYGh680lGh-uXM.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.752</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_drafts/堅持兩個月.md</span>
+<span class="ansi-black-intense-fg">08:38:42.753</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/就算累也必須堅持學日語.md</span>
+<span class="ansi-black-intense-fg">08:38:42.753</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/认耶稣为主.md</span>
+<span class="ansi-black-intense-fg">08:38:42.753</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/google-fonts/0XxGQsSc1g4rdRdjJKZrNBsxEYwM7FgeyaSgU71cLG0.woff</span>
+<span class="ansi-black-intense-fg">08:38:42.761</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/.ipynb_checkpoints/archive-checkpoint.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.761</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/after_footer.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.761</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/archive.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.761</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/article.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.761</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/footer.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.761</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/head.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.761</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/index.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.761</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/index_pagination.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.762</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/navigation.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.762</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/search.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.762</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/sidebar.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.762</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/toc.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.762</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_widget/category.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.762</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_widget/links.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.762</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_widget/recent_comments.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.762</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_widget/recent_posts.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.763</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_widget/search.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.763</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_widget/tagcloud.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.764</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/最近码代码手感不错哟.md</span>
+<span class="ansi-black-intense-fg">08:38:42.766</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/intro/Introduction to Notebooks.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.767</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/intro/Introduction to Python.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.767</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/intro/Using Datalab - Accessing Cloud Data.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.768</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/Conversion Analysis with Google Analytics Data.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.768</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/nbpackage/nbs/other.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.769</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/bootstrap.css</span>
+<span class="ansi-black-intense-fg">08:38:42.770</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/cerulean.css</span>
+<span class="ansi-black-intense-fg">08:38:42.770</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/cosmo.css</span>
+<span class="ansi-black-intense-fg">08:38:42.771</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/cyborg.css</span>
+<span class="ansi-black-intense-fg">08:38:42.772</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/darkly.css</span>
+<span class="ansi-black-intense-fg">08:38:42.772</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/journal.css</span>
+<span class="ansi-black-intense-fg">08:38:42.773</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/lumen.css</span>
+<span class="ansi-black-intense-fg">08:38:42.773</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/readable.css</span>
+<span class="ansi-black-intense-fg">08:38:42.773</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/sandstone.css</span>
+<span class="ansi-black-intense-fg">08:38:42.774</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/simplex.css</span>
+<span class="ansi-black-intense-fg">08:38:42.774</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/slate.css</span>
+<span class="ansi-black-intense-fg">08:38:42.775</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/spacelab.css</span>
+<span class="ansi-black-intense-fg">08:38:42.775</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/superhero.css</span>
+<span class="ansi-black-intense-fg">08:38:42.775</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/united.css</span>
+<span class="ansi-black-intense-fg">08:38:42.776</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/yeti.css</span>
+<span class="ansi-black-intense-fg">08:38:42.782</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/notebook.css</span>
+<span class="ansi-black-intense-fg">08:38:42.782</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/flatly.css</span>
+<span class="ansi-black-intense-fg">08:38:42.793</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/.ipynb_checkpoints/head-checkpoint.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.793</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/analytics.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.793</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/category.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.793</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/comment.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.793</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/entry.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.793</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/bdshare.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.794</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/jiathis.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.794</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/meta.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.794</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/pagination.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.794</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/share.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.794</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/comment_footer.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.794</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/tag.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.794</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/slogan.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.794</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/title.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.795</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">layout/_partial/post/title_top.ejs</span>
+<span class="ansi-black-intense-fg">08:38:42.798</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/CONTRIBUTING.md</span>
+<span class="ansi-black-intense-fg">08:38:42.799</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/README.md</span>
+<span class="ansi-black-intense-fg">08:38:42.800</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/Anomaly Detection in HTTP Logs.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.801</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/README.txt</span>
+<span class="ansi-black-intense-fg">08:38:42.801</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/BigQuery APIs.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.802</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/BigQuery Magic Commands and DML.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.802</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/BigQuery Parameterization.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.803</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/Hello BigQuery.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.806</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/Importing and Exporting Data.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.807</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/UDF Testing in the Notebook.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.807</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/UDFs in BigQuery.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.808</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/UDFs using Code in Cloud Storage.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.808</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/Using External Tables from BigQuery.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.809</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Storage/Storage Commands.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.809</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/css/themes/paper.css</span>
+<span class="ansi-black-intense-fg">08:38:42.816</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/BigQuery Commands.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.817</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Storage/Storage APIs.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.821</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/Exploring Genomics Data.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.822</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/LSTM Punctuation Model With TensorFlow.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.822</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/pipeline/Airflow Setup.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.823</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/pipeline/BigQuery Pipeline.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.824</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/SQL Query Composition.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.824</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/SQL and Pandas DataFrames.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.829</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/Programming Language Correlation.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.829</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/Text Classification with TensorFlow.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.830</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Stackdriver Monitoring/Getting started.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.830</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">source/fonts/fontawesome-webfont.svg</span>
+<span class="ansi-black-intense-fg">08:38:42.841</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Coast/Service End to End.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.843</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Coast/Setup.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.844</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/0 Readme and Setup.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.844</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/1 Local End to End.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.845</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/2 Service Preprocess.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.845</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/3 Service Train.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.846</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/4 Service Evaluate.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.846</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/5 Service Predict.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.846</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/6 Cleanup.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.850</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/Basic RNN TensorFlow Model Trained on Simulated Data.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.850</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/image_classification_flower/Flower Classification (large dataset experience).ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.853</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Classification/Iris/1 Local End to End.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.853</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Coast/Local End to End.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.854</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Stackdriver Monitoring/Time-shifted data.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.858</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/意义疗法导论.md</span>
+<span class="ansi-black-intense-fg">08:38:42.859</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/text_classification_20newsgroup/Text Classification --- 20NewsGroup (large data).ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.859</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Stackdriver Monitoring/Group metrics.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.863</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Flower/Service End to End.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.864</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Data/Interactive Charts with Google Charting APIs.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.868</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Flower/Local End to End.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.868</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/structured_data_regression_taxi/Taxi Fare Model (full data).ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.868</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/text_classification_20newsgroup/Text Classification --- 20NewsGroup (small data).ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.874</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/论道德的谱系.md</span>
+<span class="ansi-black-intense-fg">08:38:42.880</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/一个心理学家在集中营的经历.md</span>
+<span class="ansi-black-intense-fg">08:38:42.885</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/人间失格.md</span>
+<span class="ansi-black-intense-fg">08:38:42.887</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/structured_data_regression_taxi/Taxi Fare Model (small data).ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.901</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">_posts/人間失格.md</span>
+<span class="ansi-black-intense-fg">08:38:42.961</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/image_classification_flower/Flower Classification (small dataset experience).ipynb</span>
+<span class="ansi-black-intense-fg">08:38:42.964</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/Image-to-Captions Model with TensorFlow.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:43.016</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/Machine Learning with Financial Data.ipynb</span>
+<span class="ansi-black-intense-fg">08:38:43.108</span> <span class="ansi-black-intense-fg">DEBUG</span> Processed: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/structured_data_classification_police/Predict Case Resolution (small data experience).ipynb</span>
+<span class="ansi-black-intense-fg">08:38:44.732</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_drafts/問題.md</span>
+<span class="ansi-black-intense-fg">08:38:44.733</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_drafts/孤独之美.md</span>
+<span class="ansi-black-intense-fg">08:38:44.733</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/A-Real-time-Automatic-Level-Bar-Calibration-Based-on-Canny-Edge-Detection-and-Weighted-Least-Squares-Method.md</span>
+<span class="ansi-black-intense-fg">08:38:44.739</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/Hexo-Notebook.md</span>
+<span class="ansi-black-intense-fg">08:38:44.739</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/Hexo-研究.md</span>
+<span class="ansi-black-intense-fg">08:38:44.739</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/JavaScript.md</span>
+<span class="ansi-black-intense-fg">08:38:44.740</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/My-First-Test.md</span>
+<span class="ansi-black-intense-fg">08:38:44.740</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/Preface.md</span>
+<span class="ansi-black-intense-fg">08:38:44.740</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/Reference.md</span>
+<span class="ansi-black-intense-fg">08:38:44.740</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/Skype授業.md</span>
+<span class="ansi-black-intense-fg">08:38:44.740</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/Snippet.md</span>
+<span class="ansi-black-intense-fg">08:38:44.741</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/feelings-I-m-missing-you.md</span>
+<span class="ansi-black-intense-fg">08:38:44.741</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/hello-world.md</span>
+<span class="ansi-black-intense-fg">08:38:44.741</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/中國人前輩努力為我洗腦之後.md</span>
+<span class="ansi-black-intense-fg">08:38:44.741</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/关于意义疗法.md</span>
+<span class="ansi-black-intense-fg">08:38:44.741</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/心情糟透了.md</span>
+<span class="ansi-black-intense-fg">08:38:44.741</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/心理防卫机制.md</span>
+<span class="ansi-black-intense-fg">08:38:44.742</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/情殺.md</span>
+<span class="ansi-black-intense-fg">08:38:44.742</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/戀愛交往的兩個原則.md</span>
+<span class="ansi-black-intense-fg">08:38:44.742</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/我發現脫離了人群我就不能活.md</span>
+<span class="ansi-black-intense-fg">08:38:44.742</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/探索研究.md</span>
+<span class="ansi-black-intense-fg">08:38:44.742</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/日本語レッスン進捗.md</span>
+<span class="ansi-black-intense-fg">08:38:44.742</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/死蔭的幽谷.md</span>
+<span class="ansi-black-intense-fg">08:38:44.742</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/爱的吸引.md</span>
+<span class="ansi-black-intense-fg">08:38:44.743</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/睡不着.md</span>
+<span class="ansi-black-intense-fg">08:38:44.743</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/被开发环境的设计实现验证的问题困扰了三天之久.md</span>
+<span class="ansi-black-intense-fg">08:38:44.743</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/除了我的妻子以外，凡拉黑我的都去屎。.md</span>
+<span class="ansi-black-intense-fg">08:38:44.743</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/面膜.md</span>
+<span class="ansi-black-intense-fg">08:38:44.743</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_drafts/堅持兩個月.md</span>
+<span class="ansi-black-intense-fg">08:38:44.743</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/就算累也必須堅持學日語.md</span>
+<span class="ansi-black-intense-fg">08:38:44.744</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/认耶稣为主.md</span>
+<span class="ansi-black-intense-fg">08:38:44.744</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/最近码代码手感不错哟.md</span>
+<span class="ansi-black-intense-fg">08:38:44.744</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/意义疗法导论.md</span>
+<span class="ansi-black-intense-fg">08:38:44.744</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/论道德的谱系.md</span>
+<span class="ansi-black-intense-fg">08:38:44.745</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/一个心理学家在集中营的经历.md</span>
+<span class="ansi-black-intense-fg">08:38:44.745</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/人间失格.md</span>
+<span class="ansi-black-intense-fg">08:38:44.745</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/_posts/人間失格.md</span>
+<span class="ansi-black-intense-fg">08:38:44.748</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/about/index.html</span>
+<span class="ansi-black-intense-fg">08:38:44.748</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/categories/index.html</span>
+<span class="ansi-black-intense-fg">08:38:44.748</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/tags/index.html</span>
+<span class="ansi-black-intense-fg">08:38:44.748</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/notebooks/Try-Datalab/notebooks/CONTRIBUTING.md</span>
+<span class="ansi-black-intense-fg">08:38:44.748</span> <span class="ansi-black-intense-fg">DEBUG</span> Rendering post: <span class="ansi-magenta-fg">/home/jupyter-sheng_wei/hexo/source/notebooks/Try-Datalab/notebooks/README.md</span>
+<span class="ansi-black-intense-fg">08:38:46.770</span> <span class="ansi-black-intense-fg">DEBUG</span> Generator: <span class="ansi-magenta-fg">page</span>
+<span class="ansi-black-intense-fg">08:38:46.770</span> <span class="ansi-black-intense-fg">DEBUG</span> Generator: <span class="ansi-magenta-fg">post</span>
+<span class="ansi-black-intense-fg">08:38:46.770</span> <span class="ansi-black-intense-fg">DEBUG</span> Generator: <span class="ansi-magenta-fg">archive</span>
+<span class="ansi-black-intense-fg">08:38:46.770</span> <span class="ansi-black-intense-fg">DEBUG</span> Generator: <span class="ansi-magenta-fg">category</span>
+<span class="ansi-black-intense-fg">08:38:46.771</span> <span class="ansi-black-intense-fg">DEBUG</span> Generator: <span class="ansi-magenta-fg">index</span>
+<span class="ansi-black-intense-fg">08:38:46.771</span> <span class="ansi-black-intense-fg">DEBUG</span> Generator: <span class="ansi-magenta-fg">tag</span>
+<span class="ansi-black-intense-fg">08:38:46.772</span> <span class="ansi-black-intense-fg">DEBUG</span> Generator: <span class="ansi-magenta-fg">asset</span>
+<span class="ansi-black-intense-fg">08:38:46.785</span> <span class="ansi-green-fg">INFO </span> Hexo is running at <span class="ansi-underline">http://0.0.0.0:4000/</span>. Press Ctrl+C to stop.
+<span class="ansi-black-intense-fg">08:38:46.855</span> <span class="ansi-black-intense-fg">DEBUG</span> Database saved
+^C
+<span class="ansi-black-intense-fg">08:38:53.819</span> <span class="ansi-green-fg">INFO </span> Bye!
+<span class="ansi-black-intense-fg">08:38:53.865</span> <span class="ansi-black-intense-fg">DEBUG</span> Database saved
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo generate --deploy
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(node:3679) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.
+<span class="ansi-green-fg">INFO </span> Start processing
+<span class="ansi-green-fg">INFO </span> Files loaded in <span class="ansi-cyan-fg">1.29 s</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">favicon.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">about/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">categories/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">tags/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Remove-Duplicated-Notebook-CSS.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fancybox/blank.gif</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/fontawesome-webfont.eot</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">img/github-sprite.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fancybox/jquery.fancybox.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-BigTable.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Colab.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Digdag.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-FUSE.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-GCloud-ML-Engine.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Google-AI-Platform.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-IPython-Magics.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-JS-Promise.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-LightGBM.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-NTERACT.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-OpenBridge-Google-Bigquery.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-TensorFlow.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-paperboy.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fancybox/fancybox_loading.gif</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fancybox/fancybox_loading@2x.gif</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fancybox/fancybox_overlay.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fancybox/fancybox_sprite.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fancybox/fancybox_sprite@2x.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/fontawesome-webfont.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">img/glyphicons-halflings-white.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">img/glyphicons-halflings.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">img/grid-18px-masked.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">img/grid-baseline-20px.png</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/page/2/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2013/01/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2015/09/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2016/02/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2017/07/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2018/03/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2019/07/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">page/2/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/page/3/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/page/4/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2015/10/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2016/03/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2016/05/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2017/08/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2018/05/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2018/11/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2019/10/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">page/3/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">page/4/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Hexo-Notebook.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/FontAwesome.otf</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/fontawesome-webfont.ttf</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2013/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2015/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2016/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2017/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2017/09/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2018/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2019/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/Hello World.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/nbpackage/mynotebook.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/comment.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/dbapi.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Kubernetes/Kubernetes-Tips.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Jupyter-Images.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Dashboard/Try-IPython-Dashboard.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/google-fonts/0AKsP294HTD-nvJgucYTaIbN6UDyHWBl620a-IRfuBk.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/bootstrap-responsive.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fancybox/jquery.fancybox.pack.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/comment.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/google-fonts.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/highlight-default.min.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/highlight.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/responsive.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/gallery.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/github.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/jquery.imagesloaded.min.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/main.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/search.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/spin.min.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/timeago.min.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Kubernetes/Try-Cluster-Autoscaling.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Kubernetes/Try-Skaffold.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Kubernetes/Try-Spinnaker-Operator.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Kubernetes/Try-Volcano.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/Readme-Datalab.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/Solve-Py37-PyDatalab.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/Try-Datalab.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Jupyter-Magic.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Jupyter-Tips.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Try-Jupyter-Diff-Merge.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Try-Jupyter-Frontends.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Try-JupyterHub.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Jupyter/Try-NBViewer.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Dashboard/Try-Jupyter-Dashboards.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/Importing Notebooks.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/Try-Notebook-Import.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/Try_To_Import_Python.py</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/LICENSE.txt</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/Readme.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/google-fonts/2UX7WLTfW3W8TclTUvlFyQ.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/google-fonts/LKf8nhXsWg5ybwEGXk8UBQ.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/google-fonts/PIPMHY90P7jtyjpXuZ2cLD8E0i7KZn-EPnyo3HZu7kw.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/google-fonts/UyYrYy3ltEffJV9QueSi4RdbPw3QSf9R-kE0EsQUn2A.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/google-fonts/cj2hUnSRBhwmSPr9kS5899kZXW4sYc4BjuAIFc1SXII.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/google-fonts/lILlYDvubYemzYzN7GbLkHhCUOGz7vYGh680lGh-uXM.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/google-fonts/0XxGQsSc1g4rdRdjJKZrNBsxEYwM7FgeyaSgU71cLG0.woff</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2017/09/page/2/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">archives/2017/page/2/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/font-awesome.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/bootstrap.min.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/marked.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/style.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/Programming Language Correlation.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/Anomaly Detection in HTTP Logs.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/CONTRIBUTING.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/README.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/SQL and Pandas DataFrames.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/Text Classification with TensorFlow.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/common.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Stackdriver Monitoring/Getting started.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/intro/Introduction to Notebooks.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Notebook-Import/nbpackage/nbs/other.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/README.txt</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Storage/Storage Commands.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/default.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/Exploring Genomics Data.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/intro/Introduction to Python.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/intro/Using Datalab - Accessing Cloud Data.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/Conversion Analysis with Google Analytics Data.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/BigQuery APIs.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/BigQuery Magic Commands and DML.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/BigQuery Parameterization.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/Hello BigQuery.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/Importing and Exporting Data.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/UDF Testing in the Notebook.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/UDFs in BigQuery.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/UDFs using Code in Cloud Storage.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/Using External Tables from BigQuery.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/BigQuery Commands.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Storage/Storage APIs.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2019/07/17/心情糟透了/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2018/11/16/中國人前輩努力為我洗腦之後/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/30/爱的吸引/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2016/05/16/A-Real-time-Automatic-Level-Bar-Calibration-Based-on-Canny-Edge-Detection-and-Weighted-Least-Squares-Method/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2015/10/23/Reference/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2013/01/25/feelings-I-m-missing-you/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2018/05/19/探索研究/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2018/03/27/日本語レッスン進捗/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/08/22/面膜/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/07/24/Snippet/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2016/03/03/hello-world/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2015/09/23/关于意义疗法/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2019/10/05/Hexo-Notebook/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2016/02/03/意义疗法导论/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2019/07/16/死蔭的幽谷/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/29/戀愛交往的兩個原則/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/22/睡不着/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/19/情殺/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/18/被开发环境的设计实现验证的问题困扰了三天之久/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/07/认耶稣为主/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/04/我發現脫離了人群我就不能活/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/03/心理防卫机制/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/01/就算累也必須堅持學日語/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/08/20/Skype授業/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/08/16/JavaScript/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/07/21/除了我的妻子以外，凡拉黑我的都去屎。/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2015/09/03/My-First-Test/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2018/11/11/论道德的谱系/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/14/人間失格/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/07/22/Hexo-研究/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2015/09/30/最近码代码手感不错哟/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2017/09/14/人间失格/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2016/02/03/一个心理学家在集中营的经历/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">2015/09/03/Preface/index.html</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/highlight.min.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">fonts/fontawesome-webfont.svg</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Stackdriver Monitoring/Time-shifted data.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/Basic RNN TensorFlow Model Trained on Simulated Data.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/LSTM Punctuation Model With TensorFlow.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/BigQuery/SQL Query Composition.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Coast/Service End to End.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/text_classification_20newsgroup/Text Classification --- 20NewsGroup (large data).ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/0 Readme and Setup.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Classification/Iris/1 Local End to End.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/pipeline/Airflow Setup.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Stackdriver Monitoring/Group metrics.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/text_classification_20newsgroup/Text Classification --- 20NewsGroup (small data).ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/pipeline/BigQuery Pipeline.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Coast/Setup.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/1 Local End to End.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/2 Service Preprocess.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/3 Service Train.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/4 Service Evaluate.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/5 Service Predict.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Regression/Census/6 Cleanup.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Flower/Service End to End.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/image_classification_flower/Flower Classification (large dataset experience).ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Coast/Local End to End.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/tutorials/Data/Interactive Charts with Google Charting APIs.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/ML Toolbox/Image Classification/Flower/Local End to End.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/structured_data_regression_taxi/Taxi Fare Model (full data).ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/bootstrap.min.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/structured_data_regression_taxi/Taxi Fare Model (small data).ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">js/jquery-2.0.3.min.js</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/bootstrap.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/united.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/cerulean.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/cosmo.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/cyborg.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/darkly.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/journal.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/readable.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/sandstone.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/simplex.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/spacelab.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/superhero.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/yeti.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/flatly.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/lumen.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/slate.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/themes/paper.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/image_classification_flower/Flower Classification (small dataset experience).ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">css/notebook.css</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/Image-to-Captions Model with TensorFlow.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/TensorFlow/Machine Learning with Financial Data.ipynb</span>
+<span class="ansi-green-fg">INFO </span> Generated: <span class="ansi-magenta-fg">notebooks/Try-Datalab/notebooks/samples/contrib/mlworkbench/structured_data_classification_police/Predict Case Resolution (small data experience).ipynb</span>
+<span class="ansi-green-fg">INFO </span> 231 files generated in <span class="ansi-cyan-fg">2.23 s</span>
+<span class="ansi-green-fg">INFO </span> Deploying: <span class="ansi-magenta-fg">git</span>
+<span class="ansi-green-fg">INFO </span> Clearing .deploy folder...
+<span class="ansi-green-fg">INFO </span> Copying files from public folder...
+[master 8821746] Site updated: 2019-10-05 17:38:58
+ 5 files changed, 1117 insertions(+), 1381 deletions(-)
+Username for &#39;https://github.com&#39;: ^C
+<span class="ansi-green-fg">INFO </span> Good bye
+<span class="ansi-green-fg">INFO </span> Deploy done: <span class="ansi-magenta-fg">git</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2019/10/05/Hexo-Generate-Notebook-CSS/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2019/07/17/心情糟透了/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-09-30 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Notebooks/">Notebooks<span>20</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

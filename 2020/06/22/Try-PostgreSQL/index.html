@@ -1,0 +1,992 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Try-PostgreSQL | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="PostgreSQL is Turing Complete.&amp;#182;
+
+
+
+
+
+
+http://www.postgres.cn/v2/document&amp;#182;
+
+
+
+
+
+
+I found an answer from Google. And I quite agree with that.&amp;">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Try-PostgreSQL">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Try-PostgreSQL</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="PostgreSQL-is-Turing-Complete."><a href="http://assets.en.oreilly.com/1/event/27/High%20Performance%20SQL%20with%20PostgreSQL%20Presentation.pdf" target="_blank" rel="noopener">PostgreSQL is Turing Complete.</a><a class="anchor-link" href="#PostgreSQL-is-Turing-Complete.">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="http://www.postgres.cn/v2/document"><a href="http://www.postgres.cn/v2/document" target="_blank" rel="noopener">http://www.postgres.cn/v2/document</a><a class="anchor-link" href="#http://www.postgres.cn/v2/document">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="I-found-an-answer-from-Google.-And-I-quite-agree-with-that."><a href="https://www.sisense.com/ja/blog/8-ways-fine-tune-sql-queries-production-databases/" target="_blank" rel="noopener">I found an answer from Google. And I quite agree with that.</a><a class="anchor-link" href="#I-found-an-answer-from-Google.-And-I-quite-agree-with-that.">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Define business requirements first</li>
+<li>SELECT fields instead of using SELECT *</li>
+<li>Avoid SELECT DISTINCT</li>
+<li>Create joins with INNER JOIN (not WHERE)
+Some SQL developers prefer to make joins with WHERE clauses. This type of join creates a Cartesian Join, also called a Cartesian Product or CROSS JOIN. Cartesian Joins are especially problematic in large-scale databases, because a Cartesian Join of two large tables could create billions or trillions of results. To prevent creating a Cartesian Join, use INNER JOIN instead.</li>
+<li>Use WHERE instead of HAVING to define filters</li>
+<li>Use wildcards at the end of a phrase only
+When searching plaintext data, such as cities or names, wildcards create the widest search possible. However, the widest search is also the most inefficient search. When a leading wildcard is used, especially in combination with an ending wildcard, the database is tasked with searching all records for a match anywhere within the selected field.</li>
+<li>Use LIMIT to sample query results</li>
+<li>Run your query during off-peak hours</li>
+</ol>
+<p>There are also many other advices on Google. By understanding the mechanism of SQL Query, the efficiency of specific cases can be analyzed and compared.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>在做最后一道关于 SQL 的题目的时候，其实剩下的时间蛮多的。可是我却没有写完。
+现在想想其实蛮简单的。不需要什么 PostgreSQL 的高级用法。
+以前做这种题太少了，经验不足。所以，没能把握好思考的方向。
+在之前备考的时候，我有略略浏览过 PostgreSQL 的文档。
+由于时间紧迫，对于文档里面的各种高级用法的应用场景，我理解得很不充分。
+机试的时候，我就在想文档里面的各种高级用法。想不到好的思路，人就慌了。
+还有就是，做到后面的时候，我感觉自己体力有点不支了。
+我感觉这次机试要死在 SQL 上。</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> google.cloud.bigquery
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The google.cloud.bigquery extension is already loaded. To reload it, use:
+  %reload_ext google.cloud.bigquery
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+CREATE TABLE
+  dataset.buses ( id INT64,
+    origin STRING,
+    destination STRING,
+    time STRING )
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+INSERT
+  dataset.buses (id,
+    origin,
+    destination,
+    time)
+VALUES
+  (10, &#39;Wuhan&#39;, &#39;Beijing&#39;, &#39;10:00&#39;),
+  (20, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:00&#39;),
+  (21, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:30&#39;),
+  (22, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;13:00&#39;),
+  (30, &#39;Beijing&#39;, &#39;Tokyo&#39;, &#39;23:59&#39;)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+SELECT
+  *
+FROM
+  dataset.buses
+ORDER BY
+  id
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>origin</th>
+      <th>destination</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>10</td>
+      <td>Wuhan</td>
+      <td>Beijing</td>
+      <td>10:00</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>20</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>21</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>12:30</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>22</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>13:00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>30</td>
+      <td>Beijing</td>
+      <td>Tokyo</td>
+      <td>23:59</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+CREATE TABLE
+  dataset.passengers ( id INT64,
+    origin STRING,
+    destination STRING,
+    time STRING )
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+INSERT
+  dataset.passengers (id,
+    origin,
+    destination,
+    time)
+VALUES
+  (1, &#39;Beijing&#39;, &#39;Tokyo&#39;, &#39;23:59&#39;),
+  (2, &#39;Hangzhou&#39;, &#39;Tokyo&#39;, &#39;09:00&#39;),
+  (10, &#39;Wuhan&#39;, &#39;Tokyo&#39;, &#39;00:30&#39;),
+  (11, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;13:30&#39;),
+  (40, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:00&#39;),
+  (41, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:15&#39;),
+  (42, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:15&#39;),
+  (43, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:30&#39;),
+  (44, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:35&#39;)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+SELECT
+  *
+FROM
+  dataset.passengers
+ORDER BY
+  id
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>origin</th>
+      <th>destination</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>Beijing</td>
+      <td>Tokyo</td>
+      <td>23:59</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>Hangzhou</td>
+      <td>Tokyo</td>
+      <td>09:00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>10</td>
+      <td>Wuhan</td>
+      <td>Tokyo</td>
+      <td>00:30</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>11</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>13:30</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>40</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>41</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>12:15</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>42</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>12:15</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>43</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>12:30</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>44</td>
+      <td>Hangzhou</td>
+      <td>Shanghai</td>
+      <td>12:35</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+WITH
+  buses_ranked AS (
+  SELECT
+    id,
+    origin,
+    destination,
+    time,
+    RANK() OVER (PARTITION BY origin, destination ORDER BY time) AS rank
+  FROM
+    dataset.buses)
+SELECT
+  bus_latter.*,
+  bus_former.time AS time_former,
+  passengers.id AS passengers_id,
+  passengers.time AS passengers_time
+FROM
+  buses_ranked AS bus_latter
+LEFT OUTER JOIN
+  buses_ranked AS bus_former
+ON
+  bus_latter.origin = bus_former.origin
+  AND bus_latter.destination = bus_former.destination
+  AND bus_latter.rank = bus_former.rank + 1
+LEFT OUTER JOIN
+  dataset.passengers AS passengers
+ON
+  bus_latter.origin = passengers.origin
+  AND bus_latter.destination = passengers.destination
+  AND (bus_former.time IS NULL
+    OR bus_former.time &lt; passengers.time)
+  AND passengers.time &lt;= bus_latter.time
+ORDER BY
+  id,
+  passengers_id
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+WITH
+  buses_ranked AS (
+  SELECT
+    id,
+    origin,
+    destination,
+    time,
+    RANK() OVER (PARTITION BY origin, destination ORDER BY time) AS rank
+  FROM
+    dataset.buses)
+SELECT
+  bus_latter.id,
+  COUNT(passengers.id) AS passengers_count
+FROM
+  buses_ranked AS bus_latter
+LEFT OUTER JOIN
+  buses_ranked AS bus_former
+ON
+  bus_latter.origin = bus_former.origin
+  AND bus_latter.destination = bus_former.destination
+  AND bus_latter.rank = bus_former.rank + 1
+LEFT OUTER JOIN
+  dataset.passengers AS passengers
+ON
+  bus_latter.origin = passengers.origin
+  AND bus_latter.destination = passengers.destination
+  AND (bus_former.time IS NULL
+    OR bus_former.time &lt; passengers.time)
+  AND passengers.time &lt;= bus_latter.time
+GROUP BY
+  bus_latter.id
+ORDER BY
+  id
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>passengers_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>10</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>20</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>21</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>22</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>30</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://medium.com/analytics-vidhya/postgresql-integration-with-jupyter-notebook-deb97579a38d" target="_blank" rel="noopener">https://medium.com/analytics-vidhya/postgresql-integration-with-jupyter-notebook-deb97579a38d</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2020/10/14/合適的女朋友/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2020/06/20/Try-Zeppelin/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2020-06-22 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Notebooks/">Notebooks<span>20</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

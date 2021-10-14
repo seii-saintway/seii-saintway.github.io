@@ -1,0 +1,575 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Make isso HTTPS with TLJH Traefik Proxy | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="https://github.com/containous/traefik/
+https://traefik.io/
+https://docs.traefik.io/routing/overview/
+
+
+
+
+
+
+
+
+Traefik Dashboard&amp;#182;
+
+
+
+
+
+In&amp;nbsp;[&amp;nb">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Make isso HTTPS with TLJH Traefik Proxy">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Make isso HTTPS with TLJH Traefik Proxy</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/containous/traefik/" target="_blank" rel="noopener">https://github.com/containous/traefik/</a></li>
+<li><a href="https://traefik.io/" target="_blank" rel="noopener">https://traefik.io/</a></li>
+<li><a href="https://docs.traefik.io/routing/overview/" target="_blank" rel="noopener">https://docs.traefik.io/routing/overview/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Traefik-Dashboard">Traefik Dashboard<a class="anchor-link" href="#Traefik-Dashboard">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo apt install apache2-utils
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo sed -i <span class="s1">&#39;s/address = &quot;127.0.0.1:8099&quot;/address = &quot;:8099&quot;/g&#39;</span> /opt/tljh/state/traefik.toml
+<span class="o">!</span>sudo sed -i <span class="s2">&quot;s/sourceRange = \[&#39;127.0.0.1&#39;\]/sourceRange = \[&#39;127.0.0.1&#39;, &#39;110.3.247.172&#39;\]/g&quot;</span> /opt/tljh/state/traefik.toml
+<span class="o">!</span>sudo sed -i -e <span class="s2">&quot;s/users = \[&#39;api_admin:[^&#39;]*&#39;\]/users = \[&#39;</span><span class="k">$(</span>htpasswd -nb api_admin fdsa<span class="k">)</span><span class="s2">&#39;\]/g&quot;</span> /opt/tljh/state/traefik.toml
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo systemctl restart traefik
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo tljh-config reload hub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl -u api_admin:fdsa jhub.name:8099
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl -u api_admin:fdsa localhost:8099
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="nx">javascript</span>
+<span class="kr">const</span> <span class="nx">Http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">Http</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">Http</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://jhub.name:8099&#39;</span><span class="p">);</span>
+<span class="nx">Http</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">Http</span><span class="p">.</span><span class="nx">status</span> <span class="o">!=</span> <span class="mf">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="sb">`Error: </span><span class="si">${</span><span class="nx">Http</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">Http</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Rollback Settings</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo tljh-config reload proxy
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Make-isso-HTTPS-in-TLJH">Make isso HTTPS in TLJH<a class="anchor-link" href="#Make-isso-HTTPS-in-TLJH">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/jupyterhub/the-littlest-jupyterhub/blob/master/tljh/jupyterhub_config.py" target="_blank" rel="noopener">https://github.com/jupyterhub/the-littlest-jupyterhub/blob/master/tljh/jupyterhub_config.py</a></li>
+<li><a href="https://github.com/jupyterhub/traefik-proxy/blob/master/jupyterhub_traefik_proxy/toml.py" target="_blank" rel="noopener">https://github.com/jupyterhub/traefik-proxy/blob/master/jupyterhub_traefik_proxy/toml.py</a></li>
+<li><a href="https://jupyterhub-traefik-proxy.readthedocs.io/en/latest/toml.html#traefik-configuration" target="_blank" rel="noopener">https://jupyterhub-traefik-proxy.readthedocs.io/en/latest/toml.html#traefik-configuration</a></li>
+<li><a href="https://docs.traefik.io/v1.7/basics/" target="_blank" rel="noopener">https://docs.traefik.io/v1.7/basics/</a></li>
+<li><a href="https://posativ.org/isso/docs/setup/sub-uri/" target="_blank" rel="noopener">https://posativ.org/isso/docs/setup/sub-uri/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat <span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/state/rules.toml &gt; /dev/null</span>
+
+<span class="s">[frontends.isso]</span>
+<span class="s">backend = &quot;isso&quot;</span>
+<span class="s">passHostHeader = true</span>
+
+<span class="s">[frontends.isso.routes.f1]</span>
+<span class="s">rule = &quot;PathPrefixStrip:/isso/&quot;</span>
+
+<span class="s">[backends.isso.servers.s1]</span>
+<span class="s">url = &quot;http://127.0.0.1:8000&quot;</span>
+<span class="s">weight = 1</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">env</span> http=http:\/\/jhub.name:8000\/
+<span class="o">%</span><span class="k">env</span> https=https:\/\/jhub.name\/isso\/
+<span class="o">!</span>sed -i -e <span class="s2">&quot;s/</span><span class="nv">$http</span><span class="s2">/</span><span class="nv">$https</span><span class="s2">/g&quot;</span> ~/hexo/themes/freemind/layout/_partial/post/comment.ejs
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Commit-Modifications">Commit Modifications<a class="anchor-link" href="#Commit-Modifications">&#182;</a></h2><p><a href="https://github.com/seii-saintway/hexo-theme-freemind/commit/9568c3160d3c917a8a986beedafb7836e02c2bce" target="_blank" rel="noopener">https://github.com/seii-saintway/hexo-theme-freemind/commit/9568c3160d3c917a8a986beedafb7836e02c2bce</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Change-file-watch-to-directory-in-TLJH-Traefik">Change file-watch to directory in TLJH Traefik<a class="anchor-link" href="#Change-file-watch-to-directory-in-TLJH-Traefik">&#182;</a></h1><p><a href="https://github.com/seii-saintway/the-littlest-jupyterhub/commit/e95d85e99187f9d65b748016807b28c256e77e39" target="_blank" rel="noopener">https://github.com/seii-saintway/the-littlest-jupyterhub/commit/e95d85e99187f9d65b748016807b28c256e77e39</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat <span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/dynamic/isso.toml &gt; /dev/null</span>
+
+<span class="s">[frontends.isso]</span>
+<span class="s">backend = &quot;isso&quot;</span>
+<span class="s">passHostHeader = true</span>
+
+<span class="s">[frontends.isso.routes.f1]</span>
+<span class="s">rule = &quot;PathPrefixStrip:/isso/&quot;</span>
+
+<span class="s">[backends.isso.servers.s1]</span>
+<span class="s">url = &quot;http://127.0.0.1:8000&quot;</span>
+<span class="s">weight = 1</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo /opt/tljh/hub/bin/python -m tljh.installer
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Granting passwordless sudo to JupyterHub admins...
+Setting up user environment...
+
+
+==&gt; WARNING: A newer version of conda exists. &lt;==
+  current version: 4.5.8
+  latest version: 4.7.12
+
+Please update conda by running
+
+    $ conda update -n base conda
+
+
+Setting up JupyterHub...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo cat /opt/tljh/installer.log
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2019-10-13 15:21:02,889 Granting passwordless sudo to JupyterHub admins...
+2019-10-13 15:21:02,890 Setting up user environment...
+2019-10-13 15:21:26,052 Setting up JupyterHub...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> make restart-isso
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2019/10/08/Try-Appmod-and-NBGitPuller/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2019/10/06/Try-To-Import-Notebooks/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-10-06 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Notebooks/">Notebooks<span>20</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

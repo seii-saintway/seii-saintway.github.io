@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Hexo-Generate-Notebook-CSS | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="Remove Duplicated Notebook CSS&amp;#182;
+
+
+
+
+
+
+
+Add Category and Tag to Notebooks
+Move Notebook CSS to &amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;
+
+
+
+
+
+
+
+
+Add Category and ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo-Generate-Notebook-CSS">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Hexo-Generate-Notebook-CSS</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Remove-Duplicated-Notebook-CSS">Remove Duplicated Notebook CSS<a class="anchor-link" href="#Remove-Duplicated-Notebook-CSS">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Add Category and Tag to Notebooks</li>
+<li>Move Notebook CSS to <code>&lt;head&gt;&lt;/head&gt;</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Add-Category-and-Tag-to-Notebooks">Add Category and Tag to Notebooks<a class="anchor-link" href="#Add-Category-and-Tag-to-Notebooks">&#182;</a></h2><p>I find that the hexo layouts for Categories and Tags are almost the same, but it seems that the the usage of Tags is more casual.
+So I decide to add Tag "Notebooks" to my Notebook posts.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Move-Notebook-CSS-to-%3Chead%3E%3C/head%3E">Move Notebook CSS to <code>&lt;head&gt;&lt;/head&gt;</code><a class="anchor-link" href="#Move-Notebook-CSS-to-%3Chead%3E%3C/head%3E">&#182;</a></h2><ul>
+<li><a href="https://github.com/seii-saintway/hexo-ipynb/blob/a7cf07cfdde16cab0f1aeed8922a7e9c70b8987e/generate-css/generator.ipynb" target="_blank" rel="noopener">https://github.com/seii-saintway/hexo-ipynb/blob/a7cf07cfdde16cab0f1aeed8922a7e9c70b8987e/generate-css/generator.ipynb</a></li>
+<li><a href="https://github.com/seii-saintway/hexo-ipynb/blob/a7cf07cfdde16cab0f1aeed8922a7e9c70b8987e/generate-css/hexo.tpl" target="_blank" rel="noopener">https://github.com/seii-saintway/hexo-ipynb/blob/a7cf07cfdde16cab0f1aeed8922a7e9c70b8987e/generate-css/hexo.tpl</a></li>
+<li><a href="https://github.com/seii-saintway/hexo-theme-freemind/blob/2d488b1b596ab908bf35bf5091076a9138271230/source/css/notebook.css" target="_blank" rel="noopener">https://github.com/seii-saintway/hexo-theme-freemind/blob/2d488b1b596ab908bf35bf5091076a9138271230/source/css/notebook.css</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2019/10/06/Solve-PyDatalab-Incompatible-with-Python-3-7/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2019/09/30/Hexo-Notebook/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-10-05 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Notebooks/">Notebooks<span>20</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

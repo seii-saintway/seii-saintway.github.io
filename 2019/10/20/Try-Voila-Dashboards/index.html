@@ -1,0 +1,419 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Try Voila Dashboards | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="https://github.com/voila-dashboards/voila
+https://github.com/voila-dashboards/gallery
+
+
+
+
+
+
+
+
+Try Voil&amp;#224;&amp;#182;
+
+
+
+
+
+In&amp;nbsp;[&amp;nbsp;]:
+
+    
+!voila">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Try Voila Dashboards">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Try Voila Dashboards</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/voila-dashboards/voila" target="_blank" rel="noopener">https://github.com/voila-dashboards/voila</a></li>
+<li><a href="https://github.com/voila-dashboards/gallery" target="_blank" rel="noopener">https://github.com/voila-dashboards/gallery</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Try-Voil%C3%A0">Try Voil&#224;<a class="anchor-link" href="#Try-Voil%C3%A0">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>voila ~
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb" target="_blank" rel="noopener">http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl -s http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb <span class="p">|</span> grep -oe <span class="s1">&#39;{[^{}]*hub_url[^{}]*}&#39;</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;_dom_classes&#39;: [],
+ &#39;_model_module&#39;: &#39;@jupyter-widgets/controls&#39;,
+ &#39;_model_module_version&#39;: &#39;1.4.0&#39;,
+ &#39;_model_name&#39;: &#39;TextModel&#39;,
+ &#39;_view_count&#39;: None,
+ &#39;_view_module&#39;: &#39;@jupyter-widgets/controls&#39;,
+ &#39;_view_module_version&#39;: &#39;1.4.0&#39;,
+ &#39;_view_name&#39;: &#39;TextView&#39;,
+ &#39;continuous_update&#39;: True,
+ &#39;description&#39;: &#39;hub_url&#39;,
+ &#39;description_tooltip&#39;: None,
+ &#39;disabled&#39;: False,
+ &#39;layout&#39;: &#39;IPY_MODEL_853d8ed268f846f199a0d40ed2955d76&#39;,
+ &#39;placeholder&#39;: &#39;\u200b&#39;,
+ &#39;style&#39;: &#39;IPY_MODEL_d250904f9d7f4ca2ac058bd27f30dd08&#39;,
+ &#39;value&#39;: &#39;&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Compare-to-Commuter">Compare to Commuter<a class="anchor-link" href="#Compare-to-Commuter">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> commuter
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb" target="_blank" rel="noopener">http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl -s http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb <span class="p">|</span> grep -oe <span class="s1">&#39;&lt;[^&lt;&gt;]*&gt;[^&lt;&gt;]*interactive[^&lt;&gt;]*&lt;/[^&lt;&gt;]*&gt;&#39;</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<span>interactive(children=(Text(value=&#x27;&#x27;, description=&#x27;hub_url&#x27;), Text(value=&#x27;&#x27;, description=&#x27;clone_cmd&#x27;), Text(val…</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>So the <strong>Voila</strong> with Notebook is like <strong>Ploty-Dash</strong> with Python.
+<strong>Voila</strong> can render ipywidget, while <strong>NBViewer</strong>/<strong>Commuter</strong> can just display ipynb without ipywidget-rendering.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Try-Voil%C3%A0-Gallery">Try <a href="https://github.com/voila-dashboards/gallery" target="_blank" rel="noopener">Voil&#224; Gallery</a><a class="anchor-link" href="#Try-Voil%C3%A0-Gallery">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p><strong>Voilà</strong> can display ipywidget-rendered ipynb via <em>local file system</em>.</p>
+<p><strong>Voilà Gallery</strong> can display ipywidget-rendered ipynb via <em>Github</em> etc. by using repo2docker, exactly the same way Binder does.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2019/10/20/Try-NBViewer/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2019/10/19/Try-Freeze/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-10-20 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Notebooks/">Notebooks<span>20</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

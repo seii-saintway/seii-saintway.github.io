@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Hexo 研究 | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="/usr/local/lib/node_modules/hexo-cli/bin/hexo12345#!/usr/bin/env node&#39;use strict&#39;;require(&#39;../lib/hexo&#39;)();
+/usr/local/lib/node_modules/hexo-cli/lib/h">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo 研究">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Hexo 研究</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <h2 id="usr-local-lib-node-modules-hexo-cli-bin-hexo"><a href="#usr-local-lib-node-modules-hexo-cli-bin-hexo" class="headerlink" title="/usr/local/lib/node_modules/hexo-cli/bin/hexo"></a>/usr/local/lib/node_modules/hexo-cli/bin/hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="string">'use strict'</span>;</span><br><span class="line"></span><br><span class="line">require(<span class="string">'../lib/hexo'</span>)();</span><br></pre></td></tr></table></figure>
+<h2 id="usr-local-lib-node-modules-hexo-cli-lib-hexo-js"><a href="#usr-local-lib-node-modules-hexo-cli-lib-hexo-js" class="headerlink" title="/usr/local/lib/node_modules/hexo-cli/lib/hexo.js"></a>/usr/local/lib/node_modules/hexo-cli/lib/hexo.js</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> chalk = <span class="built_in">require</span>(<span class="string">'chalk'</span>);</span><br><span class="line"><span class="keyword">var</span> tildify = <span class="built_in">require</span>(<span class="string">'tildify'</span>);</span><br><span class="line"><span class="keyword">var</span> pathFn = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'bluebird'</span>);</span><br><span class="line"><span class="keyword">var</span> Context = <span class="built_in">require</span>(<span class="string">'./context'</span>);</span><br><span class="line"><span class="keyword">var</span> findPkg = <span class="built_in">require</span>(<span class="string">'./find_pkg'</span>);</span><br><span class="line"><span class="keyword">var</span> goodbye = <span class="built_in">require</span>(<span class="string">'./goodbye'</span>);</span><br><span class="line"><span class="keyword">var</span> minimist = <span class="built_in">require</span>(<span class="string">'minimist'</span>);</span><br><span class="line"><span class="keyword">var</span> camelCaseKeys = <span class="built_in">require</span>(<span class="string">'hexo-util/lib/camel_case_keys'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">entry</span>(<span class="params">cwd, args</span>) </span>&#123;</span><br><span class="line">  cwd = cwd || process.cwd();</span><br><span class="line">  args = camelCaseKeys(args || minimist(process.argv.slice(<span class="number">2</span>)));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> hexo = <span class="keyword">new</span> Context(cwd, args);</span><br><span class="line">  <span class="keyword">var</span> log = hexo.log;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Change the title in console</span></span><br><span class="line">  process.title = <span class="string">'hexo'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      log.fatal(err);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    process.exit(<span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> findPkg(cwd, args).then(<span class="function"><span class="keyword">function</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!path) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    hexo.base_dir = path;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loadModule(path, args).catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      log.error(<span class="string">'Local hexo not found in %s'</span>, chalk.magenta(tildify(path)));</span><br><span class="line">      log.error(<span class="string">'Try running: \'npm install hexo --save\''</span>);</span><br><span class="line">      process.exit(<span class="number">2</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">mod</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mod) hexo = mod;</span><br><span class="line">    log = hexo.log;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'./console'</span>)(hexo);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hexo.init();</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cmd = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!args.h &amp;&amp; !args.help) &#123;</span><br><span class="line">      cmd = args._.shift();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (cmd) &#123;</span><br><span class="line">        <span class="keyword">var</span> c = hexo.extend.console.get(cmd);</span><br><span class="line">        <span class="keyword">if</span> (!c) cmd = <span class="string">'help'</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        cmd = <span class="string">'help'</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      cmd = <span class="string">'help'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    watchSignal(hexo);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hexo.call(cmd, args).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> hexo.exit();</span><br><span class="line">    &#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> hexo.exit(err).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// `hexo.exit()` already dumped `err`</span></span><br><span class="line">        handleError(<span class="literal">null</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;).catch(handleError);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">entry.console = &#123;</span><br><span class="line">  init: <span class="built_in">require</span>(<span class="string">'./console/init'</span>),</span><br><span class="line">  help: <span class="built_in">require</span>(<span class="string">'./console/help'</span>),</span><br><span class="line">  version: <span class="built_in">require</span>(<span class="string">'./console/version'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">entry.version = <span class="built_in">require</span>(<span class="string">'../package.json'</span>).version;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadModule</span>(<span class="params">path, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.try(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> modulePath = pathFn.join(path, <span class="string">'node_modules'</span>, <span class="string">'hexo'</span>);</span><br><span class="line">    <span class="keyword">var</span> Hexo = <span class="built_in">require</span>(modulePath);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Hexo(path, args);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">watchSignal</span>(<span class="params">hexo</span>) </span>&#123;</span><br><span class="line">  process.on(<span class="string">'SIGINT'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    hexo.log.info(goodbye());</span><br><span class="line">    hexo.unwatch();</span><br><span class="line"></span><br><span class="line">    hexo.exit().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      process.exit();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = entry;</span><br></pre></td></tr></table></figure>
+<h3 id="Customizes-the-path-of-current-working-directory"><a href="#Customizes-the-path-of-current-working-directory" class="headerlink" title="Customizes the path of current working directory."></a>Customizes the path of current working directory.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --debug --cwd /path/to/cwd</span><br></pre></td></tr></table></figure>
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2017/07/24/Snippet/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2017/07/21/除了我的妻子以外，凡拉黑我的都去屎。/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-07-22 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

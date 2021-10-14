@@ -1,0 +1,543 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Try PaperBoby | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="https://github.com/timkpaine/paperboy
+
+
+
+
+
+
+In&amp;nbsp;[&amp;nbsp;]:
+
+    
+!cd ~ &amp;amp;&amp;amp; git clone https://github.com/timkpaine/paperboy.git
+
+
+    
+
+
+
+
+
+
+">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Try PaperBoby">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Try PaperBoby</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://github.com/timkpaine/paperboy" target="_blank" rel="noopener">https://github.com/timkpaine/paperboy</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> git clone https://github.com/timkpaine/paperboy.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cloning into &#39;paperboy&#39;...
+remote: Enumerating objects: 21, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (21/21), done.
+remote: Total 3388 (delta 3), reused 3 (delta 0), pack-reused 3367
+Receiving objects: 100% (3388/3388), 12.04 MiB | 22.38 MiB/s, done.
+Resolving deltas: 100% (2277/2277), done.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">cd</span> ~/paperboy/
+sudo -E npm install
+sudo -E npm run build
+sudo -E pip install -e .
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E python -m paperboy
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CRITICAL:root:Using SQL backend
+CRITICAL:root:Using SQL auth
+CRITICAL:root:Using dummy scheduler
+[2019-10-13 18:36:29 +0900] [2696] [INFO] Starting gunicorn 19.9.0
+[2019-10-13 18:36:29 +0900] [2696] [INFO] Listening at: http://0.0.0.0:8080 (2696)
+[2019-10-13 18:36:29 +0900] [2696] [INFO] Using worker: sync
+[2019-10-13 18:36:29 +0900] [2701] [INFO] Booting worker with pid: 2701
+CRITICAL:root:Storing user sheng_wei eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJuYW1lIjoic2hlbmdfd2VpIn0.oKJsYgZJaj1dLoVR8JgTjfPGp2O8bf3jqmoRux1bNgw 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:Storing notebook &lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
+[2019-10-13 18:43:59 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+[2019-10-13 18:44:22 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+CRITICAL:root:Storing job &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:detail : 1, result : &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:detail : 1, result : &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:detail : 1, result : &lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+CRITICAL:root:Storing notebook &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+CRITICAL:root:detail : 2, result : &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+[2019-10-13 18:54:20 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+[2019-10-13 18:54:35 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:detail : 2, result : &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+CRITICAL:root:Storing job &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:detail : 2, result : &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+[2019-10-13 18:59:11 +0900] [2696] [CRITICAL] WORKER TIMEOUT (pid:2701)
+[2019-10-13 18:59:11 +0900] [2701] [INFO] Worker exiting (pid: 2701)
+[2019-10-13 18:59:11 +0900] [2863] [INFO] Booting worker with pid: 2863
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:detail : 2, result : &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
+[2019-10-13 19:01:55 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
+    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+[2019-10-13 19:01:57 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
+    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+[2019-10-13 19:01:57 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
+    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+^C
+[2019-10-13 19:02:42 +0900] [2696] [INFO] Handling signal: int
+[2019-10-13 19:02:42 +0900] [2863] [INFO] Worker exiting (pid: 2863)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>The versions of dependencies are too low.</strong>
+<strong>There are too many bugs.</strong></p>
+<p><strong>It seems that the maintenance of PaperBoy has been stopped.</strong></p>
+<p>Well. Maybe I can reuse some of the codes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>But I found a new Jupyter Dashboard used by PaperBoy.</strong></p>
+<ul>
+<li><a href="https://github.com/voila-dashboards/voila" target="_blank" rel="noopener">https://github.com/voila-dashboards/voila</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2019/10/19/Try-Commuter/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2019/10/08/Try-Appmod-and-NBGitPuller/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-10-13 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Notebooks/">Notebooks<span>20</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>
