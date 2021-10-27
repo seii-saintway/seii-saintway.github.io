@@ -95,12 +95,625 @@
 
 		<div class="slogan">
       <i class="fa fa-heart"></i>
-      https://seii-saintway.github.io
+      PURSUE ULTIMATE FACTS
 </div>    
 
 		<div class="mypage">
 		
 		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-28 </div>
+			<div class="article-title"><a href="/2021/10/28/Add-Tweets-to-My-Blog/" >Add Tweets to My Blog</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">layout</span><span class="o">/</span><span class="n">_widget</span><span class="o">/</span><span class="n">links</span><span class="o">.</span><span class="n">ejs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">twitter</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>var twitter = (function() {
+  function escapeHtml(str) {
+    return $(&#39;&lt;div/&gt;&#39;).text(str).html();
+  }
+  function render(target, tweets) {
+    var i = 0, fragment = &#39;&#39;, t = $(target)[0];
+
+    for(i = 0; i &lt; tweets.length; ++i) {
+      fragment += &#39;&lt;li&gt;&lt;i class=&#34;fa fa-star&#34;&gt;&lt;/i&gt;&lt;a href=&#34;https://twitter.com/seii_saintway/status/&#39; + tweets[i].id + &#39;&#34;&gt;&#39;
+          + tweets[i].created_at.replace(&#39;T&#39;, &#39;　&#39;).replace(&#39;.000Z&#39;, &#39;&#39;) + &#39;&lt;/a&gt;&lt;p&gt;&#39; + escapeHtml(tweets[i].text||&#39;&#39;) + &#39;&lt;/p&gt;&lt;/li&gt;&#39;;
+    }
+    t.innerHTML = fragment;
+  }
+  return {
+    showTweets: function(options) {
+      options.blacklist = options.blacklist.split(&#39;,&#39;);
+      $.ajax({
+          url: &#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=&#39; + options.count
+        , dataType: &#39;json&#39;
+        , error: function (err) { $(options.target + &#39; li.loading&#39;).addClass(&#39;error&#39;).text(&#39;Error loading feed&#39;); }
+        , success: function (data) {
+          if (!data ) { return; }
+          var tweets = [];
+          for (var i = 0; i &lt; data.data.length; ++i) {
+            if (options.blacklist instanceof Array &amp;&amp; options.blacklist.indexOf(data.data[i].id) !== -1) { continue; }
+            tweets.push(data.data[i]);
+          }
+          render(options.target, tweets);
+        }
+      });
+    }
+  };
+})();
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/zldobbs/alert-mizzou" target="_blank" rel="noopener">https://github.com/zldobbs/alert-mizzou</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BEARER_TOKEN</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline" target="_blank" rel="noopener">https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=seii_saintway&amp;count=20&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets" target="_blank" rel="noopener">https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/2/users/807092313298112512/tweets?tweet.fields=created_at&amp;max_results=10&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">tljh</span><span class="o">/</span><span class="n">state</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">tweets</span><span class="o">.</span><span class="n">toml</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="p">]</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="s2">&quot;tweets&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r1</span><span class="p">]</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;PathPrefix:/tweets/&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r2</span><span class="p">]</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;ReplacePath:/2/users/807092313298112512/tweets&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customrequestheaders</span><span class="p">]</span>
+<span class="n">Authorization</span> <span class="o">=</span> <span class="s2">&quot;Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customresponseheaders</span><span class="p">]</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+
+<span class="p">[</span><span class="n">backends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">servers</span><span class="o">.</span><span class="n">s1</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com&quot;</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/28/Add-Tweets-to-My-Blog/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-27 </div>
+			<div class="article-title"><a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" >Try to Reinstall Zsh Kernel</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels" target="_blank" rel="noopener">https://github.com/jupyter/jupyter/wiki/Jupyter-kernels</a></li>
+<li><a href="https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html" target="_blank" rel="noopener">https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://github.com/takluyver/bash_kernel" target="_blank" rel="noopener">https://github.com/takluyver/bash_kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip3 install bash_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3 -m bash_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://github.com/dan-oak/zsh-jupyter-kernel" target="_blank" rel="noopener">https://github.com/dan-oak/zsh-jupyter-kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3 -m pip install notebook zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: notebook in /usr/local/lib/python3.9/site-packages (6.1.4)
+Collecting zsh_jupyter_kernel
+  Downloading zsh_jupyter_kernel-3.2-py3-none-any.whl (14 kB)
+Requirement already satisfied: jupyter-client&gt;=5.3.4 in /usr/local/lib/python3.9/site-packages (from notebook) (6.1.7)
+Requirement already satisfied: pyzmq&gt;=17 in /usr/local/lib/python3.9/site-packages (from notebook) (19.0.2)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/site-packages (from notebook) (2.11.2)
+Requirement already satisfied: nbconvert in /usr/local/lib/python3.9/site-packages (from notebook) (6.0.7)
+Requirement already satisfied: ipykernel in /usr/local/lib/python3.9/site-packages (from notebook) (5.3.4)
+Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/lib/python3.9/site-packages (from notebook) (0.9.1)
+Requirement already satisfied: Send2Trash in /usr/local/lib/python3.9/site-packages (from notebook) (1.5.0)
+Requirement already satisfied: argon2-cffi in /usr/local/lib/python3.9/site-packages (from notebook) (20.1.0)
+Requirement already satisfied: tornado&gt;=5.0 in /usr/local/lib/python3.9/site-packages (from notebook) (6.1)
+Requirement already satisfied: traitlets&gt;=4.2.1 in /usr/local/lib/python3.9/site-packages (from notebook) (5.0.5)
+Requirement already satisfied: jupyter-core&gt;=4.6.1 in /usr/local/lib/python3.9/site-packages (from notebook) (4.6.3)
+Requirement already satisfied: nbformat in /usr/local/lib/python3.9/site-packages (from notebook) (5.0.8)
+Requirement already satisfied: ipython-genutils in /usr/local/lib/python3.9/site-packages (from notebook) (0.2.0)
+Requirement already satisfied: prometheus-client in /usr/local/lib/python3.9/site-packages (from notebook) (0.8.0)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.9/site-packages (from jupyter-client&gt;=5.3.4-&gt;notebook) (2.8.1)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.9/site-packages (from python-dateutil&gt;=2.1-&gt;jupyter-client&gt;=5.3.4-&gt;notebook) (1.15.0)
+Requirement already satisfied: ptyprocess in /usr/local/lib/python3.9/site-packages (from terminado&gt;=0.8.3-&gt;notebook) (0.6.0)
+Requirement already satisfied: IPython in /usr/local/lib/python3.9/site-packages (from zsh_jupyter_kernel) (7.19.0)
+Requirement already satisfied: pexpect in /usr/local/lib/python3.9/site-packages (from zsh_jupyter_kernel) (4.8.0)
+Requirement already satisfied: cffi&gt;=1.0.0 in /usr/local/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook) (1.14.3)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.9/site-packages (from cffi&gt;=1.0.0-&gt;argon2-cffi-&gt;notebook) (2.20)
+Requirement already satisfied: appnope in /usr/local/lib/python3.9/site-packages (from ipykernel-&gt;notebook) (0.1.0)
+Requirement already satisfied: jedi&gt;=0.10 in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (0.17.2)
+Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (52.0.0)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (3.0.8)
+Requirement already satisfied: decorator in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (4.4.2)
+Requirement already satisfied: pickleshare in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (0.7.5)
+Requirement already satisfied: backcall in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (0.2.0)
+Requirement already satisfied: pygments in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (2.7.2)
+Requirement already satisfied: parso&lt;0.8.0,&gt;=0.7.0 in /usr/local/lib/python3.9/site-packages (from jedi&gt;=0.10-&gt;IPython-&gt;zsh_jupyter_kernel) (0.7.1)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.9/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;IPython-&gt;zsh_jupyter_kernel) (0.2.5)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.9/site-packages (from jinja2-&gt;notebook) (1.1.1)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (1.4.3)
+Requirement already satisfied: bleach in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (3.2.1)
+Requirement already satisfied: defusedxml in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.6.0)
+Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.5.1)
+Requirement already satisfied: jupyterlab-pygments in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.1.2)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.3)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.8.4)
+Requirement already satisfied: testpath in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.4.4)
+Requirement already satisfied: async-generator in /usr/local/lib/python3.9/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert-&gt;notebook) (1.10)
+Requirement already satisfied: nest-asyncio in /usr/local/lib/python3.9/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert-&gt;notebook) (1.4.2)
+Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /usr/local/lib/python3.9/site-packages (from nbformat-&gt;notebook) (3.2.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.9/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook) (20.2.0)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /usr/local/lib/python3.9/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook) (0.17.3)
+Requirement already satisfied: webencodings in /usr/local/lib/python3.9/site-packages (from bleach-&gt;nbconvert-&gt;notebook) (0.5.1)
+Requirement already satisfied: packaging in /usr/local/lib/python3.9/site-packages (from bleach-&gt;nbconvert-&gt;notebook) (20.4)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.9/site-packages (from packaging-&gt;bleach-&gt;nbconvert-&gt;notebook) (2.4.7)
+Installing collected packages: zsh-jupyter-kernel
+Successfully installed zsh-jupyter-kernel-3.2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3 -m zsh_jupyter_kernel.install --sys-prefix
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-uninstall-Zsh-Jupyter-Kernel?">How to uninstall Zsh Jupyter Kernel?<a class="anchor-link" href="#How-to-uninstall-Zsh-Jupyter-Kernel?">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">zsh_jupyter_kernel</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zsh_jupyter_kernel</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls -lah /usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat /usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/install.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Try-to-uninstall-Zsh-Jupyter-Kernel">Try to uninstall Zsh Jupyter Kernel<a class="anchor-link" href="#Try-to-uninstall-Zsh-Jupyter-Kernel">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3 -m pip uninstall zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter kernelspec list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter kernelspec uninstall zsh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-26 </div>
+			<div class="article-title"><a href="/2021/10/26/金融心理学/" >金融心理学</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <blockquote>
+<p>大多数股民都同意市场由反馈过程支配，并且这些过程产生趋势。经济学家已得出结论：无论这些过程是什么，其运动总和是价格或多或少地随机运动。但是，其他科学家（主要来自自然科学领域）有不同看法，他们经常证明：在一个由反馈过程支配的系统中，运动的总和是一种被称为确定性混沌的事物。这种混沌系统的固有运动规律很难预测，但不是不可以预测。</p>
+</blockquote>
+<blockquote>
+<p>如果你还是使用传统的标准统计方法来检测混沌系统，你将得到随机运动的错误诊断结论。因此，理解流动性金融市场动力学的最佳的整体框架模型是确定性混沌，而不是随机漫步。越来越多的科学家正在做这方面的工作，他们发现巿场确实是混沌的，因此，集体性的错误只能慢慢纠正。</p>
+</blockquote>
+<blockquote>
+<p>作为“基本派”的市场参与者，尽量收集最多的信息以确定金融资产的“真实价值”，这样的市场定价是“有效的”，这就是所谓的“有效市场假设”。</p>
+</blockquote>
+<blockquote>
+<p>一个不容忽视的问题是<strong>真实价值围绕价格波动</strong>。</p>
+</blockquote>
+<blockquote>
+<p>也许有人以为：有些人以投资为业，他们是专家，他们所有的知识和判断能力超出一般私人投资者以上；若听凭无知无识者自己去从事投资，固然可以使市场变化多端，但专家之间互相竞争，也许可以矫正这种趋势。然而事实上则不然。这批职业投资者与投机者之精力与才干，大都用在其他方面。事实上，这批人最关切者，不在比常人高出一筹，预测某一投资品在其整个寿命中所产之收益如何，而在比一般群众稍微早一些，预测决定市价之陈规本身会有什么改变。<br>从社会观点看，要使得投資高明，只有战胜时间和无知之神秘力量，增加我们对于未来之了解；但从私人观点，所谓最高明的投资，乃是先发制人，智夺群众，把坏东西让给别人。<br>－－《就业、利息和货币通论》，凯恩斯，1936年</p>
+</blockquote>
+<blockquote>
+<p>探寻真实价值的最大难题不在于构筑适当的经济模型上的困难，也不在于真实价值随价格波动，而在于描述真实世界动力学的经济仿真模型越好，它们得到的结果就越混沌。或者说，经济学家们越精细地完善他们的模那种模型根本不能预测长期发展的证据就越明显。<br>一些数学家对此加以嘲笑，因为他们一直怀疑这点。他们说：“原因在于，像复杂经济那种动态系统，其真实数学本质是非常混乱和高度不可预测的。”在数学家看来，很简单，经济学家在认识他们所从事的任务的真实本质上就已经失败了，因为他们没有考虑到非线性数学的本质。而且数学家们指出：“一般地，非线性数学的本质是，你只能预测系统的非常短期的行为。”<br>上述结论可以用一种通常称为“确定性混沌”的复杂独特现象加以解释。对许多或绝大多数经济系统而言，混沌意味着不可能做出客观和定量的长期预测。因此，在与“时间和无知之神秘力量”斗争时，我们只能转而寻求个人主观的猜测。而这当然与我们个人和主观的感受密切相关，例如希望、恐惧和贪婪。</p>
+</blockquote>
+<blockquote>
+<p>今天，已经没有人能够搞清图形分析是什么时候第一次用于预测金融市场了，但是最古老的证据是本的稻米市场。<br>1730年，日本开始采用稻米期货合约标准交易。这些合约与现在很名交易所的商品期货合约完全相同，但有一个例外：它并不需要对所交易商品进行实物交割。期货合约可以买卖，但它不需要稻米实物的交割。然而，一个问题出现了：虽然稻米的现金交易价格波动很小，但期货交易价格波动很大，而且永远如此。1869年，政府终于再也不能容忍这种情况，下令关闭了期货市场。<br>但是怪事出现了：期货市场刚一关闭，实物市场便开始剧烈波动。两年后，市场一片混乱，政府不得不恢复期货交易。不过，这次与以前不同了，期货交易必须伴随基础市场的实物交割，这样市场才逐渐稳定下来。<br>日本投机客由此得到的教训是，股票价格并不仅仅反映供求关系，它还包括心理因素。在此之后经纪人发展了一系列利用心理因素的方法。他们很快开始用图形表示价格变化，从中发现价格变化的规律，现在，全世界的股民广泛使用这种方法。</p>
+</blockquote>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/26/金融心理学/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-19 </div>
+			<div class="article-title"><a href="/2021/10/19/Try-Juno-Connect/" >Try Juno Connect</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <ul>
+<li><a href="https://juno.sh/" target="_blank" rel="noopener">Jupyter for iOS</a></li>
+<li><a href="https://juno.sh/junoconnect/" target="_blank" rel="noopener">Jupyter Client for iOS</a><ul>
+<li>NG for now. I can not open Markdown files.</li>
+</ul>
+</li>
+<li><a href="https://tinkerstellar.com/" target="_blank" rel="noopener">Learn coding and data science on iPad</a><ul>
+<li>It is still being tested.</li>
+</ul>
+</li>
+</ul>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/19/Try-Juno-Connect/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
 		
 			
 	
@@ -118,7 +731,7 @@
 	<div class="col-md-12">
 	  
 	
-	  <h1 id="認知神経科学とは何か"><a href="#認知神経科学とは何か" class="headerlink" title="認知神経科学とは何か"></a>認知神経科学とは何か</h1><p>認知神経科学は、認知心理学的情報処理モデルを基盤にし、心理学的実験（行動実験）と脳機能画像技術を組み合わせることで、心理学的機能の神経基盤を探求する分野である。さらに、脳の損傷で生ずる機能障害の研究（神経心理学）や、細胞レベルでの情報伝達の仕組みを研究する神経生理学など、様々な水準の研究を横断的に統合することを目指している。しかし多くの方はこの説明だけではさっぱり分からないだろう。キーワードとして、「<strong>認知心理学的情報処理モデル</strong>」、「<strong>心理学的実験（行動実験）</strong>」「<strong>脳機能画像技術</strong>」、の三つをまず説明しよう。</p>
+	  <h2 id="認知神経科学とは何か"><a href="#認知神経科学とは何か" class="headerlink" title="認知神経科学とは何か"></a>認知神経科学とは何か</h2><p>認知神経科学は、認知心理学的情報処理モデルを基盤にし、心理学的実験（行動実験）と脳機能画像技術を組み合わせることで、心理学的機能の神経基盤を探求する分野である。さらに、脳の損傷で生ずる機能障害の研究（神経心理学）や、細胞レベルでの情報伝達の仕組みを研究する神経生理学など、様々な水準の研究を横断的に統合することを目指している。しかし多くの方はこの説明だけではさっぱり分からないだろう。キーワードとして、「<strong>認知心理学的情報処理モデル</strong>」、「<strong>心理学的実験（行動実験）</strong>」「<strong>脳機能画像技術</strong>」、の三つをまず説明しよう。</p>
 <ol>
 <li><p>認知心理学的情報処理モデル<br>認知心理学は脳などの物質系とは独立に、情報処理のフロー・チャートのような抽象的なモデルの水準で論理を展開する。良く用いられる比喩で言えば、認知心理学は精神のハードウェアの構造ではなくソフトウェアの機能を問題にするのである。ハードウェアがタンパク質でもシリコンでも、それは全く問題にならない。このように情報処理モデルとは、人間の精神機能に関する一種のメタファーであり、神経系の構造とは差し当たり無関係に構造される抽象的な水準のモデルである。</p>
 </li>
@@ -127,7 +740,10 @@
 <li><p>脳機能画像技術</p>
 <ul>
 <li>大脳機能の局在説<br>機能局在説とは、複雑な機械が単純な機能を持つ多種類の部品から構成されているように、脳の特定の部位は特定の機能に特化していると考える。</li>
-<li>脳血流量と神経系の活動</li>
+<li>脳血流量と神経系の活動<ul>
+<li>局所脳血流（regional cerebral blood flow, rCBF）：脳のある部位で神経活動が高まると、それに伴ってその部位に大量の血液が供給される。</li>
+</ul>
+</li>
 <li>PET の登場と引き算法<ul>
 <li>引き算法：Posner MI and Raiche ME: Images of Mind. Scientific American Library, 1994</li>
 </ul>
@@ -136,6 +752,26 @@
 </ul>
 </li>
 </ol>
+<h2 id="認知神経科学の方法"><a href="#認知神経科学の方法" class="headerlink" title="認知神経科学の方法"></a>認知神経科学の方法</h2><ol>
+<li><p>神経心理学<br>最も「マクロレベル」の分野は神経心理学（neuropsychology）である。<br>神経心理学において、損傷と機能障害を因果的に結び付ける基準として「二重乖離 double dissociation」という概念がある。</p>
+</li>
+<li><p>脳機能画像技術</p>
+<ul>
+<li>CT (computerized tomography)</li>
+<li>PET (positron emission tomography, 陽電子放出断層撮影法)</li>
+<li>MRI (magnetic resonance imaging, 磁気共鳴画像)</li>
+<li>fMRI (functional MRI, 機能磁気共鳴画像)</li>
+<li>SPECT (single photon emission computed tomography, 単一光子放射断層撮影)</li>
+<li>MEG (magnetoencephalogram, 脳磁図)</li>
+<li>NIRS (near infrared spectroscopy, 近赤外線スペクトロスコピー)</li>
+<li>TMS (transcranial magnetic simulation, <a href="https://ja.wikipedia.org/wiki/経頭蓋磁気刺激法" target="_blank" rel="noopener">経頭蓋磁気刺激法</a>)</li>
+</ul>
+</li>
+<li><p>神経生理学的方法<br>最も「ミクロレベル」での研究は神経生理学的方法によって行われる。<br>認知神経科学における動物実験の方法は、刺激法、破壊法、記録法、分子生物学的方法、の四つに大別できる。<br>分子生物学的方法は、タンパク質の設計図である遺伝子を実験的に操作し、ある特定のタンパク質を生まれつき持たない動物や、逆に過剰に持つ動物を作製して、通常の動物と行動上何が異なるかを調べる方法である。ある特定の脳部位においてのみ<a href="https://ja.wikipedia.org/wiki/遺伝子発現" target="_blank" rel="noopener">遺伝子発現</a>を異なったものにする技術や、遺伝子発現のタイミングを実験者が制御できる形で遺伝子改変する技術もある。</p>
+</li>
+</ol>
+<h2 id="大脳皮質"><a href="#大脳皮質" class="headerlink" title="大脳皮質"></a>大脳皮質</h2><p><strong>灰白質</strong>は、神経細胞の細胞体や樹状突起（じゅじょうとっき）が多く含まれた部分に相当し、一方、<strong>白質</strong>は神経細胞の軸索（じくさく）が多く含まれた部分である。機能上どちらも重要であることは言うまでもないが、情報処理機構を調べると言う観点からすると、情報のやり取りや調節がなされる<strong>灰白質</strong>の部分が認知神経科学の研究対象として言及される場合が多い。</p>
+<p>端脳（たんのう）の外縁部分の灰白質の層を特に<strong>大脳皮質</strong>と呼んでいる。</p>
 
 	
 	</div>
@@ -227,6 +863,9 @@
 	
 	  <h2 id="Systems-Neuroscience"><a href="#Systems-Neuroscience" class="headerlink" title="Systems Neuroscience"></a><a href="https://en.wikipedia.org/wiki/Systems_neuroscience" target="_blank" rel="noopener">Systems Neuroscience</a></h2><p><strong>Systems neuroscience</strong> is a subdiscipline of neuroscience and systems biology that studies the structure and function of neural circuits and systems. Systems neuroscience encompasses a number of areas of study concerned with how nerve cells behave when connected together to form neural pathways, neural circuits, and larger brain networks. At this level of analysis, neuroscientists study how different neural circuits analyze sensory information, form perceptions of the external world, make decisions, and execute movements. Researchers in systems neuroscience are concerned with the relation between molecular and cellular approaches to understanding brain structure and function, as well as with the study of high-level mental functions such as language, memory, and self-awareness (which are the purview of behavioral and cognitive neuroscience). Systems neuroscientists typically employ techniques for understanding networks of neurons as they are seen to function, by way of electrophysiology using either single-unit recording or multi-electrode recording, functional magnetic resonance imaging (fMRI), and PET scans. The term is commonly used in an educational framework: a common sequence of graduate school neuroscience courses consists of cellular/molecular neuroscience for the first semester, then systems neuroscience for the second semester. It is also sometimes used to distinguish a subdivision within a neuroscience department at an academic institution.</p>
 <h2 id="システム神経科学"><a href="#システム神経科学" class="headerlink" title="システム神経科学"></a><a href="https://ja.wikipedia.org/wiki/システム神経科学" target="_blank" rel="noopener">システム神経科学</a></h2><p><strong>システム神経科学</strong>（しすてむしんけいかがく、英: <strong>Systems neuroscience</strong>）は神経科学の下位分野で、覚醒し、行動する正常な生物の神経回路や神経システムの機能を研究する。システム神経科学は、神経細胞が結合してニューラル・ネットワークを作った時にどのようにふるまうのか (例えば、視覚や自発運動など) を研究する様々な分野の総称である。この分野では、神経科学者は異なる神経回路がどのようにして感覚情報を分析し、外的環境を認識し、意思決定を行い、運動を実行するかを研究している。システム神経科学に関心がある研究者は脳に対する分子神経科学や細胞神経科学的なアプローチと、行動神経科学や認知神経科学のおもな守備範囲である言語や、記憶、自己認識のような高次精神活動の間にある大きな溝に着目している。自らの主な分野をシステム神経科学としている研究者は少なく、たいていの場合はより詳細に “行動神経科学” や “認知神経生理学” としている。この用語は主に、大学院の神経科学コースなどで、1学期の講義は分子/細胞神経科学、2学期の講義はシステム神経科学というように教育分野で使われる。また、時には学術機関の神経科学科内で分野を区別するために使われることもある。</p>
+<blockquote>
+<p>我们刚刚知道自然科学借以掌握质的方法––形成量的概念的方法。我们必须提出的问题是，这种方法是不是也能够适用于主观的意识的质。按照我们前面所说，为了使这种方法能够加以运用，必须有与这些质充分确定地、唯一地联系着的空间变化。如果情况真的如此，那么这个问题就可以通过空间–时间的重合方法来解决，因而<strong>测量</strong>便是可能的。但是，这种重合的方法本质上就是进行物理的观察，而就内省法来说，却不存在物理的观察这种事情。由此立刻就可以得出结论：心理学沿着内省的途径决不可能达到知识的理想。因此，它必须尽量使用物理的观察方法来达到它的目的。但这是不是可能的呢？是不是有依存于意识的质的空间变化，就像例如在光学中干涉带的宽度依存于颜色，在电学中磁铁的偏转度依存于磁场的强度那样呢？<br>现在我们知道，事实上应当承认在主观的质和推断出来的客观世界之间有一种确切规定的、一义的配列关系。大量的经验材料告诉我们，我们可以发现，至少必须假设与所有经验唯一地联系着的“物理的”过程的存在。没有什么意识的质不可能受到作用于身体的力的影响。的确，我们甚至能够用一种简单的物理方法，例如吸进一种气体，就把意识全部消除掉。我们的行动与我们的意志经验相联系，幻觉与身体的疲惫相联系，抑郁症的发作与消化的紊乱相联系。为了研究这类相互联系，心的理论必须抛弃纯粹内省的方法而成为<strong>生理的</strong>心理学。只有这个学科才能在理论上达到对心理的东西的完全的知识。借助于这样一种心理学，我们就可以用概念和所与的主观的质相配列，正如我们能够用概念与推论出来的客观的质相配列一样。这样，主观的质就像客观的质一样成为可知的了。<br>我们很早就指出，客观世界中最直接地与自我的主观的质相联系的部分就是由大脑的概念，特别是大脑皮层的概念所表示的那一部分。因而在科学知识的精确的世界图景中，可用数值描述的概念代替的主观质的，只是某些大脑过程。相互依存的分析不可避免要引向这些大脑过程。虽然我们还远没有确切地知道所涉及的是何种个别的过程，但至少指出了一条途径：必须以大脑过程来代替主观的质。这就是我们能够充分认识主观的质所具有的唯一的希望。<br>……<br>……诚然，可以按照某种任意的尺度使一些数与心理的量值相配列。但是这些量值并没有就归结为某种别的东西，因而彼此仍然是互不联系的。所以，我们不能说就知道了某种东西的性质或本质。这种情况与我们上面谈到的物理学上的例子完全相同。如果我们对“温度”本身的测量仅仅依据任意的标尺来对数进行配列，那么我们仍然没有知道“温度”的性质。但是热力学理论引入分子的平均运动能量来代替温度，同时也就为排除任何任意因素的量的处理方法提供了自然的原则。只有当量的关系不是单纯地反映一种任意的约定，而是从事物的本性中产生并且从事物本性中觉察到的时候，这种关系才真的是代表了一种<strong>本质</strong>的知识。正像温度在这里归结为力学的规定性，同样，意识的材料如果要真正地被认知，一般也必须依据自然的原则归结为物理的规定性。就温度的情况来说（也就是热的客观的质），只有通过物质的分子结构的假设才可能把它归结为力学的规定；同样，对主观的心理的质的知识需要有深入研究大脑过程本质的生理学假设。遗憾的是，这种研究的现状还不容许我们以实现心理学最终目标所需要的精确性来构述这种假设。<br>ーー《普通认识论》（Ｍ．石里克），31</p>
+</blockquote>
 
 	
 	</div>
@@ -284,17 +923,25 @@
 </blockquote>
 <p>ーー「超訳ニーチェの言葉」</p>
 <hr>
-<p>世俗之人的眼里只有金钱和地位。可是，我认为，应该把金钱和地位仅仅作为手段，而不应该作为目的。只有终极真实才是目的。</p>
-<hr>
 <blockquote>
-<p>于是拉斯科利尼科夫作了一个可怕的梦。梦中那匹被残酷打死的驽马，就是一切被压迫、被践踏的人的象征，在那匹可怜的马身上，仿佛集中了所有被侮辱、被损害的人们的苦难。<br>卡捷琳娜·伊万诺芙娜临终时绝望地呼喊：“驽马已经给赶得精疲力尽！……再也没有力气了！”这几句含着血和泪的话与拉斯科利尼科夫梦中那匹马的形象遥相呼应。对于穷人来说，他们的一生就是这样的一场噩梦。 </p>
+<p>在网络上，<strong>内卷</strong>这一词却出现了语义偏移，用来指代内部恶性竞争、过度竞争，或逐底竞争、向下沉沦的现象（Race to the bottom）。<br>ーー<a href="https://zh.wikipedia.org/wiki/内卷化" target="_blank" rel="noopener">内卷化</a></p>
 </blockquote>
-<p>ーー《罪与罚》译序</p>
-<hr>
 <blockquote>
-<p>Hyperborean has also been used in a metaphorical sense, to describe a sense of distance from the ordinary. In this way, Friedrich Nietzsche referred to his sympathetic readers as Hyperboreans in The Antichrist (written 1888, published 1895): “Let us look each other in the face. We are Hyperboreans – we know well enough how remote our place is.” He quoted Pindar and added “Beyond the North, beyond the ice, beyond death – our life, our happiness.”</p>
+<p>The two states in the means-ends domain are called “Serious” (originally coined <strong>Telic</strong> from the Greek telos) and “Playful” (or <strong>Paratelic</strong>) and refer to whether one is motivated by achievement or the enjoyment of the process. Though the states are often characterized by seriousness and playfulness, the truest difference in this domain is whether one is motivated by <strong>long-term</strong> goals or by what is happening in the <strong>present</strong> moment.<br>ーー<a href="https://en.wikipedia.org/wiki/Reversal_theory" target="_blank" rel="noopener">Reversal theory</a></p>
 </blockquote>
-<p>ーー「Hyperborea - Wikipedia」</p>
+<blockquote>
+<p><strong>Intrinsic motivation</strong> exists within the individual and is driven by satisfying internal rewards rather than relying on external pressures or extrinsic rewards. It involves an interest in or enjoyment of the activity itself.<br>ーー<a href="https://en.wikipedia.org/wiki/Motivation" target="_blank" rel="noopener">Motivation</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Extrinsic motivation</strong> occurs when an individual is driven by external influences. These can be either rewarding (money, good grades, fame, etc.) or punishing (threat of punishment, pain, etc.).<br>ーー<a href="https://en.wikipedia.org/wiki/Motivation" target="_blank" rel="noopener">Motivation</a></p>
+</blockquote>
+<p><strong>手段</strong>与<strong>目的</strong>的相互转化</p>
+<ol>
+<li><p>追求<strong>终极真实</strong>之人把作为外在动机的金钱和地位从手段“内在”化为目的。<br>以对于<strong>终极真实</strong>的追求为手段，“内在”化金钱为目的。以对于金钱的追求为手段，“内在”化交易为目的。<br>以对于<strong>终极真实</strong>的追求为手段，“内在”化地位为目的。以对于地位的追求为手段，“内在”化交谈为目的。</p>
+</li>
+<li><p>作为外在动机的金钱和地位被“内在”化之后的人的追求转回——作为内在动机的金钱和地位从目的“外在”化为手段。<br>“当代世俗之人”的眼里只有金钱和地位，对于<strong>终极真实</strong>既“无知”又“绝望”。可是，人最终所应该去追求的是<strong>终极真实</strong>。追求<strong>终极真实</strong>之人把金钱和地位仅仅作为手段，而不作为目的。只有<strong>终极真实</strong>才是目的。让我们的追求从金钱和地位转回<strong>终极真实</strong>。让我们来交易。让我们来交谈。让我们以金钱和地位为手段来追求<strong>终极真实</strong>。<br>我们在交易中获得金钱。我们在交谈中获得地位。我们的目的是<strong>终极真实</strong>。</p>
+</li>
+</ol>
 <hr>
 <blockquote>
 <p>— Let us look each other in the face. We are Hyperboreans — we know well enough how remote our place is. “Neither by land nor by water will you find the road to the Hyperboreans”: even Pindar, in his day, knew that much about us. Beyond the North, beyond the ice, beyond death — our life, our happiness…</p>
@@ -305,6 +952,11 @@
 <p>互いに顔を見つめ会おう。我々は極北の民であるーーどんなに世間離れの暮しをしている方、自分で良く弁えている。「陸路によるも海路によるも、汝は、極北の民への道を見出さざらん」、こう歌ったピンダロスは、既に我々のことを知っていたのだ。北の彼方に、氷の、死の彼方にーー我々の生命、我々の幸福がある……</p>
 </blockquote>
 <p>ーー「アンチクリスト」、一</p>
+<hr>
+<blockquote>
+<p>Hyperborean has also been used in a metaphorical sense, to describe a sense of distance from the ordinary. In this way, Friedrich Nietzsche referred to his sympathetic readers as Hyperboreans in The Antichrist (written 1888, published 1895): “Let us look each other in the face. We are Hyperboreans – we know well enough how remote our place is.” He quoted Pindar and added “Beyond the North, beyond the ice, beyond death – our life, our happiness.”</p>
+</blockquote>
+<p>ーー「Hyperborea - Wikipedia」</p>
 <hr>
 <blockquote>
 <p>To be the doctors here, to be unmerciful here, to wield the knife here — all this is our business, all this is our sort of humanity, by this sign we are philosophers, we Hyperboreans! —</p>
@@ -320,6 +972,11 @@
 <p>这里就有医生，这里将是毫不留情，这里将举起手术刀——这都属于我们，这就是我们的爱人方式，正因为如此，我们，我们许佩伯雷人，才成为哲学家！——</p>
 </blockquote>
 <p>ーー《敌基督者》，7</p>
+<hr>
+<blockquote>
+<p>于是拉斯科利尼科夫作了一个可怕的梦。梦中那匹被残酷打死的驽马，就是一切被压迫、被践踏的人的象征，在那匹可怜的马身上，仿佛集中了所有被侮辱、被损害的人们的苦难。<br>卡捷琳娜·伊万诺芙娜临终时绝望地呼喊：“驽马已经给赶得精疲力尽！……再也没有力气了！”这几句含着血和泪的话与拉斯科利尼科夫梦中那匹马的形象遥相呼应。对于穷人来说，他们的一生就是这样的一场噩梦。</p>
+</blockquote>
+<p>ーー《罪与罚》译序</p>
 <hr>
 <blockquote>
 <p>你们能体验到的最伟大的事是什么呢？那便是大轻蔑之时刻。那时候，你们的幸福，使你们觉得讨厌，你们的理智与道德也是一样。</p>
@@ -356,7 +1013,8 @@
 	<div class="col-md-12">
 	  
 	
-	  <blockquote>
+	  <p>把祷告作为诗歌是令人愉快的。把比喻作为寻找自我之旅的“锤子”和“拐杖”就有点朴素了吧。我们需要的不是“锤子”或是什么“不是人手凿出的石头”，而是“铁拳”。我们需要的不是“拐杖”，而是“矫健的双腿”。</p>
+<blockquote>
 <p>风随意地吹，你听见它的响声，却不知道它从哪里来，往哪里去；凡由灵生的、就是这样。<br> (约翰福音 3:8 吕振中)</p>
 </blockquote>
 <blockquote>
@@ -368,6 +1026,29 @@
 <blockquote>
 <p>“The wind blows where it wills, and you hear the sound of it, but you do not know where it comes from and where it goes; so is everyone who is born of the Spirit.”<br> (John 3:8 Recovery Version)</p>
 </blockquote>
+<blockquote>
+<p>时波斯匿王，起立白佛：我昔未承诸佛诲敕，见迦旃延、毗罗胝子，咸言：此身死后断灭，名为涅槃。我虽值佛，今犹狐疑 。云何发挥，证知此心不生灭地？今此大众，诸有漏者，咸皆愿闻。</p>
+<p>佛告大王：汝身现在，今复问汝：汝此肉身，为同金刚，常住不朽？为复变坏？世尊！我今此身，终从变灭。佛言：大王！汝未曾灭，云何知灭？世尊！我此无常变坏之身，虽未曾灭 。我观现前，念念迁谢，新新不住，如火成灰，渐渐销殒，殒亡不息。决知此身，当从灭尽。佛言：如是！大王！汝今生龄 ，已从衰老，颜貌何如童子之时？世尊！我昔孩孺，肤腠润泽；年至长成，血气充满。而今颓龄，迫于衰耄，形色枯悴，精神昏昧，发白面皱，逮将不久 ，如何见比充盛之时？佛言：大王！汝之形容，应不顿朽？王言：世尊！变化密移，我诚不觉，寒暑迁流，渐至于此。何以故？我年二十，虽号年少，颜貌已老初十岁时；三十之年，又衰二十 。于今六十，又过于二，观五十时，宛然强壮。世尊！我见密移，虽此殂落，其间流易，且限十年。若复令我微细思惟，其变宁唯一纪二纪 ？实唯年变；岂唯年变？亦兼月化；何直月化？兼又日迁。沉思谛观，刹那刹那，念念之间，不得停住。故知我身，终从变灭。</p>
+<p>佛告大王：汝见变化，迁改不停，悟知汝灭；亦于灭时，汝知身中有不灭耶？波斯匿王合掌白佛：我实不知。佛言：我今示汝不生灭性。大王！汝年几时 ，见恒河水？王言：我生三岁，慈母携我谒耆婆天，经过此流，尔时即知，是恒河水。佛言：大王！如汝所说，二十之时，衰于十岁 ；乃至六十，日月岁时，念念迁变。则汝三岁，见此河时，至年十三，其水云何？王言：如三岁时，宛然无异 ；乃至于今，年六十二，亦无有异。佛言：汝今自伤发白面皱，其面必定皱于童年。则汝今时观此恒河，与昔童时观河之见，有童耄否？王言：不也 ！世尊！佛言：大王！汝面虽皱，<strong>而此见精</strong>，<strong>性未曾皱</strong>。皱者为变，不皱非变。变者受灭；彼不变者，元无生灭。云何于中受汝生死？而犹引彼末伽黎等，都言此身死后全灭。</p>
+<p>王闻是言，信知身后，舍生趣生；与诸大众，踊跃欢喜，得未曾有。<br>－－<a href="www.drbachinese.org/online_reading_simplified/sutra_explanation/Shu/ShuSutra.htm">《楞严经》</a></p>
+</blockquote>
+<blockquote>
+<p>我们已经多次指出，有大量非常确定的经验表明“物理的”这个概念也可以用来标示直接经验到的实在，因而可用来表示心理的实在。在前面几节，我们已经证明，对心理的东西获得<strong>完全的</strong>知识的唯一可能性，就在于用自然科学的量的概念来标示心理的质及其相互联系。许多经验的材料清楚地指出，这种运用必须以何种方式发生：必须使某些“大脑过程”的概念复合与意识世界相配列。我们知道，只有在我们的大脑的某些部分保持不受损害，我们的意识过程才会正常进行而不受干扰。枕骨叶片如受到损害，就会丧失看的能力，太阳穴叶片如受到损害，就会丧失说话的能力，如此等等。这些发现，就目前的情况来看，只是证明在物理的对象“大脑”同被经验到的实在“意识内容”之间存在着一种内在联系。如果我们现在想要把这种关系仅仅看作相互依存关系因而作为一种因果的关系（如二元论的身心交互作用论那样），那么意识或自我就会成为不同于“大脑过程”的一种特殊的对象，而且是一种原则上不可能用物理的概念标示的对象。因为按照这种假定，大脑过程的概念就会被看作标示别的某种东西的概念。由于确实没有包含头脑以外的过程的概念，所以任何物理的概念都不可能与意识内容相配列。而且，我们甚至因此而不可能对大脑过程作物理学的解释，就是说，不可能依据物理的原因来解释它们。因为它们的原因有一部分必须在心理过程中去寻找，而这些心理过程是不可能用物理的概念来标示的；物理的因果关系就会有缺口，这就会对自然法则的概念和对自然法则的表述造成颠覆性的影响。<br>ーー《普通认识论》（Ｍ．石里克），32</p>
+</blockquote>
+<blockquote>
+<p>在试图给心理的东西设定方位时，如果我们同自然科学一样，专注于使一切感觉得以产生的空间条件，那么我们便立刻滑到一个错误的出发点上。于是，我们便看到，在知觉的物质对象和感觉器官之间以及在感觉器官和大脑皮层之间建立起物理过程的联系。由弹琴弦引起的机械性振动进入我的耳朵，刺激就从这里沿着神经末梢传到大脑的听觉中心。结果就是我们把对大脑的刺激看作是“感觉”经验的直接条件，而这种看法反过来又误导我们把这种经验定位于大脑从而定位于人体内部的空间性。如果我们––或许不是明确地––把感觉的质本身定位于大脑皮层，那么我们虽然对具体细节不很清楚，但通常总是进而假设心理的东西就住在我的同伴的头脑的某个地方，认为意识就<strong>在</strong>这个身体<strong>之内</strong>。<br>ーー《普通认识论》（Ｍ．石里克），33</p>
+</blockquote>
+<p>Ｍ．石里克对“心身问题”的解答是一种“平行认识论”，而不是一种“平行实在论”。</p>
+<blockquote>
+<p>量的概念系统给我们提供了一个认识世界的独特的、唯一的方法，因为这种方法不是在<strong>直接体验</strong>中给予我们的。没有任何理由认为，这种概念系统一定无法适用于通过体验所知的所与的质的世界。相反，我们相信，把这种系统加以普遍应用是可能的，因为还没有任何严格的证明表明我们的这种信念是错误的。在科学中，匆忙地放弃这样的信念决不表明是一种明智之举。没有什么东西比宣称<strong>无知</strong>更容易损害科学的探究了，所以我们必须防止过早地宣布一种无知的信念。<br>ーー《普通认识论》（Ｍ．石里克），35</p>
+</blockquote>
+<blockquote>
+<p>克里特人中间有一个人、就是他们自己的神言传讲师、曾经说过：『<a href="https://zh.wikipedia.org/wiki/說謊者悖論" target="_blank" rel="noopener">革哩底人永远是撒谎者</a>，是恶兽，是懒惰的大腹者』：这个见证是真的。<br> (提多书 1:12-13 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>一个诚实的研究者只能在有十分确定的显著迹象的地方，特别是具有被我们当做<strong>生命</strong>标记的地方才能推断意识的存在。<br>ーー《普通认识论》（Ｍ．石里克），35</p>
+</blockquote>
+<p>学术界比较流行把“能够自我复制”当做<strong>生命</strong>的标记。</p>
 
 	
 	</div>
@@ -375,485 +1056,6 @@
   
 </div>
 	<a type="button" href="/2021/09/29/就算累也必須堅持學日語-圣经/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-08-17 </div>
-			<div class="article-title"><a href="/2021/08/17/Cornelia-Street/" >Cornelia Street</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Taylor-Swift---Cornelia-Street">Taylor Swift - Cornelia Street<a class="anchor-link" href="#Taylor-Swift---Cornelia-Street">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;I7CcVgw4_KE&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-
-        <iframe width="600" height="400" src="https://www.youtube.com/embed/I7CcVgw4_KE" frameborder="0" allowfullscreen></iframe>
-        
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>We were in the backseat
-drunk on something stronger
-than the drinks in the bar</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>I rent a place on Cornelia Street,
-I say casually in the car</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>We were a fresh page on the desk
-ﬁlling in the blanks as we go</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>As if the streetlights pointed in an arrowhead
-leading us home</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And I hope I never lose you
-Hope it never ends
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>That’s the kind of heartbreak
-Time could never mend
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And baby I get mystiﬁed by how
-this city screams your name</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And baby I’m so terriﬁed of if you ever walk away
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>Windows ﬂung right open
-Autumn air, jacket round my shoulders is yours</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>We bless the rains on Cornelia Street
-Memorize the creaks in the ﬂoor</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>Back when we were card sharks
-Playing games
-I thought you were leading me on</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>I packed my bags, left Cornelia Street
-Before you even knew I was gone</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>But then you called
-Showed your hand
-I turned around before I hit the tunnel
-Sat on the roof, you and I</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>You hold my hand
-On the street
-Walk me back to that apartment
-Years ago we were just inside</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>Barefoot in the kitchen
-Sacred new beginnings
-That became my religion
-Listen...</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>I hope I never lose you 
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>Never again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And baby I get mystiﬁed by how
-this city screams your name</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And baby I’m so terriﬁed of if you ever walk away
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>I rent a place on Cornelia Street,
-I say casually in the car</code></pre>
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/08/17/Cornelia-Street/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-07-13 </div>
-			<div class="article-title"><a href="/2021/07/13/寻找小水灵/" >寻找小水灵</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>朕平常住在宫殿里面。朕的爱妃总是在门口静候。每当朕开门，她就会向朕行跪拜礼。而朕会抱她起来，与她相拥。她见到朕一声不响地走过来，就会吓得后退低头，行跪拜礼。在床上，她最乖了。她知道在床上是最安全没有任何危险。朕会温柔地抚摸她。朕会抱她吻她。她想怎么呻吟，就怎么呻吟。如果朕想和她一起入浴，她也不会抗拒。她是多么温柔多么美丽。她就是朕最爱的贵妃。朕赐给她小水灵这个名字。可惜她不是人类。</p>
-<hr>
-<p>孩子们被虐待的方式有好几种，所有这些都是上帝所憎恶的。圣经在对不当发怒的警告中禁止虐待孩子。太多孩子是愤怒殴打和其他身体虐待的受害者，因为他们的父母向他们的孩子发泄他们自己的愤怒和挫折感。尽管某些形式的身体处罚可能是圣经所能接受的，但这种处罚永远不应该因着愤怒管理。保罗提醒以弗所人说：“生气却不要犯罪，不可含怒到日落，也不可给魔鬼留地步。”（以弗所书 4:26-27）。箴言 29:22 说：“好气的人挑启争端；暴怒的人多多犯罪。”在基督徒的生活中，没有地方可以容纳不义或不受控制的愤怒。愤怒在变成对孩子或其他任何人的身体虐待之前就应该向上帝忏悔，并适当地处理。</p>
-<p>圣经禁止虐待孩子的另一种方式是禁止心理和情感上的虐待。以弗所书 6:4 警告父亲们不要“惹气”或激怒他们的孩子，而是要把他们带到“主的教训和警戒”中。严厉、不讨喜欢的口头管教、情感操纵或不稳定的环境会使孩子疏远他们的父母，使他们的教导和矫正变得毫无用处。父母可能通过对孩子提出不合理的要求，贬低他们，或者不断地挑毛病，从而惹气或激怒他们的孩子，以致造成不好的伤害，甚至比任何身体殴打所造成的伤害都严重。歌罗西书 3:21 告诉我们不要“怨恨”我们的孩子，这样他们就不会气馁。以弗所书 4:15-16,25-32 说，我们要在爱中说真话，用我们的话来建立别人，不要让腐朽或破坏性的话语从我们的嘴唇流出，特别是针对孩子纤柔的内心与思想。</p>
-<p>家庭属灵虐待是指使用经文、圣经原则或一个人的属灵权威，为一己私利掌控一位家庭成员。</p>
-<hr>
-<p>一定要喂一些云南白药粉末，这个是救命的，有条件的打止血敏，国产的一针管3小时左右，进口的一针管12小时，看情况打。</p>
-<p>最好保持安静，在宠物有意识的情况下切勿进行人工呼吸，期间不要试图投喂食物。</p>
-<hr>
-<p>患 FIC 的猫咪，肾上腺多数有问题，皮质醇分泌异常。在应激反应系统启动后，皮质醇分泌不足，让应激反应系统无法正常结束反应，引起交感神经系统失控般活跃，加速分泌去甲肾上腺素。而去甲肾上腺素会上调各类炎症反应，就包括膀胱炎。</p>
-<p>这个过程加剧了神经炎的发生，同时还莫名其妙的改变了膀胱内保护层的完整与尿路上皮细胞的机能，增加了膀胱组织渗透性，让尿液能够更方便地刺激膀胱组织，产生剧痛，刺激大脑。</p>
-<p>所以这也是为什么自发性膀胱炎和压力关系很大的原因，当猫咪感到外界压力，就会开启自己的应激系统，部分猫咪无法正常结束反应，就很有可能导致 FIC。</p>
-<hr>
-<p>我们可以尝试使用猫咪 feliway 熏香，这是一种猫咪信息素，可以帮助舒缓猫咪的情绪，达到一定的解压效果。</p>
-<p>FIC 发生的时候猫咪膀胱内尿液刺激提高，会产生剧痛，解疼痛对恢复猫的精神、食欲，减少脑部刺激是非常有价值的。但国内宠物一般不怎么重视，所以比较有效的药如丁丙诺菲、芬太尼、曲马多都难以获取。布托啡诺算是比较常见的止疼药，但药效比较短，不过有总比没有好，我们可以要求医生注射这个。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/07/13/寻找小水灵/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2020-10-20 </div>
-			<div class="article-title"><a href="/2020/10/20/What-is-Marriage/" >What is Marriage?</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p><strong>To BrightID:</strong></p>
-<blockquote>
-<p>TL;DR: Hey, guys! You have made an amazing identification system in crypto space. How about building a DAO with civil law? We can start with creating some smart contracts of marriage, concerning crypto property. And isn’t NFT a good way to digitalize and represent marriage certificate? If we can connect two people, then we can connect three and build a real community. We can connect crypto space with the real world.</p>
-</blockquote>
-<p>You know I’m falling in love with a girl. And I’m considering a lot about marriage these days. I’m facing some problems of international marriage. What is marriage? This is some kind of a philosophy question. Does marriage begin with getting certificates of marriage? Does marriage begin with the wedding of putting the rings on the fingers and promising in front of godfather? Or does marriage begin with changing relationship status on Facebook? You know I’m a christian. And this question is critical to me because I can not make love before marriage. :) So I just thought that if I could get a certificate from crypto space… Just kidding. I and my girlfriend will get three certificates from three nations.</p>
-<hr>
-<p>best regards,<br><strong>Andrew</strong></p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2020/10/20/What-is-Marriage/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2020-10-14 </div>
-			<div class="article-title"><a href="/2020/10/14/合適的女朋友/" >合适的女朋友</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h1 id="合适的女朋友——圣经的一些原则"><a href="#合适的女朋友——圣经的一些原则" class="headerlink" title="合适的女朋友——圣经的一些原则"></a>合适的女朋友——圣经的一些原则</h1><blockquote>
-<p>这是给未婚姊妹，也是给未婚弟兄看的。未婚姊妹可以借此省察自己——我够格当人家女友吗？未婚弟兄可以借此查验对象——她够格当我女友吗？我设定的男友、女友，是指「以结婚为前提」的交往。那些只想谈恋爱而不考虑未来结婚的，不列在我的对象里。另外，这不是详细的圣经整理，而是一些简单原则而已。</p>
-</blockquote>
-<p>　　今天写的重点，有些前一篇文章《合适的男友——圣经的一些原则》已经提过。重复的我就不再多提，但同样经文，因为对象不同，会有不同的角度与着重点，这些会比较详细讲。</p>
-<h2 id="一、离开父母，与妻子连合，二人成为一体"><a href="#一、离开父母，与妻子连合，二人成为一体" class="headerlink" title="一、离开父母，与妻子连合，二人成为一体"></a>一、离开父母，与妻子连合，二人成为一体</h2><p>　　「人要离开父母，与妻子连合，二人成为一体」（创2:24）（太19:5）（可10:7）（弗5:31）</p>
-<p>　　这句经文，不仅对男方重要，对女方一样重要，但着重点稍有不同。「离开父母，与妻子成为一体」，不是说不能和父母同住，而是说「心态上、生活上，要脱离父母，以妻子为优先顺位」。</p>
-<p>　　注意！这经文请千万不要误解与误用。身为女友，你是没资格拿这经文来要求男友未来不和公婆同住的！假使未来你的丈夫要求你和公婆同住，你就是必须顺服！</p>
-<p>　　另外，发现了吗？假使男方是未信者，他会接受「妻子顺位比父母高」的规定吗？</p>
-<p>　　离开父母，在实际应用上，有一个很重要的，就是——你不能期望婚后有不愉快就“回娘家”哦！婚姻，是必须离开父母，夫妻独立自主的。社会上很常见遇到困难就回娘家，这是不合圣经的。（守寡、离婚的不算）这不是说你都不能回娘家去诉苦、求援，但假使你常常这样、继续认为有娘家可回的想法，这就是错误。你要搞清楚你已经和丈夫成为一体，离开父母了，不能继续想要倚赖父母保护。</p>
-<p>　　另一个要注意的是，婚后你不能让父母介入你们夫妻的决策中。这不是说不能请教父母意见、寻求父母协助，而是决策的决定者，是你们夫妻二人，不是父母。因此，当你们夫妻意见与父母不同时，要以你们夫妻意见为意见。当然，有时，夫妻的意见是错的，父母才是对的，但既然已婚，权柄与顺位已经不同，上帝给了你们权柄，你们相对也要扛起责任，自己承担错误的苦果了。</p>
-<p>　　然而，请注意：婚前和婚后，依然有很大差距。婚前的男女朋友阶段，虽然很多婚后的原则已经要开始学习，但依然不是婚后。所以，请别拿圣经「离开父母」这经文，来认为男女双方都不需看重父母意见、不需告知父母一些事情。有些男的会逼女的不听父母意见、不要告知父母、甚至私自结婚；有些女的会逼男的不听父母意见、不要告知父母、甚至私自结婚；这都是严重不当！</p>
-<p>　　对弟兄而言，一个姊妹假使是娇娇女，她是否开始准备离开父母，自己承担起当妻子的责任？对姊妹而言，既然要寻找对象，自己是否装备自己，准备离开父母，自己承担起当妻子的责任？至于单独和男生出去、还保有男性知己、同时跨好几条船……那就别讲了，因为都是违反成为一体命令的。这点和男方相同，就不多说。</p>
-<h2 id="二、丈夫是妻子的头，妻子要顺服丈夫"><a href="#二、丈夫是妻子的头，妻子要顺服丈夫" class="headerlink" title="二、丈夫是妻子的头，妻子要顺服丈夫"></a>二、丈夫是妻子的头，妻子要顺服丈夫</h2><p>　　「你们作妻子的，当顺服自己的丈夫，如同顺服主。因为丈夫是妻子的头……教会怎样顺服基督，妻子也要怎样凡事顺服丈夫……妻子也当敬重她的丈夫。」（弗5:22-33）</p>
-<p>　　这段经文，对男方与女方，重点不同。</p>
-<ol>
-<li><p><strong>顺服</strong><br>　　很难哦！特别是在这高喊女权的时代。但圣经就是上帝的话，上帝这样规定，我们就这样做。除非丈夫做出违反圣经的决定，否则妻子就是必须顺服。不因为你学历高、经济好、家世棒……而有改变。这里说「顺服丈夫，如同顺服主」。这很重要。因为很多姊妹严重搞错圣经，结果自找很多重轭来背。<br>　　圣经告诉我们：<br>　　丈夫是透过对上帝的直接顺服，来达成顺服。但妻子却不同，是间接透过对丈夫的顺服，来达成对上帝的顺服。这有什么差别？差别可大了！丈夫可以直接宣称领受上帝带领，就决定要做什么事；但妻子却不能宣称领受上帝带领，就自行决定要做什么事。当然，不管是谁宣称领受，都要彼此告知与协调。但是，丈夫拥有最终权柄，他是最终决策的裁决者。<br>　　看懂了吗？我举实际例子来讲：<br>　　丈夫可以宣称领受上帝带领，要去当宣教士（可以不理妻子反对）；妻子不能宣称领受上帝带领，要去当宣教士（不能违反丈夫反对）。<br>　　看见二者天差地远的差异性了吗？<br>　　假使你信主，丈夫未信，你要去教会担任各种额外服事，但丈夫反对，你就是不能去哦！你只能做最基本的，好比守安息日这种而已，其他你恐怕都必须顺服哦！看见信与不信的婚姻，对姊妹而言，是一种更严重的问题了吗？已信的姊妹，一样要顺服未信的丈夫，服从他的权柄的。</p>
-</li>
-<li><p><strong>敬重</strong><br>　　这一点，假使男方学历高、经济好……那么，问题不大。问题是，假使女方比男方高，问题常常就会很大，而且很严重。即使现今很多女生学历、收入、职位……都比丈夫好，很不幸的，圣经规定是很清楚的：妻子要顺服丈夫！你就是必须顺服！妻子要敬重丈夫！你就是必须敬重！<br>　　很不幸的是，我们的德行，恐怕都没那么大。因此，当夫妻双方，特别是男方假使低女方很多时，请谨慎考虑，不要随便高看自己啊！假使在婚前，你就无法接受婚后必须顺服、敬重，请不要和这人迈入婚姻。因为一旦结婚，就很难合乎圣经地离婚了。合乎圣经地离婚，只有两条：<br>　　1. <strong>配偶淫乱</strong><br>　　2. <strong>不信者要离去</strong><br>　　其他，你只能背起重轭，流泪走下去了。很不幸的，女生常会被感情冲昏头，什么都不在乎。然后自己跳进火坑，自己为自己制造重轭来背。对弟兄而言，婚前，你就可以知道这姊妹是否愿意学习顺服你、敬重你了。讨论事情时，她是否愿意顺服你最终的决定？她是否以你为荣？还是只是把你当工具？当然，身为弟兄，你做的决策，够格让人家顺服吗？够格当人家的头吗？圣经里，「权柄」从来不会单独存在，而是会同时伴随「责任」、「义务」甚至「惩处」的。<br>　　在此要提醒一个很重要的观念：丈夫是妻子的头，妻子必须顺服丈夫，这种经文不得误用！男方不得拿此经文来要求女方顺服！同样的，丈夫要爱妻子爱到愿意舍己，这种经文也不得误用！女方不得拿此种经文来要求男方答应要求！<br>　　我称这种行为叫用经文来「神功护体」、「图利自己」。事实上，电视八卦剧、实际生活里，这种例子处处可见。<br>　　请注意我的提醒：假使你的对象，出现这种误用圣经来神功护体、图利自己的情形，你要很小心很小心很小心！因为，这种人常会比未信者更可怕、更可恶！因为，他们会滥用圣经来谋取私利，而不是用圣经来要求自己。<br>　　男方动不动就要女方听他的意见；男方不询问女方的意见，常常独断独行；男方做的决策常荒腔走板，又听不下女方的意见与劝告；女方动不动就要男方买东西，否则就认为男方不爱她；发生争执时，认为错的永远是男方，男方永远都必须低头道歉；不管什么事，自己永远是大小姐，男方必须服事得好好的。这些例子，举都举不完，社会上一大堆。<br>　　但是，身为基督徒，圣经就是我们唯一的行为准则、唯一的是非善恶判断依据。圣经清楚告诉我们哪些行为正确，哪些行为错误，我们就是以此为判断标准，并努力奉行。</p>
-</li>
-</ol>
-<h2 id="三、信与不信不能同负一轭"><a href="#三、信与不信不能同负一轭" class="headerlink" title="三、信与不信不能同负一轭"></a>三、信与不信不能同负一轭</h2><p>　　「你们和不信的原不相配，不要同负一轭」（林后6:14）</p>
-<p>　　「丈夫若死了，妻子就可以自由，随意再嫁，只是要嫁这在主里面的人」（林前7:39）</p>
-<p>　　当今教会普遍女多男少，这经文更显得难以遵守。因此，我也不多说。可是，上面已经提过一些。对姊妹而言，身为妻子，由于必须「顺服丈夫」，所以一旦发生信仰的冲突，状况会比弟兄娶不信者更为严重、重轭更加沈重。所以，自己要想清楚。</p>
-<p>　　在此，我要提醒一个很重要的观念，就是——妻子可以比丈夫软弱。</p>
-<p>　　「你们作丈夫的也要按情理和妻子同住；因她比你软弱（比你软弱：原文作是软弱的器皿），与你一同承受生命之恩的，所以要敬重她。」（彼前3:7）</p>
-<p>　　不管是男女朋友阶段，还是婚后夫妻，妻子是可以比丈夫软弱的，不管是信仰上、德行上……各方面都是。因此，男友信仰很好，女友信仰较弱，是可以的；男友圣经很强，女友圣经不熟，是可以的。并且，男方不得因女方较弱，就有任何轻看的态度，而是必须「敬重」，并当头好好带领。</p>
-<p>　　那么，女方比男方信仰好，可以吗？当然可以！只要自己知道，即使男方信仰较弱，他依然是头，你依然必须顺服，这样就可以了。假使无法接受他是头、就是顺服不了，那就不该和这人婚嫁。事实上，有不少姊妹信仰都比弟兄好，但是，依然遵守圣经丈夫当头、顺服丈夫的命令的。</p>
-<h2 id="四、要有独身的打算"><a href="#四、要有独身的打算" class="headerlink" title="四、要有独身的打算"></a>四、要有独身的打算</h2><p>　　「因现今的艰难，据我看来，人不如守素安常才好。你有妻子缠着呢，就不要求脱离；你没有妻子缠着呢，就不要求妻子。你若娶妻，并不是犯罪；处女若出嫁，也不是犯罪。然而这等人肉身必受苦难，我却愿意你们免这苦难。弟兄们，我对你们说：时候减少了。从此以后，那有妻子的，要像没有妻子；……我愿你们无所挂虑。没有娶妻的，是为主的事挂虑，想怎样叫主喜悦。……妇人和处女也有分别。没有出嫁的，是为主的事挂虑，要身体、灵魂都圣洁；已经出嫁的，是为世上的事挂虑，想怎样叫丈夫喜悦。我说这话是为你们的益处，不是要牢笼你们，乃是要叫你们行合宜的事，得以殷勤服事主，没有分心的事。」（林前7:25-35）</p>
-<p>　　和弟兄一样，任何适婚年龄的姊妹，也都必须做好独身的准备。假使出现“疯丈夫”的现象，很容易犯下大错。在独身部分，男方与女方有比较大的不同。因为，弟兄需要配偶帮助，姊妹反而未必须要配偶帮助。在独身部分，姊妹比弟兄更有恩赐。这一点，圣经教导和社会观念截然不同，我们要注意。</p>
-<p>　　「那人（男人）独居不好，我要为他造一个配偶（女人）帮助他……就用那人身上所取的肋骨造成一个女人」（创2:18-25）</p>
-<p>　　当然，圣经也讲得很清楚，「照主的安排，女也不是无男，男也不是无女」（林前11:11），婚姻是一般常态。并且，「倘若自己禁止不住，就可以嫁娶。与其欲火攻心，倒不如嫁娶为妙」（林前7:9），所以，假使男女性欲很强，或是就是很需要异性陪伴，那就是嫁娶便是。</p>
-<p>　　但是，为了结婚而结，虽然一定可以找到对象结，可是却未必幸福哦！（硬是要娶、硬是要嫁，一定找得到阿猫阿狗嫁娶，不是吗？）再讲一次，「一定可以结」，和「结了会幸福」，那是两回事，请慎重为之。</p>
-<p>　　「婚姻，人人都当尊重」（来13:4）</p>
-<p>　　对所有人而言，不管男女，结婚都是常态，独身才是恩赐。结婚不需要恩赐，但独身需要恩赐。然而，有没有恩赐，未必是自己决定，有时是上帝决定。有时自己觉得有独身恩赐，但上帝认为没有，所以让你迈入婚姻。有时自己觉得没有独身恩赐，但上帝却认为有，所以让你独身。不管婚姻或独身，我们敬畏上帝主权，善尽自己本分便是。</p>
-<h2 id="五、留意普遍恩惠下的智慧"><a href="#五、留意普遍恩惠下的智慧" class="headerlink" title="五、留意普遍恩惠下的智慧"></a>五、留意普遍恩惠下的智慧</h2><p>　　「要当智慧人，不要当愚昧人」（诗篇、箴言经文极多，不再列举）</p>
-<p>　　这点同上一篇，不再重复。</p>
-<h2 id="六、才德的妇人"><a href="#六、才德的妇人" class="headerlink" title="六、才德的妇人"></a>六、才德的妇人</h2><p>　　「才德的妇人谁能得着呢？她的价值远胜过珍珠。她丈夫心里倚靠她，必不缺少利益；她一生使丈夫有益无损。她寻找羊羢和麻，甘心用手做工。她好像商船从远方运粮来，未到黎明她就起来，把食物分给家中的人，将当做的工分派婢女。她想得田地就买来；用手所得之利栽种葡萄园。她以能力束腰，使膀臂有力。她觉得所经营的有利；她的灯终夜不灭。她手拿撚线竿，手把纺线车。她张手赒济困苦人，伸手帮补穷乏人。她不因下雪为家里的人担心，因为全家都穿着朱红衣服。她为自己制作绣花毯子；她的衣服是细麻和紫色布作的。她丈夫在城门口与本地的长老同坐，为众人所认识。她做细麻布衣裳出卖，又将腰带卖与商家。能力和威仪是她的衣服；她想到日后的景况就喜笑。她开口就发智慧；她舌上有仁慈的法则。她观察家务，并不吃闲饭。她的儿女起来，称她有福；她的丈夫也称赞她，说：才德的女子很多，惟独你超过一切。艳丽是虚假的，美容是虚浮的；惟敬畏耶和华的妇女必得称赞。愿她享受操作所得的；愿她的工作在城门口荣耀她。」（箴31:10-31）</p>
-<p>　　圣经对于男生，比较少这种长篇大段的经文，而是零散的。但上帝对于女生，却列出这一大段经文，这是很特殊的。也因此，这是上帝对姊妹的恩典，使姊妹很容易就知道上帝要求与重点。</p>
-<p>　　这段经文，我们无法详细探讨，只能简单提及。重点很简单——娶妻娶德。</p>
-<p>　　请注意，这和现今社会习惯一样截然不同：社会是“以貌取人”（用外表的帅不帅、漂不漂亮、身材好不好……）来决定恋爱对象；但圣经的要求却不是这种，而是「德行」。这整段「好妻子」的经文，完全没有用「外表的漂亮、身材的好坏」来做为判定依据，甚至还特别提醒「艳丽是虚假的，美容是虚浮的」，并提及妻子信仰的重要（经文写「敬畏耶和华的妇女」）。因此，任何弟兄假使选择女友，是把「外貌」列为重要考量，甚至高于对其他德行的考量时，你们已经犯大错了！更可恶的是，现今教会普遍女多于男，但不少弟兄却是贪恋外邦女子美貌，而不把要娶已信者列为绝对必要考量，这罪加一等！至于外貌与打扮，我不是说女生都不需打扮，也不是说装扮美丽不可以，更不是说不能对挑选对象有任何外貌上的喜好，请不要误解。我讲的是，「德行」的优先顺位要占很重要的位置，重要到「有美貌而无德行」、「有美貌而非基督徒」的女生，你必须放弃的程度。</p>
-<p>　　箴言这段经文告诉我们贤妻的德行是什么？</p>
-<ol>
-<li>可以让丈夫倚靠，对丈夫有益（只想倚靠丈夫的姊妹，该醒醒了）</li>
-<li>勤奋、努力</li>
-<li>认真尽本分，不为睡懒觉而轻忽本分（爱睡懒觉的姊妹，该醒醒了）</li>
-<li>理财能力</li>
-<li>爱心帮助贫苦</li>
-<li>努力让家人衣食无虞</li>
-<li>帮助丈夫得荣耀</li>
-<li>讲话有智慧</li>
-<li>让丈夫和儿女称赞</li>
-<li>是敬畏上帝的基督徒</li>
-</ol>
-<p>　　圣经还有很多关于妻子德行的讲述，在此不多提。单单上述内容，我们就会发现圣经已经告诉我们很多德行的内容，可以帮助我们装备自己，或是选择对象了。</p>
-<p>　　在此要提醒一件事：</p>
-<p>　　很多人都以为贤德的女生就是柔柔弱弱、什么都不会，但那是大误解！上帝规定的贤德，可不是这样，而是「柔中带强」的！因为，那段箴言经文，清楚告诉我们，贤德的妻子，是「很能干」的，一点都不是弱不禁风、什么都不会的。这不是说每位姊妹都要做到、都很厉害，不是这意思。因为，不管是男人、女人，我们通通都是能力有限的罪人，都不可能做到完美。但是，起码我们已经有标竿，可以帮助自己努力追求成圣。</p>
-<p>　　另外也要提醒一下：</p>
-<p>　　挑别人？请先看看自己！不少弟兄姊妹对配偶的要求很高，但却不知省察自己是否配得上条件那么好的对象。事实上，很多时候，不少条件不佳、德行不好的人，反而很喜欢挑条件超好、德行超高的对象。这是很糟糕的行为，我们务必改正。</p>
-<p>　　还有一个很严重的问题，要在此提一下，就是——处女情结。我很痛恨处女情节的弟兄！更可恶的是，有些自己不是处男，却在意对方是否处女；有些自己是处男，就以此自高来嫌弃非处女。</p>
-<p>　　由于这种信件与论点，我已经接到好几次，所以必须再次公开纠正。只要对方「现在」德行好，请不需去追问女方的过去，更不得在意女方是否处女，或是嫌非处女脏。请不要忘了，在上帝眼中我们都是肮脏的罪人，是蒙耶稣宝血赦免与拯救的。</p>
-<p>　　我们凭什么嫌弃已经悔改的女友或妻子？主耶稣严厉警告，不赦免人的，上帝也不赦免你。请不要忘记这严厉的警告。</p>
-<p>　　最后，对所有弟兄姊妹，我要讲些心里话：</p>
-<p>　　当初，我坚持找不到基督徒姊妹，愿意终生不娶；我自己是处男，但从不要求对方是处女；我看重女生品德，多于看重外貌。上帝不是笨蛋，祂在天上看。谁是不是真心敬畏祂，祂清楚得很。我愿意为主放下，主却赐福我到福杯满溢，超过我所求所想、未求未想的。上帝赐给我的贤妻，不管外貌与德行都兼备，好到我事前难以想像的程度的。</p>
-<p>　　「若有人爱神，这人乃是神所知道的」（林前8:3）</p>
-<p>　　「神实在恩待以色列那些清心的人」（诗73:1）</p>
-<p>　　「神能照着运行在我们心里的大力充充足足地成就一切，超过我们所求所想的」（弗3:20）</p>
-<p>　　有些时候，不蒙上帝祝福，真的要自己检讨一下。愿上帝帮助还在寻找配偶的弟兄姊妹，祝福大家。</p>
-<p align="right">——小小羊</p>
-
-<hr>
-<p>＊ 由于范围较大，本文回应范围放宽，只要是和男女交友有关的问题，都可以讨论、发问与回应。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2020/10/14/合適的女朋友/#more" class="btn btn-default more">阅读此文</a>
 </div>
 
 		
@@ -897,9 +1099,9 @@ I say casually in the car</code></pre>
 		<h4>标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
-		
 			<li><a href="/tags/Notebooks/">Notebooks<span>20</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
 		
 		 
 		</ul>
@@ -909,27 +1111,27 @@ I say casually in the car</code></pre>
 		
 			
 <div class="widget">
-  <h4>最新文章</h4>
+  <h4 style="margin-top: 18px;">最新文章</h4>
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2021/10/28/Add-Tweets-to-My-Blog/" ><i class="fa fa-file-o"></i>Add Tweets to My Blog</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" ><i class="fa fa-file-o"></i>Try to Reinstall Zsh Kernel</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/26/金融心理学/" ><i class="fa fa-file-o"></i>金融心理学</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/19/Try-Juno-Connect/" ><i class="fa fa-file-o"></i>Try Juno Connect</a>
+      </li>
+    
+      <li>
         <a href="/2021/10/16/認知神経科学/" ><i class="fa fa-file-o"></i>認知神経科学</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/14/关于好奇心/" ><i class="fa fa-file-o"></i>关于好奇心</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/14/Systems-Neuroscience/" ><i class="fa fa-file-o"></i>Systems Neuroscience</a>
-      </li>
-    
-      <li>
-        <a href="/2021/09/29/就算累也必須堅持學日語-死亡/" ><i class="fa fa-file-o"></i>堅持學外語 [死亡]</a>
-      </li>
-    
-      <li>
-        <a href="/2021/09/29/就算累也必須堅持學日語-尼采/" ><i class="fa fa-file-o"></i>堅持學外語 [尼采]</a>
       </li>
     
   </ul>
@@ -937,9 +1139,9 @@ I say casually in the car</code></pre>
 
 		
 			
-<div class="widget">
+<div class="widget" style="border-bottom: none;">
 
-	<h4>链接</h4>
+	<h4 style="margin-top: 18px;">链接</h4>
 	<ul class="blogroll list-unstyled">
 	
 		<li>
@@ -948,11 +1150,20 @@ I say casually in the car</code></pre>
 		</li>
 	
 		<li>
+			<i class="fa fa-twitter"></i>
+			<a href="https://twitter.com/seii_saintway" title="Andrew's Twitter account." target="_blank">Andrew&#39;s Twitter</a>
+		</li>
+	
+		<li>
 			<i class="fa fa-book"></i>
 			<a href="https://www.douban.com/people/metaphilosophy/" title="Andrew's Douban account." target="_blank">Andrew&#39;s Douban</a>
 		</li>
 	
 	</ul>
+
+</div>
+
+<div class="widget" style="border-bottom: none;">
 
   <h5>GitHub Repos</h5>
   <ul id="gh_repos" class="list-unstyled">
@@ -970,12 +1181,20 @@ I say casually in the car</code></pre>
     });
   </script>
 
-<h5>Douban Reads</h5>
-<ul id="douban" class="list-unstyled"></ul>
-<a href="https://www.douban.com/people/metaphilosophy/" target="_blank">@metaphilosophy</a> on Douban
-<script src="/js/dbapi.js" type="text/javascript"></script>
+</div>
+
+<div class="widget">
+
+<h5>Twitter Tweets</h5>
+<ul id="tweets" class="list-unstyled"><li class="loading">Status updating&#8230;</li></ul>
+<a href="https://twitter.com/seii_saintway" target="_blank">@seii_saintway</a> on Twitter
+<script src="/js/twitter.js" type="text/javascript"></script>
 <script type="text/javascript">
-    dbapi.showBooks();
+    twitter.showTweets({
+        count: 10,
+        target: '#tweets',
+        blacklist: ''
+    });
 </script>
 
 </div>

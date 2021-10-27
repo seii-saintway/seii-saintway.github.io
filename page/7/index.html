@@ -95,12 +95,167 @@
 
 		<div class="slogan">
       <i class="fa fa-heart"></i>
-      https://seii-saintway.github.io
+      PURSUE ULTIMATE FACTS
 </div>    
 
 		<div class="mypage">
 		
 		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-07-22 </div>
+			<div class="article-title"><a href="/2017/07/22/Hexo-研究/" >Hexo 研究</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="usr-local-lib-node-modules-hexo-cli-bin-hexo"><a href="#usr-local-lib-node-modules-hexo-cli-bin-hexo" class="headerlink" title="/usr/local/lib/node_modules/hexo-cli/bin/hexo"></a>/usr/local/lib/node_modules/hexo-cli/bin/hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="string">'use strict'</span>;</span><br><span class="line"></span><br><span class="line">require(<span class="string">'../lib/hexo'</span>)();</span><br></pre></td></tr></table></figure>
+<h2 id="usr-local-lib-node-modules-hexo-cli-lib-hexo-js"><a href="#usr-local-lib-node-modules-hexo-cli-lib-hexo-js" class="headerlink" title="/usr/local/lib/node_modules/hexo-cli/lib/hexo.js"></a>/usr/local/lib/node_modules/hexo-cli/lib/hexo.js</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> chalk = <span class="built_in">require</span>(<span class="string">'chalk'</span>);</span><br><span class="line"><span class="keyword">var</span> tildify = <span class="built_in">require</span>(<span class="string">'tildify'</span>);</span><br><span class="line"><span class="keyword">var</span> pathFn = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'bluebird'</span>);</span><br><span class="line"><span class="keyword">var</span> Context = <span class="built_in">require</span>(<span class="string">'./context'</span>);</span><br><span class="line"><span class="keyword">var</span> findPkg = <span class="built_in">require</span>(<span class="string">'./find_pkg'</span>);</span><br><span class="line"><span class="keyword">var</span> goodbye = <span class="built_in">require</span>(<span class="string">'./goodbye'</span>);</span><br><span class="line"><span class="keyword">var</span> minimist = <span class="built_in">require</span>(<span class="string">'minimist'</span>);</span><br><span class="line"><span class="keyword">var</span> camelCaseKeys = <span class="built_in">require</span>(<span class="string">'hexo-util/lib/camel_case_keys'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">entry</span>(<span class="params">cwd, args</span>) </span>&#123;</span><br><span class="line">  cwd = cwd || process.cwd();</span><br><span class="line">  args = camelCaseKeys(args || minimist(process.argv.slice(<span class="number">2</span>)));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> hexo = <span class="keyword">new</span> Context(cwd, args);</span><br><span class="line">  <span class="keyword">var</span> log = hexo.log;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Change the title in console</span></span><br><span class="line">  process.title = <span class="string">'hexo'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      log.fatal(err);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    process.exit(<span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> findPkg(cwd, args).then(<span class="function"><span class="keyword">function</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!path) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    hexo.base_dir = path;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loadModule(path, args).catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      log.error(<span class="string">'Local hexo not found in %s'</span>, chalk.magenta(tildify(path)));</span><br><span class="line">      log.error(<span class="string">'Try running: \'npm install hexo --save\''</span>);</span><br><span class="line">      process.exit(<span class="number">2</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">mod</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mod) hexo = mod;</span><br><span class="line">    log = hexo.log;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'./console'</span>)(hexo);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hexo.init();</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cmd = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!args.h &amp;&amp; !args.help) &#123;</span><br><span class="line">      cmd = args._.shift();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (cmd) &#123;</span><br><span class="line">        <span class="keyword">var</span> c = hexo.extend.console.get(cmd);</span><br><span class="line">        <span class="keyword">if</span> (!c) cmd = <span class="string">'help'</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        cmd = <span class="string">'help'</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      cmd = <span class="string">'help'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    watchSignal(hexo);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hexo.call(cmd, args).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> hexo.exit();</span><br><span class="line">    &#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> hexo.exit(err).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// `hexo.exit()` already dumped `err`</span></span><br><span class="line">        handleError(<span class="literal">null</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;).catch(handleError);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">entry.console = &#123;</span><br><span class="line">  init: <span class="built_in">require</span>(<span class="string">'./console/init'</span>),</span><br><span class="line">  help: <span class="built_in">require</span>(<span class="string">'./console/help'</span>),</span><br><span class="line">  version: <span class="built_in">require</span>(<span class="string">'./console/version'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">entry.version = <span class="built_in">require</span>(<span class="string">'../package.json'</span>).version;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadModule</span>(<span class="params">path, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.try(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> modulePath = pathFn.join(path, <span class="string">'node_modules'</span>, <span class="string">'hexo'</span>);</span><br><span class="line">    <span class="keyword">var</span> Hexo = <span class="built_in">require</span>(modulePath);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Hexo(path, args);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">watchSignal</span>(<span class="params">hexo</span>) </span>&#123;</span><br><span class="line">  process.on(<span class="string">'SIGINT'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    hexo.log.info(goodbye());</span><br><span class="line">    hexo.unwatch();</span><br><span class="line"></span><br><span class="line">    hexo.exit().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      process.exit();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = entry;</span><br></pre></td></tr></table></figure>
+<h3 id="Customizes-the-path-of-current-working-directory"><a href="#Customizes-the-path-of-current-working-directory" class="headerlink" title="Customizes the path of current working directory."></a>Customizes the path of current working directory.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --debug --cwd /path/to/cwd</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2017/07/22/Hexo-研究/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-07-21 </div>
+			<div class="article-title"><a href="/2017/07/21/凡拉黑我的都去屎/" >自分を休ませる</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <blockquote>
+<p>　仕事を終えて、じっくりと反省する。一日が終わって、その一日を振り返って反省する。すると、自分や他人のアラが目について、ついにはウツになる。自分のだめさにも怒りを感じ、あいつは憎たらしいと思ったりする。たいていは、不快で暗い結果にたどりつく。<br>　なぜかというと、冷静に反省したりしたからなどでは決してない。単に疲れているからだ。疲れきったときにする反省など、すべてウツへの落とし穴でしかない。疲れているときは反省をしたり、振り返ったり、ましてや日記など書くべきではない。<br>　活発に活動しているとき、何かに夢中になって打ち込んでいるとき、楽しんでいるとき、反省したり、振り返って考えたりはしない。だから、自分をだめだと思ったり人に対して憎しみを覚えたりしたときは、疲れている証拠だ。そういうときはさっさと自分を休ませなければいけない。</p>
+</blockquote>
+<p>ーー『曙光』</p>
+<hr>
+<p>　　一个人最珍贵的品质是什么？真诚。<br>　　伴侣之间最难得的东西是什么？坦诚。</p>
+<hr>
+<p>（× 除了我的妻子以外，）凡拉黑我的都去屎。</p>
+<hr>
+<p>　　每年過年問候都要害我重新申請一個馬甲。你不煩，我還煩呢。</p>
+<p>　　你不要這麽神經病，好不好？就像是我不和你説話，我就活不了一樣。</p>
+<p>　　只有懦弱无能的人才会欺软怕硬。</p>
+<hr>
+<p>　　不管多么怨恨，都应该设身处地去关心去理解。（×）<br>　　（够了，够了。× 奉主耶稣基督的名，魔鬼邪灵通通下无底坑。）<br>　　（够了，够了。○ 都给我去屎吧！）</p>
+<hr>
+<p>　　我的基督徒朋友从来没有拉黑我过。</p>
+<p>　　即便我真的是再怎么令人讨厌，即便我和他们吵得再凶，他们也从来没有拉黑我。</p>
+<p>　　从这里就可以看见，基督徒与非基督徒的差别了。</p>
+<hr>
+<p>　　今天把hexo在公司的電腦上建好了。</p>
+<p>　　用Intellij發文，這感覺真是酸爽。</p>
+<p>　　（在此注明一下，说“酸”主要是因为日本人很鸡毛蒜皮，上班写自己的博客是不被允许的。）</p>
+<p>　　鑒于公司的電腦，申請安裝輸入法很麻煩，而且中日英切換麻煩的要死。</p>
+<p>　　所以，以後就用英文好了。</p>
+<p>　　又鑒于英文保密性太差，以後就用拼音好了。</p>
+<hr>
+<p>　　那段对你的爱是从怜悯开始的。后来我曾经怀疑自己是否真的爱你。因为我变得区分不出怜悯和爱。休谟曾经注意到在情感问题上怜悯和爱的混杂。这可能正是男性恋爱心理的一个现象。</p>
+<p>　　一方面，我感到很安慰——我还能爱人。我的意思是指男女之爱，而不是普通的喜欢、愉悦或是觉得某个事物值得被尊重那种严肃的情感。始于怜悯的爱倒并不一定侮辱人。如果我怜悯的是一个男人，我会觉得自己侮辱了他。但是，男女毕竟不同。女人是值得被怜悯的。</p>
+<p>　　另一方面，具有讽刺意味的是，那段感情因为我渴望被怜悯而失败。一位乞求着的男人可能会在女人心中失去魅力吧。</p>
+<hr>
+<p>　　你讓我意識到我潛意識裏那段被離棄的創傷。</p>
+<p>　　如今，我意識到我犯的最大的錯誤就是憐憫你。</p>
+<p>　　凡拉黑我的都去屎吧！</p>
+<hr>
+<p>　　我已手握充分的资源揭露一切。<br>　　我知道曾有多少人被你所祸害。<br>　　我对你也早已没了怜悯之心。<br>　　复仇？还是等待？<br>　　间歇性地陷入复仇与否的纠结之中。<br>　　等不多时，你就不得见我。<br>　　但愿你我此生此世永不相见。</p>
+<hr>
+<p>　　悔改吧！坦诚吧！友善吧！<br>　　何必为自己招致祸患呢？</p>
+<hr>
+<p>　　请不要绝望啊！<br>　　请去追求终极真实吧！</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2017/07/21/凡拉黑我的都去屎/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-05-16 </div>
+			<div class="article-title"><a href="/2016/05/16/A-Real-time-Automatic-Level-Bar-Calibration-Based-on-Canny-Edge-Detection-and-Weighted-Least-Squares-Method/" >A Real-time Automatic Level Bar Calibration Based on Canny Edge Detection and Weighted Least Squares Method</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p><a href="https://github.com/seii-saintway/SPTX/blob/master/[2016.3.15] Revised Paper 68.pdf" target="_blank" rel="noopener">Introduction of Level Bar Calibration System</a></p>
+<p><strong>A Real-time Automatic Level Bar Calibration Based on Canny Edge Detection and Weighted Least Squares Method</strong></p>
+<p>The level bar is a common tool for measuring small angle, and it is often used in the construction, machinery and instrument manufacturing industry. Accordance to different working principles, the level bar is divided into bubble level, electronic level and laser level. The bubble level is the most widely used traditional level bar, which determines the horizontality of a plane by the bubble deviation. The electronic level includes inductive level and capacitive level: the inductive level determines whether a plane is level by the voltage change of the induction coil, while the capacitive level by the capacitance of interstices on both ends. The laser level leads the beam of the laser emission to telescope tube, making it beam through the collimation axis, if the beam isn’t blocked, the plane is level. The level bar in this paper is one kind of bubble level.<br>Before leaving the factory, the level bar needs to be calibrated, namely to put the level bar on the standard horizontal plane, to find the bubble deviation from the center of the level bar to check the measurement accuracy of the product. In China, the detection is mainly depended on the human eye judgment which is slow, erroneous and instable. Therefore, there is an urgent need for a novel method capable of accurate calibration of the level bar to improve the precision of the product.</p>
+<p>The bubble in the level bars formed from the remaining air by filling the cylindrical cavity 4/5 green oily liquid. A calibration algorithm based on optimal thresholding was proposed by Wei Yu [1-2]. In this paper, we present a realization of automatic and real-time detection of level bar based on Canny edge detection and weighted least squares method. In order to reduce the effects of light changes on detection accuracy, we introduce a method to adaptively set the thresholds of the Canny Edge Detection. A faster contour tracing algorithm based on binary search is employed. Experimental results show that this solution is feasible.</p>
+<p>The bubble of the level bars sealed in a glass column, and it will reflect strong light and disturb the identification of bubble edge and the whole image recognizing process if we direct light the bubble or light it in a wrong angle. Considering that the bubble and the glass column are transparent, the background is required to be flat and uniform. Since the upper surface of the bubble of the level bar is convex, if taking the image from the top of the level bar, there is always a mirror reflection effect, so that the quality of the image deteriorates and will impact the effect of subsequent detection algorithm. So we decide to take the image from the side of the level bar. A CCD camera is used as an image sensor in this application.</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2016/05/16/A-Real-time-Automatic-Level-Bar-Calibration-Based-on-Canny-Edge-Detection-and-Weighted-Least-Squares-Method/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-04-04 </div>
+			<div class="article-title"><a href="/2016/04/04/病态的灵魂/" >病态的灵魂</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <blockquote>
+<p>要得到二度降生的人所报告的那种极高的快乐，最靠得住的法子是经过一种比我们所说过的悲观还要再彻底的悲观心态——就是历史的事实所示的，我们已看到自然的好事物的光彩和迷醉力如何可以磨灭。可是有种不快乐，达到那么高度，弄到人把自然的好处完全忘掉。心上完全没有觉得这些好处存在的感想。要达到这个极端的悲观，所需要的，还不止对于人生的观察和对于死的反省。个人必须亲自成了一种病态的忧郁的患者。就像心态健全的热心人做到完全不知道有恶存在，忧郁者无论他自己如何用力，始终不知道有任何好处存在：从他看，一切好处没有一点点的实在性了。在神经构造完全正常的人，这种敏感并这样易受精神上的痛苦是极罕见的；一个健康的人，就是他遭遇了最恶毒不堪的外境，也很少有这种感受性。因此，我们这里注意我在第一讲所说的好多的神经病的气质，现在“正要上场活动，而且要在后来的许多幕内充个角色”。因为这些忧郁经验首要是绝对一己的、个人的，所以我可以援引私人的文件来说明。听这些文件实在很痛苦，并且公开念它，几乎是无礼事。可是它刚刚挡住我们的道上；假如我们要把宗教心理学讨论得稍微认真点，我们必须愿意忘掉礼俗，钻到光滑的、掩饰的、官式的说话的外表之下去。……</p>
+</blockquote>
+<p>ーー《宗教经验之种种——人性之研究》　第六第七讲　病态的灵魂</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2016/04/04/病态的灵魂/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
 		
 			
 	
@@ -780,8 +935,7 @@
 	  <p>自从受浸以来，我总是会动弹不得而禁食。为此，我感到非常羞耻。有一次禁食后，我下床昏倒。醒来后，我心里有声音提醒我说，我还要去解答那三个关于自我意识的问题。一听到这声音，我就得平安并且开始恢复吃饭。其实，这三个问题也是我之前一直思考并且想要解答的问题。只是，我还是犹豫不决，因为我并不知道这声音从谁而来。我看到的解答是对佛教核心的摧毁。我想，主若准许，那就让事情这么成就吧。</p>
 <p><strong>先推荐一本意义疗法的代表作《活出生命的意义》。</strong></p>
 <p><strong>以下是我这几年来思考的草稿：</strong></p>
-<p>幸福的谱系</p>
-<p>自从造天地以来，　神那看不见的永能和神性是明明可觉的，乃是藉着所造之物就可以晓得，叫人无可推诿。<br>(罗马书 1:20 和合本再修订)</p>
+<h2 id="幸福的谱系"><a href="#幸福的谱系" class="headerlink" title="幸福的谱系"></a>幸福的谱系</h2><p>自从造天地以来，　神那看不见的永能和神性是明明可觉的，乃是藉着所造之物就可以晓得，叫人无可推诿。<br>(罗马书 1:20 和合本再修订)</p>
 <p>至於他的事、人所不能見的——他永久的能力及神性——從世界之創立以來，又是藉着他所造之物以被了悟而看清楚，使人無可推諉。<br>(羅馬書 1:20 呂振中)</p>
 <p>For the invisible things of Him, both His eternal power and divine characteristics, have been clearly seen since the creation of the world, being perceived by the things made, so that they would be without excuse;<br>(Romans 1:20 Recovery)</p>
 <p>For since the creation of the world His invisible attributes, that is, His eternal power and divine nature, have been clearly perceived, being understood by what has been made, so that they are without excuse.<br>(Romans 1:20 NASB)</p>
@@ -889,296 +1043,6 @@
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-09-03 </div>
-			<div class="article-title"><a href="/2015/09/03/Preface/" >Preface</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h2 id="References-of-Octopress"><a href="#References-of-Octopress" class="headerlink" title="References of Octopress"></a>References of Octopress</h2><p><a href="http://octopress.org/docs/setup/" target="_blank" rel="noopener">http://octopress.org/docs/setup/</a></p>
-<h2 id="Start-Command-Prompt-with-Ruby"><a href="#Start-Command-Prompt-with-Ruby" class="headerlink" title="Start Command Prompt with Ruby"></a>Start Command Prompt with Ruby</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DevKit</span></span><br><span class="line">ruby dk.rb init</span><br><span class="line">ruby dk.rb <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd Octopress</span><br><span class="line">ruby --version <span class="comment"># Should report Ruby 1.9.3</span></span><br><span class="line">gem <span class="keyword">install </span><span class="keyword">bundler</span></span><br><span class="line"><span class="keyword">bundle </span><span class="keyword">install</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> rubypython <span class="comment"># not necessary for Octopress now</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd Octopress</span><br><span class="line">rake <span class="keyword">new</span><span class="type">_post</span>[<span class="string">"title"</span>]</span><br><span class="line">rake preview <span class="meta"># http://localhost:4000/</span></span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">bundle <span class="built_in">exec</span> rake new_post[<span class="string">"title"</span>]</span><br><span class="line">bundle <span class="built_in">exec</span> rake preview</span><br><span class="line">bundle <span class="built_in">exec</span> rake deploy</span><br></pre></td></tr></table></figure>
-<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pbcopy &lt; ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># Copies the contents of the id_rsa.pub file to your clipboard</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github<span class="selector-class">.com</span>:seii-saintway/seii-saintway<span class="selector-class">.github</span><span class="selector-class">.io</span><span class="selector-class">.git</span> Octopress</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout -b <span class="built_in">source</span> origin/<span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> Octopress</span><br><span class="line">git <span class="built_in">add</span> .</span><br><span class="line">git commit -<span class="keyword">m</span> <span class="string">'your message'</span></span><br><span class="line">git push origin <span class="keyword">source</span></span><br></pre></td></tr></table></figure>
-<h2 id="Windows-Command-Prompt"><a href="#Windows-Command-Prompt" class="headerlink" title="Windows Command Prompt"></a>Windows Command Prompt</h2><p>Add the “cmd” directory of “git” to System Environment Variable “Path”.</p>
-<p>Add the “bin” directory of “Ruby” to System Environment Variable “Path”.</p>
-<p>Add the “Python” directory to System Environment Variable “Path”.</p>
-<h2 id="My-“rake-setup-github-pages”-with-“git-init”"><a href="#My-“rake-setup-github-pages”-with-“git-init”" class="headerlink" title="My “rake setup_github_pages” with “git init”"></a>My “rake setup_github_pages” with “git init”</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd Octopress</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github<span class="selector-class">.com</span>:seii-saintway/seii-saintway<span class="selector-class">.github</span><span class="selector-class">.io</span>.git</span><br><span class="line">git checkout -<span class="selector-tag">b</span> source</span><br><span class="line"></span><br><span class="line">cd _deploy</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github<span class="selector-class">.com</span>:seii-saintway/seii-saintway<span class="selector-class">.github</span><span class="selector-class">.io</span>.git</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd Octopress</span><br><span class="line">rake <span class="keyword">generate</span></span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> Octopress</span><br><span class="line">git <span class="built_in">add</span> .</span><br><span class="line">git commit -<span class="keyword">m</span> <span class="string">"Fresh Start!"</span></span><br><span class="line">git push origin <span class="keyword">source</span></span><br></pre></td></tr></table></figure>
-<h2 id="References-of-ECMAScript"><a href="#References-of-ECMAScript" class="headerlink" title="References of ECMAScript"></a>References of ECMAScript</h2><p><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="noopener">http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf</a></p>
-<p>遮蔽（遮盖、屏蔽），可见（作用域、可见域）；生存期。</p>
-<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm --registry <span class="string">"http://npm.hacknodejs.com/"</span> <span class="keyword">install</span> underscore </span><br><span class="line">npm --registry <span class="string">"http://registry.npmjs.vitecho.com/"</span> <span class="keyword">install</span> underscore</span><br></pre></td></tr></table></figure>
-<h2 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a>npm install</h2><h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>command + shift + G</p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">npm install --save</span><br><span class="line">node_modules/hexo/bin/hexo server --debug</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://hexo.io/</span></span><br><span class="line">npm install hexo-cli --save</span><br><span class="line">npm install hexo --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"><span class="comment"># Clean the cache file (db.json) and generated files (public).</span></span><br><span class="line"><span class="comment"># 在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</span></span><br></pre></td></tr></table></figure>
-<h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gg</span><br><span class="line">G</span><br></pre></td></tr></table></figure>
-<h2 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g eslint</span><br></pre></td></tr></table></figure>
-<h2 id="Continuous-Integration"><a href="#Continuous-Integration" class="headerlink" title="Continuous Integration"></a>Continuous Integration</h2><h2 id="git-submodule"><a href="#git-submodule" class="headerlink" title="git submodule"></a>git submodule</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached -r themes/freemind</span><br><span class="line">git submodule add https://github.com/seii-saintway/hexo-theme-freemind.git themes/freemind</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
-<h2 id="git-update-index"><a href="#git-update-index" class="headerlink" title="git update-index"></a>git update-index</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git update-index --assume-unchanged .idea/workspace.xml</span><br><span class="line">git update-index --no-assume-unchanged .idea/workspace.xml</span><br></pre></td></tr></table></figure>
-<h2 id="encoding"><a href="#encoding" class="headerlink" title="encoding"></a>encoding</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/09/03/Preface/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-09-03 </div>
-			<div class="article-title"><a href="/2015/09/03/My-First-Test/" >My First Test.</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <figure class="highlight cpp"><figcaption><span>My Hello World! Written in C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"How are you? Friends."</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/09/03/My-First-Test/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2013-01-25 </div>
-			<div class="article-title"><a href="/2013/01/25/feelings-I-m-missing-you/" >[feelings] I&#39;m missing you</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>　　夜深了，周围很静。如果有根烟在手边，我想现在应该是一个好时候点着它。（我不抽烟！我只是为了描述周围是多么得安静。）晚上，和同学一起在光谷聚餐。简单，但是，很快乐。这就是心灵的魅力吧。心灵虽然有着总总缺失，但是却能超越这些缺失而散发出它的美丽。单单是心灵的存在这一点就足以让人感觉很快乐。我想起去年，自己陷入唯我论的深渊里面无法自拔。我想起那个被很多人嘲笑的大主教贝克莱，他否定了一切，就是不否定心灵。</p>
-<p>　　有一只可爱的仓鼠被托管在我这里。上一次它来我这，我们没能成为朋友。但愿这一次，我能感受到它的心灵。</p>
-<hr>
-<p>　　现在是日本时间 2020/07/28 01:05 。我进入目前的公司已经四年了。现在的情况非常类似本科毕业的时候。进入大学之后两年，我想转专业，奶奶不支持。进入公司之后两年，我想回国，姑姑不支持。一晃眼本科四年过去。一晃眼我已经入职四年了。本科毕业，我终于决定要转变。不管别人怎么看，不管未来会怎么样，我决定跨专业考研。如今我也必须要转变。我下定决心转变。</p>
-<p>　　之后读研的时候，我经历了很多迷茫。反思这段经历，得到的经验教训是：迷茫的时候，就去接触更广大的世界吧。迷茫的时候，就去接受新世界的指引吧。读研的迷茫让我领悟了终极目标ーー我现在也是有终极目标的人了。现在的情况比本科毕业的时候更好。只是随着年龄越来越大，担负的责任也会越来越多。这对我来说也是个挑战。我不能空有目标。我还必须能够持续不断地探索下去。我必须承担起自己的责任，这样他人也会更愿意支持我。只有得到他人的支持，我才能够始终保持一个良好的状态。赚钱照顾自己和家人是我的责任。另一方面，我不能把手段当成目标，忘记了终极目标。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2013/01/25/feelings-I-m-missing-you/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2013-01-01 </div>
-			<div class="article-title"><a href="/2013/01/01/Structure-Patterns/" >Structure Patterns</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>Structure Patterns</p>
-<hr>
-<p>1 v (…) that …<br>1.1 vi (prep (+it)) that …<br>1.2 vt that …</p>
-<p>2 无宾语<br>2.1 vi</p>
-<p>2.2 vi adv (prep …)<br>2.2.1 vi like sth<br>2.2.2 vi as if …</p>
-<p>2.3 vi adj<br>2.4 vi doing …</p>
-<p>3 单宾语<br>3.1 vi prep sth<br>3.2 vt sth<br>3.3 vt doing …<br>3.4 vt to do …</p>
-<p>4 双宾语<br>4.1 vt sth that …</p>
-<p>4.2 vt sth sth.<br>4.3 vt sth. to sth<br>4.4 vt sth. for sth</p>
-<p>4.5 vt sth. prep sth<br>4.6 vt prep sth sth.(很长)</p>
-<p>5 宾语　补语<br>5.1 vt sth prep sth</p>
-<p>5.2 vt sth adv<br>5.3 vt adv sth</p>
-<p>5.4 vt sth as/like sth<br>5.5 vt sth as if/though …</p>
-<p>5.6 vt sth to do …<br>5.7 vt sth do …<br>5.8 vt sth doing …<br>5.9 vt sth (to be) adj</p>
-<p>6 (be) adj prep sth</p>
-<p>7 prep n prep sth<br>7.1 prep n<br>7.2 n prep sth</p>
-<p>8 adj n</p>
-<p>put sth into words 4.5<br>put into words sth 4.6</p>
-<p>owe sth to sb 4.3<br>owe sth to sth 4.5</p>
-<p>under control 7.1<br>stumbling blocks 8<br>compare sth with sth 4.5<br>comparison with sth 7.2<br>afflict sb 3.2<br>imagined ideals 8<br>missing tile 8<br>tiled ceiling 8<br>concentrate on sth 3.1<br>bald man 8<br>explore sth 3.2<br>explore possibilities/problems<br>spend sth on sth 4.5<br>spend sth (in) doing … 5.8<br>correlation between sth 7.2<br>a byproduct of sth 7.2<br>transcend sth 3.2<br>spiritual faith 8<br>religious faith 8<br>a philosophy of life<br>virtually every situation 8<br>shake off sth 5.3</p>
-<p>be embarrassed to do …<br>stare 2.1<br>ashamed of sth 6<br>unwanted attention 8<br>let on 2.2<br>let on that … 1.1<br>coordinate sth 3.2<br>make it to sp 3.2<br>a matter of pride 7<br>cling to sth 3.1<br>salt-free diet 8<br>trouble-free trip 8<br>smoke-free restaurant 8<br>marvel at sth 3.1<br>marvel that … 1<br>subject sb to sth 4.5<br>subject to sth 6<br>rules/laws<br>subjected to sth 6<br>indignity/stress/beatings<br>object of sth 7.2<br>envy of sth 7.2<br>envious of sth 6<br>engage in sth 3.1<br>be content to do …<br>stand unaided 2.3<br>on leave 7.1<br>see (to it) that … 1.1<br>think of sb 3.1<br>regain sth 3.2</p>
-<p>memorable occasion 8<br>proper standard 8</p>
-<p>on duty 7.1<br>off duty 7.1<br>in/on lap(s) 7.1<br>reminisce 2.1<br>reminisce over the photos<br>reminisce of/about sth 3.1<br>bygone years 8<br>passing seasons 8<br>time-wrinkled faces 8<br>know of sth 3.1<br>monopoly on sth 7.2<br>precious commodity 8<br>be dependent on/upon sth 6<br>watchful eyes 8<br>tuck sth in 5.2<br>frail body 8<br>be deprived of sth 6<br>reach up 2.2<br>pull up sth 5.3<br>separate sth 3.2<br>shift 2.1</p>
-<p>well up 2.2<br>slide 2.1<br>slide down her cheeks<br>pamper sb 3.2<br>go past sp 3.1<br>be as if/though … 2.2<br>wipe sth 3.2<br>lift 2.1<br>voice small with age but still melodious 8</p>
-<p>benefits from sth 7.2<br>benefits of sth 7.2<br>benefits that come with sth 7.2</p>
-<p>growl 2.1<br>advice of sth 7.2<br>advice　of　all types as to sth 7.2<br>companion animal 8</p>
-<p>have someone there for you</p>
-<p>scratch 2.1<br>scratch under the chin<br>scratch sth 3.2<br>scratch sth out 5.2</p>
-<p>appreciation of sth 7.2<br>wag 2.1<br>wag sth 3.2</p>
-<p>rub 2.1<br>rub against sth 3.1<br>rub sth on sth 5.1<br>rub sth with sth 5.1<br>rub sth against sth 5.1<br>rub sth together 5.2<br>rub sth dry 5.9</p>
-<p>purr　2.1<br>purr sth 3.2</p>
-<p>remark that … 1<br>remark on sth 3.1<br>remark sth 3.2</p>
-<p>adoring eyes 8</p>
-<p>identify sth 3.2<br>identify sth with sb/sth 4.5<br>identify (oneself) with sb/sth 3.1</p>
-<p>diversion from sth 7.2<br>desk/wheelchair bound individuals 8<br>touching four-footed friends 8<br>tell of sth 3.1</p>
-<p>problems with sth 7.2<br>problems of sth 7.2<br>problems in sth 7.2<br>pull out sth 5.3<br>emerge 2.1</p>
-<p>expect sth to do … 5.6<br>take sth as if … 5.5<br>intended meaning 8<br>unsupportive manner 8<br>means of sth 7.2</p>
-<p>over-crowed class 8<br>dread doing … 3.3<br>for fear of sth 7<br>guard sth 3.2<br>neglect sb 3.2<br>moonshaped eyes 8<br>in a different light 7.1<br>welcoming smile 8<br>create an aura<br>distinguish sth from sth 4.5<br>sacrifice sth 3.2<br>responsible for sth 6<br>guiding light 8</p>
-<p>NO Six</p>
-<p>uncombed hair 8<br>head straight 2.2<br>ride to sp 3.1<br>tap sth 3.2<br>pull over (to sp) 2.2<br>move far away (from sp) 2.2<br>traffic jam 8<br>head west 2.2</p>
-<p>gasp 2.1<br>gasp for breath<br>gasp with rage/surprise<br>gasp sth 3.2<br>gasp out sth 5.3<br>result in sth 3.1<br>one another questions 8<br>be confusing for sb 6<br>turn out all right in the end<br>flight back to sp 8<br>fly 2.1<br>fly from sp to sp<br>fly down the road<br>fly open 2.3<br>fly sth to sp 5.1</p>
-<p>somewhere along the line 7.2<br>express oneself through sth 5.1<br>be unaware of sth 6<br>go nowhere 2.2<br>difficulty (in) sth 8<br>live up to sth 2.2<br>channel sth into sth 4.5<br>energy/ability/ feelings/ideas</p>
-<p>within reach 7.1<br>out of reach 7.1<br>in too much of a hurry 7<br>odd jobs 8<br>bus conductor 8<br>a succession of sth 7.2<br>by correspondence 7.1<br>drop out of sth 2.2<br>filling station 8<br>in the weeds 7.1<br>chain of sth 7.2<br>chief cook 8<br>bottle washer 8<br>at the twilight of sth 7<br>in fairness to sth 7<br>runaway wife 8<br>pension check 8<br>fail at sth 3.1</p>
-<p>late Prime Minister 8<br>late husband 8</p>
-<p>be expelled from sth 6<br>embark on sth 3.1<br>address sb 3.2<br>in announcing the coming of sb 7<br>whatever advice 8<br>glowing and lengthy introduction 8<br>brief but moving speech 8<br>hold back sb 5.3<br>creative spirit 8<br>proud spirit 8<br>isolated farm 8</p>
-<p>be elected president of sth 6<br>be elected to sp 6<br>be defeated in the race for sp 6<br>be defeated for sth 6<br>be rejected for sth 6<br>be exposed to sth 6<br>be appointed to sth 6</p>
-<p>Cabinet of Advisors 8<br>Legislature and Senate 8<br>state legislature 8<br>the House of Representatives 8<br>the House 8<br>Speaker of the House 8<br>federal land officer 8</p>
-<p>policies regarding sth 7.2</p>
-<p>nomination for sth 7.2<br>nomination of sth 7.2</p>
-<p>mark sth 3.2</p>
-<p>prescribe sth 3.2<br>harmless shot 8<br>open up sth 3.1<br>rest with sth 3.1<br>rest a lot with sth<br>rest on/upon sth 3.1<br>trust in sth 7.2<br>bleeding ulcers 8<br>tribal doctors 8</p>
-<p>compulsive spender 8<br>hold on to sth 3.1<br>bargain hunter 8<br>charge accounts 8<br>stem from sth 3.1<br>help sb do … 5.7<br>try sth on 5.2</p>
-<p>queue fury 8<br>into a fury 7.1<br>with fury 7.1<br>bus terminus 8<br>tear at sth 3.1<br>tear sth 3.2<br>tear sth in/to/into sth 4.5<br>tear sth out of sth 5.1<br>tear sth up/down/out 5.2<br>tear sth open 5.9<br>back up sth 5.3<br>cite sth 3.2<br>degree of annoyance 8<br>baggage reclaim 8<br>short cut 8<br>take a short cut<br>fed up with sth 6<br>fed up<br>twice as long</p>
-<p>physiological cause 8<br>physiological explanations 8<br>misfiring of sth 7.2<br>read sth into sth 4.5<br>read great importance into sth<br>what of/about sth 7.2<br>good omen 8<br>tied up with sth 6<br>open to sth 6</p>
-<p>loud impact 8<br>basket made of wicker 8<br>feel strange 2.3<br>thump 2.1<br>field trip 8</p>
-<p>country lane 8<br>cracking and ripping sound 8<br>rush 2.1<br>rush towards sth<br>elm tree 8<br>crash down 2.2<br>call off sth 5.3<br>spoil sth 3.2<br>take a detour through sth 3.2<br>come to a halt 2.1<br>funny feeling 8<br>feeling about sth 7.2<br>shake and tremble 2.1</p>
-<p>sunny outlook 8<br>solid night 8<br>effect on sth 7.2<br>the seriously depressed 8<br>get adjusted 2.3<br>disturbing dreams 8<br>dream away sth 5.3<br>work through sth 3.1<br>work on sth 3.1<br>follow-up study 8<br>brighter morning mood 8<br>feel low 2.3<br>focus sth on 5.2</p>
-<p>African termites<br>grams of sth 7.2<br>twice as many/much sth<br>in certain religions 7.1<br>sacred cows 8<br>plow sth 3.2<br>cow manure 8<br>protection against sth 7.2<br>bark 2.1<br>dog taboo 8<br>taboo against sth 7.2<br>pig-eating taboo 8<br>nomadic people 8</p>
-<p>recitation of sth 7.2<br>time-consuming chore 8<br>floor plans 8<br>give sth credit 4.2<br>credit for sth 7.2<br>given credit for sth 6<br>in design 7.1<br>specific information 8<br>highly decorated menus 8<br>give way to sth 4.3<br>distinctive menu cover art 8<br>memorable meal 8<br>guidelines for sth 7.2</p>
-<p>sales effectiveness 8<br>lunch counters 8<br>progress in sth 7.2<br>especially color photography  8<br>casual dining 8<br>feature sth 3.2<br>bring a decline in sth 5.1<br>bring a big increase in sth 5.1<br>prelude to sth 7.2<br>pleasing prelude 8<br>document sth 3.2<br>souvenir versions 8<br>serve a new, but also important function</p>
-<p>cooking and cuisines 8<br>like sth to do … 5.6<br>human pleasure of sth 7.2<br>acknowledged great national cuisines 8<br>typical of sth 7.2<br>combine simplicity with sophistication<br>native resources of sth 7.2<br>regional specialties 8<br>major characteristic 8<br>distinctive characteristic 8<br>omit sth 3.2<br>soy sause 8<br>as a staple 7.1<br>defined by sth 6<br>supreme example 8<br>fiery spices 8<br>borderline between sth 7.2<br>gift to sth 7.2<br>flavor of sth 7.2<br>dazzling array 8<br>regional variations 8<br>fiery hot curries 8<br>subtly spiced vegetarian dishes 8<br>rival sth 3.2<br>bring to perfection sth 4.6<br>the art of swift cooking 8<br>retain sth 3.2<br>nutritional goodness 8<br>cutting of sth 7.2<br>chopping of sth 7.2</p>
-<p>actual cooking process 8<br>regional variety of sth 7.2<br>bewildering to sb 6<br>revolution in sth 7.2<br>flow of sth from sp to sp 7.2<br>charm of sth 7.2<br>processed food 8<br>profound effect on sth 7.2<br>prime food preparers 8<br>immediate locality and experience 8<br>incorporate sth into sth 4.5<br>threat to sth 7.2<br>reinforced by sth 6<br>have something to do with sth<br>unite sth 3.2<br>ingenious use 8<br>influence on sth 7.2<br>human necessity 8<br>central to sth 6</p>
-<p>favor sth 3.2<br>satisfying close relationships 8<br>engender sth 3.2<br>mushroom 2.1<br>speculations about sth 7.2<br>accompany sth 3.2<br>a life of intelligent reflection  8<br>virtuous life 8<br>indulge sth 3.2<br>preserve sth 3.2<br>rage and misery 8<br>competing ideas 8<br>predictors of sth 7.2<br>the stress-filled teen years 8<br>the “mid-life crisis” years 8<br>the declining years of old age 8<br>interviews with sth 7.2<br>rebound 2.1<br>rebound from sth<br>clue to sth 7.2<br>lasting sense of well-being<br>subjective well-being 8<br>in misery 7.1<br>scores of sth 7.2<br>assessments of sth 7.2<br>opinions of sth 7.2</p>
-<p>get along with sth 2.2<br>cope with sth 3.1<br>totalitarian regimes 8<br>in the serenity of sth 7<br>less-stressed contemplative lives 8<br>metropolitan areas 8<br>trait-happiness correlations 8<br>causal arrows 8<br>identical fraternal twins 8<br>happiness ratings 8<br>raise apart 2.2<br>fluctuate 2.1<br>fluctuate around sth<br>happiness set point<br>dispose sth to do … 5.6<br>mark sth 3.2<br>intimate friends 8<br>alternative to sth 7.2<br>broken marital relationships 8<br>supportive intimate committed relationship 8<br>associated with sth 6<br>national surveys 8<br>exterior things 8<br>under the strain 7.1<br>strain of sth 7.2<br>strain on sth 7.2<br>strains of sth 7.2</p>
-<p>attach sth to sth 4.5<br>attach credence/importance to sth</p>
-<p>attach sth 3.2</p>
-<p>see/view sth as sth 5.4</p>
-<p>legal learning 8<br>special preserve 8<br>intellectual equipment 8</p>
-<p>assume that … 1</p>
-<p>agreed account 8</p>
-<p>of no account 7.1<br>on no account 7.1<br>account of sth 7.2<br>on account of sth 7<br>take account of sth 5.1<br>take sth into account 5.1</p>
-<p>argue that … 1<br>exist 2.1<br>exist in/within sth<br>exist on sth 3.1</p>
-<p>social contract 8</p>
-<p>exchange of sth 7.2</p>
-<p>exchange students 8</p>
-<p>in exchange for sth 7</p>
-<p>lead sth 3.2<br>lead the way<br>lead sb through sth 5.1<br>lead sth to sth 5.1<br>to extremes 7.1<br>at the outset 7.1<br>invite　sb to do … 5.6</p>
-<p>with the consideration 7.1<br>with no consideration 7.1</p>
-<p>extend　sth　3.2</p>
-<p>extend sth to sb 4.3<br>hospitality/an invitation/a greeting/a warm welcome/consideration</p>
-<p>argue 2.1<br>argue with sb 3.1<br>argue for/against sth 3.1<br>argue　that　… 1.2<br>argue sth 3.2<br>argue the case</p>
-<p>in respect　of　sth 7<br>lie 2.1<br>lie on sth<br>lie in sth<br>lie　outside sth<br>lie back (in sth) 2.2<br>lie down under sth 2.2</p>
-<p>lie　heavy on sth 2.2<br>lie over 2.2<br>moral choise 8<br>area of sth 7.2<br>instinct for sth 7.2<br>in action 7.1</p>
-<p>stride 2.1<br>stride along sth<br>stride over sth</p>
-<p>vigorous strides 8</p>
-<p>slip 2.1<br>slip from sth<br>slip up/down in sth 2.2<br>slip away from sth 2.2<br>slip sth into sth 4.5</p>
-<p>shatter 2.1</p>
-<p>necessary condition 8<br>sufficient condition 8<br>condition for sth 7.2</p>
-<p>instant coffee 8<br>instant needs 8<br>attend to sth 3.1</p>
-<p>convert sth 3.2<br>convert sth into sth 4.5</p>
-<p>reverse 2.1<br>reverse sth 3.2<br>reverse sth into sth</p>
-<p>fundamental human rights 8<br>fundamental law 8<br>unshakeable conviction 8<br>unshakeable faith 8<br>bring conviction to sb 4.3<br>convict sb of sth 4.5</p>
-<p>restricted in/within/to sth 6<br>restrict sth 3.2<br>restrict sb to do … 5.6<br>restrict sth to sth 5.1</p>
-<p>take　interests/pity/offense/dislike at/in/to sth 4.5</p>
-<p>add　sth to sth 4.5</p>
-<p>ship sth 3.2<br>ship sth to sp<br>ship sth with st</p>
-<p>bellow 2.1</p>
-<p>blast/gust of wind/air 7.2<br>shotgun　blast 8<br>enjoyable experience 8</p>
-<p>roar　2.1</p>
-<p>prohibit/ban sth 3.2<br>prohibit/ban　sb　from sth 4.5</p>
-<p>forbit sb sth 4.2<br>forbit sb to do … 5.7</p>
-<p>foment war/revolution/unrest/rebellion 3.2<br>accused of sth 6<br>sleep over 2.2</p>
-<p>vie for sth 3.1</p>
-<p>gain 2.1<br>gain from sth<br>gain in 2.2<br>gain sth 3.2<br>profit/profits from sth 7.2<br>gain profit/profits from sth</p>
-<p>be of advantage to sth 6<br>advantage over sth 7.2<br>to advantage 7.1</p>
-<p>raw material 8<br>rich ores 8<br>iron making/manufacturing 8</p>
-<p>lift/raise/remove/suspend an embargo (from sb) 3.2<br>arms embargo on sb 7.2<br>peacekeeping mission 8<br>military equipment 8<br>fight crime 3.2<br>misuse of sth 7.2<br>be met with sth 6<br>restore security 8<br>constitutional responsibility of sth 7.2<br>opt for sth 3.1<br>within the purview of sth 7<br>proper training of sth 7.2<br>security forces 8<br>in a position 7.1<br>carry arms 3.2<br>suppress sb 3.2<br>intimidate sb 3.2<br>get away with impunity 2.2<br>armed robbery 8<br>on the rampage 7.1<br>put in mechanisms<br>international community 8<br>security implication 8<br>manpower of sth 7.2<br>reach the mark 3.2<br>vulnerable borders 8<br>instability in sth 7.2<br>ongoing trial for sth 7.2</p>
-<p>crimes against humanity 8</p>
-<p>help (to) do … 3.4<br>mixed feelings 8<br>smuggle 2.1<br>sumggle into sp<br>smuggle sth 3.2<br>smuggle sth into/out of sp 5.1<br>still-fragile peace 8<br>overall security 8<br>secure one’s borders 3.2<br>combat piracy and smuggling 3.2</p>
-<p>freeze on sth 7.2<br>nationalist ideals 8<br>settlement activist 8<br>settling of sp 7.2<br>obstacle to peace 8<br>sympathetic to sth 6<br>work with sb 3.1<br>seek sth as sth 5.4<br>resume peace talks 3.2</p>
-<p>plan sth 3.2<br>plan to do … 3.4<br>plan out sth 5.3</p>
-<p>block of sth 7.2</p>
-<p>announce that … 1<br>announce sth 3.2<br>announce sb 3.2<br>announce sth to sb 4.5</p>
-<p>constructed of sth 6<br>brick facade 8</p>
-<p>establish sth 3.2<br>relationship with sb 7.2</p>
-<p>Gross Domestic Product 8</p>
-<p>drive along 2.2<br>come/go/get along 2.2<br>come along fine<br>along with sth</p>
-<p>issue of sth 7.2</p>
-<p>perspective of sth 7.2<br>in perspective 7.1</p>
-<p>faculty for sth 7.2<br>faculty of sth 7.2</p>
-<p>in terms of sth 7</p>
-<p>put/place/keep sth in context 5.1</p>
-<p>form 2.1<br>form sth 3.2<br>form sth on sth 4.5<br>form sth into sth 4.5</p>
-<p>breathe 2.1<br>breathe on sth<br>breathe sth 3.2</p>
-<p>rotted with sth 6<br>market for sth 7.2</p>
-<p>proceed 2.1<br>proceed with sth<br>proceed to sth</p>
-<p>lull 2.1<br>lull sth 3.2<br>lull sb to/into sth 5.1</p>
-<p>drive sb into sth 5.1<br>in battle 7.1</p>
-<p>carve sth from/out of sth 4.5</p>
-<p>strike a chord with sb 5.1</p>
-<p>share sth with sb 4.5<br>share in sth 3.1</p>
-<p>in common with sth 7</p>
-<p>predate sth 3.2<br>underlie sth 3.2</p>
-<p>part of sth 7.2<br>cause of sth 7.2<br>reason for sth 7.2<br>much of sth 7.2</p>
-<p>elaborate on sth 3.1<br>elaborate sth 3.2</p>
-<p>choice for sth 7.2<br>on the part of sb 7</p>
-<p>charitable impulse 8</p>
-<p>except sth<br>except for sth<br>except that …</p>
-<p>but adv = only<br>but prep = except</p>
-<p>pay rise 8<br>vanish 2.1<br>a reputation for slacking 8<br>underlying assumption 8<br>finely developed sense of grievance 8<br>goods and services 8<br>perfect candidates 8<br>pieces of rock 8<br>slices of cucumber 8<br>adjoining chambers 8<br>in return for sth 7<br>markedly different behaviour 8<br>preferable to sth 6<br>toss sth at sb 5.1<br>toss sth out of sp 5.1<br>the mere presence of sth 7.2<br>induce sth in sth 5.1<br>induce resentment in sb<br>induce sb to do … 5.6</p>
-<p>group-living species 8<br>righteous indignation 8<br>feelings of indignation 8<br>abundantly clear to sth 6<br>a sense of fairness 8<br>unanswered question 8</p>
-<p>inconclusive evidence 8<br>antismoking lobby 8<br>be out for sth 6<br>be out to do … 6<br>buy/bought that nonsense<br>early graves 8<br>upsetting parallels 8<br>draw a parallel between sth<br>parallel to/with sth 6<br>parallel sth 3.2<br>in one wave after another 7<br>awake to sth 3.1<br>awaken sb to sth 4.5<br>a panel from sp 7.2<br>get moving 2.3<br>preface to sth 7.2<br>provide sth (for sb) 5.1<br>provide sb with sth 5.1<br>concerning prep = about<br>provide concerning sth 3.1<br>present actions 8<br>pour sth into sth 5.1<br>prudent people 8<br>insurance policy 8<br>press (sb) for sth 4.5<br>press (sb) to do … 5.6<br>paralysis by analysis<br>atmospheric research 8<br>oceanic research 8<br>legislative initiative 8<br>fashion sth 3.2<br>conservation measures 8<br>financial incentives 8<br>promising start 8<br>new power 8<br>environmentally sound plants 8<br>components of sth 7.2<br>revolutionary theory 8<br>shadows of sth 7.2<br>switch to sth 3.1</p>
-<p>emotional thermostat　8<br>leading authority 8<br>brain imaging 8<br>vivid dreams 8<br>limbic system 8<br>prefronted cortex 8<br>the center of intellect<br>occupied with sth 6<br>recurring bad dreams 8<br>adj/adv enough (for sb/to do …) 6<br>in a panic 7.1<br>persistent nightmares 8<br>for the rest of sth 7</p>
-<p>public figures 8<br>in speech 7.1<br>in writing 7.1<br>with skill and gift 7.1<br>aspire to sth 3.1<br>degradation of sth 7.2<br>liberal views 8<br>conservative views 8<br>academic speciality 8<br>gradual disappearance 8<br>the cult of sth 7.2<br>the modestly educated 8<br>elevated tone 8<br>well regarded writing 8<br>performative genre 8<br>triumph over sth 3.1<br>entertaining array of examples<br>complex ideas 8<br>memorized poetry 8<br>propose sth 3.2<br>radical educational reforms 8<br>grieve over sth 3.1<br>paper plates 8</p>
-<p>homogenizing people 8<br>democratizing uniformity of sth 7.2<br>dress and discourse 8<br>casualness and absence of deference 8<br>culture of consumption 8<br>department stores 8<br>vast arrays of goods 8<br>elegant atmosphere 8<br>intimate shops 8</p>
-<p>cater to sth 3.1<br>knowledgeable elite 8<br>regardless of sth 6<br>public and democratic act 8<br>unprecedented levels 8<br>three indices of sth 7.2<br>foreign-born immigrants 8<br>native-born Americans 8<br>immune to sth 3.1<br>assimilative power 8<br>divisive issues 8<br>pockets of sth 7.2<br>seething anger 8<br>turbulent past 8<br>dark and deteriorating social environment 8</p>
-<p>social and selfish tendency<br>approach-avoidance tendencies<br>reward and punishment system</p>
-<p>contrived circumstance<br>the down-trodden<br>rudimentary schooling<br>alleged embezzlement<br>federal penitentiary<br>pseudonym of sth<br>US dispensary<br>collections of stories<br>trimmed lamp<br>gentle grafter<br>silent imputation of parsimony</p>
-<p>We must do something, on however humble a scale.<br>How come … = Why is it that …</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2013/01/01/Structure-Patterns/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -1231,27 +1095,27 @@
 		
 			
 <div class="widget">
-  <h4>最新文章</h4>
+  <h4 style="margin-top: 18px;">最新文章</h4>
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2021/10/28/Add-Tweets-to-My-Blog/" ><i class="fa fa-file-o"></i>Add Tweets to My Blog</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" ><i class="fa fa-file-o"></i>Try to Reinstall Zsh Kernel</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/26/金融心理学/" ><i class="fa fa-file-o"></i>金融心理学</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/19/Try-Juno-Connect/" ><i class="fa fa-file-o"></i>Try Juno Connect</a>
+      </li>
+    
+      <li>
         <a href="/2021/10/16/認知神経科学/" ><i class="fa fa-file-o"></i>認知神経科学</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/14/关于好奇心/" ><i class="fa fa-file-o"></i>关于好奇心</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/14/Systems-Neuroscience/" ><i class="fa fa-file-o"></i>Systems Neuroscience</a>
-      </li>
-    
-      <li>
-        <a href="/2021/09/29/就算累也必須堅持學日語-死亡/" ><i class="fa fa-file-o"></i>堅持學外語 [死亡]</a>
-      </li>
-    
-      <li>
-        <a href="/2021/09/29/就算累也必須堅持學日語-尼采/" ><i class="fa fa-file-o"></i>堅持學外語 [尼采]</a>
       </li>
     
   </ul>
@@ -1259,9 +1123,9 @@
 
 		
 			
-<div class="widget">
+<div class="widget" style="border-bottom: none;">
 
-	<h4>链接</h4>
+	<h4 style="margin-top: 18px;">链接</h4>
 	<ul class="blogroll list-unstyled">
 	
 		<li>
@@ -1270,11 +1134,20 @@
 		</li>
 	
 		<li>
+			<i class="fa fa-twitter"></i>
+			<a href="https://twitter.com/seii_saintway" title="Andrew's Twitter account." target="_blank">Andrew&#39;s Twitter</a>
+		</li>
+	
+		<li>
 			<i class="fa fa-book"></i>
 			<a href="https://www.douban.com/people/metaphilosophy/" title="Andrew's Douban account." target="_blank">Andrew&#39;s Douban</a>
 		</li>
 	
 	</ul>
+
+</div>
+
+<div class="widget" style="border-bottom: none;">
 
   <h5>GitHub Repos</h5>
   <ul id="gh_repos" class="list-unstyled">
@@ -1292,12 +1165,20 @@
     });
   </script>
 
-<h5>Douban Reads</h5>
-<ul id="douban" class="list-unstyled"></ul>
-<a href="https://www.douban.com/people/metaphilosophy/" target="_blank">@metaphilosophy</a> on Douban
-<script src="/js/dbapi.js" type="text/javascript"></script>
+</div>
+
+<div class="widget">
+
+<h5>Twitter Tweets</h5>
+<ul id="tweets" class="list-unstyled"><li class="loading">Status updating&#8230;</li></ul>
+<a href="https://twitter.com/seii_saintway" target="_blank">@seii_saintway</a> on Twitter
+<script src="/js/twitter.js" type="text/javascript"></script>
 <script type="text/javascript">
-    dbapi.showBooks();
+    twitter.showTweets({
+        count: 10,
+        target: '#tweets',
+        blacklist: ''
+    });
 </script>
 
 </div>
