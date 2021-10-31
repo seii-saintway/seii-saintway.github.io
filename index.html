@@ -118,7 +118,14 @@
 	<div class="col-md-12">
 	  
 	
-	  <div class="cell border-box-sizing code_cell rendered">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Browser-Side">Browser Side<a class="anchor-link" href="#Browser-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
@@ -211,7 +218,24 @@
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><a href="https://github.com/zldobbs/alert-mizzou" target="_blank" rel="noopener">https://github.com/zldobbs/alert-mizzou</a></li>
+<li><a href="https://github.com/seii-saintway/hexo-theme-freemind/commit/420f1d9c1eda38b000f0b3d3f93b4b143f39ed93" target="_blank" rel="noopener">Here</a> is all the changes at the browser side.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Server-Side">Server Side<a class="anchor-link" href="#Server-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/zldobbs/alert-mizzou" target="_blank" rel="noopener">Here</a> is a solution using Flask to proxy Tweets API.</li>
 </ul>
 
 </div>
@@ -276,6 +300,16 @@
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>My solution using <a href="https://doc.traefik.io/traefik/v1.7/basics/#custom-headers" target="_blank" rel="noopener">Traefik</a> to proxy Tweets API</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -315,7 +349,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
 </pre></div>
 
     </div>
@@ -328,7 +362,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
 </pre></div>
 
     </div>
@@ -666,7 +700,7 @@ jupyter kernelspec uninstall zsh
 <p>探寻真实价值的最大难题不在于构筑适当的经济模型上的困难，也不在于真实价值随价格波动，而在于描述真实世界动力学的经济仿真模型越好，它们得到的结果就越混沌。或者说，经济学家们越精细地完善他们的模那种模型根本不能预测长期发展的证据就越明显。<br>一些数学家对此加以嘲笑，因为他们一直怀疑这点。他们说：“原因在于，像复杂经济那种动态系统，其真实数学本质是非常混乱和高度不可预测的。”在数学家看来，很简单，经济学家在认识他们所从事的任务的真实本质上就已经失败了，因为他们没有考虑到非线性数学的本质。而且数学家们指出：“一般地，非线性数学的本质是，你只能预测系统的非常短期的行为。”<br>上述结论可以用一种通常称为“确定性混沌”的复杂独特现象加以解释。对许多或绝大多数经济系统而言，混沌意味着不可能做出客观和定量的长期预测。因此，在与“时间和无知之神秘力量”斗争时，我们只能转而寻求个人主观的猜测。而这当然与我们个人和主观的感受密切相关，例如希望、恐惧和贪婪。</p>
 </blockquote>
 <blockquote>
-<p>今天，已经没有人能够搞清图形分析是什么时候第一次用于预测金融市场了，但是最古老的证据是本的稻米市场。<br>1730年，日本开始采用稻米期货合约标准交易。这些合约与现在很名交易所的商品期货合约完全相同，但有一个例外：它并不需要对所交易商品进行实物交割。期货合约可以买卖，但它不需要稻米实物的交割。然而，一个问题出现了：虽然稻米的现金交易价格波动很小，但期货交易价格波动很大，而且永远如此。1869年，政府终于再也不能容忍这种情况，下令关闭了期货市场。<br>但是怪事出现了：期货市场刚一关闭，实物市场便开始剧烈波动。两年后，市场一片混乱，政府不得不恢复期货交易。不过，这次与以前不同了，期货交易必须伴随基础市场的实物交割，这样市场才逐渐稳定下来。<br>日本投机客由此得到的教训是，股票价格并不仅仅反映供求关系，它还包括心理因素。在此之后经纪人发展了一系列利用心理因素的方法。他们很快开始用图形表示价格变化，从中发现价格变化的规律，现在，全世界的股民广泛使用这种方法。</p>
+<p>今天，已经没有人能够搞清图形分析是什么时候第一次用于预测金融市场了，但是最古老的证据是日本的稻米市场。<br>1730年，日本开始采用稻米期货合约标准交易。这些合约与现在很多交易所的商品期货合约完全相同，但有一个例外：它并不需要对所交易商品进行实物交割。期货合约可以买卖，但它不需要稻米实物的交割。然而，一个问题出现了：虽然稻米的现金交易价格波动很小，但期货交易价格波动很大，而且永远如此。1869年，政府终于再也不能容忍这种情况，下令关闭了期货市场。<br>但是怪事出现了：期货市场刚一关闭，实物市场便开始剧烈波动。两年后，市场一片混乱，政府不得不恢复期货交易。不过，这次与以前不同了，期货交易必须伴随基础市场的实物交割，这样市场才逐渐稳定下来。<br>日本投机客由此得到的教训是，股票价格并不仅仅反映供求关系，它还包括心理因素。在此之后经纪人发展了一系列利用心理因素的方法。他们很快开始用图形表示价格变化，从中发现价格变化的规律，现在，全世界的股民广泛使用这种方法。</p>
 </blockquote>
 
 	
@@ -772,6 +806,9 @@ jupyter kernelspec uninstall zsh
 </ol>
 <h2 id="大脳皮質"><a href="#大脳皮質" class="headerlink" title="大脳皮質"></a>大脳皮質</h2><p><strong>灰白質</strong>は、神経細胞の細胞体や樹状突起（じゅじょうとっき）が多く含まれた部分に相当し、一方、<strong>白質</strong>は神経細胞の軸索（じくさく）が多く含まれた部分である。機能上どちらも重要であることは言うまでもないが、情報処理機構を調べると言う観点からすると、情報のやり取りや調節がなされる<strong>灰白質</strong>の部分が認知神経科学の研究対象として言及される場合が多い。</p>
 <p>端脳（たんのう）の外縁部分の灰白質の層を特に<strong>大脳皮質</strong>と呼んでいる。</p>
+<h2 id="神経細胞の興奮"><a href="#神経細胞の興奮" class="headerlink" title="神経細胞の興奮"></a>神経細胞の興奮</h2><p>イオンチャネルは、それが通すイオンの種類によって分けることができる他、その開閉を司る原因に基づいて分類することもできる。たとえば、ある特定の化学物質がイオンチャネルの一部に結合することによりイオンチャネル内部の通り道が開くという、あたかも鍵と鍵穴のようなタイプのイオンチャネルがある。この鍵に当たる化学物質の総称をリガンドというので、リガンド依存性イオンチャネルと称する。また別のタイブのものとして、イオンチャネル付近の膜電位の変化によってイオンチャネルの形が変化し、その結果イオンチャネル内部の通り道が開閉するというものあり、このタイブのものを膜電位依存性イオンチャネルと称する。さまざまなタイブのイオンチャネルのはたらきが巧みに組み合わさることにより、神経細胞の興奮と抑制が制御され、この積み重ねが最終的に認知行動となって現れるわけである。</p>
+<p>イオン輸送に携わる膜タンバク質として、イオンチャネル以外に、膜内外のイオンを交換するエクスチェンジャー、チャネルは持たないがあるイオンの取り込み・排出を行うトランスポーター、イオン輸送にエネルギーを要する（自然な方向とは逆方向にイオンを輸送するため）ポンブが挙げられる。</p>
+<p>このような細かいレベルの構造までが、認知神経科学の対象となるのか、疑う人がいるかもしれない。しかし、たとえばイオンチャネルを形成するアミノ酸（タンバク質とはさまざまなアミノ酸が1列につながったもののことである）の中の1箇所が別の種類のアミノ酸に置き換わっただけで、そのイオンチャネルを通ることのできるイオンの種類が変わる場合があり、その変化によって動物の学習成績に影響がもたらされたという報告もある。認知神経科学を理解する上で、本章の前半で述べたマクロなレベルでの構造を理解すると共に、ミクロなレベルでの構造理解も欠かすことはできない。</p>
 
 	
 	</div>
@@ -1014,6 +1051,17 @@ jupyter kernelspec uninstall zsh
 	  
 	
 	  <p>把祷告作为诗歌是令人愉快的。把比喻作为寻找自我之旅的“锤子”和“拐杖”就有点朴素了吧。我们需要的不是“锤子”或是什么“不是人手凿出的石头”，而是“铁拳”。我们需要的不是“拐杖”，而是“矫健的双腿”。</p>
+<hr>
+<blockquote>
+<p>And Jehovah God caused a deep sleep to fall upon the man, and he slept; and He took one of his ribs and closed up the flesh in its place.<br> (Genesis 2:21 Recovery Version)</p>
+</blockquote>
+<blockquote>
+<p>But one of the soldiers pierced His side with a spear, and immediately there came out blood and water.<br> (John 19:34 Recovery Version)</p>
+</blockquote>
+<blockquote>
+<p>For these things happened that the Scripture might be fulfilled: “No bone of His shall be broken.”<br> (John 19:36 Recovery Version)</p>
+</blockquote>
+<hr>
 <blockquote>
 <p>风随意地吹，你听见它的响声，却不知道它从哪里来，往哪里去；凡由灵生的、就是这样。<br> (约翰福音 3:8 吕振中)</p>
 </blockquote>
@@ -1027,9 +1075,9 @@ jupyter kernelspec uninstall zsh
 <p>“The wind blows where it wills, and you hear the sound of it, but you do not know where it comes from and where it goes; so is everyone who is born of the Spirit.”<br> (John 3:8 Recovery Version)</p>
 </blockquote>
 <blockquote>
-<p>时波斯匿王，起立白佛：我昔未承诸佛诲敕，见迦旃延、毗罗胝子，咸言：此身死后断灭，名为涅槃。我虽值佛，今犹狐疑 。云何发挥，证知此心不生灭地？今此大众，诸有漏者，咸皆愿闻。</p>
-<p>佛告大王：汝身现在，今复问汝：汝此肉身，为同金刚，常住不朽？为复变坏？世尊！我今此身，终从变灭。佛言：大王！汝未曾灭，云何知灭？世尊！我此无常变坏之身，虽未曾灭 。我观现前，念念迁谢，新新不住，如火成灰，渐渐销殒，殒亡不息。决知此身，当从灭尽。佛言：如是！大王！汝今生龄 ，已从衰老，颜貌何如童子之时？世尊！我昔孩孺，肤腠润泽；年至长成，血气充满。而今颓龄，迫于衰耄，形色枯悴，精神昏昧，发白面皱，逮将不久 ，如何见比充盛之时？佛言：大王！汝之形容，应不顿朽？王言：世尊！变化密移，我诚不觉，寒暑迁流，渐至于此。何以故？我年二十，虽号年少，颜貌已老初十岁时；三十之年，又衰二十 。于今六十，又过于二，观五十时，宛然强壮。世尊！我见密移，虽此殂落，其间流易，且限十年。若复令我微细思惟，其变宁唯一纪二纪 ？实唯年变；岂唯年变？亦兼月化；何直月化？兼又日迁。沉思谛观，刹那刹那，念念之间，不得停住。故知我身，终从变灭。</p>
-<p>佛告大王：汝见变化，迁改不停，悟知汝灭；亦于灭时，汝知身中有不灭耶？波斯匿王合掌白佛：我实不知。佛言：我今示汝不生灭性。大王！汝年几时 ，见恒河水？王言：我生三岁，慈母携我谒耆婆天，经过此流，尔时即知，是恒河水。佛言：大王！如汝所说，二十之时，衰于十岁 ；乃至六十，日月岁时，念念迁变。则汝三岁，见此河时，至年十三，其水云何？王言：如三岁时，宛然无异 ；乃至于今，年六十二，亦无有异。佛言：汝今自伤发白面皱，其面必定皱于童年。则汝今时观此恒河，与昔童时观河之见，有童耄否？王言：不也 ！世尊！佛言：大王！汝面虽皱，<strong>而此见精</strong>，<strong>性未曾皱</strong>。皱者为变，不皱非变。变者受灭；彼不变者，元无生灭。云何于中受汝生死？而犹引彼末伽黎等，都言此身死后全灭。</p>
+<p>时波斯匿王，起立白佛：我昔未承诸佛诲敕，见迦旃延、毗罗胝子，咸言：此身死后断灭，名为涅槃。我虽值佛，今犹狐疑。云何发挥，证知此心不生灭地？今此大众，诸有漏者，咸皆愿闻。</p>
+<p>佛告大王：汝身现在，今复问汝：汝此肉身，为同金刚，常住不朽？为复变坏？世尊！我今此身，终从变灭。佛言：大王！汝未曾灭，云何知灭？世尊！我此无常变坏之身，虽未曾灭。我观现前，念念迁谢，新新不住，如火成灰，渐渐销殒，殒亡不息。决知此身，当从灭尽。佛言：如是！大王！汝今生龄，已从衰老，颜貌何如童子之时？世尊！我昔孩孺，肤腠润泽；年至长成，血气充满。而今颓龄，迫于衰耄，形色枯悴，精神昏昧，发白面皱，逮将不久，如何见比充盛之时？佛言：大王！汝之形容，应不顿朽？王言：世尊！变化密移，我诚不觉，寒暑迁流，渐至于此。何以故？我年二十，虽号年少，颜貌已老初十岁时；三十之年，又衰二十。于今六十，又过于二，观五十时，宛然强壮。世尊！我见密移，虽此殂落，其间流易，且限十年。若复令我微细思惟，其变宁唯一纪二纪？实唯年变；岂唯年变？亦兼月化；何直月化？兼又日迁。沉思谛观，刹那刹那，念念之间，不得停住。故知我身，终从变灭。</p>
+<p>佛告大王：汝见变化，迁改不停，悟知汝灭；亦于灭时，汝知身中有不灭耶？波斯匿王合掌白佛：我实不知。佛言：我今示汝不生灭性。大王！汝年几时，见恒河水？王言：我生三岁，慈母携我谒耆婆天，经过此流，尔时即知，是恒河水。佛言：大王！如汝所说，二十之时，衰于十岁；乃至六十，日月岁时，念念迁变。则汝三岁，见此河时，至年十三，其水云何？王言：如三岁时，宛然无异；乃至于今，年六十二，亦无有异。佛言：汝今自伤发白面皱，其面必定皱于童年。则汝今时观此恒河，与昔童时观河之见，有童耄否？王言：不也！世尊！佛言：大王！汝面虽皱，<strong>而此见精</strong>，<strong>性未曾皱</strong>。皱者为变，不皱非变。变者受灭；彼不变者，元无生灭。云何于中受汝生死？而犹引彼末伽黎等，都言此身死后全灭。</p>
 <p>王闻是言，信知身后，舍生趣生；与诸大众，踊跃欢喜，得未曾有。<br>－－<a href="www.drbachinese.org/online_reading_simplified/sutra_explanation/Shu/ShuSutra.htm">《楞严经》</a></p>
 </blockquote>
 <blockquote>
@@ -1039,6 +1087,7 @@ jupyter kernelspec uninstall zsh
 <p>在试图给心理的东西设定方位时，如果我们同自然科学一样，专注于使一切感觉得以产生的空间条件，那么我们便立刻滑到一个错误的出发点上。于是，我们便看到，在知觉的物质对象和感觉器官之间以及在感觉器官和大脑皮层之间建立起物理过程的联系。由弹琴弦引起的机械性振动进入我的耳朵，刺激就从这里沿着神经末梢传到大脑的听觉中心。结果就是我们把对大脑的刺激看作是“感觉”经验的直接条件，而这种看法反过来又误导我们把这种经验定位于大脑从而定位于人体内部的空间性。如果我们––或许不是明确地––把感觉的质本身定位于大脑皮层，那么我们虽然对具体细节不很清楚，但通常总是进而假设心理的东西就住在我的同伴的头脑的某个地方，认为意识就<strong>在</strong>这个身体<strong>之内</strong>。<br>ーー《普通认识论》（Ｍ．石里克），33</p>
 </blockquote>
 <p>Ｍ．石里克对“心身问题”的解答是一种“平行认识论”，而不是一种“平行实在论”。</p>
+<hr>
 <blockquote>
 <p>量的概念系统给我们提供了一个认识世界的独特的、唯一的方法，因为这种方法不是在<strong>直接体验</strong>中给予我们的。没有任何理由认为，这种概念系统一定无法适用于通过体验所知的所与的质的世界。相反，我们相信，把这种系统加以普遍应用是可能的，因为还没有任何严格的证明表明我们的这种信念是错误的。在科学中，匆忙地放弃这样的信念决不表明是一种明智之举。没有什么东西比宣称<strong>无知</strong>更容易损害科学的探究了，所以我们必须防止过早地宣布一种无知的信念。<br>ーー《普通认识论》（Ｍ．石里克），35</p>
 </blockquote>
@@ -1049,6 +1098,8 @@ jupyter kernelspec uninstall zsh
 <p>一个诚实的研究者只能在有十分确定的显著迹象的地方，特别是具有被我们当做<strong>生命</strong>标记的地方才能推断意识的存在。<br>ーー《普通认识论》（Ｍ．石里克），35</p>
 </blockquote>
 <p>学术界比较流行把“能够自我复制”当做<strong>生命</strong>的标记。</p>
+<hr>
+<p>石里克驱逐一切“形而上学”的同时也就失去了提出并检验那些充满想象力大胆疯狂的假设的勇气。其结果就是和维特根斯坦一起走向衰老。失去工程师的那一面的同时，维特根斯坦就失去了哥德尔和图灵的那种创造力。</p>
 
 	
 	</div>
@@ -1096,12 +1147,12 @@ jupyter kernelspec uninstall zsh
 		
 			
 	<div class="widget">
-		<h4>标签云</h4>
+		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>20</span></a></li>
-		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>22</span></a></li>
 		
 		 
 		</ul>

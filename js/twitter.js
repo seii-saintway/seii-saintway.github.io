@@ -7,7 +7,7 @@ var twitter = (function() {
 
     for(i = 0; i < tweets.length; ++i) {
       fragment += '<li><i class="fa fa-star"></i><a href="https://twitter.com/seii_saintway/status/' + tweets[i].id + '">'
-          + tweets[i].created_at.replace('T', '　').replace('.000Z', '') + '</a><p>' + escapeHtml(tweets[i].text||'') + '</p></li>';
+          + tweets[i].created_at.replace('T', '　').replace('.000Z', '　UTC') + '</a><p>' + escapeHtml(tweets[i].text||'') + '</p></li>';
     }
     t.innerHTML = fragment;
   }

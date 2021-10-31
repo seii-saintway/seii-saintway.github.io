@@ -6,7 +6,13 @@
   <title>Add Tweets to My Blog | Andrew&#39;s Blog</title>
   <meta name="author" content="Andrew">
   
-  <meta name="description" content="In&amp;nbsp;[&amp;nbsp;]:
+  <meta name="description" content="Browser Side&amp;#182;
+
+
+
+
+
+In&amp;nbsp;[&amp;nbsp;]:
 
     
 cat hexo/themes/freemind/_config.yml
@@ -22,10 +28,7 @@ cat hexo/themes/freemind/_config.yml
 In&amp;nbsp;[&amp;nbsp;]:
 
     
-cat hexo/themes/freemind/layout/_widget/links.ejs
-
-
-">
+cat hexo/themes/freemind/lay">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -125,7 +128,14 @@ cat hexo/themes/freemind/layout/_widget/links.ejs
 
 	<!-- content -->
 	<div class="mypage">
-	    <div class="cell border-box-sizing code_cell rendered">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Browser-Side">Browser Side<a class="anchor-link" href="#Browser-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
@@ -218,7 +228,24 @@ cat hexo/themes/freemind/layout/_widget/links.ejs
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><a href="https://github.com/zldobbs/alert-mizzou" target="_blank" rel="noopener">https://github.com/zldobbs/alert-mizzou</a></li>
+<li><a href="https://github.com/seii-saintway/hexo-theme-freemind/commit/420f1d9c1eda38b000f0b3d3f93b4b143f39ed93" target="_blank" rel="noopener">Here</a> is all the changes at the browser side.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Server-Side">Server Side<a class="anchor-link" href="#Server-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/zldobbs/alert-mizzou" target="_blank" rel="noopener">Here</a> is a solution using Flask to proxy Tweets API.</li>
 </ul>
 
 </div>
@@ -283,6 +310,16 @@ cat hexo/themes/freemind/layout/_widget/links.ejs
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>My solution using <a href="https://doc.traefik.io/traefik/v1.7/basics/#custom-headers" target="_blank" rel="noopener">Traefik</a> to proxy Tweets API</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -322,7 +359,7 @@ cat hexo/themes/freemind/layout/_widget/links.ejs
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
 </pre></div>
 
     </div>
@@ -335,7 +372,7 @@ cat hexo/themes/freemind/layout/_widget/links.ejs
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
 </pre></div>
 
     </div>
@@ -399,6 +436,14 @@ cat hexo/themes/freemind/layout/_widget/links.ejs
     
 
 	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Notebooks/">Notebooks<span>22</span></a></li>
+    </ul>
+	</div>
 		
 
 	<!-- toc -->
