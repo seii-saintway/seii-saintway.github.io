@@ -138,7 +138,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Traefik-Dashboard">Traefik Dashboard<a class="anchor-link" href="#Traefik-Dashboard">&#182;</a></h1>
+<h2 id="Traefik-Dashboard">Traefik Dashboard<a class="anchor-link" href="#Traefik-Dashboard">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -247,8 +247,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Rollback Settings</p>
-
+<h3 id="Rollback-Settings">Rollback Settings<a class="anchor-link" href="#Rollback-Settings">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -268,7 +267,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Make-isso-HTTPS-in-TLJH">Make isso HTTPS in TLJH<a class="anchor-link" href="#Make-isso-HTTPS-in-TLJH">&#182;</a></h1>
+<h2 id="Make-Isso-HTTPS-in-TLJH">Make Isso HTTPS in TLJH<a class="anchor-link" href="#Make-Isso-HTTPS-in-TLJH">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -338,7 +337,7 @@ cat <span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/state/rules.toml &gt; /
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Change-file-watch-to-directory-in-TLJH-Traefik">Change file-watch to directory in TLJH Traefik<a class="anchor-link" href="#Change-file-watch-to-directory-in-TLJH-Traefik">&#182;</a></h1><p><a href="https://github.com/seii-saintway/the-littlest-jupyterhub/commit/e95d85e99187f9d65b748016807b28c256e77e39" target="_blank" rel="noopener">https://github.com/seii-saintway/the-littlest-jupyterhub/commit/e95d85e99187f9d65b748016807b28c256e77e39</a></p>
+<h3 id="Change-file-watch-to-directory-in-TLJH-Traefik">Change file-watch to directory in TLJH Traefik<a class="anchor-link" href="#Change-file-watch-to-directory-in-TLJH-Traefik">&#182;</a></h3><p><a href="https://github.com/seii-saintway/the-littlest-jupyterhub/commit/e95d85e99187f9d65b748016807b28c256e77e39" target="_blank" rel="noopener">https://github.com/seii-saintway/the-littlest-jupyterhub/commit/e95d85e99187f9d65b748016807b28c256e77e39</a></p>
 
 </div>
 </div>
@@ -452,6 +451,148 @@ Setting up JupyterHub...
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> make restart-isso
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Isso-SQLite">Isso SQLite<a class="anchor-link" href="#Isso-SQLite">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /etc/isso.conf
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[general]
+
+dbpath = /var/lib/isso/comments.db
+
+host =
+    http://seii-saintway.github.io
+    https://seii-saintway.github.io
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Open-SQLite-database">Open SQLite database<a class="anchor-link" href="#Open-SQLite-database">&#182;</a></h3><div class="highlight"><pre><span></span>sqlite3 /var/lib/isso/comments.db
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;/var/lib/isso/comments.db&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * from comments&#39;</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;110.3.247.0&#39;, &#39;# Privacy Policy&#39;),
+ (&#39;113.38.215.0&#39;, &#39;# Continuous Purification&#39;),
+ (&#39;110.3.247.0&#39;,
+  &#39;### 3.11.4 隐秘通道\n\n隐秘通道（covert channel）的意思是说使用难以预料或不会引起注意的方式来发送信息。假设有一天系统管理员Sally觉得自己的那些用户花太多时间来玩了，因此她决定关闭email和即时消息，这样他们就不能聊天了。要解决这个问题，你和你的朋友都同意使用主目录中的一个你们都可以读取的文件来交流信息，你每隔一会儿就得检查一下该文件来查看新消息。这种超出乎预料的通信方式就是一个隐秘通道。\n\n隐秘通道很难取消。如果系统管理员Sally发现了你们这种基于文件的通信技术，她可以修改目录的权限，使得只有目录的属主才具有读取和搜索的权限，并限定目录属主也不能修改这种权限。在这样做的同时，她还可以确认你不能在其他地方（例如，/tmp）创建文件。（你的大部分程序都不能运行了，但是不要因此而责怪Sally。）即使是这样，你和你的朋友仍然可以相互显示其他用户士目录中的内容，这可以显示目录的修改日期和文件个数，这样你就可以根据这些可见的参数设计一种密码，并通过修改这些参数而进行通信。这是一种更复杂的隐秘通道，如果Sally对你们进行了更严格的限制，你们可以想出更古怪的法子来。\n\nSSH不能防止隐秘通道。对隐秘通道的分析和控制通常都是安全性很高的计算机系统的一部分，例如设计用来在同一个系统中的不同安全层次上安全地处理信息的系统。顺便说一下，SSH数据流本身就可以很好地用作一种隐秘通道：SSH会话的内容可能是一个巧克力馅饼的配方，而隐含的内容则可能是用Morse码表示这两个公司即将合并，只需要使用报文长度是奇数还是偶数来分别表示Morse码的短横线和点号即可。&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * from preferences&#39;</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * from threads&#39;</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
     </div>
