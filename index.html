@@ -106,6 +106,188 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2021-11-12 </div>
+			<div class="article-title"><a href="/2021/11/12/Research-Emotet/" >Research Emotet</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="Spread-via-Word-documents"><a href="#Spread-via-Word-documents" class="headerlink" title="Spread via Word documents"></a>Spread via Word documents</h2><p>The EMOTET group managed to take email as an attack vector to a next level. Through a fully automated process, EMOTET malware was delivered to the victims’ computers via infected e-mail attachments.  A variety of different lures were used to trick unsuspecting users into opening these malicious attachments. In the past, EMOTET email campaigns have also been presented as invoices, shipping notices and information about COVID-19.</p>
+<p>All these emails contained malicious Word documents, either attached to the email itself or downloadable by clicking on a link within the email itself. Once a user opened one of these documents, they could be prompted to “enable macros” so that the malicious code hidden in the Word file could run and install EMOTET malware on a victim’s computer.</p>
+<h2 id="Attacks-for-hire"><a href="#Attacks-for-hire" class="headerlink" title="Attacks for hire"></a>Attacks for hire</h2><p>EMOTET was much more than just a malware. What made EMOTET so dangerous is that the malware was offered for hire to other cybercriminals to install other types of malware, such as banking Trojans or ransomwares, onto a victim’s computer.</p>
+<p>This type of attack is called a ‘loader’ operation, and EMOTET is said to be one of the biggest players in the cybercrime world as other malware operators like TrickBot and Ryuk have benefited from it.</p>
+<p>Its unique way of infecting networks by spreading the threat laterally after gaining access to just a few devices in the network made it one of the most resilient malware in the wild.</p>
+<h2 id="Emotet-Malware"><a href="#Emotet-Malware" class="headerlink" title="Emotet Malware"></a><a href="https://us-cert.cisa.gov/ncas/alerts/aa20-280a" target="_blank" rel="noopener">Emotet Malware</a></h2><h2 id="Phishing-Spearphishing-Link"><a href="#Phishing-Spearphishing-Link" class="headerlink" title="Phishing: Spearphishing Link"></a><a href="https://attack.mitre.org/versions/v7/techniques/T1566/002/" target="_blank" rel="noopener">Phishing: Spearphishing Link</a></h2><p>Adversaries may send spearphishing emails with a malicious link in an attempt to elicit sensitive information and/or gain access to victim systems. Spearphishing with a link is a specific variant of spearphishing. It is different from other forms of spearphishing in that it employs the use of links to download malware contained in email, instead of attaching malicious files to the email itself, to avoid defenses that may inspect email attachments.</p>
+<p>All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this case, the malicious emails contain links. Generally, the links will be accompanied by social engineering text and require the user to actively click or copy and paste a URL into a browser, leveraging User Execution. The visited website may compromise the web browser using an exploit, or the user will be prompted to download applications, documents, zip files, or even executables depending on the pretext for the email in the first place. Adversaries may also include links that are intended to interact directly with an email reader, including embedded images intended to exploit the end system directly or verify the receipt of an email (i.e. web bugs/web beacons). Links may also direct users to malicious applications designed to Steal Application Access Tokens, like OAuth tokens, in order to gain access to protected applications and information.</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/11/12/Research-Emotet/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-11-07 </div>
+			<div class="article-title"><a href="/2021/11/07/Install-Almond/" >Install Almond</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/almond-sh/almond" target="_blank" rel="noopener">https://github.com/almond-sh/almond</a></li>
+<li><a href="https://almond.sh/" target="_blank" rel="noopener">https://almond.sh/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://almond.sh/docs/quick-start-install" target="_blank" rel="noopener">https://almond.sh/docs/quick-start-install</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">java</span> <span class="o">-</span><span class="n">version</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>openjdk version &#34;1.8.0_312&#34;
+OpenJDK Runtime Environment (Temurin)(build 1.8.0_312-b07)
+OpenJDK 64-Bit Server VM (Temurin)(build 25.312-b07, mixed mode)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">Lo</span> <span class="n">coursier</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">coursier</span><span class="o">-</span><span class="n">cli</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">coursier</span>
+<span class="o">./</span><span class="n">coursier</span> <span class="n">launch</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">v</span> <span class="n">almond</span> <span class="o">--</span> <span class="o">--</span><span class="n">install</span>
+<span class="o">./</span><span class="n">coursier</span> <span class="n">launch</span> <span class="o">--</span><span class="n">fork</span> <span class="o">--</span><span class="n">main</span><span class="o">-</span><span class="k">class</span> <span class="nc">almond</span><span class="o">.</span><span class="n">ScalaKernel</span> <span class="n">almond</span> <span class="o">--</span> <span class="o">--</span><span class="n">install</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>&lt;fork&gt;true&lt;/fork&gt;</code></pre>
+<ul>
+<li><code>true</code> means it will create (fork) a new JVM to run the compiler. This is a bit slower but the isolation is better.</li>
+<li><code>false</code> means it is startign the compiler directly in the JVM you have run <strong>maven</strong> with, this makes the build less repeatable.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="n">coursier</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://ammonite.io/" target="_blank" rel="noopener">https://ammonite.io/</a></li>
+<li><a href="https://github.com/almond-sh/examples" target="_blank" rel="noopener">https://github.com/almond-sh/examples</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/mattpap/IScala" target="_blank" rel="noopener">https://github.com/mattpap/IScala</a></li>
+<li><a href="https://github.com/apache/incubator-toree" target="_blank" rel="noopener">https://github.com/apache/incubator-toree</a></li>
+<li><a href="https://github.com/jupyter-incubator/sparkmagic" target="_blank" rel="noopener">https://github.com/jupyter-incubator/sparkmagic</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/11/07/Install-Almond/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2021-10-28 </div>
 			<div class="article-title"><a href="/2021/10/28/Add-Tweets-to-My-Blog/" >Add Tweets to My Blog</a></div>						
 		</h3>
@@ -414,7 +596,17 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://github.com/takluyver/bash_kernel" target="_blank" rel="noopener">https://github.com/takluyver/bash_kernel</a></p>
+<ul>
+<li><a href="https://github.com/NII-cloud-operation/sshkernel" target="_blank" rel="noopener">https://github.com/NII-cloud-operation/sshkernel</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Bash">A Jupyter Kernel for Bash<a class="anchor-link" href="#A-Jupyter-Kernel-for-Bash">&#182;</a></h2><p><a href="https://github.com/takluyver/bash_kernel" target="_blank" rel="noopener">https://github.com/takluyver/bash_kernel</a></p>
 
 </div>
 </div>
@@ -450,7 +642,7 @@ python3 -m bash_kernel.install
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://github.com/dan-oak/zsh-jupyter-kernel" target="_blank" rel="noopener">https://github.com/dan-oak/zsh-jupyter-kernel</a></p>
+<h2 id="A-Jupyter-Kernel-for-Z-Shell">A Jupyter Kernel for Z Shell<a class="anchor-link" href="#A-Jupyter-Kernel-for-Z-Shell">&#182;</a></h2><p><a href="https://github.com/dan-oak/zsh-jupyter-kernel" target="_blank" rel="noopener">https://github.com/dan-oak/zsh-jupyter-kernel</a></p>
 
 </div>
 </div>
@@ -468,76 +660,15 @@ python3 -m pip install notebook zsh_jupyter_kernel
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Requirement already satisfied: notebook in /usr/local/lib/python3.9/site-packages (6.1.4)
-Collecting zsh_jupyter_kernel
-  Downloading zsh_jupyter_kernel-3.2-py3-none-any.whl (14 kB)
-Requirement already satisfied: jupyter-client&gt;=5.3.4 in /usr/local/lib/python3.9/site-packages (from notebook) (6.1.7)
-Requirement already satisfied: pyzmq&gt;=17 in /usr/local/lib/python3.9/site-packages (from notebook) (19.0.2)
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/site-packages (from notebook) (2.11.2)
-Requirement already satisfied: nbconvert in /usr/local/lib/python3.9/site-packages (from notebook) (6.0.7)
-Requirement already satisfied: ipykernel in /usr/local/lib/python3.9/site-packages (from notebook) (5.3.4)
-Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/lib/python3.9/site-packages (from notebook) (0.9.1)
-Requirement already satisfied: Send2Trash in /usr/local/lib/python3.9/site-packages (from notebook) (1.5.0)
-Requirement already satisfied: argon2-cffi in /usr/local/lib/python3.9/site-packages (from notebook) (20.1.0)
-Requirement already satisfied: tornado&gt;=5.0 in /usr/local/lib/python3.9/site-packages (from notebook) (6.1)
-Requirement already satisfied: traitlets&gt;=4.2.1 in /usr/local/lib/python3.9/site-packages (from notebook) (5.0.5)
-Requirement already satisfied: jupyter-core&gt;=4.6.1 in /usr/local/lib/python3.9/site-packages (from notebook) (4.6.3)
-Requirement already satisfied: nbformat in /usr/local/lib/python3.9/site-packages (from notebook) (5.0.8)
-Requirement already satisfied: ipython-genutils in /usr/local/lib/python3.9/site-packages (from notebook) (0.2.0)
-Requirement already satisfied: prometheus-client in /usr/local/lib/python3.9/site-packages (from notebook) (0.8.0)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.9/site-packages (from jupyter-client&gt;=5.3.4-&gt;notebook) (2.8.1)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.9/site-packages (from python-dateutil&gt;=2.1-&gt;jupyter-client&gt;=5.3.4-&gt;notebook) (1.15.0)
-Requirement already satisfied: ptyprocess in /usr/local/lib/python3.9/site-packages (from terminado&gt;=0.8.3-&gt;notebook) (0.6.0)
-Requirement already satisfied: IPython in /usr/local/lib/python3.9/site-packages (from zsh_jupyter_kernel) (7.19.0)
-Requirement already satisfied: pexpect in /usr/local/lib/python3.9/site-packages (from zsh_jupyter_kernel) (4.8.0)
-Requirement already satisfied: cffi&gt;=1.0.0 in /usr/local/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook) (1.14.3)
-Requirement already satisfied: pycparser in /usr/local/lib/python3.9/site-packages (from cffi&gt;=1.0.0-&gt;argon2-cffi-&gt;notebook) (2.20)
-Requirement already satisfied: appnope in /usr/local/lib/python3.9/site-packages (from ipykernel-&gt;notebook) (0.1.0)
-Requirement already satisfied: jedi&gt;=0.10 in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (0.17.2)
-Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (52.0.0)
-Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (3.0.8)
-Requirement already satisfied: decorator in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (4.4.2)
-Requirement already satisfied: pickleshare in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (0.7.5)
-Requirement already satisfied: backcall in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (0.2.0)
-Requirement already satisfied: pygments in /usr/local/lib/python3.9/site-packages (from IPython-&gt;zsh_jupyter_kernel) (2.7.2)
-Requirement already satisfied: parso&lt;0.8.0,&gt;=0.7.0 in /usr/local/lib/python3.9/site-packages (from jedi&gt;=0.10-&gt;IPython-&gt;zsh_jupyter_kernel) (0.7.1)
-Requirement already satisfied: wcwidth in /usr/local/lib/python3.9/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;IPython-&gt;zsh_jupyter_kernel) (0.2.5)
-Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.9/site-packages (from jinja2-&gt;notebook) (1.1.1)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (1.4.3)
-Requirement already satisfied: bleach in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (3.2.1)
-Requirement already satisfied: defusedxml in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.6.0)
-Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.5.1)
-Requirement already satisfied: jupyterlab-pygments in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.1.2)
-Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.3)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.8.4)
-Requirement already satisfied: testpath in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook) (0.4.4)
-Requirement already satisfied: async-generator in /usr/local/lib/python3.9/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert-&gt;notebook) (1.10)
-Requirement already satisfied: nest-asyncio in /usr/local/lib/python3.9/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert-&gt;notebook) (1.4.2)
-Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /usr/local/lib/python3.9/site-packages (from nbformat-&gt;notebook) (3.2.0)
-Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.9/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook) (20.2.0)
-Requirement already satisfied: pyrsistent&gt;=0.14.0 in /usr/local/lib/python3.9/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook) (0.17.3)
-Requirement already satisfied: webencodings in /usr/local/lib/python3.9/site-packages (from bleach-&gt;nbconvert-&gt;notebook) (0.5.1)
-Requirement already satisfied: packaging in /usr/local/lib/python3.9/site-packages (from bleach-&gt;nbconvert-&gt;notebook) (20.4)
-Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.9/site-packages (from packaging-&gt;bleach-&gt;nbconvert-&gt;notebook) (2.4.7)
-Installing collected packages: zsh-jupyter-kernel
-Successfully installed zsh-jupyter-kernel-3.2
-</pre>
 </div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>python3 -m zsh_jupyter_kernel.install --sys-prefix
+</pre></div>
 
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -545,7 +676,7 @@ Successfully installed zsh-jupyter-kernel-3.2
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-python3 -m zsh_jupyter_kernel.install --sys-prefix
+python3 -m zsh_jupyter_kernel.install
 </pre></div>
 
     </div>
@@ -556,7 +687,7 @@ python3 -m zsh_jupyter_kernel.install --sys-prefix
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-to-uninstall-Zsh-Jupyter-Kernel?">How to uninstall Zsh Jupyter Kernel?<a class="anchor-link" href="#How-to-uninstall-Zsh-Jupyter-Kernel?">&#182;</a></h4>
+<h3 id="How-to-uninstall-Zsh-Jupyter-Kernel?">How to uninstall Zsh Jupyter Kernel?<a class="anchor-link" href="#How-to-uninstall-Zsh-Jupyter-Kernel?">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -570,6 +701,24 @@ python3 -m zsh_jupyter_kernel.install --sys-prefix
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/__init__.py
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -605,7 +754,7 @@ cat /usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/install.py
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Try-to-uninstall-Zsh-Jupyter-Kernel">Try to uninstall Zsh Jupyter Kernel<a class="anchor-link" href="#Try-to-uninstall-Zsh-Jupyter-Kernel">&#182;</a></h4>
+<h3 id="Try-to-uninstall-Zsh-Jupyter-Kernel">Try to uninstall Zsh Jupyter Kernel<a class="anchor-link" href="#Try-to-uninstall-Zsh-Jupyter-Kernel">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -644,6 +793,43 @@ jupyter kernelspec list
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
 jupyter kernelspec uninstall zsh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Python-3.7">A Jupyter Kernel for Python 3.7<a class="anchor-link" href="#A-Jupyter-Kernel-for-Python-3.7">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> virtualenv -p <span class="k">$(</span>which python3.7<span class="k">)</span> py37
+<span class="nb">source</span> ~/py37/bin/activate
+ipython kernel install --user --name py37 --display-name <span class="s1">&#39;Python 3.7&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter kernelspec uninstall py37
 </pre></div>
 
     </div>
@@ -733,6 +919,9 @@ jupyter kernelspec uninstall zsh
 </blockquote>
 <blockquote>
 <p>实际上，技术派通常还使用许多其他方法和策略，而且他们常常只占市场参与者的有限一部分。只要情况确实如此，互不相识的技术派兄弟依然可以猜测彼此的想法，共同控制市场，形成各种美妙的模式和图形。每一次图形都将继续演化，等到所有的人都看出时，图形自我化解。与此同时，新的技术派兄弟又将探寻新的图形变化……</p>
+</blockquote>
+<blockquote>
+<p>对米勒（Miller）来说，肯·博尔丁（Ken Boulding）培育了他最初的关于复杂系统的学术基因［＊］——他认为生物学与社会系统之间极其相似，需要对这些相似性进行科学调研。<br>［＊］：原文为 meme，一种流行的、以衍生方式复制传播的互联网文化基因，米姆（meme）最初诞生时具有匿名作者、较低娱乐性的特征，在诸如语言、观念、信仰、行为方式等的传递过程中与基因在生物进化过程中所起的作用它相类似。——译者注<br>－－《复杂适应系统——社会生活计算模型导论》</p>
 </blockquote>
 
 	
@@ -831,6 +1020,8 @@ jupyter kernelspec uninstall zsh
 <li>MEG (magnetoencephalogram, 脳磁図)</li>
 <li>NIRS (near infrared spectroscopy, 近赤外線スペクトロスコピー)</li>
 <li>TMS (transcranial magnetic simulation, <a href="https://ja.wikipedia.org/wiki/経頭蓋磁気刺激法" target="_blank" rel="noopener">経頭蓋磁気刺激法</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Chemogenetics" target="_blank" rel="noopener">Chemogenetics</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Calcium_imaging" target="_blank" rel="noopener">Calcium imaging</a></li>
 </ul>
 </li>
 <li><p>神経生理学的方法<br>最も「ミクロレベル」での研究は神経生理学的方法によって行われる。<br>認知神経科学における動物実験の方法は、刺激法、破壊法、記録法、分子生物学的方法、の四つに大別できる。<br>分子生物学的方法は、タンパク質の設計図である遺伝子を実験的に操作し、ある特定のタンパク質を生まれつき持たない動物や、逆に過剰に持つ動物を作製して、通常の動物と行動上何が異なるかを調べる方法である。ある特定の脳部位においてのみ<a href="https://ja.wikipedia.org/wiki/遺伝子発現" target="_blank" rel="noopener">遺伝子発現</a>を異なったものにする技術や、遺伝子発現のタイミングを実験者が制御できる形で遺伝子改変する技術もある。</p>
@@ -981,211 +1172,6 @@ jupyter kernelspec uninstall zsh
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-09-29 </div>
-			<div class="article-title"><a href="/2021/09/29/就算累也必須堅持學日語-尼采/" >堅持學外語 [尼采]</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <blockquote>
-<p>　ニヒリズムという用語は日本語では虚無主義と訳されていることが多い。ニヒルはラテン語で無という意味であり、絶対価値や真理などないという立場がニヒリズムだ。現代は価値の相対化によって絶対価値がないという状態だから、ニヒリズムの時代とも言える。<br>　しかし実際には、現代人の絶対価値は金銭と利潤である。人間はどこかに絶対価値を見出していないと不安で耐えられないのだ。<br>　十九世紀までの西欧での絶対価値と真理はキリスト教道徳だった。しかしニーチェは、キリスト教道徳はありもしない価値を信じ込ませる宗教だと解釈したのだ。その道徳は本物ではない、生きている人間のためではないと考えた。<br>　では、近代の金銭や利潤は現代の新しい絶対価値だろうか。ニーチェは、これを神の代替物としての価値だとした。つまり、ニヒリズムから逃げるための新しいニヒリズムだと批判したのである。</p>
-</blockquote>
-<p>ーー「超訳ニーチェの言葉」</p>
-<hr>
-<blockquote>
-<p>在网络上，<strong>内卷</strong>这一词却出现了语义偏移，用来指代内部恶性竞争、过度竞争，或逐底竞争、向下沉沦的现象（Race to the bottom）。<br>ーー<a href="https://zh.wikipedia.org/wiki/内卷化" target="_blank" rel="noopener">内卷化</a></p>
-</blockquote>
-<blockquote>
-<p>The two states in the means-ends domain are called “Serious” (originally coined <strong>Telic</strong> from the Greek telos) and “Playful” (or <strong>Paratelic</strong>) and refer to whether one is motivated by achievement or the enjoyment of the process. Though the states are often characterized by seriousness and playfulness, the truest difference in this domain is whether one is motivated by <strong>long-term</strong> goals or by what is happening in the <strong>present</strong> moment.<br>ーー<a href="https://en.wikipedia.org/wiki/Reversal_theory" target="_blank" rel="noopener">Reversal theory</a></p>
-</blockquote>
-<blockquote>
-<p><strong>Intrinsic motivation</strong> exists within the individual and is driven by satisfying internal rewards rather than relying on external pressures or extrinsic rewards. It involves an interest in or enjoyment of the activity itself.<br>ーー<a href="https://en.wikipedia.org/wiki/Motivation" target="_blank" rel="noopener">Motivation</a></p>
-</blockquote>
-<blockquote>
-<p><strong>Extrinsic motivation</strong> occurs when an individual is driven by external influences. These can be either rewarding (money, good grades, fame, etc.) or punishing (threat of punishment, pain, etc.).<br>ーー<a href="https://en.wikipedia.org/wiki/Motivation" target="_blank" rel="noopener">Motivation</a></p>
-</blockquote>
-<p><strong>手段</strong>与<strong>目的</strong>的相互转化</p>
-<ol>
-<li><p>追求<strong>终极真实</strong>之人把作为外在动机的金钱和地位从手段“内在”化为目的。<br>以对于<strong>终极真实</strong>的追求为手段，“内在”化金钱为目的。以对于金钱的追求为手段，“内在”化交易为目的。<br>以对于<strong>终极真实</strong>的追求为手段，“内在”化地位为目的。以对于地位的追求为手段，“内在”化交谈为目的。</p>
-</li>
-<li><p>作为外在动机的金钱和地位被“内在”化之后的人的追求转回——作为内在动机的金钱和地位从目的“外在”化为手段。<br>“当代世俗之人”的眼里只有金钱和地位，对于<strong>终极真实</strong>既“无知”又“绝望”。可是，人最终所应该去追求的是<strong>终极真实</strong>。追求<strong>终极真实</strong>之人把金钱和地位仅仅作为手段，而不作为目的。只有<strong>终极真实</strong>才是目的。让我们的追求从金钱和地位转回<strong>终极真实</strong>。让我们来交易。让我们来交谈。让我们以金钱和地位为手段来追求<strong>终极真实</strong>。<br>我们在交易中获得金钱。我们在交谈中获得地位。我们的目的是<strong>终极真实</strong>。</p>
-</li>
-</ol>
-<hr>
-<blockquote>
-<p>— Let us look each other in the face. We are Hyperboreans — we know well enough how remote our place is. “Neither by land nor by water will you find the road to the Hyperboreans”: even Pindar, in his day, knew that much about us. Beyond the North, beyond the ice, beyond death — our life, our happiness…</p>
-</blockquote>
-<p>ーー「The Antichrist」, 1</p>
-<hr>
-<blockquote>
-<p>互いに顔を見つめ会おう。我々は極北の民であるーーどんなに世間離れの暮しをしている方、自分で良く弁えている。「陸路によるも海路によるも、汝は、極北の民への道を見出さざらん」、こう歌ったピンダロスは、既に我々のことを知っていたのだ。北の彼方に、氷の、死の彼方にーー我々の生命、我々の幸福がある……</p>
-</blockquote>
-<p>ーー「アンチクリスト」、一</p>
-<hr>
-<blockquote>
-<p>Hyperborean has also been used in a metaphorical sense, to describe a sense of distance from the ordinary. In this way, Friedrich Nietzsche referred to his sympathetic readers as Hyperboreans in The Antichrist (written 1888, published 1895): “Let us look each other in the face. We are Hyperboreans – we know well enough how remote our place is.” He quoted Pindar and added “Beyond the North, beyond the ice, beyond death – our life, our happiness.”</p>
-</blockquote>
-<p>ーー「Hyperborea - Wikipedia」</p>
-<hr>
-<blockquote>
-<p>To be the doctors here, to be unmerciful here, to wield the knife here — all this is our business, all this is our sort of humanity, by this sign we are philosophers, we Hyperboreans! —</p>
-</blockquote>
-<p>ーー「The Antichrist」, 7</p>
-<hr>
-<blockquote>
-<p>ここで医者であること、ここで仮借なくやること、ここでメスを揮うことーーこれこそが我々の仕事であり、我々の流儀の人間愛である。これによってこそ、我々は哲学者となるのだ、我々極北の民は！ーーー</p>
-</blockquote>
-<p>ーー「アンチクリスト」、七</p>
-<hr>
-<blockquote>
-<p>这里就有医生，这里将是毫不留情，这里将举起手术刀——这都属于我们，这就是我们的爱人方式，正因为如此，我们，我们许佩伯雷人，才成为哲学家！——</p>
-</blockquote>
-<p>ーー《敌基督者》，7</p>
-<hr>
-<blockquote>
-<p>于是拉斯科利尼科夫作了一个可怕的梦。梦中那匹被残酷打死的驽马，就是一切被压迫、被践踏的人的象征，在那匹可怜的马身上，仿佛集中了所有被侮辱、被损害的人们的苦难。<br>卡捷琳娜·伊万诺芙娜临终时绝望地呼喊：“驽马已经给赶得精疲力尽！……再也没有力气了！”这几句含着血和泪的话与拉斯科利尼科夫梦中那匹马的形象遥相呼应。对于穷人来说，他们的一生就是这样的一场噩梦。</p>
-</blockquote>
-<p>ーー《罪与罚》译序</p>
-<hr>
-<blockquote>
-<p>你们能体验到的最伟大的事是什么呢？那便是大轻蔑之时刻。那时候，你们的幸福，使你们觉得讨厌，你们的理智与道德也是一样。</p>
-</blockquote>
-<p>ーー《查拉斯图拉如是说》，三</p>
-<hr>
-<blockquote>
-<p>你们所能体验到的最伟大的事是什么？那便是<strong>无所畏惧</strong>之时刻。那便是<strong>豪情万丈</strong>之时刻。那时候，你们的幸福，被你们所漠视，你们的理智与道德也是一样。</p>
-</blockquote>
-<p>轻蔑也是人的一种必要情感。尼采推翻了三千多年来以骄傲为原罪的奴隶价值观。我现在越来越觉得他的想法很可能是更正确的、更合适的。就不说从心理学角度进行实证。先从自己的生活体验出发进行私密性地确认吧。<br>另一方面，也应该注意到，尼采狂躁了、精神分裂了。</p>
-<hr>
-<blockquote>
-<p>And out of the ground Jehovah God caused to grow every tree that is pleasant to the sight and good for food, as well as the tree of life in the middle of the garden and the tree of the knowledge of good and evil.<br> (Genesis 2:9 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>But of the tree of the knowledge of good and evil, of it you shall not eat; for in the day that you eat of it you shall surely die.<br> (Genesis 2:17 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>And death and Hades were cast into the lake of fire. This is the second death, the lake of fire.<br> (Revelation 20:14 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>“What is the greatest thing you can experience? It is the hour of your greatest contempt. The hour in which even your happiness becomes loathsome to you, and so also your reason and virtue.<br>“The hour when you say: ‘What good is my happiness? It is poverty and filth and miserable self-complacency. But my happiness should justify existence itself!’<br>“The hour when you say: ‘What good is my reason? Does it long for knowledge as the lion for his prey? It is poverty and filth and miserable self-complacency!’<br>“The hour when you say: ‘What good is my virtue? It has not yet driven me mad! How weary I am of my good and my evil! It is all poverty and filth and miserable self-complacency!’<br>“The hour when you say: ‘What good is my justice? I do not see that I am filled with fire and burning coals. But the just are filled with fire and burning coals!’<br>“The hour when you say: ‘What good is my pity? Is not pity the cross on which he is nailed who loves man? But my pity is no crucifixion!’<br>“Have you ever spoken like this? Have you ever cried like this? Ah! If only I had heard you cry this way!<br>“It is not your sin - it is your moderation that cries to heaven; your very sparingness in sin cries to heaven!<br>“Where is the lightning to lick you with its tongue? Where is the madness with which you should be cleansed?<br>“Behold, I bring you the Superman! He is that lightning, he is that madness!<br>ーー「Thus Spoke Zarathustra」, 3</p>
-</blockquote>
-<blockquote>
-<p>　　你们能体验到的最伟大的事是什么呢？那便是大轻蔑之时刻。那时候，你们的幸福，使你们觉得讨厌，你们的理智与道德也是一样。<br>　　那时候，你们说：‘我的幸福值什么！它是贫乏、污秽与可怜的自满。可是我的幸福正应当使生存有意义的！’<br>　　那时候，你们说：‘我的理智值什么！它是否渴求知识像狮子贪爱捕获物一样呢？它是贫乏、污秽与可怜的自满！’<br>　　那时候，你们说：‘我的道德值什么！它还不曾使我狂热过。我是怎样地疲倦于我的善与恶呵！这一切都是贫乏、污秽与可怜的自满！’<br>　　那时候，你们说：‘我的正义值什么！我不觉得我是火焰与炭。但是正直者应当是火焰与炭的！’<br>　　那时候，你们说：‘我的怜悯值什么！怜悯不是那钉死爱人类者的十字架吗？但是我的怜悯不是一个十字架刑。’<br>　　你们已经这样说过了吗？你们已经这样喊过了吗？唉！我何以不曾听到你们这样喊叫呢！<br>　　这不是你们的罪恶，而是你们的节制，向天呼喊；你们对于罪恶的厌恶向天呼喊！<br>　　那将用舌头舔你们的闪电何在？那应当给你们注射的疯狂又何在？<br>　　现在我教你们什么是超人：他便是这闪电，这疯狂！”——<br>ーー《查拉斯图拉如是说》，三</p>
-</blockquote>
-<blockquote>
-<p>你们有可能经历的最伟大的事情是什么呢？是伟大的轻蔑时刻。在这一时刻，你们的幸福令你们厌恶，你们的理智和道德也是一样。<br>在这一时刻，你们说：“我的幸福算得了什么！它是贫乏、龌龊、一种可怜巴巴的舒适。我的幸福应为生存（Dasein）本身辩护！”<br>在这一时刻，你们说：“我的理智算得了什么！理智对知识的渴求仿佛狮子渴求食物吗？它是贫乏、龌龊、一种可怜巴巴的舒适!”<br>在这一时刻，你们说：“我的美德算得了什么！它还没有让我激怒。我多么厌倦自己的善与恶啊！这一切全是贫乏、龌龊、一种可怜巴巴的舒适！”<br>在这一时刻，你们说：“我的正义算得了什么！我不认为我是火焰和燃料。正直之人才是火焰和燃料!”<br>在这一时刻，你们说：“我的同情算得了什么！同情难道不就是那个十字架，那个爱人者被钉在上面的十字架吗？我的同情不是被钉上十字架。”<br>你们如此言说了吗？你们如此呼喊了吗？唉，但愿我听见你们已这样呼喊！<br>不是你们的罪过——而是你们的满足感向天呼喊，是你们罪过中的贪婪向天呼喊!<br>闪电，用火舌舔食你们的闪电在何方？必须给你们注射的疯狂在何方?<br>看呀，我给你们教授超人：超人就是这闪电，就是这疯狂！——<br>ーー《扎拉图斯特拉如是说》，三</p>
-</blockquote>
-<p>这段文字真诚得光芒万丈。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/09/29/就算累也必須堅持學日語-尼采/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-09-29 </div>
-			<div class="article-title"><a href="/2021/09/29/就算累也必須堅持學日語-圣经/" >堅持學外語 [圣经]</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>把祷告作为诗歌是令人愉快的。把比喻作为寻找自我之旅的“锤子”和“拐杖”就有点朴素了吧。我们需要的不是“锤子”或是什么“不是人手凿出的石头”，而是“铁拳”。我们需要的不是“拐杖”，而是“矫健的双腿”。</p>
-<hr>
-<blockquote>
-<p>因为凡想要救自己性命的，必失掉真性命；凡为我失掉自己性命的，必得着真性命。<br> (马太福音 16:25 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>因为凡要救自己魂生命的，必丧失魂生命；凡为我丧失自己魂生命的，必得着魂生命。<br> (马太福音 16:25 恢复本)</p>
-</blockquote>
-<blockquote>
-<p>自分の魂の命を救おうとする者はそれを失い、<strong>わたし</strong>のために自分の魂の命を失う者はそれを見いだす。<br> (マタイによる福音書 16:25 回復訳)</p>
-</blockquote>
-<blockquote>
-<p>For whoever wants to save his soul-life shall lose it; but whoever loses his soul-life for My sake shall find it.<br> (Matthew 16:25 Recovery Version)</p>
-</blockquote>
-<p>世俗是从人那里骗取抢夺时光的魔鬼。已经被骗取抢夺的时光无法追回。<br>凡想要守住自己时光的，必耗费更多时光；凡为终极真实耗费自己时光的，必守住时光。</p>
-<hr>
-<blockquote>
-<p>And Jehovah God caused a deep sleep to fall upon the man, and he slept; and He took one of his ribs and closed up the flesh in its place.<br> (Genesis 2:21 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>But one of the soldiers pierced His side with a spear, and immediately there came out blood and water.<br> (John 19:34 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>For these things happened that the Scripture might be fulfilled: “No bone of His shall be broken.”<br> (John 19:36 Recovery Version)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>风随意地吹，你听见它的响声，却不知道它从哪里来，往哪里去；凡由灵生的、就是这样。<br> (约翰福音 3:8 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>風は思いのままに吹く．あなたはその音を聞くが、それがどこから来て、どこへ行くかを知らない．その霊から生まれる者もみなそうである。<br> (ヨハネによる福音書 3:8 回復訳)</p>
-</blockquote>
-<blockquote>
-<p>The wind blows where it wishes, and you hear the sound of it, but you do not know where it is coming from and where it is going; so is everyone who has been born of the Spirit.<br> (John 3:8 NASB)</p>
-</blockquote>
-<blockquote>
-<p>“The wind blows where it wills, and you hear the sound of it, but you do not know where it comes from and where it goes; so is everyone who is born of the Spirit.”<br> (John 3:8 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>时波斯匿王，起立白佛：我昔未承诸佛诲敕，见迦旃延、毗罗胝子，咸言：此身死后断灭，名为涅槃。我虽值佛，今犹狐疑。云何发挥，证知此心不生灭地？今此大众，诸有漏者，咸皆愿闻。</p>
-<p>佛告大王：汝身现在，今复问汝：汝此肉身，为同金刚，常住不朽？为复变坏？世尊！我今此身，终从变灭。佛言：大王！汝未曾灭，云何知灭？世尊！我此无常变坏之身，虽未曾灭。我观现前，念念迁谢，新新不住，如火成灰，渐渐销殒，殒亡不息。决知此身，当从灭尽。佛言：如是！大王！汝今生龄，已从衰老，颜貌何如童子之时？世尊！我昔孩孺，肤腠润泽；年至长成，血气充满。而今颓龄，迫于衰耄，形色枯悴，精神昏昧，发白面皱，逮将不久，如何见比充盛之时？佛言：大王！汝之形容，应不顿朽？王言：世尊！变化密移，我诚不觉，寒暑迁流，渐至于此。何以故？我年二十，虽号年少，颜貌已老初十岁时；三十之年，又衰二十。于今六十，又过于二，观五十时，宛然强壮。世尊！我见密移，虽此殂落，其间流易，且限十年。若复令我微细思惟，其变宁唯一纪二纪？实唯年变；岂唯年变？亦兼月化；何直月化？兼又日迁。沉思谛观，刹那刹那，念念之间，不得停住。故知我身，终从变灭。</p>
-<p>佛告大王：汝见变化，迁改不停，悟知汝灭；亦于灭时，汝知身中有不灭耶？波斯匿王合掌白佛：我实不知。佛言：我今示汝不生灭性。大王！汝年几时，见恒河水？王言：我生三岁，慈母携我谒耆婆天，经过此流，尔时即知，是恒河水。佛言：大王！如汝所说，二十之时，衰于十岁；乃至六十，日月岁时，念念迁变。则汝三岁，见此河时，至年十三，其水云何？王言：如三岁时，宛然无异；乃至于今，年六十二，亦无有异。佛言：汝今自伤发白面皱，其面必定皱于童年。则汝今时观此恒河，与昔童时观河之见，有童耄否？王言：不也！世尊！佛言：大王！汝面虽皱，<strong>而此见精</strong>，<strong>性未曾皱</strong>。皱者为变，不皱非变。变者受灭；彼不变者，元无生灭。云何于中受汝生死？而犹引彼末伽黎等，都言此身死后全灭。</p>
-<p>王闻是言，信知身后，舍生趣生；与诸大众，踊跃欢喜，得未曾有。<br>－－<a href="www.drbachinese.org/online_reading_simplified/sutra_explanation/Shu/ShuSutra.htm">《楞严经》</a></p>
-</blockquote>
-<blockquote>
-<p>我们已经多次指出，有大量非常确定的经验表明“物理的”这个概念也可以用来标示直接经验到的实在，因而可用来表示心理的实在。在前面几节，我们已经证明，对心理的东西获得<strong>完全的</strong>知识的唯一可能性，就在于用自然科学的量的概念来标示心理的质及其相互联系。许多经验的材料清楚地指出，这种运用必须以何种方式发生：必须使某些“大脑过程”的概念复合与意识世界相配列。我们知道，只有在我们的大脑的某些部分保持不受损害，我们的意识过程才会正常进行而不受干扰。枕骨叶片如受到损害，就会丧失看的能力，太阳穴叶片如受到损害，就会丧失说话的能力，如此等等。这些发现，就目前的情况来看，只是证明在物理的对象“大脑”同被经验到的实在“意识内容”之间存在着一种内在联系。如果我们现在想要把这种关系仅仅看作相互依存关系因而作为一种因果的关系（如二元论的身心交互作用论那样），那么意识或自我就会成为不同于“大脑过程”的一种特殊的对象，而且是一种原则上不可能用物理的概念标示的对象。因为按照这种假定，大脑过程的概念就会被看作标示别的某种东西的概念。由于确实没有包含头脑以外的过程的概念，所以任何物理的概念都不可能与意识内容相配列。而且，我们甚至因此而不可能对大脑过程作物理学的解释，就是说，不可能依据物理的原因来解释它们。因为它们的原因有一部分必须在心理过程中去寻找，而这些心理过程是不可能用物理的概念来标示的；物理的因果关系就会有缺口，这就会对自然法则的概念和对自然法则的表述造成颠覆性的影响。<br>ーー《普通认识论》（Ｍ．石里克），32</p>
-</blockquote>
-<blockquote>
-<p>在试图给心理的东西设定方位时，如果我们同自然科学一样，专注于使一切感觉得以产生的空间条件，那么我们便立刻滑到一个错误的出发点上。于是，我们便看到，在知觉的物质对象和感觉器官之间以及在感觉器官和大脑皮层之间建立起物理过程的联系。由弹琴弦引起的机械性振动进入我的耳朵，刺激就从这里沿着神经末梢传到大脑的听觉中心。结果就是我们把对大脑的刺激看作是“感觉”经验的直接条件，而这种看法反过来又误导我们把这种经验定位于大脑从而定位于人体内部的空间性。如果我们––或许不是明确地––把感觉的质本身定位于大脑皮层，那么我们虽然对具体细节不很清楚，但通常总是进而假设心理的东西就住在我的同伴的头脑的某个地方，认为意识就<strong>在</strong>这个身体<strong>之内</strong>。<br>ーー《普通认识论》（Ｍ．石里克），33</p>
-</blockquote>
-<p>Ｍ．石里克对“心身问题”的解答是一种“平行认识论”，而不是一种“平行实在论”。</p>
-<hr>
-<blockquote>
-<p>量的概念系统给我们提供了一个认识世界的独特的、唯一的方法，因为这种方法不是在<strong>直接体验</strong>中给予我们的。没有任何理由认为，这种概念系统一定无法适用于通过体验所知的所与的质的世界。相反，我们相信，把这种系统加以普遍应用是可能的，因为还没有任何严格的证明表明我们的这种信念是错误的。在科学中，匆忙地放弃这样的信念决不表明是一种明智之举。没有什么东西比宣称<strong>无知</strong>更容易损害科学的探究了，所以我们必须防止过早地宣布一种无知的信念。<br>ーー《普通认识论》（Ｍ．石里克），35</p>
-</blockquote>
-<blockquote>
-<p>克里特人中间有一个人、就是他们自己的神言传讲师、曾经说过：『<a href="https://zh.wikipedia.org/wiki/說謊者悖論" target="_blank" rel="noopener">革哩底人永远是撒谎者</a>，是恶兽，是懒惰的大腹者』：这个见证是真的。<br> (提多书 1:12-13 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>一个诚实的研究者只能在有十分确定的显著迹象的地方，特别是具有被我们当做<strong>生命</strong>标记的地方才能推断意识的存在。<br>ーー《普通认识论》（Ｍ．石里克），35</p>
-</blockquote>
-<p>学术界比较流行把“能够自我复制”当做<strong>生命</strong>的标记。</p>
-<hr>
-<p>石里克驱逐一切“形而上学”的同时也就失去了提出并检验那些充满想象力大胆疯狂的假设的勇气。其结果就是和维特根斯坦一起走向衰老。失去工程师的那一面的同时，维特根斯坦就失去了哥德尔和图灵的那种创造力。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/09/29/就算累也必須堅持學日語-圣经/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -1226,7 +1212,7 @@ jupyter kernelspec uninstall zsh
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>22</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
 		
@@ -1242,6 +1228,14 @@ jupyter kernelspec uninstall zsh
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2021/11/12/Research-Emotet/" ><i class="fa fa-file-o"></i>Research Emotet</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/07/Install-Almond/" ><i class="fa fa-file-o"></i>Install Almond</a>
+      </li>
+    
+      <li>
         <a href="/2021/10/28/Add-Tweets-to-My-Blog/" ><i class="fa fa-file-o"></i>Add Tweets to My Blog</a>
       </li>
     
@@ -1251,14 +1245,6 @@ jupyter kernelspec uninstall zsh
     
       <li>
         <a href="/2021/10/26/金融心理学/" ><i class="fa fa-file-o"></i>金融心理学</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/19/Try-Juno-Connect/" ><i class="fa fa-file-o"></i>Try Juno Connect</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/16/認知神経科学/" ><i class="fa fa-file-o"></i>認知神経科学</a>
       </li>
     
   </ul>

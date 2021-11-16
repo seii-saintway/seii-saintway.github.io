@@ -1,0 +1,887 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Learn BigQuery | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="https://ipython.readthedocs.io/en/stable/interactive/magics.html
+
+
+
+
+
+
+In&amp;nbsp;[&amp;nbsp;]:
+
+    
+%load_ext google.cloud.bigquery
+
+
+    
+
+
+
+
+
+
+In&amp;nbsp;[&amp;">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Learn BigQuery">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Learn BigQuery</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html" target="_blank" rel="noopener">https://ipython.readthedocs.io/en/stable/interactive/magics.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> google.cloud.bigquery
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span> df_example
+SELECT * FROM (
+  SELECT
+    [414016,
+    5767168,
+    89019964] AS phone_numbers
+  UNION ALL
+  SELECT
+    [8708227,
+    37637318] AS phone_numbers
+  UNION ALL
+  SELECT
+    [9349460,
+    84826376,
+    9215080,
+    26331650] AS phone_numbers)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_example</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;phone_numbers&#39;: {0: [414016, 5767168, 89019964],
+  1: [8708227, 37637318],
+  2: [9349460, 84826376, 9215080, 26331650]}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">phone_number_strings_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">phone_numbers</span> <span class="ow">in</span> <span class="n">df_example</span><span class="p">[</span><span class="s1">&#39;phone_numbers&#39;</span><span class="p">]:</span>
+  <span class="n">phone_number_strings</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">phone_number</span> <span class="ow">in</span> <span class="n">phone_numbers</span><span class="p">:</span>
+    <span class="n">phone_number_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phone_number</span><span class="si">:</span><span class="s1">08d</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">phone_number_strings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;(+81) </span><span class="si">{</span><span class="n">phone_number_string</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">phone_number_string</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="n">phone_number_strings_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phone_number_strings</span><span class="p">)</span>
+<span class="n">df_example</span><span class="p">[</span><span class="s1">&#39;phone_number_strings&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phone_number_strings_list</span>
+<span class="k">del</span> <span class="n">df_example</span><span class="p">[</span><span class="s1">&#39;phone_numbers&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_example</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;phone_number_strings&#39;: {0: [&#39;(+81) 0041-4016&#39;,
+   &#39;(+81) 0576-7168&#39;,
+   &#39;(+81) 8901-9964&#39;],
+  1: [&#39;(+81) 0870-8227&#39;, &#39;(+81) 3763-7318&#39;],
+  2: [&#39;(+81) 0934-9460&#39;,
+   &#39;(+81) 8482-6376&#39;,
+   &#39;(+81) 0921-5080&#39;,
+   &#39;(+81) 2633-1650&#39;]}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -HE pip install pandas_gbq
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting pandas_gbq
+  Downloading https://files.pythonhosted.org/packages/c0/cb/d82930a55728359eb40e42e487d83315b09cb2ba316f0e889f5d4b886614/pandas_gbq-0.14.1-py3-none-any.whl
+Requirement already satisfied: google-auth in /opt/tljh/user/lib/python3.6/site-packages (from pandas_gbq) (1.6.3)
+Requirement already satisfied: pandas&gt;=0.20.1 in /opt/tljh/user/lib/python3.6/site-packages (from pandas_gbq) (0.25.1)
+Collecting google-auth-oauthlib (from pandas_gbq)
+  Downloading https://files.pythonhosted.org/packages/b1/0e/0636cc1448a7abc444fb1b3a63655e294e0d2d49092dc3de05241be6d43c/google_auth_oauthlib-0.4.6-py2.py3-none-any.whl
+Collecting pydata-google-auth (from pandas_gbq)
+  Downloading https://files.pythonhosted.org/packages/d8/61/e4e0bae8906f3d2f460bc46c1ccd4a94caf7eaf65aa92421c48d7c56ef70/pydata_google_auth-1.2.0-py2.py3-none-any.whl
+Requirement already satisfied: google-cloud-bigquery[bqstorage,pandas]&lt;3.0.0dev,&gt;=1.11.1 in /opt/tljh/user/lib/python3.6/site-packages (from pandas_gbq) (1.21.0)
+Requirement already satisfied: setuptools in /opt/tljh/user/lib/python3.6/site-packages (from pandas_gbq) (41.4.0)
+Requirement already satisfied: rsa&gt;=3.1.4 in /opt/tljh/user/lib/python3.6/site-packages (from google-auth-&gt;pandas_gbq) (4.0)
+Requirement already satisfied: cachetools&gt;=2.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from google-auth-&gt;pandas_gbq) (3.1.1)
+Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /opt/tljh/user/lib/python3.6/site-packages (from google-auth-&gt;pandas_gbq) (0.2.6)
+Requirement already satisfied: six&gt;=1.9.0 in /opt/tljh/user/lib/python3.6/site-packages (from google-auth-&gt;pandas_gbq) (1.12.0)
+Requirement already satisfied: python-dateutil&gt;=2.6.1 in /opt/tljh/user/lib/python3.6/site-packages (from pandas&gt;=0.20.1-&gt;pandas_gbq) (2.8.0)
+Requirement already satisfied: pytz&gt;=2017.2 in /opt/tljh/user/lib/python3.6/site-packages (from pandas&gt;=0.20.1-&gt;pandas_gbq) (2019.2)
+Requirement already satisfied: numpy&gt;=1.13.3 in /opt/tljh/user/lib/python3.6/site-packages (from pandas&gt;=0.20.1-&gt;pandas_gbq) (1.17.2)
+Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /opt/tljh/user/lib/python3.6/site-packages (from google-auth-oauthlib-&gt;pandas_gbq) (1.2.0)
+Requirement already satisfied: google-cloud-core&lt;2.0dev,&gt;=1.0.3 in /opt/tljh/user/lib/python3.6/site-packages (from google-cloud-bigquery[bqstorage,pandas]&lt;3.0.0dev,&gt;=1.11.1-&gt;pandas_gbq) (1.0.3)
+Requirement already satisfied: protobuf&gt;=3.6.0 in /opt/tljh/user/lib/python3.6/site-packages (from google-cloud-bigquery[bqstorage,pandas]&lt;3.0.0dev,&gt;=1.11.1-&gt;pandas_gbq) (3.13.0)
+Requirement already satisfied: google-resumable-media!=0.4.0,&lt;0.5.0dev,&gt;=0.3.1 in /opt/tljh/user/lib/python3.6/site-packages (from google-cloud-bigquery[bqstorage,pandas]&lt;3.0.0dev,&gt;=1.11.1-&gt;pandas_gbq) (0.4.1)
+Collecting google-cloud-bigquery-storage&lt;2.0.0dev,&gt;=0.6.0; extra == &#34;bqstorage&#34; (from google-cloud-bigquery[bqstorage,pandas]&lt;3.0.0dev,&gt;=1.11.1-&gt;pandas_gbq)
+  Downloading https://files.pythonhosted.org/packages/42/9a/003822d79a535472c089ca39fb384b74b8a3624f4d5a1715c4c52059418d/google_cloud_bigquery_storage-1.1.0-py2.py3-none-any.whl (135kB)
+     |████████████████████████████████| 143kB 37.3MB/s eta 0:00:01
+Collecting pyarrow!=0.14.0,&gt;=0.13.0; extra == &#34;bqstorage&#34; (from google-cloud-bigquery[bqstorage,pandas]&lt;3.0.0dev,&gt;=1.11.1-&gt;pandas_gbq)
+  Downloading https://files.pythonhosted.org/packages/5d/61/4160ed11e0c149182baafc3a5bed1fb04395ba40705556d03c9244fb57d4/pyarrow-6.0.0-cp36-cp36m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (24.3MB)
+     |████████████████████████████████| 24.4MB 43.3MB/s eta 0:00:01
+Requirement already satisfied: pyasn1&gt;=0.1.3 in /opt/tljh/user/lib/python3.6/site-packages (from rsa&gt;=3.1.4-&gt;google-auth-&gt;pandas_gbq) (0.4.7)
+Requirement already satisfied: requests&gt;=2.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib-&gt;pandas_gbq) (2.25.1)
+Requirement already satisfied: oauthlib&gt;=3.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib-&gt;pandas_gbq) (3.1.0)
+Requirement already satisfied: google-api-core&lt;2.0.0dev,&gt;=1.14.0 in /opt/tljh/user/lib/python3.6/site-packages (from google-cloud-core&lt;2.0dev,&gt;=1.0.3-&gt;google-cloud-bigquery[bqstorage,pandas]&lt;3.0.0dev,&gt;=1.11.1-&gt;pandas_gbq) (1.14.2)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /opt/tljh/user/lib/python3.6/site-packages (from requests&gt;=2.0.0-&gt;requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib-&gt;pandas_gbq) (2.8)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /opt/tljh/user/lib/python3.6/site-packages (from requests&gt;=2.0.0-&gt;requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib-&gt;pandas_gbq) (1.24.3)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /opt/tljh/user/lib/python3.6/site-packages (from requests&gt;=2.0.0-&gt;requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib-&gt;pandas_gbq) (3.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/tljh/user/lib/python3.6/site-packages (from requests&gt;=2.0.0-&gt;requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib-&gt;pandas_gbq) (2020.4.5.2)
+Requirement already satisfied: googleapis-common-protos&lt;2.0dev,&gt;=1.6.0 in /opt/tljh/user/lib/python3.6/site-packages (from google-api-core&lt;2.0.0dev,&gt;=1.14.0-&gt;google-cloud-core&lt;2.0dev,&gt;=1.0.3-&gt;google-cloud-bigquery[bqstorage,pandas]&lt;3.0.0dev,&gt;=1.11.1-&gt;pandas_gbq) (1.6.0)
+Installing collected packages: google-auth-oauthlib, pydata-google-auth, pandas-gbq, google-cloud-bigquery-storage, pyarrow
+Successfully installed google-auth-oauthlib-0.4.6 google-cloud-bigquery-storage-1.1.0 pandas-gbq-0.14.1 pyarrow-6.0.0 pydata-google-auth-1.2.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://console.cloud.google.com/bigquery?project=sandbox-sheng" target="_blank" rel="noopener">https://console.cloud.google.com/bigquery?project=sandbox-sheng</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_example</span><span class="o">.</span><span class="n">to_gbq</span><span class="p">(</span><span class="n">project_id</span> <span class="o">=</span> <span class="s1">&#39;sandbox-sheng&#39;</span><span class="p">,</span> <span class="n">destination_table</span> <span class="o">=</span> <span class="s1">&#39;bigquery_learning.customers&#39;</span><span class="p">,</span> <span class="n">if_exists</span> <span class="o">=</span> <span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/jupyter-sheng_wei/.local/lib/python3.6/site-packages/google/auth/_default.py:66: UserWarning: Your application has authenticated using end user credentials from Google Cloud SDK. We recommend that most server applications use service accounts instead. If your application continues to use end user credentials from Cloud SDK, you might receive a &#34;quota exceeded&#34; or &#34;API not enabled&#34; error. For more information about service accounts, see https://cloud.google.com/docs/authentication/
+  warnings.warn(_CLOUD_SDK_CREDENTIALS_WARNING)
+1it [00:04,  4.10s/it]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="IPython-Magics-for-BigQuery">IPython Magics for BigQuery<a class="anchor-link" href="#IPython-Magics-for-BigQuery">&#182;</a></h2><ul>
+<li><a href="https://cloud.google.com/bigquery/docs/visualize-jupyter" target="_blank" rel="noopener">https://cloud.google.com/bigquery/docs/visualize-jupyter</a></li>
+<li><a href="https://googleapis.dev/python/bigquery/latest/magics.html" target="_blank" rel="noopener">https://googleapis.dev/python/bigquery/latest/magics.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="c1"># from 30 days ago to 29 days ago</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="p">(</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=+</span><span class="mi">9</span><span class="p">)))</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="p">(</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=+</span><span class="mi">9</span><span class="p">)))</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">29</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S Asia/Tokyo&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;end_date&#39;</span><span class="p">:</span> <span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S Asia/Tokyo&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;start_date&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;end_date&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2021-10-14 09:21:28 Asia/Tokyo
+2021-10-15 09:21:28 Asia/Tokyo
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="o">%%</span><span class="n">bigquery</span> <span class="n">df</span> <span class="o">--</span><span class="n">param</span> <span class="err">$</span><span class="n">params</span>
+<span class="n">SELECT</span>
+  <span class="o">*</span>
+<span class="n">FROM</span>
+  <span class="err">`</span><span class="n">sandbox</span><span class="o">-</span><span class="n">sheng</span><span class="o">.</span><span class="n">fluentd</span><span class="o">.</span><span class="n">fluentd_test</span><span class="err">`</span>
+<span class="n">WHERE</span>
+  <span class="n">time</span> <span class="o">&gt;=</span> <span class="nd">@start_date</span>
+  <span class="n">AND</span> <span class="n">time</span> <span class="o">&lt;</span> <span class="nd">@end_date</span>
+<span class="n">ORDER</span> <span class="n">BY</span>
+  <span class="n">time</span> <span class="n">ASC</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Read-BigQuery-Reference">Read <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical" target="_blank" rel="noopener">BigQuery Reference</a><a class="anchor-link" href="#Read-BigQuery-Reference">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays" target="_blank" rel="noopener">https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays</a></li>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/string_functions" target="_blank" rel="noopener">https://cloud.google.com/bigquery/docs/reference/standard-sql/string_functions</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+SELECT
+  ARRAY(
+  SELECT
+    CONCAT(&#39;(+81) &#39;, SUBSTR(FORMAT(&#39;%08d&#39;, phone_number), 0, 4), &#39;-&#39;, SUBSTR(FORMAT(&#39;%08d&#39;, phone_number), -4))
+  FROM
+    UNNEST(phone_numbers) AS phone_number )[OFFSET(0)] AS phone_number
+FROM (
+  SELECT
+    [414016,
+    5767168,
+    89019964] AS phone_numbers
+  UNION ALL
+  SELECT
+    [8708227,
+    37637318] AS phone_numbers
+  UNION ALL
+  SELECT
+    [9349460,
+    84826376,
+    9215080,
+    26331650] AS phone_numbers)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>(+81) 0041-4016</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>(+81) 0870-8227</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>(+81) 0934-9460</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#array_agg" target="_blank" rel="noopener">https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#array_agg</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+WITH fruits AS
+  (SELECT &quot;apple&quot; AS fruit
+   UNION ALL SELECT &quot;pear&quot; AS fruit
+   UNION ALL SELECT &quot;banana&quot; AS fruit)
+SELECT ARRAY_AGG(fruit ORDER BY fruit) AS fruit_basket
+FROM fruits
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fruit_basket</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>[apple, banana, pear]</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+SELECT
+  name,
+  ARRAY_AGG( DISTINCT phone_number
+  ORDER BY
+    phone_number ASC )[OFFSET(0)] AS phone_number
+FROM (
+  SELECT
+    &#39;Andrew&#39; AS name,
+    414016 AS phone_number
+  UNION ALL
+  SELECT
+    &#39;Andrew&#39; AS name,
+    5767168 AS phone_number
+  UNION ALL
+  SELECT
+    &#39;Andrew&#39; AS name,
+    89019964 AS phone_number
+  UNION ALL
+  SELECT
+    &#39;Andrew&#39; AS name,
+    8708227 AS phone_number
+  UNION ALL
+  SELECT
+    &#39;Andrew&#39; AS name,
+    37637318 AS phone_number
+  UNION ALL
+  SELECT
+    &#39;Kelly&#39; AS name,
+    9349460 AS phone_number
+  UNION ALL
+  SELECT
+    &#39;Kelly&#39; AS name,
+    84826376 AS phone_number
+  UNION ALL
+  SELECT
+    &#39;Kelly&#39; AS name,
+    9215080 AS phone_number
+  UNION ALL
+  SELECT
+    &#39;Kelly&#39; AS name,
+    26331650 AS phone_number)
+GROUP BY
+  name
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>phone_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Andrew</td>
+      <td>414016</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Kelly</td>
+      <td>9215080</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2019/10/19/Try-Freeze/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2019/10/19/Try-Jupyter-Dashboards/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-10-19 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>
