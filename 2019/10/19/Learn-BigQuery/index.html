@@ -16,17 +16,8 @@
 In&amp;nbsp;[&amp;nbsp;]:
 
     
-%load_ext google.cloud.bigquery
-
-
-    
-
-
-
-
-
-
-In&amp;nbsp;[&amp;">
+%%bash
+pip install --upgrade &amp;#39;google-cloud-bigquery">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -133,6 +124,98 @@ In&amp;nbsp;[&amp;">
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip install --upgrade <span class="s1">&#39;google-cloud-bigquery[bqstorage,pandas]&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting google-cloud-bigquery[bqstorage,pandas]
+  Downloading google_cloud_bigquery-2.30.1-py2.py3-none-any.whl (203 kB)
+Collecting proto-plus&gt;=1.10.0
+  Downloading proto_plus-1.19.8-py3-none-any.whl (45 kB)
+Requirement already satisfied: packaging&gt;=14.3 in /opt/conda/lib/python3.9/site-packages (from google-cloud-bigquery[bqstorage,pandas]) (21.2)
+Requirement already satisfied: protobuf&gt;=3.12.0 in /opt/conda/lib/python3.9/site-packages (from google-cloud-bigquery[bqstorage,pandas]) (3.18.1)
+Collecting google-api-core[grpc]&lt;3.0.0dev,&gt;=1.29.0
+  Downloading google_api_core-2.2.2-py2.py3-none-any.whl (95 kB)
+Requirement already satisfied: python-dateutil&lt;3.0dev,&gt;=2.7.2 in /opt/conda/lib/python3.9/site-packages (from google-cloud-bigquery[bqstorage,pandas]) (2.8.2)
+Collecting grpcio&lt;2.0dev,&gt;=1.38.1
+  Downloading grpcio-1.42.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.0 MB)
+Collecting google-resumable-media&lt;3.0dev,&gt;=0.6.0
+  Downloading google_resumable_media-2.1.0-py2.py3-none-any.whl (75 kB)
+Requirement already satisfied: requests&lt;3.0.0dev,&gt;=2.18.0 in /opt/conda/lib/python3.9/site-packages (from google-cloud-bigquery[bqstorage,pandas]) (2.26.0)
+Collecting google-cloud-core&lt;3.0.0dev,&gt;=1.4.1
+  Downloading google_cloud_core-2.2.1-py2.py3-none-any.whl (29 kB)
+Requirement already satisfied: pyarrow&lt;7.0dev,&gt;=3.0.0 in /opt/conda/lib/python3.9/site-packages (from google-cloud-bigquery[bqstorage,pandas]) (6.0.0)
+Collecting google-cloud-bigquery-storage&lt;3.0.0dev,&gt;=2.0.0
+  Downloading google_cloud_bigquery_storage-2.10.1-py2.py3-none-any.whl (171 kB)
+Requirement already satisfied: pandas&gt;=0.24.2 in /opt/conda/lib/python3.9/site-packages (from google-cloud-bigquery[bqstorage,pandas]) (1.3.4)
+Requirement already satisfied: setuptools&gt;=40.3.0 in /opt/conda/lib/python3.9/site-packages (from google-api-core[grpc]&lt;3.0.0dev,&gt;=1.29.0-&gt;google-cloud-bigquery[bqstorage,pandas]) (59.1.1)
+Collecting googleapis-common-protos&lt;2.0dev,&gt;=1.52.0
+  Downloading googleapis_common_protos-1.53.0-py2.py3-none-any.whl (198 kB)
+Collecting google-auth&lt;3.0dev,&gt;=1.25.0
+  Downloading google_auth-2.3.3-py2.py3-none-any.whl (155 kB)
+Collecting grpcio-status&lt;2.0dev,&gt;=1.33.2
+  Downloading grpcio_status-1.42.0-py3-none-any.whl (10.0 kB)
+Collecting libcst&gt;=0.2.5
+  Downloading libcst-0.3.23-py3-none-any.whl (517 kB)
+Collecting google-crc32c&lt;2.0dev,&gt;=1.0
+  Downloading google_crc32c-1.3.0-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (36 kB)
+Requirement already satisfied: six&gt;=1.5.2 in /opt/conda/lib/python3.9/site-packages (from grpcio&lt;2.0dev,&gt;=1.38.1-&gt;google-cloud-bigquery[bqstorage,pandas]) (1.16.0)
+Requirement already satisfied: pyparsing&lt;3,&gt;=2.0.2 in /opt/conda/lib/python3.9/site-packages (from packaging&gt;=14.3-&gt;google-cloud-bigquery[bqstorage,pandas]) (2.4.7)
+Requirement already satisfied: pytz&gt;=2017.3 in /opt/conda/lib/python3.9/site-packages (from pandas&gt;=0.24.2-&gt;google-cloud-bigquery[bqstorage,pandas]) (2021.3)
+Requirement already satisfied: numpy&gt;=1.17.3 in /opt/conda/lib/python3.9/site-packages (from pandas&gt;=0.24.2-&gt;google-cloud-bigquery[bqstorage,pandas]) (1.20.3)
+Collecting protobuf&gt;=3.12.0
+  Downloading protobuf-3.19.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/conda/lib/python3.9/site-packages (from requests&lt;3.0.0dev,&gt;=2.18.0-&gt;google-cloud-bigquery[bqstorage,pandas]) (2021.10.8)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /opt/conda/lib/python3.9/site-packages (from requests&lt;3.0.0dev,&gt;=2.18.0-&gt;google-cloud-bigquery[bqstorage,pandas]) (1.26.7)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /opt/conda/lib/python3.9/site-packages (from requests&lt;3.0.0dev,&gt;=2.18.0-&gt;google-cloud-bigquery[bqstorage,pandas]) (2.0.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/conda/lib/python3.9/site-packages (from requests&lt;3.0.0dev,&gt;=2.18.0-&gt;google-cloud-bigquery[bqstorage,pandas]) (3.1)
+Collecting rsa&lt;5,&gt;=3.1.4
+  Downloading rsa-4.8-py3-none-any.whl (39 kB)
+Collecting cachetools&lt;5.0,&gt;=2.0.0
+  Downloading cachetools-4.2.4-py3-none-any.whl (10 kB)
+Collecting pyasn1-modules&gt;=0.2.1
+  Downloading pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
+Collecting typing-inspect&gt;=0.4.0
+  Downloading typing_inspect-0.7.1-py3-none-any.whl (8.4 kB)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.2 in /opt/conda/lib/python3.9/site-packages (from libcst&gt;=0.2.5-&gt;google-cloud-bigquery-storage&lt;3.0.0dev,&gt;=2.0.0-&gt;google-cloud-bigquery[bqstorage,pandas]) (3.10.0.2)
+Requirement already satisfied: pyyaml&gt;=5.2 in /opt/conda/lib/python3.9/site-packages (from libcst&gt;=0.2.5-&gt;google-cloud-bigquery-storage&lt;3.0.0dev,&gt;=2.0.0-&gt;google-cloud-bigquery[bqstorage,pandas]) (6.0)
+Collecting pyasn1&lt;0.5.0,&gt;=0.4.6
+  Downloading pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+Collecting mypy-extensions&gt;=0.3.0
+  Downloading mypy_extensions-0.4.3-py2.py3-none-any.whl (4.5 kB)
+Installing collected packages: pyasn1, rsa, pyasn1-modules, protobuf, cachetools, mypy-extensions, grpcio, googleapis-common-protos, google-auth, typing-inspect, grpcio-status, google-crc32c, google-api-core, proto-plus, libcst, google-resumable-media, google-cloud-core, google-cloud-bigquery-storage, google-cloud-bigquery
+  Attempting uninstall: protobuf
+    Found existing installation: protobuf 3.18.1
+    Uninstalling protobuf-3.18.1:
+      Successfully uninstalled protobuf-3.18.1
+Successfully installed cachetools-4.2.4 google-api-core-2.2.2 google-auth-2.3.3 google-cloud-bigquery-2.30.1 google-cloud-bigquery-storage-2.10.1 google-cloud-core-2.2.1 google-crc32c-1.3.0 google-resumable-media-2.1.0 googleapis-common-protos-1.53.0 grpcio-1.42.0 grpcio-status-1.42.0 libcst-0.3.23 mypy-extensions-0.4.3 proto-plus-1.19.8 protobuf-3.19.1 pyasn1-0.4.8 pyasn1-modules-0.2.8 rsa-4.8 typing-inspect-0.7.1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -374,6 +457,78 @@ Successfully installed google-auth-oauthlib-0.4.6 google-cloud-bigquery-storage-
 1it [00:04,  4.10s/it]
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
+SELECT
+  *
+FROM
+  `sandbox-sheng.bigquery_learning.customers`
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>phone_number_strings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>['(+81) 0041-4016', '(+81) 0576-7168', '(+81) ...</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>['(+81) 0870-8227', '(+81) 3763-7318']</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>['(+81) 0934-9460', '(+81) 8482-6376', '(+81) ...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
 </div>
 
 </div>
