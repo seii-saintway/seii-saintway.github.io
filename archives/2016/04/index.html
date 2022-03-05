@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
+
 <head><meta name="generator" content="Hexo 3.9.0">
+
   <meta charset="utf-8">
   
   <title>归档：2016/4 | Andrew&#39;s Blog</title>
@@ -36,8 +38,43 @@
 
 
 
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                }
+            });
+        
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
 </head>
-</html>
+
  <body>  
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -105,6 +142,15 @@
 			<h4 class="archive-ul" data-toggle="collapse" data-target="#2022">2022<b class="caret"></b></h4>
 			<ul id="2022" class="collapse in">
 			
+		
+		<li class="listing-item">
+		<span class="date_class"> 2022-03-04 </span> &raquo;
+		
+		   <span class="title"><a href="/2022/03/04/Terra-白皮书/" >Terra 白皮书</a></span>
+		
+		</li>			
+		
+		
 		
 		<li class="listing-item">
 		<span class="date_class"> 2022-02-25 </span> &raquo;
@@ -930,11 +976,11 @@
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>2</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
 		
-			<li><a href="/tags/Typography/">Typography<span>1</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
 		
 		 
 		</ul>
@@ -946,6 +992,10 @@
 <div class="widget">
   <h4 style="margin-top: 18px;">最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2022/03/04/Terra-白皮书/" ><i class="fa fa-file-o"></i>Terra 白皮书</a>
+      </li>
     
       <li>
         <a href="/2022/02/25/Declaration-of-the-Independence-of-Cyberspace/" ><i class="fa fa-file-o"></i>Declaration of the Independ...</a>
@@ -961,10 +1011,6 @@
     
       <li>
         <a href="/2021/10/28/Add-Tweets-to-My-Blog/" ><i class="fa fa-file-o"></i>Add Tweets to My Blog</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" ><i class="fa fa-file-o"></i>Try to Reinstall Zsh Kernel</a>
       </li>
     
   </ul>
@@ -1074,4 +1120,5 @@
 
 
 </body>
-   </html>
+
+</html>

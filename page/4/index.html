@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
+
 <head><meta name="generator" content="Hexo 3.9.0">
+
   <meta charset="utf-8">
   
   <title>第 4 页 | Andrew&#39;s Blog</title>
@@ -36,8 +38,43 @@
 
 
 
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                }
+            });
+        
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
 </head>
-</html>
+
  <body>  
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -101,6 +138,1310 @@
 		<div class="mypage">
 		
 		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-10-19 </div>
+			<div class="article-title"><a href="/2019/10/19/Try-Freeze/" >Try Freeze</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Jupyter-Contrib---Freeze"><a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/freeze" target="_blank" rel="noopener">Jupyter Contrib - Freeze</a><a class="anchor-link" href="#Jupyter-Contrib---Freeze">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E pip install -U jupyter_contrib_nbextensions
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E jupyter contrib nbextension install --sys-prefix
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-green-fg">[I 16:02:13 InstallContribNbextensionsApp]</span> jupyter contrib nbextension install --sys-prefix
+<span class="ansi-green-fg">[I 16:02:13 InstallContribNbextensionsApp]</span> Installing jupyter_contrib_nbextensions nbextension files to jupyter data directory
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/table_beautifier -&gt; table_beautifier
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/table_beautifier/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/table_beautifier/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/table_beautifier/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/table_beautifier/table_beautifier.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/table_beautifier/table_beautifier.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/table_beautifier/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/table_beautifier/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/table_beautifier/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/table_beautifier/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown -&gt; python-markdown
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/python-markdown/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/python-markdown.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/python-markdown.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/python-markdown.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/python-markdown.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/python-markdown-post.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/python-markdown-post.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/trusted.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/trusted.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/untrusted.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/untrusted.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/python-markdown/python-markdown-pre.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/python-markdown/python-markdown-pre.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input -&gt; hide_input
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/hide_input/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input/hide-input.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input/hide-input.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding -&gt; codefolding
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/codefolding/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/codefolding_editor.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_editor.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/codefolding_indent_folded_2.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_indent_folded_2.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/codefolding_editor.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_editor.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/codefolding_firstline_folded.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_firstline_folded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/firstline-fold.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/firstline-fold.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/codefolding_firstline_unfolded.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_firstline_unfolded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/magic-fold.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/magic-fold.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/foldgutter.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/foldgutter.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/edit.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/edit.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/magic-unfolded.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/magic-unfolded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/magic-folded.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/magic-folded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/codefolding.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/codefolding_indent_folded_1.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_indent_folded_1.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding/codefolding_indent_unfolded.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_indent_unfolded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codefolding -&gt; codefolding
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_editor.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_indent_folded_2.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_editor.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_firstline_folded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/firstline-fold.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_firstline_unfolded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/magic-fold.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/foldgutter.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/edit.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/magic-unfolded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/magic-folded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_indent_folded_1.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/codefolding/codefolding_indent_unfolded.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector -&gt; varInspector
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/varInspector/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/varInspector.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/varInspector.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/tablesorter_LICENSE.txt -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/tablesorter_LICENSE.txt
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/demo.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/demo.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/var_list.py -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/var_list.py
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/var_list.r -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/var_list.r
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/jquery.tablesorter.min.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/jquery.tablesorter.min.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/varInspector/__pycache__
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/varInspector/__pycache__/var_list.cpython-36.pyc -&gt; /opt/tljh/user/share/jupyter/nbextensions/varInspector/__pycache__/var_list.cpython-36.pyc
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/move_selected_cells -&gt; move_selected_cells
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/move_selected_cells/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/move_selected_cells/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/move_selected_cells/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/move_selected_cells/move_selected_cells.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/move_selected_cells/move_selected_cells.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/move_selected_cells/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/move_selected_cells/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/limit_output -&gt; limit_output
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/limit_output/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/limit_output/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/limit_output/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/limit_output/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/limit_output/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/limit_output/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/limit_output/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/limit_output/limit-output.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/limit_output/limit-output.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scroll_down -&gt; scroll_down
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/scroll_down/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scroll_down/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/scroll_down/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scroll_down/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/scroll_down/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scroll_down/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/scroll_down/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scroll_down/config.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/scroll_down/config.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_font_size -&gt; code_font_size
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/code_font_size/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_font_size/code_font_size.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_font_size/code_font_size.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_font_size/code_font_size.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_font_size/code_font_size.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_font_size/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_font_size/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools -&gt; runtools
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/runtools/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/runtools.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/runtools.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/demo.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/demo.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/runtools_marker.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/runtools_marker.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/cellstate.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/cellstate.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/gutter.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/gutter.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/runtools_execute.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/runtools_execute.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/runtools_nb.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/runtools_nb.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/runtools_lock.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/runtools_lock.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/runtools_show_hide.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/runtools_show_hide.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/runtools/annotations.odg -&gt; /opt/tljh/user/share/jupyter/nbextensions/runtools/annotations.odg
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/export_embedded -&gt; export_embedded
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/export_embedded/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/export_embedded/export_embedded.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/export_embedded/export_embedded.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/export_embedded/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/export_embedded/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/export_embedded/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/export_embedded/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/export_embedded/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/export_embedded/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets -&gt; snippets
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/snippets/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets/snippets.json -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets/snippets.json
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets/snippets.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets/snippets.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets/snippets-demo.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets/snippets-demo.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/livemdpreview -&gt; livemdpreview
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/livemdpreview/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/livemdpreview/livemdpreview.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/livemdpreview/livemdpreview.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/livemdpreview/livemdpreview.yml -&gt; /opt/tljh/user/share/jupyter/nbextensions/livemdpreview/livemdpreview.yml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skip-traceback -&gt; skip-traceback
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/skip-traceback/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skip-traceback/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/skip-traceback/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skip-traceback/skip-traceback.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/skip-traceback/skip-traceback.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skip-traceback/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/skip-traceback/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skip-traceback/skip-traceback.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/skip-traceback/skip-traceback.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skip-traceback/traceback.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/skip-traceback/traceback.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skip-traceback/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/skip-traceback/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/init_cell -&gt; init_cell
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/init_cell/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/init_cell/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/init_cell/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/init_cell/init_cell.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/init_cell/init_cell.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/init_cell/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/init_cell/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/init_cell/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/init_cell/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/init_cell/cell_toolbar_menu.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/init_cell/cell_toolbar_menu.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autoscroll -&gt; autoscroll
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/autoscroll/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autoscroll/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/autoscroll/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autoscroll/autoscroll.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/autoscroll/autoscroll.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autoscroll/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/autoscroll/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autoscroll/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/autoscroll/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codemirror_mode_extensions -&gt; codemirror_mode_extensions
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/codemirror_mode_extensions/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codemirror_mode_extensions/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/codemirror_mode_extensions/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/codemirror_mode_extensions/codemirror_mode_extensions.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/codemirror_mode_extensions/codemirror_mode_extensions.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/comment-uncomment -&gt; comment-uncomment
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/comment-uncomment/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/comment-uncomment/comment-uncomment.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/comment-uncomment/comment-uncomment.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/comment-uncomment/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/comment-uncomment/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/comment-uncomment/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/comment-uncomment/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/comment-uncomment/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/comment-uncomment/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/gist_it -&gt; gist_it
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/gist_it/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/gist_it/gist_it.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/gist_it/gist_it.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/gist_it/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/gist_it/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/gist_it/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/gist_it/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/gist_it/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/gist_it/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/select_keymap -&gt; select_keymap
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/select_keymap/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/select_keymap/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/select_keymap/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/select_keymap/select_keymap.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/select_keymap/select_keymap.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/select_keymap/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/select_keymap/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/select_keymap/select_keymap.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/select_keymap/select_keymap.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/freeze -&gt; freeze
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/freeze/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/freeze/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/freeze/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/freeze/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/freeze/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/freeze/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/freeze/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/freeze/config.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/freeze/config.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toggle_all_line_numbers -&gt; toggle_all_line_numbers
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/toggle_all_line_numbers/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toggle_all_line_numbers/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/toggle_all_line_numbers/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toggle_all_line_numbers/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/toggle_all_line_numbers/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toggle_all_line_numbers/main.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/toggle_all_line_numbers/main.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toggle_all_line_numbers/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/toggle_all_line_numbers/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor -&gt; keyboard_shortcut_editor
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_menu_item.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_menu_item.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_shortcut_editor_success.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_shortcut_editor_success.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_comma.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_comma.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_add_new_link.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_add_new_link.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/quickhelp_shim.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/quickhelp_shim.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/keyboard_shortcut_editor.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/keyboard_shortcut_editor.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/kse_components.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/kse_components.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_shortcut_editor_blank.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_shortcut_editor_blank.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_dropdown.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_dropdown.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_conflict.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_conflict.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_undefined_key.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_undefined_key.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_reset_disabled.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_reset_disabled.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/keyboard_shortcut_editor/readme_add_new_select_action.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/keyboard_shortcut_editor/readme_add_new_select_action.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu -&gt; snippets_menu
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/screenshot3.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/screenshot3.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/screenshot2.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/screenshot2.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenu_markdown.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenu_markdown.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenu_python.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenu_python.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/examples_for_custom.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/examples_for_custom.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/screenshot1.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/screenshot1.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/thumbnail.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/thumbnail.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/config.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/config.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_menu.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_menu.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/sympy_assumptions.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/sympy_assumptions.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/python.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/python.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/scipy.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/scipy.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/python_regex.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/python_regex.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/h5py.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/h5py.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/scipy_constants.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/scipy_constants.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/sympy.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/sympy.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/numba.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/numba.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/astropy.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/astropy.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/matplotlib.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/matplotlib.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/scipy_special.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/scipy_special.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/sympy_functions.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/sympy_functions.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/pandas.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/pandas.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/numpy_ufuncs.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/numpy_ufuncs.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/numpy.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/numpy.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/snippets_menu/snippets_submenus_python/numpy_polynomial.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/snippets_menu/snippets_submenus_python/numpy_polynomial.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/equation-numbering -&gt; equation-numbering
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/equation-numbering/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/equation-numbering/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/equation-numbering/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/equation-numbering/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/equation-numbering/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/equation-numbering/button.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/equation-numbering/button.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/equation-numbering/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/equation-numbering/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/equation-numbering/info.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/equation-numbering/info.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/notify -&gt; notify
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/notify/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/notify/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/notify/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/notify/notify.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/notify/notify.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/notify/notify.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/notify/notify.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/notify/notification.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/notify/notification.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/notify/notify.mp3 -&gt; /opt/tljh/user/share/jupyter/nbextensions/notify/notify.mp3
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/cell_filter -&gt; cell_filter
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/cell_filter/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/cell_filter/cell_filter.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/cell_filter/cell_filter.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/cell_filter/cell_filter.yml -&gt; /opt/tljh/user/share/jupyter/nbextensions/cell_filter/cell_filter.yml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/cell_filter/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/cell_filter/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2 -&gt; toc2
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/toc2/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/demo.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/demo.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/toc2.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/toc2.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/demo3.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/demo3.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/toc2.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/toc2.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/demo_dark.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/demo_dark.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/demo2.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/demo2.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/image.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/image.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/toc2/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/toc2/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate -&gt; nbTranslate
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate/languages.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/languages.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate/demo1.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/demo1.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate/mutils.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/mutils.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate/nbTranslate.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/nbTranslate.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate/demo2.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/demo2.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate/nbTranslate.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/nbTranslate.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/nbTranslate/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/nbTranslate/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/navigation-hotkeys -&gt; navigation-hotkeys
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/navigation-hotkeys/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/navigation-hotkeys/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/navigation-hotkeys/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/navigation-hotkeys/hotkeys.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/navigation-hotkeys/hotkeys.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/navigation-hotkeys/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/navigation-hotkeys/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/navigation-hotkeys/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/navigation-hotkeys/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker -&gt; spellchecker
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/spellchecker/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/screenshot.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/screenshot.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/download_new_dict.py -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/download_new_dict.py
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/config.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/config.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/spellchecker/__pycache__
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/__pycache__/download_new_dict.cpython-36.pyc -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/__pycache__/download_new_dict.cpython-36.pyc
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/spellchecker/typo
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/typo/typo.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/typo/typo.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/spellchecker/typo/LICENSE.txt -&gt; /opt/tljh/user/share/jupyter/nbextensions/spellchecker/typo/LICENSE.txt
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel -&gt; help_panel
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/help_panel/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/help_panel/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel/help_panel.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/help_panel/help_panel.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel/help_panel_ext.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/help_panel/help_panel_ext.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel/help_panel.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/help_panel/help_panel.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel/help_panel_ext_fullscreen.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/help_panel/help_panel_ext_fullscreen.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel/help_panel.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/help_panel/help_panel.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/help_panel/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/help_panel/img
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/help_panel/img/handle-v.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/help_panel/img/handle-v.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execution_dependencies -&gt; execution_dependencies
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/execution_dependencies/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execution_dependencies/execution_dependencies.yml -&gt; /opt/tljh/user/share/jupyter/nbextensions/execution_dependencies/execution_dependencies.yml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execution_dependencies/execution_dependencies.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/execution_dependencies/execution_dependencies.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execution_dependencies/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/execution_dependencies/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/rubberband -&gt; rubberband
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/rubberband/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/rubberband/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/rubberband/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/rubberband/rubberband.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/rubberband/rubberband.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/rubberband/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/rubberband/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/rubberband/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/rubberband/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/rubberband/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/rubberband/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scratchpad -&gt; scratchpad
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/scratchpad/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scratchpad/scratchpad.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/scratchpad/scratchpad.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scratchpad/scratchpad.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/scratchpad/scratchpad.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scratchpad/demo.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/scratchpad/demo.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scratchpad/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/scratchpad/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scratchpad/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/scratchpad/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/scratchpad/LICENSE -&gt; /opt/tljh/user/share/jupyter/nbextensions/scratchpad/LICENSE
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/qtconsole -&gt; qtconsole
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/qtconsole/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/qtconsole/qtconsole.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/qtconsole/qtconsole.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/qtconsole/qtconsole.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/qtconsole/qtconsole.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/qtconsole/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/qtconsole/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/ruler -&gt; ruler
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/ruler/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/ruler/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/ruler/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/ruler/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/ruler/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/ruler/edit.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/ruler/edit.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/ruler/ruler_editor.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/ruler/ruler_editor.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/ruler/ruler.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/ruler/ruler.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/ruler/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/ruler/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/ruler -&gt; ruler
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/ruler/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/ruler/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/ruler/edit.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/ruler/ruler_editor.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/ruler/ruler.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/ruler/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode -&gt; zenmode
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/zenmode/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/zenmode.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/zenmode.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/zenmode/images
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/back22.jpg -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/back22.jpg
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/back2.jpg -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/back2.jpg
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/back21.jpg -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/back21.jpg
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/back11.jpg -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/back11.jpg
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/ipynblogo0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/ipynblogo0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/ipynblogo1.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/ipynblogo1.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/back1.jpg -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/back1.jpg
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/back3.jpg -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/back3.jpg
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/zenmode/images/back12.jpg -&gt; /opt/tljh/user/share/jupyter/nbextensions/zenmode/images/back12.jpg
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input_all -&gt; hide_input_all
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/hide_input_all/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input_all/hide_input_all.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input_all/hide_input_all.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input_all/hide_input_all_show.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input_all/hide_input_all_show.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input_all/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input_all/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input_all/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input_all/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input_all/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input_all/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_input_all/hide_input_all_hide.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_input_all/hide_input_all_hide.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise2 -&gt; exercise2
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/exercise2/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise2/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise2/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise2/image.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise2/image.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise2/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise2/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise2/exercise2.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise2/exercise2.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise2/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise2/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise2/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise2/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/collapsible_headings -&gt; collapsible_headings
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/collapsible_headings/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/collapsible_headings/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/collapsible_headings/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/collapsible_headings/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/collapsible_headings/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/collapsible_headings/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/collapsible_headings/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/collapsible_headings/screenshot.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/collapsible_headings/screenshot.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/collapsible_headings/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/collapsible_headings/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/collapsible_headings/collapsible_headings.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/collapsible_headings/collapsible_headings.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/contrib_nbextensions_help_item -&gt; contrib_nbextensions_help_item
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/contrib_nbextensions_help_item/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/contrib_nbextensions_help_item/contrib_nbextensions_help_item.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/contrib_nbextensions_help_item/contrib_nbextensions_help_item.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/contrib_nbextensions_help_item/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/contrib_nbextensions_help_item/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/contrib_nbextensions_help_item/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/contrib_nbextensions_help_item/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hinterland -&gt; hinterland
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/hinterland/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hinterland/hinterland.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/hinterland/hinterland.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hinterland/hinterland.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/hinterland/hinterland.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hinterland/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/hinterland/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execute_time -&gt; execute_time
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/execute_time/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execute_time/execution-timings-box.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/execute_time/execution-timings-box.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execute_time/execution-timings-menu.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/execute_time/execution-timings-menu.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execute_time/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/execute_time/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execute_time/ExecuteTime.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/execute_time/ExecuteTime.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execute_time/ExecuteTime.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/execute_time/ExecuteTime.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execute_time/ExecuteTime.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/execute_time/ExecuteTime.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/execute_time/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/execute_time/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/addbefore -&gt; addbefore
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/addbefore/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/addbefore/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/addbefore/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/addbefore/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/addbefore/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/addbefore/addbefore.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/addbefore/addbefore.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/addbefore/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/addbefore/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/tree-filter -&gt; tree-filter
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/tree-filter/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/tree-filter/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/tree-filter/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/tree-filter/demo.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/tree-filter/demo.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/tree-filter/index.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/tree-filter/index.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/tree-filter/tree-filter.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/tree-filter/tree-filter.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skill -&gt; skill
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/skill/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skill/skill.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/skill/skill.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skill/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/skill/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skill/skill.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/skill/skill.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/skill/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/skill/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_header -&gt; hide_header
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/hide_header/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_header/hide_header.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_header/hide_header.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_header/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_header/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/hide_header/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/hide_header/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise -&gt; exercise
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/exercise/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise/history.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise/history.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise/image.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise/image.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise/exercise.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise/exercise.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise/main.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise/main.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/exercise/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/exercise/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/datestamper -&gt; datestamper
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/datestamper/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/datestamper/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/datestamper/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/datestamper/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/datestamper/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/datestamper/main.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/datestamper/main.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/datestamper/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/datestamper/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/printview -&gt; printview
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/printview/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/printview/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/printview/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/printview/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/printview/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/printview/printview.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/printview/printview.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/printview/printview-button.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/printview/printview-button.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/printview/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/printview/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/splitcell -&gt; splitcell
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/splitcell/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/splitcell/splitcell.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/splitcell/splitcell.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/splitcell/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/splitcell/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/splitcell/splitcell.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/splitcell/splitcell.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/splitcell/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/splitcell/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter -&gt; highlighter
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/highlighter/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/demo_highlighter.ipynb -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/demo_highlighter.ipynb
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/tst_highlights.tex -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/tst_highlights.tex
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/export_highlights.pdf -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/export_highlights.pdf
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/highlighter.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/highlighter.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/export_highlights.ipynb -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/export_highlights.ipynb
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/highlighter.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/highlighter.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/image.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/image.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/export_highlights.html -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/export_highlights.html
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/export_highlights.tex -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/export_highlights.tex
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/demo_highlighter.html -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/demo_highlighter.html
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/tst_highlights.ipynb -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/tst_highlights.ipynb
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/tst_highlights.pdf -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/tst_highlights.pdf
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/tst_highlights.html -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/tst_highlights.html
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/highlighter/highlighter.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlighter/highlighter.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autosavetime -&gt; autosavetime
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/autosavetime/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autosavetime/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/autosavetime/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autosavetime/autosavetime.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/autosavetime/autosavetime.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autosavetime/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/autosavetime/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/autosavetime/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/autosavetime/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/load_tex_macros -&gt; load_tex_macros
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/load_tex_macros/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/load_tex_macros/readme.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/load_tex_macros/readme.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/load_tex_macros/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/load_tex_macros/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/load_tex_macros/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/load_tex_macros/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/load_tex_macros/load_tex_macros.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/load_tex_macros/load_tex_macros.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify -&gt; code_prettify
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/README_autopep8.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_autopep8.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/kernel_exec_on_cell.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/kernel_exec_on_cell.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/code_prettify.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/code_prettify.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/isort.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/isort.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/README_code_prettify.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_code_prettify.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/isort.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/isort.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/autopep8.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/autopep8.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/demo_2to3.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo_2to3.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/2to3.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/2to3.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/demo-R.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-R.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/autopep8.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/autopep8.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/demo-py.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-py.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/2to3.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/2to3.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/README_2to3.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_2to3.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/demo-jv.gif -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-jv.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/README_isort.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_isort.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify/code_prettify.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/code_prettify/code_prettify.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify -&gt; code_prettify
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_autopep8.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/kernel_exec_on_cell.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/code_prettify.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/isort.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_code_prettify.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/isort.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/autopep8.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo_2to3.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/2to3.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-R.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/autopep8.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-py.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/2to3.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_2to3.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-jv.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_isort.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/code_prettify.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify -&gt; code_prettify
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_autopep8.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/kernel_exec_on_cell.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/code_prettify.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/isort.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_code_prettify.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/isort.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/autopep8.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo_2to3.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/2to3.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-R.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/autopep8.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-py.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/2to3.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_2to3.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-jv.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_isort.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/code_prettify.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_contrib_nbextensions/nbextensions/code_prettify -&gt; code_prettify
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_autopep8.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/kernel_exec_on_cell.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/code_prettify.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/isort.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_code_prettify.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/isort.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/autopep8.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo_2to3.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/2to3.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-R.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/autopep8.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-py.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/2to3.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_2to3.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/demo-jv.gif
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/README_isort.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Up to date: /opt/tljh/user/share/jupyter/nbextensions/code_prettify/code_prettify.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_highlight_selected_word/static/highlight_selected_word -&gt; highlight_selected_word
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/highlight_selected_word/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_highlight_selected_word/static/highlight_selected_word/main.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlight_selected_word/main.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_highlight_selected_word/static/highlight_selected_word/configurator.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlight_selected_word/configurator.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_highlight_selected_word/static/highlight_selected_word/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/highlight_selected_word/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static -&gt; latex_envs
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/latex_envs/
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/envsLatex.json -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/envsLatex.json
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/configuration_toolbar.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/configuration_toolbar.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/example_user_envs.json -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/example_user_envs.json
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/envsLatex.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/envsLatex.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/latex_envs.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/latex_envs.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/bibInNb4.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/bibInNb4.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/bibtex2.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/bibtex2.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/initNb.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/initNb.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/main_toolbar.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/main_toolbar.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/latex_envs.css -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/latex_envs.css
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/thmsInNb4.js -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/thmsInNb4.js
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/icon.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/icon.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/latex_envs.yaml -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/latex_envs.yaml
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/example.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/example.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/configuration_toolbar.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/configuration_toolbar.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc.ipynb -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc.ipynb
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/Toggles.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/Toggles.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc.tex -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc.tex
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/header.tex -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/header.tex
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/biblio_ipython.bib -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/biblio_ipython.bib
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/main_toolbar.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/main_toolbar.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/documentation.tex -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/documentation.tex
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/config_toolbar.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/config_toolbar.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/README.md -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/README.md
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/example.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/example.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/LaTeX_envs_menu.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/LaTeX_envs_menu.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/IEEEtran.bst -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/IEEEtran.bst
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/documentation.pdf -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/documentation.pdf
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc.html -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc.html
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/.ipynb_checkpoints
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/.ipynb_checkpoints/latex_env_doc-checkpoint.ipynb -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/.ipynb_checkpoints/latex_env_doc-checkpoint.ipynb
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Making directory: /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_23_2.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_23_2.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_49_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_49_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_41_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_41_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_24_2.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_24_2.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_47_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_47_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_45_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_45_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_43_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_43_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_42_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_42_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_50_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_50_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_48_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_48_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_51_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_51_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_27_2.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_27_2.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_52_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_52_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_46_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_46_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_44_0.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_44_0.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Copying: /opt/tljh/user/lib/python3.6/site-packages/latex_envs/static/doc/latex_env_doc_files/latex_env_doc_26_2.png -&gt; /opt/tljh/user/share/jupyter/nbextensions/latex_envs/doc/latex_env_doc_files/latex_env_doc_26_2.png
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Installing jupyter_contrib_nbextensions items to config in /opt/tljh/user/etc/jupyter
+Enabling: jupyter_nbextensions_configurator
+- Writing config: /opt/tljh/user/etc/jupyter
+    - Validating...
+      jupyter_nbextensions_configurator 0.4.1 <span class="ansi-green-fg">OK</span>
+Enabling notebook nbextension nbextensions_configurator/config_menu/main...
+Enabling tree nbextension nbextensions_configurator/tree_tab/main...
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> Enabling notebook extension contrib_nbextensions_help_item/main...
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span>       - Validating: <span class="ansi-green-fg">OK</span>
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Editing config: /opt/tljh/user/etc/jupyter/jupyter_nbconvert_config.json
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> --  Configuring nbconvert template path
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> --  Configuring nbconvert preprocessors
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> - Writing config: /opt/tljh/user/etc/jupyter/jupyter_nbconvert_config.json
+<span class="ansi-green-fg">[I 16:02:14 InstallContribNbextensionsApp]</span> --  Writing updated config file /opt/tljh/user/etc/jupyter/jupyter_nbconvert_config.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter nbextension list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Known nbextensions:
+  config dir: /opt/tljh/user/etc/jupyter/nbconfig
+    notebook section
+      nbresuse/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      voila/extension <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      jupyter-js-widgets/extension <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      appmode/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      jupyter_dashboards/notebook/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      nbextensions_configurator/config_menu/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: problems found:
+        - require? <span class="ansi-red-fg"> X</span> nbextensions_configurator/config_menu/main
+      contrib_nbextensions_help_item/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+    tree section
+      nbextensions_configurator/tree_tab/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: problems found:
+        - require? <span class="ansi-red-fg"> X</span> nbextensions_configurator/tree_tab/main
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Jupyter-Nbextensions-Configurator"><a href="https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator" target="_blank" rel="noopener">Jupyter Nbextensions Configurator</a><a class="anchor-link" href="#Jupyter-Nbextensions-Configurator">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E pip install -U jupyter_nbextensions_configurator
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E jupyter nbextensions_configurator <span class="nb">enable</span> --sys-prefix
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Enabling: jupyter_nbextensions_configurator
+- Writing config: /opt/tljh/user/etc/jupyter
+    - Validating...
+      jupyter_nbextensions_configurator 0.4.1 <span class="ansi-green-fg">OK</span>
+Enabling notebook nbextension nbextensions_configurator/config_menu/main...
+Enabling tree nbextension nbextensions_configurator/tree_tab/main...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E jupyter nbextensions_configurator <span class="nb">enable</span> --user
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Enabling: jupyter_nbextensions_configurator
+- Writing config: /home/jupyter-sheng_wei/.jupyter
+    - Validating...
+      jupyter_nbextensions_configurator 0.4.1 <span class="ansi-green-fg">OK</span>
+Enabling notebook nbextension nbextensions_configurator/config_menu/main...
+Enabling tree nbextension nbextensions_configurator/tree_tab/main...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter nbextension list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Known nbextensions:
+  config dir: /home/jupyter-sheng_wei/.jupyter/nbconfig
+    notebook section
+      nbextensions_configurator/config_menu/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: problems found:
+        - require? <span class="ansi-red-fg"> X</span> nbextensions_configurator/config_menu/main
+      freeze/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+    tree section
+      nbextensions_configurator/tree_tab/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: problems found:
+        - require? <span class="ansi-red-fg"> X</span> nbextensions_configurator/tree_tab/main
+  config dir: /opt/tljh/user/etc/jupyter/nbconfig
+    notebook section
+      nbresuse/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      voila/extension <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      jupyter-js-widgets/extension <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      appmode/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      nbextensions_configurator/config_menu/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: problems found:
+        - require? <span class="ansi-red-fg"> X</span> nbextensions_configurator/config_menu/main
+      contrib_nbextensions_help_item/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+    tree section
+      nbextensions_configurator/tree_tab/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: problems found:
+        - require? <span class="ansi-red-fg"> X</span> nbextensions_configurator/tree_tab/main
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Found-a-Problem-of-nbextensions-configurator-Validating"><a href="https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator/issues/37" target="_blank" rel="noopener"><strong>Found a Problem of nbextensions-configurator Validating</strong></a><a class="anchor-link" href="#Found-a-Problem-of-nbextensions-configurator-Validating">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E jupyter serverextension <span class="nb">enable</span> --py jupyter_nbextensions_configurator
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Enabling: jupyter_nbextensions_configurator
+- Writing config: /home/jupyter-sheng_wei/.jupyter
+    - Validating...
+      jupyter_nbextensions_configurator 0.4.1 <span class="ansi-green-fg">OK</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E jupyter nbextension install --py jupyter_nbextensions_configurator
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator -&gt; nbextensions_configurator
+Making directory: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/readme.md -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/readme.md
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/main.js -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/main.js
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/quickhelp_shim.js -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/quickhelp_shim.js
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/kse_components.js -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/kse_components.js
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/main.css -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/main.css
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/icon.png -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/icon.png
+Making directory: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/tree_tab/readme.md -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab/readme.md
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/tree_tab/main.js -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab/main.js
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/tree_tab/tree_tab.yaml -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab/tree_tab.yaml
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/tree_tab/icon.png -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab/icon.png
+Making directory: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/render
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/render/rendermd.css -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/render/rendermd.css
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/render/render.js -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/render/render.js
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/render/video_play.svg -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/render/video_play.svg
+Making directory: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/config_menu
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/config_menu/main.js -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/config_menu/main.js
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/config_menu/config_menu.yaml -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/config_menu/config_menu.yaml
+Copying: /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator/config_menu/icon.png -&gt; /usr/local/share/jupyter/nbextensions/nbextensions_configurator/config_menu/icon.png
+- Validating: <span class="ansi-green-fg">OK</span>
+Installing /opt/tljh/user/lib/python3.6/site-packages/jupyter_nbextensions_configurator/static/nbextensions_configurator -&gt; nbextensions_configurator
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/readme.md
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/main.js
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/quickhelp_shim.js
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/kse_components.js
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/main.css
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/icon.png
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab/readme.md
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab/main.js
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab/tree_tab.yaml
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/tree_tab/icon.png
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/render/rendermd.css
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/render/render.js
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/render/video_play.svg
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/config_menu/main.js
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/config_menu/config_menu.yaml
+Up to date: /usr/local/share/jupyter/nbextensions/nbextensions_configurator/config_menu/icon.png
+- Validating: <span class="ansi-green-fg">OK</span>
+
+    To initialize this nbextension in the browser every time the notebook (or other app) loads:
+    
+          jupyter nbextension enable jupyter_nbextensions_configurator --py
+    
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E jupyter nbextension <span class="nb">enable</span> --py jupyter_nbextensions_configurator
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Enabling notebook extension nbextensions_configurator/config_menu/main...
+      - Validating: <span class="ansi-green-fg">OK</span>
+Enabling tree extension nbextensions_configurator/tree_tab/main...
+      - Validating: <span class="ansi-green-fg">OK</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter nbextension list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Known nbextensions:
+  config dir: /home/jupyter-sheng_wei/.jupyter/nbconfig
+    notebook section
+      nbextensions_configurator/config_menu/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      freeze/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+    tree section
+      nbextensions_configurator/tree_tab/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+  config dir: /opt/tljh/user/etc/jupyter/nbconfig
+    notebook section
+      nbresuse/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      voila/extension <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      jupyter-js-widgets/extension <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      appmode/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      nbextensions_configurator/config_menu/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      contrib_nbextensions_help_item/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+    tree section
+      nbextensions_configurator/tree_tab/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E jupyter nbextension <span class="nb">enable</span> --sys-prefix freeze/main
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Enabling notebook extension freeze/main...
+      - Validating: <span class="ansi-green-fg">OK</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter nbextension list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Known nbextensions:
+  config dir: /home/jupyter-sheng_wei/.jupyter/nbconfig
+    notebook section
+      nbextensions_configurator/config_menu/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      freeze/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+    tree section
+      nbextensions_configurator/tree_tab/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+  config dir: /opt/tljh/user/etc/jupyter/nbconfig
+    notebook section
+      nbresuse/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      voila/extension <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      jupyter-js-widgets/extension <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      appmode/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      nbextensions_configurator/config_menu/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      contrib_nbextensions_help_item/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+      freeze/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+    tree section
+      nbextensions_configurator/tree_tab/main <span class="ansi-green-fg"> enabled </span>
+      - Validating: <span class="ansi-green-fg">OK</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Try-Freeze">Try Freeze<a class="anchor-link" href="#Try-Freeze">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>{
+  "trusted": true,
+  "editable": false,
+  "deletable": false,
+  "run_control": {
+    "frozen": true
+  }
+}</code></pre>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/19/Try-Freeze/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
 		
 			
 	
@@ -2090,7 +3431,7 @@ CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQ
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="nx">javascript</span>
-<span class="kr">const</span> <span class="nx">Http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">Http</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 <span class="nx">Http</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="nx">Http</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://jhub.name:8099&#39;</span><span class="p">);</span>
 <span class="nx">Http</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
@@ -3595,75 +4936,6 @@ I can even put a notebook inside IPython, to further demonstrate that this is wo
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2019-10-05 </div>
-			<div class="article-title"><a href="/2019/10/05/Hexo-Generate-Notebook-CSS/" >Hexo-Generate-Notebook-CSS</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Remove-Duplicated-Notebook-CSS">Remove Duplicated Notebook CSS<a class="anchor-link" href="#Remove-Duplicated-Notebook-CSS">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Add Category and Tag to Notebooks</li>
-<li>Move Notebook CSS to <code>&lt;head&gt;&lt;/head&gt;</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Add-Category-and-Tag-to-Notebooks">Add Category and Tag to Notebooks<a class="anchor-link" href="#Add-Category-and-Tag-to-Notebooks">&#182;</a></h2><p>I find that the hexo layouts for Categories and Tags are almost the same, but it seems that the the usage of Tags is more casual.
-So I decide to add Tag "Notebooks" to my Notebook posts.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Move-Notebook-CSS-to-%3Chead%3E%3C/head%3E">Move Notebook CSS to <code>&lt;head&gt;&lt;/head&gt;</code><a class="anchor-link" href="#Move-Notebook-CSS-to-%3Chead%3E%3C/head%3E">&#182;</a></h2><ul>
-<li><a href="https://github.com/seii-saintway/hexo-ipynb/blob/a7cf07cfdde16cab0f1aeed8922a7e9c70b8987e/generate-css/generator.ipynb" target="_blank" rel="noopener">https://github.com/seii-saintway/hexo-ipynb/blob/a7cf07cfdde16cab0f1aeed8922a7e9c70b8987e/generate-css/generator.ipynb</a></li>
-<li><a href="https://github.com/seii-saintway/hexo-ipynb/blob/a7cf07cfdde16cab0f1aeed8922a7e9c70b8987e/generate-css/hexo.tpl" target="_blank" rel="noopener">https://github.com/seii-saintway/hexo-ipynb/blob/a7cf07cfdde16cab0f1aeed8922a7e9c70b8987e/generate-css/hexo.tpl</a></li>
-<li><a href="https://github.com/seii-saintway/hexo-theme-freemind/blob/2d488b1b596ab908bf35bf5091076a9138271230/source/css/notebook.css" target="_blank" rel="noopener">https://github.com/seii-saintway/hexo-theme-freemind/blob/2d488b1b596ab908bf35bf5091076a9138271230/source/css/notebook.css</a></li>
-</ul>
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2019/10/05/Hexo-Generate-Notebook-CSS/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -3704,11 +4976,11 @@ So I decide to add Tag "Notebooks" to my Notebook posts.</p>
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Typography/">Typography<span>1</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>2</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
 		
 		 
 		</ul>
@@ -3720,6 +4992,10 @@ So I decide to add Tag "Notebooks" to my Notebook posts.</p>
 <div class="widget">
   <h4 style="margin-top: 18px;">最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2022/03/04/Terra-白皮书/" ><i class="fa fa-file-o"></i>Terra 白皮书</a>
+      </li>
     
       <li>
         <a href="/2022/02/25/Declaration-of-the-Independence-of-Cyberspace/" ><i class="fa fa-file-o"></i>Declaration of the Independ...</a>
@@ -3735,10 +5011,6 @@ So I decide to add Tag "Notebooks" to my Notebook posts.</p>
     
       <li>
         <a href="/2021/10/28/Add-Tweets-to-My-Blog/" ><i class="fa fa-file-o"></i>Add Tweets to My Blog</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" ><i class="fa fa-file-o"></i>Try to Reinstall Zsh Kernel</a>
       </li>
     
   </ul>
@@ -3848,4 +5120,5 @@ So I decide to add Tag "Notebooks" to my Notebook posts.</p>
 
 
 </body>
-   </html>
+
+</html>
