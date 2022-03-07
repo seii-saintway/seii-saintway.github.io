@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <meta charset="utf-8">
+  
+  <title>Mirror Token | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="Mirror Token (MIR)
+原文：https://docs.mirror.finance/protocol/mirror-token-mir
+
+
+镜像代币（MIR）是镜像协议的治理代币。目前，它必须被质押才能对活跃的提案进行投票，并且需要作为押金才能进行新的治理提案。在 Mirror 的未">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Mirror Token">
+  <meta property="og:site_name" content="Andrew&#39;s Blog">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                }
+            });
+        
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Mirror Token</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <h1 id="Mirror-Token-MIR"><a href="#Mirror-Token-MIR" class="headerlink" title="Mirror Token (MIR)"></a>Mirror Token (MIR)</h1><blockquote>
+<p>原文：<a href="https://docs.mirror.finance/protocol/mirror-token-mir" target="_blank" rel="noopener">https://docs.mirror.finance/protocol/mirror-token-mir</a></p>
+</blockquote>
+<hr>
+<p><strong>镜像代币</strong>（<strong>MIR</strong>）是镜像协议的治理代币。目前，它必须被质押才能对活跃的提案进行投票，并且需要作为押金才能进行新的治理提案。在 Mirror 的未来迭代中，它将为协议提供进一步的用途，增加其效用和价值。</p>
+<p>持有 MIR 代币的用户还可以通过从协议中的 CDP 头寸提取抵押品获得 MIR 奖励。</p>
+<p>MIR 还用于激励用户通过质押 LP 代币来获得收益，这些 LP 代币是通过为 MIR 和 mAssets 提供流动性而铸造的。通过年度通胀所新铸造的 MIR 用来向用户支付收益，这会逐渐增加 MIR 的总供应量，直到第 4 年年底。</p>
+<hr>
+<h2 id="镜像代币供应"><a href="#镜像代币供应" class="headerlink" title="镜像代币供应"></a>镜像代币供应</h2><p>计划在 4 年内分发总共 370,575,000 个 MIR 代币。除此之外，不会再有新的 MIR 代币被引入供应。</p>
+<h3 id="累积分配时间表（以百万计）"><a href="#累积分配时间表（以百万计）" class="headerlink" title="累积分配时间表（以百万计）"></a>累积分配时间表（以百万计）</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>创世纪</th>
+<th>Y1</th>
+<th>Y2</th>
+<th>Y3</th>
+<th>Y4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNI空投</td>
+<td>9.15</td>
+<td>9.15</td>
+<td>9.15</td>
+<td>9.15</td>
+<td>9.15</td>
+</tr>
+<tr>
+<td>Luna 质押空投</td>
+<td>9.15</td>
+<td>9.15</td>
+<td>9.15</td>
+<td>9.15</td>
+<td>9.15</td>
+</tr>
+<tr>
+<td>Luna 质押奖励</td>
+<td>0</td>
+<td>18.3</td>
+<td>18.3</td>
+<td>18.3</td>
+<td>18.3</td>
+</tr>
+<tr>
+<td>mAsset LP 质押</td>
+<td>0</td>
+<td>89.2125</td>
+<td>133.81875</td>
+<td>156.121875</td>
+<td>167.2734375</td>
+</tr>
+<tr>
+<td>MIR LP 质押</td>
+<td>0</td>
+<td>20.5875</td>
+<td>30.88125</td>
+<td>36.028125</td>
+<td>38.6015625</td>
+</tr>
+<tr>
+<td>社区池</td>
+<td>36.6</td>
+<td>36.6</td>
+<td>54.9</td>
+<td>91.5</td>
+<td>128.1</td>
+</tr>
+<tr>
+<td><strong>代币总供应</strong></td>
+<td><strong>54.90</strong></td>
+<td><strong>183.00</strong></td>
+<td><strong>256.20</strong></td>
+<td><strong>320.25</strong></td>
+<td><strong>370.575</strong></td>
+</tr>
+<tr>
+<td>年通货膨胀率 (%)</td>
+<td>-</td>
+<td>233.33%</td>
+<td>40.00%</td>
+<td>25.00%</td>
+<td>15.71%</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MLRzugf7mxc4ryNhTuq%2Fuploads%2FdKfSHCIDtMhwXsVLNHwy%2Ffile.png?alt=media" alt="Genesis Token Distribution"></p>
+<p>镜像协议创世时共有 54.9M 个代币可用。这些代币的分配方式如下：</p>
+<ul>
+<li><strong>UNI 空投</strong>：16.66%（9.15M）代币将空投给 UNI 持有者。</li>
+<li><strong>LUNA 质押者空投</strong>：16.66%（9.15M）代币将空投给 LUNA 质押者。</li>
+<li><strong>社区池</strong>：66.66% (36.6M) 代币将分配给社区池。</li>
+</ul>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MLRzugf7mxc4ryNhTuq%2Fuploads%2FIC7UdrAp8Ne7WafFNKIk%2Ffile.png?alt=media" alt="Final Token Distribution"></p>
+<p>由于通货膨胀，MIR 代币的总供应量将增加 4 年，直到总代币供应量达到 <strong>370.575M</strong>。</p>
+<p>第 4 年末的分配结构如下所示：</p>
+<ul>
+<li><strong>空投</strong>：最初分配给 UNI 持有者和 LUNA 质押者的空投数量现在将占代币总供应量的 4.9%（18.3M）。</li>
+<li><strong>LUNA 质押奖励</strong>：4.9%（18.3M）将在镜像协议启动后的第一年分配给 LUNA 质押者。 MIR 将仅在第一年每 100,000 个区块（大约每周一次）分发给 Luna 质押者，从区块高度 920,000 开始。将每 100,000 个区块拍摄一次快照，以确定谁有资格获得质押奖励分配。</li>
+<li><strong>mAsset LP Staking</strong>：到第 4 年年底，45.1% (167.27M) 代币将分配给所有 mAsset 和 mAsset (mETH) 质押池。代币每天分配给每个质押池（最初每个 Mirror 和 mETH 13 对），基于与其他资产相比，它们的<code>权重</code>。</li>
+<li><strong>MIR LP Staking</strong>：到第 4 年底，10.4% (38.6M) 代币平均分配到 MIR-UST 和 MIR-UST (mETH) 质押池。MIR-UST 对的初始<code>权重</code>为 300，大于<code>权重</code> mAsset 数量（第一批 mAsset 有 100 个，列入白名单的 mAsset 有 30 个<code>权重</code>）。</li>
+<li><strong>社区池</strong>：到第 4 年年底，将有 34.6%（128.1M）的 MIR 总供应量分配给社区池。</li>
+</ul>
+<h3 id="分配率（通货膨胀）"><a href="#分配率（通货膨胀）" class="headerlink" title="分配率（通货膨胀）"></a>分配率（通货膨胀）</h3><p>MIR 代币的通货膨胀率被设计为每年逐渐下降，直到在第 4 年年底达到 370.575M。在第 4 年结束后，将不再通过通货膨胀铸造 MIR 代币。</p>
+<hr>
+<h2 id="MIR-质押奖励"><a href="#MIR-质押奖励" class="headerlink" title="MIR 质押奖励"></a>MIR 质押奖励</h2><blockquote>
+<p>本节讨论 MIR 代币的质押奖励，这些奖励来自用于从市场回购 MIR 的交易费用。质押 LP 和 sLP 代币也会产生 MIR 奖励，这些奖励直接来自每个区块创建的新 MIR 代币。点击<a href="https://docs.mirror.finance/protocol/staking-tokens-lp-and-slp#staking-rewards" target="_blank" rel="noopener">此处</a>了解详情。</p>
+</blockquote>
+<h3 id="来自协议费用"><a href="#来自协议费用" class="headerlink" title="来自协议费用"></a>来自协议费用</h3><p>MIR 代币质押者在每个区块收到 MIR 代币奖励，协议费用是从 CDP 提款产生的。协议费用从 CDP 抵押品中收取，并在发送到 Collector 合约后出售给 TerraUSD，以通过 Terraswap 购买 MIR。然后将 MIR 代币作为奖励分配给 MIR 质押者和选民，并按总股份的百分比进行分配。这个过程通过产生购买压力来平衡新 MIR 的产生。</p>
+<h3 id="来自提案创建费"><a href="#来自提案创建费" class="headerlink" title="来自提案创建费"></a>来自提案创建费</h3><p>每当创建新的治理提案时，都必须支付 MIR 代币的初始押金。如果投票未达到投票法定人数，则该押金将按比例分配给所有 MIR 质押者。</p>
+<h3 id="来自投票奖励"><a href="#来自投票奖励" class="headerlink" title="来自投票奖励"></a>来自投票奖励</h3><p>根据尚未达到投票法定人数的投票产生的协议费用和投票创建费用，<code>voter_weight</code> 用于确定在正在进行的投票中投票的用户之间分配的 MIR 代币数量。如果包括质押和投票奖励的总 MIR 治理奖励是 $R_{total}$ 是，</p>
+<p>$$R_{passive}+R_{vote}$$</p>
+<p>这里 $R_{passive}$ 是未投票的 MIR 质押者的奖励，并且 $R_{vote}$ 是对正在进行的提案已经投票了的用户的奖励。如果 <code>voter_weight</code> 是 $W_{vote}$, 并且对于第 $i$ 个提案，个人和全体所投的 MIR 是 $m_{\text{i}}$ 和 $M_{\text{i}}$，投票奖励 $R_{\text{vote}}$ 是，</p>
+<p>$$\sum_{i=1}^n \frac{m_{\text{i}}}{M_{\text{i}}} \frac{W_{\text{vote}}R_{\text{gov}}}{n}$$</p>
+<h3 id="年利率计算"><a href="#年利率计算" class="headerlink" title="年利率计算"></a>年利率计算</h3><blockquote>
+<p>注意由于大多数 mAssets 的协议费用仅在其基础现实世界资产的交易时间内产生，因此在周末和节假日分配的实际奖励会低得多。</p>
+</blockquote>
+<p>Mirror Web App 显示 MIR 质押奖励的年度百分比率。由于协议费用的波动性，MIR 质押 APR 计算使用<strong>过去 15 天每天的平均奖励</strong>。</p>
+<p>如果第 $i$ 天给 MIR 质押者的奖励为 $r_i$，总 MIR 质押量为 $M$，MIR 质押（365 天）的年化百分比为，</p>
+<p>$${\sum_{i=1}^{15}{m_i} \over M} \times 365$$</p>
+<p>其中应用了最近 15 天的奖励分配信息。此 APR 是在假设用户已对所有正在进行的治理提案进行投票的假设下计算的。</p>
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2022/03/04/Terra-白皮书/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2022-03-06 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Typography/">Typography<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2022 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>
