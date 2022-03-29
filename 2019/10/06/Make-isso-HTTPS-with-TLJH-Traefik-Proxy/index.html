@@ -265,7 +265,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="nx">javascript</span>
-<span class="kd">const</span> <span class="nx">Http</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="kr">const</span> <span class="nx">Http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 <span class="nx">Http</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="nx">Http</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://jhub.name:8099&#39;</span><span class="p">);</span>
 <span class="nx">Http</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
@@ -507,34 +507,23 @@ Setting up JupyterHub...
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /etc/isso.conf
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat <span class="s">&lt;&lt; EOF | sudo tee /etc/isso.conf &gt; /dev/null</span>
+
+<span class="s">[general]</span>
+
+<span class="s">dbpath = /var/lib/isso/comments.db</span>
+
+<span class="s">host =</span>
+<span class="s">    http://seii-saintway.github.io</span>
+<span class="s">    https://seii-saintway.github.io</span>
+<span class="s">    http://digitypography.xyz</span>
+<span class="s">    https://digitypography.xyz</span>
+
+<span class="s">EOF</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[general]
-
-dbpath = /var/lib/isso/comments.db
-
-host =
-    http://seii-saintway.github.io
-    https://seii-saintway.github.io
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 

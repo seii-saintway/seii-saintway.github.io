@@ -143,6 +143,151 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2022-03-19 </div>
+			<div class="article-title"><a href="/2022/03/19/Git-style-Repository-on-IPFS/" >Git-style Repository on IPFS</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Host-a-Git-style-repo"><a href="https://docs.ipfs.io/how-to/host-git-style-repo/" target="_blank" rel="noopener">Host a Git-style repo</a><a class="anchor-link" href="#Host-a-Git-style-repo">&#182;</a></h2><ul>
+<li><a href="https://blog.51cto.com/u_15287666/3020740" target="_blank" rel="noopener">高效开发：深入理解Git底层原理</a></li>
+<li><a href="https://medium.com/gitopia/git-a-stupid-content-tracker-d0ef5b86865f" target="_blank" rel="noopener">git: A stupid content tracker</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> git clone --bare https://github.com/seii-saintway/demo-ga
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">cd</span> ~/demo-ga <span class="o">&amp;&amp;</span> git update-server-info
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>git unpack-objects &lt; objects/pack/*.pack
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>rm -f objects/pack/*
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Decentralized-Version-Control-System">Decentralized Version Control System<a class="anchor-link" href="#Decentralized-Version-Control-System">&#182;</a></h2><ul>
+<li><a href="https://github.com/martindbp/ipvc" target="_blank" rel="noopener">https://github.com/martindbp/ipvc</a></li>
+<li><a href="https://github.com/multiverse-vcs/go-multiverse" target="_blank" rel="noopener">https://github.com/multiverse-vcs/go-multiverse</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2022/03/19/Git-style-Repository-on-IPFS/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2022-03-10 </div>
+			<div class="article-title"><a href="/2022/03/10/CQLT-Exploring-a-New-Way-to-Tokenize-Academic-Publications/" >CQLT: Exploring a New Way to Tokenize Academic Publications</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="复制引用许可代币：探索学术论文发表的代币化新方法"><a href="#复制引用许可代币：探索学术论文发表的代币化新方法" class="headerlink" title="复制引用许可代币：探索学术论文发表的代币化新方法"></a>复制引用许可代币：探索学术论文发表的代币化新方法</h2><p>我们需要作为 NFT 复制引用许可证明的 ERC-1155 代币 CQLT。对这种复制引用许可币 CQLT 本身的需求是从 NFT 版权证明的需求中衍生而来的。它的发行由 NFT 所有者完全控制。它的精度为个位数，总量为人类人口数量，或者限量，或者不限总量。拥有一个这种复制引用许可币的人就拥有对于 NFT 进行一次复制引用的权利。NFT 作为异质代币，具有唯一性，流动性差，只在收藏品拍卖市场进行交易。</p>
+<p>We need the ERC-1155 Copy and Quote License Token (CQLT) as a proof of NFT Copy and Quote License. The need for CQLTs is derived from the need for proof of copyright in NFTs. Its issuance is fully controlled by the NFT owner. Its precision is a single digit, and the total supply is either limited or unlimited, and can be as large as the human population. The person who owns one such CQLT has the right to copy and quote the NFT once. As a Non-Fungible Token, NFT is unique and has poor liquidity, and is only traded in the collectible auction market.</p>
+<ul>
+<li>不断深入理解 Git Arweave Neo4j 的底层原理。<ul>
+<li><a href="https://docs.gitopia.com/installation/" target="_blank" rel="noopener">https://docs.gitopia.com/installation/</a></li>
+<li><a href="https://git-scm.com/book/zh/v2/Git-内部原理-底层命令与上层命令" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-内部原理-底层命令与上层命令</a></li>
+<li><a href="https://blog.51cto.com/u_15287666/3020740" target="_blank" rel="noopener">https://blog.51cto.com/u_15287666/3020740</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1771872" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1771872</a></li>
+</ul>
+</li>
+<li>我会参考 mirror.xyz 的实现。我想把 mirror.xyz 先移植到 Terra 生态之下。<ul>
+<li>Building NFT version control is so boring. =&gt; Mirror Writing: <a href="https://mirror.xyz/" target="_blank" rel="noopener">https://mirror.xyz/</a> | Academic Writing</li>
+</ul>
+</li>
+</ul>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2022/03/10/CQLT-Exploring-a-New-Way-to-Tokenize-Academic-Publications/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2022-03-06 </div>
 			<div class="article-title"><a href="/2022/03/06/Mirror-Token/" >Mirror Token</a></div>						
 		</h3>
@@ -1363,126 +1508,6 @@ jupyter kernelspec uninstall py37
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-10-19 </div>
-			<div class="article-title"><a href="/2021/10/19/Try-Juno-Connect/" >Try Juno Connect</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <ul>
-<li><a href="https://juno.sh/" target="_blank" rel="noopener">Jupyter for iOS</a></li>
-<li><a href="https://juno.sh/junoconnect/" target="_blank" rel="noopener">Jupyter Client for iOS</a><ul>
-<li>NG for now. I can not open Markdown files.</li>
-</ul>
-</li>
-<li><a href="https://tinkerstellar.com/" target="_blank" rel="noopener">Learn coding and data science on iPad</a><ul>
-<li>It is still being tested.</li>
-</ul>
-</li>
-</ul>
-<p><img src="/Juno-Connect.png" alt="Juno Connect"></p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/10/19/Try-Juno-Connect/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-10-16 </div>
-			<div class="article-title"><a href="/2021/10/16/認知神経科学/" >認知神経科学</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h2 id="認知神経科学とは何か"><a href="#認知神経科学とは何か" class="headerlink" title="認知神経科学とは何か"></a>認知神経科学とは何か</h2><p>認知神経科学は、認知心理学的情報処理モデルを基盤にし、心理学的実験（行動実験）と脳機能画像技術を組み合わせることで、心理学的機能の神経基盤を探求する分野である。さらに、脳の損傷で生ずる機能障害の研究（神経心理学）や、細胞レベルでの情報伝達の仕組みを研究する神経生理学など、様々な水準の研究を横断的に統合することを目指している。しかし多くの方はこの説明だけではさっぱり分からないだろう。キーワードとして、「<strong>認知心理学的情報処理モデル</strong>」、「<strong>心理学的実験（行動実験）</strong>」「<strong>脳機能画像技術</strong>」、の三つをまず説明しよう。</p>
-<ol>
-<li><p>認知心理学的情報処理モデル<br>認知心理学は脳などの物質系とは独立に、情報処理のフロー・チャートのような抽象的なモデルの水準で論理を展開する。良く用いられる比喩で言えば、認知心理学は精神のハードウェアの構造ではなくソフトウェアの機能を問題にするのである。ハードウェアがタンパク質でもシリコンでも、それは全く問題にならない。このように情報処理モデルとは、人間の精神機能に関する一種のメタファーであり、神経系の構造とは差し当たり無関係に構造される抽象的な水準のモデルである。</p>
-</li>
-<li><p>心理学的実験（行動実験）<br>心理学の実験では、健康な実験参加者に頭を使う単純な作業（精神作業）を繰り返して行って貰う。</p>
-</li>
-<li><p>脳機能画像技術</p>
-<ul>
-<li>大脳機能の局在説<br>機能局在説とは、複雑な機械が単純な機能を持つ多種類の部品から構成されているように、脳の特定の部位は特定の機能に特化していると考える。</li>
-<li>脳血流量と神経系の活動<ul>
-<li>局所脳血流（regional cerebral blood flow, rCBF）：脳のある部位で神経活動が高まると、それに伴ってその部位に大量の血液が供給される。</li>
-</ul>
-</li>
-<li>PET の登場と引き算法<ul>
-<li>引き算法：Posner MI and Raiche ME: Images of Mind. Scientific American Library, 1994</li>
-</ul>
-</li>
-<li>脳機能画像技術と認知心理学</li>
-</ul>
-</li>
-</ol>
-<h2 id="認知神経科学の方法"><a href="#認知神経科学の方法" class="headerlink" title="認知神経科学の方法"></a>認知神経科学の方法</h2><ol>
-<li><p>神経心理学<br>最も「マクロレベル」の分野は神経心理学（neuropsychology）である。<br>神経心理学において、損傷と機能障害を因果的に結び付ける基準として「二重乖離 double dissociation」という概念がある。</p>
-</li>
-<li><p>脳機能画像技術</p>
-<ul>
-<li>CT (computerized tomography)</li>
-<li>PET (positron emission tomography, 陽電子放出断層撮影法)</li>
-<li>MRI (magnetic resonance imaging, 磁気共鳴画像)</li>
-<li>fMRI (functional MRI, 機能磁気共鳴画像)</li>
-<li>SPECT (single photon emission computed tomography, 単一光子放射断層撮影)</li>
-<li>MEG (magnetoencephalogram, 脳磁図)</li>
-<li>NIRS (near infrared spectroscopy, 近赤外線スペクトロスコピー)</li>
-<li>TMS (transcranial magnetic simulation, <a href="https://ja.wikipedia.org/wiki/経頭蓋磁気刺激法" target="_blank" rel="noopener">経頭蓋磁気刺激法</a>)</li>
-<li><a href="https://en.wikipedia.org/wiki/Chemogenetics" target="_blank" rel="noopener">Chemogenetics</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Calcium_imaging" target="_blank" rel="noopener">Calcium imaging</a></li>
-</ul>
-</li>
-<li><p>神経生理学的方法<br>最も「ミクロレベル」での研究は神経生理学的方法によって行われる。<br>認知神経科学における動物実験の方法は、刺激法、破壊法、記録法、分子生物学的方法、の四つに大別できる。<br>分子生物学的方法は、タンパク質の設計図である遺伝子を実験的に操作し、ある特定のタンパク質を生まれつき持たない動物や、逆に過剰に持つ動物を作製して、通常の動物と行動上何が異なるかを調べる方法である。ある特定の脳部位においてのみ<a href="https://ja.wikipedia.org/wiki/遺伝子発現" target="_blank" rel="noopener">遺伝子発現</a>を異なったものにする技術や、遺伝子発現のタイミングを実験者が制御できる形で遺伝子改変する技術もある。</p>
-</li>
-</ol>
-<h2 id="大脳皮質"><a href="#大脳皮質" class="headerlink" title="大脳皮質"></a>大脳皮質</h2><p><strong>灰白質</strong>は、神経細胞の細胞体や樹状突起（じゅじょうとっき）が多く含まれた部分に相当し、一方、<strong>白質</strong>は神経細胞の軸索（じくさく）が多く含まれた部分である。機能上どちらも重要であることは言うまでもないが、情報処理機構を調べると言う観点からすると、情報のやり取りや調節がなされる<strong>灰白質</strong>の部分が認知神経科学の研究対象として言及される場合が多い。</p>
-<p>端脳（たんのう）の外縁部分の灰白質の層を特に<strong>大脳皮質</strong>と呼んでいる。</p>
-<h2 id="神経細胞の興奮"><a href="#神経細胞の興奮" class="headerlink" title="神経細胞の興奮"></a>神経細胞の興奮</h2><p>イオンチャネルは、それが通すイオンの種類によって分けることができる他、その開閉を司る原因に基づいて分類することもできる。たとえば、ある特定の化学物質がイオンチャネルの一部に結合することによりイオンチャネル内部の通り道が開くという、あたかも鍵と鍵穴のようなタイプのイオンチャネルがある。この鍵に当たる化学物質の総称をリガンドというので、リガンド依存性イオンチャネルと称する。また別のタイブのものとして、イオンチャネル付近の膜電位の変化によってイオンチャネルの形が変化し、その結果イオンチャネル内部の通り道が開閉するというものあり、このタイブのものを膜電位依存性イオンチャネルと称する。さまざまなタイブのイオンチャネルのはたらきが巧みに組み合わさることにより、神経細胞の興奮と抑制が制御され、この積み重ねが最終的に認知行動となって現れるわけである。</p>
-<p>イオン輸送に携わる膜タンバク質として、イオンチャネル以外に、膜内外のイオンを交換するエクスチェンジャー、チャネルは持たないがあるイオンの取り込み・排出を行うトランスポーター、イオン輸送にエネルギーを要する（自然な方向とは逆方向にイオンを輸送するため）ポンブが挙げられる。</p>
-<p>このような細かいレベルの構造までが、認知神経科学の対象となるのか、疑う人がいるかもしれない。しかし、たとえばイオンチャネルを形成するアミノ酸（タンバク質とはさまざまなアミノ酸が1列につながったもののことである）の中の1箇所が別の種類のアミノ酸に置き換わっただけで、そのイオンチャネルを通ることのできるイオンの種類が変わる場合があり、その変化によって動物の学習成績に影響がもたらされたという報告もある。認知神経科学を理解する上で、本章の前半で述べたマクロなレベルでの構造を理解すると共に、ミクロなレベルでの構造理解も欠かすことはできない。</p>
-<h2 id="神経細胞が信号を受け取る仕組み"><a href="#神経細胞が信号を受け取る仕組み" class="headerlink" title="神経細胞が信号を受け取る仕組み"></a>神経細胞が信号を受け取る仕組み</h2><ul>
-<li>イオンチャネル型受容体</li>
-<li><p>代謝型受容体<br>イオンチャネルは含まないが細胞内機構によって何らかの生理反応を示すものである。</p>
-</li>
-<li><p>興奮性シナプス<br>シナプス伝達によってシナプス後膜に脱分極がもたらされるようなシナプスのこと</p>
-</li>
-<li>興奮性シナプス後電位（excitatory postsynaptic potential，EPSP）<br>シナプス伝達によって生じたシナプス後膜の脱分極のこと</li>
-<li>抑制性シナプス<br>シナプス伝達によってシナプス後膜に過分極がもたらされるようなシナプスの場合</li>
-<li>抑制性シナプス後電位（inhibitory postsynaptic potential，IPSP）<br>シナプス伝達によって生じたシナプス後膜の過分極のこと</li>
-</ul>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/10/16/認知神経科学/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -1523,11 +1548,15 @@ jupyter kernelspec uninstall py37
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Typography/">Typography<span>3</span></a></li>
-		
 			<li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
 		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
+		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>2</span></a></li>
 		
 		 
 		</ul>
@@ -1541,6 +1570,14 @@ jupyter kernelspec uninstall py37
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2022/03/19/Git-style-Repository-on-IPFS/" ><i class="fa fa-file-o"></i>Git-style Repository on IPFS</a>
+      </li>
+    
+      <li>
+        <a href="/2022/03/10/CQLT-Exploring-a-New-Way-to-Tokenize-Academic-Publications/" ><i class="fa fa-file-o"></i>CQLT: Exploring a New Way t...</a>
+      </li>
+    
+      <li>
         <a href="/2022/03/06/Mirror-Token/" ><i class="fa fa-file-o"></i>Mirror Token</a>
       </li>
     
@@ -1550,14 +1587,6 @@ jupyter kernelspec uninstall py37
     
       <li>
         <a href="/2022/02/25/Declaration-of-the-Independence-of-Cyberspace/" ><i class="fa fa-file-o"></i>Declaration of the Independ...</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/12/Research-Emotet/" ><i class="fa fa-file-o"></i>Research Emotet</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/07/Install-Almond/" ><i class="fa fa-file-o"></i>Install Almond</a>
       </li>
     
   </ul>
