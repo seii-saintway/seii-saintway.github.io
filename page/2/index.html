@@ -143,6 +143,806 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2021-11-07 </div>
+			<div class="article-title"><a href="/2021/11/07/Install-Almond/" >Install Almond</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/almond-sh/almond" target="_blank" rel="noopener">https://github.com/almond-sh/almond</a></li>
+<li><a href="https://almond.sh/" target="_blank" rel="noopener">https://almond.sh/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://almond.sh/docs/quick-start-install" target="_blank" rel="noopener">https://almond.sh/docs/quick-start-install</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">java</span> <span class="o">-</span><span class="n">version</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>openjdk version &#34;1.8.0_312&#34;
+OpenJDK Runtime Environment (Temurin)(build 1.8.0_312-b07)
+OpenJDK 64-Bit Server VM (Temurin)(build 25.312-b07, mixed mode)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">Lo</span> <span class="n">coursier</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">coursier</span><span class="o">-</span><span class="n">cli</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">coursier</span>
+<span class="o">./</span><span class="n">coursier</span> <span class="n">launch</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">v</span> <span class="n">almond</span> <span class="o">--</span> <span class="o">--</span><span class="n">install</span>
+<span class="o">./</span><span class="n">coursier</span> <span class="n">launch</span> <span class="o">--</span><span class="n">fork</span> <span class="o">--</span><span class="n">main</span><span class="o">-</span><span class="k">class</span> <span class="nc">almond</span><span class="o">.</span><span class="n">ScalaKernel</span> <span class="n">almond</span> <span class="o">--</span> <span class="o">--</span><span class="n">install</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>&lt;fork&gt;true&lt;/fork&gt;</code></pre>
+<ul>
+<li><code>true</code> means it will create (fork) a new JVM to run the compiler. This is a bit slower but the isolation is better.</li>
+<li><code>false</code> means it is startign the compiler directly in the JVM you have run <strong>maven</strong> with, this makes the build less repeatable.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="n">coursier</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://ammonite.io/" target="_blank" rel="noopener">https://ammonite.io/</a></li>
+<li><a href="https://github.com/almond-sh/examples" target="_blank" rel="noopener">https://github.com/almond-sh/examples</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/mattpap/IScala" target="_blank" rel="noopener">https://github.com/mattpap/IScala</a></li>
+<li><a href="https://github.com/apache/incubator-toree" target="_blank" rel="noopener">https://github.com/apache/incubator-toree</a></li>
+<li><a href="https://github.com/jupyter-incubator/sparkmagic" target="_blank" rel="noopener">https://github.com/jupyter-incubator/sparkmagic</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/11/07/Install-Almond/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-28 </div>
+			<div class="article-title"><a href="/2021/10/28/Add-Tweets-to-My-Blog/" >Add Tweets to My Blog</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Browser-Side">Browser Side<a class="anchor-link" href="#Browser-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">layout</span><span class="o">/</span><span class="n">_widget</span><span class="o">/</span><span class="n">links</span><span class="o">.</span><span class="n">ejs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">twitter</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>var twitter = (function() {
+  function escapeHtml(str) {
+    return $(&#39;&lt;div/&gt;&#39;).text(str).html();
+  }
+  function render(target, tweets) {
+    var i = 0, fragment = &#39;&#39;, t = $(target)[0];
+
+    for(i = 0; i &lt; tweets.length; ++i) {
+      fragment += &#39;&lt;li&gt;&lt;i class=&#34;fa fa-star&#34;&gt;&lt;/i&gt;&lt;a href=&#34;https://twitter.com/seii_saintway/status/&#39; + tweets[i].id + &#39;&#34;&gt;&#39;
+          + tweets[i].created_at.replace(&#39;T&#39;, &#39;　&#39;).replace(&#39;.000Z&#39;, &#39;&#39;) + &#39;&lt;/a&gt;&lt;p&gt;&#39; + escapeHtml(tweets[i].text||&#39;&#39;) + &#39;&lt;/p&gt;&lt;/li&gt;&#39;;
+    }
+    t.innerHTML = fragment;
+  }
+  return {
+    showTweets: function(options) {
+      options.blacklist = options.blacklist.split(&#39;,&#39;);
+      $.ajax({
+          url: &#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=&#39; + options.count
+        , dataType: &#39;json&#39;
+        , error: function (err) { $(options.target + &#39; li.loading&#39;).addClass(&#39;error&#39;).text(&#39;Error loading feed&#39;); }
+        , success: function (data) {
+          if (!data ) { return; }
+          var tweets = [];
+          for (var i = 0; i &lt; data.data.length; ++i) {
+            if (options.blacklist instanceof Array &amp;&amp; options.blacklist.indexOf(data.data[i].id) !== -1) { continue; }
+            tweets.push(data.data[i]);
+          }
+          render(options.target, tweets);
+        }
+      });
+    }
+  };
+})();
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/seii-saintway/hexo-theme-freemind/commit/420f1d9c1eda38b000f0b3d3f93b4b143f39ed93" target="_blank" rel="noopener">Here</a> is all the changes at the browser side.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Server-Side">Server Side<a class="anchor-link" href="#Server-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/zldobbs/alert-mizzou" target="_blank" rel="noopener">Here</a> is a solution using Flask to proxy Tweets API.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BEARER_TOKEN</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline" target="_blank" rel="noopener">https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=seii_saintway&amp;count=20&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets" target="_blank" rel="noopener">https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/2/users/807092313298112512/tweets?tweet.fields=created_at&amp;max_results=10&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>My solution using <a href="https://doc.traefik.io/traefik/v1.7/basics/#custom-headers" target="_blank" rel="noopener">Traefik</a> to proxy Tweets API</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">tljh</span><span class="o">/</span><span class="n">state</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">tweets</span><span class="o">.</span><span class="n">toml</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="p">]</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="s2">&quot;tweets&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r1</span><span class="p">]</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;PathPrefix:/tweets/&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r2</span><span class="p">]</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;ReplacePath:/2/users/807092313298112512/tweets&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customrequestheaders</span><span class="p">]</span>
+<span class="n">Authorization</span> <span class="o">=</span> <span class="s2">&quot;Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customresponseheaders</span><span class="p">]</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+
+<span class="p">[</span><span class="n">backends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">servers</span><span class="o">.</span><span class="n">s1</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com&quot;</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/28/Add-Tweets-to-My-Blog/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-27 </div>
+			<div class="article-title"><a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" >Try to Reinstall Zsh Kernel</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels" target="_blank" rel="noopener">https://github.com/jupyter/jupyter/wiki/Jupyter-kernels</a></li>
+<li><a href="https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html" target="_blank" rel="noopener">https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/NII-cloud-operation/sshkernel" target="_blank" rel="noopener">https://github.com/NII-cloud-operation/sshkernel</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Bash">A Jupyter Kernel for Bash<a class="anchor-link" href="#A-Jupyter-Kernel-for-Bash">&#182;</a></h2><p><a href="https://github.com/takluyver/bash_kernel" target="_blank" rel="noopener">https://github.com/takluyver/bash_kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip3 install bash_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3 -m bash_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Z-Shell">A Jupyter Kernel for Z Shell<a class="anchor-link" href="#A-Jupyter-Kernel-for-Z-Shell">&#182;</a></h2><p><a href="https://github.com/dan-oak/zsh-jupyter-kernel" target="_blank" rel="noopener">https://github.com/dan-oak/zsh-jupyter-kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3 -m pip install notebook zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>python3 -m zsh_jupyter_kernel.install --sys-prefix
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3 -m zsh_jupyter_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-uninstall-Zsh-Jupyter-Kernel?">How to uninstall Zsh Jupyter Kernel?<a class="anchor-link" href="#How-to-uninstall-Zsh-Jupyter-Kernel?">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">zsh_jupyter_kernel</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zsh_jupyter_kernel</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/__init__.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls -lah /usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat /usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/install.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Try-to-uninstall-Zsh-Jupyter-Kernel">Try to uninstall Zsh Jupyter Kernel<a class="anchor-link" href="#Try-to-uninstall-Zsh-Jupyter-Kernel">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3 -m pip uninstall zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter kernelspec list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter kernelspec uninstall zsh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Python-3.7">A Jupyter Kernel for Python 3.7<a class="anchor-link" href="#A-Jupyter-Kernel-for-Python-3.7">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> virtualenv -p <span class="k">$(</span>which python3.7<span class="k">)</span> py37
+<span class="nb">source</span> ~/py37/bin/activate
+ipython kernel install --user --name py37 --display-name <span class="s1">&#39;Python 3.7&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter kernelspec uninstall py37
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-26 </div>
+			<div class="article-title"><a href="/2021/10/26/金融心理学/" >金融心理学</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <blockquote>
+<p>大多数股民都同意市场由反馈过程支配，并且这些过程产生趋势。经济学家已得出结论：无论这些过程是什么，其运动总和是价格或多或少地随机运动。但是，其他科学家（主要来自自然科学领域）有不同看法，他们经常证明：在一个由反馈过程支配的系统中，运动的总和是一种被称为确定性混沌的事物。这种混沌系统的固有运动规律很难预测，但不是不可以预测。</p>
+</blockquote>
+<blockquote>
+<p>如果你还是使用传统的标准统计方法来检测混沌系统，你将得到随机运动的错误诊断结论。因此，理解流动性金融市场动力学的最佳的整体框架模型是<a href="https://zh.wikipedia.org/zh-cn/混沌理论" target="_blank" rel="noopener">确定性混沌</a>，而不是随机漫步。越来越多的科学家正在做这方面的工作，他们发现巿场确实是混沌的，因此，集体性的错误只能慢慢纠正。</p>
+</blockquote>
+<blockquote>
+<p>作为“基本派”的市场参与者，尽量收集最多的信息以确定金融资产的“真实价值”，这样的市场定价是“有效的”，这就是所谓的“有效市场假设”。</p>
+</blockquote>
+<blockquote>
+<p>一个不容忽视的问题是<strong>真实价值围绕价格波动</strong>。</p>
+</blockquote>
+<blockquote>
+<p>也许有人以为：有些人以投资为业，他们是专家，他们所有的知识和判断能力超出一般私人投资者以上；若听凭无知无识者自己去从事投资，固然可以使市场变化多端，但专家之间互相竞争，也许可以矫正这种趋势。然而事实上则不然。这批职业投资者与投机者之精力与才干，大都用在其他方面。事实上，这批人最关切者，不在比常人高出一筹，预测某一投资品在其整个寿命中所产之收益如何，而在比一般群众稍微早一些，预测决定市价之陈规本身会有什么改变。<br>从社会观点看，要使得投資高明，只有战胜时间和无知之神秘力量，增加我们对于未来之了解；但从私人观点，所谓最高明的投资，乃是先发制人，智夺群众，把坏东西让给别人。<br>－－《就业、利息和货币通论》，凯恩斯，1936年</p>
+</blockquote>
+<blockquote>
+<p>探寻真实价值的最大难题不在于构筑适当的经济模型上的困难，也不在于真实价值随价格波动，而在于描述真实世界动力学的经济仿真模型越好，它们得到的结果就越混沌。或者说，经济学家们越精细地完善他们的模那种模型根本不能预测长期发展的证据就越明显。<br>一些数学家对此加以嘲笑，因为他们一直怀疑这点。他们说：“原因在于，像复杂经济那种动态系统，其真实数学本质是非常混乱和高度不可预测的。”在数学家看来，很简单，经济学家在认识他们所从事的任务的真实本质上就已经失败了，因为他们没有考虑到非线性数学的本质。而且数学家们指出：“一般地，非线性数学的本质是，你只能预测系统的非常短期的行为。”<br>上述结论可以用一种通常称为“确定性混沌”的复杂独特现象加以解释。对许多或绝大多数经济系统而言，混沌意味着不可能做出客观和定量的长期预测。因此，在与“时间和无知之神秘力量”斗争时，我们只能转而寻求个人主观的猜测。而这当然与我们个人和主观的感受密切相关，例如希望、恐惧和贪婪。</p>
+</blockquote>
+<blockquote>
+<p>今天，已经没有人能够搞清图形分析是什么时候第一次用于预测金融市场了，但是最古老的证据是日本的稻米市场。<br>1730年，日本开始采用稻米期货合约标准交易。这些合约与现在很多交易所的商品期货合约完全相同，但有一个例外：它并不需要对所交易商品进行实物交割。期货合约可以买卖，但它不需要稻米实物的交割。然而，一个问题出现了：虽然稻米的现金交易价格波动很小，但期货交易价格波动很大，而且永远如此。1869年，政府终于再也不能容忍这种情况，下令关闭了期货市场。<br>但是怪事出现了：期货市场刚一关闭，实物市场便开始剧烈波动。两年后，市场一片混乱，政府不得不恢复期货交易。不过，这次与以前不同了，期货交易必须伴随基础市场的实物交割，这样市场才逐渐稳定下来。<br>日本投机客由此得到的教训是，股票价格并不仅仅反映供求关系，它还包括心理因素。在此之后经纪人发展了一系列利用心理因素的方法。他们很快开始用图形表示价格变化，从中发现价格变化的规律，现在，全世界的股民广泛使用这种方法。</p>
+</blockquote>
+<blockquote>
+<p>当市场走在新闻之前时，这仅仅说明一个事实：市场提前反映经济。</p>
+</blockquote>
+<blockquote>
+<p>1981年,《美国经济述评》刊登了尤金·法马（Eugene F. Fama）的一篇综述文章。这篇文章详细研究了股票收益和经济活动、通货膨胀和货币供应的关系。该研究工作基于1953年以后的美国实证材料。法马最后总结如下“股票收益领先于所有实际指标，这表明市场对实体经济的预测是理性的这项研究使他得到如下结论，他认为市场是这样理解信息的：<br>有证据支持“理性预期”或“有效市场”观点，即：就股票市场的投资过程而言，市场能够利用最新的信息判断其未来走势。<br>换句话说，股票市场是对经济的提前反映，这个提前量不是很远，但是比任何有资格的经济学家所希望得都要远。这个假设被称为“有效巿场假设”。（值得注意的是，大部分投资者对此持不同观点。1987年黑色星期一之后（见1987年11月9日的《拜伦》杂志），有人发出500份调查问卷，45%的受访者认为股票市场反映了经济现实，而25%的人认为股市与经济毫无关系，只有17%的人认为股市是对经济的提前反映。）<br>由于股票市场提前反映经济，人们很自然地将它当作美国经济的一个领先官方指标。根据位于马萨诸塞州剑桥的国家经济研究局的分析，股市已被证明是12个反映美国经济的周期性领先指标中最好的一个。</p>
+</blockquote>
+<blockquote>
+<p>我们再深入一步：债券显然是更好的经济预测工具。1982年9月28日的《华尔街日报》刊登了一篇论述债券市场对经济事件的反映能力的文章，该文的结论是：<br>由10种利息最高的公用事业债券和10种利息最高的工业债券的平均价格所组成的国债指数，一直比美国商务部的领先指标指数提前数月见顶或见底，虽然两者都具有预测经济周期转折点的能力。<br>上述结论一点也不新鲜。在《积累财富用经济晴雨表》一书中，巴布森使用了12个领先指标，其中就包括货币市场利率指标。关于这点他写道：“货币是一切经济活动的基础，因此在所有指标中是最灵敏的。”<br>金融市场预测经济反转的能力不仅仅是美国所独有。1984年布鲁诺·索尔尼克（Bruno Solnik）在《金融分析师杂志》（Financial Analysts Journa）发表的一篇调研报告，证实了九个国家在1971-1982年间证券市场的相互联系。他写道：“实际观察表明，美国股市和通货膨胀率之间存在负相关，根据对此现象的一种解释，股价的下跌预示经济活动的下降……其他九个国家的证据也支持上述观点。”基于该项研究以及其他许多研究，现在公认股票市场可以作为经济的领先指标，从股市反转到经济反转的典型领先时间大约是半年到9个月。这并不是说市场永远正确，毕竟，市场往往表现为非理性。但是，它确实比科学家发现的任何其他单个指标都要准确。</p>
+</blockquote>
+<blockquote>
+<p>这里是个小试验，用它来说明市场有时也会飞快地与实际脱节。选择外汇市场进行这项试验，设想某一天欧洲的外汇交易情况，欧洲人当然不希望价格大起大落。花了整整一个上午研究过去24小时全球金融消息，他们猜测欧洲时间下午四五点钟时，美国人起床后会干什么，他们是卖出美元，还是买人美元？仔细研究所有卖出或买进的理由后，欧洲人必须决定当美国汇市开市时在美元对德国马克上是看空还是看多。我们假设绝大多数理由支持看空，然后你也选择做空。<br>午餐后，你开了一个巨人的空头美元头寸，这个头寸是如此之大，以至于任何反方向的价格变化所产生的后果都将是极其严重的。这确保你要尽心尽责。然后你就坐下来紧紧盯住计算机屏幕，观察美元价格每一秒钟的变化（它确实是每秒都在变的）。如此大的头寸，再加上如此紧张地盯住屏幕，你将体会到这项试验要达到的目的——非理性感觉。<br>当美国人在伦敦时间下午四五点钟开始交易时，第一个随机扰动即将出现。这时你将体会到一种非常奇怪的感觉：一旦价格开始有了第一个微小的变化，它将以奇特的方式影响你经过深思熟虑才做出的整个逻辑推理，而且这些影响将支持价格继续朝前走下去。如果美元如同预期的那样，下跌了，你的胜利将是巨大的。你会想，“我早知道它会这样”。一点也不奇怪，“任何买进美元的意见都是愚蠢的”。但是，如果美元开始上涨，突然间你脑海中所有的买进理由大大增加分量。“我真傻，它当然会涨”。此时，即使任何人都知道市场价格的这种小小变化无足轻重，你也迫切想改变自己的头寸。<br>通过这项试验你发现情绪跟着价格走。如果价格上升，感觉是它应该继续上升；如果价格下跌，则感觉它也应该继续下跌。这无论对职业人士还是新手都适用，惟一的差异是职业人士能够保持冷静。但是，有时候一种特殊的情绪会从少数几个人逐步蔓延到更多的人，演变成群体运动，最终导致集体歇斯底里。上述现象以一种令人感到复杂，但非常有教育意义的方式说明了人性的弱点，历史上有许多这样的例子。世界上第一个真正大规模的股票投机交易崩盘发生在1557年的法国，当时哈普斯堡王朝停止支付政府前些年过量发行的国债的利息，也不再分期付款。自那以后，每个世纪都能看到主要的股票投机冒险活动，它们无一例外地以崩盘结束（参见附录4）。其中最有教育意义的是1636年荷兰的郁金香泡沫，1711-1720年英国的南海公司泡沫，当然还有1929年华尔街的崩盘。</p>
+</blockquote>
+<blockquote>
+<p>1720年5月28日，南海公司——这个最早最大的泡沫——的股价达到550英镑。这个价格已经超出人们的想像，6月份价格超过700英傍，这段时间股价变化特别神经，大起大落。6月3日中午，价格跌到650英镑，下午又涨回750英镑。很多大的投资者利用这个夏天的高价位卖出股票，转而将获得的利润投入到其他各行各业，包括土地、商品、房地产及其他股票。但是，另外一些买进南海公司股票的投资者，这其中包括物理学家艾萨克·牛顿，在南海公司股票早期价格上升阶段，他就卖出所有股票，获利5000英傍。但是，在盛夏期间，他又买了回来，这笔交易使他亏损了20000英镑。</p>
+</blockquote>
+<blockquote>
+<p>混沌的产生主要与自我强化现象有关。设想在一个系统中，事件A导致事件B，事件B导致事件C，如果事件C最终又导致事件A，这就是一个非常简单的正反馈。<br>如果我们试图像描绘天气那样，描绘一个国家经济的相互关系，我们将会遇到同样复杂的现象。众所周知的例子是所谓的“倍增效应”和“加速效应”、对增长预期的累积和自我提高（“跟上旁人的步伐”），以及由于劳动力或投资替代而产生的投资需求放大等。总之，这些众多的反馈循环表明系统没有简单的平衡点，而是自我震荡，或者表现出其他更复杂的运动。每一个这种正反馈循环都有助于经济现象的自我强化本质，直到最后被其他机理阻挡。为了正确描述这种系统，需要了解复杂非线性数学。</p>
+</blockquote>
+<blockquote>
+<p>分叉的原因是不同正反馈之间主导作用的突然转换。</p>
+</blockquote>
+<p>不同的<a href="https://zh.wikipedia.org/zh-cn/吸引子" target="_blank" rel="noopener">吸引子</a>可能可以用不同的时间级别区分开来。</p>
+<hr>
+<blockquote>
+<p>如果混沌确实是我们所要寻找的东西，金融分析师所追求的精确计算真实价值就有点类似于炼金术。不要忘了，股票真实价值的定义是公司未来盈利的贴现价值，如果我们仅仅能够预测一年、半年甚至更短的时间，那么这个定义是多么可笑。<br>或许我们应该重温凯恩斯对职业投资专家行为的描述：<br>事实上这批人最关切者，不在比常人高出一筹，预测某一投资品在其整个寿命中所产之收益如何，而在比一般群众稍微早一些，预测决定市价之陈规本身会有什么改变。<br>这个结论并不是说经济洞察能力与股票交易无关——绝不是这个意思。混沌现象的精髓是说，预测长期事件和长期定量分析的努力是徒劳无益的。虽然凯恩斯一点也不了解非线性数学的深奥结论，但在《就业、利息和货币通论》中他明确指出下述结论：<br>根据真正的长期预期而做投资，实在太难，几乎不可能。凡想如此从事者，较之仅想对群众行为比群众猜得略胜一筹者，其工作较重，其风险较大。而且，设二人智力相等，则前者容易出大错。</p>
+</blockquote>
+<blockquote>
+<p>在正反馈环中，每一个人都猜测别人将采取什么行动，凯恩斯的“选美比赛”比喻是对正反馈环的最佳描述。凯恩斯将股票市场比做报纸上的选美比赛，比赛参与者从报上刊登的100幅美人头像中选出他们认为最美的（Keynes，1936）：<br>每个参加者都从同一观点出发，于是都不选他自己真认为最美者，也不选一般人真认为最美者，而是运用智力，推测一般人认为一般人所认为的最美者。这已经达到了第三级推测，我相信有些人会运用到第四、第五级，甚至更高。<br>我们还没有达到上述境界，但是毫无疑问，当今最投机的市场模式中有许多只能用下述事实来解释：成千上万的市场参与者在相同的技术图形上画着相同的线，或在个人电脑中装入相向的程序。有些券商理解这些模式，据此可以做出逻辑假设。其他人什么也不懂，只是找寻某种模式。但是，即使一种模式完全是偶然重合，使用它的券商多了，它也有可能产生强烈的信号。虽然媒体试图用各种政治和经济事件来解释价格变化，但券商的理由却截然不同，他们说：“市场运行在通道中”，“市场在考验阻力位”，或者“市场刚刚突破20日移动平均线，但是明日应该出局，因为变化率可能超过90”（一会儿要解释这些陈述）。<br>因此，图形分析得到广泛使用的背后不仅仅在于它是一种理解市场的技巧，有时还在于技术分析产生心理作用。然而，必须牢记这条原理的结尾部分，即：如果所有人都使用同样的技术分析，那它的效果就不是自我实现，而是自我毁灭。</p>
+</blockquote>
+<p>加密货币市场有点像是选 “新颖” 比赛。投资的要诀在于找到 “好玩” 的项目。</p>
+<hr>
+<blockquote>
+<p>实际上，技术派通常还使用许多其他方法和策略，而且他们常常只占市场参与者的有限一部分。只要情况确实如此，互不相识的技术派兄弟依然可以猜测彼此的想法，共同控制市场，形成各种美妙的模式和图形。每一次图形都将继续演化，等到所有的人都看出时，图形自我化解。与此同时，新的技术派兄弟又将探寻新的图形变化……</p>
+</blockquote>
+<blockquote>
+<p>对米勒（Miller）来说，肯·博尔丁（Ken Boulding）培育了他最初的关于复杂系统的学术基因［＊］——他认为生物学与社会系统之间极其相似，需要对这些相似性进行科学调研。<br>［＊］：原文为 meme，一种流行的、以衍生方式复制传播的互联网文化基因，米姆（meme）最初诞生时具有匿名作者、较低娱乐性的特征，在诸如语言、观念、信仰、行为方式等的传递过程中与基因在生物进化过程中所起的作用它相类似。——译者注<br>－－《复杂适应系统——社会生活计算模型导论》</p>
+</blockquote>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/26/金融心理学/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2021-10-19 </div>
 			<div class="article-title"><a href="/2021/10/19/Try-Juno-Connect/" >Try Juno Connect</a></div>						
 		</h3>
@@ -606,10 +1406,7 @@
 <p>超级赌徒的格局：<br>什么是成功？——“要么永远；要么没命。既然来到这个世界、既然注定会离开，不拿自己的性命去赌一把，这一生还有什么意思？”<br>就像贵主耶稣上了十字架豪赌了一把，结果复活了。不管他会不会复活，从走上十字架的那刻起，他就当之无愧地配得上“超级赌徒”的名号。</p>
 <p>一个赌徒的唯一问题就是他的女伴。因为女人的唯一问题就是软弱——由软弱而狭隘——不管是身体还是心灵。有了女伴，想做一个超级赌徒就难了。</p>
 <hr>
-<p>这场小型赌博说到底就是这样一个简单的选择：是，忙着学习复习？还是，忙着研究无果？ —— 要么发现真实；要么迷茫虚空。</p>
-<p>这场中型赌博说到底就是这样一个简单的选择：是，忙着维持生计？还是，忙着投资破产？ —— 要么翻倍；要么归零。</p>
-<p>这场大型赌博说到底就是这样一个简单的选择：是，忙着适应生活？还是，忙着违法坐牢？ —— 要么几亿；要么坐牢。</p>
-<p>这场终极赌博说到底就是这样一个简单的选择：是，忙着活着？还是，忙着去死？ —— 要么永远；要么没命。</p>
+<p>这场小型赌博，说到底，其实就是这样一个简单的选择：是，忙着学习复习？还是，忙着研究无果？ —— 要么发现真实；要么迷茫虚空。<br>这场中型赌博，说到底，其实就是这样一个简单的选择：是，忙着维持生计？还是，忙着投资破产？ —— 要么翻倍；要么归零。<br>这场大型赌博，说到底，其实就是这样一个简单的选择：是，忙着适应生活？还是，忙着违法坐牢？ —— 要么几亿；要么坐牢。<br>这场终极赌博，说到底，其实就是这样一个简单的选择：是，忙着活着？还是，忙着去死？ —— 要么永远；要么没命。</p>
 <hr>
 <h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><blockquote>
 <p>逼迫你们的，要给他们祝福：要祝福，别咒诅了；要和喜乐的人同喜乐，和哭泣的人同哭泣；彼此相待、要存着同样的心意；不要意念着高傲的事，要俯就着卑微的事；别自以为精明了。不要以恶报恶；众人以为美好的、务要筹谋。若是可能，总要尽其在你们的、跟众人和睦。亲爱的，不要自己伸冤，宁可给上帝的义怒留地步；因为经上记着说：『主说，伸冤在我，我必报应。』不，『你的仇敌若饿了，你要分给他吃；若渴了，你要给他喝；因为你这样行、就是把烧𤏲的炭堆在他头上。』别为恶所胜了，总要以善胜恶。<br> (罗马书 12:14-21 吕振中)</p>
@@ -622,788 +1419,6 @@
   
 </div>
 	<a type="button" href="/2021/09/29/就算累也必須堅持學日語-尼采/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-09-29 </div>
-			<div class="article-title"><a href="/2021/09/29/就算累也必須堅持學日語-圣经/" >堅持學外語 [圣经]</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h2 id="14-属灵陈述"><a href="#14-属灵陈述" class="headerlink" title="14 - 属灵陈述"></a>14 - 属灵陈述</h2><blockquote>
-<p>And Jehovah God said to the serpent, Because you have done this, / You are cursed more than all the cattle / And more than all the animals of the field: / Upon your stomach you will go, / And dust you will eat / All the days of your life.<br>And I will put enmity / Between you and the woman / And between your seed and her seed; / He will bruise you on the head, / But you will bruise him on the heel.<br> (Genesis 3:14-15 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>永恒主上帝对蛇说：<br> 『你既作了这事，<br> 就必受咒诅；<br> 比一切牲口一切野兽更重。<br> 你必用肚子走路，<br> 尽你一生的日子吃土。<br> 我要使你和女人之间有仇恨，<br> 你的后裔和她的后裔之间也必有仇恨；<br> 她必重伤你的头，<br> 你必重伤她的脚跟。』<br> (创世记 3:14-15 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>But to which of the angels has He ever said, “Sit at My right hand until I set Your enemies as a footstool for Your feet”? Are they not all ministering <strong>spirits</strong>, sent forth for service for the sake of those who are to inherit salvation?<br> (Hebrews 1:13-14 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>但是他对天使中哪一位说过：『你坐在我右边，等我处置你仇敌、做你脚的凳子』呢？众天使岂不是服事的<strong>灵</strong>，奉差遣为那将要承受拯救的人作服役的工么？<br> (希伯来书 1:13-14 吕振中)</p>
-</blockquote>
-<hr>
-<h2 id="13-属灵陈述"><a href="#13-属灵陈述" class="headerlink" title="13 - 属灵陈述"></a>13 - 属灵陈述</h2><blockquote>
-<p>That the God of our Lord Jesus Christ, the Father of glory, may give to you <strong>a spirit of wisdom and revelation</strong> in the full knowledge of Him, the eyes of your heart having been enlightened, that you may know what is the hope of His calling, and what are the riches of the glory of His inheritance in the saints, and what is the surpassing greatness of His power toward us who believe, according to the operation of the might of His strength, which He caused to operate in Christ in raising Him from the dead and seating Him at His right hand in the heavenlies, far above all rule and authority and power and lordship and every name that is named not only in this age but also in that which is to come; and He subjected all things under His feet and gave Him to be Head over all things to the church, which is His Body, the fullness of the One who fills all in all.<br> (Ephesians 1:17-23 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>求我们主耶稣基督的上帝、荣耀之父、将<strong>智慧和启示之灵</strong>赐给你们，因而认识他，叫你们心的眼睛蒙了光照，你们就可以知道他的呼召所唤起的是何等的指望，他的基业在众圣者中间的荣耀是何等的丰富，他的能力对于我们信的人是何等超越的宏大。这是照他力量之权能所运用的动力，就是他在基督身上所运行，使他从死人中活了起来，又使他在天界中坐在自己右边，远超过各「执政的」、各「掌权的」、各「有能力的」、和各「主治的」，以及任何可称之名号，不但在这今世、也在来世、都超过极远的。上帝又使万有顺服在他脚下，并使他做教会的至上元首。教会是他的身体，是那正在完完全全被充满者之充分完满。<br> (以弗所书 1:17-23 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>For this cause I bow my knees unto the Father, Of whom every family in the heavens and on earth is named, That He would grant you, according to the riches of His glory, to be strengthened with power through His <strong>Spirit</strong> into the inner man, That Christ may make His home in your hearts through <strong>faith</strong>, that you, being rooted and grounded in love, May be full of <strong>strength</strong> to apprehend with all the saints what the breadth and length and height and depth are, And to know the knowledge-surpassing <strong>love</strong> of Christ, that you may be filled unto all the fullness of God.<br> (Ephesians 3:14-19 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>因这缘故，我屈膝在父面前、天上地上众家族所从而得名的、求他按他荣耀之丰富、借着他的<strong>灵</strong>、使你们内心的人因大能而刚强，使基督凭着你们的<strong>信</strong>住在你们心里，使你们既已扎根立基在爱中，便很有<strong>力量</strong>能和众圣徒一同领会基督的爱是何等的长、阔、高、深，能认识那远超过人知识的<strong>爱</strong>，使你们得充满，完完全全地得到上帝之丰满。<br> (以弗所书 3:14-19 吕振中)</p>
-</blockquote>
-<hr>
-<h2 id="12-属灵陈述"><a href="#12-属灵陈述" class="headerlink" title="12 - 属灵陈述"></a>12 - 属灵陈述</h2><p>「受造之灵」、具有、相信「属灵事物」的能力。</p>
-<hr>
-<blockquote>
-<p>约翰被送了官以后，耶稣到加利利去，宣传上帝的福音，说：『时机到了，上帝的国近了；你们要悔改，<strong>信</strong>福音。』<br> (马可福音 1:14-15 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>你若口里承认耶稣为主，心里<strong>相信</strong>上帝曾叫他从死人中活了起来，就必得救：心里信就得以称义，口里承认就可以得救。<br> (罗马书 10:9-10 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>在洗礼之中和他一同埋葬，也在洗礼之中凭着信心和他一同活起来：<strong>信</strong>上帝之运用动力、叫基督从死人中活起来的。<br> (歌罗西书 2:12 吕振中)</p>
-</blockquote>
-<p>「灵」、能够、运用动力。</p>
-<hr>
-<blockquote>
-<p>And such confidence we have through Christ toward God, Not that we are sufficient of ourselves to account anything as from ourselves; but our sufficiency is from God, Who has also made us sufficient as ministers of a new covenant, ［ministers］ not of the letter but of the Spirit; for the letter kills, but the Spirit gives life.<br> (2 Corinthians 3:4-6 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>我们借着基督对上帝有这样的深信，并不是说我们凭着自己能够以什么事为出于自己。我们之所以能够的、乃是出于上帝；他使我们能够做新的约之仆役：不是文字上的约，乃是灵的约；因为文字能害死人，灵却能使人活。<br> (哥林多后书 3:4-6 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>Jehovah God formed man from the dust of the ground and breathed into his nostrils the breath of life, and man became a living soul.<br> (Genesis 2:7 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>永恒主上帝用地上的尘土塑造了人，将生气吹进他的鼻孔里，那人就成了一个有生命的活人。<br> (创世记 2:7 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>But to us God has revealed them through the <strong>Spirit</strong>, for the <strong>Spirit</strong> searches all things, even <strong>the depths of God</strong>.<br> (1 Corinthians 2:10 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>上帝向我们、竟借着<strong>灵</strong>给启示出来了；<strong>灵</strong>探索透万事，连<strong>上帝之深奥</strong>也探索透了。<br> (哥林多前书 2:10 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>耶稣对他说：『你跟从我；任凭那些死人去埋葬他们的死人！』<br> (马太福音 8:22 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>你们呢、你们过去的时候在你们的过犯和罪恶中是死的；<br> (以弗所书 2:1 吕振中)</p>
-</blockquote>
-<p>「人的灵」失去了本身的动力。</p>
-<hr>
-<blockquote>
-<p>下午三点的时候，耶稣大声呼喊说：『以罗伊，以罗伊，拉马撒巴各大尼？』翻译出来就是说：『我的上帝，我的上帝，你为什么撇弃我？』<br> (马可福音 15:34 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>耶稣大声一叫，就断了气。<br> (马可福音 15:37 吕振中)</p>
-</blockquote>
-<p>耶稣失去了上帝而失去了动力；耶稣在失去动力之时呼求了上帝。</p>
-<hr>
-<h2 id="11"><a href="#11" class="headerlink" title="11"></a>11</h2><blockquote>
-<p>有一个经学士听见他们在辩论，就上前来；他觉得耶稣对他们回答得好，便诘问他说：『诫命中哪一条第一要紧呢？』耶稣回答说：『第一要紧的是：「以色列啊，你要听；主我们的上帝是独一无二的主；要将你完全的心、你完全的性命、完全的精神、完全的力量、爱主你的上帝。」其次的是：「要爱你的邻舍如同你自己」。 再没有别的诫命比这两条更大的了。』<br> (马可福音 12:28-31 吕振中)</p>
-</blockquote>
-<p>再次的是：「要爱你自己如同主爱你。」</p>
-<hr>
-<h2 id="10"><a href="#10" class="headerlink" title="10"></a>10</h2><blockquote>
-<p>And Jehovah God said, Behold, the man has become like one of Us, knowing good and evil; and now, lest he put forth his hand and take also from the tree of life and eat and live forever —<br> (Genesis 3:22 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>永恒主上帝说：『看哪，那人既像我们中间的一个、晓得分别善恶；现在恐怕他伸出手来、也摘取生命树的果子吃，就永远活着。』<br> (创世记 3:22 吕振中)</p>
-</blockquote>
-<ul>
-<li>相信 =&gt; 认识 =&gt; 理解 &lt;=&gt; 预见<ul>
-<li>&lt;=&gt; 怕 =&gt; 死亡</li>
-<li>&lt;=&gt; 爱 =&gt; 复活<ul>
-<li>「爱」是「复活」的必要条件。</li>
-<li>「吃生命树的果子」恢复「安息」的能力。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<blockquote>
-<p>If you love Me, you will keep My commandments.<br> (John 14:15 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>你们若爱我，就必谨守我的诫命。<br> (约翰福音 14:15 吕振中)</p>
-</blockquote>
-<p>「爱」是「谨守诫命」的能力。</p>
-<hr>
-<blockquote>
-<p>So Jesus was saying to those Jews who had believed Him, “If you continue in My word, then you are truly My disciples; and you will know the truth, and the truth will set you free.”<br> (John 8:31-32 NASB)</p>
-</blockquote>
-<blockquote>
-<p>Then Jesus said to those Jews who believed Him, If you abide in My word, you are truly My disciples; And you shall know the truth, and the truth shall set you free.<br> (John 8:31-32 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>于是耶稣对已经信他的犹太人说：『你们若持守着我的道，就真是我的门徒了；你们必认识真理，真理就必使你们得自主。』<br> (约翰福音 8:31-32 吕振中)</p>
-</blockquote>
-<p>关于，爱、光、圣、义，的注解在哪里？</p>
-<p>我在爱里：从爱里来，往爱里去。<br>我就是爱：在我里面没有惧怕。</p>
-<hr>
-<audio src="https://res.wx.qq.com/voice/getvoice?mediaid=MzUwOTc2ODcxNF8yMjQ3NDg2ODMz" controls></audio>
-
-<hr>
-<h2 id="9"><a href="#9" class="headerlink" title="9"></a>9</h2><blockquote>
-<p>But of the tree of the knowledge of good and evil, of it you shall not eat; for in the day that you eat of it you shall surely die.<br> (Genesis 2:17 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>只是那能使人分别善恶的知识树的果子，你却不可吃；因为你吃的日子、你一定死。<br> (创世记 2:17 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>And I was alive without the law once; but when the commandment came, sin revived and I died.<br> (Romans 7:9 Recovery Version)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>And the serpent said to the woman, You shall not surely die!<br> (Genesis 3:4 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>蛇对女人说：『你一定不会死：因为上帝知道你们吃的日子、你们的眼睛就开朗，你们就像上帝一样，晓得分别善恶。』<br> (创世记 3:4-5 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>And he said, I heard the sound of You in the garden, and I was afraid because I am naked; so I hid myself.<br> (Genesis 3:10 Recovery Version)</p>
-</blockquote>
-<hr>
-<p>获得了预见个体生死的能力；产生了对于死因和死亡的恐惧。<br>获得了预见群体生死的能力；产生了对于罪过和惩罚的恐惧。</p>
-<p>这种生死预见能力若是准确并且完全的话，就等同于，永生的能力？虽然可能是一种充满恐惧的「永生」？这难道不应该被称为「永死」？——从「控制理论」的角度来看，还必须同时考虑「可控制性」及「可观测性」。</p>
-<p>恐惧像是一种假死状态。死亡和恐惧可能在实体层次上高度联系。</p>
-<p>圣经在这里的意思是：生死预见能力的获得是一种群体的罪过；老死是一种群体的惩罚。有别于个体的罪过和惩罚，群体的罪过、是指、在比群体层次更为广泛的层次的系统中产生危害的群体行为。生死预见能力的获得，导致了，恐惧的产生。恐惧是危害。</p>
-<p>My cat only knew that she would be painful or she would be hungry. She can feel fear, but she never knows that she will die.</p>
-<p>「善恶知识树的果子」是「致死的毒品」，损害「安息」的能力。「吃善恶知识树的果子」是「自杀」。<br>「自杀」是「犯罪」。「犯罪」是「作恶」。「吃善恶知识树的果子」是「作恶」。这里的「恶果」是「惧怕」「纷争」「衰老」「死亡」。</p>
-<p>「领受诫命」是「吃善恶知识树的果子」。</p>
-<hr>
-<blockquote>
-<p>I rejoiced greatly that I have found ［some］ of your children walking in truth, even as we received commandment from the Father.<br> (2 John 4 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>我很欢喜见你的儿女有人照我们从父所领受的诫命以真诚而行。<br> (约翰二书 1:4 吕振中)</p>
-</blockquote>
-<hr>
-<h2 id="8"><a href="#8" class="headerlink" title="8"></a>8</h2><blockquote>
-<p>There is no fear in love, but perfect love casts out fear because fear has punishment, and he who fears has not been perfected in love.<br> (1 John 4:18 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>There is no fear in love, but perfect love drives out fear, because fear involves punishment, and the one who fears is not perfected in love.<br> (1 John 4:18 NASB)</p>
-</blockquote>
-<blockquote>
-<p>在爱里面没有惧怕；完全的<strong>爱</strong>能把<strong>惧怕</strong>赶出。因为惧怕随着刑罚；惧怕的人是未曾得完全于爱里的。<br> (约翰一书 4:18 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>律法溜了进来，使过犯增多；但<strong>罪</strong>在哪里增多，<strong>恩典</strong>也就在哪里格外地满溢；以致罪在死中怎样掌了王权，恩典也可以借着救人之义怎样掌王权，使人借着我们的主耶稣基督得永生。<br> (罗马书 5:20-21 吕振中)</p>
-</blockquote>
-<p>在惧怕中犯下罪过；在爱中施予恩典。</p>
-<hr>
-<blockquote>
-<p>But the end of the charge is love out of a pure heart and ［out of］ a good conscience and ［out of］ unfeigned faith;<br> (1 Timothy 1:5 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>这嘱咐的终极乃是爱，从洁净的心和纯善的良知、跟无伪的信心所发生的。<br> (提摩太前书 1:5 吕振中)</p>
-</blockquote>
-<hr>
-<h2 id="7"><a href="#7" class="headerlink" title="7"></a>7</h2><p>2022-2-14，今天是大喜的日子，因为保罗弟兄鼓舞了我，说：</p>
-<hr>
-<blockquote>
-<p>论到祭偶像之物、我们晓得「我们都有知识」。但知识能自吹自大，惟独爱能建立人。<br> (哥林多前书 8:1 吕振中)</p>
-</blockquote>
-<p>而且，这份爱的能力很大，因为保罗弟兄最后说：</p>
-<hr>
-<blockquote>
-<p>所以食物若叫我的弟兄绊跌，我就永远绝不吃肉，免得使我的弟兄绊跌。<br> (哥林多前书 8:13 吕振中)</p>
-</blockquote>
-<p>来到日本之后，在生活中，我时常会“动弹不得”。我为此苦恼不已，愧疚难当。我曾想，我到底是有多么懒惰、多么任性、多么悖逆啊？为什么我想要动弹却完全动弹不得呢？是不是因为我没睡好？是不是因为我缺乏运动？我是不是抑郁了？我是不是狂躁了？我是不是有 ADHD？我是不是该吃药了？是因为我又失恋了吗？是不是因为我一个人生活太孤单了？是不是因为工作太无聊了？是不是因为有人暗中欺负我？<br>后来，我发现“动弹不得”是因为“我很恐惧”。有时候，我并没有立即意识到“我很恐惧”的事实。只有当我到了“动弹不得”的时候，我才突然发现“我很恐惧”。“恐惧”有两个源头：一个是做错了事当面受到了指责；另一个是在日本的职场文化氛围中受到了他人的感染。</p>
-<hr>
-<blockquote>
-<p>我们晓得「我们都有知识」ーー「而且我们有很多各种各样的知识」、「违背知识是很恐怖的」。<br> (规规矩矩的人们如是说道)</p>
-</blockquote>
-<blockquote>
-<p>若有人自以为知道了什么，他还没有按所应当知道的而知道呢。<br> (哥林多前书 8:2 吕振中) ーー这句有点苏格拉底的味道。ーー而且是年轻的苏格拉底。ーー还未曾绝望。</p>
-</blockquote>
-<blockquote>
-<p>但若有人爱上帝，这人就是上帝所认识的。<br> (哥林多前书 8:3 吕振中)</p>
-</blockquote>
-<p>今天是大喜的日子，因为今后「知识」再多也不怕了。</p>
-<hr>
-<blockquote>
-<p>不过要谨慎，免得你们这权利、竟成了软弱人的碰脚物。倘若有人见你这「有知识的」在偶像庙里坐席，他的良知若是软弱，岂不是要「被建立起来！」去吃祭偶像之物么？那软弱的人、基督为他死的那弟兄、也就会因你的「知识」而失丧了！你们这样犯罪害了弟兄、击伤了他们的良知、便是犯罪敌对着基督了。<br> (哥林多前书 8:9-12 吕振中)</p>
-</blockquote>
-<p>为了守护人们对于「终极真实」的追求，我们选择遵守人们的「知识」。</p>
-<p>In order to protect people’s PURSUING of ULTIMATE FACTS, we choose to bear with people’s knowledge.</p>
-<hr>
-<blockquote>
-<p>さて、偶像に供えられた物については、みな知識を持っていることを、わたしたちは知っています。知識は人を思い上がらせますが、愛は建造します。<br>もし人が何かを知っていると思うなら、彼は知っているはずのことでさえ、知っていません．<br>しかし、人が神を愛するなら、その人は神に知られているのです。<br> (コリント人への第一の手紙 8:1-3 回復訳)</p>
-</blockquote>
-<hr>
-<h2 id="6"><a href="#6" class="headerlink" title="6"></a>6</h2><blockquote>
-<p>Quantify qualitative statements of spirits<br>将对于灵的定性陈述给定量化<br>用定量化的数来度量属灵事物</p>
-</blockquote>
-<p>把祷告作为诗歌是令人愉快的。把比喻作为寻找自我之旅的“锤子”和“拐杖”就有点朴素了吧。我们需要的不是“锤子”或是什么“不是人手凿出的石头”，而是“铁拳”。我们需要的不是“拐杖”，而是“矫健的双腿”。</p>
-<hr>
-<blockquote>
-<p>复杂系统已成为通俗刊物以及快速发展的科学研究领域的宠儿。不幸的是，这在“（依赖于虚无的隐喻之）大众化解释”与“（要求有技术背景之）尖端研究”之间产生了差距。这里我们希望能在隐喻与技术之间提供一个切入点。我们的研究工作侧重于容易理解的简单案例——但仍已包含了深刻的基本见解。这种做法类似于通过研究囚徒困境（Prisoner’s Dilemma）或蜈蚣博弈（Centipede Game）来学习博奔论。虽然理解博弈论需要有一个非常抽象与专业的基础——如不动点、半连续对应等等——但大部分核心见解都已包含在对这些简单博弈案例的分析中。本着类似的精神，在这里我们将依靠简单模型和例子来传达关键的思想。这些例证将存在于隐喻和抽象数学之间，存在于大众刊物使用的华丽辞藻与具体计算之间。我们将“在两者之间”（in-between）看成是了解研究内容的良好开端，希望它能够赋予读者以能力与兴趣，深人挖掘他们认为合适的研究领域。<br>－－《复杂适应系统——社会生活计算模型导论》</p>
-</blockquote>
-<hr>
-<h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><blockquote>
-<p>因为凡想要救自己性命的，必失掉真性命；凡为我失掉自己性命的，必得着真性命。<br> (马太福音 16:25 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>因为凡要救自己魂生命的，必丧失魂生命；凡为我丧失自己魂生命的，必得着魂生命。<br> (马太福音 16:25 恢复本)</p>
-</blockquote>
-<blockquote>
-<p>自分の魂の命を救おうとする者はそれを失い、<strong>わたし</strong>のために自分の魂の命を失う者はそれを見いだす。<br> (マタイによる福音書 16:25 回復訳)</p>
-</blockquote>
-<blockquote>
-<p>For whoever wants to save his soul-life shall lose it; but whoever loses his soul-life for My sake shall find it.<br> (Matthew 16:25 Recovery Version)</p>
-</blockquote>
-<p>世俗是从人那里骗取抢夺时光的魔鬼。已经被骗取抢夺的时光无法追回。<br>凡想要守住自己时光的，必耗费更多时光；凡为终极真实耗费自己时光的，必守住时光。</p>
-<hr>
-<blockquote>
-<p>于是呼召群众同门徒，对他们说：人若想要跟着我，就当弃绝自己，拿起他的十字架来跟从我。因为凡想要救自己性命的、必失掉真性命；凡为我和福音的缘故失掉自己性命的、必救得真性命。<br> (马可福音 8:34-35 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>对于得失性命的陈述，我不能确定是出于「圣灵」还是出于「邪灵」；「人类之子」将要失掉自己的性命来证实或者证伪这句陈述和福音中所采用的方法。</p>
-</blockquote>
-<p>依据「受造」的反应：</p>
-<ul>
-<li>靠着自己并且高抬自己，运用「邪灵」的动力、探索「圣灵」；<ul>
-<li>最终对「圣灵」的认识程度、取决于、「邪灵¹」的能力。</li>
-</ul>
-</li>
-<li>靠着「圣灵」并且自己谦卑，运用「圣灵」的动力、探索「受造之灵」。<ul>
-<li>如果「受造」的反应是确定的，所探索的是「受造之灵」。</li>
-<li>如果「受造」的反应是随机的，所探索的是「圣灵」。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<blockquote>
-<p>¹ 邪灵 =&gt;<br>你信上帝只有一位；你信得不错；鬼魔们也信，并怕得毛发直竖起来呢！<br> (雅各书 2:19 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>耶稣对他说：『「你若能」！在信的人、凡事都能呀！』<br> (马可福音 9:23 吕振中)</p>
-</blockquote>
-<p>故意试探创造主：不寻求「圣灵」的启示、而依据「受造²」的反应，探索「上帝」之深奥。</p>
-<hr>
-<blockquote>
-<p>² 受造 =&gt;<br>For the invisible things of Him, both His eternal power and <strong>divine characteristics</strong>, have been clearly seen since the creation of the world, being perceived by <strong>the things made</strong>, so that they would be without excuse;<br> (Romans 1:20 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>至于他的事、人所不能见的——他永久的能力及<strong>神性</strong>——从世界之创立以来，又是借着<strong>他所造之物</strong>以被了悟而看清楚，使人无可推诿。<br> (罗马书 1:20 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>² 受造 =&gt;<br>Beware that no one carries you off as spoil through his philosophy and empty deceit, according to the tradition of men, according to <strong>the elements of the world</strong>, and not according to Christ; For in Him dwells all the fullness of the <strong>Godhead</strong> bodily,<br> (Colossians 2:8-9 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>你们要谨慎，恐怕有人借着虚空而诱惑人的「哲学」、照人的传统教训、根据<strong>世界所信的星质之灵</strong>，而不根据基督、把你们掳了去做奴仆。因为<strong>神格</strong>之无限完全是以「身体」之形态居住在基督里面的；<br> (歌罗西书 2:8-9 吕振中)</p>
-</blockquote>
-<hr>
-<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><blockquote>
-<p>And Jehovah God caused a deep sleep to fall upon the man, and he slept; and He took one of his ribs and closed up the flesh in its place.<br> (Genesis 2:21 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>But one of the soldiers pierced His side with a spear, and immediately there came out blood and water.<br> (John 19:34 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>For these things happened that the Scripture might be fulfilled: “No bone of His shall be broken.”<br> (John 19:36 Recovery Version)</p>
-</blockquote>
-<hr>
-<h2 id="3-属灵陈述"><a href="#3-属灵陈述" class="headerlink" title="3 - 属灵陈述"></a>3 - 属灵陈述</h2><blockquote>
-<p>此刻你是否在世上某处哭<br>无缘无故在世上哭<br>在哭我</p>
-</blockquote>
-<blockquote>
-<p>此刻你是否在世上某处笑<br>无缘无故地在夜里笑<br>在笑我</p>
-</blockquote>
-<blockquote>
-<p>此刻你是否在世上某处走<br>无缘无故地在世上走<br>走向我</p>
-</blockquote>
-<blockquote>
-<p>此刻你是否在世上某处死<br>无缘无故在世上死<br>望着我</p>
-</blockquote>
-<blockquote>
-<p>你是否终会领悟<br>你那时无缘无故地哭笑行死<br>莫名地悲伤忧虑和癫狂<br>其实是因为我</p>
-</blockquote>
-<blockquote>
-<p>风随意地吹，你听见它的响声，却不知道它从哪里来，往哪里去；凡由灵生的、就是这样。<br> (约翰福音 3:8 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>風は思いのままに吹く．あなたはその音を聞くが、それがどこから来て、どこへ行くかを知らない．その霊から生まれる者もみなそうである。<br> (ヨハネによる福音書 3:8 回復訳)</p>
-</blockquote>
-<blockquote>
-<p>The wind blows where it wishes, and you hear the sound of it, but you do not know where it is coming from and where it is going; so is everyone who has been born of the Spirit.<br> (John 3:8 NASB)</p>
-</blockquote>
-<blockquote>
-<p>“The wind blows where it wills, and you hear the sound of it, but you do not know where it comes from and where it goes; so is everyone who is born of the Spirit.”<br> (John 3:8 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>人不是在基督里得着不朽的荣耀，就是在撒但里得着朽坏的尊严。</p>
-</blockquote>
-<p>「受造之灵」在世界上自由地运用着动力，不是信赖¹着「圣灵」、就是信赖¹着「邪灵」；然而，只有与所信赖¹着的相互一致的意愿才会得以运用相应的动力。</p>
-<hr>
-<blockquote>
-<p>¹ 信赖：相信“其中的动力是永远的”。</p>
-</blockquote>
-<blockquote>
-<p>神造万物，各按其时成为美好，又将<strong>永远</strong>安置在世人心里。虽是这样，人并不能参透神从始至终的作为。<br> (传道书 3:11 恢复本)</p>
-</blockquote>
-<blockquote>
-<p>He has made everything beautiful in its own time; also He has put <strong>eternity</strong> in their heart, yet so that man does not find out what God has done from the beginning to the end.<br> (Ecclesiastes 3:11 Recovery Version)</p>
-</blockquote>
-<p>「圣灵」的动力、是无始无终的、永远的。<br>「邪灵」的动力、是有始有终的、躁动的。</p>
-<hr>
-<blockquote>
-<p>凡自高的必被降卑；凡自己谦卑的必被升高。<br> (马太福音 23:12 吕振中)</p>
-</blockquote>
-<p>即便是排除“属灵陈述”，也可以发现“信靠自己”与“谦卑自己”之间的矛盾。</p>
-<hr>
-<blockquote>
-<p>Let no one therefore judge you in eating and in drinking or in respect of a feast or of a new moon or of the Sabbath, Which are a shadow of the things to come, but the body is of Christ. Let no one defraud you by judging you unworthy of your prize, in <strong>self-chosen lowliness</strong> and <strong>the worship of the angels</strong>, dwelling on the things which he has seen, <strong>vainly puffed up</strong> by his mind set on the flesh, And not holding the Head, out from whom all the Body, being richly supplied and knit together by means of the joints and sinews, grows with the growth of God.<br> (Colossians 2:16-19 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>所以别在吃喝上、或年节月初一安息日的方面上、让人论断你们了。这一些原是以后之事的影儿，真体乃是属基督的。别让人因<strong>乐于卑抑自己</strong>和<strong>拜天使</strong>的事而断你们为不应得奖赏的了。这种人根据所见过的幻象、随着自己肉欲之心思、<strong>徒然自吹自大</strong>，不紧联着那头；然而是从这头、全身体才借着关节和筋络而得供应、彼此联结、以上帝所赐的长大而长大的。<br> (歌罗西书 2:16-19 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>But the Spirit says expressly that in later times some will depart from the faith, giving heed to <strong>deceiving spirits</strong> and teachings of demons, by means of the hypocrisy of men who speak <strong>lies</strong>, of men who are branded in their own conscience as with a hot iron, who forbid marriage and command abstaining from foods, which God has created to be partaken of with thanksgiving by those who believe and have full knowledge of the truth. For every creature of God is good, and nothing is to be rejected if received with thanksgiving; For it is sanctified through the word of God and intercession.<br> (1 Timothy 4:1-5 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>但圣灵明说、在末后的时期、必有人离弃信仰，意向着<strong>谬妄的灵</strong>、和鬼魔的教条。在说<strong>谎话</strong>之假装中、这种人的良知是被热铁烙麻木了的。他们禁止嫁娶，禁戒食物，就是上帝所创造、给信徒和认识真理的人用感谢心享受的。上帝创造之物都是好的；用感谢心领受，没有一样是可弃的；因为借着上帝的话语和人的祈求、已成圣别了。<br> (提摩太前书 4:1-5 吕振中)</p>
-</blockquote>
-<p>因为天使和圣灵的意愿是一致的，所以纯粹地信赖天使是不可能运用任何动力的。</p>
-<p>隐藏着的“高抬自己”，是“高抬自己”并且不妨碍他人也“高抬自己”、一起疯狂地“高抬自己”。这样是与撒但的意愿更加一致的。撒但正是要利用这样的一群人。</p>
-<hr>
-<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><blockquote>
-<p>时波斯匿王，起立白佛：我昔未承诸佛诲敕，见迦旃延、毗罗胝子，咸言：此身死后断灭，名为涅槃。我虽值佛，今犹狐疑。云何发挥，证知此心不生灭地？今此大众，诸有漏者，咸皆愿闻。</p>
-<p>佛告大王：汝身现在，今复问汝：汝此肉身，为同金刚，常住不朽？为复变坏？世尊！我今此身，终从变灭。佛言：大王！汝未曾灭，云何知灭？世尊！我此无常变坏之身，虽未曾灭。我观现前，念念迁谢，新新不住，如火成灰，渐渐销殒，殒亡不息。决知此身，当从灭尽。佛言：如是！大王！汝今生龄，已从衰老，颜貌何如童子之时？世尊！我昔孩孺，肤腠润泽；年至长成，血气充满。而今颓龄，迫于衰耄，形色枯悴，精神昏昧，发白面皱，逮将不久，如何见比充盛之时？佛言：大王！汝之形容，应不顿朽？王言：世尊！变化密移，我诚不觉，寒暑迁流，渐至于此。何以故？我年二十，虽号年少，颜貌已老初十岁时；三十之年，又衰二十。于今六十，又过于二，观五十时，宛然强壮。世尊！我见密移，虽此殂落，其间流易，且限十年。若复令我微细思惟，其变宁唯一纪二纪？实唯年变；岂唯年变？亦兼月化；何直月化？兼又日迁。沉思谛观，刹那刹那，念念之间，不得停住。故知我身，终从变灭。</p>
-<p>佛告大王：汝见变化，迁改不停，悟知汝灭；亦于灭时，汝知身中有不灭耶？波斯匿王合掌白佛：我实不知。佛言：我今示汝不生灭性。大王！汝年几时，见恒河水？王言：我生三岁，慈母携我谒耆婆天，经过此流，尔时即知，是恒河水。佛言：大王！如汝所说，二十之时，衰于十岁；乃至六十，日月岁时，念念迁变。则汝三岁，见此河时，至年十三，其水云何？王言：如三岁时，宛然无异；乃至于今，年六十二，亦无有异。佛言：汝今自伤发白面皱，其面必定皱于童年。则汝今时观此恒河，与昔童时观河之见，有童耄否？王言：不也！世尊！佛言：大王！汝面虽皱，<strong>而此见精</strong>，<strong>性未曾皱</strong>。皱者为变，不皱非变。变者受灭；彼不变者，元无生灭。云何于中受汝生死？而犹引彼末伽黎等，都言此身死后全灭。</p>
-<p>王闻是言，信知身后，舍生趣生；与诸大众，踊跃欢喜，得未曾有。<br>－－<a href="http://www.drbachinese.org/online_reading_simplified/sutra_explanation/Shu/ShuSutra.htm" target="_blank" rel="noopener">《楞严经》</a></p>
-</blockquote>
-<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><blockquote>
-<p>我们已经多次指出，有大量非常确定的经验表明“物理的”这个概念也可以用来标示直接经验到的实在，因而可用来表示心理的实在。在前面几节，我们已经证明，对心理的东西获得<strong>完全的</strong>知识的唯一可能性，就在于用自然科学的量的概念来标示心理的质及其相互联系。许多经验的材料清楚地指出，这种运用必须以何种方式发生：必须使某些“大脑过程”的概念复合与意识世界相配列。我们知道，只有在我们的大脑的某些部分保持不受损害，我们的意识过程才会正常进行而不受干扰。枕骨叶片如受到损害，就会丧失看的能力，太阳穴叶片如受到损害，就会丧失说话的能力，如此等等。这些发现，就目前的情况来看，只是证明在物理的对象“大脑”同被经验到的实在“意识内容”之间存在着一种内在联系。如果我们现在想要把这种关系仅仅看作相互依存关系因而作为一种因果的关系（如二元论的身心交互作用论那样），那么意识或自我就会成为不同于“大脑过程”的一种特殊的对象，而且是一种原则上不可能用物理的概念标示的对象。因为按照这种假定，大脑过程的概念就会被看作标示别的某种东西的概念。由于确实没有包含头脑以外的过程的概念，所以任何物理的概念都不可能与意识内容相配列。而且，我们甚至因此而不可能对大脑过程作物理学的解释，就是说，不可能依据物理的原因来解释它们。因为它们的原因有一部分必须在心理过程中去寻找，而这些心理过程是不可能用物理的概念来标示的；物理的因果关系就会有缺口，这就会对自然法则的概念和对自然法则的表述造成颠覆性的影响。<br>ーー《普通认识论》（Ｍ．石里克），32</p>
-</blockquote>
-<blockquote>
-<p>在试图给心理的东西设定方位时，如果我们同自然科学一样，专注于使一切感觉得以产生的空间条件，那么我们便立刻滑到一个错误的出发点上。于是，我们便看到，在知觉的物质对象和感觉器官之间以及在感觉器官和大脑皮层之间建立起物理过程的联系。由弹琴弦引起的机械性振动进入我的耳朵，刺激就从这里沿着神经末梢传到大脑的听觉中心。结果就是我们把对大脑的刺激看作是“感觉”经验的直接条件，而这种看法反过来又误导我们把这种经验定位于大脑从而定位于人体内部的空间性。如果我们––或许不是明确地––把感觉的质本身定位于大脑皮层，那么我们虽然对具体细节不很清楚，但通常总是进而假设心理的东西就住在我的同伴的头脑的某个地方，认为意识就<strong>在</strong>这个身体<strong>之内</strong>。<br>ーー《普通认识论》（Ｍ．石里克），33</p>
-</blockquote>
-<p>Ｍ．石里克对“心身问题”的解答是一种“平行认识论”，而不是一种“平行实在论”。</p>
-<hr>
-<blockquote>
-<p>量的概念系统给我们提供了一个认识世界的独特的、唯一的方法，因为这种方法不是在<strong>直接体验</strong>中给予我们的。没有任何理由认为，这种概念系统一定无法适用于通过体验所知的所与的质的世界。相反，我们相信，把这种系统加以普遍应用是可能的，因为还没有任何严格的证明表明我们的这种信念是错误的。在科学中，匆忙地放弃这样的信念决不表明是一种明智之举。没有什么东西比宣称<strong>无知</strong>更容易损害科学的探究了，所以我们必须防止过早地宣布一种无知的信念。<br>ーー《普通认识论》（Ｍ．石里克），35</p>
-</blockquote>
-<blockquote>
-<p>克里特人中间有一个人、就是他们自己的神言传讲师、曾经说过：『<a href="https://zh.wikipedia.org/wiki/說謊者悖論" target="_blank" rel="noopener">革哩底人永远是撒谎者</a>，是恶兽，是懒惰的大腹者』：这个见证是真的。<br> (提多书 1:12-13 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>一个诚实的研究者只能在有十分确定的显著迹象的地方，特别是具有被我们当做<strong>生命</strong>标记的地方才能推断意识的存在。<br>ーー《普通认识论》（Ｍ．石里克），35</p>
-</blockquote>
-<p>学术界比较流行把“能够自我复制”当做<strong>生命</strong>的标记。</p>
-<hr>
-<p>石里克驱逐一切“形而上学”的同时也就失去了提出并检验那些充满想象力大胆疯狂的假设的勇气。其结果就是和维特根斯坦一起走向衰老。失去工程师的那一面的同时，维特根斯坦就失去了哥德尔和图灵的那种创造力。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/09/29/就算累也必須堅持學日語-圣经/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-08-17 </div>
-			<div class="article-title"><a href="/2021/08/17/Cornelia-Street/" >Cornelia Street</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Taylor-Swift---Cornelia-Street">Taylor Swift - Cornelia Street<a class="anchor-link" href="#Taylor-Swift---Cornelia-Street">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;I7CcVgw4_KE&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-
-        <iframe width="600" height="400" src="https://www.youtube.com/embed/I7CcVgw4_KE" frameborder="0" allowfullscreen></iframe>
-        
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>We were in the backseat
-drunk on something stronger
-than the drinks in the bar</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>I rent a place on Cornelia Street,
-I say casually in the car</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>We were a fresh page on the desk
-ﬁlling in the blanks as we go</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>As if the streetlights pointed in an arrowhead
-leading us home</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And I hope I never lose you
-Hope it never ends
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>That’s the kind of heartbreak
-Time could never mend
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And baby I get mystiﬁed by how
-this city screams your name</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And baby I’m so terriﬁed of if you ever walk away
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>Windows ﬂung right open
-Autumn air, jacket round my shoulders is yours</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>We bless the rains on Cornelia Street
-Memorize the creaks in the ﬂoor</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>Back when we were card sharks
-Playing games
-I thought you were leading me on</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>I packed my bags, left Cornelia Street
-Before you even knew I was gone</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>But then you called
-Showed your hand
-I turned around before I hit the tunnel
-Sat on the roof, you and I</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>You hold my hand
-On the street
-Walk me back to that apartment
-Years ago we were just inside</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>Barefoot in the kitchen
-Sacred new beginnings
-That became my religion
-Listen...</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>I hope I never lose you 
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>Never again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And baby I get mystiﬁed by how
-this city screams your name</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>And baby I’m so terriﬁed of if you ever walk away
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>I rent a place on Cornelia Street,
-I say casually in the car</code></pre>
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/08/17/Cornelia-Street/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-07-13 </div>
-			<div class="article-title"><a href="/2021/07/13/寻找小水灵/" >寻找小水灵</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>朕平常住在宫殿里面。朕的爱妃总是在门口静候。每当朕开门，她就会向朕行跪拜礼。而朕会抱她起来，与她相拥。她见到朕一声不响地走过来，就会吓得后退低头，行跪拜礼。在床上，她最乖了。她知道在床上是最安全没有任何危险。朕会温柔地抚摸她。朕会抱她吻她。她想怎么呻吟，就怎么呻吟。如果朕想和她一起入浴，她也不会抗拒。她是多么温柔多么美丽。她就是朕最爱的贵妃。朕赐给她小水灵这个名字。可惜她不是人类。</p>
-<hr>
-<p>孩子们被虐待的方式有好几种，所有这些都是上帝所憎恶的。圣经在对不当发怒的警告中禁止虐待孩子。太多孩子是愤怒殴打和其他身体虐待的受害者，因为他们的父母向他们的孩子发泄他们自己的愤怒和挫折感。尽管某些形式的身体处罚可能是圣经所能接受的，但这种处罚永远不应该因着愤怒管理。保罗提醒以弗所人说：“生气却不要犯罪，不可含怒到日落，也不可给魔鬼留地步。”（以弗所书 4:26-27）。箴言 29:22 说：“好气的人挑启争端；暴怒的人多多犯罪。”在基督徒的生活中，没有地方可以容纳不义或不受控制的愤怒。愤怒在变成对孩子或其他任何人的身体虐待之前就应该向上帝忏悔，并适当地处理。</p>
-<p>圣经禁止虐待孩子的另一种方式是禁止心理和情感上的虐待。以弗所书 6:4 警告父亲们不要“惹气”或激怒他们的孩子，而是要把他们带到“主的教训和警戒”中。严厉、不讨喜欢的口头管教、情感操纵或不稳定的环境会使孩子疏远他们的父母，使他们的教导和矫正变得毫无用处。父母可能通过对孩子提出不合理的要求，贬低他们，或者不断地挑毛病，从而惹气或激怒他们的孩子，以致造成不好的伤害，甚至比任何身体殴打所造成的伤害都严重。歌罗西书 3:21 告诉我们不要“怨恨”我们的孩子，这样他们就不会气馁。以弗所书 4:15-16,25-32 说，我们要在爱中说真话，用我们的话来建立别人，不要让腐朽或破坏性的话语从我们的嘴唇流出，特别是针对孩子纤柔的内心与思想。</p>
-<p>家庭属灵虐待是指使用经文、圣经原则或一个人的属灵权威，为一己私利掌控一位家庭成员。</p>
-<hr>
-<p>一定要喂一些云南白药粉末，这个是救命的，有条件的打止血敏，国产的一针管3小时左右，进口的一针管12小时，看情况打。</p>
-<p>最好保持安静，在宠物有意识的情况下切勿进行人工呼吸，期间不要试图投喂食物。</p>
-<hr>
-<p>患 FIC 的猫咪，肾上腺多数有问题，皮质醇分泌异常。在应激反应系统启动后，皮质醇分泌不足，让应激反应系统无法正常结束反应，引起交感神经系统失控般活跃，加速分泌去甲肾上腺素。而去甲肾上腺素会上调各类炎症反应，就包括膀胱炎。</p>
-<p>这个过程加剧了神经炎的发生，同时还莫名其妙的改变了膀胱内保护层的完整与尿路上皮细胞的机能，增加了膀胱组织渗透性，让尿液能够更方便地刺激膀胱组织，产生剧痛，刺激大脑。</p>
-<p>所以这也是为什么自发性膀胱炎和压力关系很大的原因，当猫咪感到外界压力，就会开启自己的应激系统，部分猫咪无法正常结束反应，就很有可能导致 FIC。</p>
-<hr>
-<p>我们可以尝试使用猫咪 feliway 熏香，这是一种猫咪信息素，可以帮助舒缓猫咪的情绪，达到一定的解压效果。</p>
-<p>FIC 发生的时候猫咪膀胱内尿液刺激提高，会产生剧痛，解疼痛对恢复猫的精神、食欲，减少脑部刺激是非常有价值的。但国内宠物一般不怎么重视，所以比较有效的药如丁丙诺菲、芬太尼、曲马多都难以获取。布托啡诺算是比较常见的止疼药，但药效比较短，不过有总比没有好，我们可以要求医生注射这个。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/07/13/寻找小水灵/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2020-10-20 </div>
-			<div class="article-title"><a href="/2020/10/20/What-is-Marriage/" >What is Marriage?</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p><strong>To BrightID:</strong></p>
-<blockquote>
-<p>TL;DR: Hey, guys! You have made an amazing identification system in crypto space. How about building a DAO with civil law? We can start with creating some smart contracts of marriage, concerning crypto property. And isn’t NFT a good way to digitalize and represent marriage certificate? If we can connect two people, then we can connect three and build a real community. We can connect crypto space with the real world.</p>
-</blockquote>
-<p>You know I’m falling in love with a girl. And I’m considering a lot about marriage these days. I’m facing some problems of international marriage. What is marriage? This is some kind of a philosophy question. Does marriage begin with getting certificates of marriage? Does marriage begin with the wedding of putting the rings on the fingers and promising in front of godfather? Or does marriage begin with changing relationship status on Facebook? You know I’m a christian. And this question is critical to me because I can not make love before marriage. :) So I just thought that if I could get a certificate from crypto space… Just kidding. I and my girlfriend will get three certificates from three nations.</p>
-<hr>
-<p>best regards,<br><strong>Andrew</strong></p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2020/10/20/What-is-Marriage/#more" class="btn btn-default more">阅读此文</a>
 </div>
 
 		
@@ -1447,17 +1462,19 @@ I say casually in the car</code></pre>
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>2</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
 			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
 		
+			<li><a href="/tags/Notebooks/">Notebooks<span>23</span></a></li>
+		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>2</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>9</span></a></li>
 		
 		 
 		</ul>
@@ -1471,23 +1488,23 @@ I say casually in the car</code></pre>
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2022/07/27/biobuilder/chapter-4/" ><i class="fa fa-file-o"></i>生物伦理学基础</a>
+      </li>
+    
+      <li>
+        <a href="/2022/07/26/biobuilder/chapter-3/" ><i class="fa fa-file-o"></i>DNA 工程基础</a>
+      </li>
+    
+      <li>
+        <a href="/2022/07/25/biobuilder/chapter-2/" ><i class="fa fa-file-o"></i>生物设计基础</a>
+      </li>
+    
+      <li>
+        <a href="/2022/07/25/biobuilder/chapter-1/" ><i class="fa fa-file-o"></i>合成生物学基础</a>
+      </li>
+    
+      <li>
         <a href="/2022/03/19/Git-style-Repository-on-IPFS/" ><i class="fa fa-file-o"></i>Git-style Repository on IPFS</a>
-      </li>
-    
-      <li>
-        <a href="/2022/03/10/CQLT-Exploring-a-New-Way-to-Tokenize-Academic-Publications/" ><i class="fa fa-file-o"></i>CQLT: Exploring a New Way t...</a>
-      </li>
-    
-      <li>
-        <a href="/2022/03/06/Mirror-Token/" ><i class="fa fa-file-o"></i>Mirror Token</a>
-      </li>
-    
-      <li>
-        <a href="/2022/03/04/Terra-白皮书/" ><i class="fa fa-file-o"></i>Terra 白皮书</a>
-      </li>
-    
-      <li>
-        <a href="/2022/02/25/Declaration-of-the-Independence-of-Cyberspace/" ><i class="fa fa-file-o"></i>Declaration of the Independ...</a>
       </li>
     
   </ul>
