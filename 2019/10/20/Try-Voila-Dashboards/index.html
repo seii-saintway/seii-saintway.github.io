@@ -50,9 +50,11 @@ In&amp;nbsp;[&amp;nbsp;]:
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -81,12 +83,12 @@ In&amp;nbsp;[&amp;nbsp;]:
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -96,7 +98,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -185,7 +187,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>voila ~
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>voila<span class="w"> </span>~
 </pre></div>
 
     </div>
@@ -206,7 +208,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl -s http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb <span class="p">|</span> grep -oe <span class="s1">&#39;{[^{}]*hub_url[^{}]*}&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl<span class="w"> </span>-s<span class="w"> </span>http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-oe<span class="w"> </span><span class="s1">&#39;{[^{}]*hub_url[^{}]*}&#39;</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -263,7 +265,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> commuter
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>commuter
 </pre></div>
 
     </div>
@@ -284,7 +286,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl -s http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb <span class="p">|</span> grep -oe <span class="s1">&#39;&lt;[^&lt;&gt;]*&gt;[^&lt;&gt;]*interactive[^&lt;&gt;]*&lt;/[^&lt;&gt;]*&gt;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl<span class="w"> </span>-s<span class="w"> </span>http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-oe<span class="w"> </span><span class="s1">&#39;&lt;[^&lt;&gt;]*&gt;[^&lt;&gt;]*interactive[^&lt;&gt;]*&lt;/[^&lt;&gt;]*&gt;&#39;</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="n">HTML</span><span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -316,7 +318,8 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>So the <strong>Voila</strong> with Notebook is like <strong>Ploty-Dash</strong> with Python.
+<blockquote>
+<p>So the <strong>Voila</strong> with Notebook is like <strong>Ploty-Dash</strong> with Python.
 <strong>Voila</strong> can render ipywidget, while <strong>NBViewer</strong>/<strong>Commuter</strong> can just display ipynb without ipywidget-rendering.</p>
 </blockquote>
 
@@ -333,7 +336,8 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Voilà</strong> can display ipywidget-rendered ipynb via <em>local file system</em>.</p>
+<blockquote>
+<p><strong>Voilà</strong> can display ipywidget-rendered ipynb via <em>local file system</em>.</p>
 <p><strong>Voilà Gallery</strong> can display ipywidget-rendered ipynb via <em>Github</em> etc. by using repo2docker, exactly the same way Binder does.</p>
 </blockquote>
 

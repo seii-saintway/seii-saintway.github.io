@@ -41,9 +41,11 @@ In&amp;nbsp;[&amp;nbsp;]:
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -72,12 +74,12 @@ In&amp;nbsp;[&amp;nbsp;]:
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -87,7 +89,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -165,9 +167,9 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo ln -sf <span class="sb">`</span>which python<span class="sb">`</span> /usr/bin/python
-<span class="o">!</span><span class="nb">cd</span> ~/hexo/node_modules <span class="o">&amp;&amp;</span> rm -rf hexo-ipynb
-<span class="o">!</span><span class="nb">cd</span> ~/hexo/node_modules <span class="o">&amp;&amp;</span> git clone --branch fix/freeman https://github.com/seii-saintway/hexo-ipynb.git
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span><span class="sb">`</span>which<span class="w"> </span>python<span class="sb">`</span><span class="w"> </span>/usr/bin/python
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo/node_modules<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>hexo-ipynb
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo/node_modules<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>fix/freeman<span class="w"> </span>https://github.com/seii-saintway/hexo-ipynb.git
 </pre></div>
 
     </div>
@@ -203,9 +205,9 @@ Unpacking objects: 100% (67/67), done.
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>rm ~/hexo/source/_posts/Hexo-Notebook.md
-<span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo new post Hexo-Notebook
-<span class="o">!</span><span class="nb">echo</span> <span class="s1">&#39;{% asset_ipynb notebooks/Hexo-Notebook.ipynb %}&#39;</span> &gt;&gt; ~/hexo/source/_posts/Hexo-Notebook.md
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>rm<span class="w"> </span>~/hexo/source/_posts/Hexo-Notebook.md
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>node_modules/hexo/bin/hexo<span class="w"> </span>new<span class="w"> </span>post<span class="w"> </span>Hexo-Notebook
+<span class="o">!</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{% asset_ipynb notebooks/Hexo-Notebook.ipynb %}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/hexo/source/_posts/Hexo-Notebook.md
 </pre></div>
 
     </div>
@@ -237,8 +239,8 @@ Unpacking objects: 100% (67/67), done.
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo clean
-<span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo server --debug
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>node_modules/hexo/bin/hexo<span class="w"> </span>clean
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>node_modules/hexo/bin/hexo<span class="w"> </span>server<span class="w"> </span>--debug
 </pre></div>
 
     </div>
@@ -593,7 +595,7 @@ Unpacking objects: 100% (67/67), done.
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo generate --deploy
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>node_modules/hexo/bin/hexo<span class="w"> </span>generate<span class="w"> </span>--deploy
 </pre></div>
 
     </div>
@@ -922,7 +924,7 @@ Username for &#39;https://github.com&#39;: ^C
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Notebooks/">Notebooks<span>10</span></a></li>
+  <li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
     </ul>
 	</div>
 		

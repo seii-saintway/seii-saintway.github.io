@@ -29,9 +29,11 @@
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -60,12 +62,12 @@
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -75,7 +77,7 @@
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -144,6 +146,723 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2019-10-06 </div>
+			<div class="article-title"><a href="/2019/10/06/Try-To-Import-Notebooks/" >Try To Import Notebooks</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">Try_To_Import_Python</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Try_To_Import_Python.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html" target="_blank" rel="noopener">https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is some simple code to display the contents of a notebook
+with syntax highlighting, etc.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">PythonLexer</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">HtmlFormatter</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">HtmlFormatter</span><span class="p">()</span>
+<span class="n">lexer</span> <span class="o">=</span> <span class="n">PythonLexer</span><span class="p">()</span>
+
+<span class="c1"># publish the CSS for pygments highlighting</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;style type=&#39;text/css&#39;&gt;</span>
+<span class="si">%s</span>
+<span class="s2">&lt;/style&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">formatter</span><span class="o">.</span><span class="n">get_style_defs</span><span class="p">()</span>
+<span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<style type="text/css">
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">show_notebook</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;display a short summary of the cells of a notebook&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">io</span>
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">nbformat</span> <span class="kn">import</span> <span class="n">read</span>
+        <span class="n">nb</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">nb</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;h4&gt;</span><span class="si">%s</span><span class="s2"> cell&lt;/h4&gt;&quot;</span> <span class="o">%</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span> <span class="o">==</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">highlight</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;pre&gt;</span><span class="si">%s</span><span class="s2">&lt;/pre&gt;&quot;</span> <span class="o">%</span> <span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html</span><span class="p">)))</span>
+
+<span class="n">show_notebook</span><span class="p">(</span><span class="s1">&#39;Importing Notebooks.ipynb&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<h4>markdown cell</h4>
+<pre># Importing Jupyter Notebooks as Modules</pre>
+<h4>markdown cell</h4>
+<pre>It is a common problem that people want to import code from Jupyter Notebooks.
+This is made difficult by the fact that Notebooks are not plain Python files,
+and thus cannot be imported by the regular Python machinery.
+
+Fortunately, Python provides some fairly sophisticated [hooks](https://www.python.org/dev/peps/pep-0302/) into the import machinery,
+so we can actually make Jupyter notebooks importable without much difficulty,
+and only using public APIs.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">io</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">types</span>
+</pre></div>
+
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
+<span class="kn">from</span> <span class="nn">nbformat</span> <span class="kn">import</span> <span class="n">read</span>
+<span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>Import hooks typically take the form of two objects:
+
+1. a Module **Loader**, which takes a module name (e.g. `'IPython.display'`), and returns a Module
+2. a Module **Finder**, which figures out whether a module might exist, and tells Python what **Loader** to use</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_notebook</span><span class="p">(</span><span class="n">fullname</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;find a notebook, given its fully qualified name and an optional path</span>
+<span class="sd">    </span>
+<span class="sd">    This turns &quot;foo.bar&quot; into &quot;foo/bar.ipynb&quot;</span>
+<span class="sd">    and tries turning &quot;Foo_Bar&quot; into &quot;Foo Bar&quot; if Foo_Bar</span>
+<span class="sd">    does not exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fullname</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+        <span class="n">nb_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.ipynb&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">nb_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">nb_path</span>
+        <span class="c1"># let import Notebook_Name find &quot;Notebook Name.ipynb&quot;</span>
+        <span class="n">nb_path</span> <span class="o">=</span> <span class="n">nb_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">nb_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">nb_path</span>
+            
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>## Notebook Loader</pre>
+<h4>markdown cell</h4>
+<pre>Here we have our Notebook Loader.
+It's actually quite simple - once we figure out the filename of the module,
+all it does is:
+
+1. load the notebook document into memory
+2. create an empty Module
+3. execute every cell in the Module namespace
+
+Since IPython cells can have extended syntax,
+the IPython transform is applied to turn each of these cells into their pure-Python counterparts before executing them.
+If all of your notebook cells are pure-Python,
+this step is unnecessary.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NotebookLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Module Loader for Jupyter Notebooks&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shell</span> <span class="o">=</span> <span class="n">InteractiveShell</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+    
+    <span class="k">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;import a notebook as a module&quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">find_notebook</span><span class="p">(</span><span class="n">fullname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        
+        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;importing Jupyter notebook from </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
+                                       
+        <span class="c1"># load the notebook object</span>
+        <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">nb</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        
+        
+        <span class="c1"># create the module and add it to sys.modules</span>
+        <span class="c1"># if name in sys.modules:</span>
+        <span class="c1">#    return sys.modules[name]</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">(</span><span class="n">fullname</span><span class="p">)</span>
+        <span class="n">mod</span><span class="o">.</span><span class="vm">__file__</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="n">mod</span><span class="o">.</span><span class="n">__loader__</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">mod</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;get_ipython&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_ipython</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod</span>
+        
+        <span class="c1"># extra work to ensure that magics that would affect the user_ns</span>
+        <span class="c1"># actually affect the notebook module&#39;s ns</span>
+        <span class="n">save_user_ns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="vm">__dict__</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+          <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">nb</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span> <span class="o">==</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span>
+                <span class="c1"># transform the input to executable Python</span>
+                <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">input_transformer_manager</span><span class="o">.</span><span class="n">transform_cell</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+                <span class="c1"># run the code in themodule</span>
+                <span class="k">exec</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">mod</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span> <span class="o">=</span> <span class="n">save_user_ns</span>
+        <span class="k">return</span> <span class="n">mod</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>## The Module Finder</pre>
+<h4>markdown cell</h4>
+<pre>The finder is a simple object that tells you whether a name can be imported,
+and returns the appropriate loader.
+All this one does is check, when you do:
+
+```python
+import mynotebook
+```
+
+it checks whether `mynotebook.ipynb` exists.
+If a notebook is found, then it returns a NotebookLoader.
+
+Any extra logic is just for resolving paths within packages.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NotebookFinder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Module finder that locates Jupyter Notebooks&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">def</span> <span class="nf">find_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">nb_path</span> <span class="o">=</span> <span class="n">find_notebook</span><span class="p">(</span><span class="n">fullname</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">nb_path</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">key</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+            <span class="c1"># lists aren&#39;t hashable</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">NotebookLoader</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>## Register the hook</pre>
+<h4>markdown cell</h4>
+<pre>Now we register the `NotebookFinder` with `sys.meta_path`</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">meta_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NotebookFinder</span><span class="p">())</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>After this point, my notebooks should be importable.
+
+Let's look at what we have in the CWD:</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">nbpackage</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>So I should be able to `import nbpackage.mynotebook`.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nbpackage.mynotebook</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>### Aside: displaying notebooks</pre>
+<h4>markdown cell</h4>
+<pre>Here is some simple code to display the contents of a notebook
+with syntax highlighting, etc.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">PythonLexer</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">HtmlFormatter</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">HtmlFormatter</span><span class="p">()</span>
+<span class="n">lexer</span> <span class="o">=</span> <span class="n">PythonLexer</span><span class="p">()</span>
+
+<span class="c1"># publish the CSS for pygments highlighting</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;style type=&#39;text/css&#39;&gt;</span>
+<span class="si">%s</span><span class="s2"></span>
+<span class="s2">&lt;/style&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">formatter</span><span class="o">.</span><span class="n">get_style_defs</span><span class="p">()</span>
+<span class="p">))</span>
+</pre></div>
+
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_notebook</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;display a short summary of the cells of a notebook&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">nb</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">nb</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;h4&gt;</span><span class="si">%s</span><span class="s2"> cell&lt;/h4&gt;&quot;</span> <span class="o">%</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span> <span class="o">==</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">highlight</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;pre&gt;</span><span class="si">%s</span><span class="s2">&lt;/pre&gt;&quot;</span> <span class="o">%</span> <span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html</span><span class="p">)))</span>
+
+<span class="n">show_notebook</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;nbpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;mynotebook.ipynb&quot;</span><span class="p">))</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>So my notebook has some code cells,
+one of which contains some IPython syntax.
+
+Let's see what happens when we import it</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbpackage</span> <span class="kn">import</span> <span class="n">mynotebook</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>Hooray, it imported!  Does it work?</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>Hooray again!
+
+Even the function that contains IPython syntax works:</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="n">has_ip_syntax</span><span class="p">()</span>
+</pre></div>
+
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="n">whatsmyname</span><span class="p">()</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>## Notebooks in packages</pre>
+<h4>markdown cell</h4>
+<pre>We also have a notebook inside the `nb` package,
+so let's make sure that works as well.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">nbpackage</span><span class="o">/</span><span class="n">nbs</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>Note that the `__init__.py` is necessary for `nb` to be considered a package,
+just like usual.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">show_notebook</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;nbpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;nbs&quot;</span><span class="p">,</span> <span class="s2">&quot;other.ipynb&quot;</span><span class="p">))</span>
+</pre></div>
+
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbpackage.nbs</span> <span class="kn">import</span> <span class="n">other</span>
+<span class="n">other</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>So now we have importable notebooks, from both the local directory and inside packages.
+
+I can even put a notebook inside IPython, to further demonstrate that this is working properly:</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">IPython.paths</span> <span class="kn">import</span> <span class="n">get_ipython_package_dir</span>
+
+<span class="n">utils</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_ipython_package_dir</span><span class="p">(),</span> <span class="s1">&#39;utils&#39;</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;nbpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;mynotebook.ipynb&quot;</span><span class="p">),</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">utils</span><span class="p">,</span> <span class="s2">&quot;inside_ipython.ipynb&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>and import the notebook from `IPython.utils`</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.utils</span> <span class="kn">import</span> <span class="n">inside_ipython</span>
+<span class="n">inside_ipython</span><span class="o">.</span><span class="n">whatsmyname</span><span class="p">()</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>This approach can even import functions and classes that are defined in a notebook using the `%%cython` magic.</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-simple-way-to-import-.ipynb-files-in-jupyter-notebook-are-as-follows:">A simple way to import .ipynb files in jupyter notebook are as follows:<a class="anchor-link" href="#A-simple-way-to-import-.ipynb-files-in-jupyter-notebook-are-as-follows:">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Install <code>import-ipynb</code></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>import-ipynb
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol start="2">
+<li>Import <code>import_ipynb</code> in jupyter notebook. Then import .ipynb file as you import .py file.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">import_ipynb</span>
+<span class="kn">from</span> <span class="nn">nbpackage</span> <span class="kn">import</span> <span class="n">mynotebook</span>
+
+<span class="n">mynotebook</span><span class="o">.</span><span class="n">whatsmyname</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>importing Jupyter notebook from /home/jupyter-sheng_wei/hexo/source/notebooks/Try-Notebook-Import/nbpackage/mynotebook.ipynb
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;nbpackage.mynotebook&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="vm">__name__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;nbpackage.mynotebook&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="vm">__file__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;/home/jupyter-sheng_wei/hexo/source/notebooks/Try-Notebook-Import/nbpackage/mynotebook.ipynb&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">import_ipynb</span>
+<span class="kn">from</span> <span class="nn">nbpackage.nbs</span> <span class="kn">import</span> <span class="n">other</span>
+<span class="n">other</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>importing Jupyter notebook from /home/jupyter-sheng_wei/hexo/source/notebooks/Try-Notebook-Import/nbpackage/nbs/other.ipynb
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;barbarbarbarbarbarbarbarbarbar&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/06/Try-To-Import-Notebooks/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-10-06 </div>
 			<div class="article-title"><a href="/2019/10/06/Try-Datalab/" >Try Datalab</a></div>						
 		</h3>
 	
@@ -189,7 +908,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git clone https://github.com/GoogleCloudPlatform/datalab.git
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/GoogleCloudPlatform/datalab.git
 </pre></div>
 
     </div>
@@ -202,7 +921,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nv">PROJECT_ID</span><span class="o">=</span>sandbox-243014 datalab/containers/datalab/build.sh
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nv">PROJECT_ID</span><span class="o">=</span>sandbox-243014<span class="w"> </span>datalab/containers/datalab/build.sh
 </pre></div>
 
     </div>
@@ -215,7 +934,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nv">PROJECT_ID</span><span class="o">=</span>sandbox-243014 datalab/containers/datalab/run.sh
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nv">PROJECT_ID</span><span class="o">=</span>sandbox-243014<span class="w"> </span>datalab/containers/datalab/run.sh
 </pre></div>
 
     </div>
@@ -239,7 +958,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker run --rm -it -p <span class="s2">&quot;8081:8080&quot;</span> -v <span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">:/content&quot;</span> -e <span class="s2">&quot;PROJECT_ID=sandbox-243014&quot;</span> gcr.io/cloud-datalab/datalab:local
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;8081:8080&quot;</span><span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">:/content&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;PROJECT_ID=sandbox-243014&quot;</span><span class="w"> </span>gcr.io/cloud-datalab/datalab:local
 </pre></div>
 
     </div>
@@ -263,10 +982,10 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E pip install datalab
-<span class="o">!</span>sudo -E jupyter nbextension install --py datalab.notebook --sys-prefix
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>datalab
+<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>jupyter<span class="w"> </span>nbextension<span class="w"> </span>install<span class="w"> </span>--py<span class="w"> </span>datalab.notebook<span class="w"> </span>--sys-prefix
 
-<span class="o">!</span>sudo -E pip install google.cloud.monitoring
+<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>google.cloud.monitoring
 </pre></div>
 
     </div>
@@ -279,7 +998,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter nbextension list
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter<span class="w"> </span>nbextension<span class="w"> </span>list
 </pre></div>
 
     </div>
@@ -315,7 +1034,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git clone https://github.com/googledatalab/notebooks.git
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/googledatalab/notebooks.git
 </pre></div>
 
     </div>
@@ -328,8 +1047,8 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls <span class="s1">&#39;notebooks/tutorials/BigQuery/Importing and Exporting Data.ipynb&#39;</span>
-<span class="o">!</span>ls <span class="s1">&#39;notebooks/tutorials/Storage/Storage Commands.ipynb&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls<span class="w"> </span><span class="s1">&#39;notebooks/tutorials/BigQuery/Importing and Exporting Data.ipynb&#39;</span>
+<span class="o">!</span>ls<span class="w"> </span><span class="s1">&#39;notebooks/tutorials/Storage/Storage Commands.ipynb&#39;</span>
 </pre></div>
 
     </div>
@@ -462,7 +1181,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git clone https://github.com/googledatalab/pydatalab.git
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/googledatalab/pydatalab.git
 </pre></div>
 
     </div>
@@ -475,7 +1194,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep -r <span class="s1">&#39;async&#39;</span> --include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span> pydatalab/datalab/
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;async&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>pydatalab/datalab/
 </pre></div>
 
     </div>
@@ -496,8 +1215,8 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install --upgrade requests grpcio
-<span class="o">!</span><span class="nb">cd</span> pydatalab <span class="o">&amp;&amp;</span> pip install .
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>requests<span class="w"> </span>grpcio
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>pydatalab<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </pre></div>
 
     </div>
@@ -510,7 +1229,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep -r <span class="s1">&#39;async&#39;</span> --include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span> /home/sheng_wei/anaconda3/lib/python3.7/site-packages/datalab/
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;async&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>/home/sheng_wei/anaconda3/lib/python3.7/site-packages/datalab/
 </pre></div>
 
     </div>
@@ -523,7 +1242,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep -r <span class="s1">&#39;yaml&#39;</span> --include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span> /home/sheng_wei/anaconda3/lib/python3.7/site-packages/google/datalab/utils/commands/_utils.py
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;yaml&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>/home/sheng_wei/anaconda3/lib/python3.7/site-packages/google/datalab/utils/commands/_utils.py
 </pre></div>
 
     </div>
@@ -583,7 +1302,7 @@
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Add-Category-and-Tag-to-Notebooks">Add Category and Tag to Notebooks<a class="anchor-link" href="#Add-Category-and-Tag-to-Notebooks">&#182;</a></h2><p>I find that the hexo layouts for Categories and Tags are almost the same, but it seems that the the usage of Tags is more casual.
-So I decide to add Tag "Notebooks" to my Notebook posts.</p>
+So I decide to add Tag &quot;Notebooks&quot; to my Notebook posts.</p>
 
 </div>
 </div>
@@ -642,9 +1361,9 @@ So I decide to add Tag "Notebooks" to my Notebook posts.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo ln -sf <span class="sb">`</span>which python<span class="sb">`</span> /usr/bin/python
-<span class="o">!</span><span class="nb">cd</span> ~/hexo/node_modules <span class="o">&amp;&amp;</span> rm -rf hexo-ipynb
-<span class="o">!</span><span class="nb">cd</span> ~/hexo/node_modules <span class="o">&amp;&amp;</span> git clone --branch fix/freeman https://github.com/seii-saintway/hexo-ipynb.git
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span><span class="sb">`</span>which<span class="w"> </span>python<span class="sb">`</span><span class="w"> </span>/usr/bin/python
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo/node_modules<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>hexo-ipynb
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo/node_modules<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>fix/freeman<span class="w"> </span>https://github.com/seii-saintway/hexo-ipynb.git
 </pre></div>
 
     </div>
@@ -680,9 +1399,9 @@ Unpacking objects: 100% (67/67), done.
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>rm ~/hexo/source/_posts/Hexo-Notebook.md
-<span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo new post Hexo-Notebook
-<span class="o">!</span><span class="nb">echo</span> <span class="s1">&#39;{% asset_ipynb notebooks/Hexo-Notebook.ipynb %}&#39;</span> &gt;&gt; ~/hexo/source/_posts/Hexo-Notebook.md
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>rm<span class="w"> </span>~/hexo/source/_posts/Hexo-Notebook.md
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>node_modules/hexo/bin/hexo<span class="w"> </span>new<span class="w"> </span>post<span class="w"> </span>Hexo-Notebook
+<span class="o">!</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{% asset_ipynb notebooks/Hexo-Notebook.ipynb %}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/hexo/source/_posts/Hexo-Notebook.md
 </pre></div>
 
     </div>
@@ -714,8 +1433,8 @@ Unpacking objects: 100% (67/67), done.
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo clean
-<span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo server --debug
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>node_modules/hexo/bin/hexo<span class="w"> </span>clean
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>node_modules/hexo/bin/hexo<span class="w"> </span>server<span class="w"> </span>--debug
 </pre></div>
 
     </div>
@@ -1070,7 +1789,7 @@ Unpacking objects: 100% (67/67), done.
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~/hexo <span class="o">&amp;&amp;</span> node_modules/hexo/bin/hexo generate --deploy
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>node_modules/hexo/bin/hexo<span class="w"> </span>generate<span class="w"> </span>--deploy
 </pre></div>
 
     </div>
@@ -1783,32 +2502,6 @@ Username for &#39;https://github.com&#39;: ^C
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2018-03-27 </div>
-			<div class="article-title"><a href="/2018/03/27/学習進捗/" >学習進捗</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2018/03/27/学習進捗/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -1847,45 +2540,45 @@ Username for &#39;https://github.com&#39;: ^C
 			
 	<div class="widget">
 		<h4 style="margin-top: 18px;">标签云</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>10</span></a></li>
+		<ul class="tag_box inline list-unstyled">
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>2</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>2</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
-		 
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+		
+		
 		</ul>
 	</div>
 
@@ -1895,6 +2588,10 @@ Username for &#39;https://github.com&#39;: ^C
 <div class="widget">
   <h4 style="margin-top: 18px;">最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2023/02/04/Add-Tabs-to-My-Blog/" ><i class="fa fa-file-o"></i>Add Tabs to My Blog</a>
+      </li>
     
       <li>
         <a href="/2022/10/18/Try-Bacalhau/" ><i class="fa fa-file-o"></i>Try Bacalhau</a>
@@ -1910,10 +2607,6 @@ Username for &#39;https://github.com&#39;: ^C
     
       <li>
         <a href="/2022/09/04/Look-on-Down-From-the-Bridge/" ><i class="fa fa-file-o"></i>Look on Down From the Bridge</a>
-      </li>
-    
-      <li>
-        <a href="/2022/08/20/枯れない花/" ><i class="fa fa-file-o"></i>枯れない花</a>
       </li>
     
   </ul>

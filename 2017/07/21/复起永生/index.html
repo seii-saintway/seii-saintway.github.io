@@ -35,9 +35,11 @@
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -66,12 +68,12 @@
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -81,7 +83,7 @@
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

@@ -54,9 +54,11 @@ In&amp;nbsp;[&amp;nbsp;]:
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -85,12 +87,12 @@ In&amp;nbsp;[&amp;nbsp;]:
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -100,7 +102,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -179,7 +181,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E npm install @nteract/commuter -g
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>@nteract/commuter<span class="w"> </span>-g
 </pre></div>
 
     </div>
@@ -192,7 +194,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E npm install --build-from-source canvas@2.6.0 -g --unsafe-perm<span class="o">=</span><span class="nb">true</span> --allow-root --verbose
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--build-from-source<span class="w"> </span>canvas@2.6.0<span class="w"> </span>-g<span class="w"> </span>--unsafe-perm<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--allow-root<span class="w"> </span>--verbose
 </pre></div>
 
     </div>
@@ -213,10 +215,10 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg <span class="p">|</span> sudo apt-key add -
-<span class="nb">echo</span> <span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/yarn.list
+curl<span class="w"> </span>-sS<span class="w"> </span>https://dl.yarnpkg.com/debian/pubkey.gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/yarn.list
 
-sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install --no-install-recommends yarn
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span>yarn
 </pre></div>
 
     </div>
@@ -229,7 +231,7 @@ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install --no-
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -E yarn global add @nteract/commuter
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>yarn<span class="w"> </span>global<span class="w"> </span>add<span class="w"> </span>@nteract/commuter
 </pre></div>
 
     </div>
@@ -249,7 +251,7 @@ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install --no-
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json
 </pre></div>
 
     </div>
@@ -269,7 +271,7 @@ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install --no-
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json <span class="p">|</span> grep -1 --color commuter
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-1<span class="w"> </span>--color<span class="w"> </span>commuter
 </pre></div>
 
     </div>
@@ -317,7 +319,7 @@ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install --no-
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/bin.js
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/bin.js
 </pre></div>
 
     </div>
@@ -359,7 +361,7 @@ require(&#34;./lib/index.js&#34;);
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json <span class="p">|</span> grep -1 --color backend
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-1<span class="w"> </span>--color<span class="w"> </span>backend
 </pre></div>
 
     </div>
@@ -392,7 +394,7 @@ require(&#34;./lib/index.js&#34;);
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sed -n <span class="s1">&#39;6,17p&#39;</span> /usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;6,17p&#39;</span><span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json
 </pre></div>
 
     </div>
@@ -441,7 +443,7 @@ require(&#34;./lib/index.js&#34;);
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/lib/index.js
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/lib/index.js
 </pre></div>
 
     </div>
@@ -492,7 +494,7 @@ createServer().then(function (server) {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat /usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/pages/discover.js <span class="p">|</span> grep -w1 --color port
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/pages/discover.js<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-w1<span class="w"> </span>--color<span class="w"> </span>port
 </pre></div>
 
     </div>

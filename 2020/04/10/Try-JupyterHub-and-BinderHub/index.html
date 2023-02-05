@@ -39,9 +39,11 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -70,12 +72,12 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -85,7 +87,7 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -221,7 +223,7 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcloud container clusters create <span class="err">\</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>create<span class="w"> </span><span class="err">\</span>
   <span class="o">--</span><span class="n">machine</span><span class="o">-</span><span class="nb">type</span> <span class="n">n1</span><span class="o">-</span><span class="n">standard</span><span class="o">-</span><span class="mi">1</span> \
   <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">1</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">autoscaling</span> <span class="o">--</span><span class="nb">min</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">0</span> <span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">2</span> \
   <span class="o">--</span><span class="n">zone</span> <span class="n">us</span><span class="o">-</span><span class="n">central1</span><span class="o">-</span><span class="n">b</span> <span class="o">--</span><span class="n">cluster</span><span class="o">-</span><span class="n">version</span> <span class="n">latest</span> \
@@ -238,7 +240,7 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcloud container clusters get-credentials jhub --zone us-central1-b --project sandbox-243014
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>get-credentials<span class="w"> </span>jhub<span class="w"> </span>--zone<span class="w"> </span>us-central1-b<span class="w"> </span>--project<span class="w"> </span>sandbox-243014
 </pre></div>
 
     </div>
@@ -251,7 +253,7 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl create clusterrolebinding cluster-admin-binding <span class="err">\</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>clusterrolebinding<span class="w"> </span>cluster-admin-binding<span class="w"> </span><span class="err">\</span>
   <span class="o">--</span><span class="n">clusterrole</span><span class="o">=</span><span class="n">cluster</span><span class="o">-</span><span class="n">admin</span> \
   <span class="o">--</span><span class="n">user</span><span class="o">=</span><span class="n">saintway</span><span class="o">.</span><span class="n">sakaru</span><span class="nd">@gmail</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
@@ -266,7 +268,7 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl --namespace kube-system create serviceaccount tiller
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>--namespace<span class="w"> </span>kube-system<span class="w"> </span>create<span class="w"> </span>serviceaccount<span class="w"> </span>tiller
 </pre></div>
 
     </div>
@@ -279,7 +281,7 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl create clusterrolebinding tiller --clusterrole<span class="o">=</span>cluster-admin --serviceaccount<span class="o">=</span>kube-system:tiller
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>clusterrolebinding<span class="w"> </span>tiller<span class="w"> </span>--clusterrole<span class="o">=</span>cluster-admin<span class="w"> </span>--serviceaccount<span class="o">=</span>kube-system:tiller
 </pre></div>
 
     </div>
@@ -292,7 +294,7 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm init --service-account tiller --wait --upgrade
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>init<span class="w"> </span>--service-account<span class="w"> </span>tiller<span class="w"> </span>--wait<span class="w"> </span>--upgrade
 </pre></div>
 
     </div>
@@ -305,7 +307,7 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl create namespace kronhub
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>kronhub
 </pre></div>
 
     </div>
@@ -326,10 +328,10 @@ Authentication and User Basics&amp;#182;https://jupyterhub.readthedocs.io/en/sta
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
-helm repo update
-helm upgrade jupyterhub jupyterhub/jupyterhub --install --namespace kronhub --values config.yaml
-helm list
+helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>jupyterhub<span class="w"> </span>https://jupyterhub.github.io/helm-chart/
+helm<span class="w"> </span>repo<span class="w"> </span>update
+helm<span class="w"> </span>upgrade<span class="w"> </span>jupyterhub<span class="w"> </span>jupyterhub/jupyterhub<span class="w"> </span>--install<span class="w"> </span>--namespace<span class="w"> </span>kronhub<span class="w"> </span>--values<span class="w"> </span>config.yaml
+helm<span class="w"> </span>list
 </pre></div>
 
     </div>
@@ -342,7 +344,7 @@ helm list
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl get service --namespace kronhub
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>--namespace<span class="w"> </span>kronhub
 </pre></div>
 
     </div>
@@ -355,7 +357,7 @@ helm list
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl describe service proxy-public --namespace kronhub
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>describe<span class="w"> </span>service<span class="w"> </span>proxy-public<span class="w"> </span>--namespace<span class="w"> </span>kronhub
 </pre></div>
 
     </div>
@@ -376,7 +378,7 @@ helm list
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Service Account kronhub-builder (groups can be set!)</span>
-<span class="o">!</span>mkdir ~/kronhub
+<span class="o">!</span>mkdir<span class="w"> </span>~/kronhub
 </pre></div>
 
     </div>
@@ -400,7 +402,7 @@ helm list
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/secret.yaml</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/secret.yaml</span>
 <span class="s">jupyterhub:</span>
 <span class="s">  hub:</span>
 <span class="s">    services:</span>
@@ -436,19 +438,19 @@ cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/secret.yaml</span>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-<span class="nb">echo</span> <span class="s2">&quot;\</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\</span>
 <span class="s2">jupyterhub:</span>
 <span class="s2">  hub:</span>
 <span class="s2">    services:</span>
 <span class="s2">      binder:</span>
-<span class="s2">        apiToken: \&quot;</span><span class="k">$(</span>openssl rand -hex <span class="m">32</span><span class="k">)</span><span class="s2">\&quot;</span>
+<span class="s2">        apiToken: \&quot;</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="k">)</span><span class="s2">\&quot;</span>
 <span class="s2">  proxy:</span>
-<span class="s2">    secretToken: \&quot;</span><span class="k">$(</span>openssl rand -hex <span class="m">32</span><span class="k">)</span><span class="s2">\&quot;</span>
+<span class="s2">    secretToken: \&quot;</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="k">)</span><span class="s2">\&quot;</span>
 <span class="s2">registry:</span>
 <span class="s2">  url: https://gcr.io</span>
 <span class="s2">  password: |</span>
-<span class="k">$(</span>cat ~/sandbox-243014-09712d6ea91c.json <span class="p">|</span> sed -r <span class="s1">&#39;s#[ ]*([^ ].*)#    \1#g&#39;</span><span class="k">)</span><span class="s2">\</span>
-<span class="s2">&quot;</span> &gt; ~/kronhub/secret.yaml
+<span class="k">$(</span>cat<span class="w"> </span>~/sandbox-243014-09712d6ea91c.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;s#[ ]*([^ ].*)#    \1#g&#39;</span><span class="k">)</span><span class="s2">\</span>
+<span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/kronhub/secret.yaml
 </pre></div>
 
     </div>
@@ -472,7 +474,7 @@ cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/secret.yaml</span>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <span class="s">replicas: 1.0</span>
 <span class="s">config:</span>
 <span class="s">  BinderHub:</span>
@@ -496,9 +498,9 @@ cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get project id in many ways</span>
-<span class="o">!</span>gcloud config get-value project
-<span class="o">!</span>gcloud config list --format <span class="s1">&#39;value(core.project)&#39;</span>
-<span class="o">!</span>gcloud config configurations list --format <span class="s1">&#39;value(PROJECT)&#39;</span>
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>get-value<span class="w"> </span>project
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>list<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;value(core.project)&#39;</span>
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>configurations<span class="w"> </span>list<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;value(PROJECT)&#39;</span>
 </pre></div>
 
     </div>
@@ -512,8 +514,8 @@ cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-helm repo add jupyterhub https://jupyterhub.github.io/helm-chart
-helm repo update
+helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>jupyterhub<span class="w"> </span>https://jupyterhub.github.io/helm-chart
+helm<span class="w"> </span>repo<span class="w"> </span>update
 </pre></div>
 
     </div>
@@ -534,8 +536,8 @@ helm repo update
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-helm install jupyterhub/binderhub --version<span class="o">=</span><span class="m">0</span>.2.0-29e7546 --name<span class="o">=</span>binderhub --namespace<span class="o">=</span>kronhub <span class="se">\</span>
-  -f ~/kronhub/secret.yaml -f ~/kronhub/config.yaml
+helm<span class="w"> </span>install<span class="w"> </span>jupyterhub/binderhub<span class="w"> </span>--version<span class="o">=</span><span class="m">0</span>.2.0-29e7546<span class="w"> </span>--name<span class="o">=</span>binderhub<span class="w"> </span>--namespace<span class="o">=</span>kronhub<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>~/kronhub/secret.yaml<span class="w"> </span>-f<span class="w"> </span>~/kronhub/config.yaml
 </pre></div>
 
     </div>
@@ -556,7 +558,7 @@ helm install jupyterhub/binderhub --version<span class="o">=</span><span class="
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> git clone https://github.com/jupyterhub/binderhub.git
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jupyterhub/binderhub.git
 </pre></div>
 
     </div>
@@ -569,7 +571,7 @@ helm install jupyterhub/binderhub --version<span class="o">=</span><span class="
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~/binderhub/helm-chart/binderhub <span class="o">&amp;&amp;</span> helm dependency update
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/binderhub/helm-chart/binderhub<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>helm<span class="w"> </span>dependency<span class="w"> </span>update
 </pre></div>
 
     </div>
@@ -582,7 +584,7 @@ helm install jupyterhub/binderhub --version<span class="o">=</span><span class="
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~/binderhub/helm-chart <span class="o">&amp;&amp;</span> helm dep up binderhub
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/binderhub/helm-chart<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>helm<span class="w"> </span>dep<span class="w"> </span>up<span class="w"> </span>binderhub
 </pre></div>
 
     </div>
@@ -606,7 +608,7 @@ helm install jupyterhub/binderhub --version<span class="o">=</span><span class="
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm list
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>list
 </pre></div>
 
     </div>
@@ -620,7 +622,7 @@ helm install jupyterhub/binderhub --version<span class="o">=</span><span class="
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <span class="s">replicas: 1.0</span>
 <span class="s">config:</span>
 <span class="s">  BinderHub:</span>
@@ -646,7 +648,7 @@ cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm upgrade binderhub jupyterhub/binderhub --version<span class="o">=</span><span class="m">0</span>.2.0-29e7546 -f ~/kronhub/secret.yaml -f ~/kronhub/config.yaml
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>upgrade<span class="w"> </span>binderhub<span class="w"> </span>jupyterhub/binderhub<span class="w"> </span>--version<span class="o">=</span><span class="m">0</span>.2.0-29e7546<span class="w"> </span>-f<span class="w"> </span>~/kronhub/secret.yaml<span class="w"> </span>-f<span class="w"> </span>~/kronhub/config.yaml
 </pre></div>
 
     </div>
@@ -659,7 +661,7 @@ cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl get svc --namespace kronhub proxy-public -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.loadBalancer.ingress[0].ip}&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>--namespace<span class="w"> </span>kronhub<span class="w"> </span>proxy-public<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.loadBalancer.ingress[0].ip}&#39;</span>
 </pre></div>
 
     </div>
@@ -672,7 +674,7 @@ cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl --namespace<span class="o">=</span>kronhub get svc binder
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>--namespace<span class="o">=</span>kronhub<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>binder
 </pre></div>
 
     </div>
@@ -693,7 +695,7 @@ cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-cat <span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
 <span class="s">replicas: 1.0</span>
 <span class="s">config:</span>
 <span class="s">  BinderHub:</span>

@@ -45,9 +45,11 @@ I found an answer from Google. And I quite agree with that.&amp;">
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -76,12 +78,12 @@ I found an answer from Google. And I quite agree with that.&amp;">
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -91,7 +93,7 @@ I found an answer from Google. And I quite agree with that.&amp;">
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -201,7 +203,8 @@ When searching plaintext data, such as cities or names, wildcards create the wid
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>在做最后一道关于 SQL 的题目的时候，其实剩下的时间蛮多的。可是我却没有写完。
+<blockquote>
+<p>在做最后一道关于 SQL 的题目的时候，其实剩下的时间蛮多的。可是我却没有写完。
 现在想想其实蛮简单的。不需要什么 PostgreSQL 的高级用法。
 以前做这种题太少了，经验不足。所以，没能把握好思考的方向。
 在之前备考的时候，我有略略浏览过 PostgreSQL 的文档。

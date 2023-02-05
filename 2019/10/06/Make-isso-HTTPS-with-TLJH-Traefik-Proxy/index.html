@@ -48,9 +48,11 @@ In&amp;nbsp;[&amp;nb">
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -79,12 +81,12 @@ In&amp;nbsp;[&amp;nb">
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -94,7 +96,7 @@ In&amp;nbsp;[&amp;nb">
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -184,7 +186,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo apt install apache2-utils
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2-utils
 </pre></div>
 
     </div>
@@ -197,9 +199,9 @@ In&amp;nbsp;[&amp;nb">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo sed -i <span class="s1">&#39;s/address = &quot;127.0.0.1:8099&quot;/address = &quot;:8099&quot;/g&#39;</span> /opt/tljh/state/traefik.toml
-<span class="o">!</span>sudo sed -i <span class="s2">&quot;s/sourceRange = \[&#39;127.0.0.1&#39;\]/sourceRange = \[&#39;127.0.0.1&#39;, &#39;110.3.247.172&#39;\]/g&quot;</span> /opt/tljh/state/traefik.toml
-<span class="o">!</span>sudo sed -i -e <span class="s2">&quot;s/users = \[&#39;api_admin:[^&#39;]*&#39;\]/users = \[&#39;</span><span class="k">$(</span>htpasswd -nb api_admin fdsa<span class="k">)</span><span class="s2">&#39;\]/g&quot;</span> /opt/tljh/state/traefik.toml
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/address = &quot;127.0.0.1:8099&quot;/address = &quot;:8099&quot;/g&#39;</span><span class="w"> </span>/opt/tljh/state/traefik.toml
+<span class="o">!</span>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/sourceRange = \[&#39;127.0.0.1&#39;\]/sourceRange = \[&#39;127.0.0.1&#39;, &#39;110.3.247.172&#39;\]/g&quot;</span><span class="w"> </span>/opt/tljh/state/traefik.toml
+<span class="o">!</span>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;s/users = \[&#39;api_admin:[^&#39;]*&#39;\]/users = \[&#39;</span><span class="k">$(</span>htpasswd<span class="w"> </span>-nb<span class="w"> </span>api_admin<span class="w"> </span>fdsa<span class="k">)</span><span class="s2">&#39;\]/g&quot;</span><span class="w"> </span>/opt/tljh/state/traefik.toml
 </pre></div>
 
     </div>
@@ -212,7 +214,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo systemctl restart traefik
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>traefik
 </pre></div>
 
     </div>
@@ -225,7 +227,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo tljh-config reload hub
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>tljh-config<span class="w"> </span>reload<span class="w"> </span>hub
 </pre></div>
 
     </div>
@@ -238,7 +240,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl -u api_admin:fdsa jhub.name:8099
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl<span class="w"> </span>-u<span class="w"> </span>api_admin:fdsa<span class="w"> </span>jhub.name:8099
 </pre></div>
 
     </div>
@@ -251,7 +253,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl -u api_admin:fdsa localhost:8099
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl<span class="w"> </span>-u<span class="w"> </span>api_admin:fdsa<span class="w"> </span>localhost:8099
 </pre></div>
 
     </div>
@@ -265,14 +267,14 @@ In&amp;nbsp;[&amp;nb">
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="nx">javascript</span>
-<span class="kr">const</span> <span class="nx">Http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="nx">Http</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-<span class="nx">Http</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://jhub.name:8099&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">Http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">Http</span><span class="p">.</span><span class="nx">withCredentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="nx">Http</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;http://jhub.name:8099&#39;</span><span class="p">);</span>
 <span class="nx">Http</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">Http</span><span class="p">.</span><span class="nx">status</span> <span class="o">!=</span> <span class="mf">200</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="sb">`Error: </span><span class="si">${</span><span class="nx">Http</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="nx">Http</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">Http</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="sb">`Error: </span><span class="si">${</span><span class="nx">Http</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="nx">Http</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -293,7 +295,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo tljh-config reload proxy
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>tljh-config<span class="w"> </span>reload<span class="w"> </span>proxy
 </pre></div>
 
     </div>
@@ -328,7 +330,7 @@ In&amp;nbsp;[&amp;nb">
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-cat <span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/state/rules.toml &gt; /dev/null</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/state/rules.toml &gt; /dev/null</span>
 
 <span class="s">[frontends.isso]</span>
 <span class="s">backend = &quot;isso&quot;</span>
@@ -355,7 +357,7 @@ cat <span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/state/rules.toml &gt; /
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">env</span> http=http:\/\/jhub.name:8000\/
 <span class="o">%</span><span class="k">env</span> https=https:\/\/jhub.name\/isso\/
-<span class="o">!</span>sed -i -e <span class="s2">&quot;s/</span><span class="nv">$http</span><span class="s2">/</span><span class="nv">$https</span><span class="s2">/g&quot;</span> ~/hexo/themes/freemind/layout/_partial/post/comment.ejs
+<span class="o">!</span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;s/</span><span class="nv">$http</span><span class="s2">/</span><span class="nv">$https</span><span class="s2">/g&quot;</span><span class="w"> </span>~/hexo/themes/freemind/layout/_partial/post/comment.ejs
 </pre></div>
 
     </div>
@@ -385,7 +387,7 @@ cat <span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/state/rules.toml &gt; /
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-cat <span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/dynamic/isso.toml &gt; /dev/null</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/dynamic/isso.toml &gt; /dev/null</span>
 
 <span class="s">[frontends.isso]</span>
 <span class="s">backend = &quot;isso&quot;</span>
@@ -410,7 +412,7 @@ cat <span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/dynamic/isso.toml &g
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo /opt/tljh/hub/bin/python -m tljh.installer
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>/opt/tljh/hub/bin/python<span class="w"> </span>-m<span class="w"> </span>tljh.installer
 </pre></div>
 
     </div>
@@ -454,7 +456,7 @@ Setting up JupyterHub...
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo cat /opt/tljh/installer.log
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>cat<span class="w"> </span>/opt/tljh/installer.log
 </pre></div>
 
     </div>
@@ -487,7 +489,7 @@ Setting up JupyterHub...
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> make restart-isso
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>restart-isso
 </pre></div>
 
     </div>
@@ -508,7 +510,7 @@ Setting up JupyterHub...
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-cat <span class="s">&lt;&lt; EOF | sudo tee /etc/isso.conf &gt; /dev/null</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /etc/isso.conf &gt; /dev/null</span>
 
 <span class="s">[general]</span>
 
@@ -531,7 +533,7 @@ cat <span class="s">&lt;&lt; EOF | sudo tee /etc/isso.conf &gt; /dev/null</span>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Open-SQLite-database">Open SQLite database<a class="anchor-link" href="#Open-SQLite-database">&#182;</a></h3><div class="highlight"><pre><span></span>sqlite3 /var/lib/isso/comments.db
+<h3 id="Open-SQLite-database">Open SQLite database<a class="anchor-link" href="#Open-SQLite-database">&#182;</a></h3><div class="highlight"><pre><span></span>sqlite3<span class="w"> </span>/var/lib/isso/comments.db
 </pre></div>
 
 </div>
@@ -711,7 +713,7 @@ cat <span class="s">&lt;&lt; EOF | sudo tee /etc/isso.conf &gt; /dev/null</span>
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Notebooks/">Notebooks<span>10</span></a></li>
+  <li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
     </ul>
 	</div>
 		

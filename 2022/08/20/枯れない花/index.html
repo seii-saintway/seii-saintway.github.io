@@ -39,9 +39,11 @@
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -70,12 +72,12 @@
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -85,7 +87,7 @@
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -167,10 +169,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>心に 小さな花が 咲いてる
 こころに ちいさなはなが さいてる
-心中盛开着一朵小小的花。</code></pre>
+心中盛开着一朵小小的花。
+</code></pre>
 
 </div>
 </div>
@@ -178,10 +180,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>君から もらった 枯れない花が
 きみから もらった かれないはなが
-是你给我的永不凋谢的花朵。</code></pre>
+是你给我的永不凋谢的花朵。
+</code></pre>
 
 </div>
 </div>
@@ -189,10 +191,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>信じることを もう 怖がらないくらい
 しんじることを もう こわがらないくらい
-已经不怎么害怕自己所相信的，</code></pre>
+已经不怎么害怕自己所相信的，
+</code></pre>
 
 </div>
 </div>
@@ -200,10 +202,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>强くなれたから
 つよくなれたから
-因为我变得坚强了。</code></pre>
+因为我变得坚强了。
+</code></pre>
 
 </div>
 </div>
@@ -211,10 +213,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>君に逢えて うれしかった
 きみにあえて うれしかった
-能遇见你，我很高兴。</code></pre>
+能遇见你，我很高兴。
+</code></pre>
 
 </div>
 </div>
@@ -222,10 +224,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>つないだ手が 夸りだった
 つないだてが ほこりだった
-能牵着手，是我的荣幸。</code></pre>
+能牵着手，是我的荣幸。
+</code></pre>
 
 </div>
 </div>
@@ -233,10 +235,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>今は 别々の空 见上げていても
 いまは べつべつのそら みあげていても
-尽管我们现在正仰望着不同的天空。</code></pre>
+尽管我们现在正仰望着不同的天空。
+</code></pre>
 
 </div>
 </div>
@@ -244,10 +246,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>ほら 歩ける ひとりでも
 ほら あるける ひとりでも
-我一个人也能继续走下去。</code></pre>
+我一个人也能继续走下去。
+</code></pre>
 
 </div>
 </div>
@@ -255,10 +257,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>悲しい時ほど 笑う私を
 かなしいときほど わらうわたしを
-在悲伤的时候却仍然绽放笑容的我</code></pre>
+在悲伤的时候却仍然绽放笑容的我
+</code></pre>
 
 </div>
 </div>
@@ -266,10 +268,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>何にも 言わないで 抱いてくれたね
 なんにも いわないで だいてくれたね
-一言不发地被你抱住了。</code></pre>
+一言不发地被你抱住了。
+</code></pre>
 
 </div>
 </div>
@@ -277,10 +279,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>冻りついたドアが そっと开くような
 こおりついたドアが そっとひらくような
-仿佛冰冻的门扉渐渐地融化。</code></pre>
+仿佛冰冻的门扉渐渐地融化。
+</code></pre>
 
 </div>
 </div>
@@ -288,10 +290,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>そんな気がしたよ
 そんなきがしたよ
-我有这样的感觉。</code></pre>
+我有这样的感觉。
+</code></pre>
 
 </div>
 </div>
@@ -299,10 +301,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>君に逢えてうれしかった
 きみにあえてうれしかった
-能与你相遇我真的很高兴。</code></pre>
+能与你相遇我真的很高兴。
+</code></pre>
 
 </div>
 </div>
@@ -310,10 +312,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>孤独さえも 分かち合えた
 こどくさえも わかちあえた
-连孤独都能一起分享。</code></pre>
+连孤独都能一起分享。
+</code></pre>
 
 </div>
 </div>
@@ -321,10 +323,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>今も この空の下 つながっていると
 いまも このそらのした つながっていると
-现在，我们仍在这片天空下紧紧相连。</code></pre>
+现在，我们仍在这片天空下紧紧相连。
+</code></pre>
 
 </div>
 </div>
@@ -332,10 +334,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>そう思える 离れても
 そうおもえる はなれても
-是的，我仍这样认为，即便是分离两地。</code></pre>
+是的，我仍这样认为，即便是分离两地。
+</code></pre>
 
 </div>
 </div>
@@ -343,10 +345,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>「ありがとう。」も 言えなかった
 「ありがとう。」も いえなかった
-还没能说出感谢的话语。</code></pre>
+还没能说出感谢的话语。
+</code></pre>
 
 </div>
 </div>
@@ -354,10 +356,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>约束さえ できなかった
 やくそくさえ できなかった
-甚至连约定也没有做出。</code></pre>
+甚至连约定也没有做出。
+</code></pre>
 
 </div>
 </div>
@@ -365,10 +367,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>だけど あの日と 同じ风がふいたら
 だけど あのひと おなじかぜがふいたら
-但我仍相信，当被和那天一样的风吹拂的时候，</code></pre>
+但我仍相信，当被和那天一样的风吹拂的时候，
+</code></pre>
 
 </div>
 </div>
@@ -376,10 +378,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>また 必ず 逢えるよね
 また かならず あえるよね
-我们一定可以再度相见。</code></pre>
+我们一定可以再度相见。
+</code></pre>
 
 </div>
 </div>
@@ -387,10 +389,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>君に 逢えて うれしかった
 きみに あえて うれしかった
-能与你相遇我真的很高兴。</code></pre>
+能与你相遇我真的很高兴。
+</code></pre>
 
 </div>
 </div>
@@ -398,10 +400,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>つないだ手が 夸りだった
 つないだてが ほこりだった
-能与你牵手是我的骄傲。</code></pre>
+能与你牵手是我的骄傲。
+</code></pre>
 
 </div>
 </div>
@@ -409,10 +411,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>今は 别々の空 见上げていても
 いまは べつべつのそら みあげていても
-尽管我们现在正仰望着不同的天空。</code></pre>
+尽管我们现在正仰望着不同的天空。
+</code></pre>
 
 </div>
 </div>
@@ -420,10 +422,10 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>ほら 歩ける ひとりでも
 ほら あるける ひとりでも
-我一个人也能继续走下去。</code></pre>
+我一个人也能继续走下去。
+</code></pre>
 
 </div>
 </div>
@@ -431,7 +433,6 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
 <pre><code>A small flower is blooming inside my heart,
 The undying flower you gave to me,
 I was able to believe strongly enough in myself,
@@ -457,7 +458,8 @@ I couldn’t even promise…
 However, like on that day, if the wind blows
 Then I know we will surely meet again…
 
-(Repeat ※)</code></pre>
+(Repeat ※)
+</code></pre>
 
 </div>
 </div>

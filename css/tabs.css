@@ -1,0 +1,106 @@
+.mypage .tabs {
+  margin-bottom: 20px;
+}
+
+.mypage .tabs {
+  padding-top: 10px;
+}
+
+.mypage .tabs ul.nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+@media (max-width: 413px) {
+  .mypage .tabs ul.nav-tabs {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+.mypage .tabs ul.nav-tabs li.tab {
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-radius: 0 0 0 0;
+  border-top: 3px solid transparent;
+  flex-grow: 1;
+  list-style-type: none;
+
+  transition: all 0.2s ease-out;
+}
+
+@media (max-width: 413px) {
+  .mypage .tabs ul.nav-tabs li.tab {
+    border-bottom: 1px solid transparent;
+    border-left: 3px solid transparent;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-radius: 0;
+    float: none;
+  }
+}
+
+.mypage .tabs ul.nav-tabs li.tab a {
+  border-bottom: initial;
+  display: block;
+  line-height: 1.8;
+  padding: .25em .75em;
+  text-align: center;
+}
+
+.mypage .tabs ul.nav-tabs li.tab a i {
+  border-bottom: initial;
+  display: block;
+  line-height: 1.8;
+  padding: 0.25em 0.75em;
+  text-align: center;
+  transition: all 0.2s ease-out;
+}
+
+.mypage .tabs ul.nav-tabs li.tab.active {
+  border-bottom-color: transparent;
+  border-left-color: #ddd;
+  border-right-color: #ddd;
+  border-top-color: #fc6423;
+}
+
+@media (max-width: 413px) {
+  .mypage .tabs ul.nav-tabs li.tab.active {
+    border-bottom-color: #ddd;
+    border-left-color: #fc6423;
+    border-right-color: #ddd;
+    border-top-color: #ddd;
+  }
+}
+
+.mypage .tabs .tab-content {
+  border: 1px solid #ddd;
+  border-radius: 0 0 0 0;
+  border-top-color: transparent;
+}
+
+@media (max-width: 413px) {
+  .mypage .tabs .tab-content {
+    border-radius: 0;
+    border-top-color: #ddd;
+  }
+}
+
+.mypage .tabs .tab-content .tab-pane {
+  padding: 20px 20px 0;
+}
+
+.mypage .tabs .tab-content .tab-pane:not(.active) {
+  display: none;
+}
+
+.mypage .tabs .tab-content .tab-pane.active p {
+  margin: 0 0 20px;
+}

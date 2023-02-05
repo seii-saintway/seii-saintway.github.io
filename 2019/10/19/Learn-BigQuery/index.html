@@ -42,9 +42,11 @@ pip install --upgrade &amp;#39;google-cloud-bigquery">
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -73,12 +75,12 @@ pip install --upgrade &amp;#39;google-cloud-bigquery">
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -88,7 +90,7 @@ pip install --upgrade &amp;#39;google-cloud-bigquery">
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -168,7 +170,7 @@ pip install --upgrade &amp;#39;google-cloud-bigquery">
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-pip install --upgrade <span class="s1">&#39;google-cloud-bigquery[bqstorage,pandas]&#39;</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span><span class="s1">&#39;google-cloud-bigquery[bqstorage,pandas]&#39;</span>
 </pre></div>
 
     </div>
@@ -396,7 +398,7 @@ SELECT * FROM (
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -HE pip install pandas_gbq
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-HE<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pandas_gbq
 </pre></div>
 
     </div>
@@ -1024,7 +1026,7 @@ GROUP BY
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Notebooks/">Notebooks<span>10</span></a></li>
+  <li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
     </ul>
 	</div>
 		

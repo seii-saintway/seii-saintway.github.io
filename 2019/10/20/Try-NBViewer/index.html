@@ -42,9 +42,11 @@ In&amp;nbsp;[&amp;nbsp;]:
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
   <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
 
   <!-- analytics -->
   
@@ -73,12 +75,12 @@ In&amp;nbsp;[&amp;nbsp;]:
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -88,7 +90,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 
 </head>
 
- <body>  
+<body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -167,8 +169,8 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo chown jupyter-sheng_wei:docker /var/run/docker.sock
-<span class="o">!</span>docker run -p <span class="m">8080</span>:8080 jupyter/nbviewer
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>chown<span class="w"> </span>jupyter-sheng_wei:docker<span class="w"> </span>/var/run/docker.sock
+<span class="o">!</span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>jupyter/nbviewer
 </pre></div>
 
     </div>
@@ -181,8 +183,8 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo -HE pip install nbviewer
-<span class="o">!</span>sudo -E python -m nbviewer --help
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-HE<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nbviewer
+<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>nbviewer<span class="w"> </span>--help
 </pre></div>
 
     </div>
@@ -195,7 +197,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">echo</span> <span class="nv">JUPYTERHUB_SERVICE_PREFIX</span><span class="o">=</span><span class="nv">$JUPYTERHUB_SERVICE_PREFIX</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">echo</span><span class="w"> </span><span class="nv">JUPYTERHUB_SERVICE_PREFIX</span><span class="o">=</span><span class="nv">$JUPYTERHUB_SERVICE_PREFIX</span>
 </pre></div>
 
     </div>
@@ -226,7 +228,7 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo bash -c <span class="s1">&#39;echo JUPYTERHUB_SERVICE_PREFIX=$JUPYTERHUB_SERVICE_PREFIX&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo JUPYTERHUB_SERVICE_PREFIX=$JUPYTERHUB_SERVICE_PREFIX&#39;</span>
 </pre></div>
 
     </div>
@@ -257,9 +259,9 @@ In&amp;nbsp;[&amp;nbsp;]:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls -lahd /home/jupyter-sheng_wei
-<span class="o">!</span>ls -lahd /home/jupyter-sheng_wei/hexo <span class="o">&amp;&amp;</span> echo
-<span class="o">!</span>sudo python -m nbviewer --base-url<span class="o">=</span>/ --localfiles<span class="o">=</span>/home/jupyter-sheng_wei/hexo --no-cache --logging<span class="o">=</span>debug
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>-lahd<span class="w"> </span>/home/jupyter-sheng_wei
+<span class="o">!</span>ls<span class="w"> </span>-lahd<span class="w"> </span>/home/jupyter-sheng_wei/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>echo
+<span class="o">!</span>sudo<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>nbviewer<span class="w"> </span>--base-url<span class="o">=</span>/<span class="w"> </span>--localfiles<span class="o">=</span>/home/jupyter-sheng_wei/hexo<span class="w"> </span>--no-cache<span class="w"> </span>--logging<span class="o">=</span>debug
 </pre></div>
 
     </div>
@@ -378,7 +380,8 @@ KeyboardInterrupt
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>↑ Just skip the problem of <code>ModuleNotFoundError: No module named 'headerid(level=3)'</code> at <code>/faq</code>.</p>
+<blockquote>
+<p>↑ Just skip the problem of <code>ModuleNotFoundError: No module named 'headerid(level=3)'</code> at <code>/faq</code>.</p>
 </blockquote>
 
 </div>
@@ -389,7 +392,7 @@ KeyboardInterrupt
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker run -p <span class="m">5000</span>:5000 jupyter/nbviewer python -m nbviewer --base-url<span class="o">=</span>/ --localfiles<span class="o">=</span>/ --logging<span class="o">=</span>debug
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:5000<span class="w"> </span>jupyter/nbviewer<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>nbviewer<span class="w"> </span>--base-url<span class="o">=</span>/<span class="w"> </span>--localfiles<span class="o">=</span>/<span class="w"> </span>--logging<span class="o">=</span>debug
 </pre></div>
 
     </div>

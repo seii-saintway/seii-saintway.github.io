@@ -26,5 +26,7 @@ $(document).ready(function() {
 			$(".navbar").fadeTo(100, 0.2);
 		}
 	});
-});
 
+    registerTabsTag();
+
+});
