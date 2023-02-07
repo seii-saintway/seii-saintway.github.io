@@ -145,6 +145,378 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2017-07-22 </div>
+			<div class="article-title"><a href="/2017/07/22/Hexo-研究/" >Hexo 研究</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="usr-local-lib-node-modules-hexo-cli-bin-hexo"><a href="#usr-local-lib-node-modules-hexo-cli-bin-hexo" class="headerlink" title="/usr/local/lib/node_modules/hexo-cli/bin/hexo"></a>/usr/local/lib/node_modules/hexo-cli/bin/hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="string">'use strict'</span>;</span><br><span class="line"></span><br><span class="line">require(<span class="string">'../lib/hexo'</span>)();</span><br></pre></td></tr></table></figure>
+<h2 id="usr-local-lib-node-modules-hexo-cli-lib-hexo-js"><a href="#usr-local-lib-node-modules-hexo-cli-lib-hexo-js" class="headerlink" title="/usr/local/lib/node_modules/hexo-cli/lib/hexo.js"></a>/usr/local/lib/node_modules/hexo-cli/lib/hexo.js</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> chalk = <span class="built_in">require</span>(<span class="string">'chalk'</span>);</span><br><span class="line"><span class="keyword">var</span> tildify = <span class="built_in">require</span>(<span class="string">'tildify'</span>);</span><br><span class="line"><span class="keyword">var</span> pathFn = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'bluebird'</span>);</span><br><span class="line"><span class="keyword">var</span> Context = <span class="built_in">require</span>(<span class="string">'./context'</span>);</span><br><span class="line"><span class="keyword">var</span> findPkg = <span class="built_in">require</span>(<span class="string">'./find_pkg'</span>);</span><br><span class="line"><span class="keyword">var</span> goodbye = <span class="built_in">require</span>(<span class="string">'./goodbye'</span>);</span><br><span class="line"><span class="keyword">var</span> minimist = <span class="built_in">require</span>(<span class="string">'minimist'</span>);</span><br><span class="line"><span class="keyword">var</span> camelCaseKeys = <span class="built_in">require</span>(<span class="string">'hexo-util/lib/camel_case_keys'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">entry</span>(<span class="params">cwd, args</span>) </span>&#123;</span><br><span class="line">  cwd = cwd || process.cwd();</span><br><span class="line">  args = camelCaseKeys(args || minimist(process.argv.slice(<span class="number">2</span>)));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> hexo = <span class="keyword">new</span> Context(cwd, args);</span><br><span class="line">  <span class="keyword">var</span> log = hexo.log;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Change the title in console</span></span><br><span class="line">  process.title = <span class="string">'hexo'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      log.fatal(err);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    process.exit(<span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> findPkg(cwd, args).then(<span class="function"><span class="keyword">function</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!path) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    hexo.base_dir = path;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loadModule(path, args).catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      log.error(<span class="string">'Local hexo not found in %s'</span>, chalk.magenta(tildify(path)));</span><br><span class="line">      log.error(<span class="string">'Try running: \'npm install hexo --save\''</span>);</span><br><span class="line">      process.exit(<span class="number">2</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">mod</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mod) hexo = mod;</span><br><span class="line">    log = hexo.log;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'./console'</span>)(hexo);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hexo.init();</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cmd = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!args.h &amp;&amp; !args.help) &#123;</span><br><span class="line">      cmd = args._.shift();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (cmd) &#123;</span><br><span class="line">        <span class="keyword">var</span> c = hexo.extend.console.get(cmd);</span><br><span class="line">        <span class="keyword">if</span> (!c) cmd = <span class="string">'help'</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        cmd = <span class="string">'help'</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      cmd = <span class="string">'help'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    watchSignal(hexo);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hexo.call(cmd, args).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> hexo.exit();</span><br><span class="line">    &#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> hexo.exit(err).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// `hexo.exit()` already dumped `err`</span></span><br><span class="line">        handleError(<span class="literal">null</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;).catch(handleError);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">entry.console = &#123;</span><br><span class="line">  init: <span class="built_in">require</span>(<span class="string">'./console/init'</span>),</span><br><span class="line">  help: <span class="built_in">require</span>(<span class="string">'./console/help'</span>),</span><br><span class="line">  version: <span class="built_in">require</span>(<span class="string">'./console/version'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">entry.version = <span class="built_in">require</span>(<span class="string">'../package.json'</span>).version;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadModule</span>(<span class="params">path, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.try(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> modulePath = pathFn.join(path, <span class="string">'node_modules'</span>, <span class="string">'hexo'</span>);</span><br><span class="line">    <span class="keyword">var</span> Hexo = <span class="built_in">require</span>(modulePath);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Hexo(path, args);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">watchSignal</span>(<span class="params">hexo</span>) </span>&#123;</span><br><span class="line">  process.on(<span class="string">'SIGINT'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    hexo.log.info(goodbye());</span><br><span class="line">    hexo.unwatch();</span><br><span class="line"></span><br><span class="line">    hexo.exit().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      process.exit();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = entry;</span><br></pre></td></tr></table></figure>
+<h3 id="Customizes-the-path-of-current-working-directory"><a href="#Customizes-the-path-of-current-working-directory" class="headerlink" title="Customizes the path of current working directory."></a>Customizes the path of current working directory.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --debug --cwd /path/to/cwd</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>懒惰能使人沉睡；<br> 懈怠的人必受饥饿。<br> (箴言 19:15 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>人心里多有设计，<br> 惟独永恒主的计画才能立定。<br> (箴言 19:21 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>不要贪爱睡觉，免致你穷乏；<br> 睁开眼睛吧，你就得以吃饱饭。<br> (箴言 20:13 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>懒惰人的心愿害死了他，<br> 因为他的手不肯作工。<br> 他终日贪得无餍；<br> 但义人却施舍而不吝惜。<br> (箴言 21:25-26 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>你看办事敏捷的人吧；<br> 他必侍立于君王面前；<br> 他不侍立于微贱无名的人面前。<br> (箴言 22:29 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>我经过懒惰人的田地，<br> 全无心思之人的葡萄园；<br> 只见蒺藜长满了地皮！<br> 刺草盖满了田面！<br> 其石墙也翻毁了！<br> 我看了就留心思想，<br> 我看着就得了训诲：<br> 『且睡片时，且打盹片时，<br> 且抱着手躺着片时』，<br> 你的贫穷就如拦路贼忽来，<br> 你的穷乏就像武装匪来到了！<br> (箴言 24:30-34 吕振中)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>我为自己动大工程，建造房屋，为自己栽种葡萄园，为自己修造庭园和园圃，在其中栽种各样果木树；我为自己挖造水池，用来浇灌生长的树林。我买了仆婢，也有生于家中的仆婢；我又有许多牛群羊群，胜过我以前所有在耶路撒冷的人。我又为自己积蓄着金银、和君王的珍宝、各省的珍宝；我得了男女歌唱者和人类所喜爱之物、并许多的妃嫔。<br>(传道书 2:4-8 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>这样我就日见昌大，胜过我以前所有在耶路撒冷的人；并且我的智慧仍为我所有。凡我的眼所求的、我没有留下而不给它的；凡我的心所喜乐的、我没有阻止而不让享受的；因为我的心从我一切所劳碌的获得快乐：这就是我从一切劳碌中所得的分。后来我察看我的手所作的一切事、和我劳碌去作的工；嗐！都是虚空！都是捕风！在日光之下毫无益处。<br>(传道书 2:9-11 吕振中)</p>
+</blockquote>
+<p>在公司的電腦上把 hexo 給建好了。用 IntelliJ 發文，這感覺真是酸爽。－－在此注明一下，说「酸」主要是因为日本人很鸡毛蒜皮，上班写自己的博客是不被允许的。－－实际上，没有发几篇。发呆都比发布博客文章要多吧。</p>
+<hr>
+<blockquote>
+<p>往来传闲话的、能泄露人的秘密；<br> 心里忠信的、总是遮隐人的事情。<br> (箴言 11:13 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>往来传闲话的、泄露人的密事；<br> 大张其嘴的、你不可与他结交。<br> (箴言 20:19 吕振中)</p>
+</blockquote>
+<p>鑒于公司的電腦，申請安裝輸入法很麻煩，而且中日英切換麻煩的要死。所以，以後就用英文好了。又鑒于英文保密性太差，以後就用拼音好了。</p>
+<hr>
+<blockquote>
+<p>隐秘通道（covert channel）的意思是说使用难以预料或不会引起注意的方式来发送信息。假设有一天系统管理员 Sally 觉得自己的那些用户花太多时间来玩了，因此她决定关闭 email 和即时消息，这样他们就不能聊天了。要解决这个问题，你和你的朋友都同意使用主目录中的一个你们都可以读取的文件来交流信息，你每隔一会儿就得检查一下该文件来查看新消息。这种超出乎预料的通信方式就是一个隐秘通道。<br>隐秘通道很难取消。如果系统管理员 Sally 发现了你们这种基于文件的通信技术，她可以修改目录的权限，使得只有目录的属主才具有读取和搜索的权限，并限定目录属主也不能修改这种权限。在这样做的同时，她还可以确认你不能在其他地方（例如，/tmp）创建文件。（你的大部分程序都不能运行了，但是不要因此而责怪 Sally。）即使是这样，你和你的朋友仍然可以相互显示其他用户士目录中的内容，这可以显示目录的修改日期和文件个数，这样你就可以根据这些可见的参数设计一种密码，并通过修改这些参数而进行通信。这是一种更复杂的隐秘通道，如果 Sally 对你们进行了更严格的限制，你们可以想出更古怪的法子来。<br>SSH 不能防止隐秘通道。对隐秘通道的分析和控制通常都是安全性很高的计算机系统的一部分，例如设计用来在同一个系统中的不同安全层次上安全地处理信息的系统。顺便说一下，SSH 数据流本身就可以很好地用作一种隐秘通道：SSH 会话的内容可能是一个巧克力馅饼的配方，而隐含的内容则可能是用 Morse 码表示这两个公司即将合并，只需要使用报文长度是奇数还是偶数来分别表示 Morse 码的短横线和点号即可。</p>
+</blockquote>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2017/07/22/Hexo-研究/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-07-21 </div>
+			<div class="article-title"><a href="/2017/07/21/复起永生/" >复起永生</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <audio src="https://www.hymnal.net/Hymns/Hymnal/mp3/e6837_i.mp3" controls></audio>
+
+<hr>
+<blockquote>
+<p>信的故事 - 覃瑞清</p>
+<hr>
+<p>（一）<br>初次來這裡，<br>聽他們在說<br>耶穌的事蹟，<br>未曾聞過，<br>但在我心坎，<br>有新的感受，<br>莫名的平安，<br>像股暖流；<br>我幾乎忘記<br>來前的苦惱，<br>不覺已脫離<br>俗世的囚牢。<br>從他們臉上<br>表露的純真，<br>我心暗想：<br>真的有神！</p>
+<hr>
+<p>（二）<br>他們且告訴，<br>神要進我裡，<br>作生命、救主，<br>若我願意；<br>我眼未看到，<br>對祂又不知，<br>只覺得需要，<br>不妨一試；<br>我就從深處<br>真心轉向祂，<br>喊『哦，主耶穌！』<br>求祂來救拔。<br>從無一名字<br>如此甘又美，<br>我享真實，<br>今仍回味！</p>
+<hr>
+<p>（三）<br>脫一身纏累，<br>進入真安息，<br>不再有定罪，<br>蒙神稱義，<br>我與主聯合，<br>祂是我生命，<br>今向神活著，<br>因信得生；<br>我在基督裡<br>榮耀又逍遙，<br>我與祂是一，<br>成為神新造。<br>哦，這個就是<br>我信的故事，<br>美妙之至，<br>是愛是詩。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>　仕事を終えて、じっくりと反省する。一日が終わって、その一日を振り返って反省する。すると、自分や他人のアラが目について、ついにはウツになる。自分のだめさにも怒りを感じ、あいつは憎たらしいと思ったりする。たいていは、不快で暗い結果にたどりつく。<br>　なぜかというと、冷静に反省したりしたからなどでは決してない。単に疲れているからだ。疲れきったときにする反省など、すべてウツへの落とし穴でしかない。疲れているときは反省をしたり、振り返ったり、ましてや日記など書くべきではない。<br>　活発に活動しているとき、何かに夢中になって打ち込んでいるとき、楽しんでいるとき、反省したり、振り返って考えたりはしない。だから、自分をだめだと思ったり人に対して憎しみを覚えたりしたときは、疲れている証拠だ。そういうときはさっさと自分を休ませなければいけない。<br>ーー『曙光』</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>『若不是我怕仇敌惹我发怒，<br>我原想着说：「我必将他们割裂成块，<br>使他们的名号都灭绝于人间」；<br>恐怕敌人判断错了，<br>恐怕他们说：「是我们的手高举起来作的，<br>并不是永恒主行了这一切事啊。」<br>(申命记 32:26-27 吕振中)</p>
+</blockquote>
+<p>　　Bible 和 Antichrist，其中任一本书里都含有那种把人的心灵拉碎的张力；其中任一本书都可能让人精神分裂。<br>　　如果不是出于爱，有谁会把两本书一起读呢？感谢主耶稣的爱：我还活着，而且没有痴呆。<br>　　(<em>^＿^</em>) - 2022.3.29</p>
+<hr>
+<blockquote>
+<p>『因为他们是缺乏智谋的国，<br>他们心中毫无聪明。<br>只要他们有智慧，就会明白这事，<br>就肯思想他们自己的结局了。<br>(申命记 32:28-29 吕振中)</p>
+</blockquote>
+<p>　　一个人最珍贵的品质是什么？－－真诚。<br>　　伴侣之间最难得的东西是什么？－－坦诚。</p>
+<hr>
+<blockquote>
+<p>若不是他们的磐石把他们交付出来，<br>若不是永恒主把他们送交给我们，<br>我们一人怎能追赶他们千人呢？<br>我们两个人怎能使他们万人逃跑呢？<br>(申命记 32:30 吕振中)</p>
+</blockquote>
+<p>　　× 除了我的妻子以外，<br>　　－－凡拉黑我的都去屎。因为黑名单对我来说就是仇敌名单。</p>
+<hr>
+<blockquote>
+<p>连我们的仇敌自己也评判：<br>他们的磐石不如我们的磐石。<br>(申命记 32:31 吕振中)</p>
+</blockquote>
+<p>　　每年過年問候都要害我重新申請一個馬甲。你不煩，我還煩呢。你不要這麽神經病，好不好？就像是我不和你説話，我就活不了一樣。－－只有懦弱无能的人，才会欺软怕硬呢。</p>
+<hr>
+<blockquote>
+<p>因为他们的葡萄树<br>是所多玛的葡萄树传的，<br>是蛾摩拉的田园出的；<br>他们的葡萄是毒的葡萄，<br>他们那一挂一挂都是苦的。<br>他们的酒是大蛇的毒素，<br>是虺蛇猛烈冷酷的毒。<br>(申命记 32:32-33 吕振中)</p>
+</blockquote>
+<p>　　我的基督徒朋友从来没有拉黑我过。<br>　　即便我真的是再怎么令人讨厌，即便我和他们吵得再凶，他们也从来没有拉黑我。<br>　　从这里就可以看见，基督徒与非基督徒的差别了。</p>
+<hr>
+<blockquote>
+<p>这不都是积聚在我这里，<br>密封在我宝库中，<br>要等待伸冤报应的日子，<br>等待他们的脚颠踬的时候么？<br>因为他们遭遇灾难的日子近了，<br>那准备要临到他们身上的<br>就要迅速地来临。<br>(申命记 32:34-35 吕振中)</p>
+</blockquote>
+<p>　　× 不管多么怨恨，都应该设身处地去关心去理解。<br>　　－－够了，够了。× 奉主耶稣基督的名，魔鬼邪灵通通下无底坑。<br>　　－－够了，够了。○ 都给我去屎吧！</p>
+<hr>
+<blockquote>
+<p>耶稣被法利赛人诘问、上帝的国几时要来到，就回答他们说：『上帝国之来临，并不是以守候窥察而看到的。人也不能说：「看哪，在这里」，或是「在那里！」因为上帝的国、你看、就在你们中间呢。』<br> (路加福音 17:20-21 吕振中)</p>
+</blockquote>
+<p>上帝的国、你看、就在「法利赛人」中间呢。</p>
+<hr>
+<blockquote>
+<p>耶稣就对门徒说：『日子必到，那时你们巴不得有看见人子日子的一天，却不得以看见。人必对你们说：「看哪，在那里」；「看哪，在这里」；你们不要出去，也不要追逐。因为闪电怎样从天这边一闪，直照到天那边，人子在他的日子也必这样。只是他必须先受许多苦，又被这世代弃掉。<br> (路加福音 17:22-25 吕振中)</p>
+</blockquote>
+<p>　　被一位狭隘的基督教朋友从群组中踢出。感谢她把我从她建立的监狱里释放出来。 - 2022.7.25 3:00 a.m. JST</p>
+<hr>
+<audio src="https://www.hymnal.net/Hymns/NewSongs/mp3/ns0513.mp3" controls></audio>
+
+<hr>
+<blockquote>
+<p>耶稣在伯大尼、在患痳疯属之病的西门家里。坐席的时候，来了一个女人，拿着一玉瓶至贵至真的<strong>哪哒香膏</strong>；打破了玉瓶，倒在耶稣头上。有几个人很是恼怒，彼此说：『这香膏这样的浪费有什么用处？这香膏能卖三百多「日工钱」，以给穷人呀！』他们就哼啊哼地向她发怒。但是耶稣说：『由她吧！为什么难为她呢？她在我身上作了一件美事了。因为穷人同你们在一起、是你们所常有的；你们几时愿意，都能够向他们行善事；至于我呢、你们却不常有。她所能的、她作了；她豫先拿香膏抹了我的身体，是要豫备安葬我的事。我实在告诉你们，福音无论宣传到全世界什么地方，这女人所作的总要被传讲、来记念她。』<br> (马可福音 14:3-9 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>耶稣来到拿撒勒、他长大的地方，照他素常所行的在安息之日进了会堂，站起来要宣读。有人把神言人以赛亚的书卷递给他；他把书卷打开，找到一个地方、写着说：<br> 『主的灵在我身上，<br> 因为他<strong>膏立</strong>了我去传好消息给穷人，<br> 差遣了我去宣传俘虏们可得释放，<br> 瞎眼的可得看见，<br> 打发那受压迫的得释放，<br> 宣传主接纳人的年头。』<br>他把书卷起来，交还当差的，就坐下；会堂里众人的眼都瞪着他。耶稣开始对他们说：『今天这一段经所说的应验在你们耳中了。』<br> (路加福音 4:16-21 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>小孩子们，这是末后的时辰了。你们曾听说敌基督的要来；如今许多敌基督的已经出现了；从这一点、我们就知道这是末后的时辰了。他们从我们中间出去，却又不曾属于我们；如果曾属于我们，他们就会继续同我们在一起了；可是他们出去了，这是要显明他们不是都属于我们。你们呢、你们从那圣者受了<strong>膏沐</strong>，这是你们大家都知道的。我刚写信给你们，不是因为你们不明白「真实」，乃是因为你们明白，并且知道一切虚谎都不出于「真实」。<br> (约翰一书 2:18-21 吕振中)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>那时天国好比十个童女、拿着她们的火把出去、要迎接新郎。其中有五个是愚拙的，五个是精明的。愚拙的拿着火把，没有带着<strong>油</strong>；精明的却拿着油在瓶子里，连带着她们的火把。新郎迟延的时候，她们都打盹睡着了。半夜里有嚷叫的声音说：「看哪，新郎来了！出来迎接他哦！」那些童女就都起来，修整她们的火把。愚拙的对精明的说：「你们的油分点儿给我们吧；我们的火把快灭了。」精明的回答说：「恐怕一定不够我们和你们用的；不如去找卖油的人，自己买吧。」她们去买的时候，新郎到了；那些有准备的同他进去赴婚筵，门就关了。其余的童女随后也来了，说：「主啊，主啊，给我们开吧！」他却回答说：「我实在告诉你们，我不认识你们。」所以你们要儆醒，因为你们不知道那日子或那时辰。<br>(马太福音 25:1-13 吕振中)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>耶稣说：『我实在告诉你们，人为了我、并为了福音、撇下了房屋、或弟兄、或姐妹、或母亲或父亲、或儿女、或田地，没有不在现今这时期得百倍的：房屋、弟兄、姐妹、母亲、儿女、和田地、附带着受逼迫，又在来世得永生的。然而有许多首先的必成了末后的，末后的必成了首先的！』<br> (马可福音 10:29-31 吕振中)</p>
+</blockquote>
+<p>主啊，如果你所给的爱不够，我指着我自己起誓，此生此世，我定让我这反面的见证传遍全地，直到地极。所以，如果你觉得你给不了那么多爱，请趁早让我离开这个世界。 - 2022.4.1</p>
+<hr>
+<blockquote>
+<p><a href="https://zh.m.wikipedia.org/zh-cn/帕斯卡的賭注" target="_blank" rel="noopener">帕斯卡的赌注</a> =&gt;</p>
+</blockquote>
+<blockquote>
+<p>你们中间谁想要建造守望楼，不先坐下，计算费用¹，有没有作到完竣的把握呢？恐怕他立好了根基，竟不能造成²，看的人就会讥诮起来，说：「这个人开始建造，却不能造成！」<br> (路加福音 14:28-30 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>或是哪一个王要去同别的王交战，岂不先坐下计议³，能不能用一万人去敌那领二万来攻打他的呢？若是不能，就该趁他还离得远的时候，差遣公使去求和平的条款⁴。所以这样：你们各人、凡不跟自己的一切资财诀绝的，都不能做我的门徒。<br> (路加福音 14:31-33 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>¹ 计算费用 =&gt;<br>³ 计议 =&gt;</p>
+</blockquote>
+<blockquote>
+<p>便开始教训他们说：『人子必须受许多苦，被长老祭司长和经学士弃掉，并且被杀，三天以后就复起。』耶稣坦然无隐地讲这话。彼得便拉他到旁边，谏诤他。耶稣转过身来，看着门徒，就责备彼得说：『撒但退去！因为你不意念着上帝的事，却意念着人的事。』<br> (马可福音 8:31-33 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>于是呼召群众同门徒，对他们说：『人若想要跟着我，就当弃绝自己，拿起他的十字架来跟从我。因为凡想要救自己性命的、必失掉真性命；凡为我和福音的缘故失掉自己性命的、必救得真性命。人赢得全世界，而赔上了自己的性命，有什么益处呢？人能拿出什么来对换自己的性命呢？在这淫乱有罪的世代、凡以我和我的为可耻的，人子带着他父的荣耀和圣天使来临的时候、也必以那人为可耻。』<br> (马可福音 8:34-38 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>² 不能造成 =&gt;<br>⁴ 求和平的条款 =&gt;</p>
+</blockquote>
+<blockquote>
+<p>所以我们应当离开基督开端之道，向前推进到完全长大的程度，不必再立下改悔死行为和信靠上帝等根基：如各样洗礼、按手礼、死人复活跟永世处刑、等教训。上帝若准许，我们就这样行。因为人既尽一次蒙了光照，又尝过属天之白白的恩，而有分于圣灵，尝过上帝之话语多么美好，又尝过来世之能力，若背离了正道，要叫他们再复新而悔改、是不可能的，因为他们已在自己身上把上帝的儿子重钉十字架，使他公然被羞辱了。田地吸收屡次下在地上的雨水，产生着青菜、对地之所为而被耕种的人有了用处，就从上帝享受祝福；但若生出荆棘和蒺藜，就不中用，近于受咒诅；其结局乃是被焚烧。<br> (希伯来书 6:1-8 吕振中)</p>
+</blockquote>
+<p>为什么我现在会对<strong>贵主耶稣</strong>那一套不感兴趣了？他首先说，我死后末日下火湖；然后说，他为我死，赦免我的罪，给我新生；最后说，因为给了我新生，让我付出现在的生命。然而，很多身处绝望的人所需要的只是鼓励而不是恐吓。殉道能有什么价值？（——没有惧怕地死去；把他人对于死亡的惧怕赶出。）不是为了永生、而是为了神的国、神的义、神的爱而冒死，真的是一件极其荒诞的事情。我对他提出的终极赌局真的是不怎么感兴趣。<br>有些虔诚的基督徒是怎么悔改而变得温柔的？是被<strong>贵主耶稣</strong>所折磨的。我以前想着他是被人杀死的，总是为他洗白。现在我已经再也洗不了了。因为他也希望我和他一样被人杀死，我不能认同这种死法。</p>
+<hr>
+<blockquote>
+<p>众人都有一样的遭遇：义人和恶人、好人和坏人、洁净人和不洁净的人、献祭的和没献祭的、都一样：好人怎样，好犯罪的人也怎样；起誓的怎么，怕起誓的也怎样。在日光之下所发生的一切事上、有一件最大的祸患：就是一切人所遭遇的都是一样；并且人类的心都充满着坏事；他们一生心里都是狂妄，其后呢——都到死人那里去！但凡跟一切活人相连的、那人还有指望；因为活的狗比死了的狮子强。因为活着的人还知道自己会死；死了的人则毫无所知；他们也不能再得赏报；因为他们的遗迹没有人怀念着。他们的爱、他们的恨、他们的嫉妒、早都消灭了；在日光之下所发生的一切事上、他们永不再有分了。<br> (传道书 9:2-6 吕振中)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>先前的世代无人怀念着；<br>将来的世代后来的人也必不怀念。<br> (传道书 1:11 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>智慧人同愚顽人一样、永远无人怀念着；因为在将来的日子二者都会被忘掉；唉，智慧人死亡、终究同愚顽人一样。<br> (传道书 2:16 吕振中)</p>
+</blockquote>
+<p>有的人总是会有一种淹没在历史中的惧怕－－惧怕不得「好死」；惧怕，成为古往今来的芸芸众生、被人遗忘。</p>
+<hr>
+<blockquote>
+<p>好名誉强于好膏油；死的日子胜过生的日子。<br> (传道书 7:1 吕振中)</p>
+</blockquote>
+<p>所以，他们把死后的意义寄托在工作上。</p>
+<hr>
+<blockquote>
+<p>往有丧事的家去，比往宴饮的家去好；因为死是一切人的终局；活人必须将这事放在心上。<br> (传道书 7:2 吕振中)</p>
+</blockquote>
+<p>可是，我又转念一想：一切美好的作品、有什么益处？被人怀念、又有什么益处？人能拿出来对换自己的性命吗？</p>
+<hr>
+<blockquote>
+<p>因为我的人民作了两件坏事：<br>就是离弃了我这活水之源头，<br>去为自己凿出池子，破裂的池子，<br>不能存水的。<br> (耶利米书 2:13 吕振中)</p>
+</blockquote>
+<p>该如何实证池子是破裂的、不能存水的呢？为什么不能守着活水又凿出存水池呢？</p>
+<hr>
+<blockquote>
+<p>因为凡想要救自己性命的、必失掉真性命；凡为我和福音的缘故失掉自己性命的、必救得真性命。<br> (马可福音 8:35 吕振中)</p>
+</blockquote>
+<p>新约的核心奥秘：否定福音而救自己性命的、必失掉真性命；肯定福音而失掉自己性命的、必救得真性命。</p>
+<hr>
+<blockquote>
+<p>人赢得全世界，而赔上了自己的性命，有什么益处呢？人能拿出什么来对换自己的性命呢？<br> (马可福音 8:36-37 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>信仰上的美好竞斗、你要奋力斗胜，将永生把握住。你承认了那美好的信认、在许多见证人面前时，就是蒙了召而得永生的。<br> (提摩太前书 6:12 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>这就是他所应承给我们的应许：那真而永的生命。<br> (约翰一书 2:25 吕振中)</p>
+</blockquote>
+<p>基督徒癫狂地想象着真实，却往往能够做出适宜的决断。实证逻辑是癫狂的；评价逻辑是合理的。<br>我这里所说的「癫狂」是指着「没有实证」说的。癫狂的<strong>爱心</strong>所缺乏的是实证的<strong>信心</strong>。</p>
+<hr>
+<blockquote>
+<p>基督既被宣传：他已经从死人中得苏活起来，怎么你们中间还有人说没有死人之复活呢？如果没有死人之复活，基督也就没有得苏活起来了；基督如果没有得苏活起来，那我们所宣传的便是空的，你们所信的也是空的了。不但如此，如果死人真地不能得苏活起来的话，那么我们还要被指为上帝的假证人、作证妄说上帝的呢、说他叫他所没有苏活起来的基督活了起来！死人如果不能得苏活起来，基督也就没有得苏活起来了；基督如果没有得苏活起来，那你们的信便是徒然，你们就仍然在你们的罪中了。那么连那些在基督里长眠着的人也就灭亡了！我们在基督里所盼望的如果只在今生而已，那我们就比万人更为可怜了！<br> (哥林多前书 15:12-19 吕振中)</p>
+</blockquote>
+<p>如果贵主耶稣没有从死里复活，那么那些舍生作证者和贵主耶稣就像一起殉情了。人赢得爱情，而赔上了自己的性命，有什么益处呢？人能拿出爱情来对换自己的性命吗？</p>
+<hr>
+<blockquote>
+<p>其实不然，基督已经从死人中得苏活起来、做长眠着之人的初熟果子了。死既借着一人而有，死人之复活就借着一人而有了。<br> (哥林多前书 15:20-21 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>我们如果疯癫，乃是为着上帝；如果神志清明，乃是为着你们。基督的爱催迫着我们；我们断定：一个人既替众人死了，众人就都是死了。他替众人死，是要叫活着的人不再为自己而活，乃要为那替他们死而得苏活起来的、活。<br> (哥林多后书 5:13-15 吕振中)</p>
+</blockquote>
+<p>灵族人耶稣掌握着死人复活技术。没有能力的死人可以信靠他；有能力的活人可以帮助他。</p>
+<hr>
+<blockquote>
+<p>贵主耶稣：我参加的这个终极赌局很好玩。你也一起来参加吧？<br>聖緯太郎：抱歉。我不想要参加。你自己玩吧。</p>
+</blockquote>
+<blockquote>
+<p>Mister Lord Jesus: The ultimate game I played was a lot of fun. Will you join us too?<br>Andrew Saintway: Sorry. I don’t want to participate. Please play with yourselves.</p>
+</blockquote>
+<p>终极赌局：为了永生而冒死；为了死人的永生而冒死。</p>
+<p>The Ultimate Gamble: risking death for eternal life; risking death for the eternal life of the dead.</p>
+<p><strong>贵主耶稣</strong>是自杀既遂犯。冒死永生？我不愿意为了贵主的福音而死。我是敌挡他的。我是敌基督。真实的福音是永生的福音。信靠他的人把命交给他；不信靠他的人把命留给自己。</p>
+<p>参与耶稣的终极赌局之前需要确证两点：灵族人耶稣掌握着死人复活技术；灵族人耶稣，人品靠谱、信守承诺。</p>
+<hr>
+<blockquote>
+<p>我保罗、以基督的柔和与温良、亲自劝你们——我，我这个在你们中间和你们面对面时「谦卑」，而不同在时「放胆」的——有人以为我们是凭着肉体行事，我以为我必须以自信之心大胆惩治这种人——我甚至于求你们、不要让我和你们同在时有这样自信之心而放胆。我们虽以肉身行事，却不凭着肉体<strong>交战</strong>。我们交战的武器并不是属肉体的，乃是有属神之能力的；能够攻倒坚固的营垒，将人的思想，以及一切树起来、阻碍人认识上帝的高障、都攻倒了；又掳取了一切心意、使它听从基督。我并且准备好了、要在你们完全听从时、责罚一切之不听从。<br> (哥林多后书 10:1-6 吕振中)</p>
+</blockquote>
+<p>基督徒保罗为了福音而冒死与敌基督交战。</p>
+<p>终极交战：为了永生而与朽坏交战；为了死人的永生而与死亡交战。</p>
+<hr>
+<blockquote>
+<p>以利沙来到，进了屋子，看见孩子死了，躺在自己的床上。他一进去，就把门关上，只有自己和孩子在里面；他便祷告永恒主。又在床伏在孩子身上，使口对口，眼对眼，手掌对手掌；既俯伏在孩子身上，孩子的肉身就渐渐温暖起来。然后以利沙就下来、在屋里来回地走了一趟；又上去、俯伏在孩子身上；孩子打了喷嚏、打到七次；然后孩子就睁开眼睛。<br> (列王纪下 4:32-35 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>以利沙打发一个听差去见乃缦，说：『你去在约但河里洗澡、洗七次，你的肉就会回复过来、而得洁净。』乃缦大大震怒走了，说：『我心里自己说：「他一定出来见我，奉永恒主他的上帝的名站着呼求，在患处上头动动手，使这麻疯属之病复原呢。」大马色的河亚罢拿和法珥法、不是比以色列所有的水更好么？我在那里面洗澡，不能洁净么？』于是气忿忿转身而去。他的仆人走近前来对他说道：『我父啊，神言人若吩咐你一件大事，你难道不作么？何况他只对你说：「你去洗澡，而得洁净」呢？』于是乃缦便下去，照神人的话、在约但河蘸洗了七次，他的肉就回复过来，像小孩子的肉，他就洁净了。<br> (列王纪下 5:10-14 吕振中)</p>
+</blockquote>
+<p>爱是医生的权能之源动力。</p>
+<hr>
+<blockquote>
+<p>あなたがたのうちで、やぐらを建てようとする者は、それを完成するのに十分な費用¹があるかどうか、まず座って計算¹しないだろうか？そうでないと、土台を据えたのに、仕上げることができないなら²、見ている人たちはみなあざけり始め。『この人は建て始めたが、仕上げることができなかった』と言うであろう。<br> (ルカ 14:28-30 回復訳)</p>
+</blockquote>
+<blockquote>
+<p>また、どんな王でも、他の王と戦いを交えようとする時、二万人を率いて向かって来る者に、一万人で応戦することができるかどうか、まず座って、よくよく考えて³みないだろうか？もしできなければ、相手がまだ遠くにいるうちに、使者を送って和平の条件を求める⁴だろう。そのように、あなたがたはだれでも、自分の財産をすべて放棄しないなら、わたしの弟子になることはできない。<br> (ルカ 14:31-33 回復訳)</p>
+</blockquote>
+<blockquote>
+<p>¹ 費用計算 =&gt;<br>³ よくよく考えて =&gt;</p>
+</blockquote>
+<blockquote>
+<p>それから彼は、人の子は多くの苦しみを受け、長老、祭司長、聖書学者たちに拒絶され、殺され、三日の後に復活しなければならないと、彼らに教え始められた。しかもイエスはその言を、あからさまに語られた。するとペテロは、彼をわきへ引き寄せ、彼をいさめ始めた。しかし、イエスは振り返って弟子たちを見ながら、ペテロをしかって言われた、「サタンよ、わたしから退け！あなたは神のことを思わないで、人のことを思っている」。<br> (マルコ 8:31-33 回復訳)</p>
+</blockquote>
+<blockquote>
+<p>それから、イエスは群衆を弟子たちと共に呼び寄せて言われた、「だれでもわたしについて来たいと思うなら、自分を否み、自分の十字架を負い、わたしに従って来なさい。だれでも自分の魂の命を救おうとする者はそれを失い、わたしのため、また福音のために、自分の魂の命を失う者はそれを救う。人が全世界を手に入れても、自分の魂の命を失ったなら、何の益があるだろうか？人は自分の魂の命と引き換えに、何を与えることができるだろうか？だれでもわたしとわたしの言を、この姦淫の罪深い世代において恥じるなら、人の子も、父の栄光の中で聖なる御使いたちと共に来る時、その者を恥じる」。<br> (マルコ 8:34-38 回復訳)</p>
+</blockquote>
+<blockquote>
+<p>² 仕上げることができないなら =&gt;<br>⁴ 和平の条件を求める =&gt;</p>
+</blockquote>
+<blockquote>
+<p>こういうわけで、キリストの初歩的な言を後にして、再び基礎を据えることをしないで、円熟にもたらされようではありませんか．その基礎とは、死んだわざの悔い改めと神への信仰、種々の浸し洗いの教えと按手、死人の復活と永遠の裁きです。神が許されるなら、わたしたちはそのように行ないます。なぜなら、一度照らされ、天の賜物を味わい、聖霊にあずかる者となり、神の良い言葉と、来たるべき時代の力を味わいながら、しかもそれてしまう者たちは、自ら神の御子を再び十字架につけ、彼をさらし者とするのですから、もう一度新たに悔い改めることは不可能です。例えば、地がその上にしばしば臨む雨を吸い込んで、それを耕している人たちのために役立つ野菜を生えさせるなら、神からの祝福にあずかります。しかし、いばらやあざみを生えさせるなら、それは無用になり、のろいに近く、最後には焼かれてしまいます。<br> (ヘブライ 6:1-8 回復訳)</p>
+</blockquote>
+<p>たまに主イエス様の言葉が嫌いですが、僕もギャンブラーです。</p>
+<hr>
+<p>　　那段对你的爱是从怜悯开始的。后来我曾经怀疑自己是否真的爱你。因为我变得区分不出怜悯和爱。休谟曾经注意到在情感问题上怜悯和爱的混杂。这可能正是男性恋爱心理的一个现象。</p>
+<p>　　一方面，我感到很安慰——我还能爱人。我的意思是指男女之爱，而不是普通的喜欢、愉悦或是觉得某个事物值得被尊重那种严肃的情感。始于怜悯的爱倒并不一定侮辱人。如果我怜悯的是一个男人，我会觉得自己侮辱了他。但是，男女毕竟不同。女人是值得被怜悯的。</p>
+<p>　　另一方面，具有讽刺意味的是，那段感情因为我渴望被怜悯而失败。一位乞求着的男人可能会在女人心中失去魅力吧。</p>
+<hr>
+<p>　　你讓我意識到我潛意識裏那段被離棄的創傷。<br>　　如今，我意識到我犯的最大的錯誤就是憐憫你。<br>　　凡拉黑我的都去屎吧！</p>
+<hr>
+<blockquote>
+<p>那时若有人对你们说：「看哪，基督在这里」，「看哪，在那里」，你们不要信；因为有假基督假神言人将要起来，施行神迹奇事、如果可能、要使蒙拣选的人迷离。但是你们、要谨慎；一切事我都豫先告诉你们了。<br> (马可福音 13:21-23 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>那不法者之「来临」是依撒但「所运用的动力」、用各样虚谎之异能神迹奇事，用各样不义之诱惑施在趋于灭亡的人身上的，因为他们不接受爱真理的心而使他们得救。<br> (帖撒罗尼迦后书 2:9-10 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>我看见另一只兽从地际上来。它有两个角像羔羊的角；它说话像龙。它行了头一只兽的一切权柄在兽面前，叫地和住在地上的人都拜头一只兽、就是受了能致死之伤还得治好的那只兽。它又行大神迹，甚至在人面前叫火从天上降在地上。因了得权柄而在兽面前能行神迹、它就迷惑住在地上的人，告诉住在地上的人要为那受刀击伤还活着的兽造像。它得了权柄、可以将生气给兽的像，叫兽的像不但能说话，也能叫所有不拜兽像的人都被杀害。<br> (启示录 13:11-15 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>那兽被逮，那假神言人、就是那在兽面前行过神迹、用神迹迷惑了受兽印记和拜兽像的人的、也和兽一同被逮；这两个活活地丢在那有硫磺烧着的火湖里。<br> (启示录 19:20 吕振中)</p>
+</blockquote>
+<p>　　我已手握充分的资源揭露一切。<br>　　我知道曾有多少人被你所祸害。<br>　　我对你也早已没了怜悯之心。<br>　　复仇？还是等待？<br>　　间歇性地陷入复仇与否的纠结之中。<br>　　等不多时，你就不得见我。<br>　　但愿你我此生此世永不相见。</p>
+<hr>
+<blockquote>
+<p>有一根苇子仿佛量杖给了我，又有话说：『你起来，量量上帝的殿堂和祭坛、以及其中敬拜的人。不过殿堂以外的院子、却不要量，因为已经给了外国人了；他们必践踏圣城四十二个月。我要赐权柄叫我那两个舍生作证人披着麻衣传讲神言、一千二百六十天。』<br> (启示录 11:1-3 吕振中)</p>
+</blockquote>
+<blockquote>
+<p>他们就是那两棵橄榄树、两个灯台、立在大地之主面前的。若有人想要伤害他们，就必有火从他们口中喷出，去烧灭他们的仇敌；若有人想要伤害他们，就必定这样被杀。这两个人有权柄把天闭塞着，叫雨水在他们传讲神言的日子不下来；又有权柄掌管众水、叫水变成了血；他们并且能用各样灾殃、按所要的次数击打大地。<br> (启示录 11:4-6 吕振中)</p>
+</blockquote>
+<p>　　悔改吧！坦诚吧！友善吧！<br>　　何必为自己招致祸患呢？</p>
+<hr>
+<blockquote>
+<p>他们作完了他们的见证时，那从无底坑里上来的兽必对他们作战，胜过他们，杀死他们。他们的尸体必倒在那大城的街道上。这城按灵意叫所多玛，叫埃及，又是他们的主被钉十字架的地方。从许多民许多族许多种语言的人和许多邦国中、人们必观看他们的尸体三天半，又不许人把他们的尸体安放在茔墓里。为了他们的缘故、住在地上的人就欢喜快乐，彼此送礼，因为这两位神言人实在叫住在地上的人受了苦痛。<br> (启示录 11:7-10 吕振中)</p>
+</blockquote>
+<p>　　请不要绝望啊！<br>　　请去追求终极真实吧！</p>
+<hr>
+<blockquote>
+<p>三天半以后、有生气从上帝那里进入他们里面，他们就挺起腿来站着，观看的人大为惧怕。他们听见有大声音从天上对他们说：『上这里来！』他们就驾云上天，他们的仇敌也看着他们。就在那时就发生了大地震；那城有十分之一倒坏了。在地震中遭难而死的人有七千名；其余的人都很惧怕，就把荣耀献与天上的上帝。<br> (启示录 11:11-13 吕振中)</p>
+</blockquote>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2017/07/21/复起永生/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-05-16 </div>
+			<div class="article-title"><a href="/2016/05/16/A-Real-time-Automatic-Level-Bar-Calibration-Based-on-Canny-Edge-Detection-and-Weighted-Least-Squares-Method/" >A Real-time Automatic Level Bar Calibration Based on Canny Edge Detection and Weighted Least Squares Method</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <blockquote>
+<p><a href="https://github.com/seii-saintway/SPTX/" target="_blank" rel="noopener">Introduction of Level Bar Calibration System</a></p>
+</blockquote>
+<p><strong>A Real-time Automatic Level Bar Calibration Based on Canny Edge Detection and Weighted Least Squares Method</strong></p>
+<p>The level bar is a common tool for measuring small angle, and it is often used in the construction, machinery and instrument manufacturing industry. Accordance to different working principles, the level bar is divided into bubble level, electronic level and laser level. The bubble level is the most widely used traditional level bar, which determines the horizontality of a plane by the bubble deviation. The electronic level includes inductive level and capacitive level: the inductive level determines whether a plane is level by the voltage change of the induction coil, while the capacitive level by the capacitance of interstices on both ends. The laser level leads the beam of the laser emission to telescope tube, making it beam through the collimation axis, if the beam isn’t blocked, the plane is level. The level bar in this paper is one kind of bubble level.<br>Before leaving the factory, the level bar needs to be calibrated, namely to put the level bar on the standard horizontal plane, to find the bubble deviation from the center of the level bar to check the measurement accuracy of the product. In China, the detection is mainly depended on the human eye judgment which is slow, erroneous and instable. Therefore, there is an urgent need for a novel method capable of accurate calibration of the level bar to improve the precision of the product.</p>
+<p>The bubble in the level bars formed from the remaining air by filling the cylindrical cavity 4/5 green oily liquid. A calibration algorithm based on optimal thresholding was proposed by Wei Yu [1-2]. In this paper, we present a realization of automatic and real-time detection of level bar based on Canny edge detection and weighted least squares method. In order to reduce the effects of light changes on detection accuracy, we introduce a method to adaptively set the thresholds of the Canny Edge Detection. A faster contour tracing algorithm based on binary search is employed. Experimental results show that this solution is feasible.</p>
+<p>The bubble of the level bars sealed in a glass column, and it will reflect strong light and disturb the identification of bubble edge and the whole image recognizing process if we direct light the bubble or light it in a wrong angle. Considering that the bubble and the glass column are transparent, the background is required to be flat and uniform. Since the upper surface of the bubble of the level bar is convex, if taking the image from the top of the level bar, there is always a mirror reflection effect, so that the quality of the image deteriorates and will impact the effect of subsequent detection algorithm. So we decide to take the image from the side of the level bar. A CCD camera is used as an image sensor in this application.</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2016/05/16/A-Real-time-Automatic-Level-Bar-Calibration-Based-on-Canny-Edge-Detection-and-Weighted-Least-Squares-Method/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2016-04-04 </div>
 			<div class="article-title"><a href="/2016/04/04/病态的灵魂/" >病态的灵魂</a></div>						
 		</h3>
@@ -1111,144 +1483,6 @@
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-09-03 </div>
-			<div class="article-title"><a href="/2015/09/03/My-Second-Test/" >My Second Test</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h2 id="References-of-Octopress"><a href="#References-of-Octopress" class="headerlink" title="References of Octopress"></a>References of Octopress</h2><p><a href="http://octopress.org/docs/setup/" target="_blank" rel="noopener">http://octopress.org/docs/setup/</a></p>
-<h2 id="Start-Command-Prompt-with-Ruby"><a href="#Start-Command-Prompt-with-Ruby" class="headerlink" title="Start Command Prompt with Ruby"></a>Start Command Prompt with Ruby</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DevKit</span></span><br><span class="line">ruby dk.rb init</span><br><span class="line">ruby dk.rb install</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">ruby --version <span class="comment"># Should report Ruby 1.9.3</span></span><br><span class="line">gem install bundler</span><br><span class="line">bundle install</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install rubypython <span class="comment"># not necessary for Octopress now</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake new_post[<span class="string">"title"</span>]</span><br><span class="line">rake preview <span class="comment"># http://localhost:4000/</span></span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">bundle <span class="built_in">exec</span> rake new_post[<span class="string">"title"</span>]</span><br><span class="line">bundle <span class="built_in">exec</span> rake preview</span><br><span class="line">bundle <span class="built_in">exec</span> rake deploy</span><br></pre></td></tr></table></figure>
-<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pbcopy &lt; ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># Copies the contents of the id_rsa.pub file to your clipboard</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:seii-saintway/seii-saintway.github.io.git Octopress</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout -b <span class="built_in">source</span> origin/<span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'your message'</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<h2 id="Windows-Command-Prompt"><a href="#Windows-Command-Prompt" class="headerlink" title="Windows Command Prompt"></a>Windows Command Prompt</h2><p>Add the “cmd” directory of “git” to System Environment Variable “Path”.</p>
-<p>Add the “bin” directory of “Ruby” to System Environment Variable “Path”.</p>
-<p>Add the “Python” directory to System Environment Variable “Path”.</p>
-<h2 id="My-“rake-setup-github-pages”-with-“git-init”"><a href="#My-“rake-setup-github-pages”-with-“git-init”" class="headerlink" title="My “rake setup_github_pages” with “git init”"></a>My “rake setup_github_pages” with “git init”</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:seii-saintway/seii-saintway.github.io.git</span><br><span class="line">git checkout -b <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> _deploy</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:seii-saintway/seii-saintway.github.io.git</span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake generate</span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"Fresh Start!"</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<h2 id="References-of-ECMAScript"><a href="#References-of-ECMAScript" class="headerlink" title="References of ECMAScript"></a>References of ECMAScript</h2><p><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="noopener">http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf</a></p>
-<p>遮蔽（遮盖、屏蔽），可见（作用域、可见域）；生存期。</p>
-<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm --registry <span class="string">"http://npm.hacknodejs.com/"</span> install underscore </span><br><span class="line">npm --registry <span class="string">"http://registry.npmjs.vitecho.com/"</span> install underscore</span><br></pre></td></tr></table></figure>
-<h2 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a>npm install</h2><h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>command + shift + G</p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">npm install --save</span><br><span class="line">node_modules/hexo/bin/hexo server --debug</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://hexo.io/</span></span><br><span class="line">npm install hexo-cli --save</span><br><span class="line">npm install hexo --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"><span class="comment"># Clean the cache file (db.json) and generated files (public).</span></span><br><span class="line"><span class="comment"># 在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</span></span><br></pre></td></tr></table></figure>
-<h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gg</span><br><span class="line">G</span><br></pre></td></tr></table></figure>
-<h2 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g eslint</span><br></pre></td></tr></table></figure>
-<h2 id="Continuous-Integration"><a href="#Continuous-Integration" class="headerlink" title="Continuous Integration"></a>Continuous Integration</h2><h2 id="git-submodule"><a href="#git-submodule" class="headerlink" title="git submodule"></a>git submodule</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached -r themes/freemind</span><br><span class="line">git submodule add https://github.com/seii-saintway/hexo-theme-freemind.git themes/freemind</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
-<h2 id="git-update-index"><a href="#git-update-index" class="headerlink" title="git update-index"></a>git update-index</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git update-index --assume-unchanged .idea/workspace.xml</span><br><span class="line">git update-index --no-assume-unchanged .idea/workspace.xml</span><br></pre></td></tr></table></figure>
-<h2 id="encoding"><a href="#encoding" class="headerlink" title="encoding"></a>encoding</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/09/03/My-Second-Test/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-09-03 </div>
-			<div class="article-title"><a href="/2015/09/03/My-First-Test/" >My First Test</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <figure class="highlight cpp"><figcaption><span>My Hello World! Written in C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"How are you? Friends."</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/09/03/My-First-Test/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2014-10-25 </div>
-			<div class="article-title"><a href="/2014/10/25/彼拉多对耶稣说：『真理是什么？』/" >彼拉多对耶稣说：『真理是什么？』</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <blockquote>
-<p>公私兼顾：<br>损公利己，于心有所不安；<br>克己奉公，于心有所不忍。<br>－－《新伦理学教程》P294</p>
-</blockquote>
-<p>担忧在绝路上挫败：统筹兼顾。</p>
-<p>高三那年，每天行色匆匆。<br>那天是那年最后的一个星期天。上午的第四节是生物课。上完课后，我用课间短短的十分钟时间继续埋头看书学习。之后的第五节是数学课。那是上午最后的一节课。整个数学课恍如一晃。我伸展着身体，走出教室去透透气。刹那间，我想起来，我应去找老师要一份卷子。昨天，课代表发卷子时，少了两份卷子。所以，我和另外一个同学还没有领到卷子。“唉，为什么我这么倒霉呢？”<br>后来，好心的课代表给我送来了卷子。</p>
-<p>厌恶“宿命论”的理由：害怕“绝对无意义”、害怕“失去自由”、害怕“意志不是第一因”、害怕“否定自我”。事物若要具有相对的意义，第一是要被人所需要，第二是要通过人自觉而主动地耗费精力而产生。</p>
-<p>关于“业力”：共业与灾祸。道德因果律。“一切都是自作自受。”、道德因果律向非道德领域拓展。</p>
-<p>为了充分工作而忍耐放逸的慾望是善。为了过分娱乐而减少工作是恶。<br>充分工作是善。过分娱乐是恶。<br>对整洁的过分苛求，是恶。</p>
-<p>完全的教育，一面是应试教育，一面是素质教育。<br>应从考题出发把握应试方法。一种是采用最直白的思维方式做题，忽略所有含混，模拟考试的情况。一种是理清所有含混，一题一题地做，深入思考标准答案。<br>学而思，思而学，虚实结合。</p>
-<p>经验的证伪作用。理论，关于经验（感）的虚感。<br>常识是确实的。</p>
-<p>择二不休。</p>
-<p>操作要素，构造概念。</p>
-<p>焦虑，积极作用，显在危害会导致对潜在危害的担忧甚至焦虑的情感。</p>
-<p>公有内涵就是自己和他人都可以直接感受到的印象。<br>私有内涵就是只有自己可以直接感受到的印象。</p>
-<p>语言表达可以看成是或然推理。<br><strong>直观</strong>相似性是探索或然推理的拐杖。<br>相似的发现是印象的细节在心灵中累积的结果。</p>
-<p>语言的发展，概念的创造。<br>把单词开头的元音和结尾的辅音省略而来的发音，与意思相联结。</p>
-<p>小段语句的直观，大段语句的直观。意义要素的容错性渐进。</p>
-<p>以经验主义来区别虚感中的真假。灵感是神的。除此以外是我的。</p>
-<p>“小己”的愔感能够生发出平和的情感来。“贫乏”。</p>
-<p>只要不去当精神病人，就不会被歧视。<br>坚决不再去当精神病人。坚决否认这样的想法“虚假的事物为真实的”。</p>
-<p>“我信仰斯宾诺莎的那个在存在事物的有秩序的和谐中显示出来的上帝，而不信仰那个同人类的命运和行为有牵累的上帝。”</p>
-<p>在真假问题上从众实。在好坏问题上从众虚。</p>
-<p>活在真实里。</p>
-<p>关于害怕，己？对短暂的害怕。对约束的害怕。对痛苦的害怕。干脆、索性。</p>
-<p>地位，高贵、低贱，态度。</p>
-<p>解答过去所产生的问题的猜想的产生，灵光一晃。猜想、怀疑、证实。假设、分析、证明。</p>
-<p>意义就是需要。需要就是意义。</p>
-<p>前必然、后必然。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2014/10/25/彼拉多对耶稣说：『真理是什么？』/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -1289,41 +1523,43 @@
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
 			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>2</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>3</span></a></li>
+		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>2</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
 		
 		</ul>
@@ -1337,23 +1573,23 @@
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2023/02/07/プラネット/" ><i class="fa fa-file-o"></i>プラネット</a>
+      </li>
+    
+      <li>
+        <a href="/2023/02/07/psalms/psalm-2/" ><i class="fa fa-file-o"></i>Kiss the Son</a>
+      </li>
+    
+      <li>
+        <a href="/2023/02/07/psalms/psalm-1/" ><i class="fa fa-file-o"></i>Everything He Does Shall Pr...</a>
+      </li>
+    
+      <li>
         <a href="/2023/02/04/Add-Tabs-to-My-Blog/" ><i class="fa fa-file-o"></i>Add Tabs to My Blog</a>
       </li>
     
       <li>
         <a href="/2022/10/18/Try-Bacalhau/" ><i class="fa fa-file-o"></i>Try Bacalhau</a>
-      </li>
-    
-      <li>
-        <a href="/2022/10/02/Research-History-of-Synaptotagmin-7/" ><i class="fa fa-file-o"></i>Research History of Synapto...</a>
-      </li>
-    
-      <li>
-        <a href="/2022/09/23/In-Search-of-Memory/" ><i class="fa fa-file-o"></i>In Search of Memory</a>
-      </li>
-    
-      <li>
-        <a href="/2022/09/04/Look-on-Down-From-the-Bridge/" ><i class="fa fa-file-o"></i>Look on Down From the Bridge</a>
       </li>
     
   </ul>

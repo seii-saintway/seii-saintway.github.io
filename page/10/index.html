@@ -145,6 +145,144 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2015-09-03 </div>
+			<div class="article-title"><a href="/2015/09/03/My-Second-Test/" >My Second Test</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="References-of-Octopress"><a href="#References-of-Octopress" class="headerlink" title="References of Octopress"></a>References of Octopress</h2><p><a href="http://octopress.org/docs/setup/" target="_blank" rel="noopener">http://octopress.org/docs/setup/</a></p>
+<h2 id="Start-Command-Prompt-with-Ruby"><a href="#Start-Command-Prompt-with-Ruby" class="headerlink" title="Start Command Prompt with Ruby"></a>Start Command Prompt with Ruby</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DevKit</span></span><br><span class="line">ruby dk.rb init</span><br><span class="line">ruby dk.rb install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">ruby --version <span class="comment"># Should report Ruby 1.9.3</span></span><br><span class="line">gem install bundler</span><br><span class="line">bundle install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install rubypython <span class="comment"># not necessary for Octopress now</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake new_post[<span class="string">"title"</span>]</span><br><span class="line">rake preview <span class="comment"># http://localhost:4000/</span></span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">bundle <span class="built_in">exec</span> rake new_post[<span class="string">"title"</span>]</span><br><span class="line">bundle <span class="built_in">exec</span> rake preview</span><br><span class="line">bundle <span class="built_in">exec</span> rake deploy</span><br></pre></td></tr></table></figure>
+<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pbcopy &lt; ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># Copies the contents of the id_rsa.pub file to your clipboard</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:seii-saintway/seii-saintway.github.io.git Octopress</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout -b <span class="built_in">source</span> origin/<span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'your message'</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+<h2 id="Windows-Command-Prompt"><a href="#Windows-Command-Prompt" class="headerlink" title="Windows Command Prompt"></a>Windows Command Prompt</h2><p>Add the “cmd” directory of “git” to System Environment Variable “Path”.</p>
+<p>Add the “bin” directory of “Ruby” to System Environment Variable “Path”.</p>
+<p>Add the “Python” directory to System Environment Variable “Path”.</p>
+<h2 id="My-“rake-setup-github-pages”-with-“git-init”"><a href="#My-“rake-setup-github-pages”-with-“git-init”" class="headerlink" title="My “rake setup_github_pages” with “git init”"></a>My “rake setup_github_pages” with “git init”</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:seii-saintway/seii-saintway.github.io.git</span><br><span class="line">git checkout -b <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> _deploy</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:seii-saintway/seii-saintway.github.io.git</span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake generate</span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"Fresh Start!"</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+<h2 id="References-of-ECMAScript"><a href="#References-of-ECMAScript" class="headerlink" title="References of ECMAScript"></a>References of ECMAScript</h2><p><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="noopener">http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf</a></p>
+<p>遮蔽（遮盖、屏蔽），可见（作用域、可见域）；生存期。</p>
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm --registry <span class="string">"http://npm.hacknodejs.com/"</span> install underscore </span><br><span class="line">npm --registry <span class="string">"http://registry.npmjs.vitecho.com/"</span> install underscore</span><br></pre></td></tr></table></figure>
+<h2 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a>npm install</h2><h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>command + shift + G</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">npm install --save</span><br><span class="line">node_modules/hexo/bin/hexo server --debug</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://hexo.io/</span></span><br><span class="line">npm install hexo-cli --save</span><br><span class="line">npm install hexo --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"><span class="comment"># Clean the cache file (db.json) and generated files (public).</span></span><br><span class="line"><span class="comment"># 在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</span></span><br></pre></td></tr></table></figure>
+<h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gg</span><br><span class="line">G</span><br></pre></td></tr></table></figure>
+<h2 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g eslint</span><br></pre></td></tr></table></figure>
+<h2 id="Continuous-Integration"><a href="#Continuous-Integration" class="headerlink" title="Continuous Integration"></a>Continuous Integration</h2><h2 id="git-submodule"><a href="#git-submodule" class="headerlink" title="git submodule"></a>git submodule</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached -r themes/freemind</span><br><span class="line">git submodule add https://github.com/seii-saintway/hexo-theme-freemind.git themes/freemind</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
+<h2 id="git-update-index"><a href="#git-update-index" class="headerlink" title="git update-index"></a>git update-index</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git update-index --assume-unchanged .idea/workspace.xml</span><br><span class="line">git update-index --no-assume-unchanged .idea/workspace.xml</span><br></pre></td></tr></table></figure>
+<h2 id="encoding"><a href="#encoding" class="headerlink" title="encoding"></a>encoding</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/03/My-Second-Test/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-03 </div>
+			<div class="article-title"><a href="/2015/09/03/My-First-Test/" >My First Test</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <figure class="highlight cpp"><figcaption><span>My Hello World! Written in C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"How are you? Friends."</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/03/My-First-Test/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2014-10-25 </div>
+			<div class="article-title"><a href="/2014/10/25/彼拉多对耶稣说：『真理是什么？』/" >彼拉多对耶稣说：『真理是什么？』</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <blockquote>
+<p>公私兼顾：<br>损公利己，于心有所不安；<br>克己奉公，于心有所不忍。<br>－－《新伦理学教程》P294</p>
+</blockquote>
+<p>担忧在绝路上挫败：统筹兼顾。</p>
+<p>高三那年，每天行色匆匆。<br>那天是那年最后的一个星期天。上午的第四节是生物课。上完课后，我用课间短短的十分钟时间继续埋头看书学习。之后的第五节是数学课。那是上午最后的一节课。整个数学课恍如一晃。我伸展着身体，走出教室去透透气。刹那间，我想起来，我应去找老师要一份卷子。昨天，课代表发卷子时，少了两份卷子。所以，我和另外一个同学还没有领到卷子。“唉，为什么我这么倒霉呢？”<br>后来，好心的课代表给我送来了卷子。</p>
+<p>厌恶“宿命论”的理由：害怕“绝对无意义”、害怕“失去自由”、害怕“意志不是第一因”、害怕“否定自我”。事物若要具有相对的意义，第一是要被人所需要，第二是要通过人自觉而主动地耗费精力而产生。</p>
+<p>关于“业力”：共业与灾祸。道德因果律。“一切都是自作自受。”、道德因果律向非道德领域拓展。</p>
+<p>为了充分工作而忍耐放逸的慾望是善。为了过分娱乐而减少工作是恶。<br>充分工作是善。过分娱乐是恶。<br>对整洁的过分苛求，是恶。</p>
+<p>完全的教育，一面是应试教育，一面是素质教育。<br>应从考题出发把握应试方法。一种是采用最直白的思维方式做题，忽略所有含混，模拟考试的情况。一种是理清所有含混，一题一题地做，深入思考标准答案。<br>学而思，思而学，虚实结合。</p>
+<p>经验的证伪作用。理论，关于经验（感）的虚感。<br>常识是确实的。</p>
+<p>择二不休。</p>
+<p>操作要素，构造概念。</p>
+<p>焦虑，积极作用，显在危害会导致对潜在危害的担忧甚至焦虑的情感。</p>
+<p>公有内涵就是自己和他人都可以直接感受到的印象。<br>私有内涵就是只有自己可以直接感受到的印象。</p>
+<p>语言表达可以看成是或然推理。<br><strong>直观</strong>相似性是探索或然推理的拐杖。<br>相似的发现是印象的细节在心灵中累积的结果。</p>
+<p>语言的发展，概念的创造。<br>把单词开头的元音和结尾的辅音省略而来的发音，与意思相联结。</p>
+<p>小段语句的直观，大段语句的直观。意义要素的容错性渐进。</p>
+<p>以经验主义来区别虚感中的真假。灵感是神的。除此以外是我的。</p>
+<p>“小己”的愔感能够生发出平和的情感来。“贫乏”。</p>
+<p>只要不去当精神病人，就不会被歧视。<br>坚决不再去当精神病人。坚决否认这样的想法“虚假的事物为真实的”。</p>
+<p>“我信仰斯宾诺莎的那个在存在事物的有秩序的和谐中显示出来的上帝，而不信仰那个同人类的命运和行为有牵累的上帝。”</p>
+<p>在真假问题上从众实。在好坏问题上从众虚。</p>
+<p>活在真实里。</p>
+<p>关于害怕，己？对短暂的害怕。对约束的害怕。对痛苦的害怕。干脆、索性。</p>
+<p>地位，高贵、低贱，态度。</p>
+<p>解答过去所产生的问题的猜想的产生，灵光一晃。猜想、怀疑、证实。假设、分析、证明。</p>
+<p>意义就是需要。需要就是意义。</p>
+<p>前必然、后必然。</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2014/10/25/彼拉多对耶稣说：『真理是什么？』/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2013-01-25 </div>
 			<div class="article-title"><a href="/2013/01/25/I-m-missing-you/" >I&#39;m missing you</a></div>						
 		</h3>
@@ -1228,41 +1366,43 @@ Andy 还是墨尔本第一个提供深度学习咨询的技术团队的核心成
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Lyrics/">Lyrics<span>3</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
+		
 			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>2</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
 			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>2</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
 		
 			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
 		
 		
 		</ul>
@@ -1276,23 +1416,23 @@ Andy 还是墨尔本第一个提供深度学习咨询的技术团队的核心成
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2023/02/07/プラネット/" ><i class="fa fa-file-o"></i>プラネット</a>
+      </li>
+    
+      <li>
+        <a href="/2023/02/07/psalms/psalm-2/" ><i class="fa fa-file-o"></i>Kiss the Son</a>
+      </li>
+    
+      <li>
+        <a href="/2023/02/07/psalms/psalm-1/" ><i class="fa fa-file-o"></i>Everything He Does Shall Pr...</a>
+      </li>
+    
+      <li>
         <a href="/2023/02/04/Add-Tabs-to-My-Blog/" ><i class="fa fa-file-o"></i>Add Tabs to My Blog</a>
       </li>
     
       <li>
         <a href="/2022/10/18/Try-Bacalhau/" ><i class="fa fa-file-o"></i>Try Bacalhau</a>
-      </li>
-    
-      <li>
-        <a href="/2022/10/02/Research-History-of-Synaptotagmin-7/" ><i class="fa fa-file-o"></i>Research History of Synapto...</a>
-      </li>
-    
-      <li>
-        <a href="/2022/09/23/In-Search-of-Memory/" ><i class="fa fa-file-o"></i>In Search of Memory</a>
-      </li>
-    
-      <li>
-        <a href="/2022/09/04/Look-on-Down-From-the-Bridge/" ><i class="fa fa-file-o"></i>Look on Down From the Bridge</a>
       </li>
     
   </ul>
