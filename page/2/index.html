@@ -145,6 +145,234 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2023-02-04 </div>
+			<div class="article-title"><a href="/2023/02/04/Add-Tabs-to-My-Blog/" >Add Tabs to My Blog</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://theme-next.js.org/" target="_blank" rel="noopener">NexT</a></li>
+<li><a href="https://theme-next.js.org/docs/getting-started/" target="_blank" rel="noopener">NexT Installation</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-shell"><pre><span></span><span class="nb">cd</span><span class="w"> </span>hexo
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-shell"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/next-theme/hexo-theme-next<span class="w"> </span>themes/next
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cloning into &#39;themes/next&#39;...
+remote: Enumerating objects: 6276, done.
+remote: Counting objects: 100% (187/187), done.
+remote: Compressing objects: 100% (114/114), done.
+remote: Total 6276 (delta 76), reused 156 (delta 68), pack-reused 6089
+Receiving objects: 100% (6276/6276), 1.31 MiB | 949.00 KiB/s, done.
+Resolving deltas: 100% (4051/4051), done.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://theme-next.js.org/docs/tag-plugins/tabs" target="_blank" rel="noopener">Tabs</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-shell"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>themes/freemind/scripts/tags
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-shell"><pre><span></span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; themes/freemind/scripts/tags/index.js</span>
+<span class="s">/* global hexo */</span>
+
+<span class="s">&#39;use strict&#39;;</span>
+
+<span class="s">const postTabs = require(&#39;./tabs&#39;)(hexo);</span>
+
+<span class="s">hexo.extend.tag.register(&#39;tabs&#39;, postTabs, true);</span>
+<span class="s">hexo.extend.tag.register(&#39;subtabs&#39;, postTabs, true);</span>
+<span class="s">hexo.extend.tag.register(&#39;subsubtabs&#39;, postTabs, true);</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-shell"><pre><span></span>touch<span class="w"> </span>themes/freemind/scripts/tags/tabs.js
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-shell"><pre><span></span>cat<span class="w"> </span>themes/freemind/scripts/tags/tabs.js
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/**
+ * tabs.js | https://theme-next.js.org/docs/tag-plugins/tabs
+ */
+
+&#39;use strict&#39;;
+
+module.exports = ctx =&gt; function(args, content = &#39;&#39;) {
+  const tabBlock = /&lt;!--\s*tab (.*?)\s*--&gt;\n([\w\W\s\S]*?)&lt;!--\s*endtab\s*--&gt;/g;
+
+  args = args.join(&#39; &#39;).split(&#39;,&#39;);
+  const tabName = args[0];
+  const tabActive = Number(args[1]) || 0;
+
+  let tabId = 0;
+  let tabNav = &#39;&#39;;
+  let tabContent = &#39;&#39;;
+
+  if (!tabName) ctx.log.warn(&#39;Tabs block must have unique name!&#39;);
+  const matches = content.matchAll(tabBlock);
+
+  for (const match of matches) {
+    let [caption = &#39;&#39;, icon = &#39;&#39;] = match[1].split(&#39;@&#39;);
+    let postContent = match[2];
+
+    postContent = ctx.render.renderSync({ text: postContent, engine: &#39;markdown&#39; }).trim();
+
+    const abbr = tabName + &#39; &#39; + ++tabId;
+    const href = abbr.toLowerCase().split(&#39; &#39;).join(&#39;-&#39;);
+
+    icon = icon.trim();
+    if (icon.length &gt; 0) {
+      if (!icon.startsWith(&#39;fa&#39;)) icon = &#39;fa fa-&#39; + icon;
+      icon = `&lt;i class=&#34;${icon}&#34;&gt;&lt;/i&gt;`;
+    }
+
+    caption = icon + caption.trim();
+
+    const isActive = (tabActive &gt; 0 &amp;&amp; tabActive === tabId) || (tabActive === 0 &amp;&amp; tabId === 1) ? &#39; active&#39; : &#39;&#39;;
+    tabNav += `&lt;li class=&#34;tab${isActive}&#34;&gt;&lt;a href=&#34;#${href}&#34;&gt;${caption || abbr}&lt;/a&gt;&lt;/li&gt;`;
+    tabContent += `&lt;div class=&#34;tab-pane${isActive}&#34; id=&#34;${href}&#34;&gt;${postContent}&lt;/div&gt;`;
+  }
+
+  tabNav = `&lt;ul class=&#34;nav-tabs&#34;&gt;${tabNav}&lt;/ul&gt;`;
+  tabContent = `&lt;div class=&#34;tab-content&#34;&gt;${tabContent}&lt;/div&gt;`;
+
+  return `&lt;div class=&#34;tabs&#34; id=&#34;${tabName.toLowerCase().split(&#39; &#39;).join(&#39;-&#39;)}&#34;&gt;${tabNav + tabContent}&lt;/div&gt;`;
+};
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+<div class="tabs" id="tabs-with-custom-labels"><ul class="nav-tabs"><li class="tab active"><a href="#tabs-with-custom-labels-1">English</a></li><li class="tab"><a href="#tabs-with-custom-labels-2">中文</a></li><li class="tab"><a href="#tabs-with-custom-labels-3">日文</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabs-with-custom-labels-1"><p><strong>Here is English.</strong></p></div><div class="tab-pane" id="tabs-with-custom-labels-2"><p><strong>这里是中文。</strong></p></div><div class="tab-pane" id="tabs-with-custom-labels-3"><p><strong>ここは日本語テキストです。</strong></p></div></div></div>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/02/04/Add-Tabs-to-My-Blog/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2022-10-18 </div>
 			<div class="article-title"><a href="/2022/10/18/Try-Bacalhau/" >Try Bacalhau</a></div>						
 		</h3>
@@ -756,7 +984,7 @@ The highly conserved nature of the determinants on this protein and their specif
 </blockquote>
 <p>面对着如同死去般的痛苦和虚空；敢于冒死，行动起来；去迎接久远的安息吧，直到世界末日。<br>勇敢的冒险者所拥有的从死里复活之意志：真正的坚强是勇敢如爱如死之坚强。冒险者有多么强烈的冒死意志，就有多么强壮。</p>
 <hr>
-<div class="tabs" id="tabs-with-custom-labels"><ul class="nav-tabs"><li class="tab active"><a href="#tabs-with-custom-labels-1">Ultimate Gamble</a></li><li class="tab"><a href="#tabs-with-custom-labels-2">终极赌博</a></li><li class="tab"><a href="#tabs-with-custom-labels-3">究極のギャンブル</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabs-with-custom-labels-1"><p>Gamble well in love. Prepare for the worst, make bold choices and embark on adventures with the strongest determination. Go outward to the farthest, inward to the deepest, in pursuit of the ultimate facts.</p></div><div class="tab-pane" id="tabs-with-custom-labels-2"><p>好好地赌博吧。做最坏的打算、怀着最坚定的决心，勇敢地做出选择、踏上冒险旅程。向外往最远处去、向内往最深处去，追求终极真实。</p></div><div class="tab-pane" id="tabs-with-custom-labels-3"><p><strong>お待ちくださいませ。</strong></p></div></div></div>
+<div class="tabs" id="ultimate-adventure"><ul class="nav-tabs"><li class="tab active"><a href="#ultimate-adventure-1">Ultimate Gamble</a></li><li class="tab"><a href="#ultimate-adventure-2">终极赌博</a></li><li class="tab"><a href="#ultimate-adventure-3">究極のギャンブル</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ultimate-adventure-1"><p>Gamble well in love. Prepare for the worst, make bold choices and embark on adventures with the strongest determination. Go outward to the farthest, inward to the deepest, in pursuit of the ultimate facts.</p></div><div class="tab-pane" id="ultimate-adventure-2"><p>好好地赌博吧。做最坏的打算、怀着最坚定的决心，勇敢地做出选择、踏上冒险旅程。向外往最远处去、向内往最深处去，追求终极真实。</p></div><div class="tab-pane" id="ultimate-adventure-3"><p>良く賭けましょう。最悪の事態に備え、強い決意を持ち、大胆な選択をして、冒険に出かけましょう。外側に最も遠いところに、内側に最も深いところに、究極の真実を追い求めてください。</p></div></div></div>
 <hr>
 <blockquote>
 <p>上帝说：『我们要造人，按着我们的形像，照我们的样式来造；让他们管理海里的鱼、空中的飞鸟，也管理牲口、以及全地、和爬在地上的各样爬行动物。』上帝就按自己的形像创造人：按上帝的形像创造他：创造他们有男有女。上帝就给他们祝福说：『要繁殖增多，充满全地，去征服它；也要管理海里的鱼、空中的飞鸟、和在地上行动的各样活物。』<br>(创世记 1:26-28 吕振中)</p>
@@ -2041,110 +2269,6 @@ Then I know we will surely meet again…
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2022-03-19 </div>
-			<div class="article-title"><a href="/2022/03/19/Git-style-Repository-on-IPFS/" >Git-style Repository on IPFS</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Host-a-Git-style-repo"><a href="https://docs.ipfs.io/how-to/host-git-style-repo/" target="_blank" rel="noopener">Host a Git-style repo</a><a class="anchor-link" href="#Host-a-Git-style-repo">&#182;</a></h2><ul>
-<li><a href="https://blog.51cto.com/u_15287666/3020740" target="_blank" rel="noopener">高效开发：深入理解Git底层原理</a></li>
-<li><a href="https://medium.com/gitopia/git-a-stupid-content-tracker-d0ef5b86865f" target="_blank" rel="noopener">git: A stupid content tracker</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="o">~</span> <span class="o">&amp;&amp;</span> <span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">bare</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">seii</span><span class="o">-</span><span class="n">saintway</span><span class="o">/</span><span class="n">demo</span><span class="o">-</span><span class="n">ga</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">demo</span><span class="o">-</span><span class="n">ga</span> <span class="o">&amp;&amp;</span> <span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">info</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">git</span> <span class="n">unpack</span><span class="o">-</span><span class="n">objects</span> <span class="o">&lt;</span> <span class="n">objects</span><span class="o">/</span><span class="n">pack</span><span class="o">/*.</span><span class="n">pack</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="n">objects</span><span class="o">/</span><span class="n">pack</span><span class="o">/*</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Decentralized-Version-Control-System">Decentralized Version Control System<a class="anchor-link" href="#Decentralized-Version-Control-System">&#182;</a></h2><ul>
-<li><a href="https://github.com/martindbp/ipvc" target="_blank" rel="noopener">https://github.com/martindbp/ipvc</a></li>
-<li><a href="https://github.com/multiverse-vcs/go-multiverse" target="_blank" rel="noopener">https://github.com/multiverse-vcs/go-multiverse</a></li>
-</ul>
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2022/03/19/Git-style-Repository-on-IPFS/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -2185,43 +2309,43 @@ Then I know we will surely meet again…
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>3</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
 			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>8</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
 		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>9</span></a></li>
 		
 		
 		</ul>
@@ -2235,23 +2359,23 @@ Then I know we will surely meet again…
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2023/02/12/psalms/psalm-8/" ><i class="fa fa-file-o"></i>In All the Earth</a>
+        <a href="/2023/02/15/psalms/psalm-40/" ><i class="fa fa-file-o"></i>He Raised Me Up</a>
       </li>
     
       <li>
-        <a href="/2023/02/12/psalms/psalm-7/" ><i class="fa fa-file-o"></i>Vindicate Me</a>
+        <a href="/2023/02/12/psalms/psalm-08/" ><i class="fa fa-file-o"></i>In All the Earth</a>
       </li>
     
       <li>
-        <a href="/2023/02/10/psalms/psalm-6/" ><i class="fa fa-file-o"></i>Heal Me</a>
+        <a href="/2023/02/12/psalms/psalm-07/" ><i class="fa fa-file-o"></i>Vindicate Me</a>
       </li>
     
       <li>
-        <a href="/2023/02/09/psalms/psalm-5/" ><i class="fa fa-file-o"></i>Rejoice in You</a>
+        <a href="/2023/02/10/psalms/psalm-06/" ><i class="fa fa-file-o"></i>Heal Me</a>
       </li>
     
       <li>
-        <a href="/2023/02/09/psalms/psalm-4/" ><i class="fa fa-file-o"></i>When I Call</a>
+        <a href="/2023/02/09/psalms/psalm-05/" ><i class="fa fa-file-o"></i>Rejoice in You</a>
       </li>
     
   </ul>
