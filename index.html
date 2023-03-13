@@ -145,6 +145,693 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2023-03-13 </div>
+			<div class="article-title"><a href="/2023/03/13/Reverse-Engineered-ChatGPT-API/" >Reverse Engineered ChatGPT API</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Reverse-Engineered-ChatGPT-API"><a href="https://github.com/acheong08/ChatGPT/tree/main/src/revChatGPT" target="_blank" rel="noopener">Reverse Engineered ChatGPT API</a><a class="anchor-link" href="#Reverse-Engineered-ChatGPT-API">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>revChatGPT
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting revChatGPT
+  Downloading revChatGPT-3.3.4-py3-none-any.whl (34 kB)
+Collecting tiktoken&gt;=0.3.0
+  Downloading tiktoken-0.3.0-cp310-cp310-macosx_10_9_x86_64.whl (735 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">735.2/735.2 kB</span> <span class="ansi-red-fg">735.5 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Requirement already satisfied: requests[socks] in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from revChatGPT) (2.28.1)
+Collecting OpenAIAuth==0.3.2
+  Downloading OpenAIAuth-0.3.2-py3-none-any.whl (4.3 kB)
+Requirement already satisfied: prompt-toolkit in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from revChatGPT) (3.0.36)
+Collecting httpx[socks]
+  Downloading httpx-0.23.3-py3-none-any.whl (71 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">71.5/71.5 kB</span> <span class="ansi-red-fg">702.3 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Collecting blobfile&gt;=2
+  Downloading blobfile-2.0.1-py3-none-any.whl (73 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">73.5/73.5 kB</span> <span class="ansi-red-fg">764.2 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Collecting regex&gt;=2022.1.18
+  Downloading regex-2022.10.31-cp310-cp310-macosx_10_9_x86_64.whl (293 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">293.9/293.9 kB</span> <span class="ansi-red-fg">815.5 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Requirement already satisfied: sniffio in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from httpx[socks]-&gt;revChatGPT) (1.2.0)
+Collecting rfc3986[idna2008]&lt;2,&gt;=1.3
+  Downloading rfc3986-1.5.0-py2.py3-none-any.whl (31 kB)
+Requirement already satisfied: certifi in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from httpx[socks]-&gt;revChatGPT) (2022.12.7)
+Collecting httpcore&lt;0.17.0,&gt;=0.15.0
+  Downloading httpcore-0.16.3-py3-none-any.whl (69 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">69.6/69.6 kB</span> <span class="ansi-red-fg">701.7 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Collecting socksio==1.*
+  Downloading socksio-1.0.0-py3-none-any.whl (12 kB)
+Requirement already satisfied: wcwidth in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from prompt-toolkit-&gt;revChatGPT) (0.2.5)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests[socks]-&gt;revChatGPT) (1.26.14)
+Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests[socks]-&gt;revChatGPT) (2.0.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests[socks]-&gt;revChatGPT) (3.4)
+Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests[socks]-&gt;revChatGPT) (1.7.1)
+Collecting filelock~=3.0
+  Downloading filelock-3.9.0-py3-none-any.whl (9.7 kB)
+Requirement already satisfied: lxml~=4.9 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from blobfile&gt;=2-&gt;tiktoken&gt;=0.3.0-&gt;revChatGPT) (4.9.1)
+Collecting pycryptodomex~=3.8
+  Downloading pycryptodomex-3.17-cp35-abi3-macosx_10_9_x86_64.whl (1.6 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.6/1.6 MB</span> <span class="ansi-red-fg">954.6 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Collecting h11&lt;0.15,&gt;=0.13
+  Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">58.3/58.3 kB</span> <span class="ansi-red-fg">665.1 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Requirement already satisfied: anyio&lt;5.0,&gt;=3.0 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from httpcore&lt;0.17.0,&gt;=0.15.0-&gt;httpx[socks]-&gt;revChatGPT) (3.5.0)
+Installing collected packages: rfc3986, socksio, regex, pycryptodomex, h11, filelock, OpenAIAuth, httpcore, blobfile, tiktoken, httpx, revChatGPT
+Successfully installed OpenAIAuth-0.3.2 blobfile-2.0.1 filelock-3.9.0 h11-0.14.0 httpcore-0.16.3 httpx-0.23.3 pycryptodomex-3.17 regex-2022.10.31 revChatGPT-3.3.4 rfc3986-1.5.0 socksio-1.0.0 tiktoken-0.3.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>get <a href="https://chat.openai.com/api/auth/session" target="_blank" rel="noopener">accessToken</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span>
+
+
+<span class="k">def</span> <span class="nf">gpt_after</span><span class="p">(</span><span class="n">parent_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Chatbot</span><span class="p">(</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;access_token&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+        <span class="p">},</span>
+        <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="n">parent_id</span> <span class="o">=</span> <span class="n">parent_id</span>
+    <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">gpt_after</span><span class="p">()</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="s1">&#39;女孩子月经期间该怎么护理？&#39;</span>
+<span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">gpt_after</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;parent_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="s1">&#39;女孩子月经期间该怎么陪伴？&#39;</span>
+<span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>在女孩子的月经期间，她可能会感到身体不适和情绪波动，因此需要更多的关注和关怀。以下是一些可以帮助你陪伴女孩子度过月经期的建议：</p>
+<ol>
+<li><p>明确女孩子的需求：每个女孩子的月经周期和体验都可能不同，因此你需要和女孩子沟通，了解她的具体需求和症状，以便为她提供适当的支持和关怀。</p>
+</li>
+<li><p>提供情感支持：在月经期间，女孩子可能会感到身体不适、情绪低落等，这时候你可以提供情感上的支持，安慰她、鼓励她，让她感受到你的关心和爱护。</p>
+</li>
+<li><p>帮助女孩子缓解不适：女孩子在月经期间可能会出现腹部疼痛、头痛、乳房胀痛等不适症状，你可以为她准备热水袋或暖宝宝、帮她购买舒适的卫生巾或月经杯、帮她做一些轻度的伸展运动等，来帮助她缓解不适。</p>
+</li>
+<li><p>注意个人卫生：女孩子在月经期间需要更加注意个人卫生，你可以为她准备一些卫生用品，如卫生巾、卫生棉条或月经杯等，提醒她及时更换卫生用品，保持外阴部清洁和干燥。</p>
+</li>
+<li><p>避免给女孩子带来压力：月经期间的女孩子可能会感到身体疲劳、情绪低落，因此需要避免给她带来过多的压力和负担，尽可能营造轻松、舒适的氛围。</p>
+</li>
+</ol>
+<p>总之，陪伴女孩子度过月经期，需要理解和尊重她的需求和体验，提供适当的支持和关怀，让她感受到你的爱和关心。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;parent_id: </span><span class="si">{</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;parent_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/03/13/Reverse-Engineered-ChatGPT-API/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2023-03-12 </div>
+			<div class="article-title"><a href="/2023/03/12/Molecular-Simulation-with-OpenMM/" >Molecular Simulation with OpenMM</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Molecular-Simulation-with-OpenMM"><a href="https://github.com/bacalhau-project/examples/tree/main/molecular-dynamics" target="_blank" rel="noopener">Molecular Simulation with OpenMM</a><a class="anchor-link" href="#Molecular-Simulation-with-OpenMM">&#182;</a></h1><ul>
+<li><a href="https://colab.research.google.com/github/bacalhau-project/examples/blob/main/molecular-dynamics/openmm/index.ipynb" target="_blank" rel="noopener">Open In Colab</a></li>
+<li><a href="https://mybinder.org/v2/gh/bacalhau-project/examples/HEAD?labpath=molecular-dynamics/openmm/index.ipynb" target="_blank" rel="noopener">Open In Binder</a></li>
+</ul>
+<p><a href="https://github.com/openmm/openmm" target="_blank" rel="noopener">OpenMM</a> is a toolkit for molecular simulation. It is a physic based libraries that is useful for refining the structure and exploring functional interactions with other molecules. It provides a combination of extreme flexibility (through custom forces and integrators), openness, and high performance (especially on recent GPUs) that make it truly unique among simulation codes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Protein-data">Protein data<a class="anchor-link" href="#Protein-data">&#182;</a></h2><p>We use a processed 2DRI dataset that represents the ribose binding protein in bacterial transport and chemotaxis. The source organism is the <a href="https://en.wikipedia.org/wiki/Escherichia_coli" target="_blank" rel="noopener">Escherichia coli</a> bacteria.
+You can find more details on this protein at the related <a href="https://www.rcsb.org/structure/2dri" target="_blank" rel="noopener">RCSB Protein Data Bank page</a>.</p>
+<p><img src="./2dri-image.png" alt="image.png"></p>
+<p>Protein data can be stored in a <code>.pdb</code> file, this is a human readable format. It provides for description and annotation of protein and nucleic acid structures including atomic coordinates, secondary structure assignments, as well as atomic connectivity.
+See more information about PDB format <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html" target="_blank" rel="noopener">here</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are printing the first 10 lines of the file. The output contains a number of ATOM records. These describe the coordinates of the atoms that are part of the protein.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+head<span class="w"> </span>./2dri-processed.pdb
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>REMARK   1 CREATED WITH OPENMM 7.6, 2022-07-12
+CRYST1   81.309   81.309   81.309  90.00  90.00  90.00 P 1           1 
+ATOM      1  N   LYS A   1      64.731   9.461  59.430  1.00  0.00           N  
+ATOM      2  CA  LYS A   1      63.588  10.286  58.927  1.00  0.00           C  
+ATOM      3  HA  LYS A   1      62.707   9.486  59.038  1.00  0.00           H  
+ATOM      4  C   LYS A   1      63.790  10.671  57.468  1.00  0.00           C  
+ATOM      5  O   LYS A   1      64.887  11.089  57.078  1.00  0.00           O  
+ATOM      6  CB  LYS A   1      63.458  11.567  59.749  1.00  0.00           C  
+ATOM      7  HB2 LYS A   1      63.333  12.366  58.879  1.00  0.00           H  
+ATOM      8  HB3 LYS A   1      64.435  11.867  60.372  1.00  0.00           H  
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Write-the-script">Write the script<a class="anchor-link" href="#Write-the-script">&#182;</a></h2><p>To run the script above all we need is a Python environment with the <a href="http://docs.openmm.org/latest/userguide/application/01_getting_started.html" target="_blank" rel="noopener">OpenMM library</a> installed.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>openmm
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python<span class="w"> </span>-m<span class="w"> </span>openmm.testInstallation
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+OpenMM Version: 8.0
+Git Revision: a7800059645f4471f4b91c21e742fe5aa4513cda
+
+There are 3 Platforms available:
+
+1 Reference - Successfully computed forces
+2 CPU - Successfully computed forces
+3 OpenCL - Successfully computed forces
+
+Median difference in forces between platforms:
+
+Reference vs. CPU: 6.30471e-06
+Reference vs. OpenCL: 6.74827e-06
+CPU vs. OpenCL: 7.07625e-07
+
+All differences are within tolerance.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">openmm</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">openmm.app</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">openmm.unit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Input Files</span>
+<span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;./2dri-processed.pdb&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span> <span class="c1"># check if input file exists</span>
+<span class="n">pdb</span> <span class="o">=</span> <span class="n">PDBFile</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
+<span class="n">forcefield</span> <span class="o">=</span> <span class="n">ForceField</span><span class="p">(</span><span class="s1">&#39;amber14-all.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;amber14/tip3pfb.xml&#39;</span><span class="p">)</span>
+
+<span class="c1"># Output</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;./final_state.pdbx&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">output_path</span><span class="p">)):</span> <span class="c1"># check if ouput dir exists</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">output_path</span><span class="p">))</span>
+
+<span class="c1"># System Configuration</span>
+
+<span class="n">nonbondedMethod</span> <span class="o">=</span> <span class="n">PME</span>
+<span class="n">nonbondedCutoff</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">nanometers</span>
+<span class="n">ewaldErrorTolerance</span> <span class="o">=</span> <span class="mf">0.0005</span>
+<span class="n">constraints</span> <span class="o">=</span> <span class="n">HBonds</span>
+<span class="n">rigidWater</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">constraintTolerance</span> <span class="o">=</span> <span class="mf">0.000001</span>
+<span class="n">hydrogenMass</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">amu</span>
+
+<span class="c1"># Integration Options</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.002</span><span class="o">*</span><span class="n">picoseconds</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="mi">310</span><span class="o">*</span><span class="n">kelvin</span>
+<span class="n">friction</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">picosecond</span>
+<span class="n">pressure</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">atmospheres</span>
+<span class="n">barostatInterval</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="c1"># Simulation Options</span>
+
+<span class="n">steps</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">equilibrationSteps</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">#platform = Platform.getPlatformByName(&#39;CUDA&#39;)</span>
+<span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="o">.</span><span class="n">getPlatformByName</span><span class="p">(</span><span class="s1">&#39;CPU&#39;</span><span class="p">)</span>
+<span class="c1">#platformProperties = {&#39;Precision&#39;: &#39;single&#39;}</span>
+<span class="n">platformProperties</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dcdReporter</span> <span class="o">=</span> <span class="n">DCDReporter</span><span class="p">(</span><span class="s1">&#39;trajectory.dcd&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">dataReporter</span> <span class="o">=</span> <span class="n">StateDataReporter</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">totalSteps</span><span class="o">=</span><span class="n">steps</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">elapsedTime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">remainingTime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">potentialEnergy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kineticEnergy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">totalEnergy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">checkpointReporter</span> <span class="o">=</span> <span class="n">CheckpointReporter</span><span class="p">(</span><span class="s1">&#39;checkpoint.chk&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Prepare the Simulation</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Building system...&#39;</span><span class="p">)</span>
+<span class="n">topology</span> <span class="o">=</span> <span class="n">pdb</span><span class="o">.</span><span class="n">topology</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">pdb</span><span class="o">.</span><span class="n">positions</span>
+<span class="n">system</span> <span class="o">=</span> <span class="n">forcefield</span><span class="o">.</span><span class="n">createSystem</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">nonbondedMethod</span><span class="o">=</span><span class="n">nonbondedMethod</span><span class="p">,</span> <span class="n">nonbondedCutoff</span><span class="o">=</span><span class="n">nonbondedCutoff</span><span class="p">,</span>
+    <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">,</span> <span class="n">rigidWater</span><span class="o">=</span><span class="n">rigidWater</span><span class="p">,</span> <span class="n">ewaldErrorTolerance</span><span class="o">=</span><span class="n">ewaldErrorTolerance</span><span class="p">,</span> <span class="n">hydrogenMass</span><span class="o">=</span><span class="n">hydrogenMass</span><span class="p">)</span>
+<span class="n">system</span><span class="o">.</span><span class="n">addForce</span><span class="p">(</span><span class="n">MonteCarloBarostat</span><span class="p">(</span><span class="n">pressure</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">barostatInterval</span><span class="p">))</span>
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">LangevinMiddleIntegrator</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">friction</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">setConstraintTolerance</span><span class="p">(</span><span class="n">constraintTolerance</span><span class="p">)</span>
+<span class="n">simulation</span> <span class="o">=</span> <span class="n">Simulation</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">system</span><span class="p">,</span> <span class="n">integrator</span><span class="p">,</span> <span class="n">platform</span><span class="p">,</span> <span class="n">platformProperties</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">setPositions</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+
+<span class="c1"># Minimize and Equilibrate</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Performing energy minimization...&#39;</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">minimizeEnergy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Equilibrating...&#39;</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">setVelocitiesToTemperature</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">equilibrationSteps</span><span class="p">)</span>
+
+<span class="c1"># Simulate</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Simulating...&#39;</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">reporters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dcdReporter</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">reporters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dataReporter</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">reporters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">checkpointReporter</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">currentStep</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+
+<span class="c1"># Write file with final simulation state</span>
+
+<span class="n">state</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">getState</span><span class="p">(</span><span class="n">getPositions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">enforcePeriodicBox</span><span class="o">=</span><span class="n">system</span><span class="o">.</span><span class="n">usesPeriodicBoundaryConditions</span><span class="p">())</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">PDBxFile</span><span class="o">.</span><span class="n">writeFile</span><span class="p">(</span><span class="n">simulation</span><span class="o">.</span><span class="n">topology</span><span class="p">,</span> <span class="n">state</span><span class="o">.</span><span class="n">getPositions</span><span class="p">(),</span> <span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Simulation complete, file written to disk at: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_path</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Building system...
+Performing energy minimization...
+Equilibrating...
+Simulating...
+Simulation complete, file written to disk at: ./final_state.pdbx
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+head<span class="w"> </span>./final_state.pdbx
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>data_cell
+# Created with OpenMM 8.0, 2023-03-12
+#
+_cell.length_a        81.3090
+_cell.length_b        81.3090
+_cell.length_c        81.3090
+_cell.angle_alpha     90.0000
+_cell.angle_beta      90.0000
+_cell.angle_gamma     90.0000
+#
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>markdown
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">markdown</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+    <span class="s1">&#39;[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bacalhau-project/examples/blob/main/molecular-dynamics/openmm/index.ipynb)&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;&lt;p&gt;&lt;a href=&#34;https://colab.research.google.com/github/bacalhau-project/examples/blob/main/molecular-dynamics/openmm/index.ipynb&#34;&gt;&lt;img alt=&#34;Open In Colab&#34; src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
+    <span class="s1">&#39;[![Open In Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/bacalhau-project/examples/HEAD?labpath=molecular-dynamics/openmm/index.ipynb)&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;&lt;p&gt;&lt;a href=&#34;https://mybinder.org/v2/gh/bacalhau-project/examples/HEAD?labpath=molecular-dynamics/openmm/index.ipynb&#34;&gt;&lt;img alt=&#34;Open In Binder&#34; src=&#34;https://mybinder.org/badge.svg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+<hr>
+<p>From: <a href="https://docs.bacalhau.org/examples/molecular-dynamics/openmm/" target="_blank" rel="noopener">Molecular Simulation with OpenMM</a></p>
+<ul>
+<li><a href="https://github.com/openmm/openmm-setup" target="_blank" rel="noopener">OpenMM Setup</a></li>
+</ul>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/03/12/Molecular-Simulation-with-OpenMM/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2023-02-18 </div>
 			<div class="article-title"><a href="/2023/02/18/psalms/psalm-32/" >Blessed Is the One</a></div>						
 		</h3>
@@ -639,118 +1326,6 @@
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-02-07 </div>
-			<div class="article-title"><a href="/2023/02/07/プラネット/" >プラネット</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/qzyL9SJ30do" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<div class="tabs" id="tabs-with-custom-labels"><ul class="nav-tabs"><li class="tab active"><a href="#tabs-with-custom-labels-1">プラネット</a></li><li class="tab"><a href="#tabs-with-custom-labels-2">惑星</a></li><li class="tab"><a href="#tabs-with-custom-labels-3">Planet</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tabs-with-custom-labels-1"><p>どうやって？こうやって。また、ほら、君と話そうか？<br>あれだって、これだって、今すぐ気付いてくれ<br>僕は君のプラネット、回り続けて<br>いつも君のそばで、黒点数えてたけれど<br>サヨナラなんてないよ……今日から軌道を外れんだ<br>最後まで見送ってよ、永遠に離れてくんだ<br>ラ…ララ…ララララララ…ラ…ララ…ラララララ…<br>ラ…ララ…ララララララ…ラ…ララ…ラララララ…</p>
-<p>どうなって？こうなって。結局、独り佇んで<br>失って、勘づいて、今さら、戻れやしない<br>君のいない場所で、途方に暮れて<br>もう一度引力を、感じたかったんだけれど<br>神様なんていないよ、いつまで待っても巡回中<br>選ばれない悲しみを、何度でも噛みしめるんだ</p>
-<p>君は僕の太陽、全てを燃やしたけれど<br>サヨナラなんてないよ、今日から軌道を外れんだ<br>最後まで見送ってよ、永遠に離れてくんだ<br>ラ…ララ…ララララララ…ラ…ララ…ラララララ…<br>ラ…ララ…ララララララ…ラ…ララ…ラララララ…</p>
-<p>ラ…ララ…ララララララ…ラ…ララ…ラララララ…</p>
-<p>ーープラネット - ラムジ</p></div><div class="tab-pane" id="tabs-with-custom-labels-2"><p>怎麼做？這麼做。嗯。現在還能和你說話吧？<br>那樣也好。這樣也好。真希望現在你能快點覺察到我。<br>我是一顆行星，不停地圍繞你轉動。<br>我本會一直在你的身邊，即使只是細數著你的黑子。<br>不說再見……今天我要開始偏離你的軌道。<br>目送我直到最後吧。因為我將要永遠與你分離。<br>啦…啦啦…啦啦啦啦啦啦…啦…啦啦…啦啦啦啦啦…<br>啦…啦啦…啦啦啦啦啦啦…啦…啦啦…啦啦啦啦啦…</p>
-<p>變成怎樣？變成那樣。最終仍舊是我獨自一人佇立在這。<br>失去之後，才意識到。事到如今，再也回不去了。<br>在沒有你的場所，我完全不知所措。<br>你對我的引力，到現在都還想感受一下。<br>可是這世上並沒有什麼神明。無論期盼到何時都只能在自己的軌道中巡迴。<br>無法選擇的悲傷，究竟還要再嘗多少次？</p>
-<p>你就是我的太陽。已將我的全部燃盡。<br>不說再見。從今天起就要偏離你的軌道。<br>目送我直到最後吧。因為我將要永遠與你分離。<br>啦…啦啦…啦啦啦啦啦啦…啦…啦啦…啦啦啦啦啦…<br>啦…啦啦…啦啦啦啦啦啦…啦…啦啦…啦啦啦啦啦…</p>
-<p>啦…啦啦…啦啦啦啦啦啦…啦…啦啦…啦啦啦啦啦…</p>
-<p>ーープラネット - ラムジ</p></div><div class="tab-pane" id="tabs-with-custom-labels-3"><p><strong>Here is English.</strong></p></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/02/07/プラネット/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-02-07 </div>
-			<div class="article-title"><a href="/2023/02/07/psalms/psalm-02/" >Kiss the Son</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/zgKOyJNuhqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<div class="tabs" id="psalm-02"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-02-1">Kiss the Son</a></li><li class="tab"><a href="#psalm-02-2">亲嘴拜服</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-02-1"><blockquote>
-<p>Kiss the Son<br>by Daniel Brunz</p>
-<hr>
-<p>Why do the nations rage?<br>And why do the people plot in vain?<br>The kingdoms of earth align themselves against the LORD and His Messiah<br>Trying to defy His power and erase the Word that He’s set down<br>But He who sits in heaven just laughs<br>He just laughs</p>
-<hr>
-<p>He’ll warn them in His wrath<br>And he will say…</p>
-<hr>
-<p>I have placed my King in heaven before whom all knees shall bow<br>I have placed my King in heaven, King of Kings and Lord of Lords<br>I have placed my King in heaven, President of Presidents<br>I have placed my King in heaven</p>
-<hr>
-<p>For God has said, “You are my son”<br>For God has said to Jesus, “You’re my son”<br>So ask of Me and I will give You all the nations of the world<br>Ask of Me and I will give You all the nations of the world<br>Ask of Me and I will give You all the nations of the world<br>Ask of Me and I will give You…</p>
-<hr>
-<p>For the earth is the LORD’s and the fullness thereof<br>For the earth is the LORD’s and the fullness thereof<br>For the earth is the LORD’s and the fullness thereof<br>For the earth is the LORD’s</p>
-<hr>
-<p>What rises up against the LORD will come back to earth where it belongs<br>For He will not share His glory with another, much less with foolish men<br>For the LORD is God, Jesus is King<br>And no new trend or political scheme will ever amount to more than dirt<br>Compared to the wisdom of His Word<br>For there’s nothing new under the sun<br>Men just rearrange what’s already been done<br>For God created the heart of man<br>And everything’s under His command<br>So to those who try to dethrone God: His Word will stand!</p>
-<hr>
-<p>He will rule them with a rod of iron and shatter them like clay<br>He will rule them with a rod of iron and shatter them like clay<br>Just like it’s nothing<br>He’ll set them down<br>In their place</p>
-<hr>
-<p>So be wise you kingdoms of the earth<br>So be wise you Hollywoods of earth<br>So be wise you rock stars of the earth<br>So be wise you politicians of earth</p>
-<hr>
-<p>And worship the LORD in fear, and rejoice with trembling<br>And worship the LORD in fear, and rejoice with trembling</p>
-<hr>
-<p>And kiss the Son, yeah, kiss the Son, kiss the Son, yeah, Kiss the Son<br>And kiss the Son, yeah, kiss the Son, kiss the Son, yeah, Kiss the Son<br>And kiss the Son, yeah, kiss the Son, kiss the Son, yeah, Kiss the Son<br>And kiss the Son, yeah, kiss the Son…</p>
-<hr>
-<p>For the earth is the LORD’s and the fullness thereof<br>For the earth is the LORD’s and the fullness thereof<br>For the earth is the LORD’s and the fullness thereof<br>For the earth is the LORD’s</p>
-<hr>
-<p>And worship the LORD in fear, and rejoice with trembling<br>And worship the LORD in fear, and rejoice with trembling</p>
-<hr>
-<p>And kiss the Son, yeah, kiss the Son, kiss the Son, yeah, Kiss the Son<br>And kiss the Son, yeah, kiss the Son, kiss the Son, yeah, Kiss the Son<br>And kiss the Son, yeah, kiss the Son, kiss the Son, yeah, Kiss the Son<br>And kiss the Son, yeah, kiss the Son…</p>
-<hr>
-<p>And He won’t be angry and You won’t perish in your way<br>For His wrath can come at once</p>
-<hr>
-<p>Happy are those who trust in Him<br>Happy are those who trust in Him<br>Happy are those who trust in Him</p>
-<hr>
-<p>The fear of the LORD is the beginning of wisdom</p>
-</blockquote></div><div class="tab-pane" id="psalm-02-2"><blockquote>
-<p>列国为什么彼此串通？<br>万族之民为什么谋算<br>不能成功的事呢？<br>地上君王列阵站着，<br>众人君一同阴谋，<br>要敌挡永恒主，敌挡他所膏立的，说：<br>『我们来挣开他们的捆绑，<br>来脱掉他们的绳索吧。』</p>
-<hr>
-<p>那坐在天上的必冷笑；<br>永恒主必嗤笑他们。<br>那时他必气忿忿责备他们，<br>必发烈怒使他们惊惶；<br>传谕旨说：<br>『我，我已立我的君王<br>于锡安、我的圣山上。』<br>受膏者说：『我必传永恒主的谕旨；<br>永恒主曾对我说：「你是我的儿子，<br>我今日生了你。<br>你求我，我便将列国赐给你为产业，<br>将地极作为你的田产。<br>你必用铁杖打破他们；<br>你必摔碎他们、如窰匠的瓦器。」』</p>
-<hr>
-<p>现在呢、君王啊，你们要机警些；<br>地上审判官哪，你们该听忠告。<br>要存畏惧心来事奉永恒主，<br>要战兢兢快乐，<br>要纯诚诚亲嘴拜服，<br>恐怕他发怒，你们就在路中灭亡；<br>因为他的怒气很快就要发作。</p>
-<hr>
-<p>凡避难于他里面的都有福啊。</p>
-<hr>
-<p>(诗篇 2:1-12 吕振中)</p>
-</blockquote></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/02/07/psalms/psalm-02/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -791,43 +1366,45 @@
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>12</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>1</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
 			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
 		
 		</ul>
@@ -841,6 +1418,14 @@
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2023/03/13/Reverse-Engineered-ChatGPT-API/" ><i class="fa fa-file-o"></i>Reverse Engineered ChatGPT ...</a>
+      </li>
+    
+      <li>
+        <a href="/2023/03/12/Molecular-Simulation-with-OpenMM/" ><i class="fa fa-file-o"></i>Molecular Simulation with O...</a>
+      </li>
+    
+      <li>
         <a href="/2023/02/18/psalms/psalm-32/" ><i class="fa fa-file-o"></i>Blessed Is the One</a>
       </li>
     
@@ -850,14 +1435,6 @@
     
       <li>
         <a href="/2023/02/12/psalms/psalm-08/" ><i class="fa fa-file-o"></i>In All the Earth</a>
-      </li>
-    
-      <li>
-        <a href="/2023/02/12/psalms/psalm-07/" ><i class="fa fa-file-o"></i>Vindicate Me</a>
-      </li>
-    
-      <li>
-        <a href="/2023/02/10/psalms/psalm-06/" ><i class="fa fa-file-o"></i>Heal Me</a>
       </li>
     
   </ul>

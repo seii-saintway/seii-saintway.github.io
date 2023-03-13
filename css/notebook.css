@@ -11009,7 +11009,7 @@ div.output_subarea {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-  max-width: calc(100% - 14ex);
+  /* max-width: calc(100% - 14ex); */
 }
 div.output_scroll div.output_subarea {
   overflow-x: visible;

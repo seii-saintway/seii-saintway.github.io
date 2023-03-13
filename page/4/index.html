@@ -145,6 +145,573 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2021-10-28 </div>
+			<div class="article-title"><a href="/2021/10/28/Add-Tweets-to-My-Blog/" >Add Tweets to My Blog</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Browser-Side">Browser Side<a class="anchor-link" href="#Browser-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">layout</span><span class="o">/</span><span class="n">_widget</span><span class="o">/</span><span class="n">links</span><span class="o">.</span><span class="n">ejs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">twitter</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>var twitter = (function() {
+  function escapeHtml(str) {
+    return $(&#39;&lt;div/&gt;&#39;).text(str).html();
+  }
+  function render(target, tweets) {
+    var i = 0, fragment = &#39;&#39;, t = $(target)[0];
+
+    for(i = 0; i &lt; tweets.length; ++i) {
+      fragment += &#39;&lt;li&gt;&lt;i class=&#34;fa fa-star&#34;&gt;&lt;/i&gt;&lt;a href=&#34;https://twitter.com/seii_saintway/status/&#39; + tweets[i].id + &#39;&#34;&gt;&#39;
+          + tweets[i].created_at.replace(&#39;T&#39;, &#39;　&#39;).replace(&#39;.000Z&#39;, &#39;&#39;) + &#39;&lt;/a&gt;&lt;p&gt;&#39; + escapeHtml(tweets[i].text||&#39;&#39;) + &#39;&lt;/p&gt;&lt;/li&gt;&#39;;
+    }
+    t.innerHTML = fragment;
+  }
+  return {
+    showTweets: function(options) {
+      options.blacklist = options.blacklist.split(&#39;,&#39;);
+      $.ajax({
+          url: &#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=&#39; + options.count
+        , dataType: &#39;json&#39;
+        , error: function (err) { $(options.target + &#39; li.loading&#39;).addClass(&#39;error&#39;).text(&#39;Error loading feed&#39;); }
+        , success: function (data) {
+          if (!data ) { return; }
+          var tweets = [];
+          for (var i = 0; i &lt; data.data.length; ++i) {
+            if (options.blacklist instanceof Array &amp;&amp; options.blacklist.indexOf(data.data[i].id) !== -1) { continue; }
+            tweets.push(data.data[i]);
+          }
+          render(options.target, tweets);
+        }
+      });
+    }
+  };
+})();
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/seii-saintway/hexo-theme-freemind/commit/420f1d9c1eda38b000f0b3d3f93b4b143f39ed93" target="_blank" rel="noopener">Here</a> is all the changes at the browser side.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Server-Side">Server Side<a class="anchor-link" href="#Server-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/zldobbs/alert-mizzou" target="_blank" rel="noopener">Here</a> is a solution using Flask to proxy Tweets API.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BEARER_TOKEN</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline" target="_blank" rel="noopener">https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=seii_saintway&amp;count=20&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets" target="_blank" rel="noopener">https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/2/users/807092313298112512/tweets?tweet.fields=created_at&amp;max_results=10&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>My solution using <a href="https://doc.traefik.io/traefik/v1.7/basics/#custom-headers" target="_blank" rel="noopener">Traefik</a> to proxy Tweets API</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">tljh</span><span class="o">/</span><span class="n">state</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">tweets</span><span class="o">.</span><span class="n">toml</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="p">]</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="s2">&quot;tweets&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r1</span><span class="p">]</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;PathPrefix:/tweets/&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r2</span><span class="p">]</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;ReplacePath:/2/users/807092313298112512/tweets&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customrequestheaders</span><span class="p">]</span>
+<span class="n">Authorization</span> <span class="o">=</span> <span class="s2">&quot;Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customresponseheaders</span><span class="p">]</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+
+<span class="p">[</span><span class="n">backends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">servers</span><span class="o">.</span><span class="n">s1</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com&quot;</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/28/Add-Tweets-to-My-Blog/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-27 </div>
+			<div class="article-title"><a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" >Try to Reinstall Zsh Kernel</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels" target="_blank" rel="noopener">https://github.com/jupyter/jupyter/wiki/Jupyter-kernels</a></li>
+<li><a href="https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html" target="_blank" rel="noopener">https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://github.com/NII-cloud-operation/sshkernel" target="_blank" rel="noopener">https://github.com/NII-cloud-operation/sshkernel</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Bash">A Jupyter Kernel for Bash<a class="anchor-link" href="#A-Jupyter-Kernel-for-Bash">&#182;</a></h2><p><a href="https://github.com/takluyver/bash_kernel" target="_blank" rel="noopener">https://github.com/takluyver/bash_kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip3<span class="w"> </span>install<span class="w"> </span>bash_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>bash_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Z-Shell">A Jupyter Kernel for Z Shell<a class="anchor-link" href="#A-Jupyter-Kernel-for-Z-Shell">&#182;</a></h2><p><a href="https://github.com/dan-oak/zsh-jupyter-kernel" target="_blank" rel="noopener">https://github.com/dan-oak/zsh-jupyter-kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>notebook<span class="w"> </span>zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>zsh_jupyter_kernel.install<span class="w"> </span>--sys-prefix
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>zsh_jupyter_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-uninstall-Zsh-Jupyter-Kernel?">How to uninstall Zsh Jupyter Kernel?<a class="anchor-link" href="#How-to-uninstall-Zsh-Jupyter-Kernel?">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">zsh_jupyter_kernel</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zsh_jupyter_kernel</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/__init__.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/install.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Try-to-uninstall-Zsh-Jupyter-Kernel">Try to uninstall Zsh Jupyter Kernel<a class="anchor-link" href="#Try-to-uninstall-Zsh-Jupyter-Kernel">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span class="w"> </span>zsh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Python-3.7">A Jupyter Kernel for Python 3.7<a class="anchor-link" href="#A-Jupyter-Kernel-for-Python-3.7">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>virtualenv<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>which<span class="w"> </span>python3.7<span class="k">)</span><span class="w"> </span>py37
+<span class="nb">source</span><span class="w"> </span>~/py37/bin/activate
+ipython<span class="w"> </span>kernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>py37<span class="w"> </span>--display-name<span class="w"> </span><span class="s1">&#39;Python 3.7&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span class="w"> </span>py37
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2021-10-26 </div>
 			<div class="article-title"><a href="/2021/10/26/金融心理学/" >金融心理学</a></div>						
 		</h3>
@@ -1329,402 +1896,6 @@
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-08-17 </div>
-			<div class="article-title"><a href="/2021/08/17/Cornelia-Street/" >Cornelia Street</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <blockquote>
-<p>永恒主的话传与我，说：<br> 『人若把妻子离出去，<br> 而妻子离开他而去，<br> 做了别人的妻子，<br> 她哪能再回转来归前夫呢？<br> 那么那妇人岂不是<br> 大大被玷污了么？<br> 然而你，你和许多情人行淫，<br> 还要回转来归于我？<br> 永恒主发神谕说。<br> (耶利米书 3:1 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>It is said,<br>If a man divorces his wife<br>And she goes from him<br>And becomes another man’s wife,<br>Will he return to her again?<br>Will not that land be<br>Utterly polluted?<br>But you have committed fornication with many lovers.<br>Yet return to Me, declares Jehovah.<br> (Jeremiah 3:1 Recovery Version)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>我必聘你永远归我为妻，<br> 以义气正直、以坚爱怜悯<br> 聘你归我。<br> (何西阿书 2:19 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>And I will betroth you to Myself forever;<br>Indeed I will betroth you to Myself<br>In righteousness and justice<br>And in lovingkindness and compassions;<br> (Hosea 2:19 Recovery Version)</p>
-</blockquote>
-<hr>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;I7CcVgw4_KE&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;width: 90%; aspect-ratio: 16/9;&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%html</span>
-<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 90%; aspect-ratio: 16/9;&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/I7CcVgw4_KE&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">border</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">framespacing</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">allow</span><span class="o">=</span><span class="s">&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/I7CcVgw4_KE" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Taylor-Swift---Cornelia-Street">Taylor Swift - Cornelia Street<a class="anchor-link" href="#Taylor-Swift---Cornelia-Street">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>We were in the backseat
-drunk on something stronger
-than the drinks in the bar
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>I rent a place on Cornelia Street,
-I say casually in the car
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>We were a fresh page on the desk
-ﬁlling in the blanks as we go
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>As if the streetlights pointed in an arrowhead
-leading us home
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And I hope I never lose you
-Hope it never ends
-I’d never walk Cornelia Street again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>That’s the kind of heartbreak
-Time could never mend
-I’d never walk Cornelia Street again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And baby I get mystiﬁed by how
-this city screams your name
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And baby I’m so terriﬁed of if you ever walk away
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Windows ﬂung right open
-Autumn air, jacket round my shoulders is yours
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>We bless the rains on Cornelia Street
-Memorize the creaks in the ﬂoor
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Back when we were card sharks
-Playing games
-I thought you were leading me on
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>I packed my bags, left Cornelia Street
-Before you even knew I was gone
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>But then you called
-Showed your hand
-I turned around before I hit the tunnel
-Sat on the roof, you and I
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>You hold my hand
-On the street
-Walk me back to that apartment
-Years ago we were just inside
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Barefoot in the kitchen
-Sacred new beginnings
-That became my religion
-Listen...
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>I hope I never lose you 
-I’d never walk Cornelia Street again 
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Never again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And baby I get mystiﬁed by how
-this city screams your name
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And baby I’m so terriﬁed of if you ever walk away
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>I rent a place on Cornelia Street,
-I say casually in the car
-</code></pre>
-
-</div>
-</div>
-</div>
- 
-
-
-
-<hr>
-<blockquote>
-<p>所以要仔细留意、你们怎样地行；不要做无智慧的，总要做有智慧的人。要争取时机，因为现在的日子很险恶。故此别做糊涂人了，却要明晓主的旨意是什么。别醉酒了（醉中有放荡），却要充充满满地满有圣灵。以「诗篇」、颂词、诗歌、彼此对说，用心咏赞歌颂主；时常奉我们主耶稣基督的名为万事感谢父上帝，存敬畏基督的心彼此顺服。<br>(以弗所书 5:15-21 吕振中)</p>
-</blockquote>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/08/17/Cornelia-Street/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-07-13 </div>
-			<div class="article-title"><a href="/2021/07/13/寻找小水灵/" >寻找小水灵</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>朕平常住在宫殿里面。朕的爱妃总是在门口静候。每当朕开门，她就会向朕行跪拜礼。而朕会抱她起来，与她相拥。她见到朕一声不响地走过来，就会吓得后退低头，行跪拜礼。在床上，她最乖了。她知道在床上是最安全没有任何危险。朕会温柔地抚摸她。朕会抱她吻她。她想怎么呻吟，就怎么呻吟。如果朕想和她一起入浴，她也不会抗拒。她是多么温柔多么美丽。她就是朕最爱的贵妃。朕赐给她小水灵这个名字。可惜她不是人类。</p>
-<hr>
-<blockquote>
-<p>义人知照他牲口的脾气；<br>恶人的心肠总是残忍。<br>(箴言 12:10 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>做父亲的、别惹你们儿女的气了；<br>要用主的训练和警戒养育他们。<br>(以弗所书 6:4 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>做父亲的，别激你们儿女的气了，免得他们丧志灰心。<br>(歌罗西书 3:21 吕振中)</p>
-</blockquote>
-<p>孩子们被虐待的方式有好几种，所有这些都是上帝所憎恶的。圣经在对不当发怒的警告中禁止虐待孩子。太多孩子是愤怒殴打和其他身体虐待的受害者，因为他们的父母向他们的孩子发泄他们自己的愤怒和挫折感。尽管某些形式的身体处罚可能是圣经所能接受的，但这种处罚永远不应该因着愤怒管理。保罗提醒以弗所人说：“生气却不要犯罪，不可含怒到日落，也不可给魔鬼留地步。”（以弗所书 4:26-27）。箴言 29:22 说：“好气的人挑启争端；暴怒的人多多犯罪。”在基督徒的生活中，没有地方可以容纳不义或不受控制的愤怒。愤怒在变成对孩子或其他任何人的身体虐待之前就应该向上帝忏悔，并适当地处理。</p>
-<p>圣经禁止虐待孩子的另一种方式是禁止心理和情感上的虐待。以弗所书 6:4 警告父亲们不要“惹气”或激怒他们的孩子，而是要把他们带到“主的教训和警戒”中。严厉、不讨喜欢的口头管教、情感操纵或不稳定的环境会使孩子疏远他们的父母，使他们的教导和矫正变得毫无用处。父母可能通过对孩子提出不合理的要求，贬低他们，或者不断地挑毛病，从而惹气或激怒他们的孩子，以致造成不好的伤害，甚至比任何身体殴打所造成的伤害都严重。歌罗西书 3:21 告诉我们不要“怨恨”我们的孩子，这样他们就不会气馁。以弗所书 4:15-16,25-32 说，我们要在爱中说真话，用我们的话来建立别人，不要让腐朽或破坏性的话语从我们的嘴唇流出，特别是针对孩子纤柔的内心与思想。</p>
-<p>家庭属灵虐待是指使用经文、圣经原则或一个人的属灵权威，为一己私利掌控一位家庭成员。</p>
-<hr>
-<p>一定要喂一些云南白药粉末，这个是救命的，有条件的打止血敏，国产的一针管3小时左右，进口的一针管12小时，看情况打。</p>
-<p>最好保持安静，在宠物有意识的情况下切勿进行人工呼吸，期间不要试图投喂食物。</p>
-<hr>
-<p>患 FIC 的猫咪，肾上腺多数有问题，皮质醇分泌异常。在应激反应系统启动后，皮质醇分泌不足，让应激反应系统无法正常结束反应，引起交感神经系统失控般活跃，加速分泌去甲肾上腺素。而去甲肾上腺素会上调各类炎症反应，就包括膀胱炎。</p>
-<p>这个过程加剧了神经炎的发生，同时还莫名其妙的改变了膀胱内保护层的完整与尿路上皮细胞的机能，增加了膀胱组织渗透性，让尿液能够更方便地刺激膀胱组织，产生剧痛，刺激大脑。</p>
-<p>所以这也是为什么自发性膀胱炎和压力关系很大的原因，当猫咪感到外界压力，就会开启自己的应激系统，部分猫咪无法正常结束反应，就很有可能导致 FIC。</p>
-<hr>
-<p>我们可以尝试使用猫咪 feliway 熏香，这是一种猫咪信息素，可以帮助舒缓猫咪的情绪，达到一定的解压效果。</p>
-<p>FIC 发生的时候猫咪膀胱内尿液刺激提高，会产生剧痛，解疼痛对恢复猫的精神、食欲，减少脑部刺激是非常有价值的。但国内宠物一般不怎么重视，所以比较有效的药如丁丙诺菲、芬太尼、曲马多都难以获取。布托啡诺算是比较常见的止疼药，但药效比较短，不过有总比没有好，我们可以要求医生注射这个。</p>
-<hr>
-<p>I am guilty of catslaughter. I killed my cat one year ago. And now I’m going to eat up all the leftover expired cat food - in order not to waste the lost life - I meant the chickens that make the cat food - because life has meanings. / I had a low-grade fever for a few days because of the spoiled cat food.</p>
-<p><img src="/cat-food.png" alt="ELMO"></p>
-<p>Please raise my cat from death.</p>
-<hr>
-<blockquote>
-<p>Brothers, I do not account of myself to have laid hold; but one thing I do: Forgetting the things which are behind and stretching forward to the things which are before,<br> (Philippians 3:13 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>And He will wipe away every tear from their eyes; and death will be no more, nor will there be sorrow or crying or pain anymore; for the former things have passed away.<br> (Revelation 21:4 Recovery Version)</p>
-</blockquote>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/07/13/寻找小水灵/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -1765,43 +1936,45 @@ I say casually in the car
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
 			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
 			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
 		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>1</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>12</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
 			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 		
 		</ul>
@@ -1815,6 +1988,14 @@ I say casually in the car
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2023/03/13/Reverse-Engineered-ChatGPT-API/" ><i class="fa fa-file-o"></i>Reverse Engineered ChatGPT ...</a>
+      </li>
+    
+      <li>
+        <a href="/2023/03/12/Molecular-Simulation-with-OpenMM/" ><i class="fa fa-file-o"></i>Molecular Simulation with O...</a>
+      </li>
+    
+      <li>
         <a href="/2023/02/18/psalms/psalm-32/" ><i class="fa fa-file-o"></i>Blessed Is the One</a>
       </li>
     
@@ -1824,14 +2005,6 @@ I say casually in the car
     
       <li>
         <a href="/2023/02/12/psalms/psalm-08/" ><i class="fa fa-file-o"></i>In All the Earth</a>
-      </li>
-    
-      <li>
-        <a href="/2023/02/12/psalms/psalm-07/" ><i class="fa fa-file-o"></i>Vindicate Me</a>
-      </li>
-    
-      <li>
-        <a href="/2023/02/10/psalms/psalm-06/" ><i class="fa fa-file-o"></i>Heal Me</a>
       </li>
     
   </ul>

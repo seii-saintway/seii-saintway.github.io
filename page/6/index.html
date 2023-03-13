@@ -145,6 +145,873 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2020-04-10 </div>
+			<div class="article-title"><a href="/2020/04/10/Try-JupyterHub-and-BinderHub/" >Try JupyterHub and BinderHub</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://github.com/jupyterhub/jupyterhub-deploy-teaching" target="_blank" rel="noopener">https://github.com/jupyterhub/jupyterhub-deploy-teaching</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Authentication-and-User-Basics">Authentication and User Basics<a class="anchor-link" href="#Authentication-and-User-Basics">&#182;</a></h1><p><a href="https://jupyterhub.readthedocs.io/en/stable/getting-started/authenticators-users-basics.html" target="_blank" rel="noopener">https://jupyterhub.readthedocs.io/en/stable/getting-started/authenticators-users-basics.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Zero-to-JupyterHub">Zero to JupyterHub<a class="anchor-link" href="#Zero-to-JupyterHub">&#182;</a></h1><ul>
+<li><a href="https://github.com/jupyterhub/zero-to-jupyterhub-k8s" target="_blank" rel="noopener">https://github.com/jupyterhub/zero-to-jupyterhub-k8s</a></li>
+<li><a href="https://z2jh.jupyter.org/en/latest/optimization.html" target="_blank" rel="noopener">https://z2jh.jupyter.org/en/latest/optimization.html</a></li>
+<li><a href="https://z2jh.jupyter.org/en/latest/advanced.html" target="_blank" rel="noopener">https://z2jh.jupyter.org/en/latest/advanced.html</a></li>
+<li><a href="https://github.com/jupyterhub/oauthenticator" target="_blank" rel="noopener">https://github.com/jupyterhub/oauthenticator</a></li>
+<li><a href="https://github.com/mogthesprog/jwtauthenticator" target="_blank" rel="noopener">https://github.com/mogthesprog/jwtauthenticator</a></li>
+<li><a href="https://stackoverflow.com/questions/54636656/how-do-i-use-google-iap-for-authenticating-to-jupyterhub" target="_blank" rel="noopener">https://stackoverflow.com/questions/54636656/how-do-i-use-google-iap-for-authenticating-to-jupyterhub</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="JupyterLab-on-JupyterHub">JupyterLab on JupyterHub<a class="anchor-link" href="#JupyterLab-on-JupyterHub">&#182;</a></h1><ul>
+<li><a href="https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html" target="_blank" rel="noopener">https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html</a></li>
+<li><a href="https://stackoverflow.com/questions/55132540/jupyterlab-on-jupyterhub" target="_blank" rel="noopener">https://stackoverflow.com/questions/55132540/jupyterlab-on-jupyterhub</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Add-a-custom-login-page-and-assignments-directory-for-each-user-on-a-Jupyter-Hub-server">Add a custom login page and assignments directory for each user on a Jupyter Hub server<a class="anchor-link" href="#Add-a-custom-login-page-and-assignments-directory-for-each-user-on-a-Jupyter-Hub-server">&#182;</a></h1><p><a href="https://pythonforundergradengineers.com/assignments-dir-and-custom-login-page-to-jupyterhub.html" target="_blank" rel="noopener">https://pythonforundergradengineers.com/assignments-dir-and-custom-login-page-to-jupyterhub.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Security-in-the-Jupyter-notebook-server">Security in the Jupyter notebook server<a class="anchor-link" href="#Security-in-the-Jupyter-notebook-server">&#182;</a></h1><p><a href="https://jupyter-notebook.readthedocs.io/en/stable/security.html#Our-security-model" target="_blank" rel="noopener">https://jupyter-notebook.readthedocs.io/en/stable/security.html#Our-security-model</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Try-BinderHub">Try BinderHub<a class="anchor-link" href="#Try-BinderHub">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>create<span class="w"> </span><span class="err">\</span>
+  <span class="o">--</span><span class="n">machine</span><span class="o">-</span><span class="nb">type</span> <span class="n">n1</span><span class="o">-</span><span class="n">standard</span><span class="o">-</span><span class="mi">1</span> \
+  <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">1</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">autoscaling</span> <span class="o">--</span><span class="nb">min</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">0</span> <span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">2</span> \
+  <span class="o">--</span><span class="n">zone</span> <span class="n">us</span><span class="o">-</span><span class="n">central1</span><span class="o">-</span><span class="n">b</span> <span class="o">--</span><span class="n">cluster</span><span class="o">-</span><span class="n">version</span> <span class="n">latest</span> \
+  <span class="n">jhub</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>get-credentials<span class="w"> </span>jhub<span class="w"> </span>--zone<span class="w"> </span>us-central1-b<span class="w"> </span>--project<span class="w"> </span>sandbox-243014
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>clusterrolebinding<span class="w"> </span>cluster-admin-binding<span class="w"> </span><span class="err">\</span>
+  <span class="o">--</span><span class="n">clusterrole</span><span class="o">=</span><span class="n">cluster</span><span class="o">-</span><span class="n">admin</span> \
+  <span class="o">--</span><span class="n">user</span><span class="o">=</span><span class="n">saintway</span><span class="o">.</span><span class="n">sakaru</span><span class="nd">@gmail</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>--namespace<span class="w"> </span>kube-system<span class="w"> </span>create<span class="w"> </span>serviceaccount<span class="w"> </span>tiller
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>clusterrolebinding<span class="w"> </span>tiller<span class="w"> </span>--clusterrole<span class="o">=</span>cluster-admin<span class="w"> </span>--serviceaccount<span class="o">=</span>kube-system:tiller
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>init<span class="w"> </span>--service-account<span class="w"> </span>tiller<span class="w"> </span>--wait<span class="w"> </span>--upgrade
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>kronhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Install-JupyterHub">Install JupyterHub<a class="anchor-link" href="#Install-JupyterHub">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>jupyterhub<span class="w"> </span>https://jupyterhub.github.io/helm-chart/
+helm<span class="w"> </span>repo<span class="w"> </span>update
+helm<span class="w"> </span>upgrade<span class="w"> </span>jupyterhub<span class="w"> </span>jupyterhub/jupyterhub<span class="w"> </span>--install<span class="w"> </span>--namespace<span class="w"> </span>kronhub<span class="w"> </span>--values<span class="w"> </span>config.yaml
+helm<span class="w"> </span>list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>--namespace<span class="w"> </span>kronhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>describe<span class="w"> </span>service<span class="w"> </span>proxy-public<span class="w"> </span>--namespace<span class="w"> </span>kronhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Install-BinderHub">Install BinderHub<a class="anchor-link" href="#Install-BinderHub">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Service Account kronhub-builder (groups can be set!)</span>
+<span class="o">!</span>mkdir<span class="w"> </span>~/kronhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>one way for <code>secret.yaml</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/secret.yaml</span>
+<span class="s">jupyterhub:</span>
+<span class="s">  hub:</span>
+<span class="s">    services:</span>
+<span class="s">      binder:</span>
+<span class="s">        apiToken: &quot;$(openssl rand -hex 32)&quot;</span>
+<span class="s">  proxy:</span>
+<span class="s">    secretToken: &quot;$(openssl rand -hex 32)&quot;</span>
+<span class="s">registry:</span>
+<span class="s">  url: https://gcr.io</span>
+<span class="s">  password: |</span>
+<span class="s">$(cat ~/sandbox-243014-09712d6ea91c.json | sed -r &#39;s#[ ]*([^ ].*)#    \1#g&#39;)</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>another way for <code>secret.yaml</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\</span>
+<span class="s2">jupyterhub:</span>
+<span class="s2">  hub:</span>
+<span class="s2">    services:</span>
+<span class="s2">      binder:</span>
+<span class="s2">        apiToken: \&quot;</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="k">)</span><span class="s2">\&quot;</span>
+<span class="s2">  proxy:</span>
+<span class="s2">    secretToken: \&quot;</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="k">)</span><span class="s2">\&quot;</span>
+<span class="s2">registry:</span>
+<span class="s2">  url: https://gcr.io</span>
+<span class="s2">  password: |</span>
+<span class="k">$(</span>cat<span class="w"> </span>~/sandbox-243014-09712d6ea91c.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;s#[ ]*([^ ].*)#    \1#g&#39;</span><span class="k">)</span><span class="s2">\</span>
+<span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/kronhub/secret.yaml
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>config.yaml</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+<span class="s">replicas: 1.0</span>
+<span class="s">config:</span>
+<span class="s">  BinderHub:</span>
+<span class="s">    use_registry: true</span>
+<span class="s">    image_prefix: gcr.io/$(\</span>
+<span class="s">      cat ~/sandbox-243014-09712d6ea91c.json \</span>
+<span class="s">    | grep -oe &#39;&quot;project_id&quot;: &quot;[^&quot;]*&quot;,&#39; \</span>
+<span class="s">    | sed -r &#39;s#&quot;project_id&quot;: &quot;([^&quot;]*)&quot;,#\1#g&#39; \</span>
+<span class="s">    )/kronhub-</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get project id in many ways</span>
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>get-value<span class="w"> </span>project
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>list<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;value(core.project)&#39;</span>
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>configurations<span class="w"> </span>list<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;value(PROJECT)&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>jupyterhub<span class="w"> </span>https://jupyterhub.github.io/helm-chart
+helm<span class="w"> </span>repo<span class="w"> </span>update
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="helm-install"><strong>helm install</strong><a class="anchor-link" href="#helm-install">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+helm<span class="w"> </span>install<span class="w"> </span>jupyterhub/binderhub<span class="w"> </span>--version<span class="o">=</span><span class="m">0</span>.2.0-29e7546<span class="w"> </span>--name<span class="o">=</span>binderhub<span class="w"> </span>--namespace<span class="o">=</span>kronhub<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>~/kronhub/secret.yaml<span class="w"> </span>-f<span class="w"> </span>~/kronhub/config.yaml
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><a href="https://helm.sh/docs/using_helm/#securing-your-helm-installation" target="_blank" rel="noopener">Securing your Helm Installation</a></strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jupyterhub/binderhub.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/binderhub/helm-chart/binderhub<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>helm<span class="w"> </span>dependency<span class="w"> </span>update
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/binderhub/helm-chart<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>helm<span class="w"> </span>dep<span class="w"> </span>up<span class="w"> </span>binderhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="https://helm.sh/docs/developing_charts/" target="_blank" rel="noopener">https://helm.sh/docs/developing_charts/</a></li>
+<li><a href="https://helm.sh/docs/using_helm/#quickstart" target="_blank" rel="noopener">https://helm.sh/docs/using_helm/#quickstart</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+<span class="s">replicas: 1.0</span>
+<span class="s">config:</span>
+<span class="s">  BinderHub:</span>
+<span class="s">    use_registry: true</span>
+<span class="s">    image_prefix: gcr.io/$(\</span>
+<span class="s">      cat ~/sandbox-243014-09712d6ea91c.json \</span>
+<span class="s">    | grep -oe &#39;&quot;project_id&quot;: &quot;[^&quot;]*&quot;,&#39; \</span>
+<span class="s">    | sed -r &#39;s#&quot;project_id&quot;: &quot;([^&quot;]*)&quot;,#\1#g&#39; \</span>
+<span class="s">    )/kronhub-</span>
+<span class="s">    hub_url: $(kubectl --namespace=kronhub get svc proxy-public \</span>
+<span class="s">               -o custom-columns=&#39;:.status.loadBalancer.ingress[0].ip&#39; \</span>
+<span class="s">             | grep -oe &#39;[^\n]*&#39;)</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>upgrade<span class="w"> </span>binderhub<span class="w"> </span>jupyterhub/binderhub<span class="w"> </span>--version<span class="o">=</span><span class="m">0</span>.2.0-29e7546<span class="w"> </span>-f<span class="w"> </span>~/kronhub/secret.yaml<span class="w"> </span>-f<span class="w"> </span>~/kronhub/config.yaml
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>--namespace<span class="w"> </span>kronhub<span class="w"> </span>proxy-public<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.loadBalancer.ingress[0].ip}&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>--namespace<span class="o">=</span>kronhub<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>binder
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="BinderHub---Enabling-Authentication"><a href="https://binderhub.readthedocs.io/en/latest/authentication.html" target="_blank" rel="noopener">BinderHub - Enabling Authentication</a><a class="anchor-link" href="#BinderHub---Enabling-Authentication">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+<span class="s">replicas: 1.0</span>
+<span class="s">config:</span>
+<span class="s">  BinderHub:</span>
+<span class="s">    use_registry: true</span>
+<span class="s">    image_prefix: gcr.io/$(\</span>
+<span class="s">      cat ~/sandbox-243014-09712d6ea91c.json \</span>
+<span class="s">    | grep -oe &#39;&quot;project_id&quot;: &quot;[^&quot;]*&quot;,&#39; \</span>
+<span class="s">    | sed -r &#39;s#&quot;project_id&quot;: &quot;([^&quot;]*)&quot;,#\1#g&#39; \</span>
+<span class="s">    )/kronhub-</span>
+<span class="s">    hub_url: $(kubectl --namespace=kronhub get svc proxy-public \</span>
+<span class="s">               -o custom-columns=&#39;:.status.loadBalancer.ingress[0].ip&#39; \</span>
+<span class="s">             | grep -oe &#39;[^\n]*&#39;)</span>
+<span class="s">    auth_enabled: true</span>
+
+<span class="s">jupyterhub:</span>
+<span class="s">  cull:</span>
+<span class="s">    # do cull authenticated users</span>
+<span class="s">    users: True</span>
+
+<span class="s">  hub:</span>
+<span class="s">    redirectToServer: false</span>
+<span class="s">    services:</span>
+<span class="s">      binder:</span>
+<span class="s">        oauth_redirect_uri: &quot;http://$(kubectl --namespace=kronhub get svc binder -o jsonpath=&#39;{.status.loadBalancer.ingress[0].ip}&#39;)/oauth_callback&quot;</span>
+<span class="s">        oauth_client_id: &quot;binder-oauth-client-test&quot;</span>
+<span class="s">    extraConfig:</span>
+<span class="s">      binder: |</span>
+<span class="s">        from kubespawner import KubeSpawner</span>
+
+<span class="s">        class BinderSpawner(KubeSpawner):</span>
+<span class="s">          def start(self):</span>
+<span class="s">            if &#39;image&#39; in self.user_options:</span>
+<span class="s">              # binder service sets the image spec via user options</span>
+<span class="s">              self.image = self.user_options[&#39;image&#39;]</span>
+<span class="s">            return super().start()</span>
+<span class="s">        c.JupyterHub.spawner_class = BinderSpawner</span>
+
+<span class="s">  singleuser:</span>
+<span class="s">    # to make notebook servers aware of hub</span>
+<span class="s">    cmd: jupyterhub-singleuser</span>
+
+<span class="s">  auth: {}</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2020/04/10/Try-JupyterHub-and-BinderHub/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2020-04-10 </div>
+			<div class="article-title"><a href="/2020/04/10/Try-NTERACT/" >Try NTERACT</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;xU_xdogXFeE&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <iframe width="600" height="400" src="https://www.youtube.com/embed/xU_xdogXFeE" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;3FmBJ847_y8&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <iframe width="600" height="400" src="https://www.youtube.com/embed/3FmBJ847_y8" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://github.com/nteract/kernel-relay" target="_blank" rel="noopener">https://github.com/nteract/kernel-relay</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Notebooks.">Notebooks.<a class="anchor-link" href="#Notebooks.">&#182;</a></h1><p><strong>A rendered REPL combining</strong></p>
+<blockquote>
+<p>REPL (Read–Eval–Print Loop)</p>
+</blockquote>
+<ul>
+<li>Code</li>
+<li>Logs</li>
+<li>Documentation</li>
+<li>Execution Results</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Useful for</strong></p>
+<ul>
+<li>Iterative Development</li>
+<li>Sharing Results</li>
+<li>Integrating Various API Calls</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Wins.">Wins.<a class="anchor-link" href="#Wins.">&#182;</a></h1><ul>
+<li>Shareable</li>
+<li>Easy to Read</li>
+<li>Documentation with Code</li>
+<li>Outputs as Reports</li>
+<li>Familiar Interface</li>
+<li>Multi-Language</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Notebooks:-A-REPL-Protocol-+-UIs">Notebooks: A REPL Protocol + UIs<a class="anchor-link" href="#Notebooks:-A-REPL-Protocol-+-UIs">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Exploring-and-Prototyping.">Exploring and Prototyping.<a class="anchor-link" href="#Exploring-and-Prototyping.">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-Good.">The Good.<a class="anchor-link" href="#The-Good.">&#182;</a></h1><blockquote>
+<p>Notebooks have several attractive attributes that lend themselves to particular development stories:</p>
+</blockquote>
+<ul>
+<li>Quick iteration cycles</li>
+<li>Expensive queries once</li>
+<li>Recorded outputs</li>
+<li>Easy to modify</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-Bad.">The Bad.<a class="anchor-link" href="#The-Bad.">&#182;</a></h1><blockquote>
+<p>But they have drawbacks, some of which kept Notebooks from being used in wider development stories:</p>
+</blockquote>
+<ul>
+<li>Lack of history</li>
+<li>Difficult to test</li>
+<li>Mutable document</li>
+<li>Hard to parameterize</li>
+<li>Live collaboration</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Focus-points-to-extend-uses.">Focus points to extend uses.<a class="anchor-link" href="#Focus-points-to-extend-uses.">&#182;</a></h1><h2 id="Things-to-preserve:">Things to preserve:<a class="anchor-link" href="#Things-to-preserve:">&#182;</a></h2><ul>
+<li>Results linked to code</li>
+<li>Good visuals</li>
+<li>Easy to share</li>
+</ul>
+<h2 id="Things-to-improve:">Things to improve:<a class="anchor-link" href="#Things-to-improve:">&#182;</a></h2><ul>
+<li>Not versioned</li>
+<li>Mutable state</li>
+<li>Templating</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Notebooks-are-good-integration-tools.">Notebooks are good integration tools.<a class="anchor-link" href="#Notebooks-are-good-integration-tools.">&#182;</a></h1><ul>
+<li>Notebooks are good at connecting pieces of technology and building a result or taking an action with that technology.</li>
+<li>They're unreliable to reuse when complex and when they have a high branching factor.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Some-development-guidelines.">Some development guidelines.<a class="anchor-link" href="#Some-development-guidelines.">&#182;</a></h1><ul>
+<li>Keep a low branching factor</li>
+<li>Short and simple is better</li>
+<li>Keep to one primary outcome</li>
+<li>(Try to) Leave library functions in libraries<ul>
+<li>Move complexity to libraries</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2020/04/10/Try-NTERACT/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2020-02-06 </div>
 			<div class="article-title"><a href="/2020/02/06/约翰的二元论/" >约翰的二元论</a></div>						
 		</h3>
@@ -3486,526 +4353,6 @@ createServer().then(function (server) {
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2019-10-13 </div>
-			<div class="article-title"><a href="/2019/10/13/Try-PaperBoby/" >Try PaperBoby</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://github.com/timkpaine/paperboy" target="_blank" rel="noopener">https://github.com/timkpaine/paperboy</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/timkpaine/paperboy.git
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Cloning into &#39;paperboy&#39;...
-remote: Enumerating objects: 21, done.
-remote: Counting objects: 100% (21/21), done.
-remote: Compressing objects: 100% (21/21), done.
-remote: Total 3388 (delta 3), reused 3 (delta 0), pack-reused 3367
-Receiving objects: 100% (3388/3388), 12.04 MiB | 22.38 MiB/s, done.
-Resolving deltas: 100% (2277/2277), done.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-<span class="nb">cd</span><span class="w"> </span>~/paperboy/
-sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>install
-sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
-sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>paperboy
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CRITICAL:root:Using SQL backend
-CRITICAL:root:Using SQL auth
-CRITICAL:root:Using dummy scheduler
-[2019-10-13 18:36:29 +0900] [2696] [INFO] Starting gunicorn 19.9.0
-[2019-10-13 18:36:29 +0900] [2696] [INFO] Listening at: http://0.0.0.0:8080 (2696)
-[2019-10-13 18:36:29 +0900] [2696] [INFO] Using worker: sync
-[2019-10-13 18:36:29 +0900] [2701] [INFO] Booting worker with pid: 2701
-CRITICAL:root:Storing user sheng_wei eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJuYW1lIjoic2hlbmdfd2VpIn0.oKJsYgZJaj1dLoVR8JgTjfPGp2O8bf3jqmoRux1bNgw 1
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:Storing notebook &lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
-[2019-10-13 18:43:59 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
-    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
-ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
-[2019-10-13 18:44:22 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
-    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
-ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
-[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
-    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
-ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
-[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
-    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
-ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
-[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
-    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
-ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
-CRITICAL:root:Storing job &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:detail : 1, result : &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
-CRITICAL:root:detail : 1, result : &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:detail : 1, result : &lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
-CRITICAL:root:Storing notebook &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
-CRITICAL:root:detail : 2, result : &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
-[2019-10-13 18:54:20 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
-    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
-ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
-[2019-10-13 18:54:35 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
-    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
-ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:detail : 2, result : &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
-CRITICAL:root:Storing job &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:detail : 2, result : &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-[2019-10-13 18:59:11 +0900] [2696] [CRITICAL] WORKER TIMEOUT (pid:2701)
-[2019-10-13 18:59:11 +0900] [2701] [INFO] Worker exiting (pid: 2701)
-[2019-10-13 18:59:11 +0900] [2863] [INFO] Booting worker with pid: 2863
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-CRITICAL:root:detail : 2, result : &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
-[2019-10-13 19:01:55 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
-    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
-ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
-[2019-10-13 19:01:57 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
-    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
-ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
-[2019-10-13 19:01:57 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
-    self.handle_request(listener, req, client, addr)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
-    respiter = self.wsgi(environ, resp.start_response)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
-    responder(req, resp, **params)
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
-    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
-  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
-    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
-ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
-CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
-^C
-[2019-10-13 19:02:42 +0900] [2696] [INFO] Handling signal: int
-[2019-10-13 19:02:42 +0900] [2863] [INFO] Worker exiting (pid: 2863)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>The versions of dependencies are too low.</strong>
-<strong>There are too many bugs.</strong></p>
-<p><strong>It seems that the maintenance of PaperBoy has been stopped.</strong></p>
-<p>Well. Maybe I can reuse some of the codes.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>But I found a new Jupyter Dashboard used by PaperBoy.</strong></p>
-<ul>
-<li><a href="https://github.com/voila-dashboards/voila" target="_blank" rel="noopener">https://github.com/voila-dashboards/voila</a></li>
-</ul>
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2019/10/13/Try-PaperBoby/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2019-10-08 </div>
-			<div class="article-title"><a href="/2019/10/08/Try-Appmod-and-NBGitPuller/" >Try Appmod and NBGitPuller</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://mybinder.org/v2/gh/jupyterhub/nbgitpuller/master?urlpath=apps/binder%2Flink_generator.ipynb" target="_blank" rel="noopener">https://mybinder.org/v2/gh/jupyterhub/nbgitpuller/master?urlpath=apps/binder%2Flink_generator.ipynb</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a href="https://anvil.works/learn/tutorials/jupyter-notebook-to-web-app" target="_blank" rel="noopener">https://anvil.works/learn/tutorials/jupyter-notebook-to-web-app</a></li>
-<li><a href="https://hackernoon.com/making-web-apps-with-jupyter-notebook-75eab8bdb092" target="_blank" rel="noopener">https://hackernoon.com/making-web-apps-with-jupyter-notebook-75eab8bdb092</a></li>
-<li><a href="https://github.com/oschuett/appmode" target="_blank" rel="noopener">https://github.com/oschuett/appmode</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Try-Appmode">Try Appmode<a class="anchor-link" href="#Try-Appmode">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>appmode
-<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>jupyter<span class="w"> </span>nbextension<span class="w">     </span><span class="nb">enable</span><span class="w"> </span>--py<span class="w"> </span>--sys-prefix<span class="w"> </span>appmode
-<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>jupyter<span class="w"> </span>serverextension<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--py<span class="w"> </span>--sys-prefix<span class="w"> </span>appmode
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Try-NBGitPuller">Try NBGitPuller<a class="anchor-link" href="#Try-NBGitPuller">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>nbgitpuller
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nbgitpuller</span> <span class="kn">import</span> <span class="n">pull</span>
-<span class="n">pull</span><span class="o">.</span><span class="vm">__file__</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nbgitpuller</span> <span class="kn">import</span> <span class="n">handlers</span>
-<span class="n">handlers</span><span class="o">.</span><span class="vm">__file__</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Change-repo_url-to-clone_cmd">Change <code>repo_url</code> to <code>clone_cmd</code><a class="anchor-link" href="#Change-repo_url-to-clone_cmd">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>change-to-clone-command<span class="w"> </span>https://github.com/seii-saintway/nbgitpuller.git
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>cp<span class="w"> </span>~/nbgitpuller/nbgitpuller/pull.py<span class="w"> </span>/opt/tljh/user/lib/python3.6/site-packages/nbgitpuller/pull.py
-<span class="o">!</span>sudo<span class="w"> </span>cp<span class="w"> </span>~/nbgitpuller/nbgitpuller/handlers.py<span class="w"> </span>/opt/tljh/user/lib/python3.6/site-packages/nbgitpuller/handlers.py
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><code>https://jhub.name</code></li>
-<li><code>git clone https://github.com/seii-saintway/nbgitpuller</code></li>
-<li><code>change-to-clone-command</code></li>
-<li><code>binder/link_generator.ipynb</code></li>
-<li><code>app</code></li>
-</ul>
-<p><a href="https://jhub.name/hub/user-redirect/git-pull?repo=git+clone+https%3A%2F%2Fgithub.com%2Fseii-saintway%2Fnbgitpuller&amp;branch=change-to-clone-command&amp;subPath=binder%2Flink_generator.ipynb&amp;app=app" target="_blank" rel="noopener">https://jhub.name/hub/user-redirect/git-pull?repo=git+clone+https%3A%2F%2Fgithub.com%2Fseii-saintway%2Fnbgitpuller&amp;branch=change-to-clone-command&amp;subPath=binder%2Flink_generator.ipynb&amp;app=app</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/seii-saintway/nbgitpuller@change-to-clone-command
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2019/10/08/Try-Appmod-and-NBGitPuller/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -4046,43 +4393,45 @@ CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQ
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>11</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
 			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>1</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>2</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
 			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>12</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 		
 		</ul>
@@ -4096,6 +4445,14 @@ CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQ
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2023/03/13/Reverse-Engineered-ChatGPT-API/" ><i class="fa fa-file-o"></i>Reverse Engineered ChatGPT ...</a>
+      </li>
+    
+      <li>
+        <a href="/2023/03/12/Molecular-Simulation-with-OpenMM/" ><i class="fa fa-file-o"></i>Molecular Simulation with O...</a>
+      </li>
+    
+      <li>
         <a href="/2023/02/18/psalms/psalm-32/" ><i class="fa fa-file-o"></i>Blessed Is the One</a>
       </li>
     
@@ -4105,14 +4462,6 @@ CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQ
     
       <li>
         <a href="/2023/02/12/psalms/psalm-08/" ><i class="fa fa-file-o"></i>In All the Earth</a>
-      </li>
-    
-      <li>
-        <a href="/2023/02/12/psalms/psalm-07/" ><i class="fa fa-file-o"></i>Vindicate Me</a>
-      </li>
-    
-      <li>
-        <a href="/2023/02/10/psalms/psalm-06/" ><i class="fa fa-file-o"></i>Heal Me</a>
       </li>
     
   </ul>
