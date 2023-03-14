@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 
   <meta charset="utf-8">
   
@@ -23,11 +23,11 @@ Evan Kereiakes、Do Kwon、Marco Di Maggio、Nicholas Platias
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Terra 白皮书">
-  <meta property="og:site_name" content="Andrew&#39;s Blog">
+  <meta property="og:title" content="Terra 白皮书"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
 
   
-    <meta property="og:image" content="undefined">
+    <meta property="og:image" content=""/>
   
 
   
@@ -87,7 +87,7 @@ Evan Kereiakes、Do Kwon、Marco Di Maggio、Nicholas Platias
     </script>
     <!-- End of mathjax configuration -->
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -168,7 +168,7 @@ Evan Kereiakes、Do Kwon、Marco Di Maggio、Nicholas Platias
 <p>Evan Kereiakes、Do Kwon、Marco Di Maggio、Nicholas Platias</p>
 <p>2019 年 4 月</p>
 <blockquote>
-<p>原文：<a href="https://www.terra.money/Terra_White_paper.pdf" target="_blank" rel="noopener">Terra Whitepaper</a></p>
+<p>原文：<a target="_blank" rel="noopener" href="https://www.terra.money/Terra_White_paper.pdf">Terra Whitepaper</a></p>
 </blockquote>
 
 </div>
@@ -267,7 +267,7 @@ $$P(t) = {TotalRewards(t) \over LunaSupply(t)} - UnitMiningCost(t)$$<p>损益之
 $$f_{t+1} = (1 + g) \cdot {R_{t-1} \over R_t} \cdot f_t$$$$b_{t+1} = (1 + g) \cdot {R_{t-1} \over R_t} \cdot b_t$$<p>［２］：我们提出的机制略有简化。我们省略了一些细节，例如，该协议在挖矿奖励中使用移动平均线来提高稳健性，并确保在所有情况下回购相对于费用的贡献始终如一。</p>
 <p>现在更新规则应该明确了当我们说费用（和 Luna 销毁率）抵抗单位挖矿奖励的变化时，我们的意思是：当前值 $f_t$ 乘以单位挖矿奖励的反向变化 ${R_{t-1} \over R_t}$。例如，如果单位挖矿奖励减半，则费用将相应加倍，反之，如果单位挖矿奖励加倍，费用将相应减半。结果由一个小的增长因子 $1 + g$ 来衡量，它允许与经济的长期增长率相称的单位挖矿奖励逐渐增长。</p>
 <p>该机制在实践中的效果如何？我们已经运行了广泛的模拟来进行压力测试并在广泛的假设下对其进行改进。在下文中，我们将分享并讨论一个对机制施加重大压力并阐明其如何实现其目标的代表性示例。我们考虑了一个模拟的 10 年期间，在此期间 Terra 经济经历了快速增长和严重动荡。我们展示了该协议如何根据经济状况调整其稳定性杠杆，以及这些调整如何反过来塑造单位挖矿奖励。</p>
-<p><img src="Terra-Whitepaper.png" alt="Terra Whitepaper"></p>
+<p><img src="Terra-Whitepaper.png" alt="Terra Whitepaper" /></p>
 <p>第一张图显示了模拟的每周<strong>交易量</strong>及其年度移动平均值。交易量可以被认为是 Terra 经济的 GDP。经济经历了快速增长，随后是严重的多年衰退，在 3 年内摧毁了 93% 的 GDP，需要 6 年才能完全恢复。这种情况是一个严峻的考验——如果它描述的是比特币的价格，那将是迄今为止其历史上最长的熊市，并且在回撤方面并列最差（相当于 2011 年 6 月至 11 月的 93% 的回撤）。虽然我们认为 Terra 的采用驱动需求将比比特币的投机驱动需求稳定得多，但稳定性机制的设计旨在自信地承受比特币级别的波动。</p>
 <p>第二张图显示了<strong>交易费用和 Luna 销毁率</strong>，这是协议用来消除单位挖矿奖励波动的两个杠杆。我们观察到两者都与经济方向相反（这也是单位挖矿奖励的默认方向）。</p>
 <p>第三张图显示了<strong>单位挖矿奖励</strong>的年度移动平均值。我们在这个例子中设定的增长目标是每年 15%。按照设计，单位挖矿奖励经历稳定增长且波动性低，不受 Terra GDP 周期的影响。费用和 Luna 销毁率的调整成功地吸收了单位挖矿奖励的预期波动并创造了可预测的增长。这是通过平均低于 0.5% 的费用（最高 1% 的瞬时峰值）和平均大约 50% 的 Luna 销毁率（意味着平均 50% 的铸币税授予财政部）来实现的。</p>
@@ -317,9 +317,9 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#21442;&#32771;&#36164;&#26009;<a class="anchor-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#182;</a></h2><p>Liu, Yukun 和 Tsyvinski, Aleh，加密货币的风险和回报（2018 年 8 月）。 NBER 工作文件第 w24877 号。可在 <a href="https://ssrn.com/abstract=3226806" target="_blank" rel="noopener">https://ssrn.com/abstract=3226806</a> 获得。</p>
-<p>Makarov、Igor 和 Schoar、Antoinette，加密货币市场中的交易和套利（2018 年 4 月 30 日）。可在 SSRN 获得：<a href="https://ssrn.com/abstract=3171204" target="_blank" rel="noopener">https://ssrn.com/abstract=3171204</a> 。</p>
-<p>Kereiakes、Evan，将多种法定货币纳入 Terra’s Peg 的基本原理（2018 年 11 月）。可在 <a href="https://medium.com/terra-money/rationale-for-including-multiple-fiat-currencies-in-terras-peg-1ea9eae9de2a" target="_blank" rel="noopener">https://medium.com/terra-money/rationale-for-including-multiple-fiat-currencies-in-terras-peg-1ea9eae9de2a</a> 获得。</p>
+<h2 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#21442;&#32771;&#36164;&#26009;<a class="anchor-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#182;</a></h2><p>Liu, Yukun 和 Tsyvinski, Aleh，加密货币的风险和回报（2018 年 8 月）。 NBER 工作文件第 w24877 号。可在 <a target="_blank" rel="noopener" href="https://ssrn.com/abstract=3226806">https://ssrn.com/abstract=3226806</a> 获得。</p>
+<p>Makarov、Igor 和 Schoar、Antoinette，加密货币市场中的交易和套利（2018 年 4 月 30 日）。可在 SSRN 获得：<a target="_blank" rel="noopener" href="https://ssrn.com/abstract=3171204">https://ssrn.com/abstract=3171204</a> 。</p>
+<p>Kereiakes、Evan，将多种法定货币纳入 Terra’s Peg 的基本原理（2018 年 11 月）。可在 <a target="_blank" rel="noopener" href="https://medium.com/terra-money/rationale-for-including-multiple-fiat-currencies-in-terras-peg-1ea9eae9de2a">https://medium.com/terra-money/rationale-for-including-multiple-fiat-currencies-in-terras-peg-1ea9eae9de2a</a> 获得。</p>
 <p>Taylor、John B. (1993) 。 “实践中的自由裁量权与政策规则”。卡内基-罗切斯特公共政策系列会议。 39：195-214。</p>
 
 </div>
@@ -410,7 +410,7 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
   <footer> <p>
   &copy; 2023 Andrew
   
-      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
 </div> <!-- container-narrow -->
   

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 
   <meta charset="utf-8">
   
@@ -15,11 +15,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="生物设计基础">
-  <meta property="og:site_name" content="Andrew&#39;s Blog">
+  <meta property="og:title" content="生物设计基础"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
 
   
-    <meta property="og:image" content="undefined">
+    <meta property="og:image" content=""/>
   
 
   
@@ -79,7 +79,7 @@
     </script>
     <!-- End of mathjax configuration -->
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -262,78 +262,70 @@
 <table>
 <thead>
 <tr>
-<th>　输入　</th>
-<th>　输出　</th>
+<th>输入</th>
+<th>输出</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>　缺失　</td>
-<td>　关闭　</td>
+<tbody><tr>
+<td>缺失</td>
+<td>关闭</td>
 </tr>
 <tr>
-<td>　存在　</td>
-<td>　打开　</td>
+<td>存在</td>
+<td>打开</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>这个逻辑也可以用其他几种方式表达；例如，其中 false 对应于“off”，true 对应于“on”：</p>
 <table>
 <thead>
 <tr>
-<th>　输入　</th>
-<th>　输出　</th>
+<th>输入</th>
+<th>输出</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>　假　</td>
-<td>　假　</td>
+<tbody><tr>
+<td>假</td>
+<td>假</td>
 </tr>
 <tr>
-<td>　真　</td>
-<td>　真　</td>
+<td>真</td>
+<td>真</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>或者，您可以使用数学符号，其中“-”对应于“off”，“+”对应于“on”：</p>
 <table>
 <thead>
 <tr>
-<th>　输入　</th>
-<th>　输出　</th>
+<th>输入</th>
+<th>输出</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>　-　</td>
-<td>　-　</td>
+<tbody><tr>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr>
-<td>　+　</td>
-<td>　+　</td>
+<td>+</td>
+<td>+</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>或者，您可以使用二进制代码，其中“0”对应“off”，“1”对应“on”：</p>
 <table>
 <thead>
 <tr>
-<th>　输入　</th>
-<th>　输出　</th>
+<th>输入</th>
+<th>输出</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>　0　</td>
-<td>　0　</td>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<td>　1　</td>
-<td>　1　</td>
+<td>1</td>
+<td>1</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>请记住，这些都代表系统的相同基本逻辑，只是使用不同的词汇。当您构建更复杂的系统时，您可能需要更复杂的真值表。在设计复杂设备时，真值表也很有用。我们在随后的逻辑器件描述中提供了一些示例。</p>
 <p>系统级设计的第二个方面是确定您将使用哪个宿主有机体或基盘（见图 2-4）来运行您的基因程序。您可以使用许多不同的生物体和细胞类型作为设计系统的基盘，包括细菌、酵母、病毒和哺乳动物细胞。合成生物学最常用的两种基盘是大肠杆菌和酿酒酵母。这两款宿主特性良好、安全且运行相对可靠，使其成为许多设计系统的合适基盘。但根据应用，明智的做法是选择具有特定生长特征的宿主或具有对设计有用的天然蛋白质的宿主。回到本章开头的背包类比，优胜美地是选择的系统，但如果你不喜欢陡峭的攀登或拥挤的人群，它就不是正确的系统选择，你可能需要重新考虑你的远足决定优胜美地与阿巴拉契亚小径，或选择优胜美地的高地而不是山谷。</p>
 <hr>
@@ -360,122 +352,114 @@
 <table>
 <thead>
 <tr>
-<th>　输入 A　</th>
-<th>　输入 B　</th>
-<th>　输出　</th>
+<th>输入 A</th>
+<th>输入 B</th>
+<th>输出</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>　0　</td>
-<td>　0　</td>
-<td>　0　</td>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<td>　0　</td>
-<td>　1　</td>
-<td>　1　</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr>
-<td>　1　</td>
-<td>　0　</td>
-<td>　1　</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
 </tr>
 <tr>
-<td>　1　</td>
-<td>　1　</td>
-<td>　1　</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>这样的真值表表示或门的操作，在接线图中给出了如下所示的特定符号：</p>
 <p><img src="/biobuilder/045.png" alt="FIGURE"></p>
 <p>这是第二个系统的真值表，只有当 A 和 B 都存在时才应该触发：</p>
 <table>
 <thead>
 <tr>
-<th>　输入 A　</th>
-<th>　输入 B　</th>
-<th>　输出　</th>
+<th>输入 A</th>
+<th>输入 B</th>
+<th>输出</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>　0　</td>
-<td>　0　</td>
-<td>　0　</td>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<td>　0　</td>
-<td>　1　</td>
-<td>　0　</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
 </tr>
 <tr>
-<td>　1　</td>
-<td>　0　</td>
-<td>　0　</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<td>　1　</td>
-<td>　1　</td>
-<td>　1　</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>下一个真值表代表一个与门，它由一个与或门的符号略有不同但有意义的符号表示：</p>
 <p><img src="/biobuilder/046.png" alt="FIGURE"></p>
 <p>还有其他种类的输入和输出的逻辑组合不同于 AND 和 OR 门所描述的那些。例如，布尔非门是将输入信号反转为相反的门。它显示在下面的真值表中，并在下图中象征性地显示（注意非门只接受一个输入）：</p>
 <table>
 <thead>
 <tr>
-<th>　输入 A　</th>
-<th>　输出 F　</th>
+<th>输入 A</th>
+<th>输出 F</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>　0　</td>
-<td>　1　</td>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
 </tr>
 <tr>
-<td>　1　</td>
-<td>　0　</td>
+<td>1</td>
+<td>0</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><img src="/biobuilder/047.png" alt="FIGURE"></p>
 <p><strong>通过这种视觉语言和逻辑门的一些简单组合，可以构建非常复杂的系统，包括电子系统和生活系统</strong>。例如，以下 NOR 门的真值表与 OR 门的表正好相反：</p>
 <table>
 <thead>
 <tr>
-<th>　输入 A　</th>
-<th>　输入 B　</th>
-<th>　输出 F　</th>
+<th>输入 A</th>
+<th>输入 B</th>
+<th>输出 F</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>　0　</td>
-<td>　0　</td>
-<td>　1　</td>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
 </tr>
 <tr>
-<td>　0　</td>
-<td>　1　</td>
-<td>　0　</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
 </tr>
 <tr>
-<td>　1　</td>
-<td>　0　</td>
-<td>　0　</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<td>　1　</td>
-<td>　1　</td>
-<td>　0　</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><img src="/biobuilder/048.png" alt="FIGURE"></p>
 <p>在视觉上，或非门表示为一个在右端带有一个圆圈的或门，在其函数中添加一个非并使其成为一个或非门。</p>
 <p>启动合成生物学领域的关键研究出版物之一建立了一个在生命系统中运行的 NOR 门。这项工作来自波士顿大学詹姆斯柯林斯博士的实验室。他的研究小组使用遗传部件构建了两个 NOR 逻辑门，并将它们交叉连接以创建一个锁存器。</p>
@@ -501,10 +485,10 @@
 <li>Danchin, A. 扩充合成生物学：不要忘记基盘。FEBS Letters 2012; 586(15): 2129-37。</li>
 <li>Galdzicki, M. 等，合成生物学开放语言 (SBOL) 为合成生物学中的设计交流提供了社区标准。Nature Biotechnology 2014; 32: 545-50。</li>
 <li>Gardner, T. S., Cantor, C. R., Collins J. J. 在大肠杆菌中构建基因切换开关。Nature 2000; 403(6767): 339-42。</li>
-<li>Marchisio, M. A., Stelling, J. 数字合成基因电路的自动设计。公共科学图书馆 2011；DOI：10.1371/journal.pcbi.1001083。</li>
+<li>Marchisio, M. A., Stelling, J. 数字合成基因电路的自动设计。公共科学图书馆 2011；DOI：10.1371&#x2F;journal.pcbi.1001083。</li>
 <li>Oremland, R. S., Stolz, JF. 砷的生态学。Science 2003; 300(5621): 939-44。</li>
-<li>网站：砷检测器 iGEM 项目 ( <a href="http://bit.ly/arsenic_detector" target="_blank" rel="noopener">http://bit.ly/arsenic_detector</a> )。</li>
-<li>网站：生物部件登记处 ( <a href="http://parts.igem.org/Main_Page" target="_blank" rel="noopener">http://parts.igem.org/Main_Page</a> )。</li>
+<li>网站：砷检测器 iGEM 项目 ( <a target="_blank" rel="noopener" href="http://bit.ly/arsenic_detector">http://bit.ly/arsenic_detector</a> )。</li>
+<li>网站：生物部件登记处 ( <a target="_blank" rel="noopener" href="http://parts.igem.org/Main_Page">http://parts.igem.org/Main_Page</a> )。</li>
 </ul>
 
 	</div>
@@ -587,7 +571,7 @@
   <footer> <p>
   &copy; 2023 Andrew
   
-      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
 </div> <!-- container-narrow -->
   

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 
   <meta charset="utf-8">
   
@@ -17,11 +17,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Mirror Token">
-  <meta property="og:site_name" content="Andrew&#39;s Blog">
+  <meta property="og:title" content="Mirror Token"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
 
   
-    <meta property="og:image" content="undefined">
+    <meta property="og:image" content=""/>
   
 
   
@@ -81,7 +81,7 @@
     </script>
     <!-- End of mathjax configuration -->
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -150,7 +150,7 @@
 	<!-- content -->
 	<div class="mypage">
 	    <h1 id="Mirror-Token-MIR"><a href="#Mirror-Token-MIR" class="headerlink" title="Mirror Token (MIR)"></a>Mirror Token (MIR)</h1><blockquote>
-<p>原文：<a href="https://docs.mirror.finance/protocol/mirror-token-mir" target="_blank" rel="noopener">https://docs.mirror.finance/protocol/mirror-token-mir</a></p>
+<p>原文：<a target="_blank" rel="noopener" href="https://docs.mirror.finance/protocol/mirror-token-mir">https://docs.mirror.finance/protocol/mirror-token-mir</a></p>
 </blockquote>
 <hr>
 <p><strong>镜像代币</strong>（<strong>MIR</strong>）是镜像协议的治理代币。目前，它必须被质押才能对活跃的提案进行投票，并且需要作为押金才能进行新的治理提案。在 Mirror 的未来迭代中，它将为协议提供进一步的用途，增加其效用和价值。</p>
@@ -169,8 +169,7 @@
 <th>Y4</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>UNI空投</td>
 <td>9.15</td>
 <td>9.15</td>
@@ -234,8 +233,7 @@
 <td>25.00%</td>
 <td>15.71%</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><img src="https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MLRzugf7mxc4ryNhTuq%2Fuploads%2FdKfSHCIDtMhwXsVLNHwy%2Ffile.png?alt=media" alt="Genesis Token Distribution"></p>
 <p>镜像协议创世时共有 54.9M 个代币可用。这些代币的分配方式如下：</p>
 <ul>
@@ -256,20 +254,20 @@
 <h3 id="分配率（通货膨胀）"><a href="#分配率（通货膨胀）" class="headerlink" title="分配率（通货膨胀）"></a>分配率（通货膨胀）</h3><p>MIR 代币的通货膨胀率被设计为每年逐渐下降，直到在第 4 年年底达到 370.575M。在第 4 年结束后，将不再通过通货膨胀铸造 MIR 代币。</p>
 <hr>
 <h2 id="MIR-质押奖励"><a href="#MIR-质押奖励" class="headerlink" title="MIR 质押奖励"></a>MIR 质押奖励</h2><blockquote>
-<p>本节讨论 MIR 代币的质押奖励，这些奖励来自用于从市场回购 MIR 的交易费用。质押 LP 和 sLP 代币也会产生 MIR 奖励，这些奖励直接来自每个区块创建的新 MIR 代币。点击<a href="https://docs.mirror.finance/protocol/staking-tokens-lp-and-slp#staking-rewards" target="_blank" rel="noopener">此处</a>了解详情。</p>
+<p>本节讨论 MIR 代币的质押奖励，这些奖励来自用于从市场回购 MIR 的交易费用。质押 LP 和 sLP 代币也会产生 MIR 奖励，这些奖励直接来自每个区块创建的新 MIR 代币。点击<a target="_blank" rel="noopener" href="https://docs.mirror.finance/protocol/staking-tokens-lp-and-slp#staking-rewards">此处</a>了解详情。</p>
 </blockquote>
 <h3 id="来自协议费用"><a href="#来自协议费用" class="headerlink" title="来自协议费用"></a>来自协议费用</h3><p>MIR 代币质押者在每个区块收到 MIR 代币奖励，协议费用是从 CDP 提款产生的。协议费用从 CDP 抵押品中收取，并在发送到 Collector 合约后出售给 TerraUSD，以通过 Terraswap 购买 MIR。然后将 MIR 代币作为奖励分配给 MIR 质押者和选民，并按总股份的百分比进行分配。这个过程通过产生购买压力来平衡新 MIR 的产生。</p>
 <h3 id="来自提案创建费"><a href="#来自提案创建费" class="headerlink" title="来自提案创建费"></a>来自提案创建费</h3><p>每当创建新的治理提案时，都必须支付 MIR 代币的初始押金。如果投票未达到投票法定人数，则该押金将按比例分配给所有 MIR 质押者。</p>
 <h3 id="来自投票奖励"><a href="#来自投票奖励" class="headerlink" title="来自投票奖励"></a>来自投票奖励</h3><p>根据尚未达到投票法定人数的投票产生的协议费用和投票创建费用，<code>voter_weight</code> 用于确定在正在进行的投票中投票的用户之间分配的 MIR 代币数量。如果包括质押和投票奖励的总 MIR 治理奖励是 $R_{total}$ 是，</p>
 <p>$$R_{passive}+R_{vote}$$</p>
 <p>这里 $R_{passive}$ 是未投票的 MIR 质押者的奖励，并且 $R_{vote}$ 是对正在进行的提案已经投票了的用户的奖励。如果 <code>voter_weight</code> 是 $W_{vote}$, 并且对于第 $i$ 个提案，个人和全体所投的 MIR 是 $m_{\text{i}}$ 和 $M_{\text{i}}$，投票奖励 $R_{\text{vote}}$ 是，</p>
-<p>$$\sum_{i=1}^n \frac{m_{\text{i}}}{M_{\text{i}}} \frac{W_{\text{vote}}R_{\text{gov}}}{n}$$</p>
+<p>$$\sum_{i&#x3D;1}^n \frac{m_{\text{i}}}{M_{\text{i}}} \frac{W_{\text{vote}}R_{\text{gov}}}{n}$$</p>
 <h3 id="年利率计算"><a href="#年利率计算" class="headerlink" title="年利率计算"></a>年利率计算</h3><blockquote>
 <p>注意由于大多数 mAssets 的协议费用仅在其基础现实世界资产的交易时间内产生，因此在周末和节假日分配的实际奖励会低得多。</p>
 </blockquote>
 <p>Mirror Web App 显示 MIR 质押奖励的年度百分比率。由于协议费用的波动性，MIR 质押 APR 计算使用<strong>过去 15 天每天的平均奖励</strong>。</p>
 <p>如果第 $i$ 天给 MIR 质押者的奖励为 $r_i$，总 MIR 质押量为 $M$，MIR 质押（365 天）的年化百分比为，</p>
-<p>$${\sum_{i=1}^{15}{m_i} \over M} \times 365$$</p>
+<p>$${\sum_{i&#x3D;1}^{15}{m_i} \over M} \times 365$$</p>
 <p>其中应用了最近 15 天的奖励分配信息。此 APR 是在假设用户已对所有正在进行的治理提案进行投票的假设下计算的。</p>
 
 	</div>
@@ -352,7 +350,7 @@
   <footer> <p>
   &copy; 2023 Andrew
   
-      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
 </div> <!-- container-narrow -->
   

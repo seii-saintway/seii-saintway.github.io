@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 
   <meta charset="utf-8">
   
@@ -10,16 +10,17 @@
   
   <meta name="description" content="References of Octopresshttp://octopress.org/docs/setup/
 Start Command Prompt with Ruby123# DevKitruby dk.rb initruby dk.rb install
-1234cd Octopressrub">
+
+1234cd Octopressru">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="My Second Test">
-  <meta property="og:site_name" content="Andrew&#39;s Blog">
+  <meta property="og:title" content="My Second Test"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
 
   
-    <meta property="og:image" content="undefined">
+    <meta property="og:image" content=""/>
   
 
   
@@ -79,7 +80,7 @@ Start Command Prompt with Ruby123# DevKitruby dk.rb initruby dk.rb install
     </script>
     <!-- End of mathjax configuration -->
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -147,36 +148,68 @@ Start Command Prompt with Ruby123# DevKitruby dk.rb initruby dk.rb install
 
 	<!-- content -->
 	<div class="mypage">
-	    <h2 id="References-of-Octopress"><a href="#References-of-Octopress" class="headerlink" title="References of Octopress"></a>References of Octopress</h2><p><a href="http://octopress.org/docs/setup/" target="_blank" rel="noopener">http://octopress.org/docs/setup/</a></p>
+	    <h2 id="References-of-Octopress"><a href="#References-of-Octopress" class="headerlink" title="References of Octopress"></a>References of Octopress</h2><p><a target="_blank" rel="noopener" href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a></p>
 <h2 id="Start-Command-Prompt-with-Ruby"><a href="#Start-Command-Prompt-with-Ruby" class="headerlink" title="Start Command Prompt with Ruby"></a>Start Command Prompt with Ruby</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DevKit</span></span><br><span class="line">ruby dk.rb init</span><br><span class="line">ruby dk.rb install</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">ruby --version <span class="comment"># Should report Ruby 1.9.3</span></span><br><span class="line">gem install bundler</span><br><span class="line">bundle install</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install rubypython <span class="comment"># not necessary for Octopress now</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake new_post[<span class="string">"title"</span>]</span><br><span class="line">rake preview <span class="comment"># http://localhost:4000/</span></span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">bundle <span class="built_in">exec</span> rake new_post[<span class="string">"title"</span>]</span><br><span class="line">bundle <span class="built_in">exec</span> rake preview</span><br><span class="line">bundle <span class="built_in">exec</span> rake deploy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake new_post[<span class="string">&quot;title&quot;</span>]</span><br><span class="line">rake preview <span class="comment"># http://localhost:4000/</span></span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">bundle <span class="built_in">exec</span> rake new_post[<span class="string">&quot;title&quot;</span>]</span><br><span class="line">bundle <span class="built_in">exec</span> rake preview</span><br><span class="line">bundle <span class="built_in">exec</span> rake deploy</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pbcopy &lt; ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># Copies the contents of the id_rsa.pub file to your clipboard</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:seii-saintway/seii-saintway.github.io.git Octopress</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout -b <span class="built_in">source</span> origin/<span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout -b <span class="built_in">source</span> origin/source</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'your message'</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&#x27;your message&#x27;</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+
+
 <h2 id="Windows-Command-Prompt"><a href="#Windows-Command-Prompt" class="headerlink" title="Windows Command Prompt"></a>Windows Command Prompt</h2><p>Add the “cmd” directory of “git” to System Environment Variable “Path”.</p>
 <p>Add the “bin” directory of “Ruby” to System Environment Variable “Path”.</p>
 <p>Add the “Python” directory to System Environment Variable “Path”.</p>
 <h2 id="My-“rake-setup-github-pages”-with-“git-init”"><a href="#My-“rake-setup-github-pages”-with-“git-init”" class="headerlink" title="My “rake setup_github_pages” with “git init”"></a>My “rake setup_github_pages” with “git init”</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:seii-saintway/seii-saintway.github.io.git</span><br><span class="line">git checkout -b <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> _deploy</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:seii-saintway/seii-saintway.github.io.git</span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake generate</span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"Fresh Start!"</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<h2 id="References-of-ECMAScript"><a href="#References-of-ECMAScript" class="headerlink" title="References of ECMAScript"></a>References of ECMAScript</h2><p><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="noopener">http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf</a></p>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;Fresh Start!&quot;</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="References-of-ECMAScript"><a href="#References-of-ECMAScript" class="headerlink" title="References of ECMAScript"></a>References of ECMAScript</h2><p><a target="_blank" rel="noopener" href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf</a></p>
 <p>遮蔽（遮盖、屏蔽），可见（作用域、可见域）；生存期。</p>
-<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm --registry <span class="string">"http://npm.hacknodejs.com/"</span> install underscore </span><br><span class="line">npm --registry <span class="string">"http://registry.npmjs.vitecho.com/"</span> install underscore</span><br></pre></td></tr></table></figure>
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm --registry <span class="string">&quot;http://npm.hacknodejs.com/&quot;</span> install underscore </span><br><span class="line">npm --registry <span class="string">&quot;http://registry.npmjs.vitecho.com/&quot;</span> install underscore </span><br></pre></td></tr></table></figure>
+
+
 <h2 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a>npm install</h2><h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>command + shift + G</p>
 <h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">npm install --save</span><br><span class="line">node_modules/hexo/bin/hexo server --debug</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://hexo.io/</span></span><br><span class="line">npm install hexo-cli --save</span><br><span class="line">npm install hexo --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"><span class="comment"># Clean the cache file (db.json) and generated files (public).</span></span><br><span class="line"><span class="comment"># 在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</span></span><br></pre></td></tr></table></figure>
+
+
 <h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gg</span><br><span class="line">G</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g eslint</span><br></pre></td></tr></table></figure>
-<h2 id="Continuous-Integration"><a href="#Continuous-Integration" class="headerlink" title="Continuous Integration"></a>Continuous Integration</h2><h2 id="git-submodule"><a href="#git-submodule" class="headerlink" title="git submodule"></a>git submodule</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached -r themes/freemind</span><br><span class="line">git submodule add https://github.com/seii-saintway/hexo-theme-freemind.git themes/freemind</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Continuous-Integration"><a href="#Continuous-Integration" class="headerlink" title="Continuous Integration"></a>Continuous Integration</h2><h2 id="git-submodule"><a href="#git-submodule" class="headerlink" title="git submodule"></a>git submodule</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached -r themes/freemind</span><br><span class="line">git submodule add https://github.com/seii-saintway/hexo-theme-freemind.git themes/freemind</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="git-update-index"><a href="#git-update-index" class="headerlink" title="git update-index"></a>git update-index</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git update-index --assume-unchanged .idea/workspace.xml</span><br><span class="line">git update-index --no-assume-unchanged .idea/workspace.xml</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="encoding"><a href="#encoding" class="headerlink" title="encoding"></a>encoding</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 	</div>
@@ -251,7 +284,7 @@ Start Command Prompt with Ruby123# DevKitruby dk.rb initruby dk.rb install
   <footer> <p>
   &copy; 2023 Andrew
   
-      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
 </div> <!-- container-narrow -->
   

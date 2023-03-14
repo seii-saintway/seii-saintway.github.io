@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 
   <meta charset="utf-8">
   
@@ -17,11 +17,11 @@ OpenMM is a toolkit for molecular simulation. It is a physic based libraries tha
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Molecular Simulation with OpenMM">
-  <meta property="og:site_name" content="Andrew&#39;s Blog">
+  <meta property="og:title" content="Molecular Simulation with OpenMM"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
 
   
-    <meta property="og:image" content="undefined">
+    <meta property="og:image" content=""/>
   
 
   
@@ -81,7 +81,7 @@ OpenMM is a toolkit for molecular simulation. It is a physic based libraries tha
     </script>
     <!-- End of mathjax configuration -->
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -152,11 +152,11 @@ OpenMM is a toolkit for molecular simulation. It is a physic based libraries tha
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Molecular-Simulation-with-OpenMM"><a href="https://github.com/bacalhau-project/examples/tree/main/molecular-dynamics" target="_blank" rel="noopener">Molecular Simulation with OpenMM</a><a class="anchor-link" href="#Molecular-Simulation-with-OpenMM">&#182;</a></h1><ul>
-<li><a href="https://colab.research.google.com/github/bacalhau-project/examples/blob/main/molecular-dynamics/openmm/index.ipynb" target="_blank" rel="noopener">Open In Colab</a></li>
-<li><a href="https://mybinder.org/v2/gh/bacalhau-project/examples/HEAD?labpath=molecular-dynamics/openmm/index.ipynb" target="_blank" rel="noopener">Open In Binder</a></li>
+<h1 id="Molecular-Simulation-with-OpenMM"><a target="_blank" rel="noopener" href="https://github.com/bacalhau-project/examples/tree/main/molecular-dynamics">Molecular Simulation with OpenMM</a><a class="anchor-link" href="#Molecular-Simulation-with-OpenMM">&#182;</a></h1><ul>
+<li><a target="_blank" rel="noopener" href="https://colab.research.google.com/github/bacalhau-project/examples/blob/main/molecular-dynamics/openmm/index.ipynb">Open In Colab</a></li>
+<li><a target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/bacalhau-project/examples/HEAD?labpath=molecular-dynamics/openmm/index.ipynb">Open In Binder</a></li>
 </ul>
-<p><a href="https://github.com/openmm/openmm" target="_blank" rel="noopener">OpenMM</a> is a toolkit for molecular simulation. It is a physic based libraries that is useful for refining the structure and exploring functional interactions with other molecules. It provides a combination of extreme flexibility (through custom forces and integrators), openness, and high performance (especially on recent GPUs) that make it truly unique among simulation codes.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/openmm/openmm">OpenMM</a> is a toolkit for molecular simulation. It is a physic based libraries that is useful for refining the structure and exploring functional interactions with other molecules. It provides a combination of extreme flexibility (through custom forces and integrators), openness, and high performance (especially on recent GPUs) that make it truly unique among simulation codes.</p>
 
 </div>
 </div>
@@ -164,11 +164,11 @@ OpenMM is a toolkit for molecular simulation. It is a physic based libraries tha
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Protein-data">Protein data<a class="anchor-link" href="#Protein-data">&#182;</a></h2><p>We use a processed 2DRI dataset that represents the ribose binding protein in bacterial transport and chemotaxis. The source organism is the <a href="https://en.wikipedia.org/wiki/Escherichia_coli" target="_blank" rel="noopener">Escherichia coli</a> bacteria.
-You can find more details on this protein at the related <a href="https://www.rcsb.org/structure/2dri" target="_blank" rel="noopener">RCSB Protein Data Bank page</a>.</p>
-<p><img src="./2dri-image.png" alt="image.png"></p>
+<h2 id="Protein-data">Protein data<a class="anchor-link" href="#Protein-data">&#182;</a></h2><p>We use a processed 2DRI dataset that represents the ribose binding protein in bacterial transport and chemotaxis. The source organism is the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Escherichia_coli">Escherichia coli</a> bacteria.
+You can find more details on this protein at the related <a target="_blank" rel="noopener" href="https://www.rcsb.org/structure/2dri">RCSB Protein Data Bank page</a>.</p>
+<p><img src="./2dri-image.png" alt="image.png" /></p>
 <p>Protein data can be stored in a <code>.pdb</code> file, this is a human readable format. It provides for description and annotation of protein and nucleic acid structures including atomic coordinates, secondary structure assignments, as well as atomic connectivity.
-See more information about PDB format <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html" target="_blank" rel="noopener">here</a>.</p>
+See more information about PDB format <a target="_blank" rel="noopener" href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html">here</a>.</p>
 
 </div>
 </div>
@@ -225,7 +225,7 @@ ATOM      8  HB3 LYS A   1      64.435  11.867  60.372  1.00  0.00           H
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Write-the-script">Write the script<a class="anchor-link" href="#Write-the-script">&#182;</a></h2><p>To run the script above all we need is a Python environment with the <a href="http://docs.openmm.org/latest/userguide/application/01_getting_started.html" target="_blank" rel="noopener">OpenMM library</a> installed.</p>
+<h2 id="Write-the-script">Write the script<a class="anchor-link" href="#Write-the-script">&#182;</a></h2><p>To run the script above all we need is a Python environment with the <a target="_blank" rel="noopener" href="http://docs.openmm.org/latest/userguide/application/01_getting_started.html">OpenMM library</a> installed.</p>
 
 </div>
 </div>
@@ -453,7 +453,7 @@ _cell.angle_gamma     90.0000
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 
 </div>
 </div>
@@ -559,10 +559,11 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 
 
 
+
 <hr>
-<p>From: <a href="https://docs.bacalhau.org/examples/molecular-dynamics/openmm/" target="_blank" rel="noopener">Molecular Simulation with OpenMM</a></p>
+<p>From: <a target="_blank" rel="noopener" href="https://docs.bacalhau.org/examples/molecular-dynamics/openmm/">Molecular Simulation with OpenMM</a></p>
 <ul>
-<li><a href="https://github.com/openmm/openmm-setup" target="_blank" rel="noopener">OpenMM Setup</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/openmm/openmm-setup">OpenMM Setup</a></li>
 </ul>
 
 	</div>
@@ -621,7 +622,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Quantum/">Quantum<span>1</span></a></li>
+  <li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
     </ul>
 	</div>
 		
@@ -645,7 +646,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
   <footer> <p>
   &copy; 2023 Andrew
   
-      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
 </div> <!-- container-narrow -->
   
