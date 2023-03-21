@@ -145,6 +145,666 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2023-03-21 </div>
+			<div class="article-title"><a href="/2023/03/21/Try-BioGPT/" >Try BioGPT</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://github.com/microsoft/BioGPT">https://github.com/microsoft/BioGPT</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>torchaudio
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting torch
+  Using cached torch-2.0.0-cp310-none-macosx_10_9_x86_64.whl (139.8 MB)
+Collecting torchvision
+  Downloading torchvision-0.15.1-cp310-cp310-macosx_10_9_x86_64.whl (1.5 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.5/1.5 MB</span> <span class="ansi-red-fg">2.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Collecting torchaudio
+  Downloading torchaudio-2.0.1-cp310-cp310-macosx_10_9_x86_64.whl (3.9 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">3.9/3.9 MB</span> <span class="ansi-red-fg">3.3 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Collecting networkx
+  Downloading networkx-3.0-py3-none-any.whl (2.0 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">2.0/2.0 MB</span> <span class="ansi-red-fg">3.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Collecting sympy
+  Downloading sympy-1.11.1-py3-none-any.whl (6.5 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">6.5/6.5 MB</span> <span class="ansi-red-fg">3.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Requirement already satisfied: jinja2 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torch) (3.1.2)
+Requirement already satisfied: filelock in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torch) (3.9.0)
+Requirement already satisfied: typing-extensions in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torch) (4.4.0)
+Requirement already satisfied: numpy in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torchvision) (1.24.2)
+Collecting pillow!=8.3.*,&gt;=5.3.0
+  Downloading Pillow-9.4.0-2-cp310-cp310-macosx_10_10_x86_64.whl (3.3 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">3.3/3.3 MB</span> <span class="ansi-red-fg">3.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Requirement already satisfied: requests in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torchvision) (2.28.1)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from jinja2-&gt;torch) (2.1.1)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;torchvision) (3.4)
+Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;torchvision) (2.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;torchvision) (2022.12.7)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;torchvision) (1.26.14)
+Collecting mpmath&gt;=0.19
+  Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">536.2/536.2 kB</span> <span class="ansi-red-fg">3.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Installing collected packages: mpmath, sympy, pillow, networkx, torch, torchvision, torchaudio
+Successfully installed mpmath-1.3.0 networkx-3.0 pillow-9.4.0 sympy-1.11.1 torch-2.0.0 torchaudio-2.0.1 torchvision-0.15.1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>transformers
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting transformers
+  Downloading transformers-4.27.2-py3-none-any.whl (6.8 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">6.8/6.8 MB</span> <span class="ansi-red-fg">3.9 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Requirement already satisfied: requests in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (2.28.1)
+Requirement already satisfied: regex!=2019.12.17 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (2022.10.31)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (22.0)
+Requirement already satisfied: filelock in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (3.9.0)
+Collecting tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1
+  Downloading tokenizers-0.13.2-cp310-cp310-macosx_10_11_x86_64.whl (3.8 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">3.8/3.8 MB</span> <span class="ansi-red-fg">3.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+Collecting huggingface-hub&lt;1.0,&gt;=0.11.0
+  Downloading huggingface_hub-0.13.3-py3-none-any.whl (199 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">199.8/199.8 kB</span> <span class="ansi-red-fg">3.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Requirement already satisfied: tqdm&gt;=4.27 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (4.65.0)
+Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (6.0)
+Requirement already satisfied: numpy&gt;=1.17 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (1.24.2)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from huggingface-hub&lt;1.0,&gt;=0.11.0-&gt;transformers) (4.4.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;transformers) (3.4)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;transformers) (1.26.14)
+Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;transformers) (2.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;transformers) (2022.12.7)
+Installing collected packages: tokenizers, huggingface-hub, transformers
+Successfully installed huggingface-hub-0.13.3 tokenizers-0.13.2 transformers-4.27.2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">set_seed</span><span class="p">,</span> <span class="n">BioGptTokenizer</span><span class="p">,</span> <span class="n">BioGptForCausalLM</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加载模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BioGptForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;microsoft/biogpt-large&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Downloading (…)lve/main/config.json:   0%|          | 0.00/658 [00:00&lt;?, ?B/s]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Downloading pytorch_model.bin:   0%|          | 0.00/6.29G [00:00&lt;?, ?B/s]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Downloading (…)neration_config.json:   0%|          | 0.00/137 [00:00&lt;?, ?B/s]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">markdown</span>
+<span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
+
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;a2a0e9d8-b880-4873-95b4-59ac6efdbb23&#39;</span><span class="p">,</span>
+    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">用 Hugging Face 下载的模型一般存储在哪里？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>使用 Hugging Face 下载的模型一般存储在本地的 <code>~/.cache/huggingface/</code> 目录下。该目录下会按照模型名称和版本号的组合来创建相应的子目录，存储着相应的模型文件和元数据文件。可以通过指定 <code>cache_dir</code> 参数来修改默认的存储路径。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/huggingface/hub/models--microsoft--biogpt-large/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/huggingface/hub/models--microsoft--biogpt-large/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5.9G	/Users/saintway/.cache/huggingface/hub/models--microsoft--biogpt-large/
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>sacremoses
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting sacremoses
+  Downloading sacremoses-0.0.53.tar.gz (880 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">880.6/880.6 kB</span> <span class="ansi-red-fg">3.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status &#39;done&#39;
+Requirement already satisfied: regex in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from sacremoses) (2022.10.31)
+Requirement already satisfied: six in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from sacremoses) (1.16.0)
+Requirement already satisfied: click in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from sacremoses) (8.1.3)
+Collecting joblib
+  Downloading joblib-1.2.0-py3-none-any.whl (297 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">298.0/298.0 kB</span> <span class="ansi-red-fg">3.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Requirement already satisfied: tqdm in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from sacremoses) (4.65.0)
+Building wheels for collected packages: sacremoses
+  Building wheel for sacremoses (setup.py): started
+  Building wheel for sacremoses (setup.py): finished with status &#39;done&#39;
+  Created wheel for sacremoses: filename=sacremoses-0.0.53-py3-none-any.whl size=895241 sha256=ef1e1d98064b22881c14de405dff663a3972fb9f39a92195a28612459e1de7f9
+  Stored in directory: /Users/saintway/Library/Caches/pip/wheels/00/24/97/a2ea5324f36bc626e1ea0267f33db6aa80d157ee977e9e42fb
+Successfully built sacremoses
+Installing collected packages: joblib, sacremoses
+Successfully installed joblib-1.2.0 sacremoses-0.0.53
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加载分词器</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BioGptTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;microsoft/biogpt-large&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Downloading (…)olve/main/vocab.json:   0%|          | 0.00/1.24M [00:00&lt;?, ?B/s]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Downloading (…)olve/main/merges.txt:   0%|          | 0.00/566k [00:00&lt;?, ?B/s]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Downloading (…)cial_tokens_map.json:   0%|          | 0.00/119 [00:00&lt;?, ?B/s]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Downloading (…)okenizer_config.json:   0%|          | 0.00/256 [00:00&lt;?, ?B/s]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">用 Hugging Face 下载的 tokenizer 一般存储在哪里？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>使用 Hugging Face 下载的 tokenizer 存储位置取决于所选择的 tokenizer。一些 tokenizer 会默认存储在缓存目录中，例如 <code>$HOME/.cache/huggingface/tokenizers</code>，而其他 tokenizer 可能需要手动指定保存位置。在使用 tokenizer 时，可以使用 <code>from_pretrained</code> 方法指定 tokenizer 的名称和路径来加载已下载的 tokenizer。例如：</p>
+<pre><code>from transformers import AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained(&quot;bert-base-uncased&quot;, cache_dir=&quot;/path/to/tokenizer&quot;)
+</code></pre>
+<p>这里 <code>cache_dir</code> 参数指定了 tokenizer 存储的路径。如果未指定该参数，则默认使用缓存目录。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/huggingface/hub/models--microsoft--biogpt-large/snapshots/c6a5136a91c5e3150d9f05ab9d33927a3210a22e
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 0
+drwxr-xr-x  9 saintway  staff   288B Mar 21 23:18 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x  3 saintway  staff    96B Mar 21 22:31 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+lrwxr-xr-x  1 saintway  staff    52B Mar 21 22:31 <span class="ansi-magenta-fg">config.json</span> -&gt; ../../blobs/6781cfc676cb2384020b1b5fdd04817536c723fb
+lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">generation_config.json</span> -&gt; ../../blobs/9475ded3180a2d64c6903ebcf2aeb0705703c12a
+lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">merges.txt</span> -&gt; ../../blobs/01e121aa8483873879577612f38761f2fd9ce5ae
+lrwxr-xr-x  1 saintway  staff    76B Mar 21 23:17 <span class="ansi-magenta-fg">pytorch_model.bin</span> -&gt; ../../blobs/d1753ea5af6449aaf63a105a59a619632b78cbfc2c294ba78f3164156af8c8bf
+lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">special_tokens_map.json</span> -&gt; ../../blobs/e66da1703089a0329ca9eaf51638805d8ce1b322
+lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">tokenizer_config.json</span> -&gt; ../../blobs/e044f8771c083e25f9accfecb9c8f1408cb3c42f
+lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">vocab.json</span> -&gt; ../../blobs/66ddce4fab432cd017c0db812211c30d25acce1e
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 设置随机数种子</span>
+<span class="n">set_seed</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 设置 pipeline</span>
+<span class="n">generator</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
+    <span class="s1">&#39;text-generation&#39;</span><span class="p">,</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span>
+    <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 生成文本</span>
+<span class="c1"># max new tokens：生成的最多 token 数量</span>
+<span class="c1"># num_return_sequences：生成的序列个数</span>
+<span class="n">generator</span><span class="p">(</span><span class="s1">&#39;COVID 19 is&#39;</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;generated_text&#39;: &#39;COVID 19 is a novel coronavirus that emerged in 2 0 1 9 and caused a global pandemic. The virus is a positive-&#39;}]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/03/21/Try-BioGPT/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2023-03-14 </div>
 			<div class="article-title"><a href="/2023/03/14/ChatGPT-Robot-for-WhatsApp/" >ChatGPT Robot for WhatsApp</a></div>						
 		</h3>
@@ -1456,7 +2116,7 @@ Successfully installed Werkzeug-2.2.3 click-8.1.3 flask-2.2.3 itsdangerous-2.1.2
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">threaded</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -3122,68 +3782,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-02-10 </div>
-			<div class="article-title"><a href="/2023/02/10/psalms/psalm-06/" >Heal Me</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/2v8aLMcv3-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<div class="tabs" id="psalm-06"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-06-1">Heal Me</a></li><li class="tab"><a href="#psalm-06-2">医治我</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-06-1"><blockquote>
-<p>Heal Me<br>by Deryck Box</p>
-<hr>
-<p>LORD, do not rebuke me in Your anger<br>Nor chasten me in Your wrath<br>Be merciful to me, for I am weak and pining away</p>
-<hr>
-<p>So heal me<br>Heal me<br>Heal me, Yahweh<br>Heal me<br>Heal me<br>Heal me, for my bones are dismayed</p>
-<hr>
-<p>So heal me<br>Heal me<br>Heal me, Yahweh<br>Heal me<br>Heal me<br>Heal me, for my bones are dismayed</p>
-<hr>
-<p>And my soul is greatly dismayed<br>But You, O LORD, how long?</p>
-<hr>
-<p>Return, O LORD, deliver my soul<br>If you love me, then save me<br>‘Cause I cannot live for You if I waste away<br>Nor can I give You praise</p>
-<hr>
-<p>So heal me<br>Heal me<br>Heal me, Yahweh<br>Heal me<br>Heal me<br>Heal me, for my bones are dismayed</p>
-<hr>
-<p>I am worn out from groaning<br>All night and I flood my bed with tears<br>My eyes are wasting away with grief<br>Because of all my enemies</p>
-<hr>
-<p>So heal me<br>Heal me<br>Heal me, Yahweh<br>Heal me<br>Heal me<br>Heal me, for my bones are dismayed</p>
-<hr>
-<p>So heal me<br>Heal me<br>Heal me, Yahweh<br>Heal me<br>Heal me<br>Heal me, for my bones are dismayed</p>
-<hr>
-<p>Depart, You enemies<br>For the LORD has heard my weeping<br>He will receive my prayer<br>Let all my enemies<br>Be ashamed and disappointed<br>Let them turn back and be suddenly defeated</p>
-<hr>
-<p>So heal me<br>Heal me<br>Heal me, Yahweh<br>Heal me<br>Heal me<br>Heal me, for my bones are dismayed</p>
-</blockquote></div><div class="tab-pane" id="psalm-06-2"><blockquote>
-<p>永恒主啊，不要气哼哼责备我，<br>不要怒忿忿惩罚我。<br>永恒主啊，恩待我，因为我衰弱。<br>永恒主啊，医治我，因为我骨头惊得发颤；<br>我的心也非常惊惶。<br>但你呢、永恒主啊，要等到几时呢？</p>
-<hr>
-<p>永恒主啊，回心转意，救拔我的性命哦；<br>因你坚爱的缘故拯救我哦。<br>因为在死地无人记念着你；<br>在阴间有谁称谢你？<br>我因叹息而困乏；<br>我每夜以眼泪使床漂浮着，<br>把床榻湿透。<br>我眼睛由愁苦而损坏；<br>又因我一切敌人而衰老昏花。</p>
-<hr>
-<p>一切作孽之人哪，离开我吧；<br>因为永恒主听了我哭泣的声音。<br>永恒主听了我的恳求；<br>永恒主接受我的祷告。<br>我一切仇敌都必失望，非常惊惶；<br>他们必退后，一眨眼间便周章狼狈。</p>
-<hr>
-<p>(诗篇 6:1-10 吕振中)</p>
-</blockquote></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/02/10/psalms/psalm-06/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -3224,45 +3822,45 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
 			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>15</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
 		
 			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
 		
 		
 		</ul>
@@ -3274,6 +3872,10 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 <div class="widget">
   <h4 style="margin-top: 18px;">最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2023/03/21/Try-BioGPT/" ><i class="fa fa-file-o"></i>Try BioGPT</a>
+      </li>
     
       <li>
         <a href="/2023/03/14/ChatGPT-Robot-for-WhatsApp/" ><i class="fa fa-file-o"></i>ChatGPT Robot for WhatsApp</a>
@@ -3289,10 +3891,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
     
       <li>
         <a href="/2023/03/13/Reverse-Engineered-ChatGPT-API/" ><i class="fa fa-file-o"></i>Reverse Engineered ChatGPT ...</a>
-      </li>
-    
-      <li>
-        <a href="/2023/03/12/Molecular-Simulation-with-OpenMM/" ><i class="fa fa-file-o"></i>Molecular Simulation with O...</a>
       </li>
     
   </ul>
