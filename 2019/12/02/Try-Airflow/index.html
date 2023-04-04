@@ -1,0 +1,673 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>Try Airflow | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="Airflow&amp;#182;https://github.com/apache/airflow
+LICENSE
+Apache License 2.0
+
+
+
+
+
+
+In&amp;nbsp;[&amp;nbsp;]:
+
+    
+%%bash
+# airflow needs a home, ~/airflow is th">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Try Airflow"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Try Airflow</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Airflow">Airflow<a class="anchor-link" href="#Airflow">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/apache/airflow">https://github.com/apache/airflow</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/apache/airflow/blob/master/LICENSE">LICENSE</a></p>
+<p><a target="_blank" rel="noopener" href="https://opensource.org/licenses/Apache-2.0">Apache License 2.0</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># airflow needs a home, ~/airflow is the default,</span>
+<span class="c1"># but you can lay foundation somewhere else if you prefer</span>
+<span class="c1"># (optional)</span>
+mkdir<span class="w"> </span>~/airflow
+%env<span class="w"> </span><span class="nv">AIRFLOW_HOME</span><span class="o">=</span>~/airflow
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-HE<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">marshmallow</span><span class="o">==</span><span class="m">2</span>.18.0
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting marshmallow==2.18.0
+  Downloading https://files.pythonhosted.org/packages/9a/3c/4cc463c53136dc503f9ee234c4a6592e1c7411cb362f844e80df70361f29/marshmallow-2.18.0-py2.py3-none-any.whl (50kB)
+     |████████████████████████████████| 51kB 15.9MB/s eta 0:00:01
+Installing collected packages: marshmallow
+  Found existing installation: marshmallow 3.2.2
+    Uninstalling marshmallow-3.2.2:
+      Successfully uninstalled marshmallow-3.2.2
+Successfully installed marshmallow-2.18.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># install from pypi using pip</span>
+sudo<span class="w"> </span>-HE<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>apache-airflow
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: apache-airflow in /opt/tljh/user/lib/python3.6/site-packages (1.10.6)
+Requirement already satisfied: cached-property~=1.5 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.5.1)
+Requirement already satisfied: future&lt;0.17,&gt;=0.16.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.16.0)
+Requirement already satisfied: text-unidecode==1.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.2)
+Requirement already satisfied: unicodecsv&gt;=0.14.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.14.1)
+Requirement already satisfied: iso8601&gt;=0.1.12 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.1.12)
+Requirement already satisfied: croniter&lt;0.4,&gt;=0.3.17 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.3.30)
+Requirement already satisfied: flask-login&lt;0.5,&gt;=0.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.4.1)
+Requirement already satisfied: python-dateutil&lt;3,&gt;=2.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.8.0)
+Requirement already satisfied: requests&lt;3,&gt;=2.20.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.22.0)
+Requirement already satisfied: colorlog==4.0.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (4.0.2)
+Requirement already satisfied: dill&lt;0.4,&gt;=0.2.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.3.1.1)
+Requirement already satisfied: python-daemon&lt;2.2,&gt;=2.1.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.1.2)
+Requirement already satisfied: marshmallow-sqlalchemy&lt;0.19.0,&gt;=0.16.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.18.0)
+Requirement already satisfied: psutil&lt;6.0.0,&gt;=4.2.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (5.6.3)
+Requirement already satisfied: termcolor==1.1.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.1.0)
+Requirement already satisfied: flask-admin==1.5.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.5.3)
+Requirement already satisfied: flask-swagger==0.2.13 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.2.13)
+Requirement already satisfied: pygments&lt;3.0,&gt;=2.0.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.4.2)
+Requirement already satisfied: sqlalchemy~=1.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.3.8)
+Requirement already satisfied: funcsigs==1.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.0.0)
+Requirement already satisfied: flask&lt;2.0,&gt;=1.1.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.1.1)
+Requirement already satisfied: tenacity==4.12.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (4.12.0)
+Requirement already satisfied: setproctitle&lt;2,&gt;=1.1.8 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.1.10)
+Requirement already satisfied: thrift&gt;=0.9.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.13.0)
+Requirement already satisfied: pendulum==1.4.4 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.4.4)
+Requirement already satisfied: jinja2&lt;2.11.0,&gt;=2.10.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.10.1)
+Requirement already satisfied: gunicorn&lt;20.0,&gt;=19.5.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (19.9.0)
+Requirement already satisfied: argcomplete~=1.10 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.10.3)
+Requirement already satisfied: flask-appbuilder&lt;2.0.0,&gt;=1.12.5 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.13.1)
+Requirement already satisfied: lazy-object-proxy~=1.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.4.3)
+Requirement already satisfied: json-merge-patch==0.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.2)
+Requirement already satisfied: flask-wtf&lt;0.15,&gt;=0.14.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.14.2)
+Requirement already satisfied: tabulate&lt;0.9,&gt;=0.7.5 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.8.6)
+Requirement already satisfied: flask-caching&lt;1.4.0,&gt;=1.3.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.3.3)
+Requirement already satisfied: configparser&lt;3.6.0,&gt;=3.5.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (3.5.3)
+Requirement already satisfied: zope.deprecation&lt;5.0,&gt;=4.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (4.4.0)
+Requirement already satisfied: markdown&lt;3.0,&gt;=2.5.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.6.11)
+Requirement already satisfied: pandas&lt;1.0.0,&gt;=0.17.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.25.1)
+Requirement already satisfied: alembic&lt;2.0,&gt;=1.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.1.0)
+Requirement already satisfied: tzlocal&lt;2.0.0,&gt;=1.4 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.5.1)
+Requirement already satisfied: graphviz&gt;=0.12 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.13.2)
+Requirement already satisfied: six&gt;=1.5 in /opt/tljh/user/lib/python3.6/site-packages (from python-dateutil&lt;3,&gt;=2.3-&gt;apache-airflow) (1.12.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/tljh/user/lib/python3.6/site-packages (from requests&lt;3,&gt;=2.20.0-&gt;apache-airflow) (2019.9.11)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /opt/tljh/user/lib/python3.6/site-packages (from requests&lt;3,&gt;=2.20.0-&gt;apache-airflow) (1.25.3)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /opt/tljh/user/lib/python3.6/site-packages (from requests&lt;3,&gt;=2.20.0-&gt;apache-airflow) (2.8)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /opt/tljh/user/lib/python3.6/site-packages (from requests&lt;3,&gt;=2.20.0-&gt;apache-airflow) (3.0.4)
+Requirement already satisfied: setuptools in /opt/tljh/user/lib/python3.6/site-packages (from python-daemon&lt;2.2,&gt;=2.1.1-&gt;apache-airflow) (41.4.0)
+Requirement already satisfied: docutils in /opt/tljh/user/lib/python3.6/site-packages (from python-daemon&lt;2.2,&gt;=2.1.1-&gt;apache-airflow) (0.15.2)
+Requirement already satisfied: lockfile&gt;=0.10 in /opt/tljh/user/lib/python3.6/site-packages (from python-daemon&lt;2.2,&gt;=2.1.1-&gt;apache-airflow) (0.12.2)
+Requirement already satisfied: marshmallow&gt;=2.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from marshmallow-sqlalchemy&lt;0.19.0,&gt;=0.16.1-&gt;apache-airflow) (2.18.0)
+Requirement already satisfied: wtforms in /opt/tljh/user/lib/python3.6/site-packages (from flask-admin==1.5.3-&gt;apache-airflow) (2.2.1)
+Requirement already satisfied: PyYAML&gt;=3.0 in /opt/tljh/user/lib/python3.6/site-packages (from flask-swagger==0.2.13-&gt;apache-airflow) (5.1.2)
+Requirement already satisfied: ordereddict in /opt/tljh/user/lib/python3.6/site-packages (from funcsigs==1.0.0-&gt;apache-airflow) (1.1)
+Requirement already satisfied: itsdangerous&gt;=0.24 in /opt/tljh/user/lib/python3.6/site-packages (from flask&lt;2.0,&gt;=1.1.0-&gt;apache-airflow) (1.1.0)
+Requirement already satisfied: Werkzeug&gt;=0.15 in /opt/tljh/user/lib/python3.6/site-packages (from flask&lt;2.0,&gt;=1.1.0-&gt;apache-airflow) (0.16.0)
+Requirement already satisfied: click&gt;=5.1 in /opt/tljh/user/lib/python3.6/site-packages (from flask&lt;2.0,&gt;=1.1.0-&gt;apache-airflow) (7.0)
+Requirement already satisfied: pytzdata&gt;=2018.3.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from pendulum==1.4.4-&gt;apache-airflow) (2019.3)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /opt/tljh/user/lib/python3.6/site-packages (from jinja2&lt;2.11.0,&gt;=2.10.1-&gt;apache-airflow) (1.1.1)
+Requirement already satisfied: apispec[yaml]&gt;=1.1.1&lt;2 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (3.1.0)
+Requirement already satisfied: Flask-OpenID&lt;2,&gt;=1.2.5 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (1.2.5)
+Requirement already satisfied: marshmallow-enum&lt;2,&gt;=1.4.1 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (1.5.1)
+Requirement already satisfied: colorama&lt;1,&gt;=0.3.9 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.4.1)
+Requirement already satisfied: Flask-JWT-Extended&lt;4,&gt;=3.18 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (3.24.1)
+Requirement already satisfied: prison==0.1.0 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.1.0)
+Requirement already satisfied: Flask-Babel&lt;1,&gt;=0.11.1 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.12.2)
+Requirement already satisfied: jsonschema&gt;=3.0.1&lt;4 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (3.0.2)
+Requirement already satisfied: PyJWT&gt;=1.7.1 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (1.7.1)
+Requirement already satisfied: Flask-SQLAlchemy&lt;3,&gt;=2.3 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (2.4.1)
+Requirement already satisfied: numpy&gt;=1.13.3 in /opt/tljh/user/lib/python3.6/site-packages (from pandas&lt;1.0.0,&gt;=0.17.1-&gt;apache-airflow) (1.17.2)
+Requirement already satisfied: pytz&gt;=2017.2 in /opt/tljh/user/lib/python3.6/site-packages (from pandas&lt;1.0.0,&gt;=0.17.1-&gt;apache-airflow) (2019.2)
+Requirement already satisfied: Mako in /opt/tljh/user/lib/python3.6/site-packages (from alembic&lt;2.0,&gt;=1.0-&gt;apache-airflow) (1.1.0)
+Requirement already satisfied: python-editor&gt;=0.3 in /opt/tljh/user/lib/python3.6/site-packages (from alembic&lt;2.0,&gt;=1.0-&gt;apache-airflow) (1.0.4)
+Requirement already satisfied: python3-openid&gt;=2.0 in /opt/tljh/user/lib/python3.6/site-packages (from Flask-OpenID&lt;2,&gt;=1.2.5-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (3.1.0)
+Requirement already satisfied: Babel&gt;=2.3 in /opt/tljh/user/lib/python3.6/site-packages (from Flask-Babel&lt;1,&gt;=0.11.1-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (2.7.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in /opt/tljh/user/lib/python3.6/site-packages (from jsonschema&gt;=3.0.1&lt;4-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (19.1.0)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /opt/tljh/user/lib/python3.6/site-packages (from jsonschema&gt;=3.0.1&lt;4-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.15.4)
+Requirement already satisfied: defusedxml in /opt/tljh/user/lib/python3.6/site-packages (from python3-openid&gt;=2.0-&gt;Flask-OpenID&lt;2,&gt;=1.2.5-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.6.0)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># initialize the database</span>
+airflow<span class="w"> </span>initdb
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>DB: sqlite:////home/jupyter-sheng_wei/airflow/airflow.db
+[2019-12-02 14:25:56,971] {db.py:368} INFO - Creating tables
+Done.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -&gt; e3a246e0dc1, current schema
+INFO  [alembic.runtime.migration] Running upgrade e3a246e0dc1 -&gt; 1507a7289a2f, create is_encrypted
+/opt/tljh/user/lib/python3.6/site-packages/alembic/ddl/sqlite.py:39: UserWarning: Skipping unsupported ALTER for creation of implicit constraint
+  &#34;Skipping unsupported ALTER for &#34;
+INFO  [alembic.runtime.migration] Running upgrade 1507a7289a2f -&gt; 13eb55f81627, maintain history for compatibility with earlier migrations
+INFO  [alembic.runtime.migration] Running upgrade 13eb55f81627 -&gt; 338e90f54d61, More logging into task_instance
+INFO  [alembic.runtime.migration] Running upgrade 338e90f54d61 -&gt; 52d714495f0, job_id indices
+INFO  [alembic.runtime.migration] Running upgrade 52d714495f0 -&gt; 502898887f84, Adding extra to Log
+INFO  [alembic.runtime.migration] Running upgrade 502898887f84 -&gt; 1b38cef5b76e, add dagrun
+INFO  [alembic.runtime.migration] Running upgrade 1b38cef5b76e -&gt; 2e541a1dcfed, task_duration
+INFO  [alembic.runtime.migration] Running upgrade 2e541a1dcfed -&gt; 40e67319e3a9, dagrun_config
+INFO  [alembic.runtime.migration] Running upgrade 40e67319e3a9 -&gt; 561833c1c74b, add password column to user
+INFO  [alembic.runtime.migration] Running upgrade 561833c1c74b -&gt; 4446e08588, dagrun start end
+INFO  [alembic.runtime.migration] Running upgrade 4446e08588 -&gt; bbc73705a13e, Add notification_sent column to sla_miss
+INFO  [alembic.runtime.migration] Running upgrade bbc73705a13e -&gt; bba5a7cfc896, Add a column to track the encryption state of the &#39;Extra&#39; field in connection
+INFO  [alembic.runtime.migration] Running upgrade bba5a7cfc896 -&gt; 1968acfc09e3, add is_encrypted column to variable table
+INFO  [alembic.runtime.migration] Running upgrade 1968acfc09e3 -&gt; 2e82aab8ef20, rename user table
+INFO  [alembic.runtime.migration] Running upgrade 2e82aab8ef20 -&gt; 211e584da130, add TI state index
+INFO  [alembic.runtime.migration] Running upgrade 211e584da130 -&gt; 64de9cddf6c9, add task fails journal table
+INFO  [alembic.runtime.migration] Running upgrade 64de9cddf6c9 -&gt; f2ca10b85618, add dag_stats table
+INFO  [alembic.runtime.migration] Running upgrade f2ca10b85618 -&gt; 4addfa1236f1, Add fractional seconds to mysql tables
+INFO  [alembic.runtime.migration] Running upgrade 4addfa1236f1 -&gt; 8504051e801b, xcom dag task indices
+INFO  [alembic.runtime.migration] Running upgrade 8504051e801b -&gt; 5e7d17757c7a, add pid field to TaskInstance
+INFO  [alembic.runtime.migration] Running upgrade 5e7d17757c7a -&gt; 127d2bf2dfa7, Add dag_id/state index on dag_run table
+INFO  [alembic.runtime.migration] Running upgrade 127d2bf2dfa7 -&gt; cc1e65623dc7, add max tries column to task instance
+INFO  [alembic.runtime.migration] Running upgrade cc1e65623dc7 -&gt; bdaa763e6c56, Make xcom value column a large binary
+INFO  [alembic.runtime.migration] Running upgrade bdaa763e6c56 -&gt; 947454bf1dff, add ti job_id index
+INFO  [alembic.runtime.migration] Running upgrade 947454bf1dff -&gt; d2ae31099d61, Increase text size for MySQL (not relevant for other DBs&#39; text types)
+INFO  [alembic.runtime.migration] Running upgrade d2ae31099d61 -&gt; 0e2a74e0fc9f, Add time zone awareness
+INFO  [alembic.runtime.migration] Running upgrade d2ae31099d61 -&gt; 33ae817a1ff4, kubernetes_resource_checkpointing
+INFO  [alembic.runtime.migration] Running upgrade 33ae817a1ff4 -&gt; 27c6a30d7c24, kubernetes_resource_checkpointing
+INFO  [alembic.runtime.migration] Running upgrade 27c6a30d7c24 -&gt; 86770d1215c0, add kubernetes scheduler uniqueness
+INFO  [alembic.runtime.migration] Running upgrade 86770d1215c0, 0e2a74e0fc9f -&gt; 05f30312d566, merge heads
+INFO  [alembic.runtime.migration] Running upgrade 05f30312d566 -&gt; f23433877c24, fix mysql not null constraint
+INFO  [alembic.runtime.migration] Running upgrade f23433877c24 -&gt; 856955da8476, fix sqlite foreign key
+INFO  [alembic.runtime.migration] Running upgrade 856955da8476 -&gt; 9635ae0956e7, index-faskfail
+INFO  [alembic.runtime.migration] Running upgrade 9635ae0956e7 -&gt; dd25f486b8ea, add idx_log_dag
+INFO  [alembic.runtime.migration] Running upgrade dd25f486b8ea -&gt; bf00311e1990, add index to taskinstance
+INFO  [alembic.runtime.migration] Running upgrade 9635ae0956e7 -&gt; 0a2a5b66e19d, add task_reschedule table
+INFO  [alembic.runtime.migration] Running upgrade 0a2a5b66e19d, bf00311e1990 -&gt; 03bc53e68815, merge_heads_2
+INFO  [alembic.runtime.migration] Running upgrade 03bc53e68815 -&gt; 41f5f12752f8, add superuser field
+INFO  [alembic.runtime.migration] Running upgrade 41f5f12752f8 -&gt; c8ffec048a3b, add fields to dag
+INFO  [alembic.runtime.migration] Running upgrade c8ffec048a3b -&gt; dd4ecb8fbee3, Add schedule interval to dag
+INFO  [alembic.runtime.migration] Running upgrade dd4ecb8fbee3 -&gt; 939bb1e647c8, task reschedule fk on cascade delete
+INFO  [alembic.runtime.migration] Running upgrade 939bb1e647c8 -&gt; 6e96a59344a4, Make TaskInstance.pool not nullable
+INFO  [alembic.runtime.migration] Running upgrade 6e96a59344a4 -&gt; 74effc47d867, change datetime to datetime2(6) on MSSQL tables
+INFO  [alembic.runtime.migration] Running upgrade c8ffec048a3b -&gt; a56c9515abdc, Remove dag_stat table
+INFO  [alembic.runtime.migration] Running upgrade 939bb1e647c8 -&gt; 004c1210f153, increase queue name size limit
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># start the web server, default port is 8080</span>
+airflow<span class="w"> </span>webserver<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>bash: fg: %%bash: no such job
+  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+[<span class="ansi-blue-fg">2019-12-02 14:30:48,749</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:48,750</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+Running the Gunicorn Server with:
+Workers: 4 sync
+Host: 0.0.0.0:8080
+Timeout: 120
+Logfiles: - -
+=================================================================            
+[2019-12-02 14:30:49 +0900] [14677] [INFO] Starting gunicorn 19.9.0
+[2019-12-02 14:30:49 +0900] [14677] [INFO] Listening at: http://0.0.0.0:8080 (14677)
+[2019-12-02 14:30:49 +0900] [14677] [INFO] Using worker: sync
+[2019-12-02 14:30:49 +0900] [14682] [INFO] Booting worker with pid: 14682
+[2019-12-02 14:30:50 +0900] [14683] [INFO] Booting worker with pid: 14683
+[2019-12-02 14:30:50 +0900] [14684] [INFO] Booting worker with pid: 14684
+[2019-12-02 14:30:50 +0900] [14685] [INFO] Booting worker with pid: 14685
+[<span class="ansi-blue-fg">2019-12-02 14:30:50,996</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,008</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,289</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,304</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,442</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,456</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,469</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,480</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+123.226.242.94 - - [02/Dec/2019:14:31:07 +0900] &#34;GET / HTTP/1.1&#34; 302 221 &#34;-&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+123.226.242.94 - - [02/Dec/2019:14:31:08 +0900] &#34;GET /admin/ HTTP/1.1&#34; 200 115313 &#34;-&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+123.226.242.94 - - [02/Dec/2019:14:31:08 +0900] &#34;GET /admin/airflow/blocked HTTP/1.1&#34; 200 2 &#34;http://jhub.name:8080/admin/&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+123.226.242.94 - - [02/Dec/2019:14:31:08 +0900] &#34;GET /admin/airflow/dag_stats HTTP/1.1&#34; 200 9486 &#34;http://jhub.name:8080/admin/&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+123.226.242.94 - - [02/Dec/2019:14:31:08 +0900] &#34;GET /admin/airflow/task_stats HTTP/1.1&#34; 200 30510 &#34;http://jhub.name:8080/admin/&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+[2019-12-02 14:31:23 +0900] [14677] [INFO] Handling signal: ttin
+[2019-12-02 14:31:23 +0900] [14687] [INFO] Booting worker with pid: 14687
+[<span class="ansi-blue-fg">2019-12-02 14:31:23,855</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:31:23,856</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[2019-12-02 14:31:24 +0900] [14677] [INFO] Handling signal: ttou
+[2019-12-02 14:31:24 +0900] [14682] [INFO] Worker exiting (pid: 14682)
+[2019-12-02 14:31:30 +0900] [14677] [INFO] Handling signal: int
+[2019-12-02 14:31:30 +0900] [14683] [INFO] Worker exiting (pid: 14683)
+[2019-12-02 14:31:30 +0900] [14684] [INFO] Worker exiting (pid: 14684)
+[2019-12-02 14:31:30 +0900] [14685] [INFO] Worker exiting (pid: 14685)
+[2019-12-02 14:31:30 +0900] [14687] [INFO] Worker exiting (pid: 14687)
+[2019-12-02 14:31:31 +0900] [14677] [INFO] Shutting down: Master
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># start the scheduler</span>
+<span class="n">airflow</span> <span class="n">scheduler</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,327</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,343</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1320} INFO - Starting the scheduler
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,343</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1328} INFO - Running execute loop for -1 seconds
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,345</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1329} INFO - Processing each file at most -1 times
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,346</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1332} INFO - Searching for files in <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,351</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1334} INFO - There are 20 files in <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,354</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1382} INFO - Resetting orphaned tasks for active dag runs
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,366</span>] {<span class="ansi-blue-fg">dag_processing.py:</span>556} INFO - Launched DagFileProcessorManager with pid: 14781
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,374</span>] {<span class="ansi-blue-fg">settings.py:</span>54} INFO - Configured default timezone &lt;Timezone [UTC]&gt;
+[2019-12-02 14:33:56,384] {dag_processing.py:760} ERROR - Cannot use more than 1 thread when using sqlite. Setting parallelism to 1
+[<span class="ansi-blue-fg">2019-12-02 14:34:11,631</span>] {<span class="ansi-blue-fg">helpers.py:</span>308} INFO - Sending Signals.SIGTERM to GPID 14781
+[<span class="ansi-blue-fg">2019-12-02 14:34:11,636</span>] {<span class="ansi-blue-fg">helpers.py:</span>286} INFO - Process <span class="ansi-bold">psutil.Process(pid=14781, status=&#39;terminated&#39;)</span> (14781) terminated with exit code 0
+[<span class="ansi-blue-fg">2019-12-02 14:34:11,637</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1361} INFO - Exited execute loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2020/01/07/安慰剂/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2019/10/20/Try-NBViewer/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-12-02 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2023 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>

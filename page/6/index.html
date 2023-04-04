@@ -145,6 +145,293 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2020-06-20 </div>
+			<div class="article-title"><a href="/2020/06/20/Try-Zeppelin/" >Try Zeppelin</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/data-collective/apache-zeppelin-oauth-integration-using-apache-knox-dea2362e3dda">https://medium.com/data-collective/apache-zeppelin-oauth-integration-using-apache-knox-dea2362e3dda</a></li>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/ojima-h/items/b72601004c039130fae7">https://qiita.com/ojima-h/items/b72601004c039130fae7</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="https://github.com/apache/zeppelin"><a target="_blank" rel="noopener" href="https://github.com/apache/zeppelin">https://github.com/apache/zeppelin</a><a class="anchor-link" href="#https://github.com/apache/zeppelin">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span>https://ftp.riken.jp/net/apache/zeppelin/zeppelin-0.8.2/zeppelin-0.8.2-bin-all.tgz
+tar<span class="w"> </span>zxvf<span class="w"> </span>zeppelin-0.8.2-bin-all.tgz
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/zeppelin-0.8.2-bin-all
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 29M
+drwxr-xr-x  8 jupyter-sheng_wei jupyter-sheng_wei 4.0K Sep 26  2019 .
+drwxr-x--- 33 jupyter-sheng_wei jupyterhub-users  4.0K Jun 19 22:04 ..
+-rw-r--r--  1 jupyter-sheng_wei jupyter-sheng_wei  61K Sep 26  2019 LICENSE
+-rw-r--r--  1 jupyter-sheng_wei jupyter-sheng_wei 5.5K Sep 26  2019 NOTICE
+-rw-r--r--  1 jupyter-sheng_wei jupyter-sheng_wei 1.3K Sep 26  2019 README.md
+drwxr-xr-x  2 jupyter-sheng_wei jupyter-sheng_wei 4.0K Jun 19 22:04 bin
+drwxr-xr-x  2 jupyter-sheng_wei jupyter-sheng_wei 4.0K Jun 19 22:04 conf
+drwxr-xr-x 26 jupyter-sheng_wei jupyter-sheng_wei 4.0K Jun 19 22:04 interpreter
+drwxr-xr-x  4 jupyter-sheng_wei jupyter-sheng_wei  12K Jun 19 22:04 lib
+drwxr-xr-x  2 jupyter-sheng_wei jupyter-sheng_wei 4.0K Jun 19 22:04 licenses
+drwxr-xr-x  8 jupyter-sheng_wei jupyter-sheng_wei 4.0K Jun 19 22:04 notebook
+-rw-r--r--  1 jupyter-sheng_wei jupyter-sheng_wei  29M Sep 26  2019 zeppelin-web-0.8.2.war
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="https://issues.apache.org/jira/browse/ZEPPELIN-621"><a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/ZEPPELIN-621">https://issues.apache.org/jira/browse/ZEPPELIN-621</a><a class="anchor-link" href="#https://issues.apache.org/jira/browse/ZEPPELIN-621">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+sudo<span class="w"> </span>-HE<span class="w"> </span>apt-get<span class="w"> </span>--yes<span class="w"> </span>install<span class="w"> </span>openjdk-8-jdk
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+~/zeppelin-0.8.2-bin-all/bin/zeppelin-daemon.sh<span class="w"> </span>start
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Zeppelin start [<span class="ansi-green-intense-fg ansi-bold">  OK  </span>]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Multi-user-Support"><a target="_blank" rel="noopener" href="https://zeppelin.apache.org/docs/latest/setup/basics/multi_user_support.html">Multi-user Support</a><a class="anchor-link" href="#Multi-user-Support">&#182;</a></h1><h2 id="multiple-users-login-/-logout-using-Shiro-Authentication"><a target="_blank" rel="noopener" href="https://zeppelin.apache.org/docs/latest/setup/security/shiro_authentication.html">multiple users login / logout using Shiro Authentication</a><a class="anchor-link" href="#multiple-users-login-/-logout-using-Shiro-Authentication">&#182;</a></h2><h2 id="Make-Zeppelin-HTTPS-with-Traefik">Make Zeppelin HTTPS with Traefik<a class="anchor-link" href="#Make-Zeppelin-HTTPS-with-Traefik">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/seii-saintway/the-littlest-jupyterhub/commit/756ce4c7978c3f95f35499d2d4adfd4b2270985f">https://github.com/seii-saintway/the-littlest-jupyterhub/commit/756ce4c7978c3f95f35499d2d4adfd4b2270985f</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/dynamic/zeppelin.toml &gt; /dev/null</span>
+
+<span class="s">[frontends.zeppelin]</span>
+<span class="s">backend = &quot;zeppelin&quot;</span>
+<span class="s">passHostHeader = true</span>
+
+<span class="s">[frontends.zeppelin.routes.f1]</span>
+<span class="s">rule = &quot;PathPrefixStrip:/zeppelin/&quot;</span>
+
+<span class="s">[backends.zeppelin.servers.s1]</span>
+<span class="s">url = &quot;http://127.0.0.1:8080&quot;</span>
+<span class="s">weight = 1</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>/opt/tljh/hub/bin/python<span class="w"> </span>-m<span class="w"> </span>tljh.installer
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Granting passwordless sudo to JupyterHub admins...
+Setting up user environment...
+
+
+==&gt; WARNING: A newer version of conda exists. &lt;==
+  current version: 4.5.8
+  latest version: 4.8.3
+
+Please update conda by running
+
+    $ conda update -n base conda
+
+
+Setting up JupyterHub...
+Waiting for JupyterHub to come up (1/20 tries)
+Waiting for JupyterHub to come up (2/20 tries)
+Done!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>cat<span class="w"> </span>/opt/tljh/installer.log
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2019-10-13 15:21:02,889 Granting passwordless sudo to JupyterHub admins...
+2019-10-13 15:21:02,890 Setting up user environment...
+2019-10-13 15:21:26,052 Setting up JupyterHub...
+2020-06-20 21:30:49,996 Granting passwordless sudo to JupyterHub admins...
+2020-06-20 21:30:49,996 Setting up user environment...
+2020-06-20 21:32:15,388 Setting up JupyterHub...
+2020-06-20 21:33:48,646 Waiting for JupyterHub to come up (1/20 tries)
+2020-06-20 21:33:49,656 Waiting for JupyterHub to come up (2/20 tries)
+2020-06-20 21:33:49,678 Done!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="It-seems-that-TLJH-is-updated-to-support-loading-multiple-traefik.toml-snippets."><a target="_blank" rel="noopener" href="http://tljh.jupyter.org/en/latest/topic/escape-hatch.html#extending-traefik-toml">It seems that TLJH is updated to support loading multiple traefik.toml snippets.</a><a class="anchor-link" href="#It-seems-that-TLJH-is-updated-to-support-loading-multiple-traefik.toml-snippets.">&#182;</a></h2>
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2020/06/20/Try-Zeppelin/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2020-05-24 </div>
 			<div class="article-title"><a href="/2020/05/24/Love-Story/" >Love Story</a></div>						
 		</h3>
@@ -1620,8 +1907,8 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2019-10-20 </div>
-			<div class="article-title"><a href="/2019/10/20/Try-NBViewer/" >Try NBViewer</a></div>						
+			<div class="date"> 2019-12-02 </div>
+			<div class="article-title"><a href="/2019/12/02/Try-Airflow/" >Try Airflow</a></div>						
 		</h3>
 	
 
@@ -1635,7 +1922,9 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Try-NBViewer">Try NBViewer<a class="anchor-link" href="#Try-NBViewer">&#182;</a></h1><p><a target="_blank" rel="noopener" href="https://github.com/jupyter/nbviewer">https://github.com/jupyter/nbviewer</a></p>
+<h2 id="Airflow">Airflow<a class="anchor-link" href="#Airflow">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/apache/airflow">https://github.com/apache/airflow</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/apache/airflow/blob/master/LICENSE">LICENSE</a></p>
+<p><a target="_blank" rel="noopener" href="https://opensource.org/licenses/Apache-2.0">Apache License 2.0</a></p>
 
 </div>
 </div>
@@ -1645,8 +1934,12 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>chown<span class="w"> </span>jupyter-sheng_wei:docker<span class="w"> </span>/var/run/docker.sock
-<span class="o">!</span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>jupyter/nbviewer
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># airflow needs a home, ~/airflow is the default,</span>
+<span class="c1"># but you can lay foundation somewhere else if you prefer</span>
+<span class="c1"># (optional)</span>
+mkdir<span class="w"> </span>~/airflow
+%env<span class="w"> </span><span class="nv">AIRFLOW_HOME</span><span class="o">=</span>~/airflow
 </pre></div>
 
     </div>
@@ -1659,21 +1952,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-HE<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nbviewer
-<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>nbviewer<span class="w"> </span>--help
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">echo</span><span class="w"> </span><span class="nv">JUPYTERHUB_SERVICE_PREFIX</span><span class="o">=</span><span class="nv">$JUPYTERHUB_SERVICE_PREFIX</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-HE<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">marshmallow</span><span class="o">==</span><span class="m">2</span>.18.0
 </pre></div>
 
     </div>
@@ -1690,7 +1969,14 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>JUPYTERHUB_SERVICE_PREFIX=/user/sheng_wei/
+<pre>Collecting marshmallow==2.18.0
+  Downloading https://files.pythonhosted.org/packages/9a/3c/4cc463c53136dc503f9ee234c4a6592e1c7411cb362f844e80df70361f29/marshmallow-2.18.0-py2.py3-none-any.whl (50kB)
+     |████████████████████████████████| 51kB 15.9MB/s eta 0:00:01
+Installing collected packages: marshmallow
+  Found existing installation: marshmallow 3.2.2
+    Uninstalling marshmallow-3.2.2:
+      Successfully uninstalled marshmallow-3.2.2
+Successfully installed marshmallow-2.18.0
 </pre>
 </div>
 </div>
@@ -1704,7 +1990,9 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo JUPYTERHUB_SERVICE_PREFIX=$JUPYTERHUB_SERVICE_PREFIX&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># install from pypi using pip</span>
+sudo<span class="w"> </span>-HE<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>apache-airflow
 </pre></div>
 
     </div>
@@ -1721,7 +2009,84 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>JUPYTERHUB_SERVICE_PREFIX=
+<pre>Requirement already satisfied: apache-airflow in /opt/tljh/user/lib/python3.6/site-packages (1.10.6)
+Requirement already satisfied: cached-property~=1.5 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.5.1)
+Requirement already satisfied: future&lt;0.17,&gt;=0.16.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.16.0)
+Requirement already satisfied: text-unidecode==1.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.2)
+Requirement already satisfied: unicodecsv&gt;=0.14.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.14.1)
+Requirement already satisfied: iso8601&gt;=0.1.12 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.1.12)
+Requirement already satisfied: croniter&lt;0.4,&gt;=0.3.17 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.3.30)
+Requirement already satisfied: flask-login&lt;0.5,&gt;=0.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.4.1)
+Requirement already satisfied: python-dateutil&lt;3,&gt;=2.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.8.0)
+Requirement already satisfied: requests&lt;3,&gt;=2.20.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.22.0)
+Requirement already satisfied: colorlog==4.0.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (4.0.2)
+Requirement already satisfied: dill&lt;0.4,&gt;=0.2.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.3.1.1)
+Requirement already satisfied: python-daemon&lt;2.2,&gt;=2.1.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.1.2)
+Requirement already satisfied: marshmallow-sqlalchemy&lt;0.19.0,&gt;=0.16.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.18.0)
+Requirement already satisfied: psutil&lt;6.0.0,&gt;=4.2.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (5.6.3)
+Requirement already satisfied: termcolor==1.1.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.1.0)
+Requirement already satisfied: flask-admin==1.5.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.5.3)
+Requirement already satisfied: flask-swagger==0.2.13 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.2.13)
+Requirement already satisfied: pygments&lt;3.0,&gt;=2.0.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.4.2)
+Requirement already satisfied: sqlalchemy~=1.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.3.8)
+Requirement already satisfied: funcsigs==1.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.0.0)
+Requirement already satisfied: flask&lt;2.0,&gt;=1.1.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.1.1)
+Requirement already satisfied: tenacity==4.12.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (4.12.0)
+Requirement already satisfied: setproctitle&lt;2,&gt;=1.1.8 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.1.10)
+Requirement already satisfied: thrift&gt;=0.9.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.13.0)
+Requirement already satisfied: pendulum==1.4.4 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.4.4)
+Requirement already satisfied: jinja2&lt;2.11.0,&gt;=2.10.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.10.1)
+Requirement already satisfied: gunicorn&lt;20.0,&gt;=19.5.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (19.9.0)
+Requirement already satisfied: argcomplete~=1.10 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.10.3)
+Requirement already satisfied: flask-appbuilder&lt;2.0.0,&gt;=1.12.5 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.13.1)
+Requirement already satisfied: lazy-object-proxy~=1.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.4.3)
+Requirement already satisfied: json-merge-patch==0.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.2)
+Requirement already satisfied: flask-wtf&lt;0.15,&gt;=0.14.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.14.2)
+Requirement already satisfied: tabulate&lt;0.9,&gt;=0.7.5 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.8.6)
+Requirement already satisfied: flask-caching&lt;1.4.0,&gt;=1.3.3 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.3.3)
+Requirement already satisfied: configparser&lt;3.6.0,&gt;=3.5.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (3.5.3)
+Requirement already satisfied: zope.deprecation&lt;5.0,&gt;=4.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (4.4.0)
+Requirement already satisfied: markdown&lt;3.0,&gt;=2.5.2 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (2.6.11)
+Requirement already satisfied: pandas&lt;1.0.0,&gt;=0.17.1 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.25.1)
+Requirement already satisfied: alembic&lt;2.0,&gt;=1.0 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.1.0)
+Requirement already satisfied: tzlocal&lt;2.0.0,&gt;=1.4 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (1.5.1)
+Requirement already satisfied: graphviz&gt;=0.12 in /opt/tljh/user/lib/python3.6/site-packages (from apache-airflow) (0.13.2)
+Requirement already satisfied: six&gt;=1.5 in /opt/tljh/user/lib/python3.6/site-packages (from python-dateutil&lt;3,&gt;=2.3-&gt;apache-airflow) (1.12.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/tljh/user/lib/python3.6/site-packages (from requests&lt;3,&gt;=2.20.0-&gt;apache-airflow) (2019.9.11)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /opt/tljh/user/lib/python3.6/site-packages (from requests&lt;3,&gt;=2.20.0-&gt;apache-airflow) (1.25.3)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /opt/tljh/user/lib/python3.6/site-packages (from requests&lt;3,&gt;=2.20.0-&gt;apache-airflow) (2.8)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /opt/tljh/user/lib/python3.6/site-packages (from requests&lt;3,&gt;=2.20.0-&gt;apache-airflow) (3.0.4)
+Requirement already satisfied: setuptools in /opt/tljh/user/lib/python3.6/site-packages (from python-daemon&lt;2.2,&gt;=2.1.1-&gt;apache-airflow) (41.4.0)
+Requirement already satisfied: docutils in /opt/tljh/user/lib/python3.6/site-packages (from python-daemon&lt;2.2,&gt;=2.1.1-&gt;apache-airflow) (0.15.2)
+Requirement already satisfied: lockfile&gt;=0.10 in /opt/tljh/user/lib/python3.6/site-packages (from python-daemon&lt;2.2,&gt;=2.1.1-&gt;apache-airflow) (0.12.2)
+Requirement already satisfied: marshmallow&gt;=2.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from marshmallow-sqlalchemy&lt;0.19.0,&gt;=0.16.1-&gt;apache-airflow) (2.18.0)
+Requirement already satisfied: wtforms in /opt/tljh/user/lib/python3.6/site-packages (from flask-admin==1.5.3-&gt;apache-airflow) (2.2.1)
+Requirement already satisfied: PyYAML&gt;=3.0 in /opt/tljh/user/lib/python3.6/site-packages (from flask-swagger==0.2.13-&gt;apache-airflow) (5.1.2)
+Requirement already satisfied: ordereddict in /opt/tljh/user/lib/python3.6/site-packages (from funcsigs==1.0.0-&gt;apache-airflow) (1.1)
+Requirement already satisfied: itsdangerous&gt;=0.24 in /opt/tljh/user/lib/python3.6/site-packages (from flask&lt;2.0,&gt;=1.1.0-&gt;apache-airflow) (1.1.0)
+Requirement already satisfied: Werkzeug&gt;=0.15 in /opt/tljh/user/lib/python3.6/site-packages (from flask&lt;2.0,&gt;=1.1.0-&gt;apache-airflow) (0.16.0)
+Requirement already satisfied: click&gt;=5.1 in /opt/tljh/user/lib/python3.6/site-packages (from flask&lt;2.0,&gt;=1.1.0-&gt;apache-airflow) (7.0)
+Requirement already satisfied: pytzdata&gt;=2018.3.0.0 in /opt/tljh/user/lib/python3.6/site-packages (from pendulum==1.4.4-&gt;apache-airflow) (2019.3)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /opt/tljh/user/lib/python3.6/site-packages (from jinja2&lt;2.11.0,&gt;=2.10.1-&gt;apache-airflow) (1.1.1)
+Requirement already satisfied: apispec[yaml]&gt;=1.1.1&lt;2 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (3.1.0)
+Requirement already satisfied: Flask-OpenID&lt;2,&gt;=1.2.5 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (1.2.5)
+Requirement already satisfied: marshmallow-enum&lt;2,&gt;=1.4.1 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (1.5.1)
+Requirement already satisfied: colorama&lt;1,&gt;=0.3.9 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.4.1)
+Requirement already satisfied: Flask-JWT-Extended&lt;4,&gt;=3.18 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (3.24.1)
+Requirement already satisfied: prison==0.1.0 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.1.0)
+Requirement already satisfied: Flask-Babel&lt;1,&gt;=0.11.1 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.12.2)
+Requirement already satisfied: jsonschema&gt;=3.0.1&lt;4 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (3.0.2)
+Requirement already satisfied: PyJWT&gt;=1.7.1 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (1.7.1)
+Requirement already satisfied: Flask-SQLAlchemy&lt;3,&gt;=2.3 in /opt/tljh/user/lib/python3.6/site-packages (from flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (2.4.1)
+Requirement already satisfied: numpy&gt;=1.13.3 in /opt/tljh/user/lib/python3.6/site-packages (from pandas&lt;1.0.0,&gt;=0.17.1-&gt;apache-airflow) (1.17.2)
+Requirement already satisfied: pytz&gt;=2017.2 in /opt/tljh/user/lib/python3.6/site-packages (from pandas&lt;1.0.0,&gt;=0.17.1-&gt;apache-airflow) (2019.2)
+Requirement already satisfied: Mako in /opt/tljh/user/lib/python3.6/site-packages (from alembic&lt;2.0,&gt;=1.0-&gt;apache-airflow) (1.1.0)
+Requirement already satisfied: python-editor&gt;=0.3 in /opt/tljh/user/lib/python3.6/site-packages (from alembic&lt;2.0,&gt;=1.0-&gt;apache-airflow) (1.0.4)
+Requirement already satisfied: python3-openid&gt;=2.0 in /opt/tljh/user/lib/python3.6/site-packages (from Flask-OpenID&lt;2,&gt;=1.2.5-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (3.1.0)
+Requirement already satisfied: Babel&gt;=2.3 in /opt/tljh/user/lib/python3.6/site-packages (from Flask-Babel&lt;1,&gt;=0.11.1-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (2.7.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in /opt/tljh/user/lib/python3.6/site-packages (from jsonschema&gt;=3.0.1&lt;4-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (19.1.0)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /opt/tljh/user/lib/python3.6/site-packages (from jsonschema&gt;=3.0.1&lt;4-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.15.4)
+Requirement already satisfied: defusedxml in /opt/tljh/user/lib/python3.6/site-packages (from python3-openid&gt;=2.0-&gt;Flask-OpenID&lt;2,&gt;=1.2.5-&gt;flask-appbuilder&lt;2.0.0,&gt;=1.12.5-&gt;apache-airflow) (0.6.0)
 </pre>
 </div>
 </div>
@@ -1735,9 +2100,9 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>-lahd<span class="w"> </span>/home/jupyter-sheng_wei
-<span class="o">!</span>ls<span class="w"> </span>-lahd<span class="w"> </span>/home/jupyter-sheng_wei/hexo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>echo
-<span class="o">!</span>sudo<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>nbviewer<span class="w"> </span>--base-url<span class="o">=</span>/<span class="w"> </span>--localfiles<span class="o">=</span>/home/jupyter-sheng_wei/hexo<span class="w"> </span>--no-cache<span class="w"> </span>--logging<span class="o">=</span>debug
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># initialize the database</span>
+airflow<span class="w"> </span>initdb
 </pre></div>
 
     </div>
@@ -1754,97 +2119,69 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.ya
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>drwxr-x--- 24 jupyter-sheng_wei jupyterhub-users 4.0K Oct 20 21:06 /home/jupyter-sheng_wei
-drwxr-xr-x 13 jupyter-sheng_wei jupyterhub-users 4.0K Oct 20 18:58 /home/jupyter-sheng_wei/hexo
+<pre>DB: sqlite:////home/jupyter-sheng_wei/airflow/airflow.db
+[2019-12-02 14:25:56,971] {db.py:368} INFO - Creating tables
+Done.
+</pre>
+</div>
+</div>
 
-<span class="ansi-green-fg">[I 191020 22:23:36 app:124]</span> Not indexing notebooks
-<span class="ansi-green-fg">[I 191020 22:23:36 app:128]</span> Not using cache
-fatal: not a git repository (or any of the parent directories): .git
-<span class="ansi-red-fg">[E 191020 22:23:36 app:166]</span> Failed to get git info: Command &#39;[&#39;git&#39;, &#39;log&#39;, &#39;-1&#39;, &#39;--format=%H\n%s\n%cD&#39;]&#39; returned non-zero exit status 128.
-<span class="ansi-blue-fg">[D 191020 22:23:36 selector_events:65]</span> Using selector: EpollSelector
-<span class="ansi-yellow-fg">[W 191020 22:23:36 app:250]</span> Serving local notebooks in /home/jupyter-sheng_wei/hexo, this can be a security risk
-<span class="ansi-green-fg">[I 191020 22:23:36 app:330]</span> Listening on 0.0.0.0:5000, path /
-<span class="ansi-red-fg">[E 191020 22:23:40 web:1670]</span> Uncaught exception GET /faq (110.3.247.172)
-    HTTPServerRequest(protocol=&#39;http&#39;, host=&#39;jhub.name:5000&#39;, method=&#39;GET&#39;, uri=&#39;/faq&#39;, version=&#39;HTTP/1.1&#39;, remote_ip=&#39;110.3.247.172&#39;)
-    Traceback (most recent call last):
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/tornado/web.py&#34;, line 1590, in _execute
-        result = method(*self.path_args, **self.path_kwargs)
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/nbviewer/handlers.py&#34;, line 44, in get
-        self.finish(self.render_template(&#39;faq.md&#39;))
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/nbviewer/providers/base.py&#34;, line 249, in render_template
-        return template.render(**ns)
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/jinja2/asyncsupport.py&#34;, line 76, in render
-        return original_render(self, *args, **kwargs)
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/jinja2/environment.py&#34;, line 1008, in render
-        return self.environment.handle_exception(exc_info, True)
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/jinja2/environment.py&#34;, line 780, in handle_exception
-        reraise(exc_type, exc_value, tb)
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/jinja2/_compat.py&#34;, line 37, in reraise
-        raise value.with_traceback(tb)
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/nbviewer/templates/faq.md&#34;, line 1, in top-level template code
-        {% extends &#34;layout.html&#34; %}
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/nbviewer/templates/layout.html&#34;, line 118, in top-level template code
-        {% block container %}&lt;div class=&#34;container container-main&#34;&gt;
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/nbviewer/templates/layout.html&#34;, line 119, in block &#34;container&#34;
-        {% block body %}{% endblock %}
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/nbviewer/templates/faq.md&#34;, line 5, in block &#34;body&#34;
-        {% filter markdown(extensions=[&#39;headerid(level=3)&#39;,&#39;toc&#39;], extension_configs= {&#39;toc&#39; : [(&#39;anchorlink&#39;, True)]}) %}
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/markdown/core.py&#34;, line 390, in markdown
-        md = Markdown(**kwargs)
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/markdown/core.py&#34;, line 100, in __init__
-        configs=kwargs.get(&#39;extension_configs&#39;, {}))
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/markdown/core.py&#34;, line 126, in registerExtensions
-        ext = self.build_extension(ext, configs.get(ext, {}))
-      File &#34;/opt/tljh/user/lib/python3.6/site-packages/markdown/core.py&#34;, line 166, in build_extension
-        module = importlib.import_module(ext_name)
-      File &#34;/opt/tljh/user/lib/python3.6/importlib/__init__.py&#34;, line 126, in import_module
-        return _bootstrap._gcd_import(name[level:], package, level)
-      File &#34;&lt;frozen importlib._bootstrap&gt;&#34;, line 994, in _gcd_import
-      File &#34;&lt;frozen importlib._bootstrap&gt;&#34;, line 971, in _find_and_load
-      File &#34;&lt;frozen importlib._bootstrap&gt;&#34;, line 953, in _find_and_load_unlocked
-    ModuleNotFoundError: No module named &#39;headerid(level=3)&#39;
-<span class="ansi-red-fg">[E 191020 22:23:40 log:52]</span> {
-      &#34;Host&#34;: &#34;jhub.name:5000&#34;,
-      &#34;Connection&#34;: &#34;keep-alive&#34;,
-      &#34;Pragma&#34;: &#34;no-cache&#34;,
-      &#34;Cache-Control&#34;: &#34;no-cache&#34;,
-      &#34;Upgrade-Insecure-Requests&#34;: &#34;1&#34;,
-      &#34;User-Agent&#34;: &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36&#34;,
-      &#34;Accept&#34;: &#34;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&#34;,
-      &#34;Referer&#34;: &#34;http://jhub.name:5000/localfile/source/notebooks/Try-Plotly-Dash.ipynb&#34;,
-      &#34;Accept-Encoding&#34;: &#34;gzip, deflate&#34;,
-      &#34;Accept-Language&#34;: &#34;ja,en-US;q=0.9,en;q=0.8,zh-CN;q=0.7,zh;q=0.6&#34;,
-      &#34;Cookie&#34;: &#34;_xsrf=2|a81713c9|4a10b65ad1b4264e0b304a10743350a3|1570958079; G_ENABLED_IDPS=google; mjx.latest=2.7.6&#34;
-    }
-<span class="ansi-red-fg">[E 191020 22:23:40 log:53]</span> 500 GET /faq (110.3.247.172) 143.11ms referer=&#34;http://jhub.name:5000/localfile/source/notebooks/Try-Plotly-Dash.ipynb&#34; user-agent=&#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36&#34;
-<span class="ansi-blue-fg">[D 191020 22:23:40 log:53]</span> 200 GET /static/build/styles.css?v=20d08094b44c75ee15fd5045973d36e5 (110.3.247.172) 7.74ms
-<span class="ansi-blue-fg">[D 191020 22:23:40 log:53]</span> 200 GET /static/components/requirejs/require.js?v=6da8be361b9ee26c5e721e76c6d4afce (110.3.247.172) 4.48ms
-<span class="ansi-blue-fg">[D 191020 22:23:40 log:53]</span> 200 GET /static/components/moment/min/moment.min.js?v=89f87298ad94aa1e6b92f42eb66da043 (110.3.247.172) 2.21ms
-<span class="ansi-blue-fg">[D 191020 22:23:40 log:53]</span> 200 GET /static/components/bootstrap/js/bootstrap.min.js?v=5869c96cc8f19086aee625d670d741f9 (110.3.247.172) 2.07ms
-<span class="ansi-blue-fg">[D 191020 22:23:40 log:53]</span> 200 GET /static/img/nav_logo.svg?v=479cefe8d932fb14a67b93911b97d70f (110.3.247.172) 0.97ms
-<span class="ansi-blue-fg">[D 191020 22:23:40 log:53]</span> 200 GET /static/components/jquery/dist/jquery.min.js?v=e071abda8fe61194711cfc2ab99fe104 (110.3.247.172) 13.51ms
-<span class="ansi-blue-fg">[D 191020 22:23:40 log:53]</span> 200 GET /static/components/headroom.js/dist/headroom.min.js?v=b0a311ea668f8e768ea375f4a7abb81c (110.3.247.172) 1.11ms
-<span class="ansi-blue-fg">[D 191020 22:23:41 log:53]</span> 200 GET /static/components/headroom.js/dist/jQuery.headroom.min.js?v=f3a1bae118315d0c234afc74dc6aab71 (110.3.247.172) 1.01ms
-<span class="ansi-blue-fg">[D 191020 22:23:52 log:53]</span> 200 GET /static/ico/ipynb_icon_16x16.png (110.3.247.172) 0.77ms
-^C
-Traceback (most recent call last):
-  File &#34;/opt/tljh/user/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/tljh/user/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/nbviewer/__main__.py&#34;, line 2, in &lt;module&gt;
-    main()
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/nbviewer/app.py&#34;, line 332, in main
-    ioloop.IOLoop.current().start()
-  File &#34;/opt/tljh/user/lib/python3.6/site-packages/tornado/platform/asyncio.py&#34;, line 132, in start
-    self.asyncio_loop.run_forever()
-  File &#34;/opt/tljh/user/lib/python3.6/asyncio/base_events.py&#34;, line 427, in run_forever
-    self._run_once()
-  File &#34;/opt/tljh/user/lib/python3.6/asyncio/base_events.py&#34;, line 1404, in _run_once
-    event_list = self._selector.select(timeout)
-  File &#34;/opt/tljh/user/lib/python3.6/selectors.py&#34;, line 445, in select
-    fd_event_list = self._epoll.poll(timeout, max_ev)
-KeyboardInterrupt
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -&gt; e3a246e0dc1, current schema
+INFO  [alembic.runtime.migration] Running upgrade e3a246e0dc1 -&gt; 1507a7289a2f, create is_encrypted
+/opt/tljh/user/lib/python3.6/site-packages/alembic/ddl/sqlite.py:39: UserWarning: Skipping unsupported ALTER for creation of implicit constraint
+  &#34;Skipping unsupported ALTER for &#34;
+INFO  [alembic.runtime.migration] Running upgrade 1507a7289a2f -&gt; 13eb55f81627, maintain history for compatibility with earlier migrations
+INFO  [alembic.runtime.migration] Running upgrade 13eb55f81627 -&gt; 338e90f54d61, More logging into task_instance
+INFO  [alembic.runtime.migration] Running upgrade 338e90f54d61 -&gt; 52d714495f0, job_id indices
+INFO  [alembic.runtime.migration] Running upgrade 52d714495f0 -&gt; 502898887f84, Adding extra to Log
+INFO  [alembic.runtime.migration] Running upgrade 502898887f84 -&gt; 1b38cef5b76e, add dagrun
+INFO  [alembic.runtime.migration] Running upgrade 1b38cef5b76e -&gt; 2e541a1dcfed, task_duration
+INFO  [alembic.runtime.migration] Running upgrade 2e541a1dcfed -&gt; 40e67319e3a9, dagrun_config
+INFO  [alembic.runtime.migration] Running upgrade 40e67319e3a9 -&gt; 561833c1c74b, add password column to user
+INFO  [alembic.runtime.migration] Running upgrade 561833c1c74b -&gt; 4446e08588, dagrun start end
+INFO  [alembic.runtime.migration] Running upgrade 4446e08588 -&gt; bbc73705a13e, Add notification_sent column to sla_miss
+INFO  [alembic.runtime.migration] Running upgrade bbc73705a13e -&gt; bba5a7cfc896, Add a column to track the encryption state of the &#39;Extra&#39; field in connection
+INFO  [alembic.runtime.migration] Running upgrade bba5a7cfc896 -&gt; 1968acfc09e3, add is_encrypted column to variable table
+INFO  [alembic.runtime.migration] Running upgrade 1968acfc09e3 -&gt; 2e82aab8ef20, rename user table
+INFO  [alembic.runtime.migration] Running upgrade 2e82aab8ef20 -&gt; 211e584da130, add TI state index
+INFO  [alembic.runtime.migration] Running upgrade 211e584da130 -&gt; 64de9cddf6c9, add task fails journal table
+INFO  [alembic.runtime.migration] Running upgrade 64de9cddf6c9 -&gt; f2ca10b85618, add dag_stats table
+INFO  [alembic.runtime.migration] Running upgrade f2ca10b85618 -&gt; 4addfa1236f1, Add fractional seconds to mysql tables
+INFO  [alembic.runtime.migration] Running upgrade 4addfa1236f1 -&gt; 8504051e801b, xcom dag task indices
+INFO  [alembic.runtime.migration] Running upgrade 8504051e801b -&gt; 5e7d17757c7a, add pid field to TaskInstance
+INFO  [alembic.runtime.migration] Running upgrade 5e7d17757c7a -&gt; 127d2bf2dfa7, Add dag_id/state index on dag_run table
+INFO  [alembic.runtime.migration] Running upgrade 127d2bf2dfa7 -&gt; cc1e65623dc7, add max tries column to task instance
+INFO  [alembic.runtime.migration] Running upgrade cc1e65623dc7 -&gt; bdaa763e6c56, Make xcom value column a large binary
+INFO  [alembic.runtime.migration] Running upgrade bdaa763e6c56 -&gt; 947454bf1dff, add ti job_id index
+INFO  [alembic.runtime.migration] Running upgrade 947454bf1dff -&gt; d2ae31099d61, Increase text size for MySQL (not relevant for other DBs&#39; text types)
+INFO  [alembic.runtime.migration] Running upgrade d2ae31099d61 -&gt; 0e2a74e0fc9f, Add time zone awareness
+INFO  [alembic.runtime.migration] Running upgrade d2ae31099d61 -&gt; 33ae817a1ff4, kubernetes_resource_checkpointing
+INFO  [alembic.runtime.migration] Running upgrade 33ae817a1ff4 -&gt; 27c6a30d7c24, kubernetes_resource_checkpointing
+INFO  [alembic.runtime.migration] Running upgrade 27c6a30d7c24 -&gt; 86770d1215c0, add kubernetes scheduler uniqueness
+INFO  [alembic.runtime.migration] Running upgrade 86770d1215c0, 0e2a74e0fc9f -&gt; 05f30312d566, merge heads
+INFO  [alembic.runtime.migration] Running upgrade 05f30312d566 -&gt; f23433877c24, fix mysql not null constraint
+INFO  [alembic.runtime.migration] Running upgrade f23433877c24 -&gt; 856955da8476, fix sqlite foreign key
+INFO  [alembic.runtime.migration] Running upgrade 856955da8476 -&gt; 9635ae0956e7, index-faskfail
+INFO  [alembic.runtime.migration] Running upgrade 9635ae0956e7 -&gt; dd25f486b8ea, add idx_log_dag
+INFO  [alembic.runtime.migration] Running upgrade dd25f486b8ea -&gt; bf00311e1990, add index to taskinstance
+INFO  [alembic.runtime.migration] Running upgrade 9635ae0956e7 -&gt; 0a2a5b66e19d, add task_reschedule table
+INFO  [alembic.runtime.migration] Running upgrade 0a2a5b66e19d, bf00311e1990 -&gt; 03bc53e68815, merge_heads_2
+INFO  [alembic.runtime.migration] Running upgrade 03bc53e68815 -&gt; 41f5f12752f8, add superuser field
+INFO  [alembic.runtime.migration] Running upgrade 41f5f12752f8 -&gt; c8ffec048a3b, add fields to dag
+INFO  [alembic.runtime.migration] Running upgrade c8ffec048a3b -&gt; dd4ecb8fbee3, Add schedule interval to dag
+INFO  [alembic.runtime.migration] Running upgrade dd4ecb8fbee3 -&gt; 939bb1e647c8, task reschedule fk on cascade delete
+INFO  [alembic.runtime.migration] Running upgrade 939bb1e647c8 -&gt; 6e96a59344a4, Make TaskInstance.pool not nullable
+INFO  [alembic.runtime.migration] Running upgrade 6e96a59344a4 -&gt; 74effc47d867, change datetime to datetime2(6) on MSSQL tables
+INFO  [alembic.runtime.migration] Running upgrade c8ffec048a3b -&gt; a56c9515abdc, Remove dag_stat table
+INFO  [alembic.runtime.migration] Running upgrade 939bb1e647c8 -&gt; 004c1210f153, increase queue name size limit
 </pre>
 </div>
 </div>
@@ -1853,44 +2190,132 @@ KeyboardInterrupt
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>↑ Just skip the problem of <code>ModuleNotFoundError: No module named 'headerid(level=3)'</code> at <code>/faq</code>.</p>
-</blockquote>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:5000<span class="w"> </span>jupyter/nbviewer<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>nbviewer<span class="w"> </span>--base-url<span class="o">=</span>/<span class="w"> </span>--localfiles<span class="o">=</span>/<span class="w"> </span>--logging<span class="o">=</span>debug
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># start the web server, default port is 8080</span>
+airflow<span class="w"> </span>webserver<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>bash: fg: %%bash: no such job
+  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+[<span class="ansi-blue-fg">2019-12-02 14:30:48,749</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:48,750</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+Running the Gunicorn Server with:
+Workers: 4 sync
+Host: 0.0.0.0:8080
+Timeout: 120
+Logfiles: - -
+=================================================================            
+[2019-12-02 14:30:49 +0900] [14677] [INFO] Starting gunicorn 19.9.0
+[2019-12-02 14:30:49 +0900] [14677] [INFO] Listening at: http://0.0.0.0:8080 (14677)
+[2019-12-02 14:30:49 +0900] [14677] [INFO] Using worker: sync
+[2019-12-02 14:30:49 +0900] [14682] [INFO] Booting worker with pid: 14682
+[2019-12-02 14:30:50 +0900] [14683] [INFO] Booting worker with pid: 14683
+[2019-12-02 14:30:50 +0900] [14684] [INFO] Booting worker with pid: 14684
+[2019-12-02 14:30:50 +0900] [14685] [INFO] Booting worker with pid: 14685
+[<span class="ansi-blue-fg">2019-12-02 14:30:50,996</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,008</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,289</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,304</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,442</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,456</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,469</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:30:51,480</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+123.226.242.94 - - [02/Dec/2019:14:31:07 +0900] &#34;GET / HTTP/1.1&#34; 302 221 &#34;-&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+123.226.242.94 - - [02/Dec/2019:14:31:08 +0900] &#34;GET /admin/ HTTP/1.1&#34; 200 115313 &#34;-&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+123.226.242.94 - - [02/Dec/2019:14:31:08 +0900] &#34;GET /admin/airflow/blocked HTTP/1.1&#34; 200 2 &#34;http://jhub.name:8080/admin/&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+123.226.242.94 - - [02/Dec/2019:14:31:08 +0900] &#34;GET /admin/airflow/dag_stats HTTP/1.1&#34; 200 9486 &#34;http://jhub.name:8080/admin/&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+123.226.242.94 - - [02/Dec/2019:14:31:08 +0900] &#34;GET /admin/airflow/task_stats HTTP/1.1&#34; 200 30510 &#34;http://jhub.name:8080/admin/&#34; &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36&#34;
+[2019-12-02 14:31:23 +0900] [14677] [INFO] Handling signal: ttin
+[2019-12-02 14:31:23 +0900] [14687] [INFO] Booting worker with pid: 14687
+[<span class="ansi-blue-fg">2019-12-02 14:31:23,855</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:31:23,856</span>] {<span class="ansi-blue-fg">dagbag.py:</span>92} INFO - Filling up the DagBag from <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[2019-12-02 14:31:24 +0900] [14677] [INFO] Handling signal: ttou
+[2019-12-02 14:31:24 +0900] [14682] [INFO] Worker exiting (pid: 14682)
+[2019-12-02 14:31:30 +0900] [14677] [INFO] Handling signal: int
+[2019-12-02 14:31:30 +0900] [14683] [INFO] Worker exiting (pid: 14683)
+[2019-12-02 14:31:30 +0900] [14684] [INFO] Worker exiting (pid: 14684)
+[2019-12-02 14:31:30 +0900] [14685] [INFO] Worker exiting (pid: 14685)
+[2019-12-02 14:31:30 +0900] [14687] [INFO] Worker exiting (pid: 14687)
+[2019-12-02 14:31:31 +0900] [14677] [INFO] Shutting down: Master
+</pre>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Try-to-Understand-the-Mechanism-of-NBViewer.">Try to Understand the Mechanism of NBViewer.<a class="anchor-link" href="#Try-to-Understand-the-Mechanism-of-NBViewer.">&#182;</a></h1><p><a target="_blank" rel="noopener" href="https://github.com/jupyter/nbviewer/blob/master/nbviewer/app.py">https://github.com/jupyter/nbviewer/blob/master/nbviewer/app.py</a></p>
+</div>
 
 </div>
 </div>
+
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Try-this-Sharing-Way">Try this Sharing Way<a class="anchor-link" href="#Try-this-Sharing-Way">&#182;</a></h1><p><a target="_blank" rel="noopener" href="https://github.com/gclouduniverse/gcp-notebook-share-dlvm-extension">https://github.com/gclouduniverse/gcp-notebook-share-dlvm-extension</a></p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># start the scheduler</span>
+<span class="n">airflow</span> <span class="n">scheduler</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,327</span>] {<span class="ansi-blue-fg">__init__.py:</span>51} INFO - Using executor <span class="ansi-bold">SequentialExecutor</span>
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,343</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1320} INFO - Starting the scheduler
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,343</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1328} INFO - Running execute loop for -1 seconds
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,345</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1329} INFO - Processing each file at most -1 times
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,346</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1332} INFO - Searching for files in <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,351</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1334} INFO - There are 20 files in <span class="ansi-bold">/home/jupyter-sheng_wei/airflow/dags</span>
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,354</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1382} INFO - Resetting orphaned tasks for active dag runs
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,366</span>] {<span class="ansi-blue-fg">dag_processing.py:</span>556} INFO - Launched DagFileProcessorManager with pid: 14781
+[<span class="ansi-blue-fg">2019-12-02 14:33:56,374</span>] {<span class="ansi-blue-fg">settings.py:</span>54} INFO - Configured default timezone &lt;Timezone [UTC]&gt;
+[2019-12-02 14:33:56,384] {dag_processing.py:760} ERROR - Cannot use more than 1 thread when using sqlite. Setting parallelism to 1
+[<span class="ansi-blue-fg">2019-12-02 14:34:11,631</span>] {<span class="ansi-blue-fg">helpers.py:</span>308} INFO - Sending Signals.SIGTERM to GPID 14781
+[<span class="ansi-blue-fg">2019-12-02 14:34:11,636</span>] {<span class="ansi-blue-fg">helpers.py:</span>286} INFO - Process <span class="ansi-bold">psutil.Process(pid=14781, status=&#39;terminated&#39;)</span> (14781) terminated with exit code 0
+[<span class="ansi-blue-fg">2019-12-02 14:34:11,637</span>] {<span class="ansi-blue-fg">scheduler_job.py:</span>1361} INFO - Exited execute loop
+</pre>
+</div>
+</div>
 
 </div>
 </div>
+
 </div>
  
 
@@ -1902,217 +2327,7 @@ KeyboardInterrupt
 	
   
 </div>
-	<a type="button" href="/2019/10/20/Try-NBViewer/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2019-10-20 </div>
-			<div class="article-title"><a href="/2019/10/20/Try-Voila-Dashboards/" >Try Voila Dashboards</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/voila-dashboards/voila">https://github.com/voila-dashboards/voila</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/voila-dashboards/gallery">https://github.com/voila-dashboards/gallery</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Try-Voil%C3%A0">Try Voil&#224;<a class="anchor-link" href="#Try-Voil%C3%A0">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>voila<span class="w"> </span>~
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a target="_blank" rel="noopener" href="http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb">http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl<span class="w"> </span>-s<span class="w"> </span>http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-oe<span class="w"> </span><span class="s1">&#39;{[^{}]*hub_url[^{}]*}&#39;</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;_dom_classes&#39;: [],
- &#39;_model_module&#39;: &#39;@jupyter-widgets/controls&#39;,
- &#39;_model_module_version&#39;: &#39;1.4.0&#39;,
- &#39;_model_name&#39;: &#39;TextModel&#39;,
- &#39;_view_count&#39;: None,
- &#39;_view_module&#39;: &#39;@jupyter-widgets/controls&#39;,
- &#39;_view_module_version&#39;: &#39;1.4.0&#39;,
- &#39;_view_name&#39;: &#39;TextView&#39;,
- &#39;continuous_update&#39;: True,
- &#39;description&#39;: &#39;hub_url&#39;,
- &#39;description_tooltip&#39;: None,
- &#39;disabled&#39;: False,
- &#39;layout&#39;: &#39;IPY_MODEL_853d8ed268f846f199a0d40ed2955d76&#39;,
- &#39;placeholder&#39;: &#39;\u200b&#39;,
- &#39;style&#39;: &#39;IPY_MODEL_d250904f9d7f4ca2ac058bd27f30dd08&#39;,
- &#39;value&#39;: &#39;&#39;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Compare-to-Commuter">Compare to Commuter<a class="anchor-link" href="#Compare-to-Commuter">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>commuter
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a target="_blank" rel="noopener" href="http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb">http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl<span class="w"> </span>-s<span class="w"> </span>http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-oe<span class="w"> </span><span class="s1">&#39;&lt;[^&lt;&gt;]*&gt;[^&lt;&gt;]*interactive[^&lt;&gt;]*&lt;/[^&lt;&gt;]*&gt;&#39;</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="n">HTML</span><span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<span>interactive(children=(Text(value=&#x27;&#x27;, description=&#x27;hub_url&#x27;), Text(value=&#x27;&#x27;, description=&#x27;clone_cmd&#x27;), Text(val…</span>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>So the <strong>Voila</strong> with Notebook is like <strong>Ploty-Dash</strong> with Python.
-<strong>Voila</strong> can render ipywidget, while <strong>NBViewer</strong>/<strong>Commuter</strong> can just display ipynb without ipywidget-rendering.</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Try-Voil%C3%A0-Gallery">Try <a target="_blank" rel="noopener" href="https://github.com/voila-dashboards/gallery">Voil&#224; Gallery</a><a class="anchor-link" href="#Try-Voil%C3%A0-Gallery">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p><strong>Voilà</strong> can display ipywidget-rendered ipynb via <em>local file system</em>.</p>
-<p><strong>Voilà Gallery</strong> can display ipywidget-rendered ipynb via <em>Github</em> etc. by using repo2docker, exactly the same way Binder does.</p>
-</blockquote>
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2019/10/20/Try-Voila-Dashboards/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2019/12/02/Try-Airflow/#more" class="btn btn-default more">阅读此文</a>
 </div>
 
 		
@@ -2156,46 +2371,48 @@ KeyboardInterrupt
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>15</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+		
+			<li><a href="/tags">...<span>21</span></a></li>
 		
 		</ul>
 	</div>
@@ -2206,6 +2423,10 @@ KeyboardInterrupt
 <div class="widget">
   <h4 style="margin-top: 18px;">最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2023/04/04/Try-LangChain/" ><i class="fa fa-file-o"></i>Try LangChain</a>
+      </li>
     
       <li>
         <a href="/2023/03/21/Try-BioGPT/" ><i class="fa fa-file-o"></i>Try BioGPT</a>
@@ -2221,10 +2442,6 @@ KeyboardInterrupt
     
       <li>
         <a href="/2023/03/13/Jupyter-Magic-Command/" ><i class="fa fa-file-o"></i>Jupyter Magic Command</a>
-      </li>
-    
-      <li>
-        <a href="/2023/03/13/Reverse-Engineered-ChatGPT-API/" ><i class="fa fa-file-o"></i>Reverse Engineered ChatGPT ...</a>
       </li>
     
   </ul>

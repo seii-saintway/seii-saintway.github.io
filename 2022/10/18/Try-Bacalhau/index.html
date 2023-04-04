@@ -276,6 +276,267 @@ Server Version: v0.3.3
 
 
 
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Compile-Bacalhau-CLI-into-WebAssembly-Binaries">Compile Bacalhau CLI into WebAssembly Binaries<a class="anchor-link" href="#Compile-Bacalhau-CLI-into-WebAssembly-Binaries">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/bing/apis/bing-web-search-api">Bing Web Search API</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">EdgeGPT</span> <span class="kn">import</span> <span class="n">Chatbot</span> <span class="k">as</span> <span class="n">Bing</span><span class="p">,</span> <span class="n">ConversationStyle</span>
+
+<span class="n">bing</span> <span class="o">=</span> <span class="n">Bing</span><span class="p">(</span><span class="n">cookiePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.config/EdgeGPT/cookies.json&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Simulate the process of compiling Bacalhau CLI into WebAssembly Binaries. And summarize your actions and results.</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Compiling Bacalhau CLI into WebAssembly binaries is a multi-step process. Here are the steps:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+---
+
+Compiling Bacalhau CLI into WebAssembly binaries is a multi-step process. Here are the steps:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Teach me how to compile Bacalhau CLI into WebAssembly Binaries. And summarize your actions and results.</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Sure, I can help you with that. Here are the steps to compile Bacalhau CLI into WebAssembly binaries:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+---
+
+Sure, I can help you with that. Here are the steps to compile Bacalhau CLI into WebAssembly binaries:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">介绍 Bacalhau CLI。如何将 Bacalhau CLI 编译成 WebAssembly 二进制文件？总结你的步骤和结果。</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Bacalhau CLI 是一个用于在 Bacalhau 平台上运行任务的命令行工具。根据 Bacalhau 的文档，你需要将你的程序编译成 WASI-compliant WebAssembly。你可以查看你的编译器的说明来了解如何执行此操作。例如，Rust 用户可以指定 wasm32-wasi 目标来 rustup 和 cargo 来编译为 WASI WebAssembly [^2^]。
+
+你可以参考这篇文章 [^9^] 和这篇文章 [^10^] 来了解如何将 C++ 项目编译成 WebAssembly。这篇文章 [^11^] 可以让你更好地了解 WebAssembly。
+
+---
+
+[1]: https://developer.mozilla.org/zh-CN/docs/WebAssembly/C_to_wasm &#34;编译 C/C++ 为 WebAssembly - WebAssembly | MDN&#34;
+[2]: https://docs.bacalhau.org/getting-started/wasm-workload-onboarding/ &#34;Onboarding Your WebAssembly Workloads | Bacalhau Docs&#34;
+[3]: https://github.com/bacalhau-project/bacalhau &#34;GitHub - bacalhau-project/bacalhau: Compute over Data framework for ...&#34;
+[4]: https://zhuanlan.zhihu.com/p/258560278 &#34;记一次完整 C++ 项目编译成 WebAssembly 的实践 - 知乎&#34;
+[5]: https://developer.mozilla.org/zh-CN/docs/WebAssembly/C_to_wasm &#34;编译 C/C++ 为 WebAssembly - WebAssembly | MDN&#34;
+[6]: https://docs.bacalhau.org/getting-started/wasm-workload-onboarding/ &#34;Onboarding Your WebAssembly Workloads | Bacalhau Docs&#34;
+[7]: https://github.com/bacalhau-project/bacalhau &#34;GitHub - bacalhau-project/bacalhau: Compute over Data framework for ...&#34;
+[8]: https://juejin.cn/post/7013286944553566215 &#34;快 11K Star 的 WebAssembly，你应该这样学 - 掘金&#34;
+[9]: https://juejin.cn/post/7013286944553566215 &#34;快 11K Star 的 WebAssembly，你应该这样学 - 掘金&#34;
+[10]: https://juejin.cn/post/6914148755738460168 &#34;c++项目转成wasm全过程 - 掘金&#34;
+[11]: https://www.jianshu.com/p/bff8aa23fe4d &#34;几张图让你看懂WebAssembly - 简书&#34;
+
+Bacalhau CLI 是一个用于在 Bacalhau 平台上运行任务的命令行工具。根据 Bacalhau 的文档，你需要将你的程序编译成 WASI-compliant WebAssembly。你可以查看你的编译器的说明来了解如何执行此操作。例如，Rust 用户可以指定 wasm32-wasi 目标来 rustup 和 cargo 来编译为 WASI WebAssembly [^1^][2]。
+
+你可以参考这篇文章 [^2^][9] 和这篇文章 [^3^][10] 来了解如何将 C++ 项目编译成 WebAssembly。这篇文章 [^4^][11] 可以让你更好地了解 WebAssembly。
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
 	</div>
 
 	<div>
@@ -332,7 +593,7 @@ Server Version: v0.3.3
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/CoD/">CoD<span>13</span></a></li>
+  <li><a href="/tags/CoD/">CoD<span>16</span></a></li>
     </ul>
 	</div>
 		
