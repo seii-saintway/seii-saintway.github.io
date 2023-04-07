@@ -145,6 +145,499 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2021-10-27 </div>
+			<div class="article-title"><a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" >Try to Reinstall Zsh Kernel</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">https://github.com/jupyter/jupyter/wiki/Jupyter-kernels</a></li>
+<li><a target="_blank" rel="noopener" href="https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html">https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/NII-cloud-operation/sshkernel">https://github.com/NII-cloud-operation/sshkernel</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Bash">A Jupyter Kernel for Bash<a class="anchor-link" href="#A-Jupyter-Kernel-for-Bash">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/takluyver/bash_kernel">https://github.com/takluyver/bash_kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip3<span class="w"> </span>install<span class="w"> </span>bash_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>bash_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Z-Shell">A Jupyter Kernel for Z Shell<a class="anchor-link" href="#A-Jupyter-Kernel-for-Z-Shell">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/dan-oak/zsh-jupyter-kernel">https://github.com/dan-oak/zsh-jupyter-kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>notebook<span class="w"> </span>zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>zsh_jupyter_kernel.install<span class="w"> </span>--sys-prefix
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>zsh_jupyter_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-uninstall-Zsh-Jupyter-Kernel?">How to uninstall Zsh Jupyter Kernel?<a class="anchor-link" href="#How-to-uninstall-Zsh-Jupyter-Kernel?">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">zsh_jupyter_kernel</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zsh_jupyter_kernel</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/__init__.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/install.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Try-to-uninstall-Zsh-Jupyter-Kernel">Try to uninstall Zsh Jupyter Kernel<a class="anchor-link" href="#Try-to-uninstall-Zsh-Jupyter-Kernel">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span class="w"> </span>zsh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Python-3.7">A Jupyter Kernel for Python 3.7<a class="anchor-link" href="#A-Jupyter-Kernel-for-Python-3.7">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>virtualenv<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>which<span class="w"> </span>python3.7<span class="k">)</span><span class="w"> </span>py37
+<span class="nb">source</span><span class="w"> </span>~/py37/bin/activate
+ipython<span class="w"> </span>kernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>py37<span class="w"> </span>--display-name<span class="w"> </span><span class="s1">&#39;Python 3.7&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span class="w"> </span>py37
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-26 </div>
+			<div class="article-title"><a href="/2021/10/26/金融心理学/" >金融心理学</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <blockquote>
+<p>大多数股民都同意市场由反馈过程支配，并且这些过程产生趋势。经济学家已得出结论：无论这些过程是什么，其运动总和是价格或多或少地随机运动。但是，其他科学家（主要来自自然科学领域）有不同看法，他们经常证明：在一个由反馈过程支配的系统中，运动的总和是一种被称为确定性混沌的事物。这种混沌系统的固有运动规律很难预测，但不是不可以预测。</p>
+</blockquote>
+<blockquote>
+<p>如果你还是使用传统的标准统计方法来检测混沌系统，你将得到随机运动的错误诊断结论。因此，理解流动性金融市场动力学的最佳的整体框架模型是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E6%B7%B7%E6%B2%8C%E7%90%86%E8%AE%BA">确定性混沌</a>，而不是随机漫步。越来越多的科学家正在做这方面的工作，他们发现巿场确实是混沌的，因此，集体性的错误只能慢慢纠正。</p>
+</blockquote>
+<blockquote>
+<p>作为“基本派”的市场参与者，尽量收集最多的信息以确定金融资产的“真实价值”，这样的市场定价是“有效的”，这就是所谓的“有效市场假设”。</p>
+</blockquote>
+<blockquote>
+<p>一个不容忽视的问题是<strong>真实价值围绕价格波动</strong>。</p>
+</blockquote>
+<blockquote>
+<p>也许有人以为：有些人以投资为业，他们是专家，他们所有的知识和判断能力超出一般私人投资者以上；若听凭无知无识者自己去从事投资，固然可以使市场变化多端，但专家之间互相竞争，也许可以矫正这种趋势。然而事实上则不然。这批职业投资者与投机者之精力与才干，大都用在其他方面。事实上，这批人最关切者，不在比常人高出一筹，预测某一投资品在其整个寿命中所产之收益如何，而在比一般群众稍微早一些，预测决定市价之陈规本身会有什么改变。<br>从社会观点看，要使得投資高明，只有战胜时间和无知之神秘力量，增加我们对于未来之了解；但从私人观点，所谓最高明的投资，乃是先发制人，智夺群众，把坏东西让给别人。<br>－－《就业、利息和货币通论》，凯恩斯，1936年</p>
+</blockquote>
+<blockquote>
+<p>探寻真实价值的最大难题不在于构筑适当的经济模型上的困难，也不在于真实价值随价格波动，而在于描述真实世界动力学的经济仿真模型越好，它们得到的结果就越混沌。或者说，经济学家们越精细地完善他们的模那种模型根本不能预测长期发展的证据就越明显。<br>一些数学家对此加以嘲笑，因为他们一直怀疑这点。他们说：“原因在于，像复杂经济那种动态系统，其真实数学本质是非常混乱和高度不可预测的。”在数学家看来，很简单，经济学家在认识他们所从事的任务的真实本质上就已经失败了，因为他们没有考虑到非线性数学的本质。而且数学家们指出：“一般地，非线性数学的本质是，你只能预测系统的非常短期的行为。”<br>上述结论可以用一种通常称为“确定性混沌”的复杂独特现象加以解释。对许多或绝大多数经济系统而言，混沌意味着不可能做出客观和定量的长期预测。因此，在与“时间和无知之神秘力量”斗争时，我们只能转而寻求个人主观的猜测。而这当然与我们个人和主观的感受密切相关，例如希望、恐惧和贪婪。</p>
+</blockquote>
+<blockquote>
+<p>今天，已经没有人能够搞清图形分析是什么时候第一次用于预测金融市场了，但是最古老的证据是日本的稻米市场。<br>1730年，日本开始采用稻米期货合约标准交易。这些合约与现在很多交易所的商品期货合约完全相同，但有一个例外：它并不需要对所交易商品进行实物交割。期货合约可以买卖，但它不需要稻米实物的交割。然而，一个问题出现了：虽然稻米的现金交易价格波动很小，但期货交易价格波动很大，而且永远如此。1869年，政府终于再也不能容忍这种情况，下令关闭了期货市场。<br>但是怪事出现了：期货市场刚一关闭，实物市场便开始剧烈波动。两年后，市场一片混乱，政府不得不恢复期货交易。不过，这次与以前不同了，期货交易必须伴随基础市场的实物交割，这样市场才逐渐稳定下来。<br>日本投机客由此得到的教训是，股票价格并不仅仅反映供求关系，它还包括心理因素。在此之后经纪人发展了一系列利用心理因素的方法。他们很快开始用图形表示价格变化，从中发现价格变化的规律，现在，全世界的股民广泛使用这种方法。</p>
+</blockquote>
+<blockquote>
+<p>当市场走在新闻之前时，这仅仅说明一个事实：市场提前反映经济。</p>
+</blockquote>
+<blockquote>
+<p>1981年,《美国经济述评》刊登了尤金·法马（Eugene F. Fama）的一篇综述文章。这篇文章详细研究了股票收益和经济活动、通货膨胀和货币供应的关系。该研究工作基于1953年以后的美国实证材料。法马最后总结如下“股票收益领先于所有实际指标，这表明市场对实体经济的预测是理性的这项研究使他得到如下结论，他认为市场是这样理解信息的：<br>有证据支持“理性预期”或“有效市场”观点，即：就股票市场的投资过程而言，市场能够利用最新的信息判断其未来走势。<br>换句话说，股票市场是对经济的提前反映，这个提前量不是很远，但是比任何有资格的经济学家所希望得都要远。这个假设被称为“有效巿场假设”。（值得注意的是，大部分投资者对此持不同观点。1987年黑色星期一之后（见1987年11月9日的《拜伦》杂志），有人发出500份调查问卷，45%的受访者认为股票市场反映了经济现实，而25%的人认为股市与经济毫无关系，只有17%的人认为股市是对经济的提前反映。）<br>由于股票市场提前反映经济，人们很自然地将它当作美国经济的一个领先官方指标。根据位于马萨诸塞州剑桥的国家经济研究局的分析，股市已被证明是12个反映美国经济的周期性领先指标中最好的一个。</p>
+</blockquote>
+<blockquote>
+<p>我们再深入一步：债券显然是更好的经济预测工具。1982年9月28日的《华尔街日报》刊登了一篇论述债券市场对经济事件的反映能力的文章，该文的结论是：<br>由10种利息最高的公用事业债券和10种利息最高的工业债券的平均价格所组成的国债指数，一直比美国商务部的领先指标指数提前数月见顶或见底，虽然两者都具有预测经济周期转折点的能力。<br>上述结论一点也不新鲜。在《积累财富用经济晴雨表》一书中，巴布森使用了12个领先指标，其中就包括货币市场利率指标。关于这点他写道：“货币是一切经济活动的基础，因此在所有指标中是最灵敏的。”<br>金融市场预测经济反转的能力不仅仅是美国所独有。1984年布鲁诺·索尔尼克（Bruno Solnik）在《金融分析师杂志》（Financial Analysts Journa）发表的一篇调研报告，证实了九个国家在1971-1982年间证券市场的相互联系。他写道：“实际观察表明，美国股市和通货膨胀率之间存在负相关，根据对此现象的一种解释，股价的下跌预示经济活动的下降……其他九个国家的证据也支持上述观点。”基于该项研究以及其他许多研究，现在公认股票市场可以作为经济的领先指标，从股市反转到经济反转的典型领先时间大约是半年到9个月。这并不是说市场永远正确，毕竟，市场往往表现为非理性。但是，它确实比科学家发现的任何其他单个指标都要准确。</p>
+</blockquote>
+<blockquote>
+<p>这里是个小试验，用它来说明市场有时也会飞快地与实际脱节。选择外汇市场进行这项试验，设想某一天欧洲的外汇交易情况，欧洲人当然不希望价格大起大落。花了整整一个上午研究过去24小时全球金融消息，他们猜测欧洲时间下午四五点钟时，美国人起床后会干什么，他们是卖出美元，还是买人美元？仔细研究所有卖出或买进的理由后，欧洲人必须决定当美国汇市开市时在美元对德国马克上是看空还是看多。我们假设绝大多数理由支持看空，然后你也选择做空。<br>午餐后，你开了一个巨人的空头美元头寸，这个头寸是如此之大，以至于任何反方向的价格变化所产生的后果都将是极其严重的。这确保你要尽心尽责。然后你就坐下来紧紧盯住计算机屏幕，观察美元价格每一秒钟的变化（它确实是每秒都在变的）。如此大的头寸，再加上如此紧张地盯住屏幕，你将体会到这项试验要达到的目的——非理性感觉。<br>当美国人在伦敦时间下午四五点钟开始交易时，第一个随机扰动即将出现。这时你将体会到一种非常奇怪的感觉：一旦价格开始有了第一个微小的变化，它将以奇特的方式影响你经过深思熟虑才做出的整个逻辑推理，而且这些影响将支持价格继续朝前走下去。如果美元如同预期的那样，下跌了，你的胜利将是巨大的。你会想，“我早知道它会这样”。一点也不奇怪，“任何买进美元的意见都是愚蠢的”。但是，如果美元开始上涨，突然间你脑海中所有的买进理由大大增加分量。“我真傻，它当然会涨”。此时，即使任何人都知道市场价格的这种小小变化无足轻重，你也迫切想改变自己的头寸。<br>通过这项试验你发现情绪跟着价格走。如果价格上升，感觉是它应该继续上升；如果价格下跌，则感觉它也应该继续下跌。这无论对职业人士还是新手都适用，惟一的差异是职业人士能够保持冷静。但是，有时候一种特殊的情绪会从少数几个人逐步蔓延到更多的人，演变成群体运动，最终导致集体歇斯底里。上述现象以一种令人感到复杂，但非常有教育意义的方式说明了人性的弱点，历史上有许多这样的例子。世界上第一个真正大规模的股票投机交易崩盘发生在1557年的法国，当时哈普斯堡王朝停止支付政府前些年过量发行的国债的利息，也不再分期付款。自那以后，每个世纪都能看到主要的股票投机冒险活动，它们无一例外地以崩盘结束（参见附录4）。其中最有教育意义的是1636年荷兰的郁金香泡沫，1711-1720年英国的南海公司泡沫，当然还有1929年华尔街的崩盘。</p>
+</blockquote>
+<blockquote>
+<p>1720年5月28日，南海公司——这个最早最大的泡沫——的股价达到550英镑。这个价格已经超出人们的想像，6月份价格超过700英傍，这段时间股价变化特别神经，大起大落。6月3日中午，价格跌到650英镑，下午又涨回750英镑。很多大的投资者利用这个夏天的高价位卖出股票，转而将获得的利润投入到其他各行各业，包括土地、商品、房地产及其他股票。但是，另外一些买进南海公司股票的投资者，这其中包括物理学家艾萨克·牛顿，在南海公司股票早期价格上升阶段，他就卖出所有股票，获利5000英傍。但是，在盛夏期间，他又买了回来，这笔交易使他亏损了20000英镑。</p>
+</blockquote>
+<blockquote>
+<p>混沌的产生主要与自我强化现象有关。设想在一个系统中，事件A导致事件B，事件B导致事件C，如果事件C最终又导致事件A，这就是一个非常简单的正反馈。<br>如果我们试图像描绘天气那样，描绘一个国家经济的相互关系，我们将会遇到同样复杂的现象。众所周知的例子是所谓的“倍增效应”和“加速效应”、对增长预期的累积和自我提高（“跟上旁人的步伐”），以及由于劳动力或投资替代而产生的投资需求放大等。总之，这些众多的反馈循环表明系统没有简单的平衡点，而是自我震荡，或者表现出其他更复杂的运动。每一个这种正反馈循环都有助于经济现象的自我强化本质，直到最后被其他机理阻挡。为了正确描述这种系统，需要了解复杂非线性数学。</p>
+</blockquote>
+<blockquote>
+<p>分叉的原因是不同正反馈之间主导作用的突然转换。</p>
+</blockquote>
+<p>不同的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%90%B8%E5%BC%95%E5%AD%90">吸引子</a>可能可以用不同的时间级别区分开来。</p>
+<hr>
+<blockquote>
+<p>如果混沌确实是我们所要寻找的东西，金融分析师所追求的精确计算真实价值就有点类似于炼金术。不要忘了，股票真实价值的定义是公司未来盈利的贴现价值，如果我们仅仅能够预测一年、半年甚至更短的时间，那么这个定义是多么可笑。<br>或许我们应该重温凯恩斯对职业投资专家行为的描述：<br>事实上这批人最关切者，不在比常人高出一筹，预测某一投资品在其整个寿命中所产之收益如何，而在比一般群众稍微早一些，预测决定市价之陈规本身会有什么改变。<br>这个结论并不是说经济洞察能力与股票交易无关——绝不是这个意思。混沌现象的精髓是说，预测长期事件和长期定量分析的努力是徒劳无益的。虽然凯恩斯一点也不了解非线性数学的深奥结论，但在《就业、利息和货币通论》中他明确指出下述结论：<br>根据真正的长期预期而做投资，实在太难，几乎不可能。凡想如此从事者，较之仅想对群众行为比群众猜得略胜一筹者，其工作较重，其风险较大。而且，设二人智力相等，则前者容易出大错。</p>
+</blockquote>
+<blockquote>
+<p>在正反馈环中，每一个人都猜测别人将采取什么行动，凯恩斯的“选美比赛”比喻是对正反馈环的最佳描述。凯恩斯将股票市场比做报纸上的选美比赛，比赛参与者从报上刊登的100幅美人头像中选出他们认为最美的（Keynes，1936）：<br>每个参加者都从同一观点出发，于是都不选他自己真认为最美者，也不选一般人真认为最美者，而是运用智力，推测一般人认为一般人所认为的最美者。这已经达到了第三级推测，我相信有些人会运用到第四、第五级，甚至更高。<br>我们还没有达到上述境界，但是毫无疑问，当今最投机的市场模式中有许多只能用下述事实来解释：成千上万的市场参与者在相同的技术图形上画着相同的线，或在个人电脑中装入相向的程序。有些券商理解这些模式，据此可以做出逻辑假设。其他人什么也不懂，只是找寻某种模式。但是，即使一种模式完全是偶然重合，使用它的券商多了，它也有可能产生强烈的信号。虽然媒体试图用各种政治和经济事件来解释价格变化，但券商的理由却截然不同，他们说：“市场运行在通道中”，“市场在考验阻力位”，或者“市场刚刚突破20日移动平均线，但是明日应该出局，因为变化率可能超过90”（一会儿要解释这些陈述）。<br>因此，图形分析得到广泛使用的背后不仅仅在于它是一种理解市场的技巧，有时还在于技术分析产生心理作用。然而，必须牢记这条原理的结尾部分，即：如果所有人都使用同样的技术分析，那它的效果就不是自我实现，而是自我毁灭。</p>
+</blockquote>
+<p>加密货币市场有点像是选 “新颖” 比赛。投资的要诀在于找到 “好玩” 的项目。</p>
+<hr>
+<blockquote>
+<p>实际上，技术派通常还使用许多其他方法和策略，而且他们常常只占市场参与者的有限一部分。只要情况确实如此，互不相识的技术派兄弟依然可以猜测彼此的想法，共同控制市场，形成各种美妙的模式和图形。每一次图形都将继续演化，等到所有的人都看出时，图形自我化解。与此同时，新的技术派兄弟又将探寻新的图形变化……</p>
+</blockquote>
+<blockquote>
+<p>对米勒（Miller）来说，肯·博尔丁（Ken Boulding）培育了他最初的关于复杂系统的学术基因［＊］——他认为生物学与社会系统之间极其相似，需要对这些相似性进行科学调研。<br>［＊］：原文为 meme，一种流行的、以衍生方式复制传播的互联网文化基因，米姆（meme）最初诞生时具有匿名作者、较低娱乐性的特征，在诸如语言、观念、信仰、行为方式等的传递过程中与基因在生物进化过程中所起的作用它相类似。——译者注<br>－－《复杂适应系统——社会生活计算模型导论》</p>
+</blockquote>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/26/金融心理学/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-19 </div>
+			<div class="article-title"><a href="/2021/10/19/Try-Juno-Connect/" >Try Juno Connect</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <ul>
+<li><a target="_blank" rel="noopener" href="https://juno.sh/">Jupyter for iOS</a></li>
+<li><a target="_blank" rel="noopener" href="https://juno.sh/junoconnect/">Jupyter Client for iOS</a><ul>
+<li>NG for now. I can not open Markdown files.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://tinkerstellar.com/">Learn coding and data science on iPad</a><ul>
+<li>It is still being tested.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Juno-Connect.png" alt="Juno Connect"></p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/19/Try-Juno-Connect/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2021-10-16 </div>
+			<div class="article-title"><a href="/2021/10/16/認知神経科学/" >認知神経科学</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="認知神経科学とは何か"><a href="#認知神経科学とは何か" class="headerlink" title="認知神経科学とは何か"></a>認知神経科学とは何か</h2><p>認知神経科学は、認知心理学的情報処理モデルを基盤にし、心理学的実験（行動実験）と脳機能画像技術を組み合わせることで、心理学的機能の神経基盤を探求する分野である。さらに、脳の損傷で生ずる機能障害の研究（神経心理学）や、細胞レベルでの情報伝達の仕組みを研究する神経生理学など、様々な水準の研究を横断的に統合することを目指している。しかし多くの方はこの説明だけではさっぱり分からないだろう。キーワードとして、「<strong>認知心理学的情報処理モデル</strong>」、「<strong>心理学的実験（行動実験）</strong>」「<strong>脳機能画像技術</strong>」、の三つをまず説明しよう。</p>
+<ol>
+<li><p>認知心理学的情報処理モデル<br>認知心理学は脳などの物質系とは独立に、情報処理のフロー・チャートのような抽象的なモデルの水準で論理を展開する。良く用いられる比喩で言えば、認知心理学は精神のハードウェアの構造ではなくソフトウェアの機能を問題にするのである。ハードウェアがタンパク質でもシリコンでも、それは全く問題にならない。このように情報処理モデルとは、人間の精神機能に関する一種のメタファーであり、神経系の構造とは差し当たり無関係に構造される抽象的な水準のモデルである。</p>
+</li>
+<li><p>心理学的実験（行動実験）<br>心理学の実験では、健康な実験参加者に頭を使う単純な作業（精神作業）を繰り返して行って貰う。</p>
+</li>
+<li><p>脳機能画像技術</p>
+<ul>
+<li>大脳機能の局在説<br>機能局在説とは、複雑な機械が単純な機能を持つ多種類の部品から構成されているように、脳の特定の部位は特定の機能に特化していると考える。</li>
+<li>脳血流量と神経系の活動<ul>
+<li>局所脳血流（regional cerebral blood flow, rCBF）：脳のある部位で神経活動が高まると、それに伴ってその部位に大量の血液が供給される。</li>
+</ul>
+</li>
+<li>PET の登場と引き算法<ul>
+<li>引き算法：Posner MI and Raiche ME: Images of Mind. Scientific American Library, 1994</li>
+</ul>
+</li>
+<li>脳機能画像技術と認知心理学</li>
+</ul>
+</li>
+</ol>
+<h2 id="認知神経科学の方法"><a href="#認知神経科学の方法" class="headerlink" title="認知神経科学の方法"></a>認知神経科学の方法</h2><ol>
+<li><p>神経心理学<br>最も「マクロレベル」の分野は神経心理学（neuropsychology）である。<br>神経心理学において、損傷と機能障害を因果的に結び付ける基準として「二重乖離 double dissociation」という概念がある。</p>
+</li>
+<li><p>脳機能画像技術</p>
+<ul>
+<li>CT (computerized tomography)</li>
+<li>PET (positron emission tomography, 陽電子放出断層撮影法)</li>
+<li>MRI (magnetic resonance imaging, 磁気共鳴画像)</li>
+<li>fMRI (functional MRI, 機能磁気共鳴画像)</li>
+<li>SPECT (single photon emission computed tomography, 単一光子放射断層撮影)</li>
+<li>MEG (magnetoencephalogram, 脳磁図)</li>
+<li>NIRS (near infrared spectroscopy, 近赤外線スペクトロスコピー)</li>
+<li>TMS (transcranial magnetic simulation, <a target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E7%B5%8C%E9%A0%AD%E8%93%8B%E7%A3%81%E6%B0%97%E5%88%BA%E6%BF%80%E6%B3%95">経頭蓋磁気刺激法</a>)</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Chemogenetics">Chemogenetics</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Calcium_imaging">Calcium imaging</a></li>
+</ul>
+</li>
+<li><p>神経生理学的方法<br>最も「ミクロレベル」での研究は神経生理学的方法によって行われる。<br>認知神経科学における動物実験の方法は、刺激法、破壊法、記録法、分子生物学的方法、の四つに大別できる。<br>分子生物学的方法は、タンパク質の設計図である遺伝子を実験的に操作し、ある特定のタンパク質を生まれつき持たない動物や、逆に過剰に持つ動物を作製して、通常の動物と行動上何が異なるかを調べる方法である。ある特定の脳部位においてのみ<a target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E9%81%BA%E4%BC%9D%E5%AD%90%E7%99%BA%E7%8F%BE">遺伝子発現</a>を異なったものにする技術や、遺伝子発現のタイミングを実験者が制御できる形で遺伝子改変する技術もある。</p>
+</li>
+</ol>
+<h2 id="大脳皮質"><a href="#大脳皮質" class="headerlink" title="大脳皮質"></a>大脳皮質</h2><p><strong>灰白質</strong>は、神経細胞の細胞体や樹状突起（じゅじょうとっき）が多く含まれた部分に相当し、一方、<strong>白質</strong>は神経細胞の軸索（じくさく）が多く含まれた部分である。機能上どちらも重要であることは言うまでもないが、情報処理機構を調べると言う観点からすると、情報のやり取りや調節がなされる<strong>灰白質</strong>の部分が認知神経科学の研究対象として言及される場合が多い。</p>
+<p>端脳（たんのう）の外縁部分の灰白質の層を特に<strong>大脳皮質</strong>と呼んでいる。</p>
+<h2 id="神経細胞の興奮"><a href="#神経細胞の興奮" class="headerlink" title="神経細胞の興奮"></a>神経細胞の興奮</h2><p>イオンチャネルは、それが通すイオンの種類によって分けることができる他、その開閉を司る原因に基づいて分類することもできる。たとえば、ある特定の化学物質がイオンチャネルの一部に結合することによりイオンチャネル内部の通り道が開くという、あたかも鍵と鍵穴のようなタイプのイオンチャネルがある。この鍵に当たる化学物質の総称をリガンドというので、リガンド依存性イオンチャネルと称する。また別のタイブのものとして、イオンチャネル付近の膜電位の変化によってイオンチャネルの形が変化し、その結果イオンチャネル内部の通り道が開閉するというものあり、このタイブのものを膜電位依存性イオンチャネルと称する。さまざまなタイブのイオンチャネルのはたらきが巧みに組み合わさることにより、神経細胞の興奮と抑制が制御され、この積み重ねが最終的に認知行動となって現れるわけである。</p>
+<p>イオン輸送に携わる膜タンバク質として、イオンチャネル以外に、膜内外のイオンを交換するエクスチェンジャー、チャネルは持たないがあるイオンの取り込み・排出を行うトランスポーター、イオン輸送にエネルギーを要する（自然な方向とは逆方向にイオンを輸送するため）ポンブが挙げられる。</p>
+<p>このような細かいレベルの構造までが、認知神経科学の対象となるのか、疑う人がいるかもしれない。しかし、たとえばイオンチャネルを形成するアミノ酸（タンバク質とはさまざまなアミノ酸が1列につながったもののことである）の中の1箇所が別の種類のアミノ酸に置き換わっただけで、そのイオンチャネルを通ることのできるイオンの種類が変わる場合があり、その変化によって動物の学習成績に影響がもたらされたという報告もある。認知神経科学を理解する上で、本章の前半で述べたマクロなレベルでの構造を理解すると共に、ミクロなレベルでの構造理解も欠かすことはできない。</p>
+<h2 id="神経細胞が信号を受け取る仕組み"><a href="#神経細胞が信号を受け取る仕組み" class="headerlink" title="神経細胞が信号を受け取る仕組み"></a>神経細胞が信号を受け取る仕組み</h2><ul>
+<li><p>イオンチャネル型受容体</p>
+</li>
+<li><p>代謝型受容体<br>イオンチャネルは含まないが細胞内機構によって何らかの生理反応を示すものである。</p>
+</li>
+<li><p>興奮性シナプス<br>シナプス伝達によってシナプス後膜に脱分極がもたらされるようなシナプスのこと</p>
+</li>
+<li><p>興奮性シナプス後電位（excitatory postsynaptic potential，EPSP）<br>シナプス伝達によって生じたシナプス後膜の脱分極のこと</p>
+</li>
+<li><p>抑制性シナプス<br>シナプス伝達によってシナプス後膜に過分極がもたらされるようなシナプスの場合</p>
+</li>
+<li><p>抑制性シナプス後電位（inhibitory postsynaptic potential，IPSP）<br>シナプス伝達によって生じたシナプス後膜の過分極のこと</p>
+</li>
+</ul>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/16/認知神経科学/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2021-10-14 </div>
 			<div class="article-title"><a href="/2021/10/14/关于好奇心/" >关于好奇心</a></div>						
 		</h3>
@@ -1463,1002 +1956,6 @@ I say casually in the car
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-07-13 </div>
-			<div class="article-title"><a href="/2021/07/13/寻找小水灵/" >寻找小水灵</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>朕平常住在宫殿里面。朕的爱妃总是在门口静候。每当朕开门，她就会向朕行跪拜礼。而朕会抱她起来，与她相拥。她见到朕一声不响地走过来，就会吓得后退低头，行跪拜礼。在床上，她最乖了。她知道在床上是最安全没有任何危险。朕会温柔地抚摸她。朕会抱她吻她。她想怎么呻吟，就怎么呻吟。如果朕想和她一起入浴，她也不会抗拒。她是多么温柔多么美丽。她就是朕最爱的贵妃。朕赐给她小水灵这个名字。可惜她不是人类。</p>
-<hr>
-<blockquote>
-<p>义人知照他牲口的脾气；<br>恶人的心肠总是残忍。<br>(箴言 12:10 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>做父亲的、别惹你们儿女的气了；<br>要用主的训练和警戒养育他们。<br>(以弗所书 6:4 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>做父亲的，别激你们儿女的气了，免得他们丧志灰心。<br>(歌罗西书 3:21 吕振中)</p>
-</blockquote>
-<p>孩子们被虐待的方式有好几种，所有这些都是上帝所憎恶的。圣经在对不当发怒的警告中禁止虐待孩子。太多孩子是愤怒殴打和其他身体虐待的受害者，因为他们的父母向他们的孩子发泄他们自己的愤怒和挫折感。尽管某些形式的身体处罚可能是圣经所能接受的，但这种处罚永远不应该因着愤怒管理。保罗提醒以弗所人说：“生气却不要犯罪，不可含怒到日落，也不可给魔鬼留地步。”（以弗所书 4:26-27）。箴言 29:22 说：“好气的人挑启争端；暴怒的人多多犯罪。”在基督徒的生活中，没有地方可以容纳不义或不受控制的愤怒。愤怒在变成对孩子或其他任何人的身体虐待之前就应该向上帝忏悔，并适当地处理。</p>
-<p>圣经禁止虐待孩子的另一种方式是禁止心理和情感上的虐待。以弗所书 6:4 警告父亲们不要“惹气”或激怒他们的孩子，而是要把他们带到“主的教训和警戒”中。严厉、不讨喜欢的口头管教、情感操纵或不稳定的环境会使孩子疏远他们的父母，使他们的教导和矫正变得毫无用处。父母可能通过对孩子提出不合理的要求，贬低他们，或者不断地挑毛病，从而惹气或激怒他们的孩子，以致造成不好的伤害，甚至比任何身体殴打所造成的伤害都严重。歌罗西书 3:21 告诉我们不要“怨恨”我们的孩子，这样他们就不会气馁。以弗所书 4:15-16,25-32 说，我们要在爱中说真话，用我们的话来建立别人，不要让腐朽或破坏性的话语从我们的嘴唇流出，特别是针对孩子纤柔的内心与思想。</p>
-<p>家庭属灵虐待是指使用经文、圣经原则或一个人的属灵权威，为一己私利掌控一位家庭成员。</p>
-<hr>
-<p>一定要喂一些云南白药粉末，这个是救命的，有条件的打止血敏，国产的一针管3小时左右，进口的一针管12小时，看情况打。</p>
-<p>最好保持安静，在宠物有意识的情况下切勿进行人工呼吸，期间不要试图投喂食物。</p>
-<hr>
-<p>患 FIC 的猫咪，肾上腺多数有问题，皮质醇分泌异常。在应激反应系统启动后，皮质醇分泌不足，让应激反应系统无法正常结束反应，引起交感神经系统失控般活跃，加速分泌去甲肾上腺素。而去甲肾上腺素会上调各类炎症反应，就包括膀胱炎。</p>
-<p>这个过程加剧了神经炎的发生，同时还莫名其妙的改变了膀胱内保护层的完整与尿路上皮细胞的机能，增加了膀胱组织渗透性，让尿液能够更方便地刺激膀胱组织，产生剧痛，刺激大脑。</p>
-<p>所以这也是为什么自发性膀胱炎和压力关系很大的原因，当猫咪感到外界压力，就会开启自己的应激系统，部分猫咪无法正常结束反应，就很有可能导致 FIC。</p>
-<hr>
-<p>我们可以尝试使用猫咪 feliway 熏香，这是一种猫咪信息素，可以帮助舒缓猫咪的情绪，达到一定的解压效果。</p>
-<p>FIC 发生的时候猫咪膀胱内尿液刺激提高，会产生剧痛，解疼痛对恢复猫的精神、食欲，减少脑部刺激是非常有价值的。但国内宠物一般不怎么重视，所以比较有效的药如丁丙诺菲、芬太尼、曲马多都难以获取。布托啡诺算是比较常见的止疼药，但药效比较短，不过有总比没有好，我们可以要求医生注射这个。</p>
-<hr>
-<p>I am guilty of catslaughter. I killed my cat one year ago. And now I’m going to eat up all the leftover expired cat food - in order not to waste the lost life - I meant the chickens that make the cat food - because life has meanings. &#x2F; I had a low-grade fever for a few days because of the spoiled cat food.</p>
-<p><img src="/cat-food.png" alt="ELMO"></p>
-<p>Please raise my cat from death.</p>
-<hr>
-<blockquote>
-<p>Brothers, I do not account of myself to have laid hold; but one thing I do: Forgetting the things which are behind and stretching forward to the things which are before,<br> (Philippians 3:13 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>And He will wipe away every tear from their eyes; and death will be no more, nor will there be sorrow or crying or pain anymore; for the former things have passed away.<br> (Revelation 21:4 Recovery Version)</p>
-</blockquote>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/07/13/寻找小水灵/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2020-10-20 </div>
-			<div class="article-title"><a href="/2020/10/20/What-is-Marriage/" >What is Marriage?</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p><strong>To BrightID:</strong></p>
-<hr>
-<blockquote>
-<p>TL;DR: Hey, guys! You have made an amazing identification system in crypto space. How about building a DAO with civil law? We can start with creating some smart contracts of marriage, concerning crypto property. And isn’t NFT a good way to digitalize and represent marriage certificate? If we can connect two people, then we can connect three and build a real community. We can connect crypto space with the real world.</p>
-<hr>
-<p>You know I’m falling in love with a girl. And I’m considering a lot about marriage these days. I’m facing some problems of international marriage. What is marriage? This is some kind of a philosophy question. Does marriage begin with getting certificates of marriage? Does marriage begin with the wedding of putting the rings on the fingers and promising in front of godfather? Or does marriage begin with changing relationship status on Facebook’s WhatsApp? You know I’m a christian. And this question is critical to me because I can not make love before marriage. :) So I just thought that if I could get a certificate from crypto space… Just kidding. I and my girlfriend will get three certificates from three nations if I would go to Australia.</p>
-</blockquote>
-<hr>
-<p>best regards,<br><strong>Andrew</strong></p>
-<hr>
-<blockquote>
-<p>To my ex-girlfriend:</p>
-<hr>
-<p>I don’t want to be with you anymore. Your world is just too narrow.<br>May you be happy with whoever you want to be with, although I hate them all.</p>
-<hr>
-<p>best regards,<br>Andrew</p>
-</blockquote>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2020/10/20/What-is-Marriage/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2020-10-14 </div>
-			<div class="article-title"><a href="/2020/10/14/合適的女朋友/" >合适的女朋友</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <blockquote>
-<p>你们律法师有祸啊！因为你们把<strong>知识的钥匙</strong>拿了去，自己不进入，连那正进入的、你们也拦阻。<br> (路加福音 11:52 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>你们问我什么是对？什么是错？我只能建议：请拒绝成为一个追随耶稣的法利赛人。</p>
-</blockquote>
-<p>分享一篇充满慈爱的「小小羊」的文章。</p>
-<hr>
-<h1 id="合适的女朋友——圣经的一些原则"><a href="#合适的女朋友——圣经的一些原则" class="headerlink" title="合适的女朋友——圣经的一些原则"></a>合适的女朋友——圣经的一些原则</h1><blockquote>
-<p>这是给未婚姊妹，也是给未婚弟兄看的。未婚姊妹可以借此省察自己——我够格当人家女友吗？未婚弟兄可以借此查验对象——她够格当我女友吗？我设定的男友、女友，是指「以结婚为前提」的交往。那些只想谈恋爱而不考虑未来结婚的，不列在我的对象里。另外，这不是详细的圣经整理，而是一些简单原则而已。</p>
-</blockquote>
-<p>　　今天写的重点，有些前一篇文章《合适的男友——圣经的一些原则》已经提过。重复的我就不再多提，但同样经文，因为对象不同，会有不同的角度与着重点，这些会比较详细讲。</p>
-<h2 id="一、离开父母，与妻子连合，二人成为一体"><a href="#一、离开父母，与妻子连合，二人成为一体" class="headerlink" title="一、离开父母，与妻子连合，二人成为一体"></a>一、离开父母，与妻子连合，二人成为一体</h2><p>　　「人要离开父母，与妻子连合，二人成为一体」（创2:24）（太19:5）（可10:7）（弗5:31）</p>
-<p>　　这句经文，不仅对男方重要，对女方一样重要，但着重点稍有不同。「离开父母，与妻子成为一体」，不是说不能和父母同住，而是说「心态上、生活上，要脱离父母，以妻子为优先顺位」。</p>
-<p>　　注意！这经文请千万不要误解与误用。身为女友，你是没资格拿这经文来要求男友未来不和公婆同住的！假使未来你的丈夫要求你和公婆同住，你就是必须顺服！</p>
-<p>　　另外，发现了吗？假使男方是未信者，他会接受「妻子顺位比父母高」的规定吗？</p>
-<p>　　离开父母，在实际应用上，有一个很重要的，就是——你不能期望婚后有不愉快就“回娘家”哦！婚姻，是必须离开父母，夫妻独立自主的。社会上很常见遇到困难就回娘家，这是不合圣经的。（守寡、离婚的不算）这不是说你都不能回娘家去诉苦、求援，但假使你常常这样、继续认为有娘家可回的想法，这就是错误。你要搞清楚你已经和丈夫成为一体，离开父母了，不能继续想要倚赖父母保护。</p>
-<p>　　另一个要注意的是，婚后你不能让父母介入你们夫妻的决策中。这不是说不能请教父母意见、寻求父母协助，而是决策的决定者，是你们夫妻二人，不是父母。因此，当你们夫妻意见与父母不同时，要以你们夫妻意见为意见。当然，有时，夫妻的意见是错的，父母才是对的，但既然已婚，权柄与顺位已经不同，上帝给了你们权柄，你们相对也要扛起责任，自己承担错误的苦果了。</p>
-<p>　　然而，请注意：婚前和婚后，依然有很大差距。婚前的男女朋友阶段，虽然很多婚后的原则已经要开始学习，但依然不是婚后。所以，请别拿圣经「离开父母」这经文，来认为男女双方都不需看重父母意见、不需告知父母一些事情。有些男的会逼女的不听父母意见、不要告知父母、甚至私自结婚；有些女的会逼男的不听父母意见、不要告知父母、甚至私自结婚；这都是严重不当！</p>
-<p>　　对弟兄而言，一个姊妹假使是娇娇女，她是否开始准备离开父母，自己承担起当妻子的责任？对姊妹而言，既然要寻找对象，自己是否装备自己，准备离开父母，自己承担起当妻子的责任？至于单独和男生出去、还保有男性知己、同时跨好几条船……那就别讲了，因为都是违反成为一体命令的。这点和男方相同，就不多说。</p>
-<h2 id="二、丈夫是妻子的头，妻子要顺服丈夫"><a href="#二、丈夫是妻子的头，妻子要顺服丈夫" class="headerlink" title="二、丈夫是妻子的头，妻子要顺服丈夫"></a>二、丈夫是妻子的头，妻子要顺服丈夫</h2><p>　　「你们作妻子的，当顺服自己的丈夫，如同顺服主。因为丈夫是妻子的头……教会怎样顺服基督，妻子也要怎样凡事顺服丈夫……妻子也当敬重她的丈夫。」（弗5:22-33）</p>
-<p>　　这段经文，对男方与女方，重点不同。</p>
-<ol>
-<li><p><strong>顺服</strong><br>　　很难哦！特别是在这高喊女权的时代。但圣经就是上帝的话，上帝这样规定，我们就这样做。除非丈夫做出违反圣经的决定，否则妻子就是必须顺服。不因为你学历高、经济好、家世棒……而有改变。这里说「顺服丈夫，如同顺服主」。这很重要。因为很多姊妹严重搞错圣经，结果自找很多重轭来背。<br>　　圣经告诉我们：<br>　　丈夫是透过对上帝的直接顺服，来达成顺服。但妻子却不同，是间接透过对丈夫的顺服，来达成对上帝的顺服。这有什么差别？差别可大了！丈夫可以直接宣称领受上帝带领，就决定要做什么事；但妻子却不能宣称领受上帝带领，就自行决定要做什么事。当然，不管是谁宣称领受，都要彼此告知与协调。但是，丈夫拥有最终权柄，他是最终决策的裁决者。<br>　　看懂了吗？我举实际例子来讲：<br>　　丈夫可以宣称领受上帝带领，要去当宣教士（可以不理妻子反对）；妻子不能宣称领受上帝带领，要去当宣教士（不能违反丈夫反对）。<br>　　看见二者天差地远的差异性了吗？<br>　　假使你信主，丈夫未信，你要去教会担任各种额外服事，但丈夫反对，你就是不能去哦！你只能做最基本的，好比守安息日这种而已，其他你恐怕都必须顺服哦！看见信与不信的婚姻，对姊妹而言，是一种更严重的问题了吗？已信的姊妹，一样要顺服未信的丈夫，服从他的权柄的。</p>
-</li>
-<li><p><strong>敬重</strong><br>　　这一点，假使男方学历高、经济好……那么，问题不大。问题是，假使女方比男方高，问题常常就会很大，而且很严重。即使现今很多女生学历、收入、职位……都比丈夫好，很不幸的，圣经规定是很清楚的：妻子要顺服丈夫！你就是必须顺服！妻子要敬重丈夫！你就是必须敬重！<br>　　很不幸的是，我们的德行，恐怕都没那么大。因此，当夫妻双方，特别是男方假使低女方很多时，请谨慎考虑，不要随便高看自己啊！假使在婚前，你就无法接受婚后必须顺服、敬重，请不要和这人迈入婚姻。因为一旦结婚，就很难合乎圣经地离婚了。合乎圣经地离婚，只有两条：<br>　　1. <strong>配偶淫乱</strong><br>　　2. <strong>不信者要离去</strong><br>　　其他，你只能背起重轭，流泪走下去了。很不幸的，女生常会被感情冲昏头，什么都不在乎。然后自己跳进火坑，自己为自己制造重轭来背。对弟兄而言，婚前，你就可以知道这姊妹是否愿意学习顺服你、敬重你了。讨论事情时，她是否愿意顺服你最终的决定？她是否以你为荣？还是只是把你当工具？当然，身为弟兄，你做的决策，够格让人家顺服吗？够格当人家的头吗？圣经里，「权柄」从来不会单独存在，而是会同时伴随「责任」、「义务」甚至「惩处」的。<br>　　在此要提醒一个很重要的观念：丈夫是妻子的头，妻子必须顺服丈夫，这种经文不得误用！男方不得拿此经文来要求女方顺服！同样的，丈夫要爱妻子爱到愿意舍己，这种经文也不得误用！女方不得拿此种经文来要求男方答应要求！<br>　　我称这种行为叫用经文来「神功护体」、「图利自己」。事实上，电视八卦剧、实际生活里，这种例子处处可见。<br>　　请注意我的提醒：假使你的对象，出现这种误用圣经来神功护体、图利自己的情形，你要很小心很小心很小心！因为，这种人常会比未信者更可怕、更可恶！因为，他们会滥用圣经来谋取私利，而不是用圣经来要求自己。<br>　　男方动不动就要女方听他的意见；男方不询问女方的意见，常常独断独行；男方做的决策常荒腔走板，又听不下女方的意见与劝告；女方动不动就要男方买东西，否则就认为男方不爱她；发生争执时，认为错的永远是男方，男方永远都必须低头道歉；不管什么事，自己永远是大小姐，男方必须服事得好好的。这些例子，举都举不完，社会上一大堆。<br>　　但是，身为基督徒，圣经就是我们唯一的行为准则、唯一的是非善恶判断依据。圣经清楚告诉我们哪些行为正确，哪些行为错误，我们就是以此为判断标准，并努力奉行。</p>
-</li>
-</ol>
-<h2 id="三、信与不信不能同负一轭"><a href="#三、信与不信不能同负一轭" class="headerlink" title="三、信与不信不能同负一轭"></a>三、信与不信不能同负一轭</h2><p>　　「你们和不信的原不相配，不要同负一轭」（林后6:14）</p>
-<p>　　「丈夫若死了，妻子就可以自由，随意再嫁，只是要嫁这在主里面的人」（林前7:39）</p>
-<p>　　当今教会普遍女多男少，这经文更显得难以遵守。因此，我也不多说。可是，上面已经提过一些。对姊妹而言，身为妻子，由于必须「顺服丈夫」，所以一旦发生信仰的冲突，状况会比弟兄娶不信者更为严重、重轭更加沈重。所以，自己要想清楚。</p>
-<p>　　在此，我要提醒一个很重要的观念，就是——妻子可以比丈夫软弱。</p>
-<p>　　「你们作丈夫的也要按情理和妻子同住；因她比你软弱（比你软弱：原文作是软弱的器皿），与你一同承受生命之恩的，所以要敬重她。」（彼前3:7）</p>
-<p>　　不管是男女朋友阶段，还是婚后夫妻，妻子是可以比丈夫软弱的，不管是信仰上、德行上……各方面都是。因此，男友信仰很好，女友信仰较弱，是可以的；男友圣经很强，女友圣经不熟，是可以的。并且，男方不得因女方较弱，就有任何轻看的态度，而是必须「敬重」，并当头好好带领。</p>
-<p>　　那么，女方比男方信仰好，可以吗？当然可以！只要自己知道，即使男方信仰较弱，他依然是头，你依然必须顺服，这样就可以了。假使无法接受他是头、就是顺服不了，那就不该和这人婚嫁。事实上，有不少姊妹信仰都比弟兄好，但是，依然遵守圣经丈夫当头、顺服丈夫的命令的。</p>
-<h2 id="四、要有独身的打算"><a href="#四、要有独身的打算" class="headerlink" title="四、要有独身的打算"></a>四、要有独身的打算</h2><p>　　「因现今的艰难，据我看来，人不如守素安常才好。你有妻子缠着呢，就不要求脱离；你没有妻子缠着呢，就不要求妻子。你若娶妻，并不是犯罪；处女若出嫁，也不是犯罪。然而这等人肉身必受苦难，我却愿意你们免这苦难。弟兄们，我对你们说：时候减少了。从此以后，那有妻子的，要像没有妻子；……我愿你们无所挂虑。没有娶妻的，是为主的事挂虑，想怎样叫主喜悦。……妇人和处女也有分别。没有出嫁的，是为主的事挂虑，要身体、灵魂都圣洁；已经出嫁的，是为世上的事挂虑，想怎样叫丈夫喜悦。我说这话是为你们的益处，不是要牢笼你们，乃是要叫你们行合宜的事，得以殷勤服事主，没有分心的事。」（林前7:25-35）</p>
-<p>　　和弟兄一样，任何适婚年龄的姊妹，也都必须做好独身的准备。假使出现“疯丈夫”的现象，很容易犯下大错。在独身部分，男方与女方有比较大的不同。因为，弟兄需要配偶帮助，姊妹反而未必须要配偶帮助。在独身部分，姊妹比弟兄更有恩赐。这一点，圣经教导和社会观念截然不同，我们要注意。</p>
-<p>　　「那人（男人）独居不好，我要为他造一个配偶（女人）帮助他……就用那人身上所取的肋骨造成一个女人」（创2:18-25）</p>
-<p>　　当然，圣经也讲得很清楚，「照主的安排，女也不是无男，男也不是无女」（林前11:11），婚姻是一般常态。并且，「倘若自己禁止不住，就可以嫁娶。与其欲火攻心，倒不如嫁娶为妙」（林前7:9），所以，假使男女性欲很强，或是就是很需要异性陪伴，那就是嫁娶便是。</p>
-<p>　　但是，为了结婚而结，虽然一定可以找到对象结，可是却未必幸福哦！（硬是要娶、硬是要嫁，一定找得到阿猫阿狗嫁娶，不是吗？）再讲一次，「一定可以结」，和「结了会幸福」，那是两回事，请慎重为之。</p>
-<p>　　「婚姻，人人都当尊重」（来13:4）</p>
-<p>　　对所有人而言，不管男女，结婚都是常态，独身才是恩赐。结婚不需要恩赐，但独身需要恩赐。然而，有没有恩赐，未必是自己决定，有时是上帝决定。有时自己觉得有独身恩赐，但上帝认为没有，所以让你迈入婚姻。有时自己觉得没有独身恩赐，但上帝却认为有，所以让你独身。不管婚姻或独身，我们敬畏上帝主权，善尽自己本分便是。</p>
-<h2 id="五、留意普遍恩惠下的智慧"><a href="#五、留意普遍恩惠下的智慧" class="headerlink" title="五、留意普遍恩惠下的智慧"></a>五、留意普遍恩惠下的智慧</h2><p>　　「要当智慧人，不要当愚昧人」（诗篇、箴言经文极多，不再列举）</p>
-<p>　　这点同上一篇，不再重复。</p>
-<h2 id="六、才德的妇人"><a href="#六、才德的妇人" class="headerlink" title="六、才德的妇人"></a>六、才德的妇人</h2><p>　　「才德的妇人谁能得着呢？她的价值远胜过珍珠。她丈夫心里倚靠她，必不缺少利益；她一生使丈夫有益无损。她寻找羊羢和麻，甘心用手做工。她好像商船从远方运粮来，未到黎明她就起来，把食物分给家中的人，将当做的工分派婢女。她想得田地就买来；用手所得之利栽种葡萄园。她以能力束腰，使膀臂有力。她觉得所经营的有利；她的灯终夜不灭。她手拿撚线竿，手把纺线车。她张手赒济困苦人，伸手帮补穷乏人。她不因下雪为家里的人担心，因为全家都穿着朱红衣服。她为自己制作绣花毯子；她的衣服是细麻和紫色布作的。她丈夫在城门口与本地的长老同坐，为众人所认识。她做细麻布衣裳出卖，又将腰带卖与商家。能力和威仪是她的衣服；她想到日后的景况就喜笑。她开口就发智慧；她舌上有仁慈的法则。她观察家务，并不吃闲饭。她的儿女起来，称她有福；她的丈夫也称赞她，说：才德的女子很多，惟独你超过一切。艳丽是虚假的，美容是虚浮的；惟敬畏耶和华的妇女必得称赞。愿她享受操作所得的；愿她的工作在城门口荣耀她。」（箴31:10-31）</p>
-<p>　　圣经对于男生，比较少这种长篇大段的经文，而是零散的。但上帝对于女生，却列出这一大段经文，这是很特殊的。也因此，这是上帝对姊妹的恩典，使姊妹很容易就知道上帝要求与重点。</p>
-<p>　　这段经文，我们无法详细探讨，只能简单提及。重点很简单——娶妻娶德。</p>
-<p>　　请注意，这和现今社会习惯一样截然不同：社会是“以貌取人”（用外表的帅不帅、漂不漂亮、身材好不好……）来决定恋爱对象；但圣经的要求却不是这种，而是「德行」。这整段「好妻子」的经文，完全没有用「外表的漂亮、身材的好坏」来做为判定依据，甚至还特别提醒「艳丽是虚假的，美容是虚浮的」，并提及妻子信仰的重要（经文写「敬畏耶和华的妇女」）。因此，任何弟兄假使选择女友，是把「外貌」列为重要考量，甚至高于对其他德行的考量时，你们已经犯大错了！更可恶的是，现今教会普遍女多于男，但不少弟兄却是贪恋外邦女子美貌，而不把要娶已信者列为绝对必要考量，这罪加一等！至于外貌与打扮，我不是说女生都不需打扮，也不是说装扮美丽不可以，更不是说不能对挑选对象有任何外貌上的喜好，请不要误解。我讲的是，「德行」的优先顺位要占很重要的位置，重要到「有美貌而无德行」、「有美貌而非基督徒」的女生，你必须放弃的程度。</p>
-<p>　　箴言这段经文告诉我们贤妻的德行是什么？</p>
-<ol>
-<li>可以让丈夫倚靠，对丈夫有益（只想倚靠丈夫的姊妹，该醒醒了）</li>
-<li>勤奋、努力</li>
-<li>认真尽本分，不为睡懒觉而轻忽本分（爱睡懒觉的姊妹，该醒醒了）</li>
-<li>理财能力</li>
-<li>爱心帮助贫苦</li>
-<li>努力让家人衣食无虞</li>
-<li>帮助丈夫得荣耀</li>
-<li>讲话有智慧</li>
-<li>让丈夫和儿女称赞</li>
-<li>是敬畏上帝的基督徒</li>
-</ol>
-<p>　　圣经还有很多关于妻子德行的讲述，在此不多提。单单上述内容，我们就会发现圣经已经告诉我们很多德行的内容，可以帮助我们装备自己，或是选择对象了。</p>
-<p>　　在此要提醒一件事：</p>
-<p>　　很多人都以为贤德的女生就是柔柔弱弱、什么都不会，但那是大误解！上帝规定的贤德，可不是这样，而是「柔中带强」的！因为，那段箴言经文，清楚告诉我们，贤德的妻子，是「很能干」的，一点都不是弱不禁风、什么都不会的。这不是说每位姊妹都要做到、都很厉害，不是这意思。因为，不管是男人、女人，我们通通都是能力有限的罪人，都不可能做到完美。但是，起码我们已经有标竿，可以帮助自己努力追求成圣。</p>
-<p>　　另外也要提醒一下：</p>
-<p>　　挑别人？请先看看自己！不少弟兄姊妹对配偶的要求很高，但却不知省察自己是否配得上条件那么好的对象。事实上，很多时候，不少条件不佳、德行不好的人，反而很喜欢挑条件超好、德行超高的对象。这是很糟糕的行为，我们务必改正。</p>
-<p>　　还有一个很严重的问题，要在此提一下，就是——处女情结。我很痛恨处女情节的弟兄！更可恶的是，有些自己不是处男，却在意对方是否处女；有些自己是处男，就以此自高来嫌弃非处女。</p>
-<p>　　由于这种信件与论点，我已经接到好几次，所以必须再次公开纠正。只要对方「现在」德行好，请不需去追问女方的过去，更不得在意女方是否处女，或是嫌非处女脏。请不要忘了，在上帝眼中我们都是肮脏的罪人，是蒙耶稣宝血赦免与拯救的。</p>
-<p>　　我们凭什么嫌弃已经悔改的女友或妻子？主耶稣严厉警告，不赦免人的，上帝也不赦免你。请不要忘记这严厉的警告。</p>
-<p>　　最后，对所有弟兄姊妹，我要讲些心里话：</p>
-<p>　　当初，我坚持找不到基督徒姊妹，愿意终生不娶；我自己是处男，但从不要求对方是处女；我看重女生品德，多于看重外貌。上帝不是笨蛋，祂在天上看。谁是不是真心敬畏祂，祂清楚得很。我愿意为主放下，主却赐福我到福杯满溢，超过我所求所想、未求未想的。上帝赐给我的贤妻，不管外貌与德行都兼备，好到我事前难以想像的程度的。</p>
-<p>　　「若有人爱神，这人乃是神所知道的」（林前8:3）</p>
-<p>　　「神实在恩待以色列那些清心的人」（诗73:1）</p>
-<p>　　「神能照着运行在我们心里的大力充充足足地成就一切，超过我们所求所想的」（弗3:20）</p>
-<p>　　有些时候，不蒙上帝祝福，真的要自己检讨一下。愿上帝帮助还在寻找配偶的弟兄姊妹，祝福大家。</p>
-<p align="right">——小小羊</p>
-
-<hr>
-<p>＊ 由于范围较大，本文回应范围放宽，只要是和男女交友有关的问题，都可以讨论、发问与回应。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2020/10/14/合適的女朋友/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2020-06-22 </div>
-			<div class="article-title"><a href="/2020/06/22/Try-PostgreSQL/" >Try PostgreSQL</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="PostgreSQL-is-Turing-Complete."><a target="_blank" rel="noopener" href="http://assets.en.oreilly.com/1/event/27/High%20Performance%20SQL%20with%20PostgreSQL%20Presentation.pdf">PostgreSQL is Turing Complete.</a><a class="anchor-link" href="#PostgreSQL-is-Turing-Complete.">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="http://www.postgres.cn/v2/document"><a target="_blank" rel="noopener" href="http://www.postgres.cn/v2/document">http://www.postgres.cn/v2/document</a><a class="anchor-link" href="#http://www.postgres.cn/v2/document">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="I-found-an-answer-from-Google.-And-I-quite-agree-with-that."><a target="_blank" rel="noopener" href="https://www.sisense.com/ja/blog/8-ways-fine-tune-sql-queries-production-databases/">I found an answer from Google. And I quite agree with that.</a><a class="anchor-link" href="#I-found-an-answer-from-Google.-And-I-quite-agree-with-that.">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ol>
-<li>Define business requirements first</li>
-<li>SELECT fields instead of using SELECT *</li>
-<li>Avoid SELECT DISTINCT</li>
-<li>Create joins with INNER JOIN (not WHERE)
-Some SQL developers prefer to make joins with WHERE clauses. This type of join creates a Cartesian Join, also called a Cartesian Product or CROSS JOIN. Cartesian Joins are especially problematic in large-scale databases, because a Cartesian Join of two large tables could create billions or trillions of results. To prevent creating a Cartesian Join, use INNER JOIN instead.</li>
-<li>Use WHERE instead of HAVING to define filters</li>
-<li>Use wildcards at the end of a phrase only
-When searching plaintext data, such as cities or names, wildcards create the widest search possible. However, the widest search is also the most inefficient search. When a leading wildcard is used, especially in combination with an ending wildcard, the database is tasked with searching all records for a match anywhere within the selected field.</li>
-<li>Use LIMIT to sample query results</li>
-<li>Run your query during off-peak hours</li>
-</ol>
-<p>There are also many other advices on Google. By understanding the mechanism of SQL Query, the efficiency of specific cases can be analyzed and compared.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>在做最后一道关于 SQL 的题目的时候，其实剩下的时间蛮多的。可是我却没有写完。
-现在想想其实蛮简单的。不需要什么 PostgreSQL 的高级用法。
-以前做这种题太少了，经验不足。所以，没能把握好思考的方向。
-在之前备考的时候，我有略略浏览过 PostgreSQL 的文档。
-由于时间紧迫，对于文档里面的各种高级用法的应用场景，我理解得很不充分。
-机试的时候，我就在想文档里面的各种高级用法。想不到好的思路，人就慌了。
-还有就是，做到后面的时候，我感觉自己体力有点不支了。
-我感觉这次机试要死在 SQL 上。</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> google.cloud.bigquery
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>The google.cloud.bigquery extension is already loaded. To reload it, use:
-  %reload_ext google.cloud.bigquery
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
-CREATE TABLE
-  dataset.buses ( id INT64,
-    origin STRING,
-    destination STRING,
-    time STRING )
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
-INSERT
-  dataset.buses (id,
-    origin,
-    destination,
-    time)
-VALUES
-  (10, &#39;Wuhan&#39;, &#39;Beijing&#39;, &#39;10:00&#39;),
-  (20, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:00&#39;),
-  (21, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:30&#39;),
-  (22, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;13:00&#39;),
-  (30, &#39;Beijing&#39;, &#39;Tokyo&#39;, &#39;23:59&#39;)
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
-SELECT
-  *
-FROM
-  dataset.buses
-ORDER BY
-  id
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>origin</th>
-      <th>destination</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>10</td>
-      <td>Wuhan</td>
-      <td>Beijing</td>
-      <td>10:00</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>20</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>12:00</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>21</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>12:30</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>22</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>13:00</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>30</td>
-      <td>Beijing</td>
-      <td>Tokyo</td>
-      <td>23:59</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
-CREATE TABLE
-  dataset.passengers ( id INT64,
-    origin STRING,
-    destination STRING,
-    time STRING )
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
-INSERT
-  dataset.passengers (id,
-    origin,
-    destination,
-    time)
-VALUES
-  (1, &#39;Beijing&#39;, &#39;Tokyo&#39;, &#39;23:59&#39;),
-  (2, &#39;Hangzhou&#39;, &#39;Tokyo&#39;, &#39;09:00&#39;),
-  (10, &#39;Wuhan&#39;, &#39;Tokyo&#39;, &#39;00:30&#39;),
-  (11, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;13:30&#39;),
-  (40, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:00&#39;),
-  (41, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:15&#39;),
-  (42, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:15&#39;),
-  (43, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:30&#39;),
-  (44, &#39;Hangzhou&#39;, &#39;Shanghai&#39;, &#39;12:35&#39;)
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
-SELECT
-  *
-FROM
-  dataset.passengers
-ORDER BY
-  id
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>origin</th>
-      <th>destination</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>Beijing</td>
-      <td>Tokyo</td>
-      <td>23:59</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>Hangzhou</td>
-      <td>Tokyo</td>
-      <td>09:00</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>10</td>
-      <td>Wuhan</td>
-      <td>Tokyo</td>
-      <td>00:30</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>11</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>13:30</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>40</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>12:00</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>41</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>12:15</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>42</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>12:15</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>43</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>12:30</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>44</td>
-      <td>Hangzhou</td>
-      <td>Shanghai</td>
-      <td>12:35</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
-WITH
-  buses_ranked AS (
-  SELECT
-    id,
-    origin,
-    destination,
-    time,
-    RANK() OVER (PARTITION BY origin, destination ORDER BY time) AS rank
-  FROM
-    dataset.buses)
-SELECT
-  bus_latter.*,
-  bus_former.time AS time_former,
-  passengers.id AS passengers_id,
-  passengers.time AS passengers_time
-FROM
-  buses_ranked AS bus_latter
-LEFT OUTER JOIN
-  buses_ranked AS bus_former
-ON
-  bus_latter.origin = bus_former.origin
-  AND bus_latter.destination = bus_former.destination
-  AND bus_latter.rank = bus_former.rank + 1
-LEFT OUTER JOIN
-  dataset.passengers AS passengers
-ON
-  bus_latter.origin = passengers.origin
-  AND bus_latter.destination = passengers.destination
-  AND (bus_former.time IS NULL
-    OR bus_former.time &lt; passengers.time)
-  AND passengers.time &lt;= bus_latter.time
-ORDER BY
-  id,
-  passengers_id
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">bigquery</span>
-WITH
-  buses_ranked AS (
-  SELECT
-    id,
-    origin,
-    destination,
-    time,
-    RANK() OVER (PARTITION BY origin, destination ORDER BY time) AS rank
-  FROM
-    dataset.buses)
-SELECT
-  bus_latter.id,
-  COUNT(passengers.id) AS passengers_count
-FROM
-  buses_ranked AS bus_latter
-LEFT OUTER JOIN
-  buses_ranked AS bus_former
-ON
-  bus_latter.origin = bus_former.origin
-  AND bus_latter.destination = bus_former.destination
-  AND bus_latter.rank = bus_former.rank + 1
-LEFT OUTER JOIN
-  dataset.passengers AS passengers
-ON
-  bus_latter.origin = passengers.origin
-  AND bus_latter.destination = passengers.destination
-  AND (bus_former.time IS NULL
-    OR bus_former.time &lt; passengers.time)
-  AND passengers.time &lt;= bus_latter.time
-GROUP BY
-  bus_latter.id
-ORDER BY
-  id
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>passengers_count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>10</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>20</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>21</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>22</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>30</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a target="_blank" rel="noopener" href="https://medium.com/analytics-vidhya/postgresql-integration-with-jupyter-notebook-deb97579a38d">https://medium.com/analytics-vidhya/postgresql-integration-with-jupyter-notebook-deb97579a38d</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2020/06/22/Try-PostgreSQL/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -2499,45 +1996,45 @@ ORDER BY
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>1</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
 			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
 		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+		
 			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>5</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
@@ -2553,23 +2050,23 @@ ORDER BY
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2023/04/07/BioGPT-Agent-Tools/" ><i class="fa fa-file-o"></i>BioGPT Agent Tools</a>
+      </li>
+    
+      <li>
+        <a href="/2023/04/07/Try-OpenAPI-Agent/" ><i class="fa fa-file-o"></i>Try OpenAPI Agent</a>
+      </li>
+    
+      <li>
+        <a href="/2023/04/07/A-Study-on-Network-Isolation-Measures-for-Dealing-with-Intelligent-Viruses/" ><i class="fa fa-file-o"></i>A Study on Network Isolatio...</a>
+      </li>
+    
+      <li>
+        <a href="/2023/04/06/Try-Autonomous-Agent/" ><i class="fa fa-file-o"></i>Try Autonomous Agent</a>
+      </li>
+    
+      <li>
         <a href="/2023/04/04/Try-LangChain/" ><i class="fa fa-file-o"></i>Try LangChain</a>
-      </li>
-    
-      <li>
-        <a href="/2023/03/21/Try-BioGPT/" ><i class="fa fa-file-o"></i>Try BioGPT</a>
-      </li>
-    
-      <li>
-        <a href="/2023/03/14/ChatGPT-Robot-for-WhatsApp/" ><i class="fa fa-file-o"></i>ChatGPT Robot for WhatsApp</a>
-      </li>
-    
-      <li>
-        <a href="/2023/03/13/Install-IJavaScript/" ><i class="fa fa-file-o"></i>Install IJavaScript</a>
-      </li>
-    
-      <li>
-        <a href="/2023/03/13/Jupyter-Magic-Command/" ><i class="fa fa-file-o"></i>Jupyter Magic Command</a>
       </li>
     
   </ul>
