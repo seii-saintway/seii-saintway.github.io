@@ -5,42 +5,37 @@
 
   <meta charset="utf-8">
   
-  <title>Try LangChain | Andrew&#39;s Blog</title>
+  <title>LangChain Document Loader | Andrew&#39;s Blog</title>
   <meta name="author" content="Andrew">
   
-  <meta name="description" content="LangChain GitHub&amp;#182;
-
-
-
-
-
-In&amp;nbsp;[&amp;nbsp;]:
-
-    
-%%bash
-pip install langchain
-
-
-    
-
-
-
-
-
-
-In&amp;nbsp;[&amp;nbsp;]:
+  <meta name="description" content="In&amp;nbsp;[&amp;nbsp;]:
 
     
 %%bash
 pip install faiss-cpu
 
 
- ">
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+
+Collecting faiss-cpu
+  Downloading faiss_cpu-1.7.3-cp310-cp310-macosx_10_">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Try LangChain"/>
+  <meta property="og:title" content="LangChain Document Loader"/>
   <meta property="og:site_name" content="Andrew&#39;s Blog"/>
 
   
@@ -156,7 +151,7 @@ pip install faiss-cpu
 
 	
 		<div class="page-header">		
-			<h1> Try LangChain</h1>
+			<h1> LangChain Document Loader</h1>
 		</div>		
 	
 
@@ -172,28 +167,7 @@ pip install faiss-cpu
 
 	<!-- content -->
 	<div class="mypage">
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="LangChain-GitHub"><a target="_blank" rel="noopener" href="https://github.com/hwchase17/langchain">LangChain GitHub</a><a class="anchor-link" href="#LangChain-GitHub">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-pip<span class="w"> </span>install<span class="w"> </span>langchain
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
+	    <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
@@ -233,9 +207,219 @@ Successfully installed faiss-cpu-1.7.3
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Faiss 是一个用于高维向量相似性搜索和聚类的库，它支持 GPU 运算加速。要让 Faiss 使用 GPU，需要执行以下步骤：</p>
+<ol>
+<li><p>确认您的计算机上已经安装了 CUDA 和 cuDNN。Faiss 支持的 CUDA 版本可以在 Faiss 文档中查看。</p>
+</li>
+<li><p>安装 Faiss GPU 版本。您可以使用 pip 安装 Faiss GPU 版本，方法是执行以下命令：</p>
+<pre><code>pip install faiss-gpu
+</code></pre>
+</li>
+<li><p>在代码中指定 Faiss 使用 GPU 进行计算。在创建 Faiss Index 对象时，可以指定使用哪个设备。例如，如果要使用默认的 GPU 设备，可以执行以下代码：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">faiss</span>
+
+<span class="c1"># 创建一个 128 维的向量空间</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="c1"># 创建一个 IndexFlatL2 对象，使用默认的 GPU 设备</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">IndexFlatL2</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+<p>如果您有多个 GPU 设备，也可以在创建 Index 对象时指定使用哪个 GPU。例如，如果要使用第二个 GPU 设备，可以执行以下代码：</p>
+<div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">IndexFlatL2</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">co</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">GpuMultipleClonerOptions</span><span class="p">()</span>
+<span class="n">co</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">index_cpu_to_gpu</span><span class="p">(</span><span class="n">faiss</span><span class="o">.</span><span class="n">StandardGpuResources</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">co</span><span class="p">)</span>
+</pre></div>
+<p>在这个例子中，我们使用了 <code>faiss.GpuMultipleClonerOptions()</code> 创建了一个选项对象，然后调用了 <code>co.select_device(1)</code> 方法，将第二个 GPU 设备选为使用的设备。最后，我们使用 <code>faiss.index_cpu_to_gpu()</code> 方法将 Index 对象复制到 GPU 上。</p>
+</li>
+</ol>
+<p>注意，使用 Faiss GPU 版本时，所有输入向量都必须是 float32 类型。如果您的向量是其他类型，需要先进行类型转换。此外，您需要将所有向量一起加载到 GPU 内存中，以便 Faiss 可以使用 GPU 进行计算。您可以使用 <code>faiss.StandardGpuResources()</code> 创建一个 GPU 资源对象，然后使用 <code>index.add()</code> 方法将向量添加到 Index 对象中。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>faiss-gpu
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在 Mac 上安装 CUDA 驱动程序需要进行以下步骤：</p>
+<ol>
+<li><p>首先，你需要安装 Xcode 和 CUDA Toolkit。如果你已经安装了 Xcode，你可以在终端中输入以下命令来安装 CUDA Toolkit：</p>
+<pre><code>brew install --cask cuda
+</code></pre>
+</li>
+<li><p>安装完成后，你需要将 CUDA 环境变量添加到你的 <code>~/.bash_profile</code> 文件中。你可以使用以下命令来打开该文件：</p>
+<pre><code>open ~/.bash_profile
+</code></pre>
+<p>然后在文件末尾添加以下行：</p>
+<pre><code>export PATH=&quot;/usr/local/cuda/bin:$PATH&quot;
+export DYLD_LIBRARY_PATH=&quot;/usr/local/cuda/lib:$DYLD_LIBRARY_PATH&quot;
+</code></pre>
+</li>
+<li><p>接下来，你需要安装 cuDNN（CUDA Deep Neural Network library）。你可以在 NVIDIA 的网站上下载 cuDNN 库，下载完成后，你需要将库文件解压到 <code>/usr/local/cuda/lib</code> 目录下。你可以使用以下命令来解压文件：</p>
+<pre><code>tar -xvf cudnn-11.4-macos-arm64-v8.2.4.15.tgz
+sudo cp cuda/include/cudnn*.h /usr/local/cuda/include
+sudo cp cuda/lib/libcudnn* /usr/local/cuda/lib
+sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib/libcudnn*
+</code></pre>
+</li>
+<li><p>最后，你需要重新启动终端，以使环境变量生效。你可以使用以下命令来检查 CUDA 是否已正确安装：</p>
+<pre><code>nvcc -V
+</code></pre>
+<p>如果 CUDA 已正确安装，则会输出 CUDA 版本号和其他信息。</p>
+</li>
+</ol>
+<p>请注意，AMD Radeon Pro 5500M 是一款 AMD 显卡，而 CUDA 是 NVIDIA 的技术。因此，如果你需要使用 CUDA，你需要在你的 Mac 上安装 NVIDIA 显卡。如果你想使用 AMD 显卡来进行深度学习等计算密集型任务，你可以考虑使用其他的技术，如 ROCm。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nv">HOMEBREW_NO_AUTO_UPDATE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>cuda
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ROCm（Radeon Open Compute）是一款由 AMD 开发的开源软件平台，旨在为 AMD 显卡提供高性能计算和深度学习功能。ROCm 包括对编程语言和编程模型的支持，包括 OpenMP、OpenCL、HIP（Heterogeneous-compute Interface for Portability）、TensorFlow 和 PyTorch 等，可以为各种计算密集型应用提供支持。</p>
+<p>ROCm 支持 Linux 平台和部分 Windows 平台，以及 AMD 的 Radeon 显卡和服务器级显卡，如 Radeon Instinct。ROCm 还支持一些第三方硬件，如 IBM 的 PowerPC 平台和 Cavium 的 ThunderX2。</p>
+<p>ROCm 不仅提供了 GPU 加速的计算能力，还支持 CPU 和 GPU 的协同计算，可以提高整个系统的计算性能。此外，ROCm 也为深度学习提供了一些特定的工具和库，如 MIOpen 和 RCCL。</p>
+<p>总之，ROCm 是一款功能强大的开源软件平台，为 AMD 显卡用户提供了许多高性能计算和深度学习的功能和工具。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Faiss是一款基于GPU的高性能相似度搜索库，可以用于许多机器学习和深度学习任务。Faiss可以使用ROCm进行加速，从而提高搜索效率和准确性。</p>
+<p>以下是在Mac上使用ROCm和Faiss的一些基本步骤：</p>
+<ol>
+<li><p>首先，你需要安装ROCm。你可以从<a target="_blank" rel="noopener" href="https://rocmdocs.amd.com/en/revamp/Installation_Guide/Installation-Guide.html">官方网站</a>下载并安装ROCm。</p>
+</li>
+<li><p>安装完成后，你需要设置一些环境变量。你可以在你的<code>~/.bash_profile</code>文件中添加以下行：</p>
+</li>
+</ol>
+<pre><code>export PATH=$PATH:/opt/rocm/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib:/opt/rocm/hip/lib
+export HIP_PLATFORM=hcc
+export HCC_HOME=/opt/rocm/hcc
+</code></pre>
+<ol start="3">
+<li>然后，你需要安装Faiss。你可以使用以下命令在终端中安装Faiss：</li>
+</ol>
+<pre><code>pip install faiss-gpu
+</code></pre>
+<ol start="4">
+<li>安装完成后，你可以使用以下示例代码来测试Faiss是否正常工作：</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">faiss</span>
+
+<span class="c1"># 生成一些随机数据</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1"># 向量维度</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># 向量数量</span>
+<span class="n">xb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">nb</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+
+<span class="c1"># 构建索引</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">IndexFlatL2</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">is_trained</span><span class="p">)</span>
+<span class="n">index</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+
+<span class="c1"># 搜索</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">xq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="n">D</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">xq</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+<p>如果Faiss正常工作，则应该能够正确地输出搜索结果。</p>
+<p>注意，使用ROCm加速Faiss需要满足一些硬件要求，如AMD显卡和支持ROCm的CPU。如果你的硬件不符合要求，你可能无法使用ROCm加速Faiss，或者搜索效率和准确性可能会受到影响。</p>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+<hr>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="LangChain-GitHub"><a target="_blank" rel="noopener" href="https://github.com/hwchase17/langchain">LangChain GitHub</a><a class="anchor-link" href="#LangChain-GitHub">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>langchain
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <ul>
 <li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/tools/getting_started.html">Agents</a><ul>
 <li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/toolkits/examples/openapi.html">Hierarchical Planning Agent</a></li>
+<li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/toolkits/examples/python.html">Python Agent</a></li>
 </ul>
 </li>
 </ul>
@@ -258,8 +442,7 @@ Successfully installed faiss-cpu-1.7.3
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/yoheinakajima/babyagi">https://github.com/yoheinakajima/babyagi</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/corca-ai/EVAL">https://github.com/corca-ai/EVAL</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/corca-ai/EVAL">Elastic Versatile Agent with LangChain</a></li>
 </ul>
 
 </div>
@@ -279,6 +462,16 @@ Successfully installed faiss-cpu-1.7.3
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/yoheinakajima/babyagi">https://github.com/yoheinakajima/babyagi</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr />
 <ul>
 <li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/use_cases/chatbots.html">Chatbots</a><ul>
@@ -288,6 +481,7 @@ Successfully installed faiss-cpu-1.7.3
 </ul>
 </li>
 <li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/agents/examples/conversational_agent.html">Conversation Agent</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/andylokandy/gpt-4-search">GPT with Google Search</a></li>
 </ul>
 </li>
 </ul>

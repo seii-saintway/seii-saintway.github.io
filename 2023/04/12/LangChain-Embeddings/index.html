@@ -1,0 +1,2089 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>LangChain Embeddings | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="Open Text Embeddings&amp;#182;
+
+
+
+
+
+
+LangChain Embeddings&amp;#182;
+
+
+
+
+
+
+LLaMA Embeddings&amp;#182;
+https://github.com/ggerganov/llama.cpp
+https://github.com/abe">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="LangChain Embeddings"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> LangChain Embeddings</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Open-Text-Embeddings">Open Text Embeddings<a class="anchor-link" href="#Open-Text-Embeddings">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LangChain-Embeddings"><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/reference/modules/embeddings.html">LangChain Embeddings</a><a class="anchor-link" href="#LangChain-Embeddings">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="LLaMA-Embeddings"><a target="_blank" rel="noopener" href="https://huggingface.co/shalomma/llama-7b-embeddings">LLaMA Embeddings</a><a class="anchor-link" href="#LLaMA-Embeddings">&#182;</a></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ggerganov/llama.cpp">https://github.com/ggerganov/llama.cpp</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/abetlen/llama-cpp-python">https://github.com/abetlen/llama-cpp-python</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>llama-cpp-python
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Successfully installed llama-cpp-python-0.1.32 typing-extensions-4.5.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><a target="_blank" rel="noopener" href="https://huggingface.co/Pi3141/gpt4-x-alpaca-native-13B-ggml">GPT4 x Alpaca without LoRA ggml</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>git+https://github.com/huggingface/transformers
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">tokenizers</span><span class="o">==</span><span class="m">0</span>.13.3<span class="w"> </span><span class="nv">protobuf</span><span class="o">==</span><span class="m">3</span>.20.*
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: tokenizers==0.13.3 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (0.13.3)
+Requirement already satisfied: protobuf==3.20.* in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (3.20.3)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<ul>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/welcome">HuggingFace Welcome</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSequenceClassification</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;chavinlo/gpt4-x-alpaca&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;chavinlo/gpt4-x-alpaca&#39;</span><span class="p">,</span> <span class="n">resume_download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Downloading (…)l-00001-of-00006.bin:  69%|######9   | 6.91G/9.96G [00:00&lt;?, ?B/s]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/huggingface/hub/models--chavinlo--gpt4-x-alpaca/snapshots/6a571f458cab9a23d14324ec63e0abd1744c8353
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 0
+drwxr-xr-x  14 saintway  staff   448B Apr 14 14:21 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x   3 saintway  staff    96B Apr 12 21:08 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+lrwxr-xr-x   1 saintway  staff    52B Apr 12 21:34 <span class="ansi-magenta-fg">added_tokens.json</span> -&gt; ../../blobs/3e03d5f619baf8592fb936d63d05366f9304f7b2
+lrwxr-xr-x   1 saintway  staff    52B Apr 12 21:43 <span class="ansi-magenta-fg">config.json</span> -&gt; ../../blobs/849ee4b803bc92eb21e60c3946d20e4cbc69eefa
+lrwxr-xr-x   1 saintway  staff    76B Apr 13 02:27 <span class="ansi-magenta-fg">pytorch_model-00001-of-00006.bin</span> -&gt; ../../blobs/c022dd1d22c5ed2501abdb220f8315e6f51a5197026ed72bdbd2fdbac641d27b
+lrwxr-xr-x   1 saintway  staff    76B Apr 13 13:32 <span class="ansi-magenta-fg">pytorch_model-00002-of-00006.bin</span> -&gt; ../../blobs/5481821b5869b58b15c3175e712e41cd6b7b5596557b10aa2c2655a4cf019a7a
+lrwxr-xr-x   1 saintway  staff    76B Apr 14 11:53 <span class="ansi-magenta-fg">pytorch_model-00003-of-00006.bin</span> -&gt; ../../blobs/df46de31831a882cd57c9beefdad97e1ae442fe071871bad60223b23c1a08df9
+lrwxr-xr-x   1 saintway  staff    76B Apr 14 13:21 <span class="ansi-magenta-fg">pytorch_model-00004-of-00006.bin</span> -&gt; ../../blobs/0e5f42d9943bdbc6e12288733a65d6e337c2cc1a3ff90654cdf96df3f43437ee
+lrwxr-xr-x   1 saintway  staff    76B Apr 14 14:06 <span class="ansi-magenta-fg">pytorch_model-00005-of-00006.bin</span> -&gt; ../../blobs/6149b601c773fce7642e3424878c2c8182a221a2723e93d3da10e0f28850d00e
+lrwxr-xr-x   1 saintway  staff    76B Apr 14 14:21 <span class="ansi-magenta-fg">pytorch_model-00006-of-00006.bin</span> -&gt; ../../blobs/1b02c47b8a6151783c6ab90a8e5acba320940d2197cff255cf8f23eab10f8180
+lrwxr-xr-x   1 saintway  staff    52B Apr 12 21:43 <span class="ansi-magenta-fg">pytorch_model.bin.index.json</span> -&gt; ../../blobs/eb488e9b33396741832583081e6ca45eb6f4de49
+lrwxr-xr-x   1 saintway  staff    52B Apr 12 21:34 <span class="ansi-magenta-fg">special_tokens_map.json</span> -&gt; ../../blobs/318f9131477d72be713dcfee9da3a2e43d7ac8ad
+lrwxr-xr-x   1 saintway  staff    76B Apr 12 21:34 <span class="ansi-magenta-fg">tokenizer.model</span> -&gt; ../../blobs/9e556afd44213b6bd1be2b850ebbbd98f5481437a8021afaf58ee7fb1818d347
+lrwxr-xr-x   1 saintway  staff    52B Apr 12 21:08 <span class="ansi-magenta-fg">tokenizer_config.json</span> -&gt; ../../blobs/8edc6b4c1db134f5d717a6a4f271dfa3194f2295
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/huggingface/hub/models--chavinlo--gpt4-x-alpaca/blobs
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 84439400
+drwxr-xr-x  14 saintway  staff   448B Apr 14 18:53 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x   7 saintway  staff   224B Apr 14 14:21 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+-rw-r--r--   1 saintway  staff   9.2G Apr 14 13:21 0e5f42d9943bdbc6e12288733a65d6e337c2cc1a3ff90654cdf96df3f43437ee
+-rw-r--r--   1 saintway  staff   2.3G Apr 14 14:21 1b02c47b8a6151783c6ab90a8e5acba320940d2197cff255cf8f23eab10f8180
+-rw-r--r--   1 saintway  staff    96B Apr 12 21:34 318f9131477d72be713dcfee9da3a2e43d7ac8ad
+-rw-r--r--   1 saintway  staff    20B Apr 12 21:34 3e03d5f619baf8592fb936d63d05366f9304f7b2
+-rw-r--r--   1 saintway  staff   4.6G Apr 13 13:32 5481821b5869b58b15c3175e712e41cd6b7b5596557b10aa2c2655a4cf019a7a.incomplete
+-rw-r--r--   1 saintway  staff   9.2G Apr 14 14:06 6149b601c773fce7642e3424878c2c8182a221a2723e93d3da10e0f28850d00e
+-rw-r--r--   1 saintway  staff   535B Apr 12 21:43 849ee4b803bc92eb21e60c3946d20e4cbc69eefa
+-rw-r--r--   1 saintway  staff   329B Apr 12 21:08 8edc6b4c1db134f5d717a6a4f271dfa3194f2295
+-rw-r--r--   1 saintway  staff   488K Apr 12 21:34 9e556afd44213b6bd1be2b850ebbbd98f5481437a8021afaf58ee7fb1818d347
+-rw-r--r--   1 saintway  staff   5.7G Apr 13 02:27 c022dd1d22c5ed2501abdb220f8315e6f51a5197026ed72bdbd2fdbac641d27b.incomplete
+-rw-r--r--   1 saintway  staff   9.3G Apr 14 11:53 df46de31831a882cd57c9beefdad97e1ae442fe071871bad60223b23c1a08df9
+-rw-r--r--   1 saintway  staff    33K Apr 12 21:43 eb488e9b33396741832583081e6ca45eb6f4de49
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">langchain.embeddings</span> <span class="kn">import</span> <span class="n">LlamaCppEmbeddings</span>
+<span class="n">alpaca_embeddings</span> <span class="o">=</span> <span class="n">LlamaCppEmbeddings</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.cache/huggingface/hub/models--chavinlo--gpt4-x-alpaca/snapshots/6a571f458cab9a23d14324ec63e0abd1744c8353/model.bin&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 准备文本</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;这是一个测试文档。&#39;</span>
+
+<span class="c1"># 使用 HuggingFaceEmbeddings 生成文本嵌入</span>
+<span class="n">query_result</span> <span class="o">=</span> <span class="n">alpaca_embeddings</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">doc_result</span> <span class="o">=</span> <span class="n">alpaca_embeddings</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">query_result</span><span class="p">))</span>
+<span class="c1"># print(query_result)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_result</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="c1"># print(doc_result)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<ul>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/docs/huggingface_hub/guides/download">Download files from the HuggingFace Hub</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">huggingface_hub</span> <span class="kn">import</span> <span class="n">hf_hub_download</span>
+<span class="n">hf_hub_download</span><span class="p">(</span><span class="n">repo_id</span><span class="o">=</span><span class="s1">&#39;Pi3141/gpt4-x-alpaca-native-13B-ggml&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;consolidated.00.pth&#39;</span><span class="p">,</span> <span class="n">resume_download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;/Users/saintway/.cache/huggingface/hub/models--Pi3141--gpt4-x-alpaca-native-13B-ggml/snapshots/43cce6aab1b95712d83165afafa3c7baad140eb9/consolidated.00.pth&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 用 Python 去掉文件中最后一个字节</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.cache/huggingface/hub/models--Pi3141--gpt4-x-alpaca-native-13B-ggml/blobs/8d308284e190467111257950d4e8b34b1e3f19a70636fa6ea51dfa62f4cf5b55.incomplete&#39;</span><span class="p">),</span> <span class="s1">&#39;rb+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+    <span class="n">filehandle</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">SEEK_END</span><span class="p">)</span>
+    <span class="n">filehandle</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">huggingface_hub</span> <span class="kn">import</span> <span class="n">hf_hub_download</span>
+<span class="n">hf_hub_download</span><span class="p">(</span><span class="n">repo_id</span><span class="o">=</span><span class="s1">&#39;Pi3141/gpt4-x-alpaca-native-13B-ggml&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;ggml-model-q4_1.bin&#39;</span><span class="p">,</span> <span class="n">resume_download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;/Users/saintway/.cache/huggingface/hub/models--Pi3141--gpt4-x-alpaca-native-13B-ggml/snapshots/43cce6aab1b95712d83165afafa3c7baad140eb9/ggml-model-q4_1.bin&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">huggingface_hub</span> <span class="kn">import</span> <span class="n">snapshot_download</span>
+<span class="n">snapshot_download</span><span class="p">(</span><span class="n">repo_id</span><span class="o">=</span><span class="s1">&#39;Pi3141/gpt4-x-alpaca-native-13B-ggml&#39;</span><span class="p">,</span> <span class="n">resume_download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>Fetching 4 files:   0%|          | 0/4 [00:00&lt;?, ?it/s]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;/Users/saintway/.cache/huggingface/hub/models--Pi3141--gpt4-x-alpaca-native-13B-ggml/snapshots/43cce6aab1b95712d83165afafa3c7baad140eb9&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/huggingface/hub/models--Pi3141--gpt4-x-alpaca-native-13B-ggml/snapshots/43cce6aab1b95712d83165afafa3c7baad140eb9
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 0
+drwxr-xr-x  6 saintway  staff   192B Apr 14 11:20 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x  3 saintway  staff    96B Apr 12 23:05 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+lrwxr-xr-x  1 saintway  staff    52B Apr 12 23:05 <span class="ansi-magenta-fg">.gitattributes</span> -&gt; ../../blobs/c7d9f3332a950355d5a77d85000f05e6f45435ea
+lrwxr-xr-x  1 saintway  staff    52B Apr 12 23:05 <span class="ansi-magenta-fg">README.md</span> -&gt; ../../blobs/03dbe88acfdc7f800acf2423960468e1c852c9ba
+lrwxr-xr-x  1 saintway  staff    76B Apr 14 11:20 <span class="ansi-magenta-fg">consolidated.00.pth</span> -&gt; ../../blobs/fd8008066e6af8a094d3703b7e3bbcb64cdca43e964288758d3b3a1ba6e41499
+lrwxr-xr-x  1 saintway  staff    76B Apr 13 09:49 <span class="ansi-magenta-fg">ggml-model-q4_1.bin</span> -&gt; ../../blobs/8d308284e190467111257950d4e8b34b1e3f19a70636fa6ea51dfa62f4cf5b55
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/huggingface/hub/models--Pi3141--gpt4-x-alpaca-native-13B-ggml/blobs
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 90434208
+drwxr-xr-x  9 saintway  staff   288B Apr 14 11:20 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x  6 saintway  staff   192B Apr 14 11:20 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+-rw-r--r--  1 saintway  staff   254B Apr 13 09:53 03dbe88acfdc7f800acf2423960468e1c852c9ba
+-rw-r--r--@ 1 saintway  staff   9.1G Apr 13 09:53 8d308284e190467111257950d4e8b34b1e3f19a70636fa6ea51dfa62f4cf5b55
+-rw-r--r--  1 saintway  staff   2.1G Apr 13 09:53 8d308284e190467111257950d4e8b34b1e3f19a70636fa6ea51dfa62f4cf5b55.incomplete.retry
+-rw-r--r--  1 saintway  staff   1.4K Apr 13 09:53 c7d9f3332a950355d5a77d85000f05e6f45435ea
+-rw-r--r--  1 saintway  staff    24G Apr 14 11:20 fd8008066e6af8a094d3703b7e3bbcb64cdca43e964288758d3b3a1ba6e41499
+-rw-------  1 saintway  staff   6.2G Apr 13 09:53 fd8008066e6af8a094d3703b7e3bbcb64cdca43e964288758d3b3a1ba6e41499.incomplete.retry
+-rw-r--r--  1 saintway  staff   1.5G Apr 13 09:53 fd8008066e6af8a094d3703b7e3bbcb64cdca43e964288758d3b3a1ba6e41499.incomplete.tempfile
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">langchain.embeddings</span> <span class="kn">import</span> <span class="n">LlamaCppEmbeddings</span>
+<span class="n">alpaca_embeddings</span> <span class="o">=</span> <span class="n">LlamaCppEmbeddings</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/ggml-model-q4_1.bin&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>llama.cpp: loading model from /Users/saintway/ggml-model-q4_1.bin
+llama_model_load_internal: format     = ggjt v1 (latest)
+llama_model_load_internal: n_vocab    = 32000
+llama_model_load_internal: n_ctx      = 512
+llama_model_load_internal: n_embd     = 5120
+llama_model_load_internal: n_mult     = 256
+llama_model_load_internal: n_head     = 40
+llama_model_load_internal: n_layer    = 40
+llama_model_load_internal: n_rot      = 128
+llama_model_load_internal: f16        = 3
+llama_model_load_internal: n_ff       = 13824
+llama_model_load_internal: n_parts    = 1
+llama_model_load_internal: model size = 13B
+llama_model_load_internal: ggml ctx size =  73.73 KB
+llama_model_load_internal: mem required  = 11359.03 MB (+ 3216.00 MB per state)
+llama_init_from_file: kv self size  =  800.00 MB
+AVX = 1 | AVX2 = 1 | AVX512 = 0 | FMA = 1 | NEON = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 1 | SSE3 = 1 | VSX = 0 | 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 准备文本</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;这是一个测试文档。&#39;</span>
+
+<span class="c1"># 使用 HuggingFaceInstructEmbeddings 生成文本嵌入</span>
+<span class="n">query_result</span> <span class="o">=</span> <span class="n">alpaca_embeddings</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">doc_result</span> <span class="o">=</span> <span class="n">alpaca_embeddings</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">query_result</span><span class="p">))</span>
+<span class="c1"># print(query_result)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_result</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="c1"># print(doc_result)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+llama_print_timings:        load time = 15205.17 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 28693.65 ms /    12 tokens ( 2391.14 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 28701.20 ms
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5120
+1
+5120
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+llama_print_timings:        load time = 15205.17 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time =  3616.78 ms /    12 tokens (  301.40 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time =  3628.49 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://sj-langchain.readthedocs.io/en/latest/ecosystem/huggingface.html">LangChain with Hugging Face</a><ul>
+<li><a target="_blank" rel="noopener" href="https://sj-langchain.readthedocs.io/en/latest/modules/llms/integrations/huggingface_hub.html">LLM from Hugging Face Hub</a></li>
+<li><a target="_blank" rel="noopener" href="https://sj-langchain.readthedocs.io/en/latest/modules/indexes/examples/textsplitter.html">LangChain Text Splitter</a></li>
+<li><a target="_blank" rel="noopener" href="https://sj-langchain.readthedocs.io/en/latest/use_cases/evaluation/huggingface_datasets.html">Evaluate Models using HuggingFace Datasets</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">DirectoryLoader</span><span class="p">,</span> <span class="n">TextLoader</span>
+<span class="kn">from</span> <span class="nn">langchain.text_splitter</span> <span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_docs</span><span class="p">(</span><span class="n">dir_name</span><span class="p">):</span>
+    <span class="c1"># (1) Import a series of documents.</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">DirectoryLoader</span><span class="p">(</span><span class="n">dir_name</span><span class="p">,</span> <span class="n">loader_cls</span><span class="o">=</span><span class="n">TextLoader</span><span class="p">,</span> <span class="n">silent_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">raw_documents</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="c1"># (2) Split them into small chunks.</span>
+    <span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span>
+        <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">raw_documents</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">get_docs</span><span class="p">(</span><span class="s1">&#39;_posts/ultimate-facts&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>26</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_docs</span><span class="p">(</span><span class="s1">&#39;_posts/ultimate-facts&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Document(page_content=&#39;title: Neuroscience\ndate: 2021-10-14 16:30:20\ntags: Neuro\n---\n\nThe [**ventral tegmental area**](https://en.wikipedia.org/wiki/Ventral_tegmental_area) (**VTA**) (**tegmentum** is Latin for covering), also known as the **ventral tegmental area of Tsai**, or simply **ventral tegmentum**, is a group of neurons located close to the midline on the floor of the midbrain.\n\n---\n\n&gt; \u3000\u3000有些权威认为，有必要把意识的内容 (content) 与“有意识状态的特性” (quality of being conscious) 或“意识本身” (consciousness as such) 区分开来²。这一划分与我的分类异曲同工。\n\u3000\u3000要想产生意识，必须先具备某些神经前提条件。我把这些条件称为 NCC_e。任一特定知觉的 NCC 都是局部作用的、高度特化的、转瞬即逝的，相比起来，NCC_e 的作用方式更全局化也更持久。要是没有相关的 NCC_e 的话，机体或许也还能有简单的行为，但在这样做时绝不会有意识（可能发生这种情形的某些病理条件将在第13章讨论）。根据定义可知，如果没有 NCC_e，就不可能形成任何 NCC。\n\u3000\u3000会不会有这样一种状态，即生物体虽然有意识，却意识不到任何具体内容？换句话说，NCC_e 能否脱离 NCC 而单独存在呢？某些冥想的目标就是要进入这种没有具体内容的意识形式³。但是在目前，还很难对它进行严格的分析。&#39;, metadata={&#39;source&#39;: &#39;_posts/ultimate-facts/Neuroscience.md&#39;})</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_docs</span><span class="p">(</span><span class="s1">&#39;_posts/ultimate-facts&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Document(page_content=&#39;&gt; ² =&gt;\n\u3000\u3000有关文献包括：\n* Moore, Philosophical Studies (1922)\n* Grossmann, &#34;Are current concepts and methods in neuroscience inadequate for studying the neural basis of consciousness and mental activity?&#34; (1980)\n* Baars, A Cognitive Theory of Consciousness (1988)\n* Baars, &#34;Surprisingly small subcortical structures are needed for the state of waking consciousness, while cortical projection areas seem to provide perceptual contents of consciousness,&#34; (1995)\n* Bogen, &#34;On the neurophysiology of consciousness: I. An overview,&#34;(1995a)\n* Searle, &#34;The Mystery of Consciousness&#34;, (2000)\n\n&gt; ³ =&gt;\n\u3000\u3000冥想的技巧就在于排除万念而只集中于一个想法、观念或者知觉。这要经过多年的修炼，才能遏制注意力的不断转换（第9章），把注意力长时间集中在一件事上而又不昏昏入睡。由于神经的适应性无时不在，对单件事的觉知会逐渐消退，使得脑中一片空白，主观上没有任何意识内容，但人还是清醒的。\n\n---&#39;, metadata={&#39;source&#39;: &#39;_posts/ultimate-facts/Neuroscience.md&#39;})</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_docs</span><span class="p">(</span><span class="s1">&#39;_posts/ultimate-facts&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Document(page_content=&#39;&gt; 我们刚刚知道自然科学借以掌握质的方法––形成量的概念的方法。我们必须提出的问题是，这种方法是不是也能够适用于主观的意识的质。按照我们前面所说，为了使这种方法能够加以运用，必须有与这些质充分确定地、唯一地联系着的空间变化。如果情况真的如此，那么这个问题就可以通过空间–时间的重合方法来解决，因而**测量**便是可能的。但是，这种重合的方法本质上就是进行物理的观察，而就内省法来说，却不存在物理的观察这种事情。由此立刻就可以得出结论：心理学沿着内省的途径决不可能达到知识的理想。因此，它必须尽量使用物理的观察方法来达到它的目的。但这是不是可能的呢？是不是有依存于意识的质的空间变化，就像例如在光学中干涉带的宽度依存于颜色，在电学中磁铁的偏转度依存于磁场的强度那样呢？\n&gt; 现在我们知道，事实上应当承认在主观的质和推断出来的客观世界之间有一种确切规定的、一义的配列关系。大量的经验材料告诉我们，我们可以发现，至少必须假设与所有经验唯一地联系着的“物理的”过程的存在。没有什么意识的质不可能受到作用于身体的力的影响。的确，我们甚至能够用一种简单的物理方法，例如吸进一种气体，就把意识全部消除掉。我们的行动与我们的意志经验相联系，幻觉与身体的疲惫相联系，抑郁症的发作与消化的紊乱相联系。为了研究这类相互联系，心的理论必须抛弃纯粹内省的方法而成为**生理的**心理学。只有这个学科才能在理论上达到对心理的东西的完全的知识。借助于这样一种心理学，我们就可以用概念和所与的主观的质相配列，正如我们能够用概念与推论出来的客观的质相配列一样。这样，主观的质就像客观的质一样成为可知的了。\n&gt; 我们很早就指出，客观世界中最直接地与自我的主观的质相联系的部分就是由大脑的概念，特别是大脑皮层的概念所表示的那一部分。因而在科学知识的精确的世界图景中，可用数值描述的概念代替的主观质的，只是某些大脑过程。相互依存的分析不可避免要引向这些大脑过程。虽然我们还远没有确切地知道所涉及的是何种个别的过程，但至少指出了一条途径：必须以大脑过程来代替主观的质。这就是我们能够充分认识主观的质所具有的唯一的希望。\n&gt; ……&#39;, metadata={&#39;source&#39;: &#39;_posts/ultimate-facts/Neuroscience.md&#39;})</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_docs</span><span class="p">(</span><span class="s1">&#39;_posts/ultimate-facts&#39;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Document(page_content=&#39;&gt; ……\n&gt; ……诚然，可以按照某种任意的尺度使一些数与心理的量值相配列。但是这些量值并没有就归结为某种别的东西，因而彼此仍然是互不联系的。所以，我们不能说就知道了某种东西的性质或本质。这种情况与我们上面谈到的物理学上的例子完全相同。如果我们对“温度”本身的测量仅仅依据任意的标尺来对数进行配列，那么我们仍然没有知道“温度”的性质。但是热力学理论引入分子的平均运动能量来代替温度，同时也就为排除任何任意因素的量的处理方法提供了自然的原则。只有当量的关系不是单纯地反映一种任意的约定，而是从事物的本性中产生并且从事物本性中觉察到的时候，这种关系才真的是代表了一种**本质**的知识。正像温度在这里归结为力学的规定性，同样，意识的材料如果要真正地被认知，一般也必须依据自然的原则归结为物理的规定性。就温度的情况来说（也就是热的客观的质），只有通过物质的分子结构的假设才可能把它归结为力学的规定；同样，对主观的心理的质的知识需要有深入研究大脑过程本质的生理学假设。遗憾的是，这种研究的现状还不容许我们以实现心理学最终目标所需要的精确性来构述这种假设。\nーー《普通认识论》（Ｍ．石里克），31&#39;, metadata={&#39;source&#39;: &#39;_posts/ultimate-facts/Neuroscience.md&#39;})</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">langchain.embeddings</span> <span class="kn">import</span> <span class="n">LlamaCppEmbeddings</span>
+<span class="kn">from</span> <span class="nn">langchain.vectorstores.faiss</span> <span class="kn">import</span> <span class="n">FAISS</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ingest_docs</span><span class="p">(</span><span class="n">dir_name</span><span class="p">):</span>
+    <span class="n">documents</span> <span class="o">=</span> <span class="n">get_docs</span><span class="p">(</span><span class="n">dir_name</span><span class="p">)</span>
+    <span class="c1"># (3) Create embeddings for each document (using text-embedding-ada-002).</span>
+    <span class="n">embeddings</span> <span class="o">=</span> <span class="n">LlamaCppEmbeddings</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/ggml-model-q4_1.bin&#39;</span><span class="p">),</span> <span class="n">n_ctx</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">FAISS</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">)</span>
+
+<span class="n">vectorstore</span> <span class="o">=</span> <span class="n">ingest_docs</span><span class="p">(</span><span class="s1">&#39;_posts/ultimate-facts&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>llama.cpp: loading model from /Users/saintway/ggml-model-q4_1.bin
+llama_model_load_internal: format     = ggjt v1 (latest)
+llama_model_load_internal: n_vocab    = 32000
+llama_model_load_internal: n_ctx      = 2048
+llama_model_load_internal: n_embd     = 5120
+llama_model_load_internal: n_mult     = 256
+llama_model_load_internal: n_head     = 40
+llama_model_load_internal: n_layer    = 40
+llama_model_load_internal: n_rot      = 128
+llama_model_load_internal: f16        = 3
+llama_model_load_internal: n_ff       = 13824
+llama_model_load_internal: n_parts    = 1
+llama_model_load_internal: model size = 13B
+llama_model_load_internal: ggml ctx size =  73.73 KB
+llama_model_load_internal: mem required  = 11359.03 MB (+ 3216.00 MB per state)
+llama_init_from_file: kv self size  = 3200.00 MB
+AVX = 1 | AVX2 = 1 | AVX512 = 0 | FMA = 1 | NEON = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 1 | SSE3 = 1 | VSX = 0 | 
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 1234747.80 ms /   607 tokens ( 2034.18 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 1234897.68 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 1014295.96 ms /   384 tokens ( 2641.40 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 1014467.79 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 3282788.17 ms /  1245 tokens ( 2636.78 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 3283401.24 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 1918145.27 ms /   648 tokens ( 2960.10 ms per token)
+llama_print_timings:        eval time = 20809.58 ms /     1 runs   (20809.58 ms per run)
+llama_print_timings:       total time = 1939184.53 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 96082.05 ms /    30 tokens ( 3202.73 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 96150.74 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 507646.90 ms /   208 tokens ( 2440.61 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 507789.71 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 276020.03 ms /   115 tokens ( 2400.17 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 276108.72 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2019785.65 ms /   672 tokens ( 3005.63 ms per token)
+llama_print_timings:        eval time = 21867.42 ms /     1 runs   (21867.42 ms per run)
+llama_print_timings:       total time = 2041848.65 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 3602106.63 ms /  1131 tokens ( 3184.89 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 3602439.90 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 3230592.03 ms /  1040 tokens ( 3106.34 ms per token)
+llama_print_timings:        eval time = 22766.44 ms /     1 runs   (22766.44 ms per run)
+llama_print_timings:       total time = 3253751.32 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2692559.48 ms /  1530 tokens ( 1759.84 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 2692893.27 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2117241.21 ms /  1428 tokens ( 1482.66 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 2117414.25 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 1295672.21 ms /  1255 tokens ( 1032.41 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 1295802.91 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2584795.09 ms /  1406 tokens ( 1838.40 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 2585014.00 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2833173.90 ms /  1514 tokens ( 1871.32 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 2833446.52 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2497129.27 ms /  1459 tokens ( 1711.53 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 2497330.28 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2323893.79 ms /  1448 tokens ( 1604.90 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 2324101.06 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 424718.68 ms /   549 tokens (  773.62 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 424798.69 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2024465.75 ms /  1456 tokens ( 1390.43 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 2024680.15 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 203939.74 ms /   407 tokens (  501.08 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 204026.72 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 2015409.22 ms /  1524 tokens ( 1322.45 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 2015592.15 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 147731.28 ms /   397 tokens (  372.12 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 147780.64 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 477176.94 ms /  1092 tokens (  436.98 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 477262.18 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 900018.45 ms /  1332 tokens (  675.69 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 900122.17 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 133290.49 ms /   490 tokens (  272.02 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 133351.61 ms
+
+llama_print_timings:        load time = 12248.83 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time = 13613.44 ms /    53 tokens (  256.86 ms per token)
+llama_print_timings:        eval time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings:       total time = 13634.46 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save vectorstore</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;vectorstore_13B_2048.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">vectorstore</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load vectorstore</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;vectorstore_13B_2048.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">vectorstore</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>llama.cpp: loading model from /Users/saintway/ggml-model-q4_1.bin
+llama_model_load_internal: format     = ggjt v1 (latest)
+llama_model_load_internal: n_vocab    = 32000
+llama_model_load_internal: n_ctx      = 2048
+llama_model_load_internal: n_embd     = 5120
+llama_model_load_internal: n_mult     = 256
+llama_model_load_internal: n_head     = 40
+llama_model_load_internal: n_layer    = 40
+llama_model_load_internal: n_rot      = 128
+llama_model_load_internal: f16        = 3
+llama_model_load_internal: n_ff       = 13824
+llama_model_load_internal: n_parts    = 1
+llama_model_load_internal: model size = 13B
+llama_model_load_internal: ggml ctx size =  73.73 KB
+llama_model_load_internal: mem required  = 11359.03 MB (+ 3216.00 MB per state)
+llama_init_from_file: kv self size  = 3200.00 MB
+AVX = 1 | AVX2 = 1 | AVX512 = 0 | FMA = 1 | NEON = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 1 | SSE3 = 1 | VSX = 0 | 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">question</span> <span class="o">=</span> <span class="s1">&#39;你知道什么？&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get context related to the question from the embedding model</span>
+<span class="k">for</span> <span class="n">context</span> <span class="ow">in</span> <span class="n">vectorstore</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>page_content=&#39;title: Neuroscience\ndate: 2021-10-14 16:30:20\ntags: Neuro\n---\n\nThe [**ventral tegmental area**](https://en.wikipedia.org/wiki/Ventral_tegmental_area) (**VTA**) (**tegmentum** is Latin for covering), also known as the **ventral tegmental area of Tsai**, or simply **ventral tegmentum**, is a group of neurons located close to the midline on the floor of the midbrain.\n\n---\n\n&gt; \u3000\u3000有些权威认为，有必要把意识的内容 (content) 与“有意识状态的特性” (quality of being conscious) 或“意识本身” (consciousness as such) 区分开来²。这一划分与我的分类异曲同工。\n\u3000\u3000要想产生意识，必须先具备某些神经前提条件。我把这些条件称为 NCC_e。任一特定知觉的 NCC 都是局部作用的、高度特化的、转瞬即逝的，相比起来，NCC_e 的作用方式更全局化也更持久。要是没有相关的 NCC_e 的话，机体或许也还能有简单的行为，但在这样做时绝不会有意识（可能发生这种情形的某些病理条件将在第13章讨论）。根据定义可知，如果没有 NCC_e，就不可能形成任何 NCC。\n\u3000\u3000会不会有这样一种状态，即生物体虽然有意识，却意识不到任何具体内容？换句话说，NCC_e 能否脱离 NCC 而单独存在呢？某些冥想的目标就是要进入这种没有具体内容的意识形式³。但是在目前，还很难对它进行严格的分析。&#39; metadata={&#39;source&#39;: &#39;_posts/ultimate-facts/Neuroscience.md&#39;}
+
+page_content=&#39;有意注意，是指，对于某次效果的注意。\n无意注意，是指，对于某次非效果的注意。\n\n目标，是指，对于某种效果的某些次记忆所联结着的对于此种效果的拟构。\n意向，是指，对于某些种效果的某些次记忆所联结着的对于某种效果的拟构。\n\n懊悔，是指，对于某次弊害效果的某次记忆、对于某次功效的某次记忆所联结着的对于某次功效的拟构。\n焦虑，是指，对于某次弊害效果的某次记忆、对于某次功效的某次意向所联结着的对于某次弊害效果的拟构。\n\n对于某次功效的目标，联结着，对于此次功效的原因。\n对于某种功效的概括，联结着，对于此种功效的原因。\n\n兴趣，是指，联结着某次快乐的识。\n荒诞，是指，联结着某次乏味的识。\n苦毒，是指，联结着某次痛苦的识。\n\n慾望，是指，对于某次兴趣的表征。\n妄想，是指，对于某次荒诞的表征。？\n苦观，是指，对于某次苦毒的表征。\n\n苦观，分为，记忆苦观、拟构苦观。弊害，…、…\n\n有趣注意，是指，对于某次兴趣的注意。\n无趣注意，是指，对于某次荒诞的注意。\n\n意义，是指，值得的注意。\n神圣，是指，极其丰富的意义。\n积极的态度，是指，充满对于某种意义的信心。\n消极的态度，是指，缺乏对于某种意义的信心。\n积极的注意，导致着，快乐。\n消极的注意，导致着，乏味。\n对于某种意义的怀疑，是指，对于某种意义的信心的减弱。\n对于某种意义的确定，是指，对于某种意义的信心的增强。\n对于某种意义的静思，是指，对于某种意义的减弱。对于某种意义的静思，导致着，忧郁。\n对于某种意义的禅修，是指，对于某种意义的增强。对于某种意义的禅修，导致着，幸福。\n静思、禅修、祷告，都是，某种定觉练习。\n\n---\n\n&gt; 因为我们得了救是因着盼望。只是所盼望的若已得看见，便不是盼望了；因为人所看见的、他何必还盼望呢？但我们若盼望所未看见的，就必坚忍切候着。\n(罗马书 8:24-25 吕振中)\n\n&gt; 所以青春性的私欲、你总要逃避；你要跟那些用洁净心呼求主的人一同追求正义、忠信、仁爱、和平。\n(提摩太后书 2:22 吕振中)\n\n向内往最深处去：净心、呼求主名、并且、等待回应。&#39; metadata={&#39;source&#39;: &#39;_posts/ultimate-facts/终极真实.md&#39;}
+
+page_content=&#39;&gt; 我们刚刚知道自然科学借以掌握质的方法––形成量的概念的方法。我们必须提出的问题是，这种方法是不是也能够适用于主观的意识的质。按照我们前面所说，为了使这种方法能够加以运用，必须有与这些质充分确定地、唯一地联系着的空间变化。如果情况真的如此，那么这个问题就可以通过空间–时间的重合方法来解决，因而**测量**便是可能的。但是，这种重合的方法本质上就是进行物理的观察，而就内省法来说，却不存在物理的观察这种事情。由此立刻就可以得出结论：心理学沿着内省的途径决不可能达到知识的理想。因此，它必须尽量使用物理的观察方法来达到它的目的。但这是不是可能的呢？是不是有依存于意识的质的空间变化，就像例如在光学中干涉带的宽度依存于颜色，在电学中磁铁的偏转度依存于磁场的强度那样呢？\n&gt; 现在我们知道，事实上应当承认在主观的质和推断出来的客观世界之间有一种确切规定的、一义的配列关系。大量的经验材料告诉我们，我们可以发现，至少必须假设与所有经验唯一地联系着的“物理的”过程的存在。没有什么意识的质不可能受到作用于身体的力的影响。的确，我们甚至能够用一种简单的物理方法，例如吸进一种气体，就把意识全部消除掉。我们的行动与我们的意志经验相联系，幻觉与身体的疲惫相联系，抑郁症的发作与消化的紊乱相联系。为了研究这类相互联系，心的理论必须抛弃纯粹内省的方法而成为**生理的**心理学。只有这个学科才能在理论上达到对心理的东西的完全的知识。借助于这样一种心理学，我们就可以用概念和所与的主观的质相配列，正如我们能够用概念与推论出来的客观的质相配列一样。这样，主观的质就像客观的质一样成为可知的了。\n&gt; 我们很早就指出，客观世界中最直接地与自我的主观的质相联系的部分就是由大脑的概念，特别是大脑皮层的概念所表示的那一部分。因而在科学知识的精确的世界图景中，可用数值描述的概念代替的主观质的，只是某些大脑过程。相互依存的分析不可避免要引向这些大脑过程。虽然我们还远没有确切地知道所涉及的是何种个别的过程，但至少指出了一条途径：必须以大脑过程来代替主观的质。这就是我们能够充分认识主观的质所具有的唯一的希望。\n&gt; ……&#39; metadata={&#39;source&#39;: &#39;_posts/ultimate-facts/Neuroscience.md&#39;}
+
+page_content=&#39;客体方式，导致着、联结着，主体方式、机体状态\n形体，导致着、联结着，身体、快乐、痛苦\n轻蔑、轻视他人对自己的态度，损害着，羞耻心\n羞耻，对于亲密程度的重视；我们在争辩的时候，真正损害着羞耻心的，实际上是，轻视他人对自己的态度，而不是，轻视他人的（由父所创造的）信念？\n羞耻、光荣，重视他人对自己的态度、敬重\n恥辱、傲慢，轻视他人对自己的态度、轻蔑\n羞耻、羞辱，在含义上，有所不同吗？\n单方的轻视、双方的轻视？\n一方，是，非吾所显明出来的罪；一方，是，吾所显明出来的罪。\n狭隘、愚蠢、固执，轻视他人的信念\n开明、智慧、变通，重视他人的信念&#39; metadata={&#39;source&#39;: &#39;_posts/ultimate-facts/终极真实.md&#39;}
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+llama_print_timings:        load time =  6111.23 ms
+llama_print_timings:      sample time =     0.00 ms /     1 runs   (    0.00 ms per run)
+llama_print_timings: prompt eval time =  6109.85 ms /     8 tokens (  763.73 ms per token)
+llama_print_timings:        eval time = 10089.46 ms /     1 runs   (10089.46 ms per run)
+llama_print_timings:       total time = 16205.01 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Open-Text-Embeddings">Open Text Embeddings<a class="anchor-link" href="#Open-Text-Embeddings">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LangChain-Embeddings"><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/reference/modules/embeddings.html">LangChain Embeddings</a><a class="anchor-link" href="#LangChain-Embeddings">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Hugging-Face-Embeddings">Hugging Face Embeddings<a class="anchor-link" href="#Hugging-Face-Embeddings">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>sentence-transformers
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Successfully installed nltk-3.8.1 scikit-learn-1.2.2 scipy-1.10.1 sentence-transformers-2.2.2 sentencepiece-0.1.97 threadpoolctl-3.1.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.embeddings</span> <span class="kn">import</span> <span class="n">HuggingFaceEmbeddings</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">HuggingFaceEmbeddings</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">HuggingFaceEmbeddings</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Help on function __init__ in module langchain.embeddings.huggingface:
+
+__init__(self, **kwargs: Any)
+    Initialize the sentence_transformer.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HuggingFaceEmbeddings</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;sentence-transformers/all-mpnet-base-v2&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hf_embeddings</span> <span class="o">=</span> <span class="n">HuggingFaceEmbeddings</span><span class="p">()</span>
+
+<span class="c1"># 准备文本</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;这是一个测试文档。&#39;</span>
+
+<span class="c1"># 使用 HuggingFaceEmbeddings 生成文本嵌入</span>
+<span class="n">query_result</span> <span class="o">=</span> <span class="n">hf_embeddings</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">doc_result</span> <span class="o">=</span> <span class="n">hf_embeddings</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">query_result</span><span class="p">))</span>
+<span class="c1"># print(query_result)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_result</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="c1"># print(doc_result)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>768
+1
+768
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hf_embeddings</span><span class="o">.</span><span class="n">model_name</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;sentence-transformers/all-mpnet-base-v2&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+total 865816
+drwxr-xr-x  16 saintway  staff   512B Apr 12 14:31 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x   3 saintway  staff    96B Apr 12 14:31 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+-rw-r--r--   1 saintway  staff   1.1K Apr 12 14:28 .gitattributes
+drwxr-xr-x   3 saintway  staff    96B Apr 12 14:28 <span class="ansi-cyan-intense-fg ansi-bold">1_Pooling</span>
+-rw-r--r--   1 saintway  staff    10K Apr 12 14:28 README.md
+-rw-r--r--   1 saintway  staff   571B Apr 12 14:28 config.json
+-rw-r--r--   1 saintway  staff   116B Apr 12 14:28 config_sentence_transformers.json
+-rw-r--r--   1 saintway  staff    38K Apr 12 14:28 data_config.json
+-rw-r--r--   1 saintway  staff   349B Apr 12 14:31 modules.json
+-rw-r--r--   1 saintway  staff   418M Apr 12 14:31 pytorch_model.bin
+-rw-r--r--   1 saintway  staff    53B Apr 12 14:31 sentence_bert_config.json
+-rw-r--r--   1 saintway  staff   239B Apr 12 14:31 special_tokens_map.json
+-rw-r--r--   1 saintway  staff   455K Apr 12 14:31 tokenizer.json
+-rw-r--r--   1 saintway  staff   363B Apr 12 14:31 tokenizer_config.json
+-rw-r--r--   1 saintway  staff    13K Apr 12 14:31 train_script.py
+-rw-r--r--   1 saintway  staff   226K Apr 12 14:31 vocab.txt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+423M	/Users/saintway/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Hugging-Face-Instruct-Embeddings"><a target="_blank" rel="noopener" href="https://huggingface.co/datasets/calmgoose/book-embeddings">Hugging Face Instruct Embeddings</a><a class="anchor-link" href="#Hugging-Face-Instruct-Embeddings">&#182;</a></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/UKPLab/sentence-transformers">https://github.com/UKPLab/sentence-transformers</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/HKUNLP/instructor-embedding">https://github.com/HKUNLP/instructor-embedding</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>InstructorEmbedding
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Successfully installed InstructorEmbedding-1.0.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/basujindal/chatPDF">https://github.com/basujindal/chatPDF</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.embeddings</span> <span class="kn">import</span> <span class="n">HuggingFaceInstructEmbeddings</span>
+<span class="n">hfi_embeddings</span> <span class="o">=</span> <span class="n">HuggingFaceInstructEmbeddings</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;hkunlp/instructor-large&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>load INSTRUCTOR_Transformer
+max_seq_length  512
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hfi_embeddings</span><span class="o">.</span><span class="n">model_name</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;hkunlp/instructor-large&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/torch/sentence_transformers/hkunlp_instructor-large
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+total 2640208
+drwxr-xr-x  15 saintway  staff   480B Apr 12 15:19 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x   4 saintway  staff   128B Apr 12 15:19 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+-rw-r--r--   1 saintway  staff   1.4K Apr 12 15:07 .gitattributes
+drwxr-xr-x   3 saintway  staff    96B Apr 12 15:07 <span class="ansi-cyan-intense-fg ansi-bold">1_Pooling</span>
+drwxr-xr-x   4 saintway  staff   128B Apr 12 15:08 <span class="ansi-cyan-intense-fg ansi-bold">2_Dense</span>
+-rw-r--r--   1 saintway  staff    65K Apr 12 15:08 README.md
+-rw-r--r--   1 saintway  staff   1.5K Apr 12 15:08 config.json
+-rw-r--r--   1 saintway  staff   122B Apr 12 15:08 config_sentence_transformers.json
+-rw-r--r--   1 saintway  staff   461B Apr 12 15:19 modules.json
+-rw-r--r--   1 saintway  staff   1.2G Apr 12 15:19 pytorch_model.bin
+-rw-r--r--   1 saintway  staff    53B Apr 12 15:19 sentence_bert_config.json
+-rw-r--r--   1 saintway  staff   2.1K Apr 12 15:19 special_tokens_map.json
+-rw-r--r--   1 saintway  staff   773K Apr 12 15:19 spiece.model
+-rw-r--r--   1 saintway  staff   2.3M Apr 12 15:19 tokenizer.json
+-rw-r--r--   1 saintway  staff   2.4K Apr 12 15:19 tokenizer_config.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/torch/sentence_transformers/hkunlp_instructor-large
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+1.3G	/Users/saintway/.cache/torch/sentence_transformers/hkunlp_instructor-large
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 准备文本</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;这是一个测试文档。&#39;</span>
+
+<span class="c1"># 使用 HuggingFaceInstructEmbeddings 生成文本嵌入</span>
+<span class="n">query_result</span> <span class="o">=</span> <span class="n">hfi_embeddings</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">doc_result</span> <span class="o">=</span> <span class="n">hfi_embeddings</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">query_result</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">query_result</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_result</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">doc_result</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>768
+[-0.022137142717838287, -0.019943105056881905, 0.009940845891833305, 0.029961414635181427, 0.0015559268649667501, -0.0010082109365612268, 0.004636477679014206, 0.006970031186938286, -0.039788346737623215, 0.028241422027349472, -1.5192752471193671e-05, -0.008512390777468681, 0.04590446129441261, 0.03056621551513672, -0.030894720926880836, -0.02884022891521454, -0.023664429783821106, -0.010090871714055538, -0.036661747843027115, -0.001970992423593998, 0.05847157910466194, 0.008038687519729137, -0.012776742689311504, 0.05411699786782265, 0.01262636948376894, 0.016430772840976715, -0.04767526313662529, 0.01811787858605385, 0.04832480102777481, -0.0647105798125267, 0.03377210721373558, -0.04854683578014374, -0.040563128888607025, -0.04772289842367172, -0.018774421885609627, 0.020985594019293785, 0.025719504803419113, 0.027344582602381706, 0.026014933362603188, 0.055159278213977814, -0.01577085256576538, 0.01060266699641943, -0.0031603227835148573, -0.039208076894283295, 0.03614024817943573, 0.009471523575484753, -0.025426877662539482, -0.04541698843240738, 0.026563631370663643, -0.03881140425801277, -0.03588118404150009, -0.057559046894311905, -0.007960007525980473, 0.012319786474108696, -0.0029835468158125877, -0.029109695926308632, -0.06043725088238716, 0.03710782155394554, 0.08494839072227478, -0.054077211767435074, -0.03525502607226372, -0.0031806030310690403, -0.09065768867731094, 0.023320553824305534, 0.02501724287867546, -0.05140731483697891, 0.048127785325050354, -0.05498746410012245, 0.029325366020202637, -0.04640709608793259, 0.01205480471253395, -0.047244541347026825, 0.00035423680674284697, -0.09959323704242706, -0.027633335441350937, 0.001402342109940946, 0.02929595485329628, 0.046018004417419434, -0.05788029357790947, 0.042901281267404556, 0.03905021399259567, 0.0020306624937802553, 0.048880625516176224, -0.0019414519192650914, -0.033322807401418686, 0.028527161106467247, -0.005001544952392578, 0.019440239295363426, 0.0041367351077497005, 0.041833482682704926, -0.03431558609008789, -0.0706053078174591, -0.01964596100151539, 0.00529050687327981, -0.004017329774796963, 0.020387377589941025, 0.0496586374938488, 0.006946606561541557, 0.03991807624697685, 0.037570007145404816, 0.03404153883457184, 0.05588211491703987, -0.02905808761715889, 0.03623465821146965, -0.013191419653594494, 0.009090606123209, -0.020825188606977463, -0.02675699256360531, -0.04974988102912903, -0.0004641334235202521, -0.016248611733317375, -0.055453505367040634, -0.014421780593693256, 0.038791216909885406, -0.003007616614922881, -0.05522274225950241, 0.06346995383501053, -0.054133057594299316, -0.06531116366386414, -0.02393488958477974, 0.027049822732806206, 0.021163685247302055, -0.045149073004722595, -0.005699407774955034, -0.0549631305038929, 0.019174829125404358, -0.020559104159474373, 0.0040987106040120125, -0.01622997410595417, 0.003300424898043275, -0.010149079374969006, 0.021996449679136276, 0.041733454912900925, -0.09496010094881058, 0.021827906370162964, 0.014840630814433098, -0.04588484764099121, 0.02394992485642433, 0.016791993752121925, 0.08624919503927231, -0.06361847370862961, -0.03944281488656998, -0.04442731291055679, 0.007785744499415159, -0.023762937635183334, -0.0110867815092206, 0.01138637587428093, -0.05897051468491554, -0.04304634779691696, -0.0173543319106102, 0.06624708324670792, -0.0437123104929924, 0.004276968538761139, 0.07888749241828918, -0.0071301888674497604, 0.024873679503798485, -0.018245670944452286, 0.004486299119889736, 0.00582241453230381, 0.02243458852171898, -0.030916478484869003, 0.049587175250053406, -0.010419673286378384, -0.022187191992998123, -0.0791892409324646, -0.02702951990067959, -0.0035843446385115385, 0.05750065669417381, -0.018682042136788368, -0.030490878969430923, -0.08072890341281891, 0.024044500663876534, 0.05379054695367813, 0.01158835832029581, -0.02660636231303215, 0.03985058143734932, 0.03334967792034149, 0.030472831800580025, -0.02080536261200905, 0.04899463802576065, 0.010174624621868134, -0.015453080646693707, -0.029648398980498314, 0.04518602415919304, 0.0644007995724678, -0.015453620813786983, 0.012724599801003933, 0.02410477213561535, 0.021669277921319008, -0.047304801642894745, -0.0030988911166787148, 0.06250063329935074, -0.037959348410367966, -0.016027355566620827, 0.03403116390109062, -0.0007538921781815588, -0.04373054951429367, 0.024864956736564636, -0.017527837306261063, -0.004101598169654608, -0.0481080487370491, 0.010937296785414219, 0.02215939201414585, 0.042132746428251266, -0.005298169795423746, 0.05001835525035858, -0.03381647542119026, 0.07707470655441284, -0.01247261743992567, 0.015081333927810192, -0.04821961373090744, -0.05602756887674332, 0.002172428648918867, 0.03414832800626755, 0.05385158583521843, 0.03951353579759598, -0.03862477093935013, -0.06857028603553772, 0.05580616369843483, 0.047364167869091034, 0.04966306313872337, 0.00995559711009264, -0.033690739423036575, 0.011581477709114552, 0.035535167902708054, 0.03085923381149769, -0.04816819354891777, -0.03495897352695465, 0.006372313015162945, 0.05013415589928627, -0.029227256774902344, 0.0053755310364067554, -0.019459571689367294, 0.024346565827727318, -0.034451521933078766, -0.0677531510591507, 0.03487487509846687, 0.04172320291399956, 0.010180668905377388, 0.016491739079356194, -0.01668640412390232, 0.03754301741719246, 0.023817863315343857, 0.021770311519503593, 0.02320024184882641, -0.03048897720873356, 0.023136703297495842, -0.019154028967022896, 0.06983145326375961, -0.013741375878453255, 0.03929886966943741, 0.012652753852307796, 0.015791112557053566, 0.007288077380508184, -0.04030032828450203, 0.020244285464286804, 0.0701761543750763, 0.014144702814519405, -0.0366959422826767, 0.034101251512765884, 0.027012642472982407, 0.04800959303975105, 0.07189490646123886, 0.00042301067151129246, 0.04226808249950409, -0.007224685046821833, 0.03213008865714073, 0.03385363519191742, 0.009528609924018383, 0.013251561671495438, 0.025025293231010437, 0.08515191823244095, -0.004974443931132555, -0.01735675148665905, 0.0720532163977623, -0.03935912624001503, 0.004844623617827892, -0.04394184425473213, 0.011392495594918728, -0.03961816802620888, -0.021686410531401634, 0.0632035881280899, -2.6600875571602955e-05, -0.018001483753323555, 0.0002045980654656887, -0.014556610025465488, 0.009118364192545414, 0.025560518726706505, -0.007447301875799894, 0.019972093403339386, -0.015712067484855652, -0.024550966918468475, 0.023652231320738792, -0.0584896020591259, -0.01404705923050642, -0.017441358417272568, -0.040668584406375885, 0.03344985097646713, -0.06545151770114899, -0.0015352212358266115, -0.059208810329437256, -0.034206390380859375, 0.031709667295217514, 0.031845979392528534, 0.017346983775496483, -0.0192494485527277, 0.04217034950852394, -0.04041285440325737, -0.05436360463500023, -0.03852096572518349, -0.04090946912765503, -0.044468097388744354, -0.05580539256334305, 0.04195259511470795, 0.04524538293480873, -0.001072112238034606, 0.05045463517308235, -0.007403041701763868, -0.011037559248507023, -0.0481581874191761, 0.05748680979013443, 0.021998926997184753, -0.0114741837605834, -0.023216141387820244, 0.02764948643743992, 0.0033738191705197096, -0.015397194772958755, -0.04408087953925133, -0.025693349540233612, 0.08350582420825958, 0.08186513930559158, 0.02589094638824463, 0.031298864632844925, 0.022997794672846794, -0.0705040693283081, -0.017929619178175926, -0.0386652797460556, -0.021253539249300957, -0.011709196493029594, -0.04891839995980263, -0.034260012209415436, -0.010942338034510612, -0.019566839560866356, -0.011726225726306438, -0.0073863305151462555, -0.021809587255120277, 0.031185846775770187, 0.036898598074913025, 0.03579287230968475, 0.03630955517292023, -0.008991124108433723, -0.009002245031297207, 0.08667944371700287, 0.0010887794196605682, -0.032698702067136765, -0.06335387378931046, -0.048804596066474915, 0.02329985983669758, 0.005369881168007851, 0.018586451187729836, -0.051516350358724594, 0.04263807460665703, -0.0006810427876189351, -0.001103260088711977, 0.02041923999786377, -0.02518085390329361, 0.007012072950601578, 0.0016074466984719038, 0.010585247538983822, -0.01600584201514721, -0.06097882241010666, 0.006132303737103939, -0.02095993608236313, 0.03893598914146423, -0.05109530687332153, -0.01899784617125988, -0.011300088837742805, 0.009710361249744892, 0.011983739212155342, -0.013006223365664482, -0.04143975302577019, 0.010285450145602226, -0.06305649876594543, -0.03500263765454292, -0.016994699835777283, 0.019823139533400536, 0.010417548008263111, 0.08123686909675598, 0.028307151049375534, -0.00701523432508111, 0.03513439744710922, 0.002012860495597124, 0.05926254391670227, 0.041931524872779846, -0.014769182540476322, 0.03460005670785904, -0.019610265269875526, 0.027883131057024002, 0.013702291995286942, -0.016595499590039253, -0.03288355842232704, -0.06714218854904175, -0.051795538514852524, 0.032413337379693985, -0.013448472134768963, -0.002694027731195092, 0.04136023297905922, -0.059142980724573135, -0.01380129437893629, -0.0022579259239137173, 0.0219892431050539, 0.021225525066256523, -0.04053009673953056, 0.03726652264595032, -0.021588211879134178, 0.02056734822690487, -0.02374904789030552, 0.003405689960345626, -0.03571395203471184, -0.030117657035589218, 0.006589301861822605, 0.04827360436320305, 0.011746781878173351, 0.047028761357069016, 0.07872718572616577, 0.00854527484625578, -0.031543463468551636, 0.046509627252817154, 0.05302605777978897, 0.02241320163011551, -0.05144788697361946, 0.00531784538179636, -0.008528214879333973, -0.010467768646776676, -0.017910946160554886, -0.0448242723941803, 0.003639540169388056, 0.055717598646879196, -0.005372322164475918, -0.01859535463154316, 1.9491570128593594e-05, -0.017520388588309288, -0.02086714655160904, -0.06756243854761124, 0.016911156475543976, 0.020075716078281403, -0.028387082740664482, -0.014232601039111614, 0.06091458722949028, 0.015551713295280933, 0.05874437093734741, 0.011747990734875202, -0.039615631103515625, -0.04280305281281471, 0.029752986505627632, 0.009051498025655746, -0.062423039227724075, -0.03705782815814018, -0.040770962834358215, 0.030891701579093933, 0.030155127868056297, -0.007816113531589508, -0.0807504653930664, 0.017831768840551376, 0.05006144940853119, -0.05361318588256836, 0.062341079115867615, 0.025491494685411453, 0.048408396542072296, 0.029084276407957077, -0.015447879210114479, -0.00034940679324790835, -0.017930610105395317, -0.006148740649223328, -0.009926981292665005, 0.0582754872739315, -0.015238925814628601, -0.03550595045089722, -0.03390232101082802, 0.03024483472108841, 0.006002285983413458, 0.03796408697962761, 0.019458049908280373, -0.031131630763411522, -0.04120856150984764, 0.010978765785694122, 0.0333918035030365, -0.04785642772912979, 0.022198036313056946, 0.04413451626896858, 0.019193124026060104, -0.03626841679215431, -0.031137170270085335, -0.002764541655778885, 0.007364119868725538, 0.06619369983673096, -0.028123170137405396, -0.035441718995571136, -0.042127810418605804, 0.01750461757183075, 0.008765813894569874, -0.046932898461818695, -0.09832718968391418, 0.028079211711883545, -0.001491512986831367, -0.03492061793804169, 0.05971066281199455, 0.02804477885365486, 0.024293120950460434, 0.08744291216135025, -0.008789492771029472, 0.01302084419876337, -0.020782649517059326, 0.04509878158569336, -0.029434096068143845, -0.03194120153784752, 0.01338726095855236, -0.05421733483672142, -0.02326781488955021, -0.041257284581661224, -0.04912155494093895, -0.031217290088534355, 0.006082997191697359, 0.033354438841342926, -0.0216062068939209, 0.010425982065498829, 0.01690390706062317, 0.01642853394150734, 0.0015028663910925388, -0.05256250873208046, -0.008604401722550392, -0.04340226203203201, -0.06464898586273193, -0.04076193645596504, 0.03596508502960205, -0.01954132877290249, 0.02018481120467186, 0.011362768709659576, 0.02293892204761505, 0.015474352054297924, -0.011335867457091808, -0.02486458234488964, 0.026126177981495857, 0.02133898064494133, -0.04850659891963005, -0.045282673090696335, -0.030667219310998917, 0.008212651126086712, 0.01518244668841362, -0.04165206849575043, 0.03790992125868797, 0.02218039147555828, -0.01681869477033615, -0.02027173899114132, 0.009450569748878479, 0.015175608918070793, -0.04803943634033203, -0.06358246505260468, -0.013711309060454369, 0.009996723383665085, 0.040636055171489716, -0.042011044919490814, -0.011027892120182514, 0.02691529504954815, 0.057163577526807785, 0.03753253072500229, 0.022043783217668533, -0.0021431820932775736, 0.04917208105325699, -0.04179786145687103, -0.005483817774802446, -0.08106370270252228, 0.024761244654655457, -0.016964280977845192, 0.03641534224152565, -0.010911267250776291, -0.0011809802381321788, -0.05593414604663849, 0.04463743418455124, -0.04375195503234863, -0.037942975759506226, -0.003339756280183792, 0.014220676384866238, -0.04019850865006447, 0.053015731275081635, -0.028724318370223045, 0.003802355146035552, -0.037122998386621475, 0.030996421352028847, -0.03507940098643303, -0.0007456461898982525, -0.006219014525413513, -0.0005068734171800315, -0.06874105334281921, -0.027668355032801628, -0.015170485712587833, -0.0672307014465332, 0.0110006770119071, 0.04290778934955597, 0.0037627213168889284, 0.01036884170025587, -0.007260350044816732, -0.014498177915811539, 0.008817058056592941, -0.047402523458004, -0.01808319240808487, -0.05033589527010918, -0.028884392231702805, 0.0035344050265848637, 0.03218654543161392, 0.03320618346333504, -0.05054805800318718, -0.0503070168197155, 0.048324212431907654, 0.045269548892974854, 0.006230846047401428, 0.0028933598659932613, 0.03576548025012016, 0.039641764014959335, 0.04235326126217842, 0.00390684325248003, 0.017620764672756195, -0.05768784508109093, 0.005895737558603287, 0.0004468218539841473, -0.006375355180352926, 0.0018062518211081624, -0.01394017692655325, -0.05188938230276108, -0.018782146275043488, 0.09841680526733398, 0.03368517756462097, 0.02949652634561062, -0.02045777440071106, -0.05439259484410286, 0.04644351080060005, 0.02802385576069355, -0.031084785237908363, 0.018647707998752594, 0.015535857528448105, -0.0347856730222702, 0.07113273441791534, 0.02331412024796009, 0.03137088567018509, 0.045221082866191864, 0.01769883558154106, -0.02390470542013645, 0.02507965639233589, -0.03268289566040039, -0.0027856382075697184, 0.03365938365459442, -0.05175941064953804, 0.006154587958008051, -0.033265549689531326, 0.05281004682183266, -0.0404675267636776, 0.0657331719994545, 0.05071451887488365, 0.0020178519189357758, 0.014635175466537476, -0.03720288723707199, -0.010401709005236626, 0.03344612568616867, -0.010997913777828217, 0.06176922470331192, -0.016880199313163757, -0.07420120388269424, 0.04998021200299263, 0.03931588679552078, -0.07584240287542343, 0.023533020168542862, 0.0006756161455996335, 0.02090786024928093, 0.036075837910175323, 0.03659137338399887, -0.05161881819367409, -0.006765023805201054, -0.005993164610117674, 0.013982019387185574, -0.020381171256303787, -0.029386788606643677, 0.04889058321714401, -0.00013371290697250515, -0.0002964060113299638, 0.027174945920705795, -0.009697571396827698, 0.028293093666434288, 0.0374593585729599, -0.04518287256360054, -0.06050867959856987, -0.00014245744387153536, 0.057110074907541275, 0.030268797650933266, -0.013529627583920956, -0.04629375785589218, -0.012579434551298618, 0.018368467688560486, -0.009889695793390274, -0.01691138558089733, 0.03825466334819794, 0.0271073579788208, -0.1041674092411995, -0.014870252460241318, 0.028485944494605064, 0.0070266807451844215, -0.03262393921613693, 0.024559883400797844, 0.0045441146939992905, 0.012745088897645473, 0.021893462166190147, 0.014667946845293045, 0.001110888086259365, -0.06492006778717041, -0.004571379162371159, 0.02366933599114418, -0.015817731618881226, 0.05720985680818558, -0.0345175638794899, 0.018073854967951775, 0.050241053104400635, 0.03106319159269333, 0.0066062589175999165, -0.0469040647149086, -0.027500491589307785, 0.045247793197631836, -0.02852327562868595, 0.040982939302921295, -0.02894440107047558, -0.04443144053220749, -0.03902950510382652, -0.020365344360470772, -0.026738805696368217, 0.05663229525089264, -0.010026874020695686, 0.01433494221419096, 0.011053822934627533, 0.013605833984911442, -0.0018017073161900043, -0.06102275103330612, -0.03922444209456444, -0.024675380438566208, 0.05290922522544861, 0.021725371479988098, -0.01934276521205902, 0.009532574564218521, -0.03275094926357269, -0.03986525163054466, 0.03821403905749321, -0.009230101481080055, -0.04589630663394928, 0.06575308740139008, 0.02526622824370861, -0.018659353256225586, 0.008876781910657883, 0.03926151990890503, -0.05208025500178337, 0.0474589541554451, 0.0033570746891200542, 0.016553008928894997, 0.03175811842083931, 0.0395858995616436, 0.00479521369561553, -0.028426123782992363, -0.04252200201153755, -0.01386924460530281, -0.013864289969205856, 0.0007772607496008277, 0.07288770377635956]
+1
+768
+[[-0.017321424558758736, -0.0290683601051569, 0.02144867181777954, 0.03564919903874397, 0.007519469130784273, -0.0020619011484086514, 0.01159549318253994, 0.0033334267791360617, -0.030980847775936127, 0.028360769152641296, -0.00923326425254345, -0.015223197638988495, 0.045116547495126724, 0.029102467000484467, -0.034634821116924286, -0.02428201586008072, -0.02622298151254654, -0.012027820572257042, -0.033619582653045654, -0.006393300835043192, 0.04940227046608925, -0.005081124138087034, -0.013001572340726852, 0.04863433539867401, 0.01769079640507698, 0.019589051604270935, -0.05099540203809738, 0.02014349400997162, 0.07345512509346008, -0.056142907589673996, 0.017525048926472664, -0.04323125630617142, -0.03591267392039299, -0.04471318796277046, -0.03387963026762009, 0.02250732108950615, 0.0260605551302433, 0.03198987990617752, 0.015925999730825424, 0.055788323283195496, -0.008521814830601215, 0.003774485783651471, -0.004999945871531963, -0.032853759825229645, 0.03646484762430191, 0.010934969410300255, -0.02773832529783249, -0.040138907730579376, 0.03286226838827133, -0.04289257898926735, -0.04034288600087166, -0.05297926440834999, -0.010307238437235355, 0.01675456389784813, 0.002258037682622671, -0.010667218826711178, -0.05834063142538071, 0.03491596132516861, 0.08479320257902145, -0.06158952787518501, -0.032164279371500015, -0.010000646114349365, -0.08898387849330902, 0.02972586452960968, 0.021418822929263115, -0.054490238428115845, 0.0574653334915638, -0.05757038667798042, 0.03782184422016144, -0.047682881355285645, 0.008862263523042202, -0.05072873830795288, 0.004423295613378286, -0.10649670660495758, -0.037948817014694214, -0.003030016552656889, 0.03342246636748314, 0.043445296585559845, -0.05618777126073837, 0.056365132331848145, 0.037387412041425705, 0.002760133007541299, 0.04104584828019142, -0.002229600679129362, -0.030764112249016762, 0.032726626843214035, -0.008634235709905624, 0.02173653617501259, 0.0011450621532276273, 0.04624494910240173, -0.03307458013296127, -0.07201699912548065, -0.016203274950385094, 0.0036587673239409924, -0.012880930677056313, 0.019049828872084618, 0.04802519455552101, 0.012124101631343365, 0.04760000854730606, 0.050861284136772156, 0.038192279636859894, 0.061423029750585556, -0.017844833433628082, 0.026627566665410995, -0.0229574516415596, 0.006922928616404533, -0.03528516739606857, -0.0240724328905344, -0.040312256664037704, -0.0032211754005402327, -0.012484926730394363, -0.0663076713681221, -0.007122499402612448, 0.037984441965818405, 0.0038152653723955154, -0.06272412836551666, 0.0509425513446331, -0.056290652602910995, -0.058687008917331696, -0.010993730276823044, 0.0430663600564003, 0.02154427394270897, -0.041093580424785614, -0.014876669272780418, -0.060619112104177475, 0.024312550202012062, -0.024698927998542786, 0.008390418253839016, -0.019487500190734863, 0.007395193446427584, -0.01375834085047245, 0.011960526928305626, 0.031002424657344818, -0.08624697476625443, 0.024247542023658752, 0.006527060177177191, -0.03665762394666672, 0.02803284116089344, 0.006271459627896547, 0.07319948822259903, -0.05682418495416641, -0.04574257507920265, -0.03672082722187042, 0.015206302516162395, -0.02461088076233864, -0.01586904563009739, 0.013223697431385517, -0.054297711700201035, -0.04598791524767876, -0.006337896920740604, 0.06237014755606651, -0.03651244938373566, 0.01589328609406948, 0.07579127699136734, -0.013197096064686775, 0.026848727837204933, -0.01778201386332512, 0.002971116453409195, 0.008328345604240894, 0.025022976100444794, -0.024580515921115875, 0.034560929983854294, 0.0050260028801858425, -0.02787385880947113, -0.08644828200340271, -0.03169411048293114, 0.005510836839675903, 0.04482191801071167, -0.023682281374931335, -0.0391206219792366, -0.06080467253923416, 0.027954647317528725, 0.03046696074306965, 0.015648001804947853, -0.017990151420235634, 0.04091879352927208, 0.03362458944320679, 0.037195030599832535, -0.0177246555685997, 0.054683029651641846, 0.02061222307384014, -0.025283208116889, -0.028483398258686066, 0.03470484912395477, 0.05267150327563286, -0.010124912485480309, 0.021229730919003487, 0.023600108921527863, 0.014927630312740803, -0.04385334625840187, 0.009330634027719498, 0.06787162274122238, -0.04097283259034157, -0.009420155547559261, 0.036641813814640045, -0.010596320964396, -0.03766893595457077, 0.03683076798915863, -0.028229041025042534, -0.008987233974039555, -0.05227290093898773, 0.03991328924894333, 0.020183095708489418, 0.050611864775419235, -0.004223272204399109, 0.04868282377719879, -0.03727664053440094, 0.07120431214570999, -0.005240161437541246, 0.027111586183309555, -0.05283592268824577, -0.061826545745134354, 0.015926817432045937, 0.02243269421160221, 0.05361457169055939, 0.03672531619668007, -0.027527185156941414, -0.07340686023235321, 0.04527905583381653, 0.04849943891167641, 0.04911305755376816, 0.00674306508153677, -0.04111838340759277, 0.007636277470737696, 0.027770960703492165, 0.03094053640961647, -0.055380359292030334, -0.032657623291015625, 0.018110627308487892, 0.055499594658613205, -0.023379191756248474, 0.006783255375921726, -0.022936547175049782, 0.019551491364836693, -0.03582318127155304, -0.06713026762008667, 0.027420353144407272, 0.03327900543808937, 0.005401282571256161, 0.0005863559781573713, -0.018303031101822853, 0.026252977550029755, 0.02077643573284149, 0.02444145828485489, 0.030188167467713356, -0.03149719163775444, 0.012608859688043594, -0.02100216969847679, 0.08470612019300461, -0.0031517825555056334, 0.033449966460466385, 0.013242308981716633, 0.02110837772488594, 0.014618230983614922, -0.04304170981049538, 0.02197984606027603, 0.06688559055328369, 0.02574421651661396, -0.045794527977705, 0.0373358353972435, 0.03567683696746826, 0.044516921043395996, 0.07325885444879532, 0.007987595163285732, 0.040773455053567886, -0.0027179326862096786, 0.01602841727435589, 0.030576495453715324, 0.013823426328599453, 0.008543203584849834, 0.020804863423109055, 0.08582372218370438, 0.0004137080395594239, -0.01901276409626007, 0.07436161488294601, -0.03382265940308571, 0.007069360930472612, -0.053395360708236694, 0.024815915152430534, -0.0338716134428978, -0.022816475480794907, 0.04400728642940521, -0.020293278619647026, -0.014036102220416069, -0.0034727640450000763, -0.010488650761544704, 0.008831663988530636, 0.0338919535279274, -0.010221480391919613, 0.024804800748825073, -0.004506160970777273, -0.026584165170788765, 0.028500426560640335, -0.06343217194080353, -0.024766407907009125, -0.02698618732392788, -0.04278045892715454, 0.023514093831181526, -0.06462697684764862, 0.00019009616516996175, -0.041659679263830185, -0.02747407555580139, 0.030351657420396805, 0.021620070561766624, 0.02664831466972828, -0.017507608979940414, 0.04152553528547287, -0.04807824641466141, -0.0418708473443985, -0.031889189034700394, -0.04912397265434265, -0.045796893537044525, -0.047752924263477325, 0.037040527909994125, 0.03883790597319603, -0.010969972237944603, 0.052010659128427505, -0.0028239635284990072, 0.010785464197397232, -0.0499294176697731, 0.06617559492588043, 0.01020990964025259, -0.0059270779602229595, -0.008470469154417515, 0.020733419805765152, 0.003880891017615795, -0.03046511486172676, -0.038246043026447296, -0.023029915988445282, 0.08330415189266205, 0.0814347043633461, 0.019334042444825172, 0.01608927547931671, 0.0231016892939806, -0.059429723769426346, -0.017135992646217346, -0.04106093570590019, -0.012111494317650795, -0.007100872695446014, -0.047069329768419266, -0.03065279684960842, -0.015734704211354256, -0.012285885401070118, -0.01509094052016735, -0.006573914550244808, -0.01767726242542267, 0.03516869619488716, 0.03823452070355415, 0.047458309680223465, 0.04796659201383591, 0.0036093818489462137, 0.0051482380367815495, 0.09279636293649673, -0.009012808091938496, -0.029566612094640732, -0.07162266224622726, -0.04701884463429451, 0.018646517768502235, -0.012380776926875114, 0.01323506236076355, -0.05949578434228897, 0.04261186718940735, -0.0020745713263750076, -0.0008975438540801406, 0.027776023373007774, -0.022997431457042694, 0.008152569644153118, -0.003328507300466299, 0.02153967134654522, -0.0015762682305648923, -0.060422927141189575, 0.013903005048632622, -0.020790306851267815, 0.03715454414486885, -0.04409933462738991, -0.027633583173155785, -0.017945939674973488, 0.013620913028717041, 0.002300640568137169, -0.01987757720053196, -0.042235616594552994, 0.010321836918592453, -0.06352412700653076, -0.03793075680732727, -0.009916971437633038, 0.009865921922028065, 0.013699888251721859, 0.07334297895431519, 0.028970519080758095, -0.008001064881682396, 0.037864528596401215, -0.0046511320397257805, 0.05371379479765892, 0.04236424341797829, -0.005195035599172115, 0.045150261372327805, -0.024089565500617027, 0.02996688149869442, 0.01702144183218479, -0.024357546120882034, -0.02874450944364071, -0.07051112502813339, -0.043213099241256714, 0.015171256847679615, -0.013019931502640247, 0.007322291377931833, 0.032377343624830246, -0.0761328786611557, -0.006147494073957205, -0.009803448803722858, 0.026521947234869003, 0.02876337245106697, -0.03936163708567619, 0.04309429973363876, -0.02219192497432232, 0.028185781091451645, -0.020020579919219017, 0.007225584704428911, -0.039547450840473175, -0.038863398134708405, 0.0023863662499934435, 0.03486962988972664, 0.009217005223035812, 0.04753095656633377, 0.07488342374563217, 0.021021869033575058, -0.019261261448264122, 0.05075135827064514, 0.05234203487634659, 0.042802054435014725, -0.058917783200740814, 0.009169568307697773, -0.0114184794947505, -0.024603283032774925, -0.020432887598872185, -0.03730656951665878, -0.011245569214224815, 0.0518949069082737, -0.01777232438325882, -0.020640768110752106, 0.015455231070518494, -0.009173426777124405, -0.019948413595557213, -0.07887320220470428, 0.010364311747252941, 0.023990197107195854, -0.02183448150753975, -0.016735829412937164, 0.04933293163776398, 0.010621244087815285, 0.053837575018405914, 0.019890988245606422, -0.02331245131790638, -0.042438603937625885, 0.0376339852809906, 0.011187724769115448, -0.0675845816731453, -0.04671342670917511, -0.05316471308469772, 0.03220190852880478, 0.02316640503704548, -0.010591902770102024, -0.08743032068014145, 0.017634905874729156, 0.0520271360874176, -0.0533728264272213, 0.06312556564807892, 0.03298362344503403, 0.04579544439911842, 0.04387025162577629, -0.0067642005160450935, -0.0012411015341058373, -0.0220523402094841, -0.015545527450740337, -0.004620107356458902, 0.04921107366681099, -0.01686077192425728, -0.02403855137526989, -0.036483075469732285, 0.034233104437589645, -0.0004134571354370564, 0.03333095461130142, 0.023780155926942825, -0.0215507410466671, -0.039365991950035095, 0.007088224403560162, 0.021579977124929428, -0.04926331341266632, 0.015588230453431606, 0.0431477315723896, 0.01689556986093521, -0.02139599435031414, -0.025761902332305908, -0.005895566660910845, 0.009362280368804932, 0.06592248380184174, -0.024581845849752426, -0.033219024538993835, -0.03883035480976105, 0.022612683475017548, 0.004720636177808046, -0.04392965883016586, -0.10522866994142532, 0.03612978011369705, -0.007931091822683811, -0.02656685747206211, 0.0595211498439312, 0.02757774479687214, 0.023897986859083176, 0.07394728809595108, 0.0013310438953340054, 0.015569751150906086, -0.03303242474794388, 0.04341736435890198, -0.03539205342531204, -0.036442358046770096, 0.011251267977058887, -0.05132952705025673, -0.01252642460167408, -0.040165532380342484, -0.044165316969156265, -0.0377374067902565, 0.01601918786764145, 0.033709876239299774, -0.029712719842791557, 0.01371624507009983, 0.012021202594041824, 0.009144358336925507, -0.0012294809566810727, -0.054170094430446625, -0.012410640716552734, -0.03506080433726311, -0.059657350182533264, -0.04365936294198036, 0.03791392594575882, -0.005035681184381247, 0.023932164534926414, 0.0034728029277175665, 0.02458377555012703, 0.013101131655275822, -0.019378934055566788, -0.017877968028187752, 0.032196931540966034, 0.02618904784321785, -0.044426120817661285, -0.04397771507501602, -0.04404795542359352, 0.012077024206519127, 0.0009185854578390718, -0.057090867310762405, 0.03635062649846077, 0.02196238934993744, -0.021085225045681, -0.02153061516582966, 0.013250293210148811, 0.00024128140648826957, -0.046743229031562805, -0.05875478312373161, 0.0014907746808603406, 0.01107202097773552, 0.0355990007519722, -0.044903725385665894, -0.00744067644700408, 0.039901454001665115, 0.054436638951301575, 0.03989597037434578, 0.020156705752015114, -0.0024347302969545126, 0.05408094823360443, -0.03394201770424843, 0.01124644186347723, -0.08133042603731155, 0.012479742057621479, -0.014537785202264786, 0.03361954540014267, -0.016587598249316216, -0.0019532712176442146, -0.04333049803972244, 0.03773229196667671, -0.03504340723156929, -0.02680058404803276, 0.009273001924157143, 0.020638667047023773, -0.03398161754012108, 0.04324514791369438, -0.032252904027700424, 0.012472523376345634, -0.04653674736618996, 0.021308109164237976, -0.03609234094619751, -0.007463605143129826, 0.002886619418859482, -0.010017814114689827, -0.05408637970685959, -0.03729449212551117, -0.018613724038004875, -0.0747760459780693, 0.014677428640425205, 0.04456208646297455, -0.0037362310104072094, 0.01652003638446331, -0.02049092948436737, -0.009004614315927029, 0.01310324389487505, -0.04954605549573898, -0.024893861263990402, -0.054506320506334305, -0.02564423345029354, 0.0038152928464114666, 0.02247799001634121, 0.03442836552858353, -0.04935676231980324, -0.04851234331727028, 0.06551472097635269, 0.04748581722378731, 0.012762893922626972, 0.012478840537369251, 0.03356518596410751, 0.029689347371459007, 0.03162391856312752, 0.0009990492835640907, 0.015171544626355171, -0.039270542562007904, 0.019663330167531967, -0.0032285084016621113, 0.0005036802613176405, 0.005587312392890453, -0.029122715815901756, -0.04797721281647682, -0.029384853318333626, 0.09772323071956635, 0.04215091094374657, 0.036107707768678665, -0.0059586623683571815, -0.06001514196395874, 0.04123353213071823, 0.02582753449678421, -0.033240944147109985, 0.019794894382357597, 0.00762584013864398, -0.04011582210659981, 0.06632877886295319, 0.025751780718564987, 0.0337512381374836, 0.022395649924874306, 0.014725248329341412, -0.026703786104917526, 0.03363873064517975, -0.04476390779018402, -0.0031432872638106346, 0.022113017737865448, -0.04401383548974991, 0.0010328451171517372, -0.03826238587498665, 0.049495622515678406, -0.03614891692996025, 0.04957938194274902, 0.050102073699235916, -9.874166426016018e-05, 0.011222000233829021, -0.028685754165053368, -0.010983431711792946, 0.031677842140197754, -0.010753041133284569, 0.06186556816101074, -0.0074374014511704445, -0.07745931297540665, 0.03900652006268501, 0.03108547255396843, -0.06512308120727539, 0.031722452491521835, 0.008549943566322327, 0.012647946365177631, 0.03415451943874359, 0.04522695019841194, -0.05784319341182709, -0.01139136590063572, -0.014637447893619537, 0.013122860342264175, -0.03127758577466011, -0.02670898847281933, 0.051023080945014954, 0.010094310157001019, -0.009224277921020985, 0.03171323239803314, -0.007032867521047592, 0.02815721184015274, 0.03412032499909401, -0.04599647969007492, -0.05517728999257088, 0.006577468477189541, 0.050992149859666824, 0.03993885591626167, -0.009872814640402794, -0.04027444124221802, -0.006794418208301067, 0.016102338209748268, -0.01627134159207344, -0.03268791362643242, 0.061120036989450455, 0.03230159357190132, -0.11263767629861832, 0.0009169777040369809, 0.036213599145412445, 0.0032208524644374847, -0.035493154078722, 0.01669081673026085, 0.0012780106626451015, 0.007710043806582689, 0.015535444021224976, 0.015169922262430191, 0.0034496274311095476, -0.07034318149089813, -0.009966891258955002, 0.023845499381422997, -0.0037595026660710573, 0.04338093847036362, -0.028243770822882652, 0.013600415550172329, 0.06672463566064835, 0.025279821828007698, 0.012037968263030052, -0.05715629830956459, -0.030268756672739983, 0.03982356935739517, -0.02968951314687729, 0.043989308178424835, -0.03443540632724762, -0.042146142572164536, -0.051622238010168076, -0.01609404757618904, -0.01765049248933792, 0.06530895829200745, -0.006290975026786327, 0.016796844080090523, 0.01698577031493187, 0.00958422850817442, 0.00293816183693707, -0.05678679049015045, -0.03955871984362602, -0.03187083080410957, 0.05141907185316086, 0.019684238359332085, -0.024625755846500397, 0.018303697928786278, -0.03491023927927017, -0.04864603281021118, 0.03176124766469002, -0.011285300366580486, -0.028160076588392258, 0.07350596785545349, 0.02604042924940586, -0.021007336676120758, 0.00442914292216301, 0.034913986921310425, -0.057340387254953384, 0.03061915747821331, 0.004473674576729536, 0.011480627581477165, 0.025294611230492592, 0.03858784958720207, 0.02081691473722458, -0.02084927447140217, -0.034105028957128525, -0.018360333517193794, -0.003101494861766696, 0.0009713417966850102, 0.07005392760038376]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2023/04/12/Text-Embeddings/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2023-04-12 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Metaverse/">Metaverse<span>9</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2023 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>

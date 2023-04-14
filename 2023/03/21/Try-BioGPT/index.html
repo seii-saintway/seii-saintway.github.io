@@ -449,6 +449,38 @@ du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/huggingface/hub/mo
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>可以使用以下代码来估计 Hugging Face 模型文件的参数总量：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;huggingface/transformers&#39;</span><span class="p">,</span> <span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
+<span class="n">num_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of parameters: </span><span class="si">{</span><span class="n">num_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+<p>其中，<code>model_name</code> 是指 Hugging Face 模型的名称，例如 <code>gpt2</code>, <code>bert-base-uncased</code>等。</p>
+<p>这段代码会加载相应的模型，并统计其中可训练参数的数量，输出结果为参数总量。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>要估计 Hugging Face 模型文件的参数总量，可以使用 Hugging Face 库中的 <code>num_parameters()</code> 方法。以下是一个示例，说明如何使用 Hugging Face 库来估计模型的参数总量：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
+<span class="n">num_params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">num_parameters</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The model has </span><span class="si">{</span><span class="n">num_params</span><span class="si">}</span><span class="s2"> parameters.&quot;</span><span class="p">)</span>
+</pre></div>
+<p>在这里，<code>AutoModel.from_pretrained()</code> 方法用于加载模型。将 <code>&quot;model_name&quot;</code> 替换为你想要估计参数总量的模型名称。然后，<code>num_parameters()</code> 方法返回模型中的总参数数量。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr />
 
 </div>
@@ -866,7 +898,7 @@ lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/2023/04/04/Try-LangChain/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+    	<li class="prev"><a href="/2023/04/04/LangChain-Document-Loader/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
