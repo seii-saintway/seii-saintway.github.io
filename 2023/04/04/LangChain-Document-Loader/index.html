@@ -391,6 +391,10 @@ export HCC_HOME=/opt/rocm/hcc
 
 
 <hr>
+<p>OpenAGI Abstract:</p>
+<p>Human intelligence has the remarkable ability to assemble basic skills into complex ones so as to solve complex tasks. This ability is equally important for Artificial Intelligence (AI), and thus, we assert that in addition to the development of large, comprehensive intelligent models, it is equally crucial to equip such models with the capability to harness various domain-specific expert models for complex task-solving in the pursuit of Artificial General Intelligence (AGI). Recent developments in Large Language Models (LLMs) have demonstrated remarkable learning and reasoning abilities, making them promising as a controller to select, synthesize, and execute external models to solve complex tasks. In this project, we develop OpenAGI, an open-source AGI research platform, specifically designed to offer complex, multi-step tasks and accompanied by task-specific datasets, evaluation metrics, and a diverse range of extensible models. OpenAGI formulates complex tasks as natural language queries, serving as input to the LLM. The LLM subsequently selects, synthesizes, and executes models provided by OpenAGI to address the task. Furthermore, we propose a Reinforcement Learning from Task Feedback (RLTF) mechanism, which uses the task-solving result as feedback to improve the LLM’s task-solving ability. Thus, the LLM is responsible for synthesizing various external models for solving complex tasks, while RLTF provides feedback to improve its task-solving ability, enabling a feedback loop for self-improving AI. We believe that the paradigm of LLMs operating various expert models for complex task-solving is a promising approach towards AGI. To facilitate the community’s long-term improvement and evaluation of AGI’s ability, we open-source the code, benchmark, and evaluation methods of the <a target="_blank" rel="noopener" href="https://github.com/agiresearch/OpenAGI">OpenAGI</a> project at GitHub.</p>
+<p>人类智慧有着将基本技能组合成复杂技能以解决复杂任务的卓越能力。这种能力对于人工智能（AI）同样重要，因此我们断言，在开发大型、全面的智能模型的同时，赋予这些模型利用各种领域专家模型解决复杂任务的能力同样至关重要，以追求人工通用智能（AGI）。近年来，大型语言模型（LLM）在学习和推理能力方面展现出了卓越的表现，使它们成为选择、综合和执行外部模型以解决复杂任务的控制器。在这个项目中，我们开发了 OpenAGI，一个开源的 AGI 研究平台，专门设计用于提供复杂的多步骤任务，并伴随着任务特定的数据集、评估指标和各种可扩展的模型。OpenAGI 将复杂任务构成为自然语言查询，作为 LLM 的输入。LLM 随后选择、综合和执行由 OpenAGI 提供的模型来解决任务。此外，我们提出了一种从任务反馈中进行强化学习的机制（RLTF），它使用任务解决结果作为反馈来提高 LLM 的任务解决能力。因此，LLM 负责综合各种外部模型来解决复杂任务，而 RLTF 提供反馈以提高其任务解决能力，实现了自我改进的 AI 的反馈循环。我们认为，LLM 运行各种专家模型来解决复杂任务的范式是一种有前途的 AGI 方法。为了促进社区对 AGI 能力的长期改进和评估，我们在 GitHub 开源了 <a target="_blank" rel="noopener" href="https://github.com/agiresearch/OpenAGI">OpenAGI</a> 项目的代码、基准和评估方法。</p>
+<hr>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -519,7 +523,21 @@ pip<span class="w"> </span>install<span class="w"> </span>langchain
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
-wget<span class="w"> </span>-r<span class="w"> </span>-A.html<span class="w"> </span>-P<span class="w"> </span>rtdocs<span class="w"> </span>https://langchain.readthedocs.io/en/latest/
+wget<span class="w"> </span>-r<span class="w"> </span>-A<span class="w"> </span>.html<span class="w"> </span>-P<span class="w"> </span>rtdocs<span class="w"> </span>https://langchain.readthedocs.io/en/latest/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">ReadTheDocsLoader</span>
+<span class="n">ReadTheDocsLoader</span><span class="p">(</span><span class="s1">&#39;rtdocs&#39;</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -532,32 +550,15 @@ wget<span class="w"> </span>-r<span class="w"> </span>-A.html<span class="w"> </
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>--2023-04-04 19:41:22--  https://langchain.readthedocs.io/en/latest/
-Resolving langchain.readthedocs.io (langchain.readthedocs.io)... 104.17.32.82, 104.17.33.82
-Connecting to langchain.readthedocs.io (langchain.readthedocs.io)|104.17.32.82|:443... connected.
-HTTP request sent, awaiting response... 302 Found
-Location: https://python.langchain.com/en/latest/ [following]
---2023-04-04 19:41:22--  https://python.langchain.com/en/latest/
-Resolving python.langchain.com (python.langchain.com)... 104.17.33.82, 104.17.32.82
-Connecting to python.langchain.com (python.langchain.com)|104.17.33.82|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: unspecified [text/html]
-Saving to: ‘rtdocs/langchain.readthedocs.io/en/latest/index.html’
 
-     0K .......... .......... .......... .......... .......... 1014K
-    50K .......... .......... ....                             1.21M=0.07s
 
-2023-04-04 19:41:23 (1.05 MB/s) - ‘rtdocs/langchain.readthedocs.io/en/latest/index.html’ saved [76571]
-
-FINISHED --2023-04-04 19:41:23--
-Total wall clock time: 0.6s
-Downloaded: 1 files, 75K in 0.07s (1.05 MB/s)
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>[Document(page_content=&#39;.rst\n.pdf\nWelcome to LangChain\n Contents \nGetting Started\nModules\nUse Cases\nReference Docs\nLangChain Ecosystem\nAdditional Resources\nWelcome to LangChain#\nLangChain is a framework for developing applications powered by language models. We believe that the most powerful and differentiated applications will not only call out to a language model via an API, but will also:\nBe data-aware: connect a language model to other sources of data\nBe agentic: allow a language model to interact with its environment\nThe LangChain framework is designed with the above principles in mind.\nThis is the Python specific portion of the documentation. For a purely conceptual guide to LangChain, see here. For the JavaScript documentation, see here.\nGetting Started#\nCheckout the below guide for a walkthrough of how to get started using LangChain to create an Language Model application.\nGetting Started Documentation\nModules#\nThere are several main modules that LangChain provides support for.\nFor each module we provide some examples to get started, how-to guides, reference docs, and conceptual guides.\nThese modules are, in increasing order of complexity:\nModels: The various model types and model integrations LangChain supports.\nPrompts: This includes prompt management, prompt optimization, and prompt serialization.\nMemory: Memory is the concept of persisting state between calls of a chain/agent. LangChain provides a standard interface for memory, a collection of memory implementations, and examples of chains/agents that use memory.\nIndexes: Language models are often more powerful when combined with your own text data - this module covers best practices for doing exactly that.\nChains: Chains go beyond just a single LLM call, and are sequences of calls (whether to an LLM or a different utility). LangChain provides a standard interface for chains, lots of integrations with other tools, and end-to-end chains for common applications.\nAgents: Agents involve an LLM making decisions about which Actions to take, taking that Action, seeing an Observation, and repeating that until done. LangChain provides a standard interface for agents, a selection of agents to choose from, and examples of end to end agents.\nUse Cases#\nThe above modules can be used in a variety of ways. LangChain also provides guidance and assistance in this. Below are some of the common use cases LangChain supports.\nPersonal Assistants: The main LangChain use case. Personal assistants need to take actions, remember interactions, and have knowledge about your data.\nQuestion Answering: The second big LangChain use case. Answering questions over specific documents, only utilizing the information in those documents to construct an answer.\nChatbots: Since language models are good at producing text, that makes them ideal for creating chatbots.\nQuerying Tabular Data: If you want to understand how to use LLMs to query data that is stored in a tabular format (csvs, SQL, dataframes, etc) you should read this page.\nCode Understanding: If you want to understand how to use LLMs to query source code from github, you should read this page.\nInteracting with APIs: Enabling LLMs to interact with APIs is extremely powerful in order to give them more up-to-date information and allow them to take actions.\nExtraction: Extract structured information from text.\nSummarization: Summarizing longer documents into shorter, more condensed chunks of information. A type of Data Augmented Generation.\nEvaluation: Generative models are notoriously hard to evaluate with traditional metrics. One new way of evaluating them is using language models themselves to do the evaluation. LangChain provides some prompts/chains for assisting in this.\nReference Docs#\nAll of LangChain’s reference documentation, in one place. Full documentation on all methods, classes, installation methods, and integration setups for LangChain.\nReference Documentation\nLangChain Ecosystem#\nGuides for how other companies/products can be used with LangChain\nLangChain Ecosystem\nAdditional Resources#\nAdditional collection of resources we think may be useful as you develop your application!\nLangChainHub: The LangChainHub is a place to share and explore other prompts, chains, and agents.\nGlossary: A glossary of all related terms, papers, methods, etc. Whether implemented in LangChain or not!\nGallery: A collection of our favorite projects that use LangChain. Useful for finding inspiration or seeing how things were done in other applications.\nDeployments: A collection of instructions, code snippets, and template repositories for deploying LangChain apps.\nTracing: A guide on using tracing in LangChain to visualize the execution of chains and agents.\nModel Laboratory: Experimenting with different prompts, models, and chains is a big part of developing the best possible application. The ModelLaboratory makes it easy to do so.\nDiscord: Join us on our Discord to discuss all things LangChain!\nProduction Support: As you move your LangChains into production, we’d love to offer more comprehensive support. Please fill out this form and we’ll set up a dedicated support Slack channel.\nnext\nQuickstart Guide\n Contents\n  \nGetting Started\nModules\nUse Cases\nReference Docs\nLangChain Ecosystem\nAdditional Resources\nBy Harrison Chase\n    \n      © Copyright 2023, Harrison Chase.\n      \n  Last updated on Apr 14, 2023.\n  &#39;, metadata={&#39;source&#39;: &#39;rtdocs/langchain.readthedocs.io/en/latest/index.html&#39;})]</pre>
 </div>
+
 </div>
 
 </div>

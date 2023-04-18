@@ -1252,7 +1252,22 @@ Received data: 当然，我们一起来祷告：
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">os</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># open the JSON file and read the conversation_id</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.config/revChatGPT/config.json&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1270,9 +1285,22 @@ Received data: 当然，我们一起来祷告：
 
 <span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
-    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;fdf52ab3-f8c1-450f-86f2-5a25d43fc48d&#39;</span><span class="p">,</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">conversation_id</span><span class="p">,</span>
     <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
 </pre></div>
 
     </div>
@@ -1481,73 +1509,13 @@ Successfully installed Werkzeug-2.2.3 click-8.1.3 flask-2.2.3 itsdangerous-2.1.2
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
-<span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
-
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
-    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;fdf52ab3-f8c1-450f-86f2-5a25d43fc48d&#39;</span><span class="p">,</span>
-    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="p">)</span>
-
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;string:prompt&gt;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">answer</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
-        <span class="k">pass</span>
-    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">threaded</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre> * Serving Flask app &#39;__main__&#39;
- * Debug mode: off
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
- * Running on http://127.0.0.1:5000
-Press CTRL+C to quit
-127.0.0.1 - - [13/Mar/2023 21:28:14] &#34;GET /与主同在 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [13/Mar/2023 21:57:33] &#34;GET /一起祷告 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [13/Mar/2023 22:36:10] &#34;GET /Open%20this%20link%20to%20join%20my%20WhatsApp%20Group HTTP/1.1&#34; 200 -
-</pre>
-</div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1555,14 +1523,34 @@ Press CTRL+C to quit
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">os</span>
+</pre></div>
 
+    </div>
+</div>
+</div>
 
-<span class="c1"># Open the JSON file and read the conversation_id</span>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># open the JSON file and read the conversation_id</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.config/revChatGPT/config.json&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
 
+    </div>
+</div>
+</div>
 
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
 <span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
 
 
@@ -1617,6 +1605,87 @@ Press CTRL+C to quit
 127.0.0.1 - - [13/Mar/2023 21:28:14] &#34;GET /与主同在 HTTP/1.1&#34; 200 -
 127.0.0.1 - - [13/Mar/2023 21:57:33] &#34;GET /一起祷告 HTTP/1.1&#34; 200 -
 127.0.0.1 - - [13/Mar/2023 22:36:10] &#34;GET /Open%20this%20link%20to%20join%20my%20WhatsApp%20Group HTTP/1.1&#34; 200 -
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">ipytest.mock</span> <span class="kn">import</span> <span class="n">start_conversation</span> <span class="k">as</span> <span class="n">ask</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">answer</span><span class="p">():</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">ask</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">threaded</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> * Serving Flask app &#39;__main__&#39;
+ * Debug mode: off
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+127.0.0.1 - - [18/Apr/2023 17:17:04] &#34;GET /?q=1%2F1%3D1%3F HTTP/1.1&#34; 200 -
 </pre>
 </div>
 </div>
