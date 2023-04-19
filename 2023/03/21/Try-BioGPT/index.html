@@ -326,8 +326,7 @@ Successfully installed huggingface-hub-0.13.3 tokenizers-0.13.2 transformers-4.2
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">markdown</span>
-<span class="kn">import</span> <span class="nn">IPython</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
 </pre></div>
 
     </div>
@@ -340,14 +339,7 @@ Successfully installed huggingface-hub-0.13.3 tokenizers-0.13.2 transformers-4.2
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
-
-
-<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
-    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;a2a0e9d8-b880-4873-95b4-59ac6efdbb23&#39;</span><span class="p">,</span>
-    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipymock.mock</span> <span class="kn">import</span> <span class="n">start_conversation</span> <span class="k">as</span> <span class="n">ask</span>
 </pre></div>
 
     </div>
@@ -368,10 +360,10 @@ Successfully installed huggingface-hub-0.13.3 tokenizers-0.13.2 transformers-4.2
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">用 Hugging Face 下载的模型一般存储在哪里？</span>
 <span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
-    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
     <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
@@ -478,6 +470,81 @@ du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/huggingface/hub/mo
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;microsoft/biogpt-large&#39;</span><span class="p">)</span>
+<span class="n">num_params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">num_parameters</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The model microsoft/biogpt-large has </span><span class="si">{</span><span class="n">num_params</span><span class="si">}</span><span class="s2"> parameters.&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Some weights of the model checkpoint at microsoft/biogpt-large were not used when initializing BioGptModel: [&#39;output_projection.weight&#39;]
+- This IS expected if you are initializing BioGptModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BioGptModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The model microsoft/biogpt-large has 1571188800 parameters.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre><code>This message is a warning that some of the weights in the pre-trained model checkpoint at `microsoft/biogpt-large` were not used when initializing the `BioGptModel`. 
+
+This warning message indicates that this is an expected behavior if you are initializing a `BioGptModel` from a checkpoint of a model that was trained on a different task or has a different architecture, like initializing a `BertForSequenceClassification` model from a `BertForPreTraining` model.
+
+However, if you are initializing a `BioGptModel` from a checkpoint of a model that you expect to be exactly identical, such as initializing a `BertForSequenceClassification` model from another `BertForSequenceClassification` model, this warning is not expected.
+</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre><code>这条信息是一个警告，它表示在初始化 `BioGptModel` 时，`microsoft/biogpt-large` 预训练模型检查点中的一些权重没有被使用。
+
+这个警告信息表明，如果您正在从一个针对不同任务或具有不同架构的模型的检查点初始化 `BioGptModel`，比如从 `BertForPreTraining` 模型初始化 `BertForSequenceClassification` 模型，那么这是一种预期行为。
+
+但是，如果您正在从您预期完全相同的模型检查点初始化 `BioGptModel`，例如从另一个 `BertForSequenceClassification` 模型初始化 `BertForSequenceClassification` 模型，那么这个警告是不应该出现的。
+</code></pre>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -564,10 +631,10 @@ Successfully installed joblib-1.2.0 sacremoses-0.0.53
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">用 Hugging Face 下载的 tokenizer 一般存储在哪里？</span>
 <span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
-    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
     <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 

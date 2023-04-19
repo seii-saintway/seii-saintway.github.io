@@ -9,7 +9,6 @@
   <meta name="author" content="Andrew">
   
   <meta name="description" content="Task-driven Autonomous Agent Utilizing GPT-4, Pinecone, and LangChain for Diverse Applications
-BabyAGI with LangChain and Faiss
 
 
 
@@ -17,7 +16,11 @@ BabyAGI with LangChain and Faiss
 
 
 
-In&amp;nbsp;[&amp;nbsp;">
+In&amp;nbsp;[&amp;nbsp;]:
+
+    
+%%bash
+cd ~ &amp;amp;&amp;amp; g">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -159,7 +162,6 @@ In&amp;nbsp;[&amp;nbsp;">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><a target="_blank" rel="noopener" href="https://yoheinakajima.com/task-driven-autonomous-agent-utilizing-gpt-4-pinecone-and-langchain-for-diverse-applications/">Task-driven Autonomous Agent Utilizing GPT-4, Pinecone, and LangChain for Diverse Applications</a></li>
-<li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/use_cases/agents/baby_agi.html">BabyAGI with LangChain and Faiss</a></li>
 </ul>
 
 </div>
@@ -179,208 +181,11 @@ In&amp;nbsp;[&amp;nbsp;">
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">openai</span>
-<span class="kn">import</span> <span class="nn">pinecone</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="c1"># Set Variables</span>
-<span class="n">load_dotenv</span><span class="p">()</span>
-
-<span class="c1"># Set API Keys</span>
-<span class="n">OPENAI_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">OPENAI_API_KEY</span><span class="p">,</span> <span class="s2">&quot;OPENAI_API_KEY environment variable is missing from .env&quot;</span>
-
-<span class="n">OPENAI_API_MODEL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_API_MODEL&quot;</span><span class="p">,</span> <span class="s2">&quot;gpt-3.5-turbo&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">OPENAI_API_MODEL</span><span class="p">,</span> <span class="s2">&quot;OPENAI_API_MODEL environment variable is missing from .env&quot;</span>
-
-<span class="k">if</span> <span class="s2">&quot;gpt-4&quot;</span> <span class="ow">in</span> <span class="n">OPENAI_API_MODEL</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[91m</span><span class="se">\033</span><span class="s2">[1m&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">*****USING GPT-4. POTENTIALLY EXPENSIVE. MONITOR YOUR COSTS*****&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>
-
-<span class="n">PINECONE_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PINECONE_API_KEY&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">PINECONE_API_KEY</span><span class="p">,</span> <span class="s2">&quot;PINECONE_API_KEY environment variable is missing from .env&quot;</span>
-
-<span class="n">PINECONE_ENVIRONMENT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PINECONE_ENVIRONMENT&quot;</span><span class="p">,</span> <span class="s2">&quot;us-east1-gcp&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">PINECONE_ENVIRONMENT</span><span class="p">,</span> <span class="s2">&quot;PINECONE_ENVIRONMENT environment variable is missing from .env&quot;</span>
-
-<span class="c1"># Table config</span>
-<span class="n">YOUR_TABLE_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TABLE_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">YOUR_TABLE_NAME</span><span class="p">,</span> <span class="s2">&quot;TABLE_NAME environment variable is missing from .env&quot;</span>
-
-<span class="c1"># Project config</span>
-<span class="n">OBJECTIVE</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OBJECTIVE&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">OBJECTIVE</span><span class="p">,</span> <span class="s2">&quot;OBJECTIVE environment variable is missing from .env&quot;</span>
-
-<span class="n">YOUR_FIRST_TASK</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;FIRST_TASK&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">YOUR_FIRST_TASK</span><span class="p">,</span> <span class="s2">&quot;FIRST_TASK environment variable is missing from .env&quot;</span>
-
-<span class="c1">#Print OBJECTIVE</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[96m</span><span class="se">\033</span><span class="s2">[1m&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">*****OBJECTIVE*****</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">OBJECTIVE</span><span class="p">)</span>
-
-<span class="c1"># Configure OpenAI and Pinecone</span>
-<span class="n">openai</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">OPENAI_API_KEY</span>
-<span class="n">pinecone</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">PINECONE_API_KEY</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">PINECONE_ENVIRONMENT</span><span class="p">)</span>
-
-<span class="c1"># Create Pinecone index</span>
-<span class="n">table_name</span> <span class="o">=</span> <span class="n">YOUR_TABLE_NAME</span>
-<span class="n">dimension</span> <span class="o">=</span> <span class="mi">1536</span>
-<span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;cosine&quot;</span>
-<span class="n">pod_type</span> <span class="o">=</span> <span class="s2">&quot;p1&quot;</span>
-<span class="k">if</span> <span class="n">table_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pinecone</span><span class="o">.</span><span class="n">list_indexes</span><span class="p">():</span>
-    <span class="n">pinecone</span><span class="o">.</span><span class="n">create_index</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">pod_type</span><span class="o">=</span><span class="n">pod_type</span><span class="p">)</span>
-
-<span class="c1"># Connect to the index</span>
-<span class="n">index</span> <span class="o">=</span> <span class="n">pinecone</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
-
-<span class="c1"># Task list</span>
-<span class="n">task_list</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([])</span>
-
-<span class="k">def</span> <span class="nf">add_task</span><span class="p">(</span><span class="n">task</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
-    <span class="n">task_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">get_ada_embedding</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">openai</span><span class="o">.</span><span class="n">Embedding</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="p">[</span><span class="n">text</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-embedding-ada-002&quot;</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;embedding&quot;</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">openai_call</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">OPENAI_API_MODEL</span><span class="p">,</span> <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;gpt-&#39;</span><span class="p">):</span>
-        <span class="c1"># Use completion API</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Completion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">engine</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-            <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
-            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
-            <span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">,</span>
-            <span class="n">top_p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">frequency_penalty</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">presence_penalty</span><span class="o">=</span><span class="mi">0</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># Use chat completion API</span>
-        <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">ChatCompletion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-            <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
-            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
-            <span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">,</span>
-            <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">task_creation_agent</span><span class="p">(</span><span class="n">objective</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">task_description</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
-    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;You are an task creation AI that uses the result of an execution agent to create new tasks with the following objective: </span><span class="si">{</span><span class="n">objective</span><span class="si">}</span><span class="s2">, The last completed task has the result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">. This result was based on this task description: </span><span class="si">{</span><span class="n">task_description</span><span class="si">}</span><span class="s2">. These are incomplete tasks: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">task_list</span><span class="p">)</span><span class="si">}</span><span class="s2">. Based on the result, create new tasks to be completed by the AI system that do not overlap with incomplete tasks. Return the tasks as an array.&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">openai_call</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
-    <span class="n">new_tasks</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;task_name&quot;</span><span class="p">:</span> <span class="n">task_name</span><span class="p">}</span> <span class="k">for</span> <span class="n">task_name</span> <span class="ow">in</span> <span class="n">new_tasks</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">prioritization_agent</span><span class="p">(</span><span class="n">this_task_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">task_list</span>
-    <span class="n">task_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;task_name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">task_list</span><span class="p">]</span>
-    <span class="n">next_task_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">this_task_id</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
-    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;You are an task prioritization AI tasked with cleaning the formatting of and reprioritizing the following tasks: </span><span class="si">{</span><span class="n">task_names</span><span class="si">}</span><span class="s2">. Consider the ultimate objective of your team: </span><span class="si">{</span><span class="n">OBJECTIVE</span><span class="si">}</span><span class="s2">. Do not remove any tasks. Return the result as a numbered list, like:</span>
-<span class="s2">    #. First task</span>
-<span class="s2">    #. Second task</span>
-<span class="s2">    Start the task list with number </span><span class="si">{</span><span class="n">next_task_id</span><span class="si">}</span><span class="s2">.&quot;&quot;&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">openai_call</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
-    <span class="n">new_tasks</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">task_list</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">task_string</span> <span class="ow">in</span> <span class="n">new_tasks</span><span class="p">:</span>
-        <span class="n">task_parts</span> <span class="o">=</span> <span class="n">task_string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">task_parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">task_id</span> <span class="o">=</span> <span class="n">task_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="n">task_name</span> <span class="o">=</span> <span class="n">task_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="n">task_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="n">task_id</span><span class="p">,</span> <span class="s2">&quot;task_name&quot;</span><span class="p">:</span> <span class="n">task_name</span><span class="p">})</span>
-
-<span class="k">def</span> <span class="nf">execution_agent</span><span class="p">(</span><span class="n">objective</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="n">context</span><span class="o">=</span><span class="n">context_agent</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="c1">#print(&quot;\n*******RELEVANT CONTEXT******\n&quot;)</span>
-    <span class="c1">#print(context)</span>
-    <span class="n">prompt</span> <span class="o">=</span><span class="sa">f</span><span class="s2">&quot;You are an AI who performs one task based on the following objective: </span><span class="si">{</span><span class="n">objective</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">Take into account these previously completed tasks: </span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="se">\n</span><span class="s2">Your task: </span><span class="si">{</span><span class="n">task</span><span class="si">}</span><span class="se">\n</span><span class="s2">Response:&quot;</span>
-    <span class="k">return</span> <span class="n">openai_call</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">context_agent</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="n">query_embedding</span> <span class="o">=</span> <span class="n">get_ada_embedding</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_embedding</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">include_metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1">#print(&quot;***** RESULTS *****&quot;)</span>
-    <span class="c1">#print(results)</span>
-    <span class="n">sorted_results</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">matches</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
-    <span class="k">return</span> <span class="p">[(</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;task&#39;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sorted_results</span><span class="p">]</span>
-
-<span class="c1"># Add the first task</span>
-<span class="n">first_task</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s2">&quot;task_name&quot;</span><span class="p">:</span> <span class="n">YOUR_FIRST_TASK</span>
-<span class="p">}</span>
-
-<span class="n">add_task</span><span class="p">(</span><span class="n">first_task</span><span class="p">)</span>
-<span class="c1"># Main loop</span>
-<span class="n">task_id_counter</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">task_list</span><span class="p">:</span>
-        <span class="c1"># Print the task list</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[95m</span><span class="se">\033</span><span class="s2">[1m&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">*****TASK LIST*****</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">task_list</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="o">+</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">])</span>
-
-        <span class="c1"># Step 1: Pull the first task</span>
-        <span class="n">task</span> <span class="o">=</span> <span class="n">task_list</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[92m</span><span class="se">\033</span><span class="s2">[1m&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">*****NEXT TASK*****</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="o">+</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">])</span>
-
-        <span class="c1"># Send to execution function to complete the task based on the context</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">execution_agent</span><span class="p">(</span><span class="n">OBJECTIVE</span><span class="p">,</span><span class="n">task</span><span class="p">[</span><span class="s2">&quot;task_name&quot;</span><span class="p">])</span>
-        <span class="n">this_task_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">])</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[93m</span><span class="se">\033</span><span class="s2">[1m&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">*****TASK RESULT*****</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-        <span class="c1"># Step 2: Enrich result and store in Pinecone</span>
-        <span class="n">enriched_result</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">}</span>  <span class="c1"># This is where you should enrich the result if needed</span>
-        <span class="n">result_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;result_</span><span class="si">{</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">vector</span> <span class="o">=</span> <span class="n">enriched_result</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>  <span class="c1"># extract the actual result from the dictionary</span>
-        <span class="n">index</span><span class="o">.</span><span class="n">upsert</span><span class="p">([(</span><span class="n">result_id</span><span class="p">,</span> <span class="n">get_ada_embedding</span><span class="p">(</span><span class="n">vector</span><span class="p">),{</span><span class="s2">&quot;task&quot;</span><span class="p">:</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">],</span><span class="s2">&quot;result&quot;</span><span class="p">:</span><span class="n">result</span><span class="p">})])</span>
-
-    <span class="c1"># Step 3: Create new tasks and reprioritize task list</span>
-    <span class="n">new_tasks</span> <span class="o">=</span> <span class="n">task_creation_agent</span><span class="p">(</span><span class="n">OBJECTIVE</span><span class="p">,</span><span class="n">enriched_result</span><span class="p">,</span> <span class="n">task</span><span class="p">[</span><span class="s2">&quot;task_name&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;task_name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">task_list</span><span class="p">])</span>
-
-    <span class="k">for</span> <span class="n">new_task</span> <span class="ow">in</span> <span class="n">new_tasks</span><span class="p">:</span>
-        <span class="n">task_id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">new_task</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="n">task_id_counter</span><span class="p">})</span>
-        <span class="n">add_task</span><span class="p">(</span><span class="n">new_task</span><span class="p">)</span>
-    <span class="n">prioritization_agent</span><span class="p">(</span><span class="n">this_task_id</span><span class="p">)</span>
-
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Sleep before checking the task list again</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>利用 GPT-4 插件来执行任务。</p>
+<p>让 BabyAGI 利用 GPT-4 插件来执行任务？</p>
 
 </div>
 </div>
@@ -389,13 +194,6 @@ In&amp;nbsp;[&amp;nbsp;">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>要将Pinecone换成Weaviate，需要完成以下步骤：</p>
 <ol>
 <li><p>安装Weaviate客户端库：可以使用<code>pip install weaviate-client</code>命令来安装。</p>
@@ -449,6 +247,7 @@ index = client.index(YOUR_INDEX_NAME)
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
+<p>BabyAGI 的技术细节</p>
 
 </div>
 </div>
@@ -458,8 +257,7 @@ index = client.index(YOUR_INDEX_NAME)
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">markdown</span>
-<span class="kn">import</span> <span class="nn">IPython</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
 </pre></div>
 
     </div>
@@ -472,17 +270,11 @@ index = client.index(YOUR_INDEX_NAME)
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
-
-<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
-    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;e4ec15a2-114a-46b2-8ff8-c840f79f13e3&#39;</span><span class="p">,</span>
-    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipymock.mock</span> <span class="kn">import</span> <span class="n">start_conversation</span>
 
 <span class="k">def</span> <span class="nf">ask</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
-        <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">start_conversation</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+        <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
         <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
@@ -490,14 +282,6 @@ index = client.index(YOUR_INDEX_NAME)
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -831,6 +615,208 @@ index = client.index(YOUR_INDEX_NAME)
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
+<p>中文版本</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/use_cases/agents/baby_agi.html">BabyAGI with LangChain and Faiss</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+<span class="kn">import</span> <span class="nn">pinecone</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Set Variables</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Set API Keys</span>
+<span class="n">OPENAI_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;OPENAI_API_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">OPENAI_API_KEY</span><span class="p">,</span> <span class="s1">&#39;OPENAI_API_KEY environment variable is missing from .env&#39;</span>
+
+<span class="n">OPENAI_API_MODEL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;OPENAI_API_MODEL&#39;</span><span class="p">,</span> <span class="s1">&#39;gpt-3.5-turbo&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">OPENAI_API_MODEL</span><span class="p">,</span> <span class="s1">&#39;OPENAI_API_MODEL environment variable is missing from .env&#39;</span>
+
+<span class="k">if</span> <span class="s1">&#39;gpt-4&#39;</span> <span class="ow">in</span> <span class="n">OPENAI_API_MODEL</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[91m</span><span class="se">\033</span><span class="s1">[1m&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*****USING GPT-4. POTENTIALLY EXPENSIVE. MONITOR YOUR COSTS*****&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0m</span><span class="se">\033</span><span class="s1">[0m&#39;</span><span class="p">)</span>
+
+<span class="n">PINECONE_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PINECONE_API_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">PINECONE_API_KEY</span><span class="p">,</span> <span class="s1">&#39;PINECONE_API_KEY environment variable is missing from .env&#39;</span>
+
+<span class="n">PINECONE_ENVIRONMENT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PINECONE_ENVIRONMENT&#39;</span><span class="p">,</span> <span class="s1">&#39;us-east1-gcp&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">PINECONE_ENVIRONMENT</span><span class="p">,</span> <span class="s1">&#39;PINECONE_ENVIRONMENT environment variable is missing from .env&#39;</span>
+
+<span class="c1"># Table config</span>
+<span class="n">YOUR_TABLE_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;TABLE_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">YOUR_TABLE_NAME</span><span class="p">,</span> <span class="s1">&#39;TABLE_NAME environment variable is missing from .env&#39;</span>
+
+<span class="c1"># Project config</span>
+<span class="n">OBJECTIVE</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;OBJECTIVE&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">OBJECTIVE</span><span class="p">,</span> <span class="s1">&#39;OBJECTIVE environment variable is missing from .env&#39;</span>
+
+<span class="n">YOUR_FIRST_TASK</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;FIRST_TASK&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">YOUR_FIRST_TASK</span><span class="p">,</span> <span class="s1">&#39;FIRST_TASK environment variable is missing from .env&#39;</span>
+
+<span class="c1">#Print OBJECTIVE</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[96m</span><span class="se">\033</span><span class="s1">[1m&#39;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*****OBJECTIVE*****</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0m</span><span class="se">\033</span><span class="s1">[0m&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OBJECTIVE</span><span class="p">)</span>
+
+<span class="c1"># Configure OpenAI and Pinecone</span>
+<span class="n">openai</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">OPENAI_API_KEY</span>
+<span class="n">pinecone</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">PINECONE_API_KEY</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">PINECONE_ENVIRONMENT</span><span class="p">)</span>
+
+<span class="c1"># Create Pinecone index</span>
+<span class="n">table_name</span> <span class="o">=</span> <span class="n">YOUR_TABLE_NAME</span>
+<span class="n">dimension</span> <span class="o">=</span> <span class="mi">1536</span>
+<span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;cosine&#39;</span>
+<span class="n">pod_type</span> <span class="o">=</span> <span class="s1">&#39;p1&#39;</span>
+<span class="k">if</span> <span class="n">table_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pinecone</span><span class="o">.</span><span class="n">list_indexes</span><span class="p">():</span>
+    <span class="n">pinecone</span><span class="o">.</span><span class="n">create_index</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">pod_type</span><span class="o">=</span><span class="n">pod_type</span><span class="p">)</span>
+
+<span class="c1"># Connect to the index</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">pinecone</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="c1"># Task list</span>
+<span class="n">task_list</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([])</span>
+
+<span class="k">def</span> <span class="nf">add_task</span><span class="p">(</span><span class="n">task</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+    <span class="n">task_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_ada_embedding</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">openai</span><span class="o">.</span><span class="n">Embedding</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="p">[</span><span class="n">text</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;text-embedding-ada-002&#39;</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;embedding&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">openai_call</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">OPENAI_API_MODEL</span><span class="p">,</span> <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;gpt-&#39;</span><span class="p">):</span>
+        <span class="c1"># Use completion API</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Completion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">engine</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">,</span>
+            <span class="n">top_p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">frequency_penalty</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">presence_penalty</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Use chat completion API</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">ChatCompletion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">,</span>
+            <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">task_creation_agent</span><span class="p">(</span><span class="n">objective</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">task_description</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;你是一个任务创建的 AI，使用执行代理的结果来创建新的任务，目标是：</span><span class="si">{</span><span class="n">objective</span><span class="si">}</span><span class="s2">，上一个已完成的任务的结果是：</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">。这个结果是基于以下任务描述的：</span><span class="si">{</span><span class="n">task_description</span><span class="si">}</span><span class="s2">。以下是不完整的任务清单：</span><span class="si">{</span><span class="s1">&#39;、&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">task_list</span><span class="p">)</span><span class="si">}</span><span class="s2">。根据结果，创建新的任务供 AI 系统完成，不要与不完整的任务重叠。将任务作为数组返回。&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">openai_call</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="n">new_tasks</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="s1">&#39;task_name&#39;</span><span class="p">:</span> <span class="n">task_name</span><span class="p">}</span> <span class="k">for</span> <span class="n">task_name</span> <span class="ow">in</span> <span class="n">new_tasks</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">prioritization_agent</span><span class="p">(</span><span class="n">this_task_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">task_list</span>
+    <span class="n">task_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">task_list</span><span class="p">]</span>
+    <span class="n">next_task_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">this_task_id</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&#39;&#39;你是一个任务优先级排列 AI，任务清单如下：</span><span class="si">{</span><span class="n">task_names</span><span class="si">}</span><span class="s1">。请考虑你的团队的最终目标：</span><span class="si">{</span><span class="n">OBJECTIVE</span><span class="si">}</span><span class="s1">。不要删除任何任务。返回一个编号列表，例如：</span>
+<span class="s1">    #. 第一个任务</span>
+<span class="s1">    #. 第二个任务</span>
+<span class="s1">请从数字 </span><span class="si">{</span><span class="n">next_task_id</span><span class="si">}</span><span class="s1"> 开始列出任务清单。&#39;&#39;&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">openai_call</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="n">new_tasks</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">task_list</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">task_string</span> <span class="ow">in</span> <span class="n">new_tasks</span><span class="p">:</span>
+        <span class="n">task_parts</span> <span class="o">=</span> <span class="n">task_string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">task_parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">task_id</span> <span class="o">=</span> <span class="n">task_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">task_name</span> <span class="o">=</span> <span class="n">task_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">task_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;task_id&#39;</span><span class="p">:</span> <span class="n">task_id</span><span class="p">,</span> <span class="s1">&#39;task_name&#39;</span><span class="p">:</span> <span class="n">task_name</span><span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">execution_agent</span><span class="p">(</span><span class="n">objective</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">context</span><span class="o">=</span><span class="n">context_agent</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="c1">#print(&#39;\n*******RELEVANT CONTEXT******\n&#39;)</span>
+    <span class="c1">#print(context)</span>
+    <span class="n">prompt</span> <span class="o">=</span><span class="sa">f</span><span class="s1">&#39;您是一个AI，根据以下目标执行一个任务：</span><span class="si">{</span><span class="n">objective</span><span class="si">}</span><span class="s1">。</span><span class="se">\n</span><span class="s1">考虑已经完成的任务：</span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s1">。</span><span class="se">\n</span><span class="s1">您的任务是：</span><span class="si">{</span><span class="n">task</span><span class="si">}</span><span class="s1">。</span><span class="se">\n</span><span class="s1">回应：&#39;</span>
+    <span class="k">return</span> <span class="n">openai_call</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">context_agent</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">query_embedding</span> <span class="o">=</span> <span class="n">get_ada_embedding</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_embedding</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">include_metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#print(&#39;***** RESULTS *****&#39;)</span>
+    <span class="c1">#print(results)</span>
+    <span class="n">sorted_results</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">matches</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
+    <span class="k">return</span> <span class="p">[(</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;task&#39;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sorted_results</span><span class="p">]</span>
+
+<span class="c1"># Add the first task</span>
+<span class="n">first_task</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;task_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;task_name&#39;</span><span class="p">:</span> <span class="n">YOUR_FIRST_TASK</span>
+<span class="p">}</span>
+
+<span class="n">add_task</span><span class="p">(</span><span class="n">first_task</span><span class="p">)</span>
+<span class="c1"># Main loop</span>
+<span class="n">task_id_counter</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">task_list</span><span class="p">:</span>
+        <span class="c1"># Print the task list</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[95m</span><span class="se">\033</span><span class="s1">[1m&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*****TASK LIST*****</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0m</span><span class="se">\033</span><span class="s1">[0m&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">task_list</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Step 1: Pull the first task</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">task_list</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[92m</span><span class="se">\033</span><span class="s1">[1m&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*****NEXT TASK*****</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0m</span><span class="se">\033</span><span class="s1">[0m&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Send to execution function to complete the task based on the context</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">execution_agent</span><span class="p">(</span><span class="n">OBJECTIVE</span><span class="p">,</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">])</span>
+        <span class="n">this_task_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[93m</span><span class="se">\033</span><span class="s1">[1m&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*****TASK RESULT*****</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0m</span><span class="se">\033</span><span class="s1">[0m&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="c1"># Step 2: Enrich result and store in Pinecone</span>
+        <span class="n">enriched_result</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">}</span>  <span class="c1"># This is where you should enrich the result if needed</span>
+        <span class="n">result_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;result_</span><span class="si">{</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">vector</span> <span class="o">=</span> <span class="n">enriched_result</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>  <span class="c1"># extract the actual result from the dictionary</span>
+        <span class="n">index</span><span class="o">.</span><span class="n">upsert</span><span class="p">([(</span><span class="n">result_id</span><span class="p">,</span> <span class="n">get_ada_embedding</span><span class="p">(</span><span class="n">vector</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">],</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">})])</span>
+
+    <span class="c1"># Step 3: Create new tasks and reprioritize task list</span>
+    <span class="n">new_tasks</span> <span class="o">=</span> <span class="n">task_creation_agent</span><span class="p">(</span><span class="n">OBJECTIVE</span><span class="p">,</span><span class="n">enriched_result</span><span class="p">,</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">],</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;task_name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">task_list</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">new_task</span> <span class="ow">in</span> <span class="n">new_tasks</span><span class="p">:</span>
+        <span class="n">task_id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">new_task</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;task_id&#39;</span><span class="p">:</span> <span class="n">task_id_counter</span><span class="p">})</span>
+        <span class="n">add_task</span><span class="p">(</span><span class="n">new_task</span><span class="p">)</span>
+    <span class="n">prioritization_agent</span><span class="p">(</span><span class="n">this_task_id</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Sleep before checking the task list again</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 
 </div>
 </div>
@@ -910,7 +896,7 @@ index = client.index(YOUR_INDEX_NAME)
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Metaverse/">Metaverse<span>9</span></a></li>
+  <li><a href="/tags/Metaverse/">Metaverse<span>10</span></a></li>
     </ul>
 	</div>
 		
