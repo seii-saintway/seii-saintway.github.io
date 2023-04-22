@@ -3419,7 +3419,7 @@ curl<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Auth
     <span class="n">common</span><span class="o">.</span><span class="n">parent_message_id</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_lines</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;data: &#39;</span><span class="p">):</span>
             <span class="k">continue</span>
 
         <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;[DONE]&#39;</span><span class="p">):</span>
@@ -3708,19 +3708,6 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
 </pre></div>
 
@@ -3757,6 +3744,19 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
     <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">conversation_id</span><span class="p">,</span>
@@ -3786,6 +3786,26 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>是啊，有什么我能帮助你的吗？</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -5730,45 +5750,45 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
+		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+			<li><a href="/tags/Metaverse/">Metaverse<span>10</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
 		
 			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
-			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>10</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>

@@ -1152,7 +1152,7 @@ du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/torch/sentence_tra
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Number of Sentences:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">))</span>
     <span class="c1"># print(sentences)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Building the index...&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Embedding the sentences...&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
 </pre></div>
 
@@ -1170,27 +1170,6 @@ du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/torch/sentence_tra
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Number of Sentences: 13960
-
-Building the index...
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1280,30 +1259,12 @@ Building the index...
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">indexer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Building the index...&#39;</span><span class="p">)</span>
+<span class="n">indexer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">index.ntotal:&#39;</span><span class="p">,</span> <span class="n">indexer</span><span class="o">.</span><span class="n">ntotal</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-index.ntotal: 13960
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1397,11 +1358,13 @@ To disable this warning, you can either:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Retrieving extra information...&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Searching for:&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
     <span class="n">xq</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
     <span class="n">D</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">indexer</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">xq</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Distance:&#39;</span><span class="p">,</span> <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index:&#39;</span><span class="p">,</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Retrieving related information...&#39;</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -1796,6 +1759,7 @@ result: ”七灵乃是七倍加强的灵，不是七个灵，而是一位灵加
     <span class="n">pdf_content</span> <span class="o">=</span> <span class="n">extract_text</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Text Length:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">extra_text</span><span class="p">))</span>
 
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Building the index...&#39;</span><span class="p">)</span>
     <span class="n">indexer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">embed</span><span class="p">(</span><span class="n">pdf_content</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">index.ntotal:&#39;</span><span class="p">,</span> <span class="n">indexer</span><span class="o">.</span><span class="n">ntotal</span><span class="p">)</span>
 
@@ -1928,20 +1892,7 @@ result: ”七灵乃是七倍加强的灵，不是七个灵，而是一位灵加
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">common</span><span class="o">.</span><span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;a6b1d5bd-28b9-417b-9231-a1a339367e67&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_conversation</span><span class="p">(</span><span class="n">common</span><span class="o">.</span><span class="n">conversation_id</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">common</span><span class="o">.</span><span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
 
     </div>
