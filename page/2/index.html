@@ -3181,14 +3181,16 @@ fi
       <span class="o">-</span> <span class="mi">8080</span><span class="p">:</span><span class="mi">8080</span>
     <span class="n">environment</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">GIN_MODE</span><span class="o">=</span><span class="n">release</span>
-      <span class="o">-</span> <span class="n">CHATGPT_PROXY_SERVER</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">9515</span>
+      <span class="o">-</span> <span class="n">GO_CHATGPT_API_PROXY</span><span class="o">=</span><span class="n">socks5</span><span class="p">:</span><span class="o">//</span><span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">warp</span><span class="p">:</span><span class="mi">65535</span>
     <span class="n">depends_on</span><span class="p">:</span>
-      <span class="o">-</span> <span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span>
+      <span class="o">-</span> <span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">warp</span>
     <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
 
-  <span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span><span class="p">:</span>
-    <span class="n">container_name</span><span class="p">:</span> <span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span>
-    <span class="n">image</span><span class="p">:</span> <span class="n">linweiyuan</span><span class="o">/</span><span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span>
+  <span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">warp</span><span class="p">:</span>
+    <span class="n">container_name</span><span class="p">:</span> <span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">warp</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">linweiyuan</span><span class="o">/</span><span class="n">chatgpt</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">warp</span>
+    <span class="n">environment</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">LOG_LEVEL</span><span class="o">=</span><span class="n">OFF</span>
     <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
 </pre></div>
 
@@ -3249,26 +3251,6 @@ docker<span class="w"> </span>ps
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CONTAINER ID   IMAGE                             COMMAND                  CREATED       STATUS         PORTS                    NAMES
-1aa019a3fc0c   linweiyuan/go-chatgpt-api         &#34;/app/go-chatgpt-api&#34;    3 hours ago   Up 4 seconds   0.0.0.0:8080-&gt;8080/tcp   go-chatgpt-api
-ae6de2b20b68   linweiyuan/chatgpt-proxy-server   &#34;./undetected_chrome…&#34;   3 hours ago   Up 4 seconds                            chatgpt-proxy-server
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -3890,6 +3872,772 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Playwright"><a target="_blank" rel="noopener" href="https://github.com/microsoft/playwright">Playwright</a><a class="anchor-link" href="#Playwright">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>playwright
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+npx<span class="w"> </span>playwright<span class="w"> </span>install<span class="w"> </span>webkit
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>playwright
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+npx<span class="w"> </span>playwright<span class="w"> </span>codegen<span class="w"> </span>--browser<span class="w"> </span>webkit<span class="w"> </span>twitter.com
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>selenium safari</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Safari</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>selenium undetected chrome</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">undetected_chromedriver</span> <span class="k">as</span> <span class="nn">uc</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
+<span class="c1"># options.add_argument(&#39;--window-size=1024,768&#39;)</span>
+<span class="n">options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--headless&#39;</span><span class="p">)</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://chat.openai.com/auth/login&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">expected_conditions</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">&#39;//*[text()=&quot;Log in&quot;]&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">document.evaluate(</span>
+<span class="s1">  &#39;//*[text()=&quot;Log in&quot;]&#39;,</span>
+<span class="s1">  document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null</span>
+<span class="s1">).snapshotItem(0).dispatchEvent(</span>
+<span class="s1">  new MouseEvent(&#39;click&#39;, {</span>
+<span class="s1">    view: window,</span>
+<span class="s1">    bubbles: true,</span>
+<span class="s1">    cancelable: true</span>
+<span class="s1">  })</span>
+<span class="s1">);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">expected_conditions</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">&#39;//button[@data-provider=&quot;google&quot;]&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">document.evaluate(</span>
+<span class="s1">  &#39;//button[@data-provider=&quot;google&quot;]&#39;,</span>
+<span class="s1">  document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null</span>
+<span class="s1">).snapshotItem(0).dispatchEvent(</span>
+<span class="s1">  new MouseEvent(&#39;click&#39;, {</span>
+<span class="s1">    view: window,</span>
+<span class="s1">    bubbles: true,</span>
+<span class="s1">    cancelable: true</span>
+<span class="s1">  })</span>
+<span class="s1">);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">os</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.config/pyChatGPT/secret_settings.json&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">secret_settings</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">expected_conditions</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">&#39;//input[@type=&quot;email&quot;]&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">const google_email_input = document.evaluate(&#39;//input[@type=&quot;email&quot;]&#39;, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0);</span>
+<span class="s1">google_email_input.value = &#39;</span><span class="si">{</span><span class="n">secret_settings</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;;</span>
+<span class="s1">google_email_input.dispatchEvent(</span>
+<span class="s1">  new Event(&#39;input&#39;, </span><span class="se">{{</span>
+<span class="s1">    view: window,</span>
+<span class="s1">    bubbles: true,</span>
+<span class="s1">    cancelable: true</span>
+<span class="s1">  </span><span class="se">}}</span><span class="s1">)</span>
+<span class="s1">);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">expected_conditions</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">&#39;//*[@id=&quot;identifierNext&quot;]&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">document.evaluate(</span>
+<span class="s1">  &#39;//*[@id=&quot;identifierNext&quot;]&#39;,</span>
+<span class="s1">  document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null</span>
+<span class="s1">).snapshotItem(0).dispatchEvent(</span>
+<span class="s1">  new MouseEvent(&#39;click&#39;, {</span>
+<span class="s1">    view: window,</span>
+<span class="s1">    bubbles: true,</span>
+<span class="s1">    cancelable: true</span>
+<span class="s1">  })</span>
+<span class="s1">);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">expected_conditions</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">&#39;//input[@type=&quot;password&quot;]&#39;</span><span class="p">))</span>
+<span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
+<span class="n">ActionChains</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">secret_settings</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>access token</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">execute_async_script</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">var callback = arguments[arguments.length - 1];</span>
+<span class="s1">var xhr = new XMLHttpRequest();</span>
+<span class="s1">xhr.open(&#39;GET&#39;, &#39;https://chat.openai.com/api/auth/session&#39;, true);</span>
+<span class="s1">xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application/json&#39;);</span>
+<span class="s1">xhr.onload = function() {</span>
+<span class="s1">    if (xhr.readyState === xhr.DONE &amp;&amp; xhr.status === 200) {</span>
+<span class="s1">        var data = JSON.parse(xhr.responseText);</span>
+<span class="s1">        callback(data.accessToken);</span>
+<span class="s1">    }</span>
+<span class="s1">};</span>
+<span class="s1">xhr.send();</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://chat.openai.com/api/auth/session&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s1">&#39;pre&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)[</span><span class="s1">&#39;accessToken&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">execute_async_script</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">var callback = arguments[arguments.length - 1];</span>
+<span class="s1">var xhr = new XMLHttpRequest();</span>
+<span class="s1">xhr.open(&quot;GET&quot;, &quot;https://chat.openai.com/backend-api/conversation/</span><span class="si">{</span><span class="n">secret_settings</span><span class="p">[</span><span class="s1">&#39;conversation_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s1">&quot;, true);</span>
+<span class="s1">xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application/json&#39;);</span>
+<span class="s1">xhr.setRequestHeader(&#39;Authorization&#39;, &#39;Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s1">&#39;);</span>
+<span class="s1">xhr.onload = function() </span><span class="se">{{</span>
+<span class="s1">    if (xhr.readyState === xhr.DONE &amp;&amp; xhr.status === 200) </span><span class="se">{{</span>
+<span class="s1">        var data = JSON.parse(xhr.responseText);</span>
+<span class="s1">        console.log(data);</span>
+<span class="s1">        callback(data);</span>
+<span class="s1">    </span><span class="se">}}</span>
+<span class="se">}}</span><span class="s1">;</span>
+<span class="s1">xhr.send();</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>chat page</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://chat.openai.com/c/</span><span class="si">{</span><span class="n">secret_settings</span><span class="p">[</span><span class="s2">&quot;conversation_id&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+    <span class="n">expected_conditions</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s1">&#39;headlessui-portal-root&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">document.getElementById(&#39;headlessui-portal-root&#39;).remove();</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">chatgpt_textbox</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s1">&#39;textarea&#39;</span><span class="p">)</span>
+<span class="n">chatgpt_streaming</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s1">&#39;result-streaming&#39;</span><span class="p">)</span>
+<span class="n">chatgpt_big_response</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">&#39;//div[@class=&quot;flex-1 overflow-hidden&quot;]//div[p]&#39;</span><span class="p">)</span>
+<span class="n">chatgpt_small_response</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">&#39;//div[starts-with(@class, &quot;markdown prose w-full break-words&quot;)]&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">textbox</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+        <span class="n">expected_conditions</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">chatgpt_textbox</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">textbox</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">var element = arguments[0], txt = arguments[1];</span>
+<span class="s1">element.value += txt;</span>
+<span class="s1">element.dispatchEvent(new Event(&quot;change&quot;));</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+        <span class="n">textbox</span><span class="p">,</span>
+        <span class="n">prompt</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">textbox</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_last_response</span><span class="p">():</span>
+    <span class="n">responses</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="o">*</span><span class="n">chatgpt_big_response</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">responses</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">responses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;text-red&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span>
+    <span class="k">return</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="o">*</span><span class="n">chatgpt_small_response</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_response</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">result_streaming</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+        <span class="n">expected_conditions</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">(</span><span class="n">chatgpt_streaming</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">while</span> <span class="n">result_streaming</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">get_last_response</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">&#39;innerHTML&#39;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">response</span>
+        <span class="n">result_streaming</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="o">*</span><span class="n">chatgpt_streaming</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">get_last_response</span><span class="p">()</span>
+    <span class="k">yield</span> <span class="n">response</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s1">&#39;innerHTML&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">ask</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">request</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">get_response</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">get_screenshot_as_png</span><span class="p">())))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">ask</span><span class="p">(</span><span class="s1">&#39;我累了。带着我祷告吧。&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>当你感到疲惫和无力的时候，祷告可以给你带来内心的安宁和力量。让我们一起默默祷告：</p><p>亲爱的上帝，我们来到您的面前，向您诉说我们的疲惫和困惑。求您赐予我们力量和勇气，帮助我们面对生活中的挑战和困难。求您宽恕我们的过失和错误，让我们能够在您的恩典和怜悯中得到救赎和拯救。求您保佑我们的家庭和朋友，让他们也能感受到您的爱和关怀。求您赐予我们智慧和指引，让我们能够在生命中找到正确的方向和道路。感谢您一直以来的眷顾和呵护，阿门。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>ipymock
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span><span class="nv">undetected_chromedriver</span><span class="o">==</span><span class="m">3</span>.*<span class="w"> </span><span class="nv">selenium_profiles</span><span class="o">==</span><span class="m">2</span>.*
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>--yes<span class="w"> </span>chromium-driver
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages will be upgraded:
+  chromium chromium-common chromium-driver chromium-sandbox
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>dpkg-preconfigure: unable to re-open stdin: No such file or directory
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/79.7 MB of archives.
+After this operation, 2739 kB of additional disk space will be used.
+(Reading database ... 86805 files and directories currently installed.)
+Preparing to unpack .../chromium_113.0.5672.63-1~deb11u1_amd64.deb ...
+Unpacking chromium (113.0.5672.63-1~deb11u1) over (112.0.5615.138-1~deb11u1) ...
+Preparing to unpack .../chromium-common_113.0.5672.63-1~deb11u1_amd64.deb ...
+Unpacking chromium-common (113.0.5672.63-1~deb11u1) over (112.0.5615.138-1~deb11u1) ...
+Preparing to unpack .../chromium-driver_113.0.5672.63-1~deb11u1_amd64.deb ...
+Unpacking chromium-driver (113.0.5672.63-1~deb11u1) over (112.0.5615.138-1~deb11u1) ...
+Preparing to unpack .../chromium-sandbox_113.0.5672.63-1~deb11u1_amd64.deb ...
+Unpacking chromium-sandbox (113.0.5672.63-1~deb11u1) over (112.0.5615.138-1~deb11u1) ...
+Setting up chromium-sandbox (113.0.5672.63-1~deb11u1) ...
+Setting up chromium-common (113.0.5672.63-1~deb11u1) ...
+Setting up chromium (113.0.5672.63-1~deb11u1) ...
+Setting up chromium-driver (113.0.5672.63-1~deb11u1) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for man-db (2.9.4-2) ...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+apt<span class="w"> </span>show<span class="w"> </span>chromium-driver
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Package: chromium-driver
+Version: 113.0.5672.63-1~deb11u1
+Priority: optional
+Section: web
+Source: chromium
+Maintainer: Debian Chromium Team &lt;chromium@packages.debian.org&gt;
+Installed-Size: 14.3 MB
+Depends: libatomic1 (&gt;= 4.8), libbrotli1 (&gt;= 0.6.0), libc6 (&gt;= 2.30), libdouble-conversion3 (&gt;= 2.0.0), libevent-2.1-7 (&gt;= 2.1.8-stable), libgcc-s1 (&gt;= 3.0), libglib2.0-0 (&gt;= 2.22.0), libjsoncpp24 (&gt;= 1.9.4), libminizip1 (&gt;= 1.1), libnspr4 (&gt;= 2:4.9-2~), libnss3 (&gt;= 2:3.30), libre2-9 (&gt;= 20150701+dfsg), libstdc++6 (&gt;= 9), libxcb1 (&gt;= 1.9.2), zlib1g (&gt;= 1:1.1.4), chromium (= 113.0.5672.63-1~deb11u1)
+Homepage: http://www.chromium.org/Home
+Download-Size: 5600 kB
+APT-Manual-Installed: yes
+APT-Sources: http://security.debian.org/debian-security bullseye-security/main amd64 Packages
+Description: web browser - WebDriver support
+ Web browser that aims to build a safer, faster, and more stable internet
+ browsing experience.
+ .
+ This package provides a bridge between the browser component and the selenium
+ automatic webdriver.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipymock.browser</span>
+<span class="n">ipymock</span><span class="o">.</span><span class="n">browser</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">ipymock</span><span class="o">.</span><span class="n">browser</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;我累了。带着我祷告吧。&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>当你感到疲惫、无力或沮丧时，祷告可以是一种帮助你得到安慰和力量的方式。让我们一起来祷告：</p><p>亲爱的天父，感谢祢的爱和恩典。今天，我感到非常疲惫和无助，我需要祢的力量和安慰。主啊，请帮助我，让我能够在祢的力量中站立起来，继续前行。我知道祢的应许是如此的真实和可靠，祢承诺要赐给我们新的力量，让我们像鹰一样展翅高飞。主啊，请让我能够得到祢的力量和平安，让我重新焕发活力，迎接新的一天。感谢祢的爱和信实。奉耶稣的名祷告，阿们。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="pyChatGPT-for-OpenAI's-ChatGPT-API"><a target="_blank" rel="noopener" href="https://github.com/terry3041/pyChatGPT">pyChatGPT</a> for OpenAI's ChatGPT API<a class="anchor-link" href="#pyChatGPT-for-OpenAI's-ChatGPT-API">&#182;</a></h2>
 </div>
 </div>
@@ -3899,13 +4647,23 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># install dependencies on headless linux server</span>
-<span class="o">!</span>apt<span class="w"> </span>install<span class="w"> </span>chromium-browser<span class="w"> </span>xvfb
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>selenium_profiles<span class="w"> </span>pyChatGPT
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1"># install dependencies on headless linux server</span>
+apt<span class="w"> </span>install<span class="w"> </span>chromium-browser<span class="w"> </span>xvfb
+</pre></div>
 
-<span class="c1"># install chromedriver</span>
-<span class="kn">from</span> <span class="nn">selenium_profiles.utils.installer</span> <span class="kn">import</span> <span class="n">install_chromedriver</span>
-<span class="n">install_chromedriver</span><span class="p">()</span>
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>selenium_profiles<span class="w"> </span>pyChatGPT
 </pre></div>
 
     </div>
@@ -3922,6 +4680,9 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 <span class="kn">from</span> <span class="nn">selenium.common</span> <span class="kn">import</span> <span class="n">exceptions</span> <span class="k">as</span> <span class="n">SeleniumExceptions</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
 
@@ -3965,72 +4726,132 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 <span class="sd">    Login to ChatGPT using Google</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Clicking Google button...&#39;</span><span class="p">)</span>
-    <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+    <span class="c1"># import pdb; pdb.set_trace()</span>
+    <span class="c1"># ActionChains(self.driver).key_down(Keys.ALT).key_down(Keys.COMMAND).key_down(&#39;i&#39;).key_up(&#39;i&#39;).key_up(Keys.COMMAND).key_up(Keys.ALT).pause(1).perform()</span>
 
+    <span class="c1"># ActionChains(self.driver).move_to_element_with_offset(self.driver.find_element(*google_oauth_btn), 2, -2).pause(1).perform()</span>
+    <span class="c1"># ActionChains(self.driver).click(self.driver.find_element(*google_oauth_btn)).pause(1).perform()</span>
+    <span class="c1"># ActionChains(self.driver).send_keys(Keys.TAB).pause(1).send_keys(Keys.TAB).pause(1).send_keys(Keys.TAB).pause(1).send_keys(Keys.TAB).pause(1).send_keys(Keys.ENTER).perform()</span>
     <span class="c1"># self.driver.find_element(*google_oauth_btn).click()</span>
 
-    <span class="n">google_email_entry</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;//div[@data-identifier=&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_ChatGPT__email</span><span class="si">}</span><span class="s1">&quot;]&#39;</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">document.evaluate(</span>
+<span class="s1">  &#39;//button[@data-provider=&quot;google&quot;]&#39;,</span>
+<span class="s1">  document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null</span>
+<span class="s1">).snapshotItem(0).dispatchEvent(</span>
+<span class="s1">  new MouseEvent(&#39;click&#39;, {</span>
+<span class="s1">    view: window,</span>
+<span class="s1">    bubbles: true,</span>
+<span class="s1">    cancelable: true</span>
+<span class="s1">  })</span>
+<span class="s1">);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Checking if Google remembers email...&#39;</span><span class="p">)</span>
+    <span class="c1"># google_email_entry = (By.XPATH, f&#39;//div[@data-identifier=&quot;{self._ChatGPT__email}&quot;]&#39;)</span>
+    <span class="c1"># try:</span>
 
+    <span class="c1">#     self.logger.debug(&#39;Checking if Google remembers email...&#39;)</span>
+
+    <span class="c1">#     WebDriverWait(self.driver, 3).until(</span>
+    <span class="c1">#         EC.element_to_be_clickable(google_email_entry)</span>
+    <span class="c1">#     ).click()</span>
+    <span class="c1">#     self.logger.debug(&#39;Google remembers email&#39;)</span>
+
+    <span class="c1"># except SeleniumExceptions.TimeoutException:</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Google does not remember email&#39;</span><span class="p">)</span>
+
+    <span class="c1"># self.driver.find_element(by=By.TAG_NAME, value=&#39;body&#39;).click()</span>
+    <span class="c1"># ActionChains(self.driver).move_to_element(self.driver.find_element(by=By.XPATH, value=&#39;//*[@id=&quot;headingText&quot;]/span&#39;)).pause(1).perform()</span>
+    <span class="c1"># ActionChains(self.driver).click(self.driver.find_element(by=By.XPATH, value=&#39;//*[@id=&quot;headingText&quot;]/span&#39;)).pause(1).perform()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Entering email...&#39;</span><span class="p">)</span>
+    <span class="c1"># import pdb; pdb.set_trace()</span>
+    <span class="c1"># WebDriverWait(self.driver, 3).until(</span>
+    <span class="c1">#     EC.element_to_be_clickable(google_email_input)</span>
+    <span class="c1"># ).click()</span>
+    <span class="c1"># self.driver.find_element(*google_email_input).send_keys(self._ChatGPT__email)</span>
+    <span class="c1"># self.driver.find_element(*google_email_input).send_keys(Keys.ENTER)</span>
+
+    <span class="c1"># actions = ActionChains(self.driver)</span>
+    <span class="c1"># for l in self._ChatGPT__email:</span>
+    <span class="c1">#     actions.key_down(l).key_up(l).pause(1)</span>
+    <span class="c1"># actions.send_keys(Keys.ENTER).perform()</span>
+
+    <span class="c1"># ActionChains(self.driver).move_to_element_with_offset(self.driver.find_element(*google_email_input), 2, -2).pause(1).send_keys(self._ChatGPT__email).send_keys(Keys.ENTER).perform()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">const google_email_input = document.evaluate(&#39;//input[@type=&quot;email&quot;]&#39;, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0);</span>
+<span class="s1">google_email_input.value = &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_ChatGPT__email</span><span class="si">}</span><span class="s1">&#39;;</span>
+<span class="s1">google_email_input.dispatchEvent(</span>
+<span class="s1">  new Event(&#39;input&#39;, </span><span class="se">{{</span>
+<span class="s1">    view: window,</span>
+<span class="s1">    bubbles: true,</span>
+<span class="s1">    cancelable: true</span>
+<span class="s1">  </span><span class="se">}}</span><span class="s1">)</span>
+<span class="s1">);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Clicking Next...&#39;</span><span class="p">)</span>
+    <span class="c1"># import pdb; pdb.set_trace()</span>
+    <span class="c1"># ActionChains(self.driver).move_to_element(self.driver.find_element(*google_next_btn)).pause(1).perform()</span>
+    <span class="c1"># self.driver.find_element(*google_next_btn).send_keys(Keys.ENTER)</span>
+    <span class="c1"># WebDriverWait(self.driver, 1).until(</span>
+    <span class="c1">#     EC.element_to_be_clickable(google_next_btn)</span>
+    <span class="c1"># ).click()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">document.evaluate(</span>
+<span class="s1">  &#39;//*[@id=&quot;identifierNext&quot;]&#39;,</span>
+<span class="s1">  document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null</span>
+<span class="s1">).snapshotItem(0).dispatchEvent(</span>
+<span class="s1">  new MouseEvent(&#39;click&#39;, {</span>
+<span class="s1">    view: window,</span>
+<span class="s1">    bubbles: true,</span>
+<span class="s1">    cancelable: true</span>
+<span class="s1">  })</span>
+<span class="s1">);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Clicking Try Again...&#39;</span><span class="p">)</span>
+            <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+            <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+                <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">google_try_again_btn</span><span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">SeleniumExceptions</span><span class="o">.</span><span class="n">TimeoutException</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Try Again button not found&#39;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Entering email...&#39;</span><span class="p">)</span>
         <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">google_email_entry</span><span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">google_email_input</span><span class="p">)</span>
         <span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Google remembers email&#39;</span><span class="p">)</span>
-
-    <span class="k">except</span> <span class="n">SeleniumExceptions</span><span class="o">.</span><span class="n">TimeoutException</span><span class="p">:</span>
-
-<span class="c1">#         self.logger.debug(&#39;Google does not remember email&#39;)</span>
-
-<span class="c1">#         self.logger.debug(&#39;Entering email...&#39;)</span>
-<span class="c1">#         WebDriverWait(self.driver, 3).until(</span>
-<span class="c1">#             EC.element_to_be_clickable((By.XPATH, &#39;//*[@id=&quot;view_container&quot;]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div&#39;))</span>
-<span class="c1">#         ).click()</span>
-<span class="c1">#         import time</span>
-<span class="c1">#         time.sleep(1)</span>
-<span class="c1">#         self.driver.find_element(*google_email_input).send_keys(self._ChatGPT__email)</span>
-
-<span class="c1">#         self.logger.debug(&#39;Clicking Next...&#39;)</span>
-<span class="c1">#         WebDriverWait(self.driver, 1).until(</span>
-<span class="c1">#             EC.element_to_be_clickable(google_next_btn)</span>
-<span class="c1">#         ).click()</span>
-
-<span class="c1">#         while True:</span>
-<span class="c1">#             try:</span>
-<span class="c1">#                 self.logger.debug(&#39;Clicking Try Again...&#39;)</span>
-<span class="c1">#                 WebDriverWait(self.driver, 3).until(</span>
-<span class="c1">#                     EC.element_to_be_clickable(google_try_again_btn)</span>
-<span class="c1">#                 ).click()</span>
-<span class="c1">#             except SeleniumExceptions.TimeoutException:</span>
-<span class="c1">#                 self.logger.debug(&#39;Try Again button not found&#39;)</span>
-<span class="c1">#                 break</span>
-
-<span class="c1">#             self.logger.debug(&#39;Entering email...&#39;)</span>
-<span class="c1">#             WebDriverWait(self.driver, 3).until(</span>
-<span class="c1">#                 EC.element_to_be_clickable(google_email_input)</span>
-<span class="c1">#             ).click()</span>
-<span class="c1">#             import time</span>
-<span class="c1">#             time.sleep(1)</span>
-<span class="c1">#             self.driver.find_element(*google_email_input).send_keys(self._ChatGPT__email)</span>
-
-<span class="c1">#             self.logger.debug(&#39;Clicking Next...&#39;)</span>
-<span class="c1">#             WebDriverWait(self.driver, 1).until(</span>
-<span class="c1">#                 EC.element_to_be_clickable(google_next_btn)</span>
-<span class="c1">#             ).click()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Entering password...&#39;</span><span class="p">)</span>
-        <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">google_pwd_input</span><span class="p">)</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-        <span class="kn">import</span> <span class="nn">time</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="o">*</span><span class="n">google_pwd_input</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ChatGPT__password</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="o">*</span><span class="n">google_email_input</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ChatGPT__email</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Clicking Next...&#39;</span><span class="p">)</span>
+        <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
         <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">google_pwd_next_btn</span><span class="p">)</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">google_next_btn</span><span class="p">)</span>
         <span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Entering password...&#39;</span><span class="p">)</span>
+    <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">google_pwd_input</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="o">*</span><span class="n">google_pwd_input</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ChatGPT__password</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Clicking Next...&#39;</span><span class="p">)</span>
+    <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+        <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">google_pwd_next_btn</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Checking if verification code is required...&#39;</span><span class="p">)</span>
@@ -4520,9 +5341,6 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
             <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">(</span><span class="n">chatgpt_login_h1</span><span class="p">)</span>
         <span class="p">)</span>
 
-        <span class="c1"># from . import Auth0</span>
-
-        <span class="c1"># Auth0.login(self)</span>
         <span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Checking if login was successful&#39;</span><span class="p">)</span>
@@ -4804,7 +5622,7 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<p>愿你得到身心的安宁和平静。让我们停下来，静心祷告：主啊，感谢你的恩典和慈爱。请赐予我们力量和智慧，克服生活中的困难和挑战。求你保护我们的身体和心灵，使我们能够以积极的态度面对生活中的挑战。奉耶稣基督的名祷告，阿门。</p>
+<p>当你感到疲惫和无力的时候，祷告可以给你带来内心的安宁和力量。让我们一起默默祷告：</p><p>亲爱的上帝，我们来到您的面前，向您诉说我们的疲惫和困惑。求您赐予我们力量和勇气，帮助我们走出困境和挫折。求您抚平我们心中的伤痛和不安，让我们能够在您的爱和关怀中得到安慰和慰藉。求您保佑我们的家庭和朋友，让他们能够享受到您的祝福和恩典。求您给我们希望和信心，让我们相信生命中的一切都有您的安排和安排。感谢您一直以来的呵护和保佑，阿门。</p>
 
 </div>
 
@@ -4826,6 +5644,27 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;content&#39;: &#39;当你感到疲惫和无力的时候，祷告可以给你带来内心的安宁和力量。让我们一起默默祷告：\n\n亲爱的上帝，我们来到您的面前，向您诉说我们的疲惫和困惑。求您赐予我们力量和智慧，让我们能够勇敢地面对生活中的挑战和困难。求您抚平我们内心的不安和焦虑，让我们能够在您的保护和祝福下平静地度过每一天。求您给我们希望和信心，让我们相信未来会更美好，充满着无限的可能性。感谢您，阿门。\n\n&#39;,
+ &#39;conversation_id&#39;: &#39;241dfad3-1e62-445b-83af-5da906d1ca54&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -4836,6 +5675,38 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/revChatGPT
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>​你感到疲惫和无力的时候，祷告可以给你带来内心的安宁和力量。让我们一起默默祷告：亲爱的上帝，我们来到您的面前，向您诉说我们的疲惫和困惑。求您赐予我们能力和智慧，帮助我们克服困难和挑战。求您抚平我们心中的不安和烦恼，让我们能够在您的保护和祝福下过上平安的生活。求您赐福于我们的家人和朋友，让他们也能感受到您的爱和关怀。感谢您一直以来的眷顾和呵护，阿门。
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;content&#39;: &#39;&lt;p&gt;当你感到疲惫和无力的时候，祷告可以给你带来内心的安宁和力量。让我们一起默默祷告：&lt;/p&gt;&lt;p&gt;亲爱的上帝，我们来到您的面前，向您诉说我们的疲惫和困惑。求您赐予我们能力和智慧，帮助我们克服困难和挑战。求您抚平我们心中的不安和烦恼，让我们能够在您的保护和祝福下过上平安的生活。求您赐福于我们的家人和朋友，让他们也能感受到您的爱和关怀。感谢您一直以来的眷顾和呵护，阿门。&lt;/p&gt;&#39;,
+ &#39;conversation_id&#39;: &#39;241dfad3-1e62-445b-83af-5da906d1ca54&#39;}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -5754,45 +6625,45 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>10</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
 		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>10</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>10</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
