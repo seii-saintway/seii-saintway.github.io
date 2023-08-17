@@ -145,6 +145,410 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2022-10-18 </div>
+			<div class="article-title"><a href="/2022/10/18/Try-Bacalhau/" >Try Bacalhau</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/bacalhau-project/examples">Bacalhau Examples</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.bacalhau.org/all-flags/">CLI Commands</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/filecoin-project/bacalhau/blob/main/docs/running_locally.md">Running Locally</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.bacalhau.org/examples/miscellaneous/Gromacs/">Molecular Dynamics with Bacalhau</a><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/bacalhau-project/examples/tree/main/miscellaneous/Gromacs">https://github.com/bacalhau-project/examples/tree/main/miscellaneous/Gromacs</a><ul>
+<li>GROMACS is a package for high-performance molecular dynamics and output analysis.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/get-docker/">Get Docker</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.bacalhau.org/getting-started/installation/">Getting Started with Bacalhau</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">sL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">get</span><span class="o">.</span><span class="n">bacalhau</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span> <span class="o">|</span> <span class="n">bash</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Your system is darwin_amd64
+No BACALHAU detected. Installing fresh BACALHAU CLI...
+Getting the latest BACALHAU CLI...
+Installing v0.3.3 BACALHAU CLI...
+Downloading https://github.com/filecoin-project/bacalhau/releases/download/v0.3.3/bacalhau_v0.3.3_darwin_amd64.tar.gz ...
+Downloading sig file https://github.com/filecoin-project/bacalhau/releases/download/v0.3.3/bacalhau_v0.3.3_darwin_amd64.tar.gz.signature.sha256 ...
+Verified OK
+Extracting tarball ...
+NOT verifying Bin
+bacalhau installed into /usr/local/bin successfully.
+Client Version: v0.3.3
+Server Version: v0.3.3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bacalhau</span> <span class="n">version</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Client Version: v0.3.3
+Server Version: v0.3.3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Compile-Bacalhau-CLI-into-WebAssembly-Binaries">Compile Bacalhau CLI into WebAssembly Binaries<a class="anchor-link" href="#Compile-Bacalhau-CLI-into-WebAssembly-Binaries">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/bing/apis/bing-web-search-api">Bing Web Search API</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">EdgeGPT</span> <span class="kn">import</span> <span class="n">Chatbot</span> <span class="k">as</span> <span class="n">Bing</span><span class="p">,</span> <span class="n">ConversationStyle</span>
+
+<span class="n">bing</span> <span class="o">=</span> <span class="n">Bing</span><span class="p">(</span><span class="n">cookiePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.config/EdgeGPT/cookies.json&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Simulate the process of compiling Bacalhau CLI into WebAssembly Binaries. And summarize your actions and results.</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Compiling Bacalhau CLI into WebAssembly binaries is a multi-step process. Here are the steps:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+---
+
+Compiling Bacalhau CLI into WebAssembly binaries is a multi-step process. Here are the steps:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Teach me how to compile Bacalhau CLI into WebAssembly Binaries. And summarize your actions and results.</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Sure, I can help you with that. Here are the steps to compile Bacalhau CLI into WebAssembly binaries:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+---
+
+Sure, I can help you with that. Here are the steps to compile Bacalhau CLI into WebAssembly binaries:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">介绍 Bacalhau CLI。如何将 Bacalhau CLI 编译成 WebAssembly 二进制文件？总结你的步骤和结果。</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Bacalhau CLI 是一个用于在 Bacalhau 平台上运行任务的命令行工具。根据 Bacalhau 的文档，你需要将你的程序编译成 WASI-compliant WebAssembly。你可以查看你的编译器的说明来了解如何执行此操作。例如，Rust 用户可以指定 wasm32-wasi 目标来 rustup 和 cargo 来编译为 WASI WebAssembly [^2^]。
+
+你可以参考这篇文章 [^9^] 和这篇文章 [^10^] 来了解如何将 C++ 项目编译成 WebAssembly。这篇文章 [^11^] 可以让你更好地了解 WebAssembly。
+
+---
+
+[1]: https://developer.mozilla.org/zh-CN/docs/WebAssembly/C_to_wasm &#34;编译 C/C++ 为 WebAssembly - WebAssembly | MDN&#34;
+[2]: https://docs.bacalhau.org/getting-started/wasm-workload-onboarding/ &#34;Onboarding Your WebAssembly Workloads | Bacalhau Docs&#34;
+[3]: https://github.com/bacalhau-project/bacalhau &#34;GitHub - bacalhau-project/bacalhau: Compute over Data framework for ...&#34;
+[4]: https://zhuanlan.zhihu.com/p/258560278 &#34;记一次完整 C++ 项目编译成 WebAssembly 的实践 - 知乎&#34;
+[5]: https://developer.mozilla.org/zh-CN/docs/WebAssembly/C_to_wasm &#34;编译 C/C++ 为 WebAssembly - WebAssembly | MDN&#34;
+[6]: https://docs.bacalhau.org/getting-started/wasm-workload-onboarding/ &#34;Onboarding Your WebAssembly Workloads | Bacalhau Docs&#34;
+[7]: https://github.com/bacalhau-project/bacalhau &#34;GitHub - bacalhau-project/bacalhau: Compute over Data framework for ...&#34;
+[8]: https://juejin.cn/post/7013286944553566215 &#34;快 11K Star 的 WebAssembly，你应该这样学 - 掘金&#34;
+[9]: https://juejin.cn/post/7013286944553566215 &#34;快 11K Star 的 WebAssembly，你应该这样学 - 掘金&#34;
+[10]: https://juejin.cn/post/6914148755738460168 &#34;c++项目转成wasm全过程 - 掘金&#34;
+[11]: https://www.jianshu.com/p/bff8aa23fe4d &#34;几张图让你看懂WebAssembly - 简书&#34;
+
+Bacalhau CLI 是一个用于在 Bacalhau 平台上运行任务的命令行工具。根据 Bacalhau 的文档，你需要将你的程序编译成 WASI-compliant WebAssembly。你可以查看你的编译器的说明来了解如何执行此操作。例如，Rust 用户可以指定 wasm32-wasi 目标来 rustup 和 cargo 来编译为 WASI WebAssembly [^1^][2]。
+
+你可以参考这篇文章 [^2^][9] 和这篇文章 [^3^][10] 来了解如何将 C++ 项目编译成 WebAssembly。这篇文章 [^4^][11] 可以让你更好地了解 WebAssembly。
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2022/10/18/Try-Bacalhau/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2022-10-02 </div>
 			<div class="article-title"><a href="/2022/10/02/Research-History-of-Synaptotagmin-7/" >Research History of Synaptotagmin-7</a></div>						
 		</h3>
@@ -1879,46 +2283,6 @@ Then I know we will surely meet again…
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2022-03-10 </div>
-			<div class="article-title"><a href="/2022/03/10/CQLT-Exploring-a-New-Way-to-Tokenize-Academic-Publishing/" >CQLT: Exploring a New Way to Tokenize Academic Publishing</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h2 id="复制引用许可代币：探索学术论文发表的代币化新方法"><a href="#复制引用许可代币：探索学术论文发表的代币化新方法" class="headerlink" title="复制引用许可代币：探索学术论文发表的代币化新方法"></a>复制引用许可代币：探索学术论文发表的代币化新方法</h2><p>我们需要作为 NFT 复制引用许可证明的 ERC-1155 代币 CQLT。对这种复制引用许可币 CQLT 本身的需求是从 NFT 版权证明的需求中衍生而来的。它的发行由 NFT 所有者完全控制。它的精度为个位数，总量为人类人口数量，或者限量，或者不限总量。拥有一个这种复制引用许可币的人就拥有对于 NFT 进行一次复制引用的权利。NFT 作为异质代币，具有唯一性，流动性差，只在收藏品拍卖市场进行交易。</p>
-<p>We need the ERC-1155 Copy and Quote License Token (CQLT) as a proof of NFT Copy and Quote License. The need for CQLTs is derived from the need for proof of copyright in NFTs. Its issuance is fully controlled by the NFT owner. Its precision is a single digit, and the total supply is either limited or unlimited, and can be as large as the human population. The person who owns one such CQLT has the right to copy and quote the NFT once. As a Non-Fungible Token, NFT is unique and has poor liquidity, and is only traded in the collectible auction market.</p>
-<ul>
-<li>不断深入理解 Git Arweave Neo4j 的底层原理。<ul>
-<li><a target="_blank" rel="noopener" href="https://docs.gitopia.com/installation/">https://docs.gitopia.com/installation/</a></li>
-<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%BA%95%E5%B1%82%E5%91%BD%E4%BB%A4%E4%B8%8E%E4%B8%8A%E5%B1%82%E5%91%BD%E4%BB%A4">https://git-scm.com/book/zh/v2/Git-内部原理-底层命令与上层命令</a></li>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1771872">从常见操作解释 git 的底层原理</a></li>
-</ul>
-</li>
-<li>我会参考 mirror.xyz 的实现。我想把 mirror.xyz 先移植到 Terra 生态之下。<ul>
-<li>Building NFT version control is so boring. &#x3D;&gt; Mirror Writing: <a target="_blank" rel="noopener" href="https://mirror.xyz/">https://mirror.xyz/</a> | Academic Writing</li>
-</ul>
-</li>
-</ul>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2022/03/10/CQLT-Exploring-a-New-Way-to-Tokenize-Academic-Publishing/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -1959,45 +2323,45 @@ Then I know we will surely meet again…
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>10</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
 		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>4</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/Metaverse/">Metaverse<span>11</span></a></li>
 		
 			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
@@ -2013,6 +2377,10 @@ Then I know we will surely meet again…
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2023/08/07/漢字文から音読み文に転換/" ><i class="fa fa-file-o"></i>漢字文から音読み文に転換</a>
+      </li>
+    
+      <li>
         <a href="/2023/08/07/漂泊/" ><i class="fa fa-file-o"></i>漂泊</a>
       </li>
     
@@ -2026,10 +2394,6 @@ Then I know we will surely meet again…
     
       <li>
         <a href="/2023/04/12/Text-Embeddings/" ><i class="fa fa-file-o"></i>Text Embedding</a>
-      </li>
-    
-      <li>
-        <a href="/2023/04/11/LLaMA-Index/" ><i class="fa fa-file-o"></i>LLaMA Index</a>
       </li>
     
   </ul>

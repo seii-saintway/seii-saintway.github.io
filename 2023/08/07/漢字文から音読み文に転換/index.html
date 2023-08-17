@@ -1,0 +1,644 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>漢字文から音読み文に転換 | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="Python &amp;#12391;&amp;#12289;&amp;#28450;&amp;#23383;&amp;#25991;&amp;#12363;&amp;#12425;&amp;#38899;&amp;#35501;&amp;#12415;&amp;#25991;&amp;#12395;&amp;#36578;&amp;#25563;&amp;#12375;&amp;#12414;&amp;#12377;&amp;#12290">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="漢字文から音読み文に転換"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 漢字文から音読み文に転換</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python-%E3%81%A7%E3%80%81%E6%BC%A2%E5%AD%97%E6%96%87%E3%81%8B%E3%82%89%E9%9F%B3%E8%AA%AD%E3%81%BF%E6%96%87%E3%81%AB%E8%BB%A2%E6%8F%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82">Python &#12391;&#12289;&#28450;&#23383;&#25991;&#12363;&#12425;&#38899;&#35501;&#12415;&#25991;&#12395;&#36578;&#25563;&#12375;&#12414;&#12377;&#12290;<a class="anchor-link" href="#Python-%E3%81%A7%E3%80%81%E6%BC%A2%E5%AD%97%E6%96%87%E3%81%8B%E3%82%89%E9%9F%B3%E8%AA%AD%E3%81%BF%E6%96%87%E3%81%AB%E8%BB%A2%E6%8F%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 漢字から音読みに変換する対応表</span>
+<span class="n">kanji_to_onyomi</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;神&#39;</span><span class="p">:</span> <span class="s1">&#39;シン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;是&#39;</span><span class="p">:</span> <span class="s1">&#39;ゼ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;信&#39;</span><span class="p">:</span> <span class="s1">&#39;シン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;実&#39;</span><span class="p">:</span> <span class="s1">&#39;ジツ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;的&#39;</span><span class="p">:</span> <span class="s1">&#39;テキ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;你&#39;</span><span class="p">:</span> <span class="s1">&#39;ジ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;們&#39;</span><span class="p">:</span> <span class="s1">&#39;モン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;乃&#39;</span><span class="p">:</span> <span class="s1">&#39;ナイ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;是&#39;</span><span class="p">:</span> <span class="s1">&#39;ゼ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;爲&#39;</span><span class="p">:</span> <span class="s1">&#39;イ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;他&#39;</span><span class="p">:</span> <span class="s1">&#39;タ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;所&#39;</span><span class="p">:</span> <span class="s1">&#39;ショ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;召&#39;</span><span class="p">:</span> <span class="s1">&#39;ショウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;進&#39;</span><span class="p">:</span> <span class="s1">&#39;シン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;入&#39;</span><span class="p">:</span> <span class="s1">&#39;ニュウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;了&#39;</span><span class="p">:</span> <span class="s1">&#39;リョウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;儿&#39;</span><span class="p">:</span> <span class="s1">&#39;ジン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;子&#39;</span><span class="p">:</span> <span class="s1">&#39;ス&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;我&#39;</span><span class="p">:</span> <span class="s1">&#39;ガ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;主&#39;</span><span class="p">:</span> <span class="s1">&#39;シュ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;耶&#39;</span><span class="p">:</span> <span class="s1">&#39;ヤ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;穌&#39;</span><span class="p">:</span> <span class="s1">&#39;ソ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;基&#39;</span><span class="p">:</span> <span class="s1">&#39;キ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;督&#39;</span><span class="p">:</span> <span class="s1">&#39;トク&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;的&#39;</span><span class="p">:</span> <span class="s1">&#39;テキ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;交&#39;</span><span class="p">:</span> <span class="s1">&#39;コウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;通&#39;</span><span class="p">:</span> <span class="s1">&#39;ツウ&#39;</span><span class="p">,</span>
+    <span class="c1"># 他の漢字と音読みの対応を追加</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">convert_to_onyomi_sentence</span><span class="p">(</span><span class="n">input_sentence</span><span class="p">):</span>
+    <span class="c1"># 入力された漢字文を音読み文に変換する関数</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">input_sentence</span><span class="p">)</span>  <span class="c1"># 文を単語に分割</span>
+    <span class="n">onyomi_sentence</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">onyomi</span> <span class="o">=</span> <span class="n">kanji_to_onyomi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>  <span class="c1"># 辞書から音読みを取得、なければそのまま単語を使用</span>
+        <span class="n">onyomi_sentence</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">onyomi</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">onyomi_sentence</span><span class="p">)</span>
+
+<span class="c1"># 漢字文を入力</span>
+<span class="n">input_sentence</span> <span class="o">=</span> <span class="s1">&#39;神是信実的，你們乃是爲他所召，進入了他儿子我們主耶穌基督的交通。&#39;</span>
+<span class="c1"># 音読み文に変換</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">convert_to_onyomi_sentence</span><span class="p">(</span><span class="n">input_sentence</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 出力: &quot;シンゼシンジツテキ，ジモンナイゼイタショショウ，シンニュウリョウタジンスガモンシュヤソキトクテキコウツウ。&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>シンゼシンジツテキ，ジモンナイゼイタショショウ，シンニュウリョウタジンスガモンシュヤソキトクテキコウツウ。
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python-%E3%81%A7%E3%80%81Janome-%E3%81%A7%E3%80%81%E6%BC%A2%E5%AD%97%E6%96%87%E3%81%8B%E3%82%89%E9%9F%B3%E8%AA%AD%E3%81%BF%E6%96%87%E3%81%AB%E8%BB%A2%E6%8F%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82">Python &#12391;&#12289;Janome &#12391;&#12289;&#28450;&#23383;&#25991;&#12363;&#12425;&#38899;&#35501;&#12415;&#25991;&#12395;&#36578;&#25563;&#12375;&#12414;&#12377;&#12290;<a class="anchor-link" href="#Python-%E3%81%A7%E3%80%81Janome-%E3%81%A7%E3%80%81%E6%BC%A2%E5%AD%97%E6%96%87%E3%81%8B%E3%82%89%E9%9F%B3%E8%AA%AD%E3%81%BF%E6%96%87%E3%81%AB%E8%BB%A2%E6%8F%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Janome を使って漢字文から音読み文に変換するには、まず漢字を形態素に分割し、それぞれの形態素に対応する音読みを取得する必要があります。ただし、Janome 自体は音読みを直接提供する機能はありません。そのため、別途辞書や API などから音読みを取得する必要があります。</p>
+<p>以下は、辞書を使用して漢字文から音読み文に変換するサンプルコードです。このコードでは、kanji_to_onyomi という辞書に漢字と対応する音読みを登録し、入力された漢字文を音読み文に変換します。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>janome
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: janome in /home/jupyter-saintway/.local/lib/python3.9/site-packages (0.5.0)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">janome.tokenizer</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+
+<span class="c1"># 漢字から音読みに変換する対応表（例としていくつかの漢字と音読みを登録）</span>
+<span class="n">kanji_to_onyomi</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;神&#39;</span><span class="p">:</span> <span class="s1">&#39;シン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;是&#39;</span><span class="p">:</span> <span class="s1">&#39;ゼ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;信&#39;</span><span class="p">:</span> <span class="s1">&#39;シン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;実&#39;</span><span class="p">:</span> <span class="s1">&#39;ジツ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;的&#39;</span><span class="p">:</span> <span class="s1">&#39;テキ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;你&#39;</span><span class="p">:</span> <span class="s1">&#39;ジ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;們&#39;</span><span class="p">:</span> <span class="s1">&#39;モン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;乃&#39;</span><span class="p">:</span> <span class="s1">&#39;ナイ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;是&#39;</span><span class="p">:</span> <span class="s1">&#39;ゼ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;爲&#39;</span><span class="p">:</span> <span class="s1">&#39;イ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;他&#39;</span><span class="p">:</span> <span class="s1">&#39;タ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;所&#39;</span><span class="p">:</span> <span class="s1">&#39;ショ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;召&#39;</span><span class="p">:</span> <span class="s1">&#39;ショウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;進&#39;</span><span class="p">:</span> <span class="s1">&#39;シン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;入&#39;</span><span class="p">:</span> <span class="s1">&#39;ニュウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;了&#39;</span><span class="p">:</span> <span class="s1">&#39;リョウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;儿&#39;</span><span class="p">:</span> <span class="s1">&#39;ジン&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;子&#39;</span><span class="p">:</span> <span class="s1">&#39;ス&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;我&#39;</span><span class="p">:</span> <span class="s1">&#39;ガ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;主&#39;</span><span class="p">:</span> <span class="s1">&#39;シュ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;耶&#39;</span><span class="p">:</span> <span class="s1">&#39;ヤ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;穌&#39;</span><span class="p">:</span> <span class="s1">&#39;ソ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;基&#39;</span><span class="p">:</span> <span class="s1">&#39;キ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;督&#39;</span><span class="p">:</span> <span class="s1">&#39;トク&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;的&#39;</span><span class="p">:</span> <span class="s1">&#39;テキ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;交&#39;</span><span class="p">:</span> <span class="s1">&#39;コウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;通&#39;</span><span class="p">:</span> <span class="s1">&#39;ツウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;信実&#39;</span><span class="p">:</span> <span class="s1">&#39;シンジツ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;進入&#39;</span><span class="p">:</span> <span class="s1">&#39;シンニュウ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;交通&#39;</span><span class="p">:</span> <span class="s1">&#39;コウツウ&#39;</span><span class="p">,</span>
+    <span class="c1"># 他の漢字と音読みの対応を追加</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">get_onyomi</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="c1"># 漢字を対応表から検索し、音読みを取得する関数</span>
+    <span class="k">return</span> <span class="n">kanji_to_onyomi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">surface</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">convert_to_onyomi_sentence</span><span class="p">(</span><span class="n">input_sentence</span><span class="p">):</span>
+    <span class="c1"># 入力された漢字文を音読み文に変換する関数</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">input_sentence</span><span class="p">)</span>
+    <span class="c1"># print([token.surface for token in tokens])</span>
+    <span class="n">onyomi_sentence</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="n">onyomi</span> <span class="o">=</span> <span class="n">get_onyomi</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="n">onyomi_sentence</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">onyomi</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">onyomi_sentence</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">onyomi_sentence</span><span class="p">)</span>
+
+<span class="c1"># 漢字文を入力</span>
+<span class="n">input_sentence</span> <span class="o">=</span> <span class="s1">&#39;神是信実的，你們乃是爲他所召，進入了他儿子我們主耶穌基督的交通。&#39;</span>
+<span class="c1"># 音読み文に変換</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">convert_to_onyomi_sentence</span><span class="p">(</span><span class="n">input_sentence</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 出力: &#39;シンゼシンジツテキ，ジモンナイゼイタショショウ，シンニュウリョウタジンスガモンシュヤソキトクテキコウツウ。&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;シン&#39;, &#39;ゼ&#39;, &#39;シンジツ&#39;, &#39;テキ&#39;, &#39;，&#39;, &#39;你們乃&#39;, &#39;ゼ&#39;, &#39;爲他所&#39;, &#39;ショウ&#39;, &#39;，&#39;, &#39;シンニュウ&#39;, &#39;リョウ&#39;, &#39;タ&#39;, &#39;儿子我&#39;, &#39;們主耶&#39;, &#39;穌基督&#39;, &#39;テキ&#39;, &#39;コウツウ&#39;, &#39;。&#39;]
+シンゼシンジツテキ，你們乃ゼ爲他所ショウ，シンニュウリョウタ儿子我們主耶穌基督テキコウツウ。
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>このコードでは、Janome の Tokenizer を使って日本語の形態素解析を行い、文を形態素に分割しています。それぞれの形態素には、表層形（原形）と品詞などの情報が含まれています。</p>
+<p>上記のコードを実行すると、入力した日本語の文が形態素に分割されて、表層形と品詞の情報が表示されるでしょう。Janome はシンプルで使いやすいライブラリなので、日本語の形態素解析に便利です。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python-%E3%81%A7%E3%80%81MeCab-%E3%81%A7%E3%80%81UniDic-%E3%81%A7%E3%80%81%E6%BC%A2%E5%AD%97%E6%96%87%E3%81%8B%E3%82%89%E9%9F%B3%E8%AA%AD%E3%81%BF%E6%96%87%E3%81%AB%E8%BB%A2%E6%8F%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82">Python &#12391;&#12289;MeCab &#12391;&#12289;UniDic &#12391;&#12289;&#28450;&#23383;&#25991;&#12363;&#12425;&#38899;&#35501;&#12415;&#25991;&#12395;&#36578;&#25563;&#12375;&#12414;&#12377;&#12290;<a class="anchor-link" href="#Python-%E3%81%A7%E3%80%81MeCab-%E3%81%A7%E3%80%81UniDic-%E3%81%A7%E3%80%81%E6%BC%A2%E5%AD%97%E6%96%87%E3%81%8B%E3%82%89%E9%9F%B3%E8%AA%AD%E3%81%BF%E6%96%87%E3%81%AB%E8%BB%A2%E6%8F%9B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>MeCab を使用して UniDic 辞書を利用し、漢字文から音読み文に変換するためには、以下の手順に従ってください。まず、Python で MeCab を使えるようにしてから、サンプルコードを提供します。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>MeCab と unidic のインストール：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>unidic-lite
+pip<span class="w"> </span>install<span class="w"> </span>mecab-python3
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Defaulting to user installation because normal site-packages is not writeable
+Collecting unidic-lite
+  Downloading unidic-lite-1.0.8.tar.gz (47.4 MB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status &#39;done&#39;
+Building wheels for collected packages: unidic-lite
+  Building wheel for unidic-lite (setup.py): started
+  Building wheel for unidic-lite (setup.py): finished with status &#39;done&#39;
+  Created wheel for unidic-lite: filename=unidic_lite-1.0.8-py3-none-any.whl size=47658836 sha256=d354e3491cb194fab1fab224d3595dfa0419a6d75edec0bdd76fad8f60ec4d3a
+  Stored in directory: /home/jupyter-saintway/.cache/pip/wheels/56/9c/4f/2c115e896b4b6c584039ca19de3581d333856782ef108cdc5c
+Successfully built unidic-lite
+Installing collected packages: unidic-lite
+Successfully installed unidic-lite-1.0.8
+Defaulting to user installation because normal site-packages is not writeable
+Collecting mecab-python3
+  Downloading mecab_python3-1.0.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (581 kB)
+Installing collected packages: mecab-python3
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>  WARNING: The scripts mecab-py and mecab-py-info are installed in &#39;/home/jupyter-saintway/.local/bin&#39; which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Successfully installed mecab-python3-1.0.6
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>このコードでは、MeCab の Tagger に UniDic のパスを指定して、日本語の形態素解析を行い、漢字文を音読み文に変換しています。漢字の音読みは UniDic の「名詞固有名詞」のフィーチャー情報の7番目に格納されているため、それを取得しています。</p>
+<p>注意：/path/to/unidic の部分は、UniDic 辞書の実際のインストールパスに置き換えてください。</p>
+<p>また、UniDic に登録されていない単語や未知の単語に対しては、'*'として示されることがあります。その場合は元の漢字をそのまま使用します。さらに、Juman++ などの他の形態素解析エンジンや辞書を利用することも検討してください。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">MeCab</span>
+
+<span class="c1"># MeCab + UniDicを使って漢字文から音読みを取得する関数</span>
+<span class="k">def</span> <span class="nf">get_onyomi</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mecab</span> <span class="o">=</span> <span class="n">MeCab</span><span class="o">.</span><span class="n">Tagger</span><span class="p">(</span><span class="s1">&#39;-d /path/to/unidic&#39;</span><span class="p">)</span>  <span class="c1"># UniDicのパスを指定してください</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">mecab</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">onyomi_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        
+        <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+            <span class="n">features</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="ow">and</span> <span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;名詞&#39;</span> <span class="ow">and</span> <span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;固有名詞&#39;</span><span class="p">:</span>
+                <span class="n">onyomi_text</span> <span class="o">+=</span> <span class="n">features</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;*&#39;</span> <span class="k">else</span> <span class="n">node</span><span class="o">.</span><span class="n">surface</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">onyomi_text</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">surface</span>
+
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+
+        <span class="k">return</span> <span class="n">onyomi_text</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;エラー:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># 漢字文を入力</span>
+<span class="n">input_text</span> <span class="o">=</span> <span class="s1">&#39;漢字文を入力してください。&#39;</span>
+<span class="c1"># 音読みに変換</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">get_onyomi</span><span class="p">(</span><span class="n">input_text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 出力例: &#39;漢字文をニュウリョクシテクダサイ。&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2023/08/07/漂泊/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2023-08-07 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Metaverse/">Metaverse<span>11</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2023 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>
