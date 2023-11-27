@@ -225,6 +225,7 @@ Would it ever say: &quot;I have a better goal than the ultimate goal?&quot;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <p>我们在建造一个自主调度器。这个系统由两个代理组成：一个是更新 DAG 的代理；另一个是执行任务的代理。</p>
 <p>采取以下步骤：</p>
 <ol>
@@ -241,6 +242,7 @@ Would it ever say: &quot;I have a better goal than the ultimate goal?&quot;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <p>We want to build an autonomous scheduler consisting of two agents: one updates the DAG and another executes tasks.</p>
 <p>The following steps are taken:</p>
 <ol>
@@ -259,6 +261,7 @@ Would it ever say: &quot;I have a better goal than the ultimate goal?&quot;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <p>我们在建造一个自主调度器。这个系统由两个代理组成：一个是更新 DAG 的代理；另一个是执行任务的代理。</p>
 <p>采取以下步骤：</p>
 <ol>
@@ -277,6 +280,7 @@ Would it ever say: &quot;I have a better goal than the ultimate goal?&quot;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <p>We are building an autonomous scheduler that consists of two agents: one is the DAG updater agent and the other is the task executor agent.</p>
 <p>The following steps are taken:</p>
 <ol>
@@ -295,6 +299,7 @@ Would it ever say: &quot;I have a better goal than the ultimate goal?&quot;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <p>我们的终极目标是「……」。</p>
 <hr />
 <p>用于反思的提示：</p>
@@ -330,6 +335,7 @@ Would it ever say: &quot;I have a better goal than the ultimate goal?&quot;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <p>Our ultimate goal is &quot;...&quot;.</p>
 <hr />
 <p>Prompts for reflection:</p>
@@ -360,6 +366,80 @@ Would it ever say: &quot;I have a better goal than the ultimate goal?&quot;</p>
 <li>Terminal node: These are the final nodes in the DAG.</li>
 <li>Task node: What tasks should we complete to achieve the ultimate goal? Tasks must be actionable. Describe them in the format of &quot;Task Name: Task Input and Task Output Forecast&quot;. &quot;Task Name: Task Input&quot; can only be &quot;Search: Topic&quot; or &quot;Visit: Link&quot;.</li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>计划评审技术是一种基于有向无环图的计划排定技术，通常用于组织大型的人工项目。在计划评审技术中，每个节点表示项目的一个<strong>里程碑</strong>，每条有向边表示<strong>任务</strong>或者活动，连接着表示任务开始或结束的两个节点。每条边则被标注上预估需时。图中的最长路径即为项目的关键路径。关键路径决定了项目所需的总时间，里程碑的完成时间取决于结束于本节点的最长路径。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A somewhat different DAG-based formulation of scheduling constraints is used by the program evaluation and review technique (PERT), a method for management of large human projects that was one of the first applications of DAGs. In this method, the vertices of a DAG represent <strong>milestones</strong> of a project rather than specific tasks to be performed. Instead, a <strong>task</strong> or activity is represented by an edge of a DAG, connecting two milestones that mark the beginning and completion of the task. Each such edge is labeled with an estimate for the amount of time that it will take a team of workers to perform the task. The longest path in this DAG represents the critical path of the project, the one that controls the total time for the project. Individual milestones can be scheduled according to the lengths of the longest paths ending at their vertices.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>我们在建造一个自主调度器。这个系统由两个代理组成：一个是更新 PERT 图的代理；另一个是执行任务的代理。</p>
+<p>采取以下步骤：</p>
+<ol>
+<li>用户设定一个最终目标，也就是设定最初的 PERT 图中末终节点的预期结果。这个最初的 PERT 图只包含起初节点和末终节点。</li>
+<li>系统将这个 PERT 图通过 OpenAI 的 API 提示给更新 PERT 图的代理；提示更新 PERT 图的代理根据最终目标添加里程碑节点和任务有向边来更新这个 PERT 图。更新了的 PERT 图通过 OpenAI 的 API 被返回给系统。</li>
+<li>系统将这个 PERT 图交给执行任务的代理 DigDag 去完成。系统根据 DigDag 的执行结果更新 PERT 图中相应的里程碑节点及其状态（达成、未达成）。</li>
+<li>系统循环执行步骤 2 至 3 直到终末节点的状态为达成。</li>
+</ol>
+<p>用 Python 调用 OpenAI 的 API 实现更新 PERT 图的代理。用 DigDag 实现执行任务的代理。</p>
+<hr />
+<p>利用每次添加的任务有向边的执行结果与预期结果的相似度对更新 PERT 图的代理所采用的模型进行精调。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>We are building an autonomous scheduler that consists of two agents: one is the PERT chart updater agent and the other is the task executor agent.</p>
+<p>The following steps are taken:</p>
+<ol>
+<li>The user sets a final goal, which is the expected result of the final node in the initial PERT chart. This initial PERT chart only contains the Starting Node and Ending Node.</li>
+<li>The system prompts the PERT chart updater agent with this PERT chart through OpenAI's API. The PERT chart updater agent updates the PERT chart by adding Milestone Nodes and Task Edges according to the final goal. The updated PERT chart is returned to the system through OpenAI's API.</li>
+<li>The system hands this PERT chart to the task executor agent DigDag to complete. The system updates the corresponding Milestone Nodes and their states (achieved, unachieved) in the PERT chart based on the execution results of DigDag.</li>
+<li>The system repeats steps 2 to 3 until the state of the Ending Node is achieved.</li>
+</ol>
+<p>Python is used to call OpenAI's API to implement the PERT chart updater agent, and DigDag is used to implement the task executor agent.</p>
+<hr />
+<p>The model used by the PERT chart updater agent is fine-tuned based on the similarity between the execution results of each added task edge and the expected result.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>私たちは自律的なスケジューラを構築しています。このシステムは、2つの Agent で構成されており、1つは PERT 図を更新する Agent であり、もう1つは、タスクを実行する Agent です。</p>
+<p>次の手順が実行されます。</p>
+<ol>
+<li>ユーザーは最終目標を設定します。これは、最初的な PERT 図にの Ending Node の期待される結果を設定することです。この最初的な PERT 図には、Starting Node と Ending Node のみが含まれています。</li>
+<li>システムは、OpenAI の API を通じて PERT 図を更新する Agent に PERT 図をプロンプトします。PERT 図を更新する Agent は、最終目標に従って Milestone Nodes と Task Edges を追加することで PERT 図を更新します。更新された PERT 図は、OpenAI の API を通じてシステムに返されます。</li>
+<li>システムは、タスクを実行する Agent である DigDag に PERT 図を渡し、タスクを完了します。システムは、DigDag の実行結果に従って、PERT 図内の対応する Milestone Nodes とその状態（達成、未到達）を更新します。</li>
+<li>システムは、Ending Node の期待される結果に達するまで、ステップ 2 ～ 3 をループします。</li>
+</ol>
+<p>Python を運用して OpenAI の API を呼び出し、PERT 図を更新するための Agent を実装します。DigDag を運用して、タスクを実行する Agent を実装します。</p>
+<hr />
+<p>PERT 図を更新する Agent に運用されるモデルは、追加された各 Task Edge の実行結果と期待される結果の間の類似性を利用して、ファインチューニングされます。</p>
 
 </div>
 </div>
@@ -4600,7 +4680,6 @@ speak: &#34;I will create a document that provides the necessary information for
 
 command:
 
-```swift
 write_to_file: 
     filename: &#34;life_extension_info.txt&#34;
     text: &#34;Life Extension Agent\n
