@@ -5,15 +5,18 @@
 
   <meta charset="utf-8">
   
-  <title>Try OpenAPI Agent | Andrew&#39;s Blog</title>
+  <title>人脑海马体的经典计算模型 | Andrew&#39;s Blog</title>
   <meta name="author" content="Andrew">
   
-  <meta name="description" content="Hierarchical Planning Agent">
+  <meta name="description" content="NWChem：
+
+NWChem 是一个开源的计算化学软件包，旨在模拟和预测分子和固体的性质。它支持多种量子化学方法和基组，并具有强大的并行计算功能。NWChem 可以用于计算分子结构、能量、光谱、反应动力学等。
+NWChem 具有良好的并行化能力，可以有效地处理中等到大规模的量子化学计算。它在大型超">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Try OpenAPI Agent"/>
+  <meta property="og:title" content="人脑海马体的经典计算模型"/>
   <meta property="og:site_name" content="Andrew&#39;s Blog"/>
 
   
@@ -129,7 +132,7 @@
 
 	
 		<div class="page-header">		
-			<h1> Try OpenAPI Agent</h1>
+			<h1> 人脑海马体的经典计算模型</h1>
 		</div>		
 	
 
@@ -148,9 +151,97 @@
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>NWChem</strong>：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/toolkits/examples/openapi.html">Hierarchical Planning Agent</a></li>
+<li>NWChem 是一个开源的计算化学软件包，旨在模拟和预测分子和固体的性质。它支持多种量子化学方法和基组，并具有强大的并行计算功能。NWChem 可以用于计算分子结构、能量、光谱、反应动力学等。</li>
+<li>NWChem 具有良好的并行化能力，可以有效地处理中等到大规模的量子化学计算。它在大型超级计算机上的性能表现良好，可以处理数百到数千原子的系统，包括分子和固体。</li>
 </ul>
+<p><strong>HF（Hartree-Fock）方法</strong>：</p>
+<ul>
+<li>Hartree-Fock 方法是一种单参考的自洽场方法，用于计算原子和分子的基态能量和波函数。HF 方法通常用于描述小型分子的电子结构。</li>
+<li>在严格意义上，HF（Hartree-Fock）方法在某种程度上可以被认为是不含近似的，因为它是基于非相对论量子力学的精确解，但在实际应用中，HF 方法也会涉及到一些近似，例如闭壳层近似和单 Slater 行列式近似等。</li>
+<li>Hartree-Fock 方法基于单 Slater 行列式理论，假设体系的波函数可以表示为单个 Slater 行列式。它采用了经典的波函数表示方法，并通过解 Hartree-Fock 方程来优化波函数，以最小化体系的总能量。HF 方法的理论基础主要是非相对论量子力学和电子的波动性。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead>
+<tr>
+  <th>特性</th>
+  <th>PySCF</th>
+  <th>NWChem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>编程语言</strong></td>
+  <td>Python</td>
+  <td>C/C++</td>
+</tr>
+<tr>
+  <td><strong>主要用途</strong></td>
+  <td>桌面和中小规模量子化学计算，快速原型开发</td>
+  <td>大规模量子化学计算，高性能计算</td>
+</tr>
+<tr>
+  <td><strong>计算方法</strong></td>
+  <td>HF、DFT、MP2、CC、CI 等</td>
+  <td>HF、DFT、MP2、CC、分子动力学等</td>
+</tr>
+<tr>
+  <td><strong>模块化和灵活性</strong></td>
+  <td>高度模块化，易于扩展和定制</td>
+  <td>功能全面但模块化程度较低</td>
+</tr>
+<tr>
+  <td><strong>性能</strong></td>
+  <td>适合中小规模计算，关键部分有 C 扩展</td>
+  <td>专为高性能计算设计，适合大规模并行计算</td>
+</tr>
+<tr>
+  <td><strong>硬件兼容性</strong></td>
+  <td>桌面计算和中小型集群</td>
+  <td>超级计算机和高性能计算集群</td>
+</tr>
+<tr>
+  <td><strong>学习曲线</strong></td>
+  <td>对 Python 用户友好，易于上手</td>
+  <td>学习曲线较陡，需要更多的时间掌握</td>
+</tr>
+<tr>
+  <td><strong>集成性</strong></td>
+  <td>易于与 Python 生态系统和其他工具集成</td>
+  <td>集成性较低，但可以通过脚本和接口实现</td>
+</tr>
+<tr>
+  <td><strong>成熟度和稳定性</strong></td>
+  <td>新兴工具，正在快速发展</td>
+  <td>成熟稳定，在学术和工业界广泛应用</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如何用 NWChem 的 HF（Hartree-Fock）方法计算与海马体相关的量子化学？</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><a target="_blank" rel="noopener" href="https://nwchemgit.github.io/">NWChem: Open Source High-Performance Computational Chemistry</a></p>
 
 </div>
 </div>
@@ -167,14 +258,14 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2023/04/07/BioGPT-Agent-Tools/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2023/04/07/A-Study-on-Network-Isolation-Measures-for-Dealing-with-Intelligent-Viruses/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2024/05/15/biobuilder/chapter-10/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -204,7 +295,7 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2023-04-07 
+	2024-05-16 
 	</div>
 	
 
@@ -217,7 +308,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+  <li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li> <li><a href="/tags/Quantum/">Quantum<span>3</span></a></li> <li><a href="/tags/Neuro/">Neuro<span>4</span></a></li> <li><a href="/tags/UltimateFacts/">UltimateFacts<span>3</span></a></li>
     </ul>
 	</div>
 		

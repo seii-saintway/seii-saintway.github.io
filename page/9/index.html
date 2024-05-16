@@ -145,6 +145,216 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2019-10-20 </div>
+			<div class="article-title"><a href="/2019/10/20/Try-Voila-Dashboards/" >Try Voila Dashboards</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/voila-dashboards/voila">https://github.com/voila-dashboards/voila</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/voila-dashboards/gallery">https://github.com/voila-dashboards/gallery</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Try-Voil%C3%A0">Try Voil&#224;<a class="anchor-link" href="#Try-Voil%C3%A0">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>voila<span class="w"> </span>~
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb">http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl<span class="w"> </span>-s<span class="w"> </span>http://jhub.name:8866/voila/render/nbgitpuller/binder/link_generator.ipynb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-oe<span class="w"> </span><span class="s1">&#39;{[^{}]*hub_url[^{}]*}&#39;</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;_dom_classes&#39;: [],
+ &#39;_model_module&#39;: &#39;@jupyter-widgets/controls&#39;,
+ &#39;_model_module_version&#39;: &#39;1.4.0&#39;,
+ &#39;_model_name&#39;: &#39;TextModel&#39;,
+ &#39;_view_count&#39;: None,
+ &#39;_view_module&#39;: &#39;@jupyter-widgets/controls&#39;,
+ &#39;_view_module_version&#39;: &#39;1.4.0&#39;,
+ &#39;_view_name&#39;: &#39;TextView&#39;,
+ &#39;continuous_update&#39;: True,
+ &#39;description&#39;: &#39;hub_url&#39;,
+ &#39;description_tooltip&#39;: None,
+ &#39;disabled&#39;: False,
+ &#39;layout&#39;: &#39;IPY_MODEL_853d8ed268f846f199a0d40ed2955d76&#39;,
+ &#39;placeholder&#39;: &#39;\u200b&#39;,
+ &#39;style&#39;: &#39;IPY_MODEL_d250904f9d7f4ca2ac058bd27f30dd08&#39;,
+ &#39;value&#39;: &#39;&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Compare-to-Commuter">Compare to Commuter<a class="anchor-link" href="#Compare-to-Commuter">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>commuter
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb">http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="o">!</span>curl<span class="w"> </span>-s<span class="w"> </span>http://jhub.name:4000/view/nbgitpuller/binder/link_generator.ipynb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-oe<span class="w"> </span><span class="s1">&#39;&lt;[^&lt;&gt;]*&gt;[^&lt;&gt;]*interactive[^&lt;&gt;]*&lt;/[^&lt;&gt;]*&gt;&#39;</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">snippet</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<span>interactive(children=(Text(value=&#x27;&#x27;, description=&#x27;hub_url&#x27;), Text(value=&#x27;&#x27;, description=&#x27;clone_cmd&#x27;), Text(val…</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>So the <strong>Voila</strong> with Notebook is like <strong>Ploty-Dash</strong> with Python.
+<strong>Voila</strong> can render ipywidget, while <strong>NBViewer</strong>/<strong>Commuter</strong> can just display ipynb without ipywidget-rendering.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Try-Voil%C3%A0-Gallery">Try <a target="_blank" rel="noopener" href="https://github.com/voila-dashboards/gallery">Voil&#224; Gallery</a><a class="anchor-link" href="#Try-Voil%C3%A0-Gallery">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p><strong>Voilà</strong> can display ipywidget-rendered ipynb via <em>local file system</em>.</p>
+<p><strong>Voilà Gallery</strong> can display ipywidget-rendered ipynb via <em>Github</em> etc. by using repo2docker, exactly the same way Binder does.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/20/Try-Voila-Dashboards/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2019-10-19 </div>
 			<div class="article-title"><a href="/2019/10/19/Try-Freeze/" >Try Freeze</a></div>						
 		</h3>
@@ -4703,118 +4913,6 @@ I can even put a notebook inside IPython, to further demonstrate that this is wo
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2019-10-06 </div>
-			<div class="article-title"><a href="/2019/10/06/Solve-PyDatalab-Incompatible-with-Python-3-7/" >Solve PyDatalab Incompatible with Python 3.7</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a target="_blank" rel="noopener" href="https://github.com/googledatalab/pydatalab/issues/711">https://github.com/googledatalab/pydatalab/issues/711</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/googledatalab/pydatalab.git
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;async&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>pydatalab/datalab/
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a target="_blank" rel="noopener" href="https://github.com/googledatalab/pydatalab/pull/720/files">https://github.com/googledatalab/pydatalab/pull/720/files</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>requests<span class="w"> </span>grpcio
-<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>pydatalab<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;async&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>/home/sheng_wei/anaconda3/lib/python3.7/site-packages/datalab/
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;yaml&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>/home/sheng_wei/anaconda3/lib/python3.7/site-packages/google/datalab/utils/commands/_utils.py
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2019/10/06/Solve-PyDatalab-Incompatible-with-Python-3-7/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -4855,45 +4953,45 @@ I can even put a notebook inside IPython, to further demonstrate that this is wo
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>10</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>2</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>11</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
 		
 			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
 			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>10</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>3</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>4</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>3</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
@@ -4909,6 +5007,10 @@ I can even put a notebook inside IPython, to further demonstrate that this is wo
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2024/05/16/人脑海马体的经典计算模型/" ><i class="fa fa-file-o"></i>人脑海马体的经典计算模型</a>
+      </li>
+    
+      <li>
         <a href="/2024/05/15/biobuilder/chapter-10/" ><i class="fa fa-file-o"></i>金面包</a>
       </li>
     
@@ -4922,10 +5024,6 @@ I can even put a notebook inside IPython, to further demonstrate that this is wo
     
       <li>
         <a href="/2024/05/15/biobuilder/chapter-7/" ><i class="fa fa-file-o"></i>iTunes 设备</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/15/biobuilder/chapter-6/" ><i class="fa fa-file-o"></i>气味香水</a>
       </li>
     
   </ul>

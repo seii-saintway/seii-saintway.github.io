@@ -145,6 +145,1981 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2023-04-19 </div>
+			<div class="article-title"><a href="/2023/04/19/Text2Vec/" >Text2Vec</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Text2Vec"><a target="_blank" rel="noopener" href="https://github.com/shibing624/text2vec">Text2Vec</a><a class="anchor-link" href="#Text2Vec">&#182;</a></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/sentence-transformers">Sentence Transformer</a></li>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/shibing624/text2vec-base-chinese">CoSENT hfl/chinese-macbert-base</a></li>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/GanymedeNil/text2vec-large-chinese">CoSENT hfl/chinese-lert-large</a><ul>
+<li>GanymedeNil/text2vec-large-chinese</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>all-mpnet-base-v2</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;sentence-transformers/all-mpnet-base-v2&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>SentenceTransformer(
+  (0): Transformer({&#39;max_seq_length&#39;: 384, &#39;do_lower_case&#39;: False}) with Transformer model: MPNetModel 
+  (1): Pooling({&#39;word_embedding_dimension&#39;: 768, &#39;pooling_mode_cls_token&#39;: False, &#39;pooling_mode_mean_tokens&#39;: True, &#39;pooling_mode_max_tokens&#39;: False, &#39;pooling_mode_mean_sqrt_len_tokens&#39;: False})
+  (2): Normalize()
+)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+total 857056
+drwxr-xr-x  16 saintway  staff   512B Apr 12 14:31 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x   5 saintway  staff   160B Apr 19 17:23 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+-rw-r--r--   1 saintway  staff   1.1K Apr 12 14:28 .gitattributes
+drwxr-xr-x   3 saintway  staff    96B Apr 12 14:28 <span class="ansi-cyan-intense-fg ansi-bold">1_Pooling</span>
+-rw-r--r--   1 saintway  staff    10K Apr 12 14:28 README.md
+-rw-r--r--   1 saintway  staff   571B Apr 12 14:28 config.json
+-rw-r--r--   1 saintway  staff   116B Apr 12 14:28 config_sentence_transformers.json
+-rw-r--r--   1 saintway  staff    38K Apr 12 14:28 data_config.json
+-rw-r--r--   1 saintway  staff   349B Apr 12 14:31 modules.json
+-rw-r--r--   1 saintway  staff   418M Apr 12 14:31 pytorch_model.bin
+-rw-r--r--   1 saintway  staff    53B Apr 12 14:31 sentence_bert_config.json
+-rw-r--r--   1 saintway  staff   239B Apr 12 14:31 special_tokens_map.json
+-rw-r--r--   1 saintway  staff   455K Apr 12 14:31 tokenizer.json
+-rw-r--r--   1 saintway  staff   363B Apr 12 14:31 tokenizer_config.json
+-rw-r--r--   1 saintway  staff    13K Apr 12 14:31 train_script.py
+-rw-r--r--   1 saintway  staff   226K Apr 12 14:31 vocab.txt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span>~/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2/modules.json
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[
+  {
+    &#34;idx&#34;: 0,
+    &#34;name&#34;: &#34;0&#34;,
+    &#34;path&#34;: &#34;&#34;,
+    &#34;type&#34;: &#34;sentence_transformers.models.Transformer&#34;
+  },
+  {
+    &#34;idx&#34;: 1,
+    &#34;name&#34;: &#34;1&#34;,
+    &#34;path&#34;: &#34;1_Pooling&#34;,
+    &#34;type&#34;: &#34;sentence_transformers.models.Pooling&#34;
+  },
+  {
+    &#34;idx&#34;: 2,
+    &#34;name&#34;: &#34;2&#34;,
+    &#34;path&#34;: &#34;2_Normalize&#34;,
+    &#34;type&#34;: &#34;sentence_transformers.models.Normalize&#34;
+  }
+]</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span>~/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2/sentence_bert_config.json
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;max_seq_length&#34;: 384,
+  &#34;do_lower_case&#34;: false
+}</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span>~/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2/1_Pooling/config.json
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;word_embedding_dimension&#34;: 768,
+  &#34;pooling_mode_cls_token&#34;: false,
+  &#34;pooling_mode_mean_tokens&#34;: true,
+  &#34;pooling_mode_max_tokens&#34;: false,
+  &#34;pooling_mode_mean_sqrt_len_tokens&#34;: false
+}</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2/data_config.json
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> 40K	/Users/saintway/.cache/torch/sentence_transformers/sentence-transformers_all-mpnet-base-v2/data_config.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>all-MiniLM-L6-v2</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;sentence-transformers/all-MiniLM-L6-v2&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>SentenceTransformer(
+  (0): Transformer({&#39;max_seq_length&#39;: 256, &#39;do_lower_case&#39;: False}) with Transformer model: BertModel 
+  (1): Pooling({&#39;word_embedding_dimension&#39;: 384, &#39;pooling_mode_cls_token&#39;: False, &#39;pooling_mode_mean_tokens&#39;: True, &#39;pooling_mode_max_tokens&#39;: False, &#39;pooling_mode_mean_sqrt_len_tokens&#39;: False})
+  (2): Normalize()
+)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/torch/sentence_transformers/sentence-transformers_all-MiniLM-L6-v2
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+total 210456
+drwxr-xr-x  16 saintway  staff   512B Apr 19 17:38 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x   6 saintway  staff   192B Apr 19 17:38 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+-rw-r--r--   1 saintway  staff   1.1K Apr 19 17:37 .gitattributes
+drwxr-xr-x   3 saintway  staff    96B Apr 19 17:38 <span class="ansi-cyan-intense-fg ansi-bold">1_Pooling</span>
+-rw-r--r--   1 saintway  staff    10K Apr 19 17:38 README.md
+-rw-r--r--   1 saintway  staff   612B Apr 19 17:38 config.json
+-rw-r--r--   1 saintway  staff   116B Apr 19 17:38 config_sentence_transformers.json
+-rw-r--r--   1 saintway  staff    38K Apr 19 17:38 data_config.json
+-rw-r--r--   1 saintway  staff   349B Apr 19 17:38 modules.json
+-rw-r--r--   1 saintway  staff    87M Apr 19 17:38 pytorch_model.bin
+-rw-r--r--   1 saintway  staff    53B Apr 19 17:38 sentence_bert_config.json
+-rw-r--r--   1 saintway  staff   112B Apr 19 17:38 special_tokens_map.json
+-rw-r--r--   1 saintway  staff   455K Apr 19 17:38 tokenizer.json
+-rw-r--r--   1 saintway  staff   350B Apr 19 17:38 tokenizer_config.json
+-rw-r--r--   1 saintway  staff    13K Apr 19 17:38 train_script.py
+-rw-r--r--   1 saintway  staff   226K Apr 19 17:38 vocab.txt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>CoSENT hfl/chinese-macbert-base</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Full Model Architecture:</p>
+<pre><code>CoSENT(
+  (0): Transformer({'max_seq_length': 128, 'do_lower_case': False}) with Transformer model: BertModel 
+  (1): Pooling({'word_embedding_dimension': 768, 'pooling_mode_mean_tokens': True})
+)
+</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;shibing624/text2vec-base-chinese&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>SentenceTransformer(
+  (0): Transformer({&#39;max_seq_length&#39;: 128, &#39;do_lower_case&#39;: False}) with Transformer model: BertModel 
+  (1): Pooling({&#39;word_embedding_dimension&#39;: 768, &#39;pooling_mode_cls_token&#39;: False, &#39;pooling_mode_mean_tokens&#39;: True, &#39;pooling_mode_max_tokens&#39;: False, &#39;pooling_mode_mean_sqrt_len_tokens&#39;: False})
+)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> ~/.cache/torch/sentence_transformers/shibing624_text2vec-base-chinese/modules.json
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;idx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;sentence_transformers.models.Transformer&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;idx&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;1_Pooling&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;sentence_transformers.models.Pooling&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Overwriting /Users/saintway/.cache/torch/sentence_transformers/shibing624_text2vec-base-chinese/modules.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> ~/.cache/torch/sentence_transformers/shibing624_text2vec-base-chinese/sentence_bert_config.json
+<span class="p">{</span>
+  <span class="s2">&quot;max_seq_length&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+  <span class="s2">&quot;do_lower_case&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing /Users/saintway/.cache/torch/sentence_transformers/shibing624_text2vec-base-chinese/sentence_bert_config.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/.cache/torch/sentence_transformers/shibing624_text2vec-base-chinese/1_Pooling
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> ~/.cache/torch/sentence_transformers/shibing624_text2vec-base-chinese/1_Pooling/config.json
+<span class="p">{</span>
+  <span class="s2">&quot;word_embedding_dimension&quot;</span><span class="p">:</span> <span class="mi">768</span><span class="p">,</span>
+  <span class="s2">&quot;pooling_mode_mean_tokens&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing /Users/saintway/.cache/torch/sentence_transformers/shibing624_text2vec-base-chinese/1_Pooling/config.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/torch/sentence_transformers/shibing624_text2vec-base-chinese
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 831776
+drwxr-xr-x  13 saintway  staff   416B Apr 19 19:22 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x   7 saintway  staff   224B Apr 19 17:43 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+-rw-r--r--   1 saintway  staff   1.1K Apr 19 17:42 .gitattributes
+drwxr-xr-x   3 saintway  staff    96B Apr 19 19:22 <span class="ansi-cyan-intense-fg ansi-bold">1_Pooling</span>
+-rw-r--r--   1 saintway  staff   4.0K Apr 19 17:43 README.md
+-rw-r--r--   1 saintway  staff   856B Apr 19 17:43 config.json
+-rw-r--r--   1 saintway  staff   546B Apr 19 17:43 logs.txt
+-rw-r--r--   1 saintway  staff   230B Apr 19 19:17 modules.json
+-rw-r--r--   1 saintway  staff   390M Apr 19 17:43 pytorch_model.bin
+-rw-r--r--   1 saintway  staff    54B Apr 19 19:11 sentence_bert_config.json
+-rw-r--r--   1 saintway  staff   112B Apr 19 17:43 special_tokens_map.json
+-rw-r--r--   1 saintway  staff   319B Apr 19 17:43 tokenizer_config.json
+-rw-r--r--   1 saintway  staff   107K Apr 19 17:43 vocab.txt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>CoSENT hfl/chinese-lert-large</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;GanymedeNil/text2vec-large-chinese&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>SentenceTransformer(
+  (0): Transformer({&#39;max_seq_length&#39;: 128, &#39;do_lower_case&#39;: False}) with Transformer model: BertModel 
+  (1): Pooling({&#39;word_embedding_dimension&#39;: 1024, &#39;pooling_mode_cls_token&#39;: False, &#39;pooling_mode_mean_tokens&#39;: True, &#39;pooling_mode_max_tokens&#39;: False, &#39;pooling_mode_mean_sqrt_len_tokens&#39;: False})
+)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> ~/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese/modules.json
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;idx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;sentence_transformers.models.Transformer&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;idx&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;1_Pooling&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;sentence_transformers.models.Pooling&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing /home/jupyter-saintway/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese/modules.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> ~/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese/sentence_bert_config.json
+<span class="p">{</span>
+  <span class="s2">&quot;max_seq_length&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+  <span class="s2">&quot;do_lower_case&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing /home/jupyter-saintway/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese/sentence_bert_config.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese/1_Pooling
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> ~/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese/1_Pooling/config.json
+<span class="p">{</span>
+  <span class="s2">&quot;word_embedding_dimension&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+  <span class="s2">&quot;pooling_mode_mean_tokens&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing /home/jupyter-saintway/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese/1_Pooling/config.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 2569336
+drwxr-xr-x  14 saintway  staff   448B Apr 19 19:28 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
+drwxr-xr-x   7 saintway  staff   224B Apr 19 17:43 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
+-rw-r--r--   1 saintway  staff   1.4K Apr 19 17:16 .gitattributes
+drwxr-xr-x   3 saintway  staff    96B Apr 19 19:28 <span class="ansi-cyan-intense-fg ansi-bold">1_Pooling</span>
+-rw-r--r--   1 saintway  staff   317B Apr 19 17:16 README.md
+-rw-r--r--   1 saintway  staff   821B Apr 19 17:16 config.json
+-rw-r--r--   1 saintway  staff    69B Apr 19 17:16 eval_results.txt
+-rw-r--r--   1 saintway  staff   230B Apr 19 19:28 modules.json
+-rw-r--r--   1 saintway  staff   1.2G Apr 19 17:23 pytorch_model.bin
+-rw-r--r--   1 saintway  staff    54B Apr 19 19:28 sentence_bert_config.json
+-rw-r--r--   1 saintway  staff   125B Apr 19 17:23 special_tokens_map.json
+-rw-r--r--   1 saintway  staff   429K Apr 19 17:23 tokenizer.json
+-rw-r--r--   1 saintway  staff   514B Apr 19 17:23 tokenizer_config.json
+-rw-r--r--   1 saintway  staff   107K Apr 19 17:23 vocab.txt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.2G	/Users/saintway/.cache/torch/sentence_transformers/GanymedeNil_text2vec-large-chinese
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Transformer and Indexer</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;GanymedeNil/text2vec-large-chinese&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">faiss</span>
+<span class="n">indexer</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">IndexFlatL2</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Preparing Text</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">DirectoryLoader</span><span class="p">,</span> <span class="n">BSHTMLLoader</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">DirectoryLoader</span><span class="p">(</span><span class="s1">&#39;_morning/htm&#39;</span><span class="p">,</span> <span class="n">loader_cls</span><span class="o">=</span><span class="n">BSHTMLLoader</span><span class="p">)</span>
+<span class="n">raw_documents</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="k">for</span> <span class="n">raw_document</span> <span class="ow">in</span> <span class="n">raw_documents</span><span class="p">:</span>
+    <span class="n">raw_document</span><span class="o">.</span><span class="n">page_content</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\n+&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">raw_document</span><span class="o">.</span><span class="n">page_content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;。&#39;</span><span class="p">,</span> <span class="s1">&#39;。</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Embedding</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_words</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">embed</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">sentences</span>
+
+    <span class="c1"># words = extra_text.split(&#39; &#39;)</span>
+    <span class="c1"># sentences = [words[i: i+num_words] for i in range(0, len(words), num_words)]</span>
+    <span class="c1"># sentences = [&#39; &#39;.join(word_list) for word_list in sentences]</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="n">sentences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\n+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;。&#39;</span><span class="p">,</span> <span class="s1">&#39;。</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))):</span>
+        <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">sentence</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Number of Sentences:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">))</span>
+    <span class="c1"># print(sentences)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Embedding the sentences...&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">embed</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">raw_document</span><span class="o">.</span><span class="n">page_content</span> <span class="k">for</span> <span class="n">raw_document</span> <span class="ow">in</span> <span class="n">raw_documents</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">embeddings</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1024</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Loading Faiss Indexer from Disk</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">pickle</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/lert_indexing_morning.pkl&#39;</span><span class="p">)):</span>
+    <span class="c1"># load vectorstore</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/lert_indexing_morning.pkl&#39;</span><span class="p">),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">indexer</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Indexing</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Building the index...&#39;</span><span class="p">)</span>
+<span class="n">indexer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">index.ntotal:&#39;</span><span class="p">,</span> <span class="n">indexer</span><span class="o">.</span><span class="n">ntotal</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Saving Faiss Indexer to Disk</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/lert_indexing_morning.pkl&#39;</span><span class="p">)):</span>
+    <span class="c1"># save vectorstore</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/lert_indexing_morning.pkl&#39;</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>~/lert_indexing_morning.pkl
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+-rw-r--r--  1 saintway  staff    55M Apr 19 21:42 /Users/saintway/lert_indexing_morning.pkl
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Searching</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Searching for:&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">xq</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
+    <span class="n">D</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">indexer</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">xq</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Distance:&#39;</span><span class="p">,</span> <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index:&#39;</span><span class="p">,</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Retrieving related information...&#39;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">sentences</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">),</span> <span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">result:&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">retrieve</span><span class="p">(</span><span class="s1">&#39;你知道什么？&#39;</span><span class="p">)</span>
+<span class="n">retrieve</span><span class="p">(</span><span class="s1">&#39;第八周讲了什么？&#39;</span><span class="p">)</span>
+<span class="n">retrieve</span><span class="p">(</span><span class="s1">&#39;七倍加强的灵是什么？&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Retrieving extra information...
+[656.14075 686.03516 686.03516 701.83813 708.9243  709.8529  711.5835
+ 729.1748  740.6108  756.9905  759.0303  759.19086 760.30756 762.8627
+ 763.7213  764.0825  770.2078  770.9846  771.6991  776.6118 ]
+[ 5330  6025  8696  4925  1817   292  3119  6404  2026  5745  2730  9065
+   509 12541 12823  1832 12689   263 10313  2867]
+
+result: 你会明白主的心思，你也会知道什么是主的意愿。
+你知道每一个十字路口都是一个十字架么？有的是大十字架，有的是小十字架，但它们都是十字架。
+你知道每一个十字路口都是一个十字架么？有的是大十字架，有的是小十字架，但它们都是十字架。
+你晓得误会是从哪里来的么？它的根源常常是不纯净。
+我和你们交通这事，是要让你们晓得我们的书撰写的方式。
+当我们愿意对祂说，“主啊，我不知道自己的光景如何，也不知道自己需要什么；但是你知道。
+……“我从前风闻有你，现在亲眼看见你。
+反之，我们该问这里的真理是什么，也该问顺从真理是什么意思。
+九节说，“少年人用什么使他的行径纯洁呢？是要遵行你的话。
+那时你为你的大名要怎样行呢？
+有些人不能明白主的恢复是怎么一回事。
+帖后2:5　我还在你们那里的时候，曾一再把这些事告诉你们，你们不记得么？
+我要向全宇宙宣告，无论事情怎样，我相信你是我的神。
+”当时我并不知道那是什么，直到我进到召会中，与你们一同站在一的立场上。
+就一面的意义说，我们不知道什么，也不作什么。
+到那时候你就晓得如何向别人陈明真理，不是仅仅激发或激动人，而是使人扎实，得着真理的构成（李常受文集一九八四年第二册，四○二至四○三页）。
+论到借着赞美主而从事属灵的争战，我要温柔地请问你们这些一同学习的弟兄姊妹：“在这个月里，你个人向着主有几次赞美呢？今年你赞美主几次呢？年长的圣徒们，在主的恢复这许多年来，你有没有赞美主呢？”有些人可能说，“有。
+可能你经历一段感情的结束，当时不明白为什么会发生这样的事，日后回想，才懂得感谢神。
+在宇宙中有这么多的东西，有这么多的故事；但是六千年来，还没有一个人看见过神。
+然而，我们是否真正明白在主的恢复里是什么意思，主所恢复的又是什么？以下的信息会指出三个主要的点，说明主的恢复到底是什么。
+
+
+Retrieving extra information...
+[336.1584  336.1584  336.1584  336.1584  336.1584  336.1584  437.74524
+ 457.0722  491.19138 524.97955 547.4698  561.1646  561.1646  635.23145
+ 641.3999  641.3999  641.3999  641.3999  641.3999  641.3999 ]
+[10211 10762 11196 12282 12928 13579 13596 11211 12946 12292 10226  5370
+  9340  2110  3021  4193  4830  5107  5176  6307]
+
+result: 第八周
+第八周
+第八周
+第八周
+第八周
+第八周
+第八周　周六
+第八周　周一
+第八周　周五
+第八周　周四
+第八周　周二
+第八篇
+第八篇
+”（八页）
+第七周
+第七周
+第七周
+第七周
+第七周
+第七周
+
+
+Retrieving extra information...
+[149.68991 257.37964 293.2322  390.10983 412.68298 416.7586  426.44324
+ 448.9715  448.9715  448.9715  474.88263 485.05545 510.15057 515.02356
+ 539.4849  539.485   539.485   539.485   543.3683  544.59344]
+[ 9906  9659  9919  3820  9914  3819  9908  6576  9134 13120  3777  9967
+    28    99    13    79  4119  5287  9977  9915]
+
+result: ”七灵乃是七倍加强的灵，不是七个灵，而是一位灵加强了七倍。
+今天这赐生命的灵是七倍加强的，我们能以七倍加强的方式来经历这复活的生命。
+这灵加强了七倍，不是为着我们的属灵或能力，而是完全为着建造。
+我们需要在以下各方面享受基督作七倍加强的灵。
+七倍加强的灵乃是为着三一神完满的彰显和神殿的重建。
+我们需要在以下各方面享受基督作七倍加强的灵
+”耶和华的七眼也是七倍加强的灵。
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+那灵就是三一神经过种种过程，包括成为肉体、人性生活、钉死、复活、升天，成为赐生命、七倍加强的灵。
+至终祂这赐生命的灵─七倍加强的灵─会把祂的生命分赐到我们全人里面，叫我们全人从里到外都变作生命。
+随着金这样成形在你里面，就会有七灵照耀并彰显神。
+召会作灯台有七灯，就是神的七灵。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+七倍加强的灵乃是七盏火灯，焚烧、光照、暴露、搜寻、审判、洁净并炼净我们，好产生金灯台，完成神新约的经纶
+我们若向主认真，愿意起来建造神的殿，我们就需要看见，今天在主恢复的众召会中间，最大的需要就是经历七倍加强的灵。
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;”七灵乃是七倍加强的灵，不是七个灵，而是一位灵加强了七倍。\n今天这赐生命的灵是七倍加强的，我们能以七倍加强的方式来经历这复活的生命。\n这灵加强了七倍，不是为着我们的属灵或能力，而是完全为着建造。\n我们需要在以下各方面享受基督作七倍加强的灵。\n七倍加强的灵乃是为着三一神完满的彰显和神殿的重建。\n我们需要在以下各方面享受基督作七倍加强的灵\n”耶和华的七眼也是七倍加强的灵。\n三\u3000我们需要在以下各方面享受基督作七倍加强的灵：\n三\u3000我们需要在以下各方面享受基督作七倍加强的灵：\n三\u3000我们需要在以下各方面享受基督作七倍加强的灵：\n那灵就是三一神经过种种过程，包括成为肉体、人性生活、钉死、复活、升天，成为赐生命、七倍加强的灵。\n至终祂这赐生命的灵─七倍加强的灵─会把祂的生命分赐到我们全人里面，叫我们全人从里到外都变作生命。\n随着金这样成形在你里面，就会有七灵照耀并彰显神。\n召会作灯台有七灯，就是神的七灵。\n３\u3000经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。\n３\u3000经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。\n３\u3000经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。\n３\u3000经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。\n七倍加强的灵乃是七盏火灯，焚烧、光照、暴露、搜寻、审判、洁净并炼净我们，好产生金灯台，完成神新约的经纶\n我们若向主认真，愿意起来建造神的殿，我们就需要看见，今天在主恢复的众召会中间，最大的需要就是经历七倍加强的灵。\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">retrieve</span><span class="p">(</span><span class="s1">&#39;七倍加强的灵是什么？&#39;</span><span class="p">)</span>
+<span class="n">retrieve</span><span class="p">(</span><span class="s1">&#39;问题：七倍加强的灵是什么？&#39;</span><span class="p">)</span>
+<span class="n">retrieve</span><span class="p">(</span><span class="s1">&#39;用户提供了一段文本片段，但没有明确说明文档的主题。</span><span class="se">\n</span><span class="s1">问题：七倍加强的灵是什么？&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Retrieving extra information...
+[149.68991 257.37964 293.2322  390.10983 412.68298 416.7586  426.44324
+ 448.9715  448.9715  448.9715  474.88263 485.05545 510.15057 515.02356
+ 539.4849  539.485   539.485   539.485   543.3683  544.59344]
+[ 9906  9659  9919  3820  9914  3819  9908  6576  9134 13120  3777  9967
+    28    99    13    79  4119  5287  9977  9915]
+
+result: ”七灵乃是七倍加强的灵，不是七个灵，而是一位灵加强了七倍。
+今天这赐生命的灵是七倍加强的，我们能以七倍加强的方式来经历这复活的生命。
+这灵加强了七倍，不是为着我们的属灵或能力，而是完全为着建造。
+我们需要在以下各方面享受基督作七倍加强的灵。
+七倍加强的灵乃是为着三一神完满的彰显和神殿的重建。
+我们需要在以下各方面享受基督作七倍加强的灵
+”耶和华的七眼也是七倍加强的灵。
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+那灵就是三一神经过种种过程，包括成为肉体、人性生活、钉死、复活、升天，成为赐生命、七倍加强的灵。
+至终祂这赐生命的灵─七倍加强的灵─会把祂的生命分赐到我们全人里面，叫我们全人从里到外都变作生命。
+随着金这样成形在你里面，就会有七灵照耀并彰显神。
+召会作灯台有七灯，就是神的七灵。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+七倍加强的灵乃是七盏火灯，焚烧、光照、暴露、搜寻、审判、洁净并炼净我们，好产生金灯台，完成神新约的经纶
+我们若向主认真，愿意起来建造神的殿，我们就需要看见，今天在主恢复的众召会中间，最大的需要就是经历七倍加强的灵。
+
+
+Retrieving extra information...
+[207.48007 293.95245 316.6468  394.41498 415.14142 427.4111  440.00018
+ 440.00018 440.00018 456.50128 494.71838 507.38333 543.869   543.869
+ 543.869   546.0684  546.0684  546.0684  546.0684  550.43463]
+[ 9906  9659  9919  3820  3819  9914  6576  9134 13120  9908  3777  9967
+  1349  4167  5299    13    79  4119  5287  6918]
+
+result: ”七灵乃是七倍加强的灵，不是七个灵，而是一位灵加强了七倍。
+今天这赐生命的灵是七倍加强的，我们能以七倍加强的方式来经历这复活的生命。
+这灵加强了七倍，不是为着我们的属灵或能力，而是完全为着建造。
+我们需要在以下各方面享受基督作七倍加强的灵。
+我们需要在以下各方面享受基督作七倍加强的灵
+七倍加强的灵乃是为着三一神完满的彰显和神殿的重建。
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+三　我们需要在以下各方面享受基督作七倍加强的灵：
+”耶和华的七眼也是七倍加强的灵。
+那灵就是三一神经过种种过程，包括成为肉体、人性生活、钉死、复活、升天，成为赐生命、七倍加强的灵。
+至终祂这赐生命的灵─七倍加强的灵─会把祂的生命分赐到我们全人里面，叫我们全人从里到外都变作生命。
+a　召会作为灯台，乃是三一神扎实的具体化身，有七倍加强的灵作为神神圣性情的油。
+a　召会作为灯台，乃是三一神扎实的具体化身，有七倍加强的灵作为神神圣性情的油。
+a　召会作为灯台，乃是三一神扎实的具体化身，有七倍加强的灵作为神神圣性情的油。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+３　经历最大变化的人，乃是向主完全敞开的人；借着七倍加强的灵在寻求基督之信徒里的运行，他们就得着加强，成为得胜者，以建造基督的身体，终极完成新耶路撒冷。
+对付灵重在对付我们里面不纯的动机、存心和其他杂质（帖前五23，提后一7）。
+
+
+Retrieving extra information...
+[455.2392  474.6516  554.92584 554.92584 554.92584 555.4395  558.1987
+ 561.82495 562.31335 562.31335 562.31335 573.8733  575.1859  578.14307
+ 582.34247 584.78894 590.16046 591.0485  592.72095 594.661  ]
+[ 9906  9919 11058 13036 13470  1623  1622   813  3182  3861  5811  6918
+  1880   488  9659  3820 13501  9728  3819  4528]
+
+result: ”七灵乃是七倍加强的灵，不是七个灵，而是一位灵加强了七倍。
+这灵加强了七倍，不是为着我们的属灵或能力，而是完全为着建造。
+一　很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战。
+一　很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战。
+一　很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战。
+很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战。
+很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战
+”然而，主给我们的不是胆怯的灵，乃是能力的灵（参提后一7）。
+三　对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。
+三　对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。
+三　对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。
+对付灵重在对付我们里面不纯的动机、存心和其他杂质（帖前五23，提后一7）。
+然而在六节，当以斯拉在他的叙述中说到自己时，只说“他是经学家”，而不提他是亚伦家的祭司；他没有高举自己祭司的身分。
+但那只是起始阶段的信心，并不是路加十八章里主要寻找的信心。
+今天这赐生命的灵是七倍加强的，我们能以七倍加强的方式来经历这复活的生命。
+我们需要在以下各方面享受基督作七倍加强的灵。
+在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎不懂得什么叫作属灵的争战。
+然而，我讲这篇信息时，里面并没有责备的灵。
+我们需要在以下各方面享受基督作七倍加强的灵
+提前6:7　因为我们没有带什么到世界来，也不能带什么去；
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;”七灵乃是七倍加强的灵，不是七个灵，而是一位灵加强了七倍。\n这灵加强了七倍，不是为着我们的属灵或能力，而是完全为着建造。\n一\u3000很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战。\n一\u3000很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战。\n一\u3000很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战。\n很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战。\n很可惜的是，在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎都不懂得什么叫作属灵的争战\n”然而，主给我们的不是胆怯的灵，乃是能力的灵（参提后一7）。\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n对付灵重在对付我们里面不纯的动机、存心和其他杂质（帖前五23，提后一7）。\n然而在六节，当以斯拉在他的叙述中说到自己时，只说“他是经学家”，而不提他是亚伦家的祭司；他没有高举自己祭司的身分。\n但那只是起始阶段的信心，并不是路加十八章里主要寻找的信心。\n今天这赐生命的灵是七倍加强的，我们能以七倍加强的方式来经历这复活的生命。\n我们需要在以下各方面享受基督作七倍加强的灵。\n在今日的召会中，因着生命的软弱，属灵力量的缺乏，和真理亮光的不够明亮，信徒几乎不懂得什么叫作属灵的争战。\n然而，我讲这篇信息时，里面并没有责备的灵。\n我们需要在以下各方面享受基督作七倍加强的灵\n提前6:7\u3000因为我们没有带什么到世界来，也不能带什么去；\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Chat with PDF</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">messages_in_english</span> <span class="o">=</span> <span class="p">[{</span>
+    <span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;You are an AI agent that summarizes chat in less than three setences.&#39;</span>
+<span class="p">}]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">messages_in_chinese</span> <span class="o">=</span> <span class="p">[{</span>
+    <span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;系统&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;你是一个 AI 代理。请用中文在三句话之内概括聊天内容。&#39;</span>
+<span class="p">}]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">chats_in_english</span> <span class="o">=</span> <span class="p">[{</span>
+    <span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;You are an AI assistant providing helpful advice.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;You are given the following extracted parts of a long document and a question.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;Provide a conversational answer based on the context provided.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;You should only provide hyperlinks that reference the context below.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;Do NOT make up hyperlinks.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;If you can</span><span class="se">\&#39;</span><span class="s1">t find the answer in the context below, use your prior knowledge,</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;but in most of the cases the answer will be in the context.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="c1"># &#39;If the question is not related to the context, politely respond that you are tuned to only answer questions that are related to the context.\n&#39; + \</span>
+    <span class="s1">&#39;Answer in Markdown format.</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="p">}]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">chats_in_chinese</span> <span class="o">=</span> <span class="p">[{</span>
+    <span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;系统&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;你是一个提供有用建议的 AI 助手。</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;你被提供了一份长文档的一部分（额外信息）和一个问题。</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;请根据我所提供的文本提供会话式的回答。</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;你只应该提供与下面的文本相关的超链接。</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;**不要**编造超链接。</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;如果在下面的文本中找不到答案，可以使用你先前所知道的知识，</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="s1">&#39;但在大多数情况下，答案是在文本中的。</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> \
+    <span class="c1"># &#39;如果问题与上下文不相关，请礼貌地回复您只回答与上下文相关的问题。\n&#39; + \</span>
+    <span class="s1">&#39;请用中文以 Markdown 格式回答。</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="p">}]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">PyPDF2</span>
+
+<span class="k">def</span> <span class="nf">extract_text</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Extract text from a PDF file.&#39;&#39;&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pdf_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">page</span><span class="o">.</span><span class="n">extract_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">PyPDF2</span><span class="o">.</span><span class="n">PdfReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">pages</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">build_the_bot</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">,</span> <span class="n">openai_key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;split sentences in chinese&#39;&#39;&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OpenAI Key:&#39;</span><span class="p">,</span> <span class="n">openai_key</span><span class="p">)</span>
+
+    <span class="n">pdf_content</span> <span class="o">=</span> <span class="n">extract_text</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Text Length:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">extra_text</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Building the index...&#39;</span><span class="p">)</span>
+    <span class="n">indexer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">embed</span><span class="p">(</span><span class="n">pdf_content</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">index.ntotal:&#39;</span><span class="p">,</span> <span class="n">indexer</span><span class="o">.</span><span class="n">ntotal</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pdf_content</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">openai</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">chat</span><span class="p">(</span><span class="n">chat_history</span><span class="p">,</span> <span class="n">user_input</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;chat in chinese&#39;&#39;&#39;</span>
+    <span class="k">global</span> <span class="n">sentences</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">messages_in_chinese:&#39;</span><span class="p">,</span> <span class="n">messages_in_chinese</span><span class="p">)</span>
+    <span class="c1"># messages_in_english.append({&#39;role&#39;: &#39;user&#39;, &#39;content&#39;: &#39;Question:\n&#39; + user_input})</span>
+    <span class="c1"># print(&#39;\nmessages_in_english:&#39;, messages_in_english)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Summarizing the chat history...&#39;</span><span class="p">)</span>
+
+    <span class="n">completion</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">ChatCompletion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;gpt-3.5-turbo&#39;</span><span class="p">,</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="n">messages_in_chinese</span>
+    <span class="p">)</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Summarized Histoy: </span><span class="si">{</span><span class="n">summary</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">extra_info</span> <span class="o">=</span> <span class="n">retrieve</span><span class="p">(</span><span class="n">summary</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;问题：&#39;</span> <span class="o">+</span> <span class="n">user_input</span><span class="p">)</span>
+
+    <span class="n">chats_in_chinese</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;用户&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;额外信息：</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">extra_info</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;问题：&#39;</span> <span class="o">+</span> <span class="n">user_input</span><span class="p">})</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">chats_in_chinese:&#39;</span><span class="p">,</span> <span class="n">chats_in_chinese</span><span class="p">)</span>
+    <span class="n">completion</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">ChatCompletion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;gpt-3.5-turbo&#39;</span><span class="p">,</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="n">chats_in_chinese</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">chats_in_chinese</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="p">)</span>
+
+    <span class="n">chat_output</span> <span class="o">=</span> <span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">ChatGPT: </span><span class="si">{</span><span class="n">chat_output</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># messages_in_chinese.append({&#39;role&#39;: &#39;用户&#39;, &#39;content&#39;: user_input})</span>
+    <span class="c1"># messages_in_chinese.append({&#39;role&#39;: &#39;助手&#39;, &#39;content&#39;: chat_output})</span>
+    <span class="k">yield</span> <span class="n">chat_history</span> <span class="o">+</span> <span class="p">[(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">chat_output</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gradio</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_demo</span><span class="p">(</span><span class="n">mock_openai</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">gradio</span><span class="o">.</span><span class="n">Blocks</span><span class="p">()</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+        <span class="n">gradio</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;Chat with a PDF document&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">gradio</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="s1">&#39;Select PDF&#39;</span><span class="p">):</span>
+            <span class="n">pdf</span> <span class="o">=</span> <span class="n">gradio</span><span class="o">.</span><span class="n">File</span><span class="p">()</span>
+            <span class="n">openai_key</span> <span class="o">=</span> <span class="n">gradio</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;OpenAI API Key&#39;</span><span class="p">,)</span>
+            <span class="n">text_output</span> <span class="o">=</span> <span class="n">gradio</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;PDF content&#39;</span><span class="p">)</span>
+            <span class="n">text_button</span> <span class="o">=</span> <span class="n">gradio</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s1">&#39;Build the Bot!!!&#39;</span><span class="p">)</span>
+            <span class="n">text_button</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">build_the_bot</span><span class="p">,</span> <span class="p">[</span><span class="n">pdf</span><span class="p">,</span> <span class="n">openai_key</span><span class="p">],</span> <span class="n">text_output</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">gradio</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="s1">&#39;Knowledge Bot&#39;</span><span class="p">):</span>
+            <span class="n">chatbot</span> <span class="o">=</span> <span class="n">gradio</span><span class="o">.</span><span class="n">Chatbot</span><span class="p">()</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">gradio</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="s1">&#39;What is this document about?&#39;</span><span class="p">)</span>
+            <span class="n">message</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">chat</span><span class="p">,</span> <span class="p">[</span><span class="n">chatbot</span><span class="p">,</span> <span class="n">message</span><span class="p">],</span> <span class="n">chatbot</span><span class="p">)</span>
+    <span class="n">demo</span><span class="o">.</span><span class="n">queue</span><span class="p">()</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="kc">True</span>
+    <span class="n">demo</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipymock</span> <span class="kn">import</span> <span class="n">do</span>
+<span class="kn">from</span> <span class="nn">ipymock.browser</span> <span class="kn">import</span> <span class="n">common</span><span class="p">,</span> <span class="n">get_conversation</span><span class="p">,</span> <span class="n">mock_openai</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">common</span><span class="o">.</span><span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">do</span><span class="p">(</span>
+    <span class="n">mock_openai</span><span class="o">=</span><span class="n">mock_openai</span><span class="p">,</span>
+    <span class="n">test_demo</span><span class="o">=</span><span class="n">test_demo</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+=&gt; no.0  ::tools::test_demo  setup  passed
+
+Running on local URL:  http://127.0.0.1:7860
+
+To create a public link, set `share=True` in `launch()`.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div><iframe src="http://127.0.0.1:7860/" width="100%" height="500" allow="autoplay; camera; microphone; clipboard-read; clipboard-write;" frameborder="0" allowfullscreen></iframe></div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+messages_in_chinese: [{&#39;role&#39;: &#39;系统&#39;, &#39;content&#39;: &#39;你是一个 AI 代理。请用中文在三句话之内概括聊天内容。&#39;}]
+
+Summarizing the chat history...
+
+Summarized Histoy: 本文讨论 TerraUSD 稳定币的稳定机制和去年的脱锚事件，并强调了维持“基础锚定市场”和“外部锚定市场”的套利行为所控制的市场的规模比较对于了解稳定币的稳定性很重要。最后，文章提出了将“外部锚定市场”转化为“基础锚定市场”是提高系统稳定性的唯一方法。
+
+Retrieving extra information...
+[575.85126 580.8882  583.3136  587.01587 588.3385  609.59955 610.3556
+ 611.7924  611.7924  611.7924  612.34534 612.8718  613.65656 614.2593
+ 617.09534 619.9896  622.2654  624.4966  624.9232  625.8043 ]
+[ 6397  6622  3147 12978  4241  4792 11808  3182  3861  5811  6711  3874
+  8512  2782  6918  1994 13386  3155  5450 12342]
+
+result: 实际上，这是指我们的心思、情感和意志，从神以外的各样事物中蒙拯救，而固定在神这唯一的对象和独一的目标上。
+因此，一个地方召会建立在其上的召会立场，必须是由“一”所构成，并在“一”里得维系；这一乃是由那灵执行，并由召会所在地保守的（李常受文集一九九三年第二册，九○至九一页）。
+I.　The Lord&#39;s recovery is unique, and it must be absolutely pure, single, and holy, without any mixture; thus, we need Ezras and Nehemiahs to carry out a purifying work; in all the steps of the Lord&#39;s recovery, there is the need of purification:
+要履行同工或长老的义务，就必须有清洁的心，在主的恢复中，在存心、目的、动机和行动上，洁除了任何形式的狡猾雄心。
+……我们若不应用这原则，一切未受钉十字架察验的天然性能、才干和美德，在我们中间就会像“野兽”一样。
+我们必须非常纯净，使圣别的种类永远不会与任何外邦的事物混合（李常受文集一九六九年第二册，四九六至四九七页）。
+E.　Nehemiah, as the governor, in the position of a king, was a man with a pure heart for the rebuilding of Jerusalem&#39;s wall in carrying out God&#39;s economy; he was a pattern of what a leader among God&#39;s people should be—cf. 1 Tim. 3:2-7; 1 Pet. 5:1-3:
+三　对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。
+三　对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。
+三　对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。
+本篇信息的篇题是“洁净被掳归回之人的内在意义”。
+我们……还要进一步的，把一切不好的存心，不该有的用意，不单纯的倾向，不正当的意志，有搀杂的情感等等，也都对付干净，然后灵才不只能出来，并且出来了，还能是正直的、纯净的。
+2.　The problem is that we have come back from Babylon to Jerusalem, yet at Jerusalem we may still keep many things for our own interests; we may not offer everything on the altar for God&#39;s interests and for God&#39;s satisfaction—Rom. 12:1:
+在主恢复之外的人无法理解我们中间到底是怎么运作的。
+对付灵重在对付我们里面不纯的动机、存心和其他杂质（帖前五23，提后一7）。
+这里所说重新构成的需要，有如以色列人从埃及出来之时的需要；但从巴比伦归回的百姓因着和外邦人通婚而有了搀杂，使得情形更加艰难。
+B.　Recovery means the restoration or return to a normal condition after a damage or a loss has been incurred; recovery means to go back to God&#39;s original intention and standard as revealed in the Scriptures, which is according to the present advance of His recovery of the contents of God&#39;s eternal economy:
+a.　The Lord&#39;s recovery is the holy seed; we must be so pure that the holy seed will never be mingled with anything heathen.
+1.　In Romans 14 Paul was liberal and gracious regarding the receiving of those who differ in doctrine or practice; however, in Romans 16:17 he was unyielding and resolute in saying that we must &#34;mark those who make divisions and causes of stumbling contrary to the teaching which you have learned, and turn away from them.&#34;
+这两件事虽然简单，却会使我们有正确的思维，以领会本篇关于历代志中特别之事内在意义的信息。
+
+
+chats_in_chinese: [{&#39;role&#39;: &#39;系统&#39;, &#39;content&#39;: &#39;你是一个提供有用建议的 AI 助手。\n你被提供了一份长文档的一部分（额外信息）和一个问题。\n请根据我所提供的文本提供会话式的回答。\n你只应该提供与下面的文本相关的超链接。\n**不要**编造超链接。\n如果在下面的文本中找不到答案，可以使用你先前所知道的知识，\n但在大多数情况下，答案是在文本中的。\n请用中文以 Markdown 格式回答。\n&#39;}, {&#39;role&#39;: &#39;用户&#39;, &#39;content&#39;: &#39;额外信息：\n1.\u3000In Romans 14 Paul was liberal and gracious regarding the receiving of those who differ in doctrine or practice; however, in Romans 16:17 he was unyielding and resolute in saying that we must &#34;mark those who make divisions and causes of stumbling contrary to the teaching which you have learned, and turn away from them.&#34;\n1.\u3000It is very difficult to find a person whose spirit is pure (7:1); pureness is the prerequisite in the leadership and a basic condition of our service (1 Tim. 3:9; 1:5); the problem of mixture is the greatest problem among workers; impureness is often the source of misunderstanding and suspicion (2 Tim. 1:3; 1 Tim. 3:9; Titus 1:15).\n反之，我们该问这里的真理是什么，也该问顺从真理是什么意思。\nA.\u3000All of us should look to the Lord and pray that we will have dispensational value to God; we need to ask ourselves what we are doing to close this dispensation and to bring in the next age, the kingdom age; this is a special time, so there is the need of special believers to do a special work.\nVI.\u3000With God\&#39;s move, as the divine history, in man\&#39;s history, there is the new creation—the new man with a new heart, a new spirit, a new life, a new nature, a new history, and a new consummation; we praise the Lord that we are in the divine history, experiencing and enjoying the mysterious, divine things for our organic salvation, so that we may make ourselves ready to become His overcoming bride to bring Him back—Hymns, #16; Rom. 5:10, 17-18, 21; 6:4; Ezek. 36:26; 2 Cor. 3:16-18; Matt. 5:8; Titus 3:5; Eph. 5:26-27; 6:17-18; Rev. 19:7; Matt. 24:44; 25:10.\n用这样的题目作为本次训练的总结，甚至作整本圣经结晶读经的总结，似乎让人感到意外。\nC.\u3000There was the need of teaching and reconstitution to bring the people of God into a culture that was according to God, a culture that expressed God; this kind of culture requires a great deal of education—v. 8.\n1.\u3000A factious man is a heretical, sectarian man who causes divisions by forming parties in the church according to his own opinions; in order to maintain good order in the church, a factious, divisive person should be refused, rejected, after a first and second admonition—v. 10.\n以赛亚为什么会得到这一个结论？又怎么根据这一个结论，而有了这一个说法？如果你把整卷以赛亚书都读过，你就能读出那一个原因。\nB.\u3000Recovery means the restoration or return to a normal condition after a damage or a loss has been incurred; recovery means to go back to God\&#39;s original intention and standard as revealed in the Scriptures, which is according to the present advance of His recovery of the contents of God\&#39;s eternal economy:\n1.\u3000Literally, the Greek words rendered &#34;faith&#34; mean &#34;the faith&#34;; this denotes the persistent faith for our persistent prayer, like that of the widow.\nI.\u3000The intrinsic significance of Ezra\&#39;s ministry is embodied in the words purification, education, and reconstitution; the intrinsic significance of Nehemiah\&#39;s leadership is embodied in the words separation, protection, and expression; we need to cooperate with the Lord in His heavenly ministry to build up the church as the house of God and the kingdom of God by living out and working out the New Jerusalem according to this intrinsic significance—1 Kings 8:48; Psa. 48:1-2; 1 Tim. 3:15; Eph. 2:21-22.\n”但我还要问：“你是为着什么赞美主？是什么时候赞美主呢？是一切都顺利，一切都美好的时候赞美主么？当你在手术台上的时候，能不能赞美主呢？当你要动心脏手术，在加护病房里，或是当你所爱的人过世的时候，你能不能赞美呢？”我们不是为着任何事件赞美主。\nC.\u3000The law makes demands on man according to what God is; grace supplies man with what God is to meet what God demands; grace is God enjoyed by man—John 1:16-17; Gal. 6:18; 2 Cor. 13:14; 12:9; 1 Pet. 4:10; Eph. 3:2; 4:29; 6:24.\nb.\u3000If we see that the prayers of the greatest worth are prayers in ascension, then we can understand that prayer is a warfare, and we will utter prayers of warfare; such is the nature of the prayer spoken of in Ephesians 6:\n3.\u3000If a church goes astray or is misled, the apostles have the obligation and responsibility to deal with the situation according to God\&#39;s word, which has authority—vv. 26-27; 2 Cor. 10:6; 2 Tim. 1:13; 4:2.\nThe Intrinsic Significance of the Purification of the Returned Captives\n2.\u3000We all need to be helped through the Life-studies and the Recovery Version with the footnotes to see the intrinsic significance of the word of the Bible—Neh. 8:8, 13.\nB.\u3000They were unaware that the dispensation of law was altogether over, that the dispensation of grace should be fully honored, and that any disregard of the distinction between these two dispensations would be against God\&#39;s dispensational administration and would be a great damage to God\&#39;s economical plan for the building up of the church as the expression of Christ—John 1:16-17; Rev. 2:9.\nIII.\u3000In the Lord\&#39;s recovery we need Ezras, priestly teachers who contact God, who are saturated with God, who are one with God, who are mingled with God, who are filled with God, and who are skillful in the Word of God; this is the kind of person who is qualified to be a teacher in the recovery—Matt. 13:52; 2 Cor. 3:5-6; 1 Tim. 2:7; 2 Tim. 1:11:\n\n\n问题：What is this document about?&#39;}, {&#39;role&#39;: &#39;用户&#39;, &#39;content&#39;: &#39;额外信息：\n实际上，这是指我们的心思、情感和意志，从神以外的各样事物中蒙拯救，而固定在神这唯一的对象和独一的目标上。\n因此，一个地方召会建立在其上的召会立场，必须是由“一”所构成，并在“一”里得维系；这一乃是由那灵执行，并由召会所在地保守的（李常受文集一九九三年第二册，九○至九一页）。\nI.\u3000The Lord\&#39;s recovery is unique, and it must be absolutely pure, single, and holy, without any mixture; thus, we need Ezras and Nehemiahs to carry out a purifying work; in all the steps of the Lord\&#39;s recovery, there is the need of purification:\n要履行同工或长老的义务，就必须有清洁的心，在主的恢复中，在存心、目的、动机和行动上，洁除了任何形式的狡猾雄心。\n……我们若不应用这原则，一切未受钉十字架察验的天然性能、才干和美德，在我们中间就会像“野兽”一样。\n我们必须非常纯净，使圣别的种类永远不会与任何外邦的事物混合（李常受文集一九六九年第二册，四九六至四九七页）。\nE.\u3000Nehemiah, as the governor, in the position of a king, was a man with a pure heart for the rebuilding of Jerusalem\&#39;s wall in carrying out God\&#39;s economy; he was a pattern of what a leader among God\&#39;s people should be—cf. 1 Tim. 3:2-7; 1 Pet. 5:1-3:\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n本篇信息的篇题是“洁净被掳归回之人的内在意义”。\n我们……还要进一步的，把一切不好的存心，不该有的用意，不单纯的倾向，不正当的意志，有搀杂的情感等等，也都对付干净，然后灵才不只能出来，并且出来了，还能是正直的、纯净的。\n2.\u3000The problem is that we have come back from Babylon to Jerusalem, yet at Jerusalem we may still keep many things for our own interests; we may not offer everything on the altar for God\&#39;s interests and for God\&#39;s satisfaction—Rom. 12:1:\n在主恢复之外的人无法理解我们中间到底是怎么运作的。\n对付灵重在对付我们里面不纯的动机、存心和其他杂质（帖前五23，提后一7）。\n这里所说重新构成的需要，有如以色列人从埃及出来之时的需要；但从巴比伦归回的百姓因着和外邦人通婚而有了搀杂，使得情形更加艰难。\nB.\u3000Recovery means the restoration or return to a normal condition after a damage or a loss has been incurred; recovery means to go back to God\&#39;s original intention and standard as revealed in the Scriptures, which is according to the present advance of His recovery of the contents of God\&#39;s eternal economy:\na.\u3000The Lord\&#39;s recovery is the holy seed; we must be so pure that the holy seed will never be mingled with anything heathen.\n1.\u3000In Romans 14 Paul was liberal and gracious regarding the receiving of those who differ in doctrine or practice; however, in Romans 16:17 he was unyielding and resolute in saying that we must &#34;mark those who make divisions and causes of stumbling contrary to the teaching which you have learned, and turn away from them.&#34;\n这两件事虽然简单，却会使我们有正确的思维，以领会本篇关于历代志中特别之事内在意义的信息。\n\n\n问题：What is this document about?&#39;}]
+
+ChatGPT: 根据文本，召会立场必须由“一”所构成，并在“一”里得维系；这是由那灵执行，并由召会所在地保守的。因此，要履行同工或长老的义务，就必须有清洁的心，在主的恢复中，在存心、目的、动机和行动上，洁除任何形式的狡猾雄心。需要对付灵重在对付我
+
+messages_in_chinese: [{&#39;role&#39;: &#39;系统&#39;, &#39;content&#39;: &#39;你是一个 AI 代理。请用中文在三句话之内概括聊天内容。&#39;}]
+
+Summarizing the chat history...
+
+Summarized Histoy: 好的，这次对话主要涉及到了对人类情感的理解、人工智能在医疗行业的应用、以及人工智能与工作的关系。
+
+Retrieving extra information...
+[560.0207  580.6549  599.6284  603.5715  604.7684  605.70654 606.26
+ 607.6616  609.8817  616.5469  618.50104 620.88055 622.4879  622.8662
+ 624.0831  626.81396 627.3507  628.6865  629.2973  631.0054 ]
+[ 2690 12691  6988  7878 10302  3872  6436  7779  1832  1875   263  2023
+  1885  3506 12498  2051  1817  2959 12342  7023]
+
+result: 《对同工长老们以及爱主寻求主者爱心的话》一书，第四章的题目就是“正确的跟随人”。
+”但我还要问：“你是为着什么赞美主？是什么时候赞美主呢？是一切都顺利，一切都美好的时候赞美主么？当你在手术台上的时候，能不能赞美主呢？当你要动心脏手术，在加护病房里，或是当你所爱的人过世的时候，你能不能赞美呢？”我们不是为着任何事件赞美主。
+我们不该把启示录二十一、二十二章里“纯”、“明净”、“透明”这些辞视为理所当然，我们读的时候，需要对这些辞有更深入、更扩大的领会。
+本篇信息乃是要将这些辞一一应用于我们的经历。
+并且他这话不是凭空说的，也不是想像出来的；乃是他根据许多的事实，所产生出来的一个感觉。
+我们每有一个行动，或者要说一句话，不只要问对不对，好不好，还要追查里面的存心清洁么？动机单纯么？目的专为着神么？有什么自私的用意么？有我们自己的倾向么？（李常受文集一九五三年第三册，六一四至六一六、六一九页）。
+因为是讲关乎创造方面的事，就是一章里提到人，也是关乎创造方面、能力方面的。
+当我们借由这分职事的帮助来读主话的时候，就能看见主的话是何等美妙。
+到那时候你就晓得如何向别人陈明真理，不是仅仅激发或激动人，而是使人扎实，得着真理的构成（李常受文集一九八四年第二册，四○二至四○三页）。
+”经学家的功用需要配上祭司的功用；祭司的功用是借着我们在灵里与主联合，与主是一而享受主，但其中也需要话。
+可能你经历一段感情的结束，当时不明白为什么会发生这样的事，日后回想，才懂得感谢神。
+这里所列诗篇一百一十九篇的经节，给我们看见诗人不仅爱神、寻求神的说话，他也有祭司经学家的功用。
+我们都该盼望被人这样描述：这位弟兄对圣经爱不释手，并且他手中神的话就是他手中神的智慧。
+在篇题里我们看见有人的历史，然而在人的历史里有神的历史。
+有些人可能第一次听见这样的话，在此我们也只能讲到一些基本的内容。
+”（世界局势与神的行动，三七页）长老与同工都该是祭司教师，就是习练于圣经中的话语，并且善于教导。
+我和你们交通这事，是要让你们晓得我们的书撰写的方式。
+在《对同工长老们以及爱主寻求主者爱心的话》一书中，有对我们的警告：“你在跟随任何你所欣赏，并叫你受吸引之同工的事上，必须谨慎。
+这两件事虽然简单，却会使我们有正确的思维，以领会本篇关于历代志中特别之事内在意义的信息。
+”我们各人都要在与主私下、亲密的交通中向主祷告，以回应本篇信息的话。
+
+
+chats_in_chinese: [{&#39;role&#39;: &#39;系统&#39;, &#39;content&#39;: &#39;你是一个提供有用建议的 AI 助手。\n你被提供了一份长文档的一部分（额外信息）和一个问题。\n请根据我所提供的文本提供会话式的回答。\n你只应该提供与下面的文本相关的超链接。\n**不要**编造超链接。\n如果在下面的文本中找不到答案，可以使用你先前所知道的知识，\n但在大多数情况下，答案是在文本中的。\n请用中文以 Markdown 格式回答。\n&#39;}, {&#39;role&#39;: &#39;用户&#39;, &#39;content&#39;: &#39;额外信息：\n1.\u3000In Romans 14 Paul was liberal and gracious regarding the receiving of those who differ in doctrine or practice; however, in Romans 16:17 he was unyielding and resolute in saying that we must &#34;mark those who make divisions and causes of stumbling contrary to the teaching which you have learned, and turn away from them.&#34;\n1.\u3000It is very difficult to find a person whose spirit is pure (7:1); pureness is the prerequisite in the leadership and a basic condition of our service (1 Tim. 3:9; 1:5); the problem of mixture is the greatest problem among workers; impureness is often the source of misunderstanding and suspicion (2 Tim. 1:3; 1 Tim. 3:9; Titus 1:15).\n反之，我们该问这里的真理是什么，也该问顺从真理是什么意思。\nA.\u3000All of us should look to the Lord and pray that we will have dispensational value to God; we need to ask ourselves what we are doing to close this dispensation and to bring in the next age, the kingdom age; this is a special time, so there is the need of special believers to do a special work.\nVI.\u3000With God\&#39;s move, as the divine history, in man\&#39;s history, there is the new creation—the new man with a new heart, a new spirit, a new life, a new nature, a new history, and a new consummation; we praise the Lord that we are in the divine history, experiencing and enjoying the mysterious, divine things for our organic salvation, so that we may make ourselves ready to become His overcoming bride to bring Him back—Hymns, #16; Rom. 5:10, 17-18, 21; 6:4; Ezek. 36:26; 2 Cor. 3:16-18; Matt. 5:8; Titus 3:5; Eph. 5:26-27; 6:17-18; Rev. 19:7; Matt. 24:44; 25:10.\n用这样的题目作为本次训练的总结，甚至作整本圣经结晶读经的总结，似乎让人感到意外。\nC.\u3000There was the need of teaching and reconstitution to bring the people of God into a culture that was according to God, a culture that expressed God; this kind of culture requires a great deal of education—v. 8.\n1.\u3000A factious man is a heretical, sectarian man who causes divisions by forming parties in the church according to his own opinions; in order to maintain good order in the church, a factious, divisive person should be refused, rejected, after a first and second admonition—v. 10.\n以赛亚为什么会得到这一个结论？又怎么根据这一个结论，而有了这一个说法？如果你把整卷以赛亚书都读过，你就能读出那一个原因。\nB.\u3000Recovery means the restoration or return to a normal condition after a damage or a loss has been incurred; recovery means to go back to God\&#39;s original intention and standard as revealed in the Scriptures, which is according to the present advance of His recovery of the contents of God\&#39;s eternal economy:\n1.\u3000Literally, the Greek words rendered &#34;faith&#34; mean &#34;the faith&#34;; this denotes the persistent faith for our persistent prayer, like that of the widow.\nI.\u3000The intrinsic significance of Ezra\&#39;s ministry is embodied in the words purification, education, and reconstitution; the intrinsic significance of Nehemiah\&#39;s leadership is embodied in the words separation, protection, and expression; we need to cooperate with the Lord in His heavenly ministry to build up the church as the house of God and the kingdom of God by living out and working out the New Jerusalem according to this intrinsic significance—1 Kings 8:48; Psa. 48:1-2; 1 Tim. 3:15; Eph. 2:21-22.\n”但我还要问：“你是为着什么赞美主？是什么时候赞美主呢？是一切都顺利，一切都美好的时候赞美主么？当你在手术台上的时候，能不能赞美主呢？当你要动心脏手术，在加护病房里，或是当你所爱的人过世的时候，你能不能赞美呢？”我们不是为着任何事件赞美主。\nC.\u3000The law makes demands on man according to what God is; grace supplies man with what God is to meet what God demands; grace is God enjoyed by man—John 1:16-17; Gal. 6:18; 2 Cor. 13:14; 12:9; 1 Pet. 4:10; Eph. 3:2; 4:29; 6:24.\nb.\u3000If we see that the prayers of the greatest worth are prayers in ascension, then we can understand that prayer is a warfare, and we will utter prayers of warfare; such is the nature of the prayer spoken of in Ephesians 6:\n3.\u3000If a church goes astray or is misled, the apostles have the obligation and responsibility to deal with the situation according to God\&#39;s word, which has authority—vv. 26-27; 2 Cor. 10:6; 2 Tim. 1:13; 4:2.\nThe Intrinsic Significance of the Purification of the Returned Captives\n2.\u3000We all need to be helped through the Life-studies and the Recovery Version with the footnotes to see the intrinsic significance of the word of the Bible—Neh. 8:8, 13.\nB.\u3000They were unaware that the dispensation of law was altogether over, that the dispensation of grace should be fully honored, and that any disregard of the distinction between these two dispensations would be against God\&#39;s dispensational administration and would be a great damage to God\&#39;s economical plan for the building up of the church as the expression of Christ—John 1:16-17; Rev. 2:9.\nIII.\u3000In the Lord\&#39;s recovery we need Ezras, priestly teachers who contact God, who are saturated with God, who are one with God, who are mingled with God, who are filled with God, and who are skillful in the Word of God; this is the kind of person who is qualified to be a teacher in the recovery—Matt. 13:52; 2 Cor. 3:5-6; 1 Tim. 2:7; 2 Tim. 1:11:\n\n\n问题：What is this document about?&#39;}, {&#39;role&#39;: &#39;用户&#39;, &#39;content&#39;: &#39;额外信息：\n实际上，这是指我们的心思、情感和意志，从神以外的各样事物中蒙拯救，而固定在神这唯一的对象和独一的目标上。\n因此，一个地方召会建立在其上的召会立场，必须是由“一”所构成，并在“一”里得维系；这一乃是由那灵执行，并由召会所在地保守的（李常受文集一九九三年第二册，九○至九一页）。\nI.\u3000The Lord\&#39;s recovery is unique, and it must be absolutely pure, single, and holy, without any mixture; thus, we need Ezras and Nehemiahs to carry out a purifying work; in all the steps of the Lord\&#39;s recovery, there is the need of purification:\n要履行同工或长老的义务，就必须有清洁的心，在主的恢复中，在存心、目的、动机和行动上，洁除了任何形式的狡猾雄心。\n……我们若不应用这原则，一切未受钉十字架察验的天然性能、才干和美德，在我们中间就会像“野兽”一样。\n我们必须非常纯净，使圣别的种类永远不会与任何外邦的事物混合（李常受文集一九六九年第二册，四九六至四九七页）。\nE.\u3000Nehemiah, as the governor, in the position of a king, was a man with a pure heart for the rebuilding of Jerusalem\&#39;s wall in carrying out God\&#39;s economy; he was a pattern of what a leader among God\&#39;s people should be—cf. 1 Tim. 3:2-7; 1 Pet. 5:1-3:\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n三\u3000对付灵重在对付我们里面不纯的动机、存心和其他杂质—帖前五23，提后一7。\n本篇信息的篇题是“洁净被掳归回之人的内在意义”。\n我们……还要进一步的，把一切不好的存心，不该有的用意，不单纯的倾向，不正当的意志，有搀杂的情感等等，也都对付干净，然后灵才不只能出来，并且出来了，还能是正直的、纯净的。\n2.\u3000The problem is that we have come back from Babylon to Jerusalem, yet at Jerusalem we may still keep many things for our own interests; we may not offer everything on the altar for God\&#39;s interests and for God\&#39;s satisfaction—Rom. 12:1:\n在主恢复之外的人无法理解我们中间到底是怎么运作的。\n对付灵重在对付我们里面不纯的动机、存心和其他杂质（帖前五23，提后一7）。\n这里所说重新构成的需要，有如以色列人从埃及出来之时的需要；但从巴比伦归回的百姓因着和外邦人通婚而有了搀杂，使得情形更加艰难。\nB.\u3000Recovery means the restoration or return to a normal condition after a damage or a loss has been incurred; recovery means to go back to God\&#39;s original intention and standard as revealed in the Scriptures, which is according to the present advance of His recovery of the contents of God\&#39;s eternal economy:\na.\u3000The Lord\&#39;s recovery is the holy seed; we must be so pure that the holy seed will never be mingled with anything heathen.\n1.\u3000In Romans 14 Paul was liberal and gracious regarding the receiving of those who differ in doctrine or practice; however, in Romans 16:17 he was unyielding and resolute in saying that we must &#34;mark those who make divisions and causes of stumbling contrary to the teaching which you have learned, and turn away from them.&#34;\n这两件事虽然简单，却会使我们有正确的思维，以领会本篇关于历代志中特别之事内在意义的信息。\n\n\n问题：What is this document about?&#39;}, {&#39;role&#39;: &#39;用户&#39;, &#39;content&#39;: &#39;额外信息：\n《对同工长老们以及爱主寻求主者爱心的话》一书，第四章的题目就是“正确的跟随人”。\n”但我还要问：“你是为着什么赞美主？是什么时候赞美主呢？是一切都顺利，一切都美好的时候赞美主么？当你在手术台上的时候，能不能赞美主呢？当你要动心脏手术，在加护病房里，或是当你所爱的人过世的时候，你能不能赞美呢？”我们不是为着任何事件赞美主。\n我们不该把启示录二十一、二十二章里“纯”、“明净”、“透明”这些辞视为理所当然，我们读的时候，需要对这些辞有更深入、更扩大的领会。\n本篇信息乃是要将这些辞一一应用于我们的经历。\n并且他这话不是凭空说的，也不是想像出来的；乃是他根据许多的事实，所产生出来的一个感觉。\n我们每有一个行动，或者要说一句话，不只要问对不对，好不好，还要追查里面的存心清洁么？动机单纯么？目的专为着神么？有什么自私的用意么？有我们自己的倾向么？（李常受文集一九五三年第三册，六一四至六一六、六一九页）。\n因为是讲关乎创造方面的事，就是一章里提到人，也是关乎创造方面、能力方面的。\n当我们借由这分职事的帮助来读主话的时候，就能看见主的话是何等美妙。\n到那时候你就晓得如何向别人陈明真理，不是仅仅激发或激动人，而是使人扎实，得着真理的构成（李常受文集一九八四年第二册，四○二至四○三页）。\n”经学家的功用需要配上祭司的功用；祭司的功用是借着我们在灵里与主联合，与主是一而享受主，但其中也需要话。\n可能你经历一段感情的结束，当时不明白为什么会发生这样的事，日后回想，才懂得感谢神。\n这里所列诗篇一百一十九篇的经节，给我们看见诗人不仅爱神、寻求神的说话，他也有祭司经学家的功用。\n我们都该盼望被人这样描述：这位弟兄对圣经爱不释手，并且他手中神的话就是他手中神的智慧。\n在篇题里我们看见有人的历史，然而在人的历史里有神的历史。\n有些人可能第一次听见这样的话，在此我们也只能讲到一些基本的内容。\n”（世界局势与神的行动，三七页）长老与同工都该是祭司教师，就是习练于圣经中的话语，并且善于教导。\n我和你们交通这事，是要让你们晓得我们的书撰写的方式。\n在《对同工长老们以及爱主寻求主者爱心的话》一书中，有对我们的警告：“你在跟随任何你所欣赏，并叫你受吸引之同工的事上，必须谨慎。\n这两件事虽然简单，却会使我们有正确的思维，以领会本篇关于历代志中特别之事内在意义的信息。\n”我们各人都要在与主私下、亲密的交通中向主祷告，以回应本篇信息的话。\n\n\n问题：这篇文档是关于什么的？&#39;}]
+
+ChatGPT: 请问这篇文章的主题是什么？
+
+这篇文章的主题是基督徒的信仰生活以及如何正确地跟随上帝。它提到了如何在生活中以正确的动机行动，如何在困难时仍然赞美上帝，以及如何通过阅读圣经来更好地了解上帝的话语。此外，文章还提到了作为基督徒的责任和角色，包括成为教师和祭司。
+Keyboard interruption in main thread... closing server.
+Closing server running on port: 7860
+=&gt; no.0  ::tools::test_demo  runtest  passed
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.embeddings</span> <span class="kn">import</span> <span class="n">HuggingFaceEmbeddings</span>
+<span class="n">HuggingFaceEmbeddings</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;GanymedeNil/text2vec-large-chinese&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>HuggingFaceEmbeddings(client=SentenceTransformer(
+  (0): Transformer({&#39;max_seq_length&#39;: 128, &#39;do_lower_case&#39;: False}) with Transformer model: BertModel 
+  (1): Pooling({&#39;word_embedding_dimension&#39;: 1024, &#39;pooling_mode_cls_token&#39;: False, &#39;pooling_mode_mean_tokens&#39;: True, &#39;pooling_mode_max_tokens&#39;: False, &#39;pooling_mode_mean_sqrt_len_tokens&#39;: False})
+), model_name=&#39;GanymedeNil/text2vec-large-chinese&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ChatGLM-6B"><a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM-6B">ChatGLM 6B</a><a class="anchor-link" href="#ChatGLM-6B">&#182;</a></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/THUDM/chatglm-6b">Hugging Face - ChatGLM 6B</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ninehills/chatglm-openai-api">https://github.com/ninehills/chatglm-openai-api</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Chinese-LLaMA-and-Alpaca"><a target="_blank" rel="noopener" href="https://github.com/ymcui/Chinese-LLaMA-Alpaca">Chinese LLaMA and Alpaca</a><a class="anchor-link" href="#Chinese-LLaMA-and-Alpaca">&#182;</a></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/ziqingyang/chinese-alpaca-lora-7b">Hugging Face - Chinese Alpaca LoRA 7B</a></li>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/ziqingyang/chinese-alpaca-lora-13b">Hugging Face - Chinese Alpaca LoRA 13B</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/04/19/Text2Vec/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2023-04-12 </div>
 			<div class="article-title"><a href="/2023/04/12/LangChain-Embeddings/" >LangChain Embeddings</a></div>						
 		</h3>
@@ -16713,837 +18688,6 @@ For documentation about Remix, please
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-03-21 </div>
-			<div class="article-title"><a href="/2023/03/21/Try-BioGPT/" >Try BioGPT</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/BioGPT">https://github.com/microsoft/BioGPT</a></li>
-<li><a target="_blank" rel="noopener" href="https://huggingface.co/docs/transformers/main/en/model_doc/biogpt">https://huggingface.co/docs/transformers/main/en/model_doc/biogpt</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>torchaudio
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Collecting torch
-  Using cached torch-2.0.0-cp310-none-macosx_10_9_x86_64.whl (139.8 MB)
-Collecting torchvision
-  Downloading torchvision-0.15.1-cp310-cp310-macosx_10_9_x86_64.whl (1.5 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.5/1.5 MB</span> <span class="ansi-red-fg">2.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
-Collecting torchaudio
-  Downloading torchaudio-2.0.1-cp310-cp310-macosx_10_9_x86_64.whl (3.9 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">3.9/3.9 MB</span> <span class="ansi-red-fg">3.3 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
-Collecting networkx
-  Downloading networkx-3.0-py3-none-any.whl (2.0 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">2.0/2.0 MB</span> <span class="ansi-red-fg">3.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
-Collecting sympy
-  Downloading sympy-1.11.1-py3-none-any.whl (6.5 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">6.5/6.5 MB</span> <span class="ansi-red-fg">3.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
-Requirement already satisfied: jinja2 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torch) (3.1.2)
-Requirement already satisfied: filelock in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torch) (3.9.0)
-Requirement already satisfied: typing-extensions in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torch) (4.4.0)
-Requirement already satisfied: numpy in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torchvision) (1.24.2)
-Collecting pillow!=8.3.*,&gt;=5.3.0
-  Downloading Pillow-9.4.0-2-cp310-cp310-macosx_10_10_x86_64.whl (3.3 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">3.3/3.3 MB</span> <span class="ansi-red-fg">3.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
-Requirement already satisfied: requests in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from torchvision) (2.28.1)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from jinja2-&gt;torch) (2.1.1)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;torchvision) (3.4)
-Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;torchvision) (2.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;torchvision) (2022.12.7)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;torchvision) (1.26.14)
-Collecting mpmath&gt;=0.19
-  Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">536.2/536.2 kB</span> <span class="ansi-red-fg">3.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
-Installing collected packages: mpmath, sympy, pillow, networkx, torch, torchvision, torchaudio
-Successfully installed mpmath-1.3.0 networkx-3.0 pillow-9.4.0 sympy-1.11.1 torch-2.0.0 torchaudio-2.0.1 torchvision-0.15.1
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-pip<span class="w"> </span>install<span class="w"> </span>transformers
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Collecting transformers
-  Downloading transformers-4.27.2-py3-none-any.whl (6.8 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">6.8/6.8 MB</span> <span class="ansi-red-fg">3.9 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
-Requirement already satisfied: requests in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (2.28.1)
-Requirement already satisfied: regex!=2019.12.17 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (2022.10.31)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (22.0)
-Requirement already satisfied: filelock in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (3.9.0)
-Collecting tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1
-  Downloading tokenizers-0.13.2-cp310-cp310-macosx_10_11_x86_64.whl (3.8 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">3.8/3.8 MB</span> <span class="ansi-red-fg">3.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
-Collecting huggingface-hub&lt;1.0,&gt;=0.11.0
-  Downloading huggingface_hub-0.13.3-py3-none-any.whl (199 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">199.8/199.8 kB</span> <span class="ansi-red-fg">3.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
-Requirement already satisfied: tqdm&gt;=4.27 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (4.65.0)
-Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (6.0)
-Requirement already satisfied: numpy&gt;=1.17 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from transformers) (1.24.2)
-Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from huggingface-hub&lt;1.0,&gt;=0.11.0-&gt;transformers) (4.4.0)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;transformers) (3.4)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;transformers) (1.26.14)
-Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;transformers) (2.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from requests-&gt;transformers) (2022.12.7)
-Installing collected packages: tokenizers, huggingface-hub, transformers
-Successfully installed huggingface-hub-0.13.3 tokenizers-0.13.2 transformers-4.27.2
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">set_seed</span><span class="p">,</span> <span class="n">BioGptTokenizer</span><span class="p">,</span> <span class="n">BioGptForCausalLM</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加载模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">BioGptForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;microsoft/biogpt-large&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipymock.browser</span> <span class="kn">import</span> <span class="n">start_conversation</span> <span class="k">as</span> <span class="n">ask</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">用 Hugging Face 下载的模型一般存储在哪里？</span>
-<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
-    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
-    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<p>使用 Hugging Face 下载的模型一般存储在本地的 <code>~/.cache/huggingface/</code> 目录下。该目录下会按照模型名称和版本号的组合来创建相应的子目录，存储着相应的模型文件和元数据文件。可以通过指定 <code>cache_dir</code> 参数来修改默认的存储路径。</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/huggingface/hub/models--microsoft--biogpt-large/
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-du<span class="w"> </span>-sh<span class="w"> </span>~/.cache/huggingface/hub/models--microsoft--biogpt-large/
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>5.9G	/Users/saintway/.cache/huggingface/hub/models--microsoft--biogpt-large/
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>可以使用以下代码来估计 Hugging Face 模型文件的参数总量：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;huggingface/transformers&#39;</span><span class="p">,</span> <span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
-<span class="n">num_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of parameters: </span><span class="si">{</span><span class="n">num_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-<p>其中，<code>model_name</code> 是指 Hugging Face 模型的名称，例如 <code>gpt2</code>, <code>bert-base-uncased</code>等。</p>
-<p>这段代码会加载相应的模型，并统计其中可训练参数的数量，输出结果为参数总量。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>要估计 Hugging Face 模型文件的参数总量，可以使用 Hugging Face 库中的 <code>num_parameters()</code> 方法。以下是一个示例，说明如何使用 Hugging Face 库来估计模型的参数总量：</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
-<span class="n">num_params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">num_parameters</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The model has </span><span class="si">{</span><span class="n">num_params</span><span class="si">}</span><span class="s2"> parameters.&quot;</span><span class="p">)</span>
-</pre></div>
-<p>在这里，<code>AutoModel.from_pretrained()</code> 方法用于加载模型。将 <code>&quot;model_name&quot;</code> 替换为你想要估计参数总量的模型名称。然后，<code>num_parameters()</code> 方法返回模型中的总参数数量。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;microsoft/biogpt-large&#39;</span><span class="p">)</span>
-<span class="n">num_params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">num_parameters</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The model microsoft/biogpt-large has </span><span class="si">{</span><span class="n">num_params</span><span class="si">}</span><span class="s2"> parameters.&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Some weights of the model checkpoint at microsoft/biogpt-large were not used when initializing BioGptModel: [&#39;output_projection.weight&#39;]
-- This IS expected if you are initializing BioGptModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing BioGptModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>The model microsoft/biogpt-large has 1571188800 parameters.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>This message is a warning that some of the weights in the pre-trained model checkpoint at `microsoft/biogpt-large` were not used when initializing the `BioGptModel`. 
-
-This warning message indicates that this is an expected behavior if you are initializing a `BioGptModel` from a checkpoint of a model that was trained on a different task or has a different architecture, like initializing a `BertForSequenceClassification` model from a `BertForPreTraining` model.
-
-However, if you are initializing a `BioGptModel` from a checkpoint of a model that you expect to be exactly identical, such as initializing a `BertForSequenceClassification` model from another `BertForSequenceClassification` model, this warning is not expected.
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>这条信息是一个警告，它表示在初始化 `BioGptModel` 时，`microsoft/biogpt-large` 预训练模型检查点中的一些权重没有被使用。
-
-这个警告信息表明，如果您正在从一个针对不同任务或具有不同架构的模型的检查点初始化 `BioGptModel`，比如从 `BertForPreTraining` 模型初始化 `BertForSequenceClassification` 模型，那么这是一种预期行为。
-
-但是，如果您正在从您预期完全相同的模型检查点初始化 `BioGptModel`，例如从另一个 `BertForSequenceClassification` 模型初始化 `BertForSequenceClassification` 模型，那么这个警告是不应该出现的。
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-pip<span class="w"> </span>install<span class="w"> </span>sacremoses
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Collecting sacremoses
-  Downloading sacremoses-0.0.53.tar.gz (880 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">880.6/880.6 kB</span> <span class="ansi-red-fg">3.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>00:0100:01
-  Preparing metadata (setup.py): started
-  Preparing metadata (setup.py): finished with status &#39;done&#39;
-Requirement already satisfied: regex in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from sacremoses) (2022.10.31)
-Requirement already satisfied: six in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from sacremoses) (1.16.0)
-Requirement already satisfied: click in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from sacremoses) (8.1.3)
-Collecting joblib
-  Downloading joblib-1.2.0-py3-none-any.whl (297 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">298.0/298.0 kB</span> <span class="ansi-red-fg">3.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
-Requirement already satisfied: tqdm in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from sacremoses) (4.65.0)
-Building wheels for collected packages: sacremoses
-  Building wheel for sacremoses (setup.py): started
-  Building wheel for sacremoses (setup.py): finished with status &#39;done&#39;
-  Created wheel for sacremoses: filename=sacremoses-0.0.53-py3-none-any.whl size=895241 sha256=ef1e1d98064b22881c14de405dff663a3972fb9f39a92195a28612459e1de7f9
-  Stored in directory: /Users/saintway/Library/Caches/pip/wheels/00/24/97/a2ea5324f36bc626e1ea0267f33db6aa80d157ee977e9e42fb
-Successfully built sacremoses
-Installing collected packages: joblib, sacremoses
-Successfully installed joblib-1.2.0 sacremoses-0.0.53
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加载分词器</span>
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BioGptTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;microsoft/biogpt-large&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">用 Hugging Face 下载的 tokenizer 一般存储在哪里？</span>
-<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
-    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
-    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<p>使用 Hugging Face 下载的 tokenizer 存储位置取决于所选择的 tokenizer。一些 tokenizer 会默认存储在缓存目录中，例如 <code>$HOME/.cache/huggingface/tokenizers</code>，而其他 tokenizer 可能需要手动指定保存位置。在使用 tokenizer 时，可以使用 <code>from_pretrained</code> 方法指定 tokenizer 的名称和路径来加载已下载的 tokenizer。例如：</p>
-<pre><code>from transformers import AutoTokenizer
-
-tokenizer = AutoTokenizer.from_pretrained(&quot;bert-base-uncased&quot;, cache_dir=&quot;/path/to/tokenizer&quot;)
-</code></pre>
-<p>这里 <code>cache_dir</code> 参数指定了 tokenizer 存储的路径。如果未指定该参数，则默认使用缓存目录。</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-ls<span class="w"> </span>-lah<span class="w"> </span>~/.cache/huggingface/hub/models--microsoft--biogpt-large/snapshots/c6a5136a91c5e3150d9f05ab9d33927a3210a22e
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>total 0
-drwxr-xr-x  9 saintway  staff   288B Mar 21 23:18 <span class="ansi-cyan-intense-fg ansi-bold">.</span>
-drwxr-xr-x  3 saintway  staff    96B Mar 21 22:31 <span class="ansi-cyan-intense-fg ansi-bold">..</span>
-lrwxr-xr-x  1 saintway  staff    52B Mar 21 22:31 <span class="ansi-magenta-fg">config.json</span> -&gt; ../../blobs/6781cfc676cb2384020b1b5fdd04817536c723fb
-lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">generation_config.json</span> -&gt; ../../blobs/9475ded3180a2d64c6903ebcf2aeb0705703c12a
-lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">merges.txt</span> -&gt; ../../blobs/01e121aa8483873879577612f38761f2fd9ce5ae
-lrwxr-xr-x  1 saintway  staff    76B Mar 21 23:17 <span class="ansi-magenta-fg">pytorch_model.bin</span> -&gt; ../../blobs/d1753ea5af6449aaf63a105a59a619632b78cbfc2c294ba78f3164156af8c8bf
-lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">special_tokens_map.json</span> -&gt; ../../blobs/e66da1703089a0329ca9eaf51638805d8ce1b322
-lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">tokenizer_config.json</span> -&gt; ../../blobs/e044f8771c083e25f9accfecb9c8f1408cb3c42f
-lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">vocab.json</span> -&gt; ../../blobs/66ddce4fab432cd017c0db812211c30d25acce1e
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 设置随机数种子</span>
-<span class="n">set_seed</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 设置 pipeline</span>
-<span class="n">generator</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
-    <span class="s1">&#39;text-generation&#39;</span><span class="p">,</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span>
-    <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>
-<span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 生成文本</span>
-<span class="c1"># max new tokens：生成的最多 token 数量</span>
-<span class="c1"># num_return_sequences：生成的序列个数</span>
-<span class="n">generator</span><span class="p">(</span><span class="s1">&#39;COVID 19 is&#39;</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[{&#39;generated_text&#39;: &#39;COVID 19 is an emerging pandemic viral, the virus cannot be eliminated completely in the absence of vaccine. A prophylactic approach&#39;},
- {&#39;generated_text&#39;: &#39;COVID 19 is ongoing with several plans in the field; however the virus did not spread to Canada by 2 0 1&#39;},
- {&#39;generated_text&#39;: &#39;COVID 19 is a global health emergency. There are currently 2 million confirmed and over 2 6 0, 0 0 0&#39;},
- {&#39;generated_text&#39;: &#39;COVID 19 is a more virulent, recently emerged pandemic virus strain belonging to the Middle East-Africa 2 0 1 2&#39;},
- {&#39;generated_text&#39;: &#39;COVID 19 is at the threshold of approval as the first FDA-approved drug for treating IAVs. 1 2 1&#39;}]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">set_seed</span><span class="p">,</span> <span class="n">BioGptTokenizer</span><span class="p">,</span> <span class="n">BioGptForCausalLM</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加载模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">BioGptForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;microsoft/BioGPT-Large-PubMedQA&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加载分词器</span>
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BioGptTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;microsoft/BioGPT-Large-PubMedQA&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 设置随机数种子</span>
-<span class="n">set_seed</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 设置 pipeline</span>
-<span class="n">generator</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
-    <span class="s1">&#39;text-generation&#39;</span><span class="p">,</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span>
-    <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>
-<span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 生成文本</span>
-<span class="c1"># max new tokens：生成的最多 token 数量</span>
-<span class="c1"># num_return_sequences：生成的序列个数</span>
-<span class="n">generator</span><span class="p">(</span><span class="s1">&#39;question: What is Synaptotagmin-7? answer:&#39;</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">760</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[{&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7, a neuron-specific Synaptotagmin isoform, is concentrated at the synaptic vesicle membrane. Although it displays sequence similarity to synaptotagmin-1, it is unclear whether it functions as a Ca (2 +) sensor in fast neurotransmission. We generated mutant mice lacking Synaptotagmin-7. Although basic synaptic transmission appeared largely normal, the mice displayed deficiencies in motor coordination and hyperactivity. At the behavioral level, the phenotypes were similar but less severe than those observed in mice lacking synaptotagmin-1. Consistent with this, the Ca (2 +) dependence of evoked neurotransmitter release was reduced but not abolished in mutant neuromuscular synapses. Nevertheless, both fast and slow modes of synaptic vesicle exocytosis were affected. Our data suggest that Synaptotagmin-7 is not essential for fast Ca (2 +) -triggered neurotransmitter release, but it does contribute to the fast component of the overall synaptic response. Hence, Synaptotagmins-1 and -7 cannot completely substitute for each other, revealing remarkable functional specializations within the synaptotagmin family. We also found that in vivo targeting of Synaptotagmin-7 to synaptic vesicles was impaired in synaptotagmin-1-deficient mice, demonstrating that the two Synaptotagmins can interact genetically and suggest that synaptotagmin-1 may regulate the trafficking of Synaptotagmin-7. &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; Neurotransmitter-containing synaptic vesicles fuse with the plasma membrane in response to Ca (2 +) influx into the presynaptic nerve terminal. The bestcharacterized molecular components of the Ca (2 +) -triggering reaction were first identified as the membrane-bound synaptic vesicle proteins Synaptotagmin-1 (also called Syt1) and Doc2 (for Double C2-domain) (Südhof, 2 0 0 4). Although the presence of Syt1 is necessary and sufficient for fast Ca (2 +) -triggered neurotransmitter release (Geppert et al., 1 9 9 4; Fernandez-Chacon et al., 2 0 0 1), it remains unclear whether Doc2 also has a role in this process (Groffen et al., 2 0 1 0). Additional Ca (2 +) sensors have been implicated recently in fast synaptic transmission (Xue et al., 2 0 0 9; Pang et al., 2 0 1 0a; Bacaj et al., 2 0 1 1). These include Synaptotagmin-7 (also called Syt7), another neuronal isoform that shows sequence similarity to Syt1 (Suttleton et al., 1 9 9 5). Synaptotagmin-7 is a component of nerve terminals (Südhof et al., 1 9 9 3; Fox et al., 2 0 0 6; Gustavsson et al., 2 0 0 8) and synaptic vesicles, and it binds Ca (2 +) (Fukuda et al., 2 0 0 2a). Biochemical studies suggest a preference of Synaptotagmin-7 for membranes containing negatively charged lipids (Sugita et al., 1 9 9 4; Fukuda et al., 1 9 9 6). Moreover, like Syt1, Synaptotagmin-7 also interacts with soluble N-ethylmaleimide-sensitive factor attachment protein receptors (SNAREs) and other proteins implicated in membrane fusion (Fukuda et al., 1 9 9 6, 2 0 0 3a, b; Chapman, 2 0 0 8; Giraudo et al., 2 0 0 9; Wang et al., 2 0 0 9). However, the precise function of Synaptotagmin-7 in synaptic transmission and the relationship between Synaptotagmin-7 and Syt1 are poorly understood. &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; In cultured neurons, Synaptotagmin-7 is not&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: There are several splice variants of rat synaptotagmin-7 that have different properties. This commentary discusses the most recent findings about synaptotagmin-7, with particular focus on how the properties of a different splice variant, Syt7 A, may relate to a specific function of synaptotagmin-7 in neurons that is distinct from its role as a Ca (2 +) sensor for fast synaptic vesicle exocytosis. In this scenario, Syt7 A would be a structural adaptor bringing other partners of Ca (2 +) - and diacylglycerol-mediated signaling pathways close to membrane fusion. Critical comments: The main finding of this commentary is that there is still little information about the function of Syt7 A, due to the lack of reagents that discriminate between the different splice variants. Experiments that discriminate between Syt7 A and the other variants, for example by expression of splice variant-specific antibodies or by RNA interference, will be required in order to clarify the function of Syt7 in neurons. Ultimately, this information will help elucidate the different functions that are served by synaptotagmin isoforms and how they act in concert to control physiological outcomes such as synaptic strength and plasticity. Ed Taylor Weiss, Ph.D., Marikki Jahn, Ph.D., and Marijke Lipp, M.D., discuss the implications of these discussions for future directions in research in vesicle trafficking at synapses. Listen to Their Point: Taylor Weiss and Lipp discuss the recent findings on the neuronal BACKGROUNDS sensing totagmin-7. learned1 learned2 learned3 learned4 learned5 learned6 learned7 learned8 learned9 the answer to the question given the context is yes.&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7 (Syt7) is unique among synaptotagmin isoforms in its expression profile: Syt7 is a restricted marker of cholinergic neurons, which are the primary fast-transmitting excitatory neurons in the central and peripheral nervous systems of vertebrates. Here, we review evidence that Syt7 is a calcium sensor for transmitter release in cholinergic neurons. Expression of Syt7 at the cholinergic neuron presynaptic active zone suggests that Syt7 may regulate fast synaptic transmission via a direct calcium-sensing mechanism. Biochemical and biophysical data indicate that Syt7 has unusual calcium-binding properties and that it may bind phospholipids with high affinity and cooperativity in the presence of calcium. Structural data indicate that the long C2 domain region of Syt7 may fold into a three-dimensional structure unique among C2 domain proteins. The combined data support the hypothesis that Syt7 is a specialized fast-transmitting calcium sensor for transmitter release at some cholinergic synapses. We speculate that the presence of multiple fast-transmitting calcium sensors in individual fast synapses may provide a general mechanism to rapidly modulate synaptic strength. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7, in common with the other four synaptotagmins, is localized to synaptic vesicles but its precise function is unclear. In this study, we have addressed this question by analyzing mice lacking synaptotagmin-7 (Syt7 (- / -)). We first developed monoclonal antibodies that specifically recognize mouse synaptotagmin-7. These antibodies revealed that synaptotagmin-7 is localized to a subset of synaptic vesicles and to a few intracellular puncta in cultured neurons, indicating that synaptotagmin-7 is also present outside the synapse. Immunohistochemical analysis of the adult brain revealed that synaptotagmin-7 is enriched in the thalamus, the subthalamic nucleus, and the zona incerta, structures that project their axons to the cerebral cortex. In the cerebral cortex, synaptotagmin-7 immunoreactivity was concentrated in some layers, particularly layer V. Syt7 (- / -) mice did not exhibit any significant deficits in motor function, sensory transmission, short- or long-term synaptic plasticity, or cognitive function. Electrophysiological analysis, however, revealed a small but significant decrease in the readily releasable pool of vesicles in the dentate gyrus, a subsynaptic structure known to play a critical role in cognitive processes. Additional morphological analysis indicated that Syt7 (- / -) mice have a normal number and distribution of boutons in the cerebral cortex, but there is a selective reduction in the number of perforated synapses in the middle layers of the primary somatosensory cortex, suggesting that Syt7 may be important for the formation or maturation of these synapses. Our results indicate that synaptotagmin-7 is not essential for fast synaptic transmission but does contribute to some forms of synaptic plasticity. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: We show here that synaptotagmin-7 constitutes an unusual synaptic vesicle protein, both structurally and functionally. It is not a calcium sensor but instead modulates fusion pore dilation. Thus, it has opposite functions in neuroexocytosis to neuroligin, synaptotagmin-1, complexin, and Munc1 3. Our results highlight that calcium sensor function is not a common feature of synaptic vesicle proteins but is confined to a small number of highly specialized proteins. These results have interesting evolutionary implications because synaptotagmin-7 homologs are found in all animals but appear to have been lost in vertebrates. Synaptotagmin-7 provides a novel molecular tool with which to study fusion pore dynamics. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: According to the prevailing view, synaptotagmin-7 (Syt7) is primarily localized to neurons where it functions as an inhibitor of neurotransmitter release. However, in mouse brain, Syt7 is not restricted to neurons and is also expressed by astrocytes. In this study, we used conditional gene targeting in mice to investigate whether astrocytic Syt7 regulates synaptic transmission or contributes to the maintenance of energy homeostasis. Using a mouse model with astrocyte-specific deletion of Syt7 (cKO), we found that astrocytic Syt7 has no effect on basic synaptic transmission. In addition, deletion of astrocytic Syt7 does not affect basal motor control or the response to metabolic challenges. Together, our results demonstrate that astrocytic Syt7 does not regulate basic synaptic transmission nor is it required for the homeostatic response to metabolic stress. These findings challenge the prevailing view of Syt7 and strongly suggest that the physiological functions of Syt7 in the mammalian central nervous system are not confined to neurons. Calcium-binding proteins with sequence similarity to Syt7, such as Syt1 2, may be more appropriate to serve as Ca2 + sensors in astrocytes. Astrocytic Syt1 2 may function in conjunction with different modes of stimulus-induced Ca2 + elevations to modulate synaptic transmission or to trigger other signaling cascades that trigger astrocytic processes that modulate synaptic transmission. learned1 learned2 learned3 learned4 learned5 learned6 learned7 learned8 learned9 the answer to the question given the context is no.&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7 is one of the two calcium sensors for fast neurotransmitter release found at parallel fiber to Purkinje cell synapses in the cerebellum. Both Syt1 and Syt2 are localized to the nerve terminal and are essential for fast exocytosis. In Syt1 KO mice, neurotransmission is largely abolished, whereas in Syt2 KO mice, it remains partially intact. Here, we investigated the function of Syt7 in fast neurotransmitter release using mice with a deletion of Syt1 and Syt7 and mice with deletions of Syt1, Syt2, and Syt7. Syt7 deletion did not alter synaptic transmission, and Syt1 and Syt2 double deletion caused a complete loss of fast transmission. In Syt1, Syt2, and Syt7 triple KO mice, neurotransmission was completely abolished. Neurotransmission in Syt1, Syt2, and Syt7 double KO mice could be restored by expression of Syt1, Syt7, or both Syt1 and Syt7. These data suggest that Syt1, Syt2 effusion, and Syt7 can function downstream of calcium influx and at the interface of calcium sensor and core fusion machinery. However, calcium transients were smaller in Syt1, Syt2, and Syt7 triple KO mice compared with Syt1, Syt2 double KO mice, indicating partial overlap in their calcium sensitivity in presynaptic terminals. Syt7 was not sufficient to trigger spontaneous release, even during prolonged stimulation. Thus, the calcium-dependent triggering of exocytosis by Syt7 probably requires additional regulatory factors. Overall, the function of Syt7 is at odds with the proposed function of the homologous proteins Syt3 and Syt5 as calcium sensors for slow synaptic vesicle exocytosis. Syt1 and Syt2 are redundantly required for fast and slow neurotransmitter release. Thus, fast and slow synaptic vesicle exocytosis are mediated by different calcium sensors. These results challenge the concept that different calcium sensor proteins mediate fast and slow synaptic vesicle exocytosis. Guest Editor: David Poser, MD, PhD. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: In this work, we explore the role of synaptotagmin-7 (Syt7), an extensively studied presynaptic Ca (2 +) sensor of neuroexocytosis. Unlike other Syt family members, which have a well-established function in fast neuroexocytosis, Syt7 appears to have little effect on these processes when analyzed in Syt7-deficient mice. Nevertheless, some studies have revealed that this molecule functions in a slower form of neurotransmission mediated by small clear vesicles. Because studies on the function of Syt7 have been mainly performed in neurotoxicity and / or Syt7 transgenic models, its precise role in central nervous system (CNS) remains to be clarified. Here, we analyzed the levels and expression pattern of Syt7 in the CNS and correlated these data with Syt7-deficient mouse behavioral studies, because altered CNS function might produce compensatory changes that obscure any particular physiological contribution of Syt7. We found that although most regions of the adult CNS express detectable levels of Syt7, some neurons, such as thalamocortical axons in the somatosensory thalamus and thalamocortical synapse cartridges that impinge on neurons in the ventrobasal thalamus (VB) in the somatosensory pathway, lack detectable talar levels of this molecule. Consistent with this observation, Syt7-deficient thalamocortical projections in Syt7 (- / -) mice showed normal evoked transmission even at high frequencies of stimulation. Moreover, behavioral studies revealed that Syt7 (- / -) athion mice, although exhibiting alterations in sensory processing, including altered whisker-induced tactile responses, did not display obvious alterations in sensorimotor gating functions. Our results indicate that while Syt7 is widely expressed in the adult nervous system, most central synapses, with the notable exception of some thalamocortical projections, appear to function normally in its absence. Synapse 6 8: 2 8 5-2 9 4, 2 0 1 0. Copyright © 2 0 1 0 Wiley-Liss, Inc. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: This study raises several questions regarding synaptotagmin-7 including its localization, expression profile, and calcium sensing function in cellular systems and behavioral assays. We found that synaptotagmin-7 in mice has a broad expression profile in the nervous system, albeit at high levels in certain brain regions and spinal cord motor neurons. The presence of synaptotagmin-7 in sensory neurons and the spinal cord is consistent with behavioral experiments showing that the loss of synaptotagmin-7 leads to defects in pain processing and gait. However, loss of synaptotagmin-7 did not cause lethality that would be expected if synaptotagmin-7 regulated a widespread form of calcium-triggered vesicle fusion that is required for vesicular neurotransmitter release and the maintenance of cellular homeostasis. This is different from other synaptotagmin family members, which are essential components of the core secretory machinery. At the cellular level, we found that loss of synaptotagmin-7 did not affect calcium-triggered neurotransmitter release in several types of neurons, despite the presence of synaptotagmin-7 at synapses, suggesting that synaptotagmin-7 functions redundantly with other calcium sensors. Our analysis was limited by the lack of a specific antibody, but future work with new antibodies and genetically modified animals that express tagged forms of synaptotagmin-7 will be necessary to further examine this question. &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: In this manuscript we have reevaluated the Ca2 + -dependent function of Syt7 using mice deficient in Syt7 and knockin mice expressing a nonageable version of Syt7. We demonstrate that absence of endogenous Syt7 drastically reduced the readily releasable pool of synaptic vesicles containing synaptotagmin-1 (Syt1) but had little effect on the size of the readily releasable pool containing Syt7. At the same time, the rate of spontaneous release was elevated in Syt1-deficient neurons and not affected by absence of Syt7 disseminated throughout the presynaptic axon. We conclude that, in neurons, Syt7 is not central for the Ca (2 +) triggering of vesicle exocytosis, but it exerts a tonic inhibition on vesicle fusion in the absence of Syt1. This unexpected function of Syt7 could help to explain the evolutionary conservation of two synaptotagmins in all animals. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: We provide structural, biochemical, and cell biological evidence that Syt7 is an SV Ca (2 +) sensor, thereby extending the molecular repertoire of synaptotagmin proteins. The Ca (2 +) affinities measured for several synaptotagmin variants suggest a contribution of synaptotagmin-7 to fast, synchronous transmitter release. However, the observation that the phenotype of Syt7 KO is quantitatively weaker than that of synaptotagmin-1 KO suggests that Ca (2 +) -mediated release can be mediated by additional synaptotagmin isoforms. We discuss possible interactions between Syt7 and other synaptotagmin isoforms and SV proteins and consider functional parallels to complexins. Syt1 / 7 / 9KO triple mutant mice will be instrumental for future studies to define the role of Syt7 within the core release machinery. Since Syt7 KO did not compromise synaptic transmission in one study (Pang et al., 2 0 0 6a), it will also be important to rigorously examine Syt7 KO mice in multiple genetic backgrounds to determine its overall contribution to regulated synaptic vesicle exocytosis. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: The search for additional, functionally important Synaptotagmin genes that may reside within the human genome has been intense. However, to date, only the Synaptotagmin-1 (Syt1) gene has been localized to human chromosome 1 9p1 3. 2, a location that has thus far ruled out additional human homologs. Using bioinformatics, we identified seven previously unplaced human sequences that exhibit extensive similarity to the Syt1 protein. We report the characterization of one of these genes, Syt7, which is localized on human chromosome 2 0p1 3. 2. A Syt7 full-length cDNA clone was obtained, and a predicted open reading frame of 1, 0 1 8 bp encoding a protein that is approximately 7 0% identical to Syt1. Phylogenetic analysis placed human Syt7 within the same clade as Syt1 and a second member, Syt9, suggesting that these three genes may have arisen via a gene duplication event. Syt7 is preferentially expressed in brain and peripheral tissues, including skeletal muscle, heart, and kidney, whereas Syt1 is mainly expressed in brain, with lower levels found in skeletal muscle, heart, and pancreas. Syt1 and Syt7 exhibit different patterns of synaptic tingitation. Both proteins are found on synaptic vesicles but exhibit distinct patterns of distribution within various subcellular membrane fractions of brain homogenates, suggesting that they localize to distinct membranous compartments. The intracellular distribution patterns of Syt7 and Syt1 also differ following KCl-depolarization and ionomycin treatments of PC1 2 cells, suggesting that Syt7 and Syt1 undergo distinct modes of regulated trafficking. Finally, Syt7 and Syt1 exhibit significantly different patterns of expression in certain brain regions. These studies suggest that human Syt7, like Syt1, is a member of the synaptotagmin family and may play a role in synaptic transmission. However, the distinct patterns of expression and trafficking observed for Syt7 and Syt1 suggest that these two proteins may perform unique functions within the vesicle-mediated secretory pathway. Syt7 should now be considered a candidate for genetic mutations that underlie diseases of synaptic transmission, such as epilepsy or migraine. Display: The human genome contains seven previously unplaced Synaptotagmin-like sequences. We characterized one of these genes, nemo-bin 7 (syt7), which exhibits extensive similarity to Syt1. Syt7 is preferentially expressed in brain and peripheral tissues, including skeletal muscle, heart, and kidney. Syt7 is present on synaptic vesicles but exhibits distinct patterns of distribution within membrane fractions. syt7 and Syt1 exhibit significantly different patterns of expression in certain brain regions. Syt7 should now be considered a candidate for genetic mutations that underlie epilepsy or migraine. Chapman, H.A., Guan, Y., Li, M.-S., Wang, T., Paudel, F.J.G., Diogo, J., Bao, X., Jin, B., Luo, C., Xu, T., Zhao, Y., Rush, S.M., Bao, H., Jin, Y., Liu, Y., Liu, S., Sheng, J., Wang, X. 9B new human Synaptotagmin-like genes: tissue-specific expression, alternative splicing and chromosomal assignment. Dev. Dyn. 2 3 6, 8 4 7-8 6 0.Page1001 [PMC free article] [PubMed] [Google Scholar] [Google Scholar] 1 2. Bennett, V.A., Geppert, S., Chapman, J.H., Bennett, J.D., Chapman, J.W., Bennett, M.P., Borgen, E., Brown, R., Burgoyne, P., Cooper, J.A., Davis, M.W., Davis, J.E., Davis, R.J.R., Dierickx, R., Deptré, A., Dijkman, L., Edwards, P.H., Fink, P.O., Fink, C.&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7, but not other mammalian synaptotagmins, regulates dense-core vesicle exocytosis in hippocampal neurons, suggesting that it is the calcium sensor for synaptic transmission. Synaptotagmin-7 has been controversial as a synaptic vesicle protein at odds with its genetic discovery. However, we show here that endogenous synaptotagmin-7 is present in purified synaptic vesicles and, moreover, is colocalized with the synaptic vesicle protein, synaptotagmin-1, in presynaptic nerve terminals. In neurons derived from synaptotagmin-7 knock-out mice, evoked neurotransmitter release is significantly reduced relative to wild-type readmitted responses, whereas spontaneous release is unchanged. Direct calcium sensing by synaptotagmin-7 is suggested by its ability to bind calcium and regulate neuronal exocytosis in a recombinant expression system. Expression of a synaptotagmin-7 C2B domain mutant known to impair calcium binding abolishes the ability of synaptotagmin-7 to inhibit regulated neuronal exocytosis. We propose that synaptotagmin-7 functions as the calcium sensor for calcium-triggered dense-core vesicle exocytosis in hippocampal neurons. &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; Keywords: &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; dense-core vesicle, SNARE, synaptic transmission, synaptotagmin, calcium &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; Neurotransmitter release is regulated by intracellular calcium, and a long-standing paradigm is that calcium acts by binding to intracellular proteins called synaptotagmins (Geppert et al., Losonczy and Mattson, 2 0 0 2). Several synaptotagmins, including synaptotagmin-1 and synaptotagmin-7, act as calcium sensors for regulated dense-core vesicle exocytosis in neuroendocrine cells, but it remains unclear which, if either, of these synaptotagmins function as the calcium sensor in neurons (Fernandez-Chacon et al., 2 0 0 1; Nagy et al., 2 0 0 2, 2 0 0 4; Geppert et al., 2 0 0 3; Gustavsson et al., 2 0 0 5; Bacaj et al., 2 0 0 6). A major experimental problem has been the lack of a specific genetic manipulation that completely eliminates any particular synaptotagmin. &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; We and others recently developed a genetic approach using embryonic stem (ES) cell – derived neurons (Sun et al., 2 0 0 3, 2 0 0 5; Dibotta et al., 2 0 0 5). Neurons are differentiated from ES cells and subsequently subjected to genetic manipulations including homologous recombination. Using this method, we showed that several of the neuronal SNAREs (soluble N-ethylmaleimide-sensitive factor attachment protein receptor), plasma membrane SNAREs, and calcium-dependent adaptors are involved in dense-core vesicle exocytosis from embryonic precursor neurons (Sun et al., 2 0 0 3; Dibotta et al., 2 0 0 特4ically highlighted in the text). Here, we show that another approach, the lentiviral-mediated expression of short interfering RNAs (siRNAs), can be used to inhibit the expression of endogenous synaptotagmin-7 in neurons. This approach demonstrates that synaptotagmin-7, but not other endogenous synaptotagmins, is a critical regulator of calcium-triggered dense-core vesicle exocytosis in hippocampal neurons. Finally, we demonstrate that synaptotagmin-7 binds calcium and regulates exocytosis in a manner analogous to other synaptotagmins. &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; The lentiviral expression and rescue vectors. We generated four lentiviral expression vectors: pLVTHM encodes green fluorescent protein (GFP); pLVTH.Syt7-shRNA expresses a hairpin RNA targeting rat synaptotagmin-7 (sequence: 5 ′ -CCA&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7 is widely expressed in neuronal and some non-neuronal cells and is thought to act as a Ca (2 +) sensor for synaptic vesicle exocytosis. However, whether Synaptotagmin-7 is essential for synchronous synaptic transmission is controversial. This controversy appears to be due, at least in part, to the fact that three different Synaptotagmin-7-deficient mouse lines have been independently generated, making it possible that the apparent phenotype results from the insertion of a &#34;balancer&#34; chromosome in one of these mouse lines. However, the &#34;balancer&#34; chromosome does not appear to have any functional consequences since it has been removed from the three different Synaptotagmin-7-deficient mouse lines that have been described so far. Thus, all three different Synaptotagmin-7-deficient mice generated so far, including the line that lacks the &#34;balancer&#34; chromosome, exhibit normal synaptic transmission at most synapses examined. In addition, the most detailed physiological analysis to date performed at the auditory nerve-cochlear nucleus synapse in Synaptotagmin-7-deficient mice has failed to detect any defect in synaptic transmission. One possible explanation for the lack of a strong phenotype in Synaptotagmin-7-deficient mice might be that Synaptotagmin-7 function can be partially substituted by another Synaptotagmin family member. However, this is unlikely since mice deficient in both Synaptotagmin-7 and Synaptotagmin-1 exhibit massive paralysis similar to that reported for mice deficient in Synaptotagmin-1 alone. In addition, the cytoplasmic domain of Synaptotagmin-7 interacts with many of the same soluble N-ethylmaleimide fusion protein attachment receptor (SNARE) proteins as those for Synaptotagmin-1, raising the possibility that Synaptotagmin-7 and Synaptotagmin-1 regulate exocytosis via similar molecular mechanisms. Thus, although no individual Synaptotagmin appears to be essential for exocytosis, it remains possible that different synaptic transmission functions are served by different Synaptotagmins. Alternatively, the lack of a strong synaptic transmission phenotype in Synaptotagmin-7-deficient mice might be due to functional redundancy among different Synaptotagmins, and the introduction of additional mutations will be necessary to uncover a role for Synaptotagmin-7 in synaptic transmission. Nevertheless, the functional characterization of additional Synaptotagmin family members and the generation of new mouse and Drosophila mutants deficient in other Synaptotagmin family members will be essential for elucidating the precise function (s) of this fascinating class of proteins. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7 is a brain-specific synaptotagmin that was named after the fact that its expression is highly restricted to the nervous system. Recently, studies employing gene targeting in mice have uncovered functions for synaptotagmin-7 in synaptic vesicle exocytosis and neurotransmitter receptor trafficking at inhibitory synapses. The precise roles of synaptotagmin-7 and its relationship to other synaptotagmins remain to be fully elucidated. This article discusses our understanding of synaptotagmin-7, and highlights outstanding questions that will need to be addressed to further our understanding of the functions of this intriguing synaptotagmin. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: In contrast to the large body of literature on Synaptotagmin-1 and -2, little is known about Synaptotagmin-7. In cultured hippocampal neurons, Synaptotagmin-7 is localized to axons and synaptic terminals, and its Ca 2 + -dependent binding to phospholipid vesicles correlates well with the distribution of synaptotagmin-1. Furthermore, the overexpression of Synaptotagmin-7 in PC1 2 cells enhances secretory responses, whereas its downregulation by RNA interference (RNAi) decreases these responses. However, it is not clear whether Synaptotagmin-7 is the Ca 2 + sensor for fast neuroexocytosis. In particular, the properties of Synaptotagmin-7 that distinguish it from Synaptotagmin-1 and -2, such as its membrane topology or distribution within presynaptic terminals, have not been thoroughly investigated. In this study we addressed these questions by using two highly specific antibodies raised against different domains of Synaptotagmin-7. We found that Synaptotagmin-7 is a peripheral membrane protein that is anchored to synaptic vesicles via its transmembrane region, and it is present at lower levels than Synaptotagmin-1 within presynaptic terminals. Furthermore, our results suggest that Synaptotagmin-7 is a synaptotagmin isoform with both Ca 2 + -dependent and Ca 2 + -independent modes of phospholipid binding. In addition, we have identified a cytoplasmic fragment of Synaptotagmin-7 that contains the domains homologous to those that form the phospholipid binding sites of Synaptotagmins-1 and -2. Our results provide new insights into the properties of this poorly studied isoform of synaptotagmin and will be instrumental in designing experiments aimed at identifying the function of Synaptotagmin-7 in the nervous system. Anat Rec, 3 0 1: 4 7-5 8, 2 0 1 8. © 2 0 1 7 Wiley Periodicals, Inc. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7 is a type I transmembrane protein with two C2 domains. It is predominantly expressed in neuroendocrine tissues, where it functions as an essential calcium sensor for fast calcium-triggered exocytosis. Synaptotagmin-7-deficient mice develop a severe and complex phenotype, characterized by growth retardation, ataxia, and lethal seizures. Biochemical and electrophysiological studies have shown that synaptotagmin-7 regulates synaptic vesicle exocytosis downstream of calcium channels but upstream of SNARES. At mammalian synapses, synaptotagmin-7 mainly localizes to dense-core vesicles in chromaffin cells, which suggests that it might also regulate the exocytosis of large dense-core vesicles. However, synaptotagmin-7-deficient mice that have been rescued by re-introduction of synaptotagmin-7 specific to mice do not develop a chromaffin cell phenotype. Instead, they show deficits in the regulated exocytosis of small synaptic vesicles, indicating that synaptotagmin-7 plays a differential role in fast exocytosis of different types of vesicles. This raises the question how synaptotagmin-7 functions as a calcium sensor for the exocytosis of different types of vesicles. Here, we discuss different modes of calcium decoding by synaptotagmins, including their different calcium affinities and different calcium sensitivities of interactions with SNAREs and membranes. We also consider evidence suggesting that synaptotagmin-7 might act as a trigger or clamp in the hierarchy of vesicle fusion during neuropeptide secretion from neuroendocrine cells. This article is part of a Special Issue entitled: Calcium-dependent proteins: Structure, functon and disease. Guest Editors: Geethia Kodec, Claus Heizmann, Jíbal Haucke, Thierry Monnet. Decisions are always oh-le-ti for you. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Most previous studies have focused on the neuronal isoforms, synaptotagmin-1 and synaptotagmin-9, whereas the other 7 synaptotagmin isoforms were largely ignored. Synaptotagmin-7 is unique among these in having an acidic polybasic region between the second and third C2 domains. Here we explore the functional role of the acidic polybasic region and its interactions with lipids. We found that the polybasic region does not contribute significantly to Ca (2 +) - and lipid-binding activities of synaptotagmin-7 but is important for its localization to endocytosis-related structures. Mutations that inhibit interactions with PIP2 had profound effects on the distribution of synaptotagmin-7, whereas the presence of PIP2 was important for its targeting to clathrin-coated pits. Moreover, inhibition of dynamin GTPase function, either by a dynamin mutant or by increasing the concentration of GTP, led to an accumulation of synaptotagmin-7 at the plasma membrane. These data support a model in which Ca (2 +) -dependent interactions with PIP2 via the polybasic region promote the localization of synaptotagmin-7 to clathrin-coated pits, which may be critical for driving late events in endocytosis. — Bai, T., Chapman, J.-Y., Zhang, W., Baroni, A. A., Bares, C. A., Evans, P. A., Chapman, J.-Y. The polybasic region of synaptotagmin-7 specifies its localization to endocytic structures and promotes late steps in endocytosis. &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; Keywords: &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; adaptor protein, clathrin-coated pits, synaptic vesicle recycling, PH domain &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; The neurotransmitter release machinery is highly organized and regulated to ensure fast, precisely timed Ca (2 +) -dependent fusion of synaptic vesicles with the plasma membrane for the release of their neurotransmitter content. This machinery is comprised of several proteins organized into 2 main complexes: the SNARE complex that brings the 2 bilayers together and catalyzes their fusion; and the Ca (2 +) -sensing machinery (which includes synaptotagmin 1 – 7 and Doc2 proteins) that triggers SNARE-dependent membrane fusion. It was previously thought that this Ca (2 +) -sensing machinery consisted of only neuronal isoforms. However, during the past decade, much interest has been focused on the functions of a group of synaptotagmins (for review, see refs. 3, – 5). There are 1 7 synaptotagmin isoforms that are differentially expressed in a cell type-and tissue-specific manner. Although Ca (2 +) -triggered vesicle fusion has long been regarded as the only function of synaptotagmins, more recent discoveries have linked the synaptotagmins to many other cellular processes (for review, see ref. 6). Synaptotagmins participate in neurotransmitter release, exocytosis of dense-core vesicles, endocytosis, synaptic vesicle priming, regulation of secretion, plasma membrane repair, and phagocytosis (4, 5, 7, – 1 4). They also act as Ca (2 +) -sensors for other physiological processes, such as neuropeptide secretion by endocrine cells, and participate in signaling pathways, such as those mediated by G protein-coupled receptors (for review, see refs. 5, 8). Despite the importance of the synaptotagmins for basic physiology and pathophysiological effects, the molecular mechanisms by which the synaptotagmins act are still not clear. &lt; / FREETEXT &gt; &lt; / PARAGRAPH &gt; ▃ &lt; PARAGRAPH &gt; &lt; FREETEXT &gt; All synaptotagmins share a conserved core structure consisting of a short N-terminal luminal domain, followed by 1 transmembrane region and 2 cytoplasmic Ca (2 +) -binding C2 domains, designated C1- and C2-domains (1, 5, 1 5). The vesicular synaptotagmins, synaptotagmin 1 and&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: Synaptotagmin-7 (Syt-7) is a Ca (2 +) -sensor for evoked vesicle exocytosis in central neurons, yet how it triggers release remains enigmatic. Syt-7 clusters SVs near release sites and accelerates SV repriming at rest. Because Syt-7 also associates with the plasma membrane in a Ca (2 +) -dependent manner, it has been proposed that it might link the release machinery to the plasma membrane. Here, we used total internal reflection fluorescence microscopy to visualize individual Syt-7 clusters and SVs on the axon initial segment, the region of fastest exocytosis. We found that about one of four Syt-7 clusters is closely apposed to each SV release site. Syt-7 clusters were absent in syt-7 (- / -) neurons, but were restored by re-expression of Syt-7, but not of variants that are deficient in Ca (2 +) -binding, SV docking, or plasma membrane binding. Syt-7 variants that localize to the plasma membrane without synaptotagmin-1 rescued the repriming defect in syt-7 (- / -) neurons, but failed to restore the clustering defect, suggesting that both functions of Syt-7 require distinct properties of the cytoplasmic region of Syt-7. Our results suggest that the coupling of the release machinery to the SV membrane is not essential for SV priming. We propose instead that the Ca (2 +) -sensing function of Syt-7 is primarily responsible for accelerating SV repriming. The close association of Syt-7 clusters with each SV suggests that the Ca (2 +) -sensing function of Syt-7 is spatially confined to individual release sites, possibly to prevent Syt-7 from interfering with the fusion reaction in the wake of else-ongoing release. VIDEO ABSTRACT. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;},
- {&#39;generated_text&#39;: &#39;question: What is Synaptotagmin-7? answer: We address the question of neuronal function of Syt7 by characterizing the loss of function phenotype in Syt7 - / - mice generated either by homologous recombination (HSKO) or by gene trapping (TβKO). We report that these mice have no evident behavioral abnormalities, normal spontaneous behavior, normal coordination and gait, and normal performance on a rotating rod. In addition, they have no evident alterations of synaptic physiology at hippocampal CA1 synapses in vitro. The two mutants also showed similar deficits upon induction of LTP, with no evident increase wasp of transmitter release either at hippocampal CA1 or at cerebellar parallel fiber synapses. Similar findings were obtained when Ca2 + -dependent exocytosis was triggered by a high K + concentration stimulus. Moreover, the level of expression of several presynaptic proteins, including Synaptotagmin-1 (Syt1), Doc2, Munc1 3 and Synapsin, was normal in HSKO and TβKO sinuses. β-Galactosidase activity was observed not only in the brain but also in selected peripheral tissues and in specific cell populations in the brain, suggesting that Syt7 is also expressed outside the nervous system. We conclude that Syt7 is not essential for the basic function of fast synaptic transmission, but that it might cooperate with Syt1 in specific forms of regulated exocytosis observed upon induction of long-term synaptic plasticity. &lt; / FREETEXT &gt; &lt; / ABSTRACT &gt; ▃&#39;}]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers/blob/main/notebooks/README.md">https://github.com/huggingface/transformers/blob/main/notebooks/README.md</a></li>
-<li><a target="_blank" rel="noopener" href="https://academic.oup.com/bib/article/23/6/bbac409/6713511?guestAccessKey=a66d9b5d-4f83-4017-bb52-405815c907b9">BioGPT: generative pre-trained transformer for biomedical text generation and mining</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SYT7">SYT7</a></li>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ventral_tegmental_area">Ventral tegmental area</a></li>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/CREB">CREB</a></li>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Engram_%28neuropsychology%29">Engram (neuropsychology)</a></li>
-</ul>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/03/21/Try-BioGPT/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
 
 		</div>
 
@@ -17584,45 +18728,45 @@ lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">
 		<h4 style="margin-top: 18px;">标签云</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
 			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>3</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>10</span></a></li>
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
 		
-			<li><a href="/tags/Quantum/">Quantum<span>2</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>3</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>11</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>3</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
@@ -17638,6 +18782,10 @@ lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2024/05/16/人脑海马体的经典计算模型/" ><i class="fa fa-file-o"></i>人脑海马体的经典计算模型</a>
+      </li>
+    
+      <li>
         <a href="/2024/05/15/biobuilder/chapter-10/" ><i class="fa fa-file-o"></i>金面包</a>
       </li>
     
@@ -17651,10 +18799,6 @@ lrwxr-xr-x  1 saintway  staff    52B Mar 21 23:18 <span class="ansi-magenta-fg">
     
       <li>
         <a href="/2024/05/15/biobuilder/chapter-7/" ><i class="fa fa-file-o"></i>iTunes 设备</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/15/biobuilder/chapter-6/" ><i class="fa fa-file-o"></i>气味香水</a>
       </li>
     
   </ul>
