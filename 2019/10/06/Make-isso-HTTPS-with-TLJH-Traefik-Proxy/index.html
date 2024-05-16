@@ -8,9 +8,7 @@
   <title>Make isso HTTPS with TLJH Traefik Proxy | Andrew&#39;s Blog</title>
   <meta name="author" content="Andrew">
   
-  <meta name="description" content="https://github.com/containous/traefik/
-https://traefik.io/
-https://docs.traefik.io/routing/overview/
+  <meta name="description" content="Make Isso HTTPS in TLJH&amp;#182;
 
 
 
@@ -18,14 +16,8 @@ https://docs.traefik.io/routing/overview/
 
 
 
-
-Traefik Dashboard&amp;#182;
-
-
-
-
-
-In&amp;nbsp;[&amp;nb">
+https://github.com/jupyterhub/the-littlest-jupyterhub/blob/master/tljh/jupyterhub_config.py
+https://github.com/ju">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -163,147 +155,6 @@ In&amp;nbsp;[&amp;nb">
 	<!-- content -->
 	<div class="mypage">
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/containous/traefik/">https://github.com/containous/traefik/</a></li>
-<li><a target="_blank" rel="noopener" href="https://traefik.io/">https://traefik.io/</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.traefik.io/routing/overview/">https://docs.traefik.io/routing/overview/</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Traefik-Dashboard">Traefik Dashboard<a class="anchor-link" href="#Traefik-Dashboard">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2-utils
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/address = &quot;127.0.0.1:8099&quot;/address = &quot;:8099&quot;/g&#39;</span><span class="w"> </span>/opt/tljh/state/traefik.toml
-<span class="o">!</span>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/sourceRange = \[&#39;127.0.0.1&#39;\]/sourceRange = \[&#39;127.0.0.1&#39;, &#39;110.3.247.172&#39;\]/g&quot;</span><span class="w"> </span>/opt/tljh/state/traefik.toml
-<span class="o">!</span>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;s/users = \[&#39;api_admin:[^&#39;]*&#39;\]/users = \[&#39;</span><span class="k">$(</span>htpasswd<span class="w"> </span>-nb<span class="w"> </span>api_admin<span class="w"> </span>fdsa<span class="k">)</span><span class="s2">&#39;\]/g&quot;</span><span class="w"> </span>/opt/tljh/state/traefik.toml
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>traefik
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>tljh-config<span class="w"> </span>reload<span class="w"> </span>hub
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl<span class="w"> </span>-u<span class="w"> </span>api_admin:fdsa<span class="w"> </span>jhub.name:8099
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl<span class="w"> </span>-u<span class="w"> </span>api_admin:fdsa<span class="w"> </span>localhost:8099
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="nx">javascript</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">Http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="nx">Http</span><span class="p">.</span><span class="nx">withCredentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="nx">Http</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;http://jhub.name:8099&#39;</span><span class="p">);</span>
-<span class="nx">Http</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">Http</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="sb">`Error: </span><span class="si">${</span><span class="nx">Http</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="nx">Http</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Rollback-Settings">Rollback Settings<a class="anchor-link" href="#Rollback-Settings">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>tljh-config<span class="w"> </span>reload<span class="w"> </span>proxy
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Make-Isso-HTTPS-in-TLJH">Make Isso HTTPS in TLJH<a class="anchor-link" href="#Make-Isso-HTTPS-in-TLJH">&#182;</a></h2>
@@ -685,10 +536,11 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /etc/isso.con
 <section id="comment">
   <h2 class="title">留言</h2>
 
-  <script data-isso="https://jhub.name/isso/" src="https://jhub.name/isso/js/embed.min.js"></script>
+  <script data-isso="https://jhub.dtype.info/isso/" src="https://jhub.dtype.info/isso/js/embed.min.js"></script>
   <section id="isso-thread"></section>
   
 </section>
+
 
 	
 	</div> <!-- col-md-9/col-md-12 -->
@@ -735,7 +587,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /etc/isso.con
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2023 Andrew
+  &copy; 2024 Andrew
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>

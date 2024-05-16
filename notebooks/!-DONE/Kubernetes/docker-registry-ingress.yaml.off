@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/tls-acme: 'true'
+  name: docker-registry
+  namespace: docker-registry
+spec:
+  tls:
+  - hosts:
+    - registry.dtype.info
+    secretName: registry-tls
+  rules:
+  - host: registry.dtype.info
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: docker-registry
+            port:
+              number: 5000

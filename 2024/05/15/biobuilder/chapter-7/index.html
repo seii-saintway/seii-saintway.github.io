@@ -1,0 +1,618 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>iTunes 设备 | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="第7章 iTunes 设备
+BioBuilder 的 iTune 设备活动强调设计-构建-测试周期的“测试”阶段。您将使用酶生成基因回路的几种变体。这些电路的 DNA 序列有微小差异，预计会改变细胞产生的酶的量。您将使用酶测定来定量测量电路的输出。然后，您将结果与根据略有不同的 DNA 序列的已知行">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="iTunes 设备"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> iTunes 设备</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <h1 id="第7章-iTunes-设备"><a href="#第7章-iTunes-设备" class="headerlink" title="第7章 iTunes 设备"></a>第7章 iTunes 设备</h1><p><img src="/biobuilder/121.png" alt="FIGURE"></p>
+<p>BioBuilder 的 iTune 设备活动强调设计-构建-测试周期的“测试”阶段。您将使用酶生成基因回路的几种变体。这些电路的 DNA 序列有微小差异，预计会改变细胞产生的酶的量。您将使用酶测定来定量测量电路的输出。然后，您将结果与根据略有不同的 DNA 序列的已知行为所预测的结果进行比较。</p>
+<p>对于大多数工程系统来说，<strong>观察到的行为和预测的行为之间存在显着差异是不可接受的</strong>。如图 7-1 所示，如果将新的机翼形状添加到飞机机身上，使飞机以意想不到的方式飞行，航空工程师会怎么想？面对这种不确定性进行设计和建造将产生巨大的费用，并可能危及生命。工程师会发现，如果简单部件（无论是螺母和螺栓，还是电阻器和放大器）的组合产生意想不到的行为，他们的设计几乎不可能继续进行。</p>
+<p><img src="/biobuilder/123.png" alt="FIGURE"></p>
+<blockquote>
+<p>图 7-1 意外行为。在将飞机的标准尾翼（左）修改为新颖的形状（右）时，工程师必须关注意外行为，例如影响飞机安全着陆的差异。</p>
+</blockquote>
+<p>更成熟的工程学科依赖于可以通过多种方式进行功能组装的模块化组件，从而可以轻松根据个人需求定制组合。这些部件不仅需要物理连接，而且在连接时，它们的行为也必须符合规范。简而言之，<strong>零件组装后必须按预期运行</strong>。</p>
+<p><img src="/biobuilder/122.png" alt="FIGURE"></p>
+<p>目前，在合成生物学领域，生物工程师仍在致力于遗传部件的这种功能性组装。尽管研究人员已经在分子水平上描述了许多细胞行为——并且在许多情况下可以对执行生物功能所必需且充分的遗传元件进行分类——<strong>以新的方式组合这些遗传成分通常会产生意想不到的结果</strong>。合成生物学家可能很快就能物理组装遗传物质，以相对容易地组装任何所需的序列，但将该序列置于新的细胞环境中可能会以不确定和变化的方式影响其功能，即使该序列已被彻底研究和充分表征孤立地或在其他情况下。</p>
+<p>除了标准化之外，部件的模块化、绝缘性和测量也是实现此类功能组装的关键组成部分（有关进一步讨论，请参阅 DNA 工程基础章节）。在本章中，我们将探讨如何将这些附加原则应用于一般标准工程，特别是合成生物学。然后，我们详细介绍了 iTune 设备实验，以测试细胞中的各种遗传电路，以便比较它们的预期行为和测量行为。</p>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>模块化是指工程师可以通过组合功能单元或“模块”来设计和生成系统的想法。尽管这个概念对于工程来说很直观，但模块化的想法最近才被应用于遗传部分。模块化对于生物学的应用是明智的，因为我们可以将离散的功能归因于特定的 DNA 片段——然而，即使我们现在认为这一原则是理所当然的，仍然需要大量的研究来证实它（见下面的边栏）。</p>
+<blockquote>
+<p><strong>基因作为模块</strong></p>
+<p>合成生物学假设一组遗传“部分”可以组合和操纵以产生精确的行为。这个前提背后的想法——特征是由 DNA 的离散功能片段产生的——实际上是相对较新的。直到 1900 年代初期，格雷戈尔·孟德尔 (Gregor Mendel) 的豌豆实验结果被重新发现，科学家们才开始认识到性状可以保持独特，为我们目前对遗传学的理解铺平了道路。</p>
+<p>长期以来，人们认为后代融合了父母的遗传特征。孟德尔对豌豆植物的精心育种工作表明，混合并不总是发生，有时一种性状可以从亲本植物忠实地传递给后代植物。孟德尔通过仔细计数和测量豌豆植物的一些关键性状（例如花色和豆荚形状）来进行这些遗传研究。他的数据表明，特征可以保持独特，并以可预测的比例独立传承。他的研究结果表明，遗传应该从离散实体的角度来考虑，他将其称为因素，但后来被命名为基因。他的工作展示了这些因素如何以可预测的方式在代际间传递。这个想法在今天被认为是理所当然的，但在当时却是开创性的，导致了经典遗传学领域的建立。</p>
+<p>花了 50 多年的时间才对孟德尔观察到的遗传模式提供了分子解释。我们现代的理解很大程度上依赖于沃森和克里克所描述的 DNA 双螺旋结构，以及雅各布和莫诺对紫胶操纵子中基因表达的经典研究。得益于这些科学进步和其他科学进步，我们现在了解了生物学的基本思想，例如遗传信息从 DNA 通过 RNA 到蛋白质的流动，以及将性状重塑为编码功能的 DNA 序列。合成生物学中 DNA 部分的想法就是这些经典成就的产物。</p>
+</blockquote>
+<p><img src="/biobuilder/124.png" alt="FIGURE"></p>
+<p>录制音乐行业的变化提供了一个不错的（但并不完美）的例子，说明<strong>从增加的模块化中获得的优势</strong>。在二十世纪的大部分时间里，最常见、最有利可图的音乐发行方式是唱片，后来是盒式磁带和 CD。在所有这些格式中，音乐主要以完整专辑的形式出售。有单曲可供选择，但价格要高得多，因此即使人们只喜欢专辑中的几首歌曲，他们通常也会购买该专辑。这张专辑是音乐产业及其艺术家的标准“单位”。这个单位在二十一世纪初彻底改变，当时音乐被数字化。有了这一进步，下载音乐而不是购买实体专辑变得很容易。专辑中的歌曲可以轻松拆分，使歌曲成为独立的模块，听众可以根据需要进行混合和匹配。从这些模块化歌曲中制作定制播放列表的广泛机会改变了人们对音乐收藏的看法，并改变了行业的标准“单位”。</p>
+<p>我们在商业音乐中看到的增强的模块化和定制化概括了我们对基因表达单元不断变化的概念，这为合成生物学中基因“部分”一词的使用铺平了道路。孟德尔的早期工作表明，性状是离散的实体。那么，在与录制的音乐的类比中，表现出特征的有机体可以被认为类似于整张专辑——该特征只存在于有机体的背景中，就像歌曲只存在于整张专辑的背景中一样。弗朗索瓦·雅各布博士和雅克·莫诺博士的工作将在本章后面详细介绍，他们通过对乳糖代谢的描述戏剧性地重塑了这一图景，根据动态遗传元素而不是具有性状的整个生物体来重新构建性状。特定的 DNA 片段被发现可以协同控制细胞的行为，但这些片段中的遗传元件是不可分割的，并且不容易定制以满足新的目的。这个里程碑可以被认为是音乐产业的“专辑”和“单曲”阶段之间的某个阶段。现在，<strong>在基因工程和可互换遗传部分的时代，许多编码特定功能的基因序列是已知的并且可以精确操纵</strong>。我们可以通过以专门的方式重新组合这些遗传元素来定制这些遗传元素的“播放列表”，以满足我们的需求。 DNA 工程基础章节更全面地描述了这种操作的技术。在这里，我们将探索由于我们可以混合搭配遗传部分而出现的工程机会。</p>
+<h2 id="绝缘"><a href="#绝缘" class="headerlink" title="绝缘"></a>绝缘</h2><p>随着模块化材料的混合和匹配，出现了新的复杂情况，包括模块之间以不良方式相互作用的可能性增加。最小化模块之间意外交互的一种工具是隔离各部分的行为。购买汽车时考虑可用的模块化选项。您可以通过多种方式升级基本型号：增强型扬声器系统、更强大的发动机、加热后排座椅等等。这些附加组件的出现在一定程度上要归功于汽车工程师采用的模块化设计方法。如果没有这种方法，升级到精美扬声器系统的成本将非常高昂，因为前控制台需要完全重新设计以适应每个品牌的扬声器。相反，早期设计阶段就包含了管理单元升级的灵活性，因此购买时的更改不需要大量的重新设计工作。汽车的每个模块都可以进行定制，设计人员从一开始就付出了艰苦的努力，使各个部件相互独立。</p>
+<p>除了创建可以通过多种方式组合的物理离散零件之外，功能装配还要求零件表现出与其周围其他元素可分离的行为。例如，如图 7-2 所示，音响的操作不得影响驾驶员方向盘的操作。如果转动收音机上的旋钮也能转动方向盘，那将是一个真正的驾驶挑战。这种<strong>部件操作之间的行为分离称为绝缘</strong>。</p>
+<p><img src="/biobuilder/125.png" alt="FIGURE"></p>
+<blockquote>
+<p>图 7-2 汽车设计中的绝缘。现代汽车由多个部件组成，包括座椅、车轮、方向盘和音响。组件独立工作，因此一个组件的使用不会干扰车内其他组件的运行。</p>
+</blockquote>
+<p>当用遗传部件建造时，类似的预期设计和遗传部件的绝缘是很难实现的。细胞是一个流体环境，分子、蛋白质和细胞结构不断混合。当他们不断遇到新的伙伴和邻居时，如何才能隔离他们的行为呢？此外，对单元的“升级”可能在某些蜂窝设置中按预期运行，但在其他设置中可能不按预期运行。 “多么丰富多彩的世界”一章中的活动就是这一挑战的例证。即使升级一开始似乎有效，但细胞的局部环境是动态的，要求细胞设计在许多环境和生长条件下运行。最后，与任何其他工程基质不同，生命材料可以并且将会随着时间的推移而发生变异，正如我们在金面包章节中探讨的那样。工程产品的演变使得设计挑战变得更加严峻。</p>
+<p><img src="/biobuilder/126.png" alt="FIGURE"></p>
+<p>为了管理生物设计的所有复杂性，我们可以使用强大的抽象工程工具，如生物设计基础章节中所述，因此关于一个设计元素的决策可以独立于其他元素的决策而做出。可以更换汽车的音响而不影响转向。此外，<strong>模块化、隔离和抽象应该允许在不影响系统设计的情况下做出有关设备的决策</strong>。回到汽车的类比，你不需要仅仅因为想要前轮驱动就购买卡车而不是汽车。</p>
+<p>但这种方法在合成生物学实践中效果如何？合成生物学家希望能够以可预测且合理的方式将具有已知特性和相对强度的部件组合成新的合成电路。通过测量由特征明确的部件组成的合成系统的实际性能，并将测量结果与预测进行比较，生物构建者可以评估他们的设计，并更接近正确预测未来设计的成功或失败。</p>
+<h2 id="测量原理"><a href="#测量原理" class="headerlink" title="测量原理"></a>测量原理</h2><p>有些事情是很难衡量的。例如，幸福没有我们都同意的尺度或单位，也没有可靠的工具来检测它。其他事情一直在测量：我们可以将数值与牌组中的卡片、平均成绩或体育联盟中的球队排名相关联。无论您是做饭还是购买现成的衣服，您都依赖测量来进行数字、尺寸、时间或计数。 <strong>测量报告项目的状态及其行为、关系或特征</strong>。</p>
+<p><img src="/biobuilder/127.png" alt="FIGURE"></p>
+<p>当某些东西可以测量时，单位为我们提供了一种比较项目的通用方法。正如我们在《DNA 工程基础》一章中所述，标准化每个测量的单位并非易事，但对于许多项目，我们都同意一些单位。用“手”测量马的高度就是一个很好的例子。感谢亨利八世将手标准化为 4 英寸，即使这个过时的单位仍然具有有意义的测量信息。熟悉手测量的人都知道，一匹站立 16 手高的马肩胛骨（靠近肩膀）的高度为 64 (16 x 4) 英寸，而另一匹身高 16.3 手高的马则为 67 (16 x 4 + 3) 英寸，不是 65.2 (16.3 x 4) 英寸。</p>
+<p>有意义的测量，无论单位如何，都是现代科学方法的标志。正如孟德尔向我们展示的那样，我们在计算事物时可以看到模式。定性数据也可以提供丰富的信息，正如“淡香水”一章中所探讨的那样。不过，在这里，我们重点关注数学测量如何强大地帮助我们操纵信息并将其转换为其他表示形式。数字还使我们能够进行比较和预测。</p>
+<p>举个例子，当你只有定性测量时，尝试将你和你朋友的步行去学校的路进行比较。在这种情况下，你只能说这样的话：“学校离我家很远，比你家远得多，但我走得比你快。”但通过测量里程、时间和速度，突然间就可以算出你们每个人需要多早离开家，早上 8 点到学校见面。如果您知道距离和步行速度，您就可以预测行程需要多长时间。将这一教训应用到工程中：<strong>测量使我们能够预测</strong>，这非常有用，但前提是我们能够进行相关测量。接下来描述是什么使测量具有相关性。</p>
+<h3 id="通常测量什么"><a href="#通常测量什么" class="headerlink" title="通常测量什么"></a>通常测量什么</h3><p><strong>工程师不仅使用测量来描述，还用于控制、组装和改进被测量的对象</strong>。模块化零件的组装说明了测量的重要性。为了可靠地将一个零件与另一个零件组合在一起，必须了解每个零件的相关特征，并且必须符合某些商定的标准。否则，齿轮将无法转动，螺母将无法安装在螺纹上，乐高积木也无法组装成死星和埃菲尔铁塔的模型。通过符合特定的测量标准，模块化零件成为现代工厂和高效装配线制造的基础。表 7-1 详细介绍了工程师所依赖的一些比较和测量结果。</p>
+<blockquote>
+<p>表 7-1 工程学科的典型测量</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>测量&nbsp;&nbsp;</th>
+<th>描述&nbsp;&nbsp;</th>
+<th>实用程序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态性能</td>
+<td>将一系列受控输入映射到部件的可测量最终输出</td>
+<td>有助于确保一个部件的输出足以触发电路中的下一个部件</td>
+</tr>
+<tr>
+<td>动态性能</td>
+<td>随着时间的推移，部件响应输入信号变化的输出</td>
+<td>显示系统在初始刺激下的行为方式，这可能与稳定的长期行为不同</td>
+</tr>
+<tr>
+<td>输入兼容性</td>
+<td>部件如何响应各种输入</td>
+<td>说明部件与各种上游部件&#x2F;输入组合的灵活性</td>
+</tr>
+<tr>
+<td>可靠性</td>
+<td>以平均无故障时间 (MTF) 来衡量</td>
+<td>用于确定系统预期按最初指定的方式运行多长时间</td>
+</tr>
+<tr>
+<td>材料或资源的消耗</td>
+<td>决定电源或资源池的选择</td>
+<td>影响机箱决策等</td>
+</tr>
+</tbody></table>
+<h3 id="进行和报告合成生物学的测量"><a href="#进行和报告合成生物学的测量" class="headerlink" title="进行和报告合成生物学的测量"></a>进行和报告合成生物学的测量</h3><p><strong>您的测量结果会告诉您关于合成 DNA 电路如何在细胞中工作的不同信息</strong>。如果我们能够缩小到微观尺寸，就像 Frizzle 女士在《神奇校车》系列书籍中所做的那样，然后神奇地坐在 DNA 上来计算移动的 RNA 聚合酶的数量，就可以对电路的活动进行最直接的测量每秒沿着DNA。用电子术语来说，这就像对电流中流动的电子进行计数。然而，在实验上更合理的是测量转录和翻译的产物。每秒产生多少个 mRNA，或者蛋白质如何随着时间的推移而积累？这些 RNA 和蛋白质测量是可能的，但需要大量的设备、时间和专业知识。为了使 BioBuilder 的 iTunes 实验室活动变得更容易，测量了 β-半乳糖苷酶 <strong>(β-gal) 活性，这间接但很好地反映了每个电路的性能。</strong></p>
+<p>经验表明，当 DNA 回路从一种生物环境转移到另一种生物环境时，<strong>可能很难预测遗传部分将如何发挥作用</strong>。某个部分的活性在许多层面上受到不同程度的影响，包括新细胞环境中的转录、翻译和蛋白质活性的速率。增加可靠组装的挑战的是，当构建由多个遗传部分组成的生命系统时，很难预测这些部分将如何相互通信。例如，一个部件生成的强“开启”信号可能不足以触发与其一起工作的下游部件。</p>
+<p><img src="/biobuilder/128.png" alt="FIGURE"></p>
+<p>然而，合成生物学并不是第一个遇到这些组装挑战的工程努力。更成熟的工程学科采用的一种方法是开发<strong>数据表，描述任何给定零件如何根据特定参数</strong>工作。为了制作此类数据表，工程师必须收集足够的数据来充分描述其零件，并使用特定的输入并在许多不同的条件和环境下对其进行测试。合成生物学家可以为他们的零件创建类似的数据表。例如，标准生物部件注册表中发布的一份转录因子数据表报告了该部件的静态性能、动态性能、输入兼容性和可靠性。这些参数与前面表 7-1 中描述的参数相同。理想情况下，这些测量值和部件行为的描述在使用时都有效。然而，即使<strong>如果其行为因环境而异，零件数据表上的说明和信息也可能允许生物构建者考虑这种可变性</strong>。这种“数据表”方法仅适用于以可靠且可预测的方式变化的部件，情况并非总是如此，但它是迈向功能标准化的重要第一步。</p>
+<p>影响零件感知鲁棒性（或缺乏鲁棒性）的另一个因素是实验室之间测量技术的正常差异。由于技术、培养基、细胞生长状态以及其他因素的细微差异，即使是同一实验室中测量同一事物的两个人也不太可能得出相同的值。合成生物学家热衷于找出这些变异的根本原因，但认识到这是一个长期目标。同时，<strong>您可以使用校准参考来比较在一个地方进行的测量与在另一地方进行的测量</strong>。出于这个原因，BioBuider 的 iTune 设备实验室使用了参考标准。</p>
+<h2 id="iTune-设备实验室的基本概念"><a href="#iTune-设备实验室的基本概念" class="headerlink" title="iTune 设备实验室的基本概念"></a>iTune 设备实验室的基本概念</h2><p>在此 BioBuilder 活动中，您可以探索遗传部分的生物活性，这些遗传部分将结合起来产生不同数量的酶。这些部分中的每一个都被独立地描述为“弱”、“中”或“强”。此活动询问当这些单独特征的部件以不同方式组合时，您能如何预测它们的行为。如下所述，对基因表达以及启动子和核糖体结合位点部分的作用的一些了解对于开始是至关重要的。</p>
+<h3 id="促销员和-RBS"><a href="#促销员和-RBS" class="headerlink" title="促销员和 RBS"></a>促销员和 RBS</h3><p>“DNA 制造 RNA 制造蛋白质”这句口头禅通常被称为基因表达的“中心法则”，是蛋白质通过 RNA 序列翻译组装而成，而 RNA 序列由 DNA 序列转录而成的原理的简写。蛋白质在细胞中执行许多关键工作，因此转录和翻译控制着细胞的许多行为和特征。因此，转录和翻译已被广泛研究，并且对于受控基因表达来说必要且充分的许多核心组件是已知的（图 7-3），这并不奇怪。</p>
+<p><img src="/biobuilder/129.png" alt="FIGURE"></p>
+<blockquote>
+<p>图 7-3 基因表达单元的符号表示。左侧箭头所示的启动子序列结合 RNA 聚合酶以启动转录。核糖体结合位点缩写为“RBS”并用半圆表示，是编码核糖体结合以启动翻译的 mRNA 片段的 DNA 序列。开放阅读框，缩写为“ORF”，由右侧箭头表示，代表编码蛋白质的DNA序列。启动子和ORF的箭头方向表示它们的读取方向。</p>
+</blockquote>
+<p>对于转录，启动子是结合 RNA 聚合酶（一种复杂的多蛋白酶）的 DNA 序列，以启动从 DNA 模板形成 RNA 链。对于翻译，起始位点称为核糖体结合位点 (RBS)，因为核糖体识别该序列以开始从 RNA 模板合成蛋白质。这些序列主要负责自然发生的转录和翻译调控，合成生物学家也可以使用它们来引入自己的调控方案。基于许多已知的启动子和 RBS 序列，研究人员已经确定了这些部分的共有序列，如图 7-4 所示。例如，共有启动子序列是通过比较许多启动子序列中每个位置的核苷酸来确定的。共识是根据每个位置最常见的核苷酸模式建立的。</p>
+<p><img src="/biobuilder/130.png" alt="FIGURE"></p>
+<blockquote>
+<p>图 7-4 定义共有序列。句子（左）和基因（右）的多个“序列”对齐以生成一致序列，如底部灰色线所示。绿色字母代表每个位置最常见的字母，它定义了共有序列。红色字母不是该位置最常见的字母，因此不包含在共识序列中。</p>
+</blockquote>
+<p>共有序列与合成生物学相关，因为一般来说，当某个部分与共有序列紧密匹配时，其功能最佳。相反，与共有序列不同的核苷酸越多，该部分完成其工作的能力就越差。因此，共有启动子序列可能是“强启动子”，这意味着它可能会很好地结合 RNA 聚合酶并经常启动转录，而偏离共有启动子或 RBS 序列将是“弱”的，其工作效率低于具有更好匹配的序列。然而，强大并不一定意味着更好。根据应用的不同，工程师可能只需要少量的活性，例如，如果在细胞表面形成孔或调节细胞死亡反应。</p>
+<h3 id="紫胶操纵子"><a href="#紫胶操纵子" class="headerlink" title="紫胶操纵子"></a>紫胶操纵子</h3><p>细胞根据需要打开和关闭基因产物的能力对其生存至关重要。 20 世纪 60 年代，Francois Jacob 博士和 Jacques Monod 博士通过对细菌中乳糖转运和代谢的研究，确定了基因表达的基本原理。乳糖代谢的基因聚集在乳糖操纵子中（图 7-5），但细菌仅在葡萄糖不存在时才打开这些基因来节省能量。细菌更喜欢葡萄糖作为食物来源，并且只有在没有其喜欢的食物的情况下才会努力利用乳糖。 Jacob和Monod对其调控的分子细节解释是诱导基因的经典模型。在这里，我们仅讨论与 iTune 设备实验室相关的详细信息。</p>
+<p><img src="/biobuilder/131.png" alt="FIGURE"></p>
+<blockquote>
+<p>图 7-5 lac 操纵子的符号表示。 lac 操纵子由控制三个下游 RBS-ORF 对（分别为绿色半圆和蓝色箭头）的单个启动子（pLac，绿色箭头）组成。仅当葡萄糖不存在时，操纵子才会产生代谢糖所需的酶。</p>
+</blockquote>
+<p>乳糖代谢的关键蛋白质是一种称为 β-半乳糖苷酶的酶，通常缩写为 β-gal，它由称为 lacZ 的 ORF 在 DNA 上编码。 β-半乳糖酶将乳糖裂解成葡萄糖和半乳糖，细胞可以利用它们来驱动其其他功能。研究人员还发现，β-gal 会与多种类似于乳糖的分子发生反应，包括合成类似物，例如 ONPG，您将在 iTune 设备实验室中使用它。</p>
+<p>LacZ 的表达以及整个 lac 操纵子的表达在转录水平上受到正向和负向调节（图 7-6）。当 DNA 结合蛋白通过其 DNA 结合位点下游的 DNA 元件增加转录量时，就会发生正向调节。相反，负调控这一术语用于描述 DNA 结合蛋白在结合 DNA 时降低转录量的情况。对于紫胶操纵子，正向和负向调节因子对细菌环境中的糖种类敏感。当葡萄糖存在时，调节因子会关闭下游 ORF 的转录。如果存在乳糖而缺乏葡萄糖，这些相同的转录调节因子会改变它们的行为，并且操纵子的转录导致乳糖的转运和代谢。</p>
+<p>控制 lacZ 的相同正向和负向调节启动子也控制其他 lac 操纵子基因，包括编码乳糖转运蛋白的基因。单个 mRNA 从 lac 操纵子的启动子转录，产生乳糖代谢和运输所需的多种蛋白质产物。由于与每个 ORF 相关的 RBS，每个产物的翻译都可以从单个 mRNA 进行。它是一种紧凑而优雅的遗传结构，大自然已经对其进行了调整，以在适当的时候产生所需量的每种蛋白质。</p>
+<p><img src="/biobuilder/132.png" alt="FIGURE"></p>
+<blockquote>
+<p>图 7-6 Lac 操纵子调节。 lacI ORF 编码转录抑制子，该抑制子阻断 Plac 启动子，从而阻断整个操纵子的表达。乳糖或其类似物 IPTG 抑制 LacI 阻遏蛋白，使 Plac 启动子发挥作用并缓解下游操纵子的抑制。</p>
+</blockquote>
+<h2 id="额外阅读和资源"><a href="#额外阅读和资源" class="headerlink" title="额外阅读和资源"></a>额外阅读和资源</h2><ul>
+<li>Canton, B.、Labno, A.、Endy, D. 合成生物部件和设备的细化和标准化。自然生物技术2008; 26:787-93。</li>
+<li>Jacob F.，Monod J。蛋白质合成中的遗传调控机制。 JMB。 1961；3：318-56。</li>
+<li>Kelly, J.R. 等人使用体内参考标准测量 BioBrick 启动子的活性。生物工程学报（2009）； 3:4。</li>
+<li>McFarland, J. 浊度计：一种估算悬浮液中细菌数量的仪器，用于计算调理指数和疫苗。贾马。 1907；14：1176-8。</li>
+<li>米勒，J.H.分子遗传学实验冷泉港 1972 年；冷泉港实验室出版社。</li>
+<li>萨利斯，H.M.核糖体结合位点计算器。方法酶。 2011；498：19-42。</li>
+<li>网站：<a target="_blank" rel="noopener" href="http://parts.igem.org/Main_Page">生物部件注册</a>。</li>
+</ul>
+<p><img src="/biobuilder/133.png" alt="FIGURE"></p>
+<h2 id="iTune-设备实验室"><a href="#iTune-设备实验室" class="headerlink" title="iTune 设备实验室"></a>iTune 设备实验室</h2><p>该实验室重点研究表达基因所需的蛋白质和 DNA 序列（启动子、ORF、RNA 聚合酶等），同时也介绍了基础酶学。通过分析九个基因调控设计，探索了模块化、绝缘和测量的工程概念。每种设计都有独特的启动子和 RBS 组合，控制 β-半乳糖苷酶的表达。分光光度分析和酶动力学测定是本实验室强调的主要生物技术技能。</p>
+<h3 id="设计选择"><a href="#设计选择" class="headerlink" title="设计选择"></a>设计选择</h3><p>与天然存在的 lac 操纵子相比，iTune Device 基因电路的遗传结构更为简单，由 1 个启动子和 1 个 RBS 控制 1 个 ORF（见图 7-7）。为了减轻这些正调节因素和负调节因素对 iTune 设备测量的影响，细胞在丰富的培养基中生长，但不含细胞的正调节蛋白，并且存在 IPTG（一种抑制负调节蛋白的分子）。由于每个 DNA 部分的模块化行为，我们可以定制 iTunes 电路的行为。正如 Jacob 和 Monod 对大肠杆菌的天然紫胶操纵子所描述的那样，iTune 设备的部件具有离散的功能和性能特征，合成生物学家将其用于生物设计。</p>
+<p><img src="/biobuilder/134.png" alt="FIGURE"></p>
+<blockquote>
+<p>图 7-7 lac 操纵子的修饰。遗传构建体（例如在 iTune 设备活动中研究的遗传构建体）已删除第二个和第三个 RBS-ORF 对。所得基因表达单元带有单个启动子-RBS-ORF。</p>
+</blockquote>
+<h3 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h3><p>在 BioBuilder iTune 设备实验室中，您将测量 lacZ 基因产物 β-gal 的活性，以评估不同启动子和 RBS 组合的性能。根据启动子和 RBS 部分与共有序列的比对，它们被分为“弱”、“中”或“强”。然而，它们如何结合使用，可能取决于培养基、菌株背景和评估它们的技术。如果您有时间或有兴趣，您可以在不同的细菌菌株、不同生长阶段的菌株或生命系统中的其他 DNA 回路中进行这些测量。这些因素中的任何一个都可能改变这些简单的启动子:RBS:lacZ 电路在细胞中的工作方式。</p>
+<p><img src="/biobuilder/135.png" alt="FIGURE"></p>
+<p>在运行实验室进行测量之前，您对这些电路的活动有何预测？表 7-2 可以帮助组织您的“猜测”，并揭示您思维中的任何偏见和理解上的差距。如果我们任意猜测弱启动子和弱 RBS 的组合将产生 10 个单位，强&#x2F;强组合将产生 1,000 个单位，我们如何估计两者之间的一切？图表中的起始值是理论值，可能无法反映您运行此实验时从这些电路获得的数字。关键是要问如何才能做出好的预测。</p>
+<blockquote>
+<p>表 7-2 假设表</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>启动子（弱）&nbsp;&nbsp;</th>
+<th>启动子（中）&nbsp;&nbsp;</th>
+<th>启动子（强）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RBS（弱）</td>
+<td>10</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>RBS（中）</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>苏格兰皇家银行（强）</td>
+<td>?</td>
+<td>?</td>
+<td>1,000</td>
+</tr>
+</tbody></table>
+<p>在 BioBuilder 的 iTunes 实验室活动中，测量了 β-gal 活性，因为它间接但很好地反映了每个电路的性能。 β-gal 活性是使用一种称为 ONPG 的底物测量的，ONPG 是一种化学性质与乳糖相似的无色化合物。 β-gal 裂解 ONPG 就像通常裂解乳糖一样。与 ONPG 反应的产物是黄色化合物邻硝基苯酚和无色产物半乳糖。黄色化合物提供可见信号，您可以使用其强度来计算不同电路表达的 β-gal 量。</p>
+<p>为了比较不同实验室小组收集的数据，您将使用“参考”启动子：RBS：lacZ 序列。已知该参考会产生一些中间量的酶，因此您可以使用它来校准您进行的所有其他测量。例如，如果您测量的参考标准具有 1,000 个活动单位，而另一个团队测量的相同参考具有 500 个单位，则技术或单位计算中的一些变化可能会导致差异。不过，您的所有测量值及其测量值都应该有同样的两倍差异，因此可以在考虑该差异后对数据进行比较。</p>
+<p>您可以将参考视为特定类型的阳性对照。我们预计参考样品会产生 β-gal，从而产生与底物裂解相关的黄色。因为做这个实验的每个人都会使用相同的菌株作为阳性对照，以确保检测中检测到某些酶，我们也可以用它作为所制备酶的准确量的参考。对于本实验室，我们没有包含用作阴性对照的特定菌株。阴性对照预计不会产生酶。根据您想要控制的内容，您可以想象使用没有 lacZ 基因的菌株作为阴性对照，或在不存在诱导分子 IPTG 的情况下使用参考菌株。然而，我们的实验问题侧重于将设计与参考进行比较，我们不太关心电路是否仅在存在 IPTG 的情况下才打开。我们决定参考菌株提供足够水平的实验控制来解决我们的<strong>问题：启动子 + RBS 的哪种组合会产生最大的 β-gal 产量？</strong></p>
+<h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><p>BioBuilder 的 iTune 设备活动中总共有 10 个菌株可供测试（表 7-3）。对于 10 种菌株中的每一种，您都将在液体培养基中培养过夜，其中包括 LB（生长培养基）、氨苄青霉素（用于选择携带启动子的质粒：RBS:lacZ 构建体）和 IPTG（用于缓解 lacZ 基因的抑制）。</p>
+<blockquote>
+<p>表 7-3 iTune 设备应变描述</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>菌株#&nbsp;&nbsp;</th>
+<th>登记号#<br>（启动子部分）&nbsp;&nbsp;</th>
+<th>登记号#<br>（RBS 部分）&nbsp;&nbsp;</th>
+<th>相对强度启动子&#x2F;RBS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2-R</td>
+<td>BBa_J23115</td>
+<td>BBa_B0035</td>
+<td>参考&#x2F;参考</td>
+</tr>
+<tr>
+<td>2-1</td>
+<td>BBa_J23113</td>
+<td>BBa_B0031</td>
+<td>弱&#x2F;弱</td>
+</tr>
+<tr>
+<td>2-2</td>
+<td>BBa_J23113</td>
+<td>BBa_B0032</td>
+<td>弱&#x2F;中</td>
+</tr>
+<tr>
+<td>2-3</td>
+<td>BBa_J23113</td>
+<td>BBa_B0034</td>
+<td>弱&#x2F;强</td>
+</tr>
+<tr>
+<td>2-4</td>
+<td>BBa_J23106</td>
+<td>BBa_B0031</td>
+<td>中&#x2F;弱</td>
+</tr>
+<tr>
+<td>2-5</td>
+<td>BBa_J23106</td>
+<td>BBa_B0032</td>
+<td>中&#x2F;中</td>
+</tr>
+<tr>
+<td>2-6</td>
+<td>BBa_J23106</td>
+<td>BBa_B0034</td>
+<td>中&#x2F;强</td>
+</tr>
+<tr>
+<td>2-7</td>
+<td>BBa_J23119</td>
+<td>BBa_B0031</td>
+<td>强&#x2F;弱</td>
+</tr>
+<tr>
+<td>2-8</td>
+<td>BBa_J23119</td>
+<td>BBa_B0032</td>
+<td>强&#x2F;中</td>
+</tr>
+<tr>
+<td>2-9</td>
+<td>BBa_J23119</td>
+<td>BBa_B0034</td>
+<td>强&#x2F;强</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>所有菌株均在“TOP10”大肠杆菌菌株中构建，基因型为：F– mcrA Δ(mrr-hsdRMS-mcrBC) Φ 80 lacZΔM15 ΔlacX74 recA1 araD139 Δ(ara leu) 7697 galU galK rpsL (StrR) endA1 nupG</p>
+</blockquote>
+<p>您将通过使用分光光度计测量 OD600 或使用 MacFarland 浊度标度测量每个过夜液体培养物的细胞密度来开始实验。如果您使用分光光度计，机器会测量细菌样本散射的光量。其在600 nm光下的光密度（缩写为“OD600”）是一个无单位的数字，反映了细菌培养物的密度。使用 MacFarland 浊度样品（您可以根据表 7-4 将其转换为 OD600 测量值），您可以用眼睛而不是机器更近似地进行此测量。</p>
+<blockquote>
+<p>表 7-4 MacFarland 标准到 OD600 的转换</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>麦克法兰&nbsp;&nbsp;</th>
+<th>1&nbsp;&nbsp;</th>
+<th>2&nbsp;&nbsp;</th>
+<th>3&nbsp;&nbsp;</th>
+<th>4&nbsp;&nbsp;</th>
+<th>5&nbsp;&nbsp;</th>
+<th>6&nbsp;&nbsp;</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OD600</td>
+<td>0.1&nbsp;&nbsp;</td>
+<td>0.2&nbsp;&nbsp;</td>
+<td>0.4&nbsp;&nbsp;</td>
+<td>0.5&nbsp;&nbsp;</td>
+<td>0.65&nbsp;&nbsp;</td>
+<td>0.8&nbsp;&nbsp;</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+<p>然后，您将已知的少量每种培养物（称为等分试样）与洗涤剂混合，洗涤剂将酶从细胞内部释放到缓冲溶液中。缓冲液使 β-gal 酶保持足够稳定，以便与 ONPG 发生反应。您可以使用下面的公式，通过测量添加到反应中的细胞培养物的体积（以 ml 为单位）和 OD600 来计算每个反应中的细胞数量，OD600 反映每个培养物中的细胞密度（以细胞为单位） &#x2F;毫升）：</p>
+<blockquote>
+<p>细胞数 &#x3D; 细胞数&#x2F;ml × ml</p>
+</blockquote>
+<p>最终，通过此计算，您可以比较样品之间的“每个细胞”酶活性。</p>
+<p>准备好反应管后，您将通过添加 ONPG 开始反应，以精确定时的 10 秒或 15 秒间隔交错添加。反应物将开始变黄。在给定时间内形成的黄色强度反映了细胞在裂解之前产生的 β-gal 酶的量。经过已知的时间并且反应物足够黄色后，您将添加 Na_2 CO_3 （一种淬灭溶液），通过改变 pH 值来停止反应。该淬灭溶液以精确定时的 10 秒或 15 秒间隔添加，以便每个反应可以运行精确已知的时间量，这使您可以计算每分钟经过的酶活性。当反应淬灭后，反应稳定，因此您可以在闲暇时使用分光光度计在 420 nm (Abs420) 处测量黄色的强度，或者与 BioBuilder 网站上显示的颜色标准进行比较。</p>
+<p>最后，您可以使用该酶的标准“米勒单位”计算每个菌株的 β-gal 活性。根据以下公式进行计算：</p>
+<blockquote>
+<p>米勒单位的 β-gal 活性 &#x3D; 1000 × Abs420 &#x2F; [(反应时间 (min)) × (每个反应中的细胞体积 (ml)) × OD600]</p>
+</blockquote>
+<p>如果您想知道分光光度计上进行的“吸光度”测量和分光光度计上进行的“光密度”测量之间的区别，这里有一个简单的方法来区分它们。当从比色皿中发出的光量比比色皿中吸收光的颜料或其他分子进入的光量减少时，在分光光度计上获得的读数称为吸光度测量。当比色皿中的材料散射而不是吸收光时，您在分光光度计上获得的读数称为光密度，就像您可以在 600 nm 光下测量的颗粒或细胞的情况一样。吸光度和光密度都是无单位的数字，因此可以在没有任何转换因子的情况下用于米勒单位的计算。</p>
+<h3 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h3><p><strong>准备浊度标准品。</strong> 如果您在无法使用分光光度计的情况下运行实验方案，表 7-5 中所示的 MacFarland 浊度标准品提供了另一种测量细胞密度的方法。该方法使用1% BaCl 2 在1% H 2 SO 4 中的悬浮液，其在视觉上与在液体培养物中生长的大肠杆菌密度的悬浮液类似。您可以在实验室之前准备好这些浊度标准品。您可以制作任意体积的浊度标准品，但是您应该将它们悬浮并等分到带盖的小玻璃管中。试管的尺寸和放入其中的标准品的体积并不重要。</p>
+<blockquote>
+<p>表 7-5 麦克法兰浊度标准</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>浊度标度&nbsp;&nbsp;</th>
+<th>OD600&nbsp;&nbsp;</th>
+<th>1% BaCl_2 &#x2F; 1% H_2 SO_4 (mL)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0.0&#x2F;10</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.1</td>
+<td>1.05&#x2F;9.95</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.2</td>
+<td>0.1&#x2F;9.9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.4</td>
+<td>0.2&#x2F;9.8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.5</td>
+<td>0.3&#x2F;9.7</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.65</td>
+<td>0.4&#x2F;9.6</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.85</td>
+<td>0.5&#x2F;9.5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1.0</td>
+<td>0.6&#x2F;9.4</td>
+</tr>
+</tbody></table>
+<p>要测量细菌样品的浊度，您可以将少量细菌样品转移到与浊度标准所用尺寸相同的玻璃管中。通过识别哪个浊度标准相对模糊放置在标准管后面的深色标记来确定浊度。</p>
+<p>经验法则：使用 1 OD600 ~ 1 x 10^9 cells&#x2F;ml 将浊度测量值转换为细胞密度。</p>
+<h3 id="实验前程序"><a href="#实验前程序" class="headerlink" title="实验前程序"></a>实验前程序</h3><p><strong>第 1 天：将菌株从刺中划出到平板上。</strong> 本实验的细菌菌株已经携带待测试的质粒 DNA 编码遗传电路。这些质粒还赋予抗生素氨苄青霉素抗性。细菌将以“刺”或“斜”的形式到达，这是一个在倾斜介质上装有少量细菌的试管：</p>
+<ol>
+<li>使用无菌牙签或接种环将细菌划线到培养皿上：从牙签或接种环上的刺处收集少量细菌，然后将细胞转移到含有 Luria Broth (LB) 琼脂的培养皿中100 μg&#x2F;ml 氨苄西林。</li>
+<li>对剩余的刺穿样品重复上述步骤，将每个样品划线到不同的培养皿上。</li>
+<li>将这些培养皿培养基面朝上放入 37°C 培养箱中过夜。如果没有培养箱，室温培养两晚通常会得到相同的结果。</li>
+</ol>
+<p><strong>第 2 天：细菌菌株的液体培养过夜。</strong> 为了为本实验室的实验部分制作起始培养物，每个菌株的 3 ml 液体培养物在 LB+氨苄青霉素中于 37°C 培养过夜。管中氨苄青霉素的终浓度应为100 μg&#x2F;ml，管中IPTG的终浓度应为1mM。 3 ml 发酵剂培养物足以完成后续方案。使用无菌接种环或牙签或移液管尖端，将细菌菌落从其中一个培养皿转移到含有 3 ml LB、3 μl 氨苄青霉素和 30 μL IPTG 的大无菌培养管中。对于每个学生或学生团队必须培养的每种菌株来说，这个体积绰绰有余：</p>
+<ol>
+<li>对您要接种的每种菌株重复上述步骤。</li>
+<li>将培养管放入滚轮中，37°C 培养箱过夜。确保彼此平衡管子，以最大程度地减少滚轮上的压力。</li>
+</ol>
+<p>如果没有滚轮或培养箱，您可以将每个起始培养物的体积增加至 10 ml LB+amp+IPTG，然后您可以在带有搅拌棒的小锥形瓶中在室温下培养样品。您应该以这种方式种植它们至少 24 小时以达到饱和。</p>
+<h3 id="实验室协议"><a href="#实验室协议" class="headerlink" title="实验室协议"></a>实验室协议</h3><p>通过此测定，您将确定每种设计产生的 β-gal 活性量。您应该尝试对每种菌株进行重复测定，然后汇集您的班级数据，以获得对您测量的值的信心。</p>
+<h4 id="数据收集：使用分光光度计测量浊度和颜色"><a href="#数据收集：使用分光光度计测量浊度和颜色" class="headerlink" title="数据收集：使用分光光度计测量浊度和颜色"></a>数据收集：使用分光光度计测量浊度和颜色</h4><ol>
+<li>为每个过夜培养物制备 3.0 ml 1:10 稀释液（300 μL 细胞于 2.7 ml 碳酸氢盐缓冲液中）。</li>
+<li>如果您的分光光度计使用玻璃分光光度计管，则可以继续执行下一步。或者，您可以将稀释的细胞混合物转移到合适的比色皿中，填充约四分之三满。</li>
+<li>测量该稀释液在 600 nm 处的吸光度 (OD600)。在数据表中记录值 <strong>X 10</strong>。这是未稀释细胞的密度。如果您没有分光光度计并使用浊度标准品，请将培养物与 MacFarland 浊度标准品进行比较，并使用表 7-4 转换为 OD600。</li>
+<li>对所有细菌样本重复此数据收集。</li>
+<li>现在您可以将这些稀释液和试管放入 10% 漂白剂溶液中。</li>
+<li>将 1.0 ml 碳酸氢盐缓冲液添加到 11 个标有 B（空白）、R（参考）和 1 至 9（样品）的试管中。这些是反应管。</li>
+<li>将 100 μl 过夜培养物（未稀释）添加到每个管中。将 100 μl LB 添加到 B 管中，作为空白。</li>
+<li>向每管中添加 100 μl 稀释洗洁精，裂解细胞。</li>
+<li>每个管涡旋 10 秒。您应该精确地计时此步骤，因为您希望尽可能相同地对待重复。</li>
+<li>将 100 μl ONPG 溶液添加到第一管中开始反应。同时启动计时器或秒表，以配合您开始第一反应的时间。等待 15 秒，然后将 100 μl ONPG 溶液添加到下一个管中。对所有管重复此操作，以 15 秒的间隔添加 ONPG，包括空白管。</li>
+<li>10 分钟后，向第一个管中加入 1 ml 苏打灰溶液，终止反应。等到计时器读数为 10 分 15 秒，然后终止下一个反应。对所有管重复此操作，每隔 15 秒添加苏打灰溶液，包括空白管。现在反应已经稳定，可以留到第二天继续阅读。</li>
+<li>如果您的分光光度计使用玻璃分光光度计管，则可以跳至下一步。如果没有，您需要将一些反应混合物从反应管转移到比色皿中，将其填充到大约四分之三满。</li>
+<li>读取每个样品管在 420 nm (OD 420) 处的吸光度。这些值反映了每个管中黄色的量。如果您没有分光光度计并且要将颜色与油漆碎片进行比较，请按照 BioBuilder 网站上的说明进行操作。</li>
+<li>根据前面给出的公式计算每个样品中的 β-半乳糖苷酶活性。</li>
+</ol>
+<p><img src="/biobuilder/136.png" alt="FIGURE"></p>
+<p><img src="/biobuilder/137.png" alt="FIGURE"></p>
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2024/05/15/biobuilder/chapter-8/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2024/05/15/biobuilder/chapter-6/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <script data-isso="https://jhub.dtype.info/isso/" src="https://jhub.dtype.info/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2024-05-15 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/BioBuilder/">BioBuilder<span>10</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2024 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>

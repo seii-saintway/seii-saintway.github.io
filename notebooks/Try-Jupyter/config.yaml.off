@@ -1,0 +1,55 @@
+hub:
+  extraConfig:
+    #config-jwtauthenticator: |
+    #  from urllib import request
+    #  c.JSONWebTokenLocalAuthenticator.secret = request.urlopen('https://www.gstatic.com/iap/verify/public_key').read()
+    jupyterlab: |
+      c.Spawner.cmd = ['jupyter-labhub']
+  image:
+    #name: gcr.io/sandbox-243014/k8s-hub
+    #tag: jwt
+    name: docker.io/jupyterhub/k8s-hub
+    tag: 0.9.0-beta.3
+
+#ingress:
+#  annotations:
+#    kubernetes.io/tls-acme: "true"
+#  tls:
+#  - hosts:
+#    - z2.jhub.name
+#    secretName: kubelego-tls-jupyterhub
+
+proxy:
+  https:
+    hosts:
+    - z2.jhub.name
+    letsencrypt:
+      contactEmail: saintway.sakaru@gmail.com
+  secretToken: '55090664bcce377c3163a63f5a554412803d96e400caedd158088a0a8bd92d9f'
+
+auth:
+  #type: google
+  #google:
+  #  clientId: "94322977501-rbabmn09tutj4v8to1d95q2vuo286ve5.apps.googleusercontent.com"
+  #  clientSecret: "e3IZQ_DVWdoLQ1eMeope8YQV"
+  #  callbackUrl: "http://z2.jhub.name/hub/oauth_callback"
+  #  hostedDomain: "z2.jhub.name"
+  #  loginService: "z2.jhub.name"
+  whitelist:
+    users:
+    - saintway
+  admin:
+    users:
+    - saintway
+
+singleuser:
+  extraEnv:
+    GRANT_SUDO: 'yes'
+  uid: 1000
+  fsGid: 100
+  image:
+    #name: gcr.io/sandbox-243014/k8s-singleuser-sample
+    #tag: sudo
+    name: docker.io/jupyterhub/k8s-singleuser-sample
+    tag: 0.9.0-beta.3
+  defaultUrl: '/lab'

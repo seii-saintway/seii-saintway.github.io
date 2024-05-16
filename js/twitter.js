@@ -15,7 +15,7 @@ var twitter = (function() {
     showTweets: function(options) {
       options.blacklist = options.blacklist.split(',');
       $.ajax({
-          url: 'https://jhub.name/tweets/?tweet.fields=created_at&max_results=' + options.count
+          url: 'https://jhub.dtype.info/tweets/?tweet.fields=created_at&max_results=' + options.count
         , dataType: 'json'
         , error: function (err) { $(options.target + ' li.loading').addClass('error').text('Error loading feed'); }
         , success: function (data) {
