@@ -14,10 +14,23 @@
 
 
 
+In&amp;nbsp;[&amp;nbsp;]:
+
+    
+%%bash
+/opt/tljh/hub/bin/traefik version
 
 
-https://github.com/jupyterhub/the-littlest-jupyterhub/blob/master/tljh/jupyterhub_config.py
-https://github.com/ju">
+    
+
+
+
+
+
+
+
+
+https://github.com/jupyterhub/the-l">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -108,12 +121,6 @@ https://github.com/ju">
 		  </li>
 		  
 		  <li>
-			<a href="/categories" title="All the categories.">
-			  <i class="fa fa-folder"></i>Categories
-			</a>
-		  </li>
-		  
-		  <li>
 			<a href="/tags" title="All the tags.">
 			  <i class="fa fa-tags"></i>Tags
 			</a>
@@ -161,6 +168,20 @@ https://github.com/ju">
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+/opt/tljh/hub/bin/traefik<span class="w"> </span>version
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -171,6 +192,14 @@ https://github.com/ju">
 <li><a target="_blank" rel="noopener" href="https://docs.traefik.io/v1.7/basics/">https://docs.traefik.io/v1.7/basics/</a></li>
 <li><a target="_blank" rel="noopener" href="https://posativ.org/isso/docs/setup/sub-uri/">https://posativ.org/isso/docs/setup/sub-uri/</a></li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>for traefik v1.7</p>
 
 </div>
 </div>
@@ -219,6 +248,43 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>for traefik v2.10 <a target="_blank" rel="noopener" href="https://doc.traefik.io/traefik/v2.10/middlewares/http/stripprefix/">StripPrefix</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/rules/isso.toml &gt; /dev/null</span>
+<span class="s">[http.routers.isso]</span>
+<span class="s">service = &quot;isso&quot;</span>
+<span class="s">rule = &quot;PathPrefix(\`/isso/\`)&quot;</span>
+<span class="s">entryPoints = [ &quot;https&quot;,]</span>
+<span class="s">middlewares = [&quot;isso&quot;]</span>
+
+<span class="s">[http.middlewares]</span>
+<span class="s">  [http.middlewares.isso.stripPrefix]</span>
+<span class="s">    prefixes = [&quot;/isso&quot;]</span>
+
+<span class="s">[http.services.isso.loadBalancer]</span>
+<span class="s">passHostHeader = true</span>
+<span class="s">[[http.services.isso.loadBalancer.servers]]</span>
+<span class="s">url = &quot;http://127.0.0.1:8000&quot;</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Commit-Modifications">Commit Modifications<a class="anchor-link" href="#Commit-Modifications">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/seii-saintway/hexo-theme-freemind/commit/9568c3160d3c917a8a986beedafb7836e02c2bce">https://github.com/seii-saintway/hexo-theme-freemind/commit/9568c3160d3c917a8a986beedafb7836e02c2bce</a></p>
 
 </div>
@@ -239,7 +305,6 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
 cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/dynamic/isso.toml &gt; /dev/null</span>
-
 <span class="s">[frontends.isso]</span>
 <span class="s">backend = &quot;isso&quot;</span>
 <span class="s">passHostHeader = true</span>
@@ -516,13 +581,13 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /etc/isso.con
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/2019/10/08/Try-Appmod-and-NBGitPuller/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+    	<li class="prev"><a href="/2019/10/08/Try-Appmod-and-NBGitPuller/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2019/10/06/Try-To-Import-Notebooks/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2019/10/06/Try-To-Import-Notebooks/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -534,7 +599,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /etc/isso.con
 	<!-- comment -->
 	
 <section id="comment">
-  <h2 class="title">留言</h2>
+  <h2 class="title">Comments</h2>
 
   <script data-isso="https://jhub.dtype.info/isso/" src="https://jhub.dtype.info/isso/js/embed.min.js"></script>
   <section id="isso-thread"></section>

@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
   
-  <title>第 5 页 | Andrew&#39;s Blog</title>
+  <title>Page 5 | Andrew&#39;s Blog</title>
   <meta name="author" content="Andrew">
   
   
@@ -97,12 +97,6 @@
 		  </li>
 		  
 		  <li>
-			<a href="/categories" title="All the categories.">
-			  <i class="fa fa-folder"></i>Categories
-			</a>
-		  </li>
-		  
-		  <li>
 			<a href="/tags" title="All the tags.">
 			  <i class="fa fa-tags"></i>Tags
 			</a>
@@ -140,6 +134,508 @@
 		<div class="mypage">
 		
 		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2022-10-18 </div>
+			<div class="article-title"><a href="/2022/10/18/Try-Bacalhau/" >Try Bacalhau</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/bacalhau-project/examples">Bacalhau Examples</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.bacalhau.org/all-flags/">CLI Commands</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/filecoin-project/bacalhau/blob/main/docs/running_locally.md">Running Locally</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/bacalhau-project/examples/tree/main/molecular-dynamics/Gromacs/index.ipynb">Molecular Dynamics with Bacalhau</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/current/user-guide/index.html">GROMACS</a> is a package for high-performance molecular dynamics and output analysis.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kipoi/kipoi">Kipoi: Model zoo for genomics</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/get-docker/">Get Docker</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.bacalhau.org/getting-started/installation/">Getting Started with Bacalhau</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>curl<span class="w"> </span>-sL<span class="w"> </span>https://get.bacalhau.org/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Your system is darwin_amd64
+No BACALHAU detected. Installing fresh BACALHAU CLI...
+Getting the latest BACALHAU CLI...
+Installing v0.3.3 BACALHAU CLI...
+Downloading https://github.com/filecoin-project/bacalhau/releases/download/v0.3.3/bacalhau_v0.3.3_darwin_amd64.tar.gz ...
+Downloading sig file https://github.com/filecoin-project/bacalhau/releases/download/v0.3.3/bacalhau_v0.3.3_darwin_amd64.tar.gz.signature.sha256 ...
+Verified OK
+Extracting tarball ...
+NOT verifying Bin
+bacalhau installed into /usr/local/bin successfully.
+Client Version: v0.3.3
+Server Version: v0.3.3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>bacalhau<span class="w"> </span>version
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Client Version: v0.3.3
+Server Version: v0.3.3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Compile-Bacalhau-CLI-into-WebAssembly-Binaries">Compile Bacalhau CLI into WebAssembly Binaries<a class="anchor-link" href="#Compile-Bacalhau-CLI-into-WebAssembly-Binaries">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/bing/apis/bing-web-search-api">Bing Web Search API</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">EdgeGPT</span> <span class="kn">import</span> <span class="n">Chatbot</span> <span class="k">as</span> <span class="n">Bing</span><span class="p">,</span> <span class="n">ConversationStyle</span>
+
+<span class="n">bing</span> <span class="o">=</span> <span class="n">Bing</span><span class="p">(</span><span class="n">cookiePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.config/EdgeGPT/cookies.json&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Simulate the process of compiling Bacalhau CLI into WebAssembly Binaries. And summarize your actions and results.</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Compiling Bacalhau CLI into WebAssembly binaries is a multi-step process. Here are the steps:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+---
+
+Compiling Bacalhau CLI into WebAssembly binaries is a multi-step process. Here are the steps:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Teach me how to compile Bacalhau CLI into WebAssembly Binaries. And summarize your actions and results.</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Sure, I can help you with that. Here are the steps to compile Bacalhau CLI into WebAssembly binaries:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+---
+
+Sure, I can help you with that. Here are the steps to compile Bacalhau CLI into WebAssembly binaries:
+
+1. Install Rust and wasm-pack. You can install Rust from [here](https://www.rust-lang.org/tools/install) and wasm-pack from [here](https://rustwasm.github.io/wasm-pack/installer/).
+
+2. Clone the Bacalhau CLI repository from [here](https://github.com/bacalhau-crypto/bacalhau-cli).
+
+3. Navigate to the cloned repository and run the following command to build the WebAssembly binaries:
+
+   ```
+   wasm-pack build --target web
+   ```
+
+   This command will compile the Rust code into WebAssembly binaries and create a JavaScript wrapper for the WebAssembly module.
+
+4. The compiled WebAssembly binaries will be located in the `pkg` directory.
+
+5. To use the compiled WebAssembly binaries in a web application, you can import the JavaScript wrapper and use the exported functions.
+
+I hope this helps! Let me know if you have any other questions.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="n">bing</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">介绍 Bacalhau CLI。如何将 Bacalhau CLI 编译成 WebAssembly 二进制文件？总结你的步骤和结果。</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">conversation_style</span> <span class="o">=</span> <span class="n">ConversationStyle</span><span class="o">.</span><span class="n">balanced</span><span class="p">,</span>
+<span class="p">))[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;messages&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;adaptiveCards&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Bacalhau CLI 是一个用于在 Bacalhau 平台上运行任务的命令行工具。根据 Bacalhau 的文档，你需要将你的程序编译成 WASI-compliant WebAssembly。你可以查看你的编译器的说明来了解如何执行此操作。例如，Rust 用户可以指定 wasm32-wasi 目标来 rustup 和 cargo 来编译为 WASI WebAssembly [^2^]。
+
+你可以参考这篇文章 [^9^] 和这篇文章 [^10^] 来了解如何将 C++ 项目编译成 WebAssembly。这篇文章 [^11^] 可以让你更好地了解 WebAssembly。
+
+---
+
+[1]: https://developer.mozilla.org/zh-CN/docs/WebAssembly/C_to_wasm &#34;编译 C/C++ 为 WebAssembly - WebAssembly | MDN&#34;
+[2]: https://docs.bacalhau.org/getting-started/wasm-workload-onboarding/ &#34;Onboarding Your WebAssembly Workloads | Bacalhau Docs&#34;
+[3]: https://github.com/bacalhau-project/bacalhau &#34;GitHub - bacalhau-project/bacalhau: Compute over Data framework for ...&#34;
+[4]: https://zhuanlan.zhihu.com/p/258560278 &#34;记一次完整 C++ 项目编译成 WebAssembly 的实践 - 知乎&#34;
+[5]: https://developer.mozilla.org/zh-CN/docs/WebAssembly/C_to_wasm &#34;编译 C/C++ 为 WebAssembly - WebAssembly | MDN&#34;
+[6]: https://docs.bacalhau.org/getting-started/wasm-workload-onboarding/ &#34;Onboarding Your WebAssembly Workloads | Bacalhau Docs&#34;
+[7]: https://github.com/bacalhau-project/bacalhau &#34;GitHub - bacalhau-project/bacalhau: Compute over Data framework for ...&#34;
+[8]: https://juejin.cn/post/7013286944553566215 &#34;快 11K Star 的 WebAssembly，你应该这样学 - 掘金&#34;
+[9]: https://juejin.cn/post/7013286944553566215 &#34;快 11K Star 的 WebAssembly，你应该这样学 - 掘金&#34;
+[10]: https://juejin.cn/post/6914148755738460168 &#34;c++项目转成wasm全过程 - 掘金&#34;
+[11]: https://www.jianshu.com/p/bff8aa23fe4d &#34;几张图让你看懂WebAssembly - 简书&#34;
+
+Bacalhau CLI 是一个用于在 Bacalhau 平台上运行任务的命令行工具。根据 Bacalhau 的文档，你需要将你的程序编译成 WASI-compliant WebAssembly。你可以查看你的编译器的说明来了解如何执行此操作。例如，Rust 用户可以指定 wasm32-wasi 目标来 rustup 和 cargo 来编译为 WASI WebAssembly [^1^][2]。
+
+你可以参考这篇文章 [^2^][9] 和这篇文章 [^3^][10] 来了解如何将 C++ 项目编译成 WebAssembly。这篇文章 [^4^][11] 可以让你更好地了解 WebAssembly。
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2022/10/18/Try-Bacalhau/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2022-10-02 </div>
+			<div class="article-title"><a href="/2022/10/02/Research-History-of-Synaptotagmin-7/" >Research History of Synaptotagmin-7</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <blockquote>
+<p><strong>Synaptotagmins</strong>, such as <strong>SYT7</strong>, are calcium-dependent phospholipid-binding proteins known for their role in synaptic exocytosis and neurotransmitter release. Significant expression has also been observed in the prostate and other tissues.<br>—— <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SYT7">Wikipedia - <strong>Synaptotagmin-7</strong></a></p>
+</blockquote>
+<blockquote>
+<p>Two different <strong>monoclonal antibodies</strong>¹, characterized initially as binding synaptic terminal regions of rat brain, bind a 65,000-<strong>dalton</strong>² protein, which is exposed on the outer surface of brain synaptic vesicles.<br><strong>Immunocytochemical experiments</strong>³ at the electron microscope level demonstrate that these <strong>antibodies</strong>⁴ bind the vesicles in many different types of nerve terminals.<br>The antibodies have been used successfully to purify synaptic vesicles from crude brain homogenates by <strong>immunoprecipitation</strong>⁵ onto the surface of <strong>polyacrylamide beads</strong>⁶.<br>The profiles of the structures precipitated by these beads are almost exclusively vesicular, confirming the vesicle-specificity of the antibodies. In <strong>SDS gels</strong>⁷, the antibodies bind a single protein of 65,000 daltons.<br>The two antibodies are not identical, but compete for binding sites on this protein.</p>
+<hr>
+<p>Immune competition experiments also demonstrate that the <strong>antigenic components</strong>⁸ on the 65,000-dalton protein are widely distributed in neuronal and neural secretory tissues. Detectable <strong>antigen</strong>⁸ is not found in uninnervated tissue - blood cells and extrajunctional muscle.<br>Low levels are found in nonneural secretory tissues; it is not certain whether this reflects the presence of low amounts of the antigen on all the exocytotic vesicles in these tissues or whether the antigen is found only in neuronal fibers within these tissues.<br>The molecular weight and at least two antigenic determinants of the 65,000-dalton protein are highly conserved throughout <strong>vertebrate phylogeny</strong>⁹.<br>The two antibodies recognize a 65,000-dalton protein present in shark, amphibia, birds, and mammals.<br>The highly conserved nature of the determinants on this protein and their specific localization on secretory vesicles of many different types suggest that this protein may be essential for the normal function of neuronal secretory vesicles.</p>
+<hr>
+<p>—— Matthew, W D, L Tsavaler, and L F Reichardt. “Identification of a Synaptic Vesicle-Specific Membrane Protein with a Wide Distribution in Neuronal and Neurosecretory Tissue.” Journal of Cell Biology 91, no. 1 (October 1, 1981): 257–69. <a target="_blank" rel="noopener" href="https://doi.org/10.1083/jcb.91.1.257">https://doi.org/10.1083/jcb.91.1.257</a>.</p>
+</blockquote>
+<blockquote>
+<p>¹ <strong>monoclonal antibodies</strong> &#x3D;&gt;</p>
+<hr>
+<p>A <strong>monoclonal antibody</strong> (<strong>mAb</strong>, more rarely called <strong>moAb</strong>) is an antibody produced from a cell line made by cloning a unique white blood cell. All subsequent antibodies derived this way trace back to a unique parent cell.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Monoclonal_antibody">Wikipedia - <strong>Monoclonal antibody</strong></a></p>
+<hr>
+<p>⁴ <strong>antibodies</strong></p>
+</blockquote>
+<blockquote>
+<p>² <strong>dalton</strong> &#x3D;&gt;</p>
+<hr>
+<p>The <strong>dalton</strong> or <strong>unified atomic mass unit</strong> (symbols: <strong>Da</strong> or <strong>u</strong>) is a unit of mass widely used in physics and chemistry. It is defined as 1&#x2F;12 of the mass of an unbound neutral atom of carbon-12 in its nuclear and electronic ground state and at rest.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Dalton_%28unit%29">Wikipedia - <strong>Dalton (unit)</strong></a></p>
+</blockquote>
+<blockquote>
+<p>³ <strong>Immunocytochemical experiments</strong> &#x3D;&gt;</p>
+<hr>
+<p><strong>Immunocytochemistry</strong> (<strong>ICC</strong>) is a common laboratory technique that is used to anatomically visualize the localization of a specific protein or antigen in cells by use of a specific primary antibody that binds to it. The primary antibody allows visualization of the protein under a fluorescence microscope when it is bound by a secondary antibody that has a conjugated fluorophore. ICC allows researchers to evaluate whether or not cells in a particular sample express the antigen in question. In cases where an immunopositive signal is found, ICC also allows researchers to determine which sub-cellular compartments are expressing the antigen.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Immunocytochemistry">Wikipedia - <strong>Immunocytochemistry</strong></a></p>
+</blockquote>
+<blockquote>
+<p>⁴ <strong>antibodies</strong> &#x3D;&gt;</p>
+<hr>
+<p>An <strong>antibody</strong> (<strong>Ab</strong>), also known as an <strong>immunoglobulin</strong> (<strong>Ig</strong>), is a large, Y-shaped protein used by the immune system to identify and neutralize foreign objects such as pathogenic bacteria and viruses.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Antibody">Wikipedia - <strong>Antibody</strong></a></p>
+</blockquote>
+<blockquote>
+<p>⁵ <strong>immunoprecipitation</strong> &#x3D;&gt;</p>
+<hr>
+<p><strong>Immunoprecipitation</strong> (<strong>IP</strong>) is the technique of precipitating a protein antigen out of solution using an antibody that specifically binds to that particular protein. This process can be used to isolate and concentrate a particular protein from a sample containing many thousands of different proteins. Immunoprecipitation requires that the antibody be coupled to a solid substrate at some point in the procedure.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Immunoprecipitation">Wikipedia - <strong>Immunoprecipitation</strong></a></p>
+</blockquote>
+<blockquote>
+<p>⁶ <strong>polyacrylamide beads</strong> &#x3D;&gt;</p>
+<hr>
+<p><strong>Polyacrylamide</strong> (abbreviated as PAM) is a polymer with the formula (-CH2CHCONH2-). It has a linear-chain structure. PAM is highly water-absorbent, forming a soft gel when hydrated.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Polyacrylamide">Wikipedia - <strong>Polyacrylamide</strong></a></p>
+</blockquote>
+<blockquote>
+<p>⁷ <strong>SDS gels</strong> &#x3D;&gt;</p>
+<hr>
+<p><strong>SDS-PAGE</strong> (<strong>sodium dodecyl sulfate–polyacrylamide gel electrophoresis</strong>) is a discontinuous electrophoretic system developed by Ulrich K. Laemmli which is commonly used as a method to separate proteins with molecular masses between 5 and 250 kDa. The combined use of sodium dodecyl sulfate (SDS, also known as sodium lauryl sulfate) and polyacrylamide gel allows to eliminate the influence of structure and charge, and proteins are separated solely on the basis of differences in their molecular weight.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/SDS-PAGE">Wikipedia - <strong>SDS-PAGE</strong></a></p>
+</blockquote>
+<blockquote>
+<p>⁸ <strong>antigenic components</strong> &#x3D;&gt;</p>
+<p>⁸ <strong>antigen</strong> &#x3D;&gt;</p>
+<hr>
+<p>In immunology, an <strong>antigen</strong> (<strong>Ag</strong>) is a molecule or molecular structure or any foreign particulate matter or a pollen grain that can bind to a specific antibody or T-cell receptor. The presence of antigens in the body may trigger an immune response. The term antigen originally referred to a substance that is an antibody generator. Antigens can be proteins, peptides (amino acid chains), polysaccharides (chains of monosaccharides&#x2F;simple sugars), lipids, or nucleic acids.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Antigen">Wikipedia - <strong>Antigen</strong></a></p>
+</blockquote>
+<blockquote>
+<p>⁹ <strong>vertebrate phylogeny</strong> &#x3D;&gt;</p>
+<hr>
+<p>A <strong>phylogenetic tree</strong> (also <strong>phylogeny</strong> or <strong>evolutionary tree</strong>) is a branching diagram or a tree showing the evolutionary relationships among various biological species or other entities based upon similarities and differences in their physical or genetic characteristics. All life on Earth is part of a single phylogenetic tree, indicating common ancestry.</p>
+<p>—— <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Phylogenetic_tree">Wikipedia - <strong>Phylogenetic tree</strong></a></p>
+</blockquote>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2022/10/02/Research-History-of-Synaptotagmin-7/#more" class="btn btn-default more">Read More</a>
+</div>
+
 		
 			
 	
@@ -311,7 +807,7 @@
 	
   
 </div>
-	<a type="button" href="/2022/09/23/In-Search-of-Memory/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2022/09/23/In-Search-of-Memory/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -431,7 +927,7 @@
 	
   
 </div>
-	<a type="button" href="/2022/09/04/Look-on-Down-From-the-Bridge/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2022/09/04/Look-on-Down-From-the-Bridge/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -772,7 +1268,7 @@ Then I know we will surely meet again…
 	
   
 </div>
-	<a type="button" href="/2022/08/20/枯れない花/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2022/08/20/枯れない花/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -956,7 +1452,7 @@ Then I know we will surely meet again…
 	
   
 </div>
-	<a type="button" href="/2022/07/27/biobuilder/chapter-4/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2022/07/27/biobuilder/chapter-4/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1143,7 +1639,7 @@ Then I know we will surely meet again…
 	
   
 </div>
-	<a type="button" href="/2022/07/26/biobuilder/chapter-3/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2022/07/26/biobuilder/chapter-3/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1512,7 +2008,7 @@ Then I know we will surely meet again…
 	
   
 </div>
-	<a type="button" href="/2022/07/25/biobuilder/chapter-2/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2022/07/25/biobuilder/chapter-2/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1678,7 +2174,7 @@ Then I know we will surely meet again…
 	
   
 </div>
-	<a type="button" href="/2022/07/25/biobuilder/chapter-1/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2022/07/25/biobuilder/chapter-1/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1782,193 +2278,7 @@ Then I know we will surely meet again…
 	
   
 </div>
-	<a type="button" href="/2022/03/19/Git-style-Repository-on-IPFS/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2022-03-10 </div>
-			<div class="article-title"><a href="/2022/03/10/CQLT-Exploring-a-New-Way-to-Tokenize-Academic-Publishing/" >CQLT: Exploring a New Way to Tokenize Academic Publishing</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h2 id="复制引用许可代币：探索学术论文发表的代币化新方法"><a href="#复制引用许可代币：探索学术论文发表的代币化新方法" class="headerlink" title="复制引用许可代币：探索学术论文发表的代币化新方法"></a>复制引用许可代币：探索学术论文发表的代币化新方法</h2><p>我们需要作为 NFT 复制引用许可证明的 ERC-1155 代币 CQLT。对这种复制引用许可币 CQLT 本身的需求是从 NFT 版权证明的需求中衍生而来的。它的发行由 NFT 所有者完全控制。它的精度为个位数，总量为人类人口数量，或者限量，或者不限总量。拥有一个这种复制引用许可币的人就拥有对于 NFT 进行一次复制引用的权利。NFT 作为异质代币，具有唯一性，流动性差，只在收藏品拍卖市场进行交易。</p>
-<p>We need the ERC-1155 Copy and Quote License Token (CQLT) as a proof of NFT Copy and Quote License. The need for CQLTs is derived from the need for proof of copyright in NFTs. Its issuance is fully controlled by the NFT owner. Its precision is a single digit, and the total supply is either limited or unlimited, and can be as large as the human population. The person who owns one such CQLT has the right to copy and quote the NFT once. As a Non-Fungible Token, NFT is unique and has poor liquidity, and is only traded in the collectible auction market.</p>
-<ul>
-<li>不断深入理解 Git Arweave Neo4j 的底层原理。<ul>
-<li><a target="_blank" rel="noopener" href="https://docs.gitopia.com/installation/">https://docs.gitopia.com/installation/</a></li>
-<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%BA%95%E5%B1%82%E5%91%BD%E4%BB%A4%E4%B8%8E%E4%B8%8A%E5%B1%82%E5%91%BD%E4%BB%A4">https://git-scm.com/book/zh/v2/Git-内部原理-底层命令与上层命令</a></li>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1771872">从常见操作解释 git 的底层原理</a></li>
-</ul>
-</li>
-<li>我会参考 mirror.xyz 的实现。我想把 mirror.xyz 先移植到 Terra 生态之下。<ul>
-<li>Building NFT version control is so boring. &#x3D;&gt; Mirror Writing: <a target="_blank" rel="noopener" href="https://mirror.xyz/">https://mirror.xyz/</a> | Academic Writing</li>
-</ul>
-</li>
-</ul>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2022/03/10/CQLT-Exploring-a-New-Way-to-Tokenize-Academic-Publishing/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2022-03-06 </div>
-			<div class="article-title"><a href="/2022/03/06/Mirror-Token/" >Mirror Token</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h1 id="Mirror-Token-MIR"><a href="#Mirror-Token-MIR" class="headerlink" title="Mirror Token (MIR)"></a>Mirror Token (MIR)</h1><blockquote>
-<p>原文：<a target="_blank" rel="noopener" href="https://docs.mirror.finance/protocol/mirror-token-mir">https://docs.mirror.finance/protocol/mirror-token-mir</a></p>
-</blockquote>
-<hr>
-<p><strong>镜像代币</strong>（<strong>MIR</strong>）是镜像协议的治理代币。目前，它必须被质押才能对活跃的提案进行投票，并且需要作为押金才能进行新的治理提案。在 Mirror 的未来迭代中，它将为协议提供进一步的用途，增加其效用和价值。</p>
-<p>持有 MIR 代币的用户还可以通过从协议中的 CDP 头寸提取抵押品获得 MIR 奖励。</p>
-<p>MIR 还用于激励用户通过质押 LP 代币来获得收益，这些 LP 代币是通过为 MIR 和 mAssets 提供流动性而铸造的。通过年度通胀所新铸造的 MIR 用来向用户支付收益，这会逐渐增加 MIR 的总供应量，直到第 4 年年底。</p>
-<hr>
-<h2 id="镜像代币供应"><a href="#镜像代币供应" class="headerlink" title="镜像代币供应"></a>镜像代币供应</h2><p>计划在 4 年内分发总共 370,575,000 个 MIR 代币。除此之外，不会再有新的 MIR 代币被引入供应。</p>
-<h3 id="累积分配时间表（以百万计）"><a href="#累积分配时间表（以百万计）" class="headerlink" title="累积分配时间表（以百万计）"></a>累积分配时间表（以百万计）</h3><table>
-<thead>
-<tr>
-<th></th>
-<th>创世纪</th>
-<th>Y1</th>
-<th>Y2</th>
-<th>Y3</th>
-<th>Y4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>UNI空投</td>
-<td>9.15</td>
-<td>9.15</td>
-<td>9.15</td>
-<td>9.15</td>
-<td>9.15</td>
-</tr>
-<tr>
-<td>Luna 质押空投</td>
-<td>9.15</td>
-<td>9.15</td>
-<td>9.15</td>
-<td>9.15</td>
-<td>9.15</td>
-</tr>
-<tr>
-<td>Luna 质押奖励</td>
-<td>0</td>
-<td>18.3</td>
-<td>18.3</td>
-<td>18.3</td>
-<td>18.3</td>
-</tr>
-<tr>
-<td>mAsset LP 质押</td>
-<td>0</td>
-<td>89.2125</td>
-<td>133.81875</td>
-<td>156.121875</td>
-<td>167.2734375</td>
-</tr>
-<tr>
-<td>MIR LP 质押</td>
-<td>0</td>
-<td>20.5875</td>
-<td>30.88125</td>
-<td>36.028125</td>
-<td>38.6015625</td>
-</tr>
-<tr>
-<td>社区池</td>
-<td>36.6</td>
-<td>36.6</td>
-<td>54.9</td>
-<td>91.5</td>
-<td>128.1</td>
-</tr>
-<tr>
-<td><strong>代币总供应</strong></td>
-<td><strong>54.90</strong></td>
-<td><strong>183.00</strong></td>
-<td><strong>256.20</strong></td>
-<td><strong>320.25</strong></td>
-<td><strong>370.575</strong></td>
-</tr>
-<tr>
-<td>年通货膨胀率 (%)</td>
-<td>-</td>
-<td>233.33%</td>
-<td>40.00%</td>
-<td>25.00%</td>
-<td>15.71%</td>
-</tr>
-</tbody></table>
-<p><img src="https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MLRzugf7mxc4ryNhTuq%2Fuploads%2FdKfSHCIDtMhwXsVLNHwy%2Ffile.png?alt=media" alt="Genesis Token Distribution"></p>
-<p>镜像协议创世时共有 54.9M 个代币可用。这些代币的分配方式如下：</p>
-<ul>
-<li><strong>UNI 空投</strong>：16.66%（9.15M）代币将空投给 UNI 持有者。</li>
-<li><strong>LUNA 质押者空投</strong>：16.66%（9.15M）代币将空投给 LUNA 质押者。</li>
-<li><strong>社区池</strong>：66.66% (36.6M) 代币将分配给社区池。</li>
-</ul>
-<p><img src="https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MLRzugf7mxc4ryNhTuq%2Fuploads%2FIC7UdrAp8Ne7WafFNKIk%2Ffile.png?alt=media" alt="Final Token Distribution"></p>
-<p>由于通货膨胀，MIR 代币的总供应量将增加 4 年，直到总代币供应量达到 <strong>370.575M</strong>。</p>
-<p>第 4 年末的分配结构如下所示：</p>
-<ul>
-<li><strong>空投</strong>：最初分配给 UNI 持有者和 LUNA 质押者的空投数量现在将占代币总供应量的 4.9%（18.3M）。</li>
-<li><strong>LUNA 质押奖励</strong>：4.9%（18.3M）将在镜像协议启动后的第一年分配给 LUNA 质押者。 MIR 将仅在第一年每 100,000 个区块（大约每周一次）分发给 Luna 质押者，从区块高度 920,000 开始。将每 100,000 个区块拍摄一次快照，以确定谁有资格获得质押奖励分配。</li>
-<li><strong>mAsset LP Staking</strong>：到第 4 年年底，45.1% (167.27M) 代币将分配给所有 mAsset 和 mAsset (mETH) 质押池。代币每天分配给每个质押池（最初每个 Mirror 和 mETH 13 对），基于与其他资产相比，它们的<code>权重</code>。</li>
-<li><strong>MIR LP Staking</strong>：到第 4 年底，10.4% (38.6M) 代币平均分配到 MIR-UST 和 MIR-UST (mETH) 质押池。MIR-UST 对的初始<code>权重</code>为 300，大于<code>权重</code> mAsset 数量（第一批 mAsset 有 100 个，列入白名单的 mAsset 有 30 个<code>权重</code>）。</li>
-<li><strong>社区池</strong>：到第 4 年年底，将有 34.6%（128.1M）的 MIR 总供应量分配给社区池。</li>
-</ul>
-<h3 id="分配率（通货膨胀）"><a href="#分配率（通货膨胀）" class="headerlink" title="分配率（通货膨胀）"></a>分配率（通货膨胀）</h3><p>MIR 代币的通货膨胀率被设计为每年逐渐下降，直到在第 4 年年底达到 370.575M。在第 4 年结束后，将不再通过通货膨胀铸造 MIR 代币。</p>
-<hr>
-<h2 id="MIR-质押奖励"><a href="#MIR-质押奖励" class="headerlink" title="MIR 质押奖励"></a>MIR 质押奖励</h2><blockquote>
-<p>本节讨论 MIR 代币的质押奖励，这些奖励来自用于从市场回购 MIR 的交易费用。质押 LP 和 sLP 代币也会产生 MIR 奖励，这些奖励直接来自每个区块创建的新 MIR 代币。点击<a target="_blank" rel="noopener" href="https://docs.mirror.finance/protocol/staking-tokens-lp-and-slp#staking-rewards">此处</a>了解详情。</p>
-</blockquote>
-<h3 id="来自协议费用"><a href="#来自协议费用" class="headerlink" title="来自协议费用"></a>来自协议费用</h3><p>MIR 代币质押者在每个区块收到 MIR 代币奖励，协议费用是从 CDP 提款产生的。协议费用从 CDP 抵押品中收取，并在发送到 Collector 合约后出售给 TerraUSD，以通过 Terraswap 购买 MIR。然后将 MIR 代币作为奖励分配给 MIR 质押者和选民，并按总股份的百分比进行分配。这个过程通过产生购买压力来平衡新 MIR 的产生。</p>
-<h3 id="来自提案创建费"><a href="#来自提案创建费" class="headerlink" title="来自提案创建费"></a>来自提案创建费</h3><p>每当创建新的治理提案时，都必须支付 MIR 代币的初始押金。如果投票未达到投票法定人数，则该押金将按比例分配给所有 MIR 质押者。</p>
-<h3 id="来自投票奖励"><a href="#来自投票奖励" class="headerlink" title="来自投票奖励"></a>来自投票奖励</h3><p>根据尚未达到投票法定人数的投票产生的协议费用和投票创建费用，<code>voter_weight</code> 用于确定在正在进行的投票中投票的用户之间分配的 MIR 代币数量。如果包括质押和投票奖励的总 MIR 治理奖励是 $R_{total}$ 是，</p>
-<p>$$R_{passive}+R_{vote}$$</p>
-<p>这里 $R_{passive}$ 是未投票的 MIR 质押者的奖励，并且 $R_{vote}$ 是对正在进行的提案已经投票了的用户的奖励。如果 <code>voter_weight</code> 是 $W_{vote}$, 并且对于第 $i$ 个提案，个人和全体所投的 MIR 是 $m_{\text{i}}$ 和 $M_{\text{i}}$，投票奖励 $R_{\text{vote}}$ 是，</p>
-<p>$$\sum_{i&#x3D;1}^n \frac{m_{\text{i}}}{M_{\text{i}}} \frac{W_{\text{vote}}R_{\text{gov}}}{n}$$</p>
-<h3 id="年利率计算"><a href="#年利率计算" class="headerlink" title="年利率计算"></a>年利率计算</h3><blockquote>
-<p>注意由于大多数 mAssets 的协议费用仅在其基础现实世界资产的交易时间内产生，因此在周末和节假日分配的实际奖励会低得多。</p>
-</blockquote>
-<p>Mirror Web App 显示 MIR 质押奖励的年度百分比率。由于协议费用的波动性，MIR 质押 APR 计算使用<strong>过去 15 天每天的平均奖励</strong>。</p>
-<p>如果第 $i$ 天给 MIR 质押者的奖励为 $r_i$，总 MIR 质押量为 $M$，MIR 质押（365 天）的年化百分比为，</p>
-<p>$${\sum_{i&#x3D;1}^{15}{m_i} \over M} \times 365$$</p>
-<p>其中应用了最近 15 天的奖励分配信息。此 APR 是在假设用户已对所有正在进行的治理提案进行投票的假设下计算的。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2022/03/06/Mirror-Token/#more" class="btn btn-default more">阅读此文</a>
+	<a type="button" href="/2022/03/19/Git-style-Repository-on-IPFS/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1982,13 +2292,13 @@ Then I know we will surely meet again…
 <ul class="pagination">
 	 
 		
-    	<li class="prev"><a href="/page/4/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i> 上一页</a></li>
+    	<li class="prev"><a href="/page/4/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i> Prev</a></li>
   		
 
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
 
 		
-		   <li class="next"> <a href="/page/6/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
+		   <li class="next"> <a href="/page/6/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
         
 	
 </ul>
@@ -2006,51 +2316,49 @@ Then I know we will surely meet again…
 	<div id="sidebar">
 	
 			
-		
-			
 	<div class="widget">
-		<h4 style="margin-top: 18px;">标签云</h4>
+		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>10</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>4</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
 			<li><a href="/tags/Imaging/">Imaging<span>2</span></a></li>
 		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>3</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 			<li><a href="/tags/Quantum/">Quantum<span>3</span></a></li>
 		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
@@ -2062,8 +2370,16 @@ Then I know we will surely meet again…
 		
 			
 <div class="widget">
-  <h4 style="margin-top: 18px;">最新文章</h4>
+  <h4 style="margin-top: 18px;">Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
+      </li>
+    
+      <li>
+        <a href="/2024/05/19/biobuilder/appendix/" ><i class="fa fa-file-o"></i>实验室试剂和材料</a>
+      </li>
     
       <li>
         <a href="/2024/05/16/人脑海马体的经典计算模型/" ><i class="fa fa-file-o"></i>人脑海马体的经典计算模型</a>
@@ -2077,14 +2393,6 @@ Then I know we will surely meet again…
         <a href="/2024/05/15/biobuilder/chapter-9/" ><i class="fa fa-file-o"></i>多么丰富多彩的世界</a>
       </li>
     
-      <li>
-        <a href="/2024/05/15/biobuilder/chapter-8/" ><i class="fa fa-file-o"></i>想象一下这个</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/15/biobuilder/chapter-7/" ><i class="fa fa-file-o"></i>iTunes 设备</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -2092,7 +2400,7 @@ Then I know we will surely meet again…
 			
 <div class="widget" style="border-bottom: none;">
 
-	<h4 style="margin-top: 18px;">链接</h4>
+	<h4 style="margin-top: 18px;">Links</h4>
 	<ul class="blogroll list-unstyled">
 	
 		<li>
@@ -2103,11 +2411,6 @@ Then I know we will surely meet again…
 		<li>
 			<i class="fa fa-twitter"></i>
 			<a href="https://twitter.com/seii_saintway" title="Andrew's Twitter account." target="_blank">Andrew&#39;s Twitter</a>
-		</li>
-	
-		<li>
-			<i class="fa fa-book"></i>
-			<a href="https://www.douban.com/people/metaphilosophy/" title="Andrew's Douban account." target="_blank">Andrew&#39;s Douban</a>
 		</li>
 	
 	</ul>
