@@ -815,7 +815,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>mmtf-python
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">atomic_charges</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">decoded_data</span><span class="o">.</span><span class="n">group_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;formalChargeList&#39;</span><span class="p">]])</span>
@@ -828,7 +828,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>mmtf-python
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Group name: </span><span class="si">{</span><span class="n">decoded_data</span><span class="o">.</span><span class="n">group_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;groupName&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> has the following atomic charges: </span><span class="si">{</span><span class="n">atomic_charges</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -869,7 +869,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>mmtf-python
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;PDB Code: </span><span class="si">{</span><span class="n">decoded_data</span><span class="o">.</span><span class="n">structure_id</span><span class="si">}</span><span class="s1"> has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">decoded_data</span><span class="o">.</span><span class="n">bio_assembly</span><span class="p">)</span><span class="si">}</span><span class="s1"> bioassemblies&#39;</span><span class="p">)</span>
