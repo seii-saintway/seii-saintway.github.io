@@ -209,10 +209,127 @@ Hierarchical Agent Teams
 <li><a target="_blank" rel="noopener" href="https://superagi.com/introducing-autonode-advancing-rpa-with-a-multi-expert-ai-system/">Introducing AutoNode: Advancing RPA with a Multi-Expert AI System</a></li>
 </ul>
 </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/UB-Mannheim/tesseract/wiki">Tesseract at UB Mannheim</a></li>
 </ul>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/TransformerOptimus/AutoNode.git<span class="w"> </span>~/AutoNode
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cloning into &#39;AutoNode&#39;...
+remote: Enumerating objects: 436, done.        
+remote: Counting objects: 100% (164/164), done.        
+remote: Compressing objects: 100% (126/126), done.        
+remote: Total 436 (delta 65), reused 83 (delta 38), pack-reused 272        
+Receiving objects: 100% (436/436), 254.46 MiB | 10.35 MiB/s, done.
+Resolving deltas: 100% (187/187), done.
+Updating files: 100% (145/145), done.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/AutoNode
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>cp<span class="w"> </span>~/AutoNode/autonode/.env.example<span class="w"> </span>~/AutoNode/autonode/.env
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>cp<span class="w"> </span>~/AutoNode/ocr/ocr/.env.example<span class="w"> </span>~/AutoNode/ocr/ocr/.env
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>cp<span class="w"> </span>~/AutoNode/yolo/yolo/.env.example<span class="w"> </span>~/AutoNode/yolo/yolo/.env
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>/usr/local/bin/docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>~/AutoNode/docker-compose.yaml<span class="w"> </span>up<span class="w"> </span>--build
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>/usr/local/bin/docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>~/AutoNode/docker-compose.yaml<span class="w"> </span>up
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
  
 
@@ -276,7 +393,7 @@ Hierarchical Agent Teams
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+  <li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li> <li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
     </ul>
 	</div>
 		

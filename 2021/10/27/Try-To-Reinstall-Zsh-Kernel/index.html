@@ -221,6 +221,20 @@ python3<span class="w"> </span>-m<span class="w"> </span>bash_kernel.install
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
+launchctl<span class="w"> </span>stop<span class="w"> </span>com.quantum.jupyter-lab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>notebook<span class="w"> </span>zsh_jupyter_kernel
 </pre></div>
 
@@ -245,6 +259,20 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
 python3<span class="w"> </span>-m<span class="w"> </span>zsh_jupyter_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+launchctl<span class="w"> </span>start<span class="w"> </span>com.quantum.jupyter-lab
 </pre></div>
 
     </div>
@@ -332,6 +360,20 @@ cat<span class="w"> </span>/usr/local/lib/python3.9/site-packages/zsh_jupyter_ke
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
+launchctl<span class="w"> </span>stop<span class="w"> </span>com.quantum.jupyter-lab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>zsh_jupyter_kernel
 </pre></div>
 
@@ -361,6 +403,20 @@ jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
 jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span class="w"> </span>zsh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+launchctl<span class="w"> </span>start<span class="w"> </span>com.quantum.jupyter-lab
 </pre></div>
 
     </div>
