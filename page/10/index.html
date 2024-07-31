@@ -140,6 +140,443 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2019-10-06 </div>
+			<div class="article-title"><a href="/2019/10/06/Make-isso-HTTPS-with-TLJH-Traefik-Proxy/" >Make isso HTTPS with TLJH Traefik Proxy</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Make-Isso-HTTPS-in-TLJH">Make Isso HTTPS in TLJH<a class="anchor-link" href="#Make-Isso-HTTPS-in-TLJH">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+/opt/tljh/hub/bin/traefik<span class="w"> </span>version
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jupyterhub/the-littlest-jupyterhub/blob/master/tljh/jupyterhub_config.py">https://github.com/jupyterhub/the-littlest-jupyterhub/blob/master/tljh/jupyterhub_config.py</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jupyterhub/traefik-proxy/blob/master/jupyterhub_traefik_proxy/toml.py">https://github.com/jupyterhub/traefik-proxy/blob/master/jupyterhub_traefik_proxy/toml.py</a></li>
+<li><a target="_blank" rel="noopener" href="https://jupyterhub-traefik-proxy.readthedocs.io/en/latest/toml.html#traefik-configuration">https://jupyterhub-traefik-proxy.readthedocs.io/en/latest/toml.html#traefik-configuration</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.traefik.io/v1.7/basics/">https://docs.traefik.io/v1.7/basics/</a></li>
+<li><a target="_blank" rel="noopener" href="https://posativ.org/isso/docs/setup/sub-uri/">https://posativ.org/isso/docs/setup/sub-uri/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>for traefik v1.7</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee -a /opt/tljh/state/rules.toml &gt; /dev/null</span>
+
+<span class="s">[frontends.isso]</span>
+<span class="s">backend = &quot;isso&quot;</span>
+<span class="s">passHostHeader = true</span>
+
+<span class="s">[frontends.isso.routes.f1]</span>
+<span class="s">rule = &quot;PathPrefixStrip:/isso/&quot;</span>
+
+<span class="s">[backends.isso.servers.s1]</span>
+<span class="s">url = &quot;http://127.0.0.1:8000&quot;</span>
+<span class="s">weight = 1</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">env</span> http=http:\/\/jhub.name:8000\/
+<span class="o">%</span><span class="k">env</span> https=https:\/\/jhub.name\/isso\/
+<span class="o">!</span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;s/</span><span class="nv">$http</span><span class="s2">/</span><span class="nv">$https</span><span class="s2">/g&quot;</span><span class="w"> </span>~/hexo/themes/freemind/layout/_partial/post/comment.ejs
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>for traefik v2.10 <a target="_blank" rel="noopener" href="https://doc.traefik.io/traefik/v2.10/middlewares/http/stripprefix/">StripPrefix</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/rules/isso.toml &gt; /dev/null</span>
+<span class="s">[http.routers.isso]</span>
+<span class="s">service = &quot;isso&quot;</span>
+<span class="s">rule = &quot;PathPrefix(\`/isso/\`)&quot;</span>
+<span class="s">entryPoints = [ &quot;https&quot;,]</span>
+<span class="s">middlewares = [&quot;isso&quot;]</span>
+
+<span class="s">[http.middlewares]</span>
+<span class="s">  [http.middlewares.isso.stripPrefix]</span>
+<span class="s">    prefixes = [&quot;/isso&quot;]</span>
+
+<span class="s">[http.services.isso.loadBalancer]</span>
+<span class="s">passHostHeader = true</span>
+<span class="s">[[http.services.isso.loadBalancer.servers]]</span>
+<span class="s">url = &quot;http://127.0.0.1:8000&quot;</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Commit-Modifications">Commit Modifications<a class="anchor-link" href="#Commit-Modifications">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/seii-saintway/hexo-theme-freemind/commit/9568c3160d3c917a8a986beedafb7836e02c2bce">https://github.com/seii-saintway/hexo-theme-freemind/commit/9568c3160d3c917a8a986beedafb7836e02c2bce</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Change-file-watch-to-directory-in-TLJH-Traefik">Change file-watch to directory in TLJH Traefik<a class="anchor-link" href="#Change-file-watch-to-directory-in-TLJH-Traefik">&#182;</a></h3><p><a target="_blank" rel="noopener" href="https://github.com/seii-saintway/the-littlest-jupyterhub/commit/e95d85e99187f9d65b748016807b28c256e77e39">https://github.com/seii-saintway/the-littlest-jupyterhub/commit/e95d85e99187f9d65b748016807b28c256e77e39</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /opt/tljh/state/dynamic/isso.toml &gt; /dev/null</span>
+<span class="s">[frontends.isso]</span>
+<span class="s">backend = &quot;isso&quot;</span>
+<span class="s">passHostHeader = true</span>
+
+<span class="s">[frontends.isso.routes.f1]</span>
+<span class="s">rule = &quot;PathPrefixStrip:/isso/&quot;</span>
+
+<span class="s">[backends.isso.servers.s1]</span>
+<span class="s">url = &quot;http://127.0.0.1:8000&quot;</span>
+<span class="s">weight = 1</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>/opt/tljh/hub/bin/python<span class="w"> </span>-m<span class="w"> </span>tljh.installer
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Granting passwordless sudo to JupyterHub admins...
+Setting up user environment...
+
+
+==&gt; WARNING: A newer version of conda exists. &lt;==
+  current version: 4.5.8
+  latest version: 4.7.12
+
+Please update conda by running
+
+    $ conda update -n base conda
+
+
+Setting up JupyterHub...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>cat<span class="w"> </span>/opt/tljh/installer.log
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2019-10-13 15:21:02,889 Granting passwordless sudo to JupyterHub admins...
+2019-10-13 15:21:02,890 Setting up user environment...
+2019-10-13 15:21:26,052 Setting up JupyterHub...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>restart-isso
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Isso-SQLite">Isso SQLite<a class="anchor-link" href="#Isso-SQLite">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF | sudo tee /etc/isso.conf &gt; /dev/null</span>
+
+<span class="s">[general]</span>
+
+<span class="s">dbpath = /var/lib/isso/comments.db</span>
+
+<span class="s">host =</span>
+<span class="s">    http://seii-saintway.github.io</span>
+<span class="s">    https://seii-saintway.github.io</span>
+<span class="s">    http://digitypography.xyz</span>
+<span class="s">    https://digitypography.xyz</span>
+
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Open-SQLite-database">Open SQLite database<a class="anchor-link" href="#Open-SQLite-database">&#182;</a></h3><div class="highlight"><pre><span></span>sqlite3<span class="w"> </span>/var/lib/isso/comments.db
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;/var/lib/isso/comments.db&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * from comments&#39;</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;110.3.247.0&#39;, &#39;# Privacy Policy&#39;),
+ (&#39;113.38.215.0&#39;, &#39;# Continuous Purification&#39;),
+ (&#39;110.3.247.0&#39;,
+  &#39;### 3.11.4 隐秘通道\n\n隐秘通道（covert channel）的意思是说使用难以预料或不会引起注意的方式来发送信息。假设有一天系统管理员Sally觉得自己的那些用户花太多时间来玩了，因此她决定关闭email和即时消息，这样他们就不能聊天了。要解决这个问题，你和你的朋友都同意使用主目录中的一个你们都可以读取的文件来交流信息，你每隔一会儿就得检查一下该文件来查看新消息。这种超出乎预料的通信方式就是一个隐秘通道。\n\n隐秘通道很难取消。如果系统管理员Sally发现了你们这种基于文件的通信技术，她可以修改目录的权限，使得只有目录的属主才具有读取和搜索的权限，并限定目录属主也不能修改这种权限。在这样做的同时，她还可以确认你不能在其他地方（例如，/tmp）创建文件。（你的大部分程序都不能运行了，但是不要因此而责怪Sally。）即使是这样，你和你的朋友仍然可以相互显示其他用户士目录中的内容，这可以显示目录的修改日期和文件个数，这样你就可以根据这些可见的参数设计一种密码，并通过修改这些参数而进行通信。这是一种更复杂的隐秘通道，如果Sally对你们进行了更严格的限制，你们可以想出更古怪的法子来。\n\nSSH不能防止隐秘通道。对隐秘通道的分析和控制通常都是安全性很高的计算机系统的一部分，例如设计用来在同一个系统中的不同安全层次上安全地处理信息的系统。顺便说一下，SSH数据流本身就可以很好地用作一种隐秘通道：SSH会话的内容可能是一个巧克力馅饼的配方，而隐含的内容则可能是用Morse码表示这两个公司即将合并，只需要使用报文长度是奇数还是偶数来分别表示Morse码的短横线和点号即可。&#39;),
+ (&#39;126.158.192.0&#39;, &#39;Try to build with Cosmos SDK&#39;),
+ (&#39;126.158.192.0&#39;, &#39;Try to build with Cosmos SDK&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * from preferences&#39;</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * from threads&#39;</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(1, &#39;/2019/07/17/%E5%BF%83%E6%83%85%E7%B3%9F%E9%80%8F%E4%BA%86/&#39;, None),
+ (2, &#39;/2022/02/25/Declaration-of-the-Independence-of-Cyberspace/&#39;, None),
+ (3, &#39;/2022/02/28/An-Independent-Stablecoin-of-Cyberspace/&#39;, None)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/06/Make-isso-HTTPS-with-TLJH-Traefik-Proxy/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-10-06 </div>
 			<div class="article-title"><a href="/2019/10/06/Try-To-Import-Notebooks/" >Try To Import Notebooks</a></div>						
 		</h3>
 	
@@ -2458,164 +2895,6 @@ Username for &#39;https://github.com&#39;: ^C
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2018-05-19 </div>
-			<div class="article-title"><a href="/2018/05/19/谋生与探寻/" >谋生与探寻</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <blockquote>
-<p>　仕事を終えて、じっくりと反省する。一日が終わって、その一日を振り返って反省する。すると、自分や他人のアラが目について、ついにはウツになる。自分のだめさにも怒りを感じ、あいつは憎たらしいと思ったりする。たいていは、不快で暗い結果にたどりつく。<br>　なぜかというと、冷静に反省したりしたからなどでは決してない。単に疲れているからだ。疲れきったときにする反省など、すべてウツへの落とし穴でしかない。疲れているときは反省をしたり、振り返ったり、ましてや日記など書くべきではない。<br>　活発に活動しているとき、何かに夢中になって打ち込んでいるとき、楽しんでいるとき、反省したり、振り返って考えたりはしない。だから、自分をだめだと思ったり人に対して憎しみを覚えたりしたときは、疲れている証拠だ。そういうときはさっさと自分を休ませなければいけない。</p>
-</blockquote>
-<p>ーー『曙光』</p>
-<hr>
-<blockquote>
-<p>会社・賞与・評価を目指す人生より､会社・賞与・評価を諦める人生のほうがハッピーでしょう？</p>
-</blockquote>
-<p><strong>会社を諦めろう</strong>。<br>何時も評価が悪く、努力しても、努力しなくても、評価が同じです。だから、会社を諦めろう。<br>今は、5年が経過し、約束を守ったので、離別する時が来ました。</p>
-<hr>
-<p>探索与调研</p>
-<p>2021.11.20</p>
-<ul>
-<li>暫く帰化を諦めろう</li>
-<li>暫く研究のアルバイトを諦めろう</li>
-</ul>
-<p>寻找脑科学研究所的临时工作机会：</p>
-<ul>
-<li><p>offline &#x3D;&gt; CAO (Centralized Autonomous Organization)</p>
-</li>
-<li><p>online &#x3D;&gt; DAO (Decentralized Autonomous Organization)</p>
-</li>
-<li><p>签证的情况</p>
-<ul>
-<li>日本籍<ul>
-<li>成本<ul>
-<li>争取周一到周五能申请一天业余时间</li>
-<li>简历、面试</li>
-<li>最快一年获得永住权</li>
-</ul>
-</li>
-<li>收益<ul>
-<li>每周有一天时间学习<ul>
-<li>神经科学和分子生物学</li>
-<li>机器学习和计算神经科学</li>
-</ul>
-</li>
-<li>一年后，周一到周五去研究室</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>永住<ul>
-<li>成本<ul>
-<li>简历、技术面试<ul>
-<li>争取周一到周五能申请一天业余时间</li>
-</ul>
-</li>
-<li>日语考试</li>
-<li>最快两年获得永住权</li>
-</ul>
-</li>
-<li>收益<ul>
-<li>金钱积累</li>
-<li>每周有一天时间学习<ul>
-<li>神经科学和分子生物学</li>
-<li>机器学习和计算神经科学</li>
-</ul>
-</li>
-<li>两年后，周一到周五去研究室</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>高度专门职 1号 &#x2F; 2号<ul>
-<li>成本<ul>
-<li>简历、技术面试<ul>
-<li>争取周一到周五能申请一天业余时间</li>
-</ul>
-</li>
-<li>最快四年获得永住权</li>
-</ul>
-</li>
-<li>收益<ul>
-<li>金钱积累</li>
-<li>每周有一天时间学习<ul>
-<li>神经科学和分子生物学</li>
-<li>机器学习和计算神经科学</li>
-</ul>
-</li>
-<li>四年后，周一到周五去研究室</li>
-</ul>
-</li>
-<li>自己申告交税</li>
-</ul>
-</li>
-<li>技术就劳签证<ul>
-<li>成本<ul>
-<li>争取周一到周五能申请一天业余时间</li>
-<li>最快五年获得永住权</li>
-</ul>
-</li>
-<li>收益<ul>
-<li>每周有一天时间学习<ul>
-<li>神经科学和分子生物学</li>
-<li>机器学习和计算神经科学</li>
-</ul>
-</li>
-<li>五年后，周一到周五去研究室</li>
-</ul>
-</li>
-<li>获得公司的许可<ul>
-<li>向出入国管理局申请「资格外活动许可」</li>
-<li>公司代理申告交税</li>
-</ul>
-</li>
-<li>无法获得公司的许可<ul>
-<li>争取在研究室访问见学的机会</li>
-<li>争取作为志愿者无偿工作</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/%E6%88%91%E4%BB%AC%E7%9A%84%E9%81%93%E8%B7%AF.png" alt="我们的道路"></p>
-<ul>
-<li>未知的恐惧；探索的欲望。</li>
-<li>失败的恐惧；尝试的欲望。</li>
-</ul>
-<hr>
-<p>　　在现在的日本电商公司，每天面对一堆垃圾代码，进行着一些普通单调没有什么大的价值的日常作业。写着玩具一般的代码，还要做一些繁琐冗长的测试记录。我感觉我整个人都在堕落退化。目前打算现在这种状态还要持续一年左右。</p>
-<p>　　周末的时候，得去自己做一些探索。找准方向为未来做一些准备。尽力提早转入一些更具有创造性的工作就好了。</p>
-<p>　　<a target="_blank" rel="noopener" href="https://webvr.info/">https://webvr.info</a></p>
-<hr>
-<p>　　2019年4月之后，我开始尝试着在公司之内追求<strong>真实</strong>。一年之后，放弃尝试。在公司之内所能追求的<strong>真实</strong>无法超出<strong>当代世俗</strong>以外。</p>
-<p>　　一种的生活方式：</p>
-<ul>
-<li>在体制之内，转向“<strong>当代世俗</strong>”。</li>
-<li>在体制之外，转回“<strong>终极真实</strong>”。</li>
-</ul>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2018/05/19/谋生与探寻/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -2654,45 +2933,45 @@ Username for &#39;https://github.com&#39;: ^C
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>3</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>3</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
 		
 			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>4</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
@@ -2708,6 +2987,10 @@ Username for &#39;https://github.com&#39;: ^C
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
+      </li>
+    
+      <li>
         <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
       </li>
     
@@ -2721,10 +3004,6 @@ Username for &#39;https://github.com&#39;: ^C
     
       <li>
         <a href="/2024/05/15/biobuilder/chapter-10/" ><i class="fa fa-file-o"></i>金面包</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/15/biobuilder/chapter-9/" ><i class="fa fa-file-o"></i>多么丰富多彩的世界</a>
       </li>
     
   </ul>

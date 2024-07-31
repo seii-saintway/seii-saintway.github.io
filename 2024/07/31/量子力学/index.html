@@ -1,0 +1,1014 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>量子力学 | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="&amp;#37327;&amp;#23376;&amp;#21147;&amp;#23398;&amp;#31934;&amp;#35201;&amp;#182;
+
+
+
+
+
+
+&amp;#31532;&amp;#20108;&amp;#20844;&amp;#35774;&amp;#65306;&amp;#24186;&amp;#27491;&amp;#21160;&amp;#21147;&amp;#23398;&amp;#182;量子力">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="量子力学"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 量子力学</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="tabs" id="qm"><ul class="nav-tabs"></ul><div class="tab-content"></div></div>
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h3 id="%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E7%B2%BE%E8%A6%81"><a target="_blank" rel="noopener" href="https://quantum.country/qm">&#37327;&#23376;&#21147;&#23398;&#31934;&#35201;</a><a class="anchor-link" href="#%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E7%B2%BE%E8%A6%81">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="%E7%AC%AC%E4%BA%8C%E5%85%AC%E8%AE%BE%EF%BC%9A%E5%B9%BA%E6%AD%A3%E5%8A%A8%E5%8A%9B%E5%AD%A6">&#31532;&#20108;&#20844;&#35774;&#65306;&#24186;&#27491;&#21160;&#21147;&#23398;<a class="anchor-link" href="#%E7%AC%AC%E4%BA%8C%E5%85%AC%E8%AE%BE%EF%BC%9A%E5%B9%BA%E6%AD%A3%E5%8A%A8%E5%8A%9B%E5%AD%A6">&#182;</a></h4><p>量子力学的第一公设告诉我们如何描述状态。那么状态如何变化，即量子系统的动力学呢？这就是第二公设的内容。在之前的文章中，我们看到量子门是通过作用于量子系统状态空间的幺正矩阵来描述的。第二公设告诉我们，对于任何孤立的量子系统来说，情况也是类似的：</p>
+<p><strong>公设2</strong>：孤立量子系统的演化由作用于系统状态空间的幺正矩阵描述。即，时间 $t_1$ 时系统的状态 $|\psi\rangle$ 与时间 $t_2$ 时的状态 $|\psi'\rangle$ 通过幺正矩阵 $U$ 相关联：$|\psi'\rangle = U |\psi\rangle$。该矩阵 $U$ 可以依赖于时间 $t_1$ 和 $t_2$，但不依赖于状态 $|\psi\rangle$ 和 $|\psi'\rangle$。</p>
+<p>我们的量子门展示了这个公设的实际应用。例如，Pauli $X$ 门，也称为量子 NOT 门，就是一个例子。它在量子电路和矩阵表示中如下所示，以及其对状态的显式作用：</p>
+$$ X = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} $$$$ X (\alpha |0\rangle + \beta |1\rangle) = \beta |0\rangle + \alpha |1\rangle $$<p>Hadamard 门 $H$ 也是如此：</p>
+$$ H = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix} $$$$ H(\alpha|0\rangle + \beta|1\rangle) = \frac{\alpha + \beta}{\sqrt{2}}|0\rangle + \frac{\alpha - \beta}{\sqrt{2}}|1\rangle $$<p>依此类推，通过受控 NOT 门，Toffoli 门，以及我们之前遇到的所有其他量子门。</p>
+<p>为什么在第二公设中出现的是幺正矩阵？如果你试着在纸上写下几个矩阵，很快就会发现大多数矩阵都不是幺正的，甚至远非如此。为什么我们不能在第二公设中使用一般的矩阵？一个部分解释是，幺正矩阵是唯一保持长度不变的矩阵。如果我们希望量子态保持归一化，那么幺正矩阵是唯一能做到这一点的矩阵，因为任何其他矩阵都会导致范数的变化。而这种归一化又与测量结果的概率和为一的要求有关。在这种意义上，量子力学的公设形成了一个紧密相连的网络，一个公设中的幺正性要求反映了另一个地方的要求，例如状态向量的归一化或概率和为一。</p>
+<p>如何确定描述特定物理情境所需的幺正变换？正如你从我们对第一公设的讨论中所猜到的，第二公设对此问题保持沉默。需要逐案解决。像量子电动力学（QED）和标准模型这样的理论提供了额外的规则，指定了它们所描述系统的精确（幺正）动力学。就像之前一样：量子力学是一个框架，而不是一个完整的物理理论。但告诉我们用幺正变换来描述动力学已经是一个非常具有约束性的声明了。而且，和以前一样，量子电路模型是一个有用的例子来源，使用它是建立直觉的好方法。</p>
+<p>更广泛地说：尽管量子力学在1920年代达到了最终形式，但物理学家们花了二十世纪的大部分时间来弄清楚需要什么样的幺正动力学、状态空间和量子态来描述这个或那个系统。你不能只解决这个问题一次：光学物理学家需要为光解决它，原子物理学家需要为原子解决它，粒子物理学家一直在为标准模型所描述的整个粒子众神谱解决它。尽管如此，尽管关于这两个公设的应用还有很多要学习，但它们已经为我们提供了一个非常具有约束力的框架，用于思考世界是什么以及它如何变化。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你可能注意到，就像第一公设一样，第二公设也有一个关于使用幺正矩阵描述孤立系统动力学的警告。当然，在自然界中，大多数物理系统并不是孤立的，甚至不接近孤立。例如，假设你正在尝试建造一台量子计算机，使用原子来存储量子比特的状态。例如，我们可以用电子的两个不同轨道壳层对应 $|0\rangle$ 和 $|1\rangle$ 状态。再假设你通过短暂照射激光光束在原子上来实现量子门，使电子在壳层之间移动。</p>
+<p>这样的原子并不是孤立的：它与激光强烈相互作用。但事实证明，即使在激光照射下，原子的动力学仍然可以用幺正变换来很好地描述。这并不是显而易见的；它需要详细的研究。但是结果是，虽然第二公设只直接适用于孤立系统，但令人惊讶的是，通常情况下可以用幺正动力学来描述非孤立系统的动力学。实际上，当我们上面说量子门是第二公设的例子时，这并不完全正确。通常，量子门涉及非孤立系统。但通过精心设计，它们仍然实现了幺正操作。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我们以最常在量子电路上下文中使用的形式提出了第二公设，即通过离散门操作引起量子态的离散变化。现在我们将简要展示另一种形式，其中量子态的演化在连续时间内平滑变化，变化由微分方程描述。我们不会经常使用这种形式，所以你不需要深入理解所有细节——这里只是让你了解一下大意。控制量子态随时间变化率的方程如下：</p>
+$$ i \frac{d |\psi\rangle}{dt} = H |\psi\rangle. $$<p>这个方程被称为薛定谔方程。矩阵 $ H $ 是一个（固定的）厄米矩阵，称为系统的哈密顿量。（这与哈达玛门不同，这只是一个不幸的符号巧合）。你可以认为哈密顿量 $ H $ 告诉量子态如何变化。薛定谔方程因此提供了量子态动力学的连续时间描述，而第二公设则侧重于离散时间描述。</p>
+<p>通过求解薛定谔方程，我们可以将系统在时间 $ t_2 $ 的状态与时间 $ t_1 $ 的状态联系起来。解为：</p>
+$$ |\psi_{t_2}\rangle = e^{-iH(t_2 - t_1)} |\psi_{t_1}\rangle. $$<p>当然，尽管写出矩阵指数很容易，但在实际计算中往往需要相当多的工作！</p>
+<p>传统的量子力学处理方法花费大量时间讨论用于描述不同物理系统的哈密顿量，并（通常相当繁琐地）计算矩阵指数的值。这些是重要且有价值的技术问题，但对理解量子力学的基本原理并不是必需的。尽管如此，值得注意的是，上述解与第二公设是一致的：特别是，可以证明 $ e^{-iH(t_2 - t_1)} $ 是一个幺正矩阵。实际上，如果你在想“薛定谔方程中的因子 $ i $ 是从哪里来的”或“为什么哈密顿量 $ H $ 需要是厄米矩阵”，答案都是为了得到幺正演化。因此，一切都很好地结合在一起。事实上，还有一个非正式的论证，可以让你反过来从第二公设出发（加上一些额外的假设）推导出薛定谔方程。我们这里不深入讨论细节，但值得注意的是，这是可能的。</p>
+<p>从这段讨论中值得记住的是一些基本概念：哈密顿量的术语，薛定谔方程的作用（定性上），以及薛定谔方程与第二公设的广泛联系。我们不会要求你记住薛定谔方程的细节——这些确实需要更深入的解析和一些详细的例子。另一方面，了解薛定谔方程的作用是有价值的：它描述了孤立物理系统的量子态随时间变化的速率。下面的问题有点超出本文的主要范围。但它们被包括在这里，这样如果你在以后的阅读中遇到诸如“哈密顿量”之类的术语，你会有一个基本的理解基础。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="%E7%AC%AC%E4%B8%89%E5%85%AC%E8%AE%BE%EF%BC%9A%E6%B5%8B%E9%87%8F">&#31532;&#19977;&#20844;&#35774;&#65306;&#27979;&#37327;<a class="anchor-link" href="#%E7%AC%AC%E4%B8%89%E5%85%AC%E8%AE%BE%EF%BC%9A%E6%B5%8B%E9%87%8F">&#182;</a></h4><p>第三公设是量子力学公设中最奇特的。为了解释其内容，有必要回顾一下<a target="_blank" rel="noopener" href="https://quantum.country/qcvc">《非常好奇的量子计算》</a>中的一段内容：</p>
+<blockquote>
+<p>假设有一位（假设的！）量子物理学家名叫爱丽丝，她在实验室里准备了一个量子态为 $\alpha |0\rangle + \beta |1\rangle$ 的量子比特。然后她将她的量子比特交给另一位量子物理学家鲍勃，但并没有告诉他 $\alpha$ 和 $\beta$ 的值。鲍勃有没有办法弄清楚 $\alpha$ 和 $\beta$ 呢？也就是说，他是否能通过某种实验来弄清这个量子态的身份？</p>
+<p>令人惊讶的答案是：不行！事实上，如果 $\alpha$ 和 $\beta$ 是未知的，就没有办法弄清它们。换句话说，任何系统的量子态——无论是量子比特还是其他系统——都不能直接观察到。</p>
+<p>[我们] 之所以说这是令人惊讶的，是因为它与我们平时日常思维方式中对世界运作方式的理解非常不同。如果你的车有问题，机械师可以使用诊断工具来了解发动机的内部状态。诊断工具越好，他们能了解的就越多。当然，发动机的某些部分可能不太方便接触——也许他们不得不拆开某个部分，或者使用显微镜，但如果机械师告诉你物理定律禁止他们弄清发动机的内部状态，你可能会感到怀疑。</p>
+</blockquote>
+<p>在早期的文章中，我们描述了<em>计算基中的测量</em>。这个过程控制了你如何从量子计算机中获取信息。回忆一下最简单的版本，即仅测量一个量子比特在计算基中的情况。在这个过程中，如果你测量一个量子态为 $\alpha |0\rangle + \beta |1\rangle$ 的量子比特，那么你将以 $|\alpha|^2$ 的概率得到结果 $0$，以 $|\beta|^2$ 的概率得到结果 $1$。在这两种情况下，后验状态分别是 $|0\rangle$ 和 $|1\rangle$。</p>
+<p>第三公设概括了这种测量的思想：</p>
+<p><strong>公设3：</strong> 量子测量由一组<em>测量算符</em> $\{M_m\}$ 描述。（在初等线性代数中，术语“算符”通常与“矩阵”基本上可以互换使用。在无限维空间中，这两个术语的含义略有不同，但在我们有限维的上下文中可以互换使用。测量算符这个术语比测量矩阵更常见，所以我们采用这个术语。）每个 $M_m$ 是作用于被测系统状态空间的矩阵。索引 $m$ 取值对应于实验中可能出现的测量结果。如果量子系统的状态在测量前是 $|\psi\rangle$，那么结果 $m$ 出现的概率由下式给出：</p>
+$$ p(m) = \langle \psi | M_m^\dagger M_m | \psi \rangle, $$<p>而系统在测量后的状态，通常称为<em>后验状态</em>，为</p>
+$$ \frac{M_m |\psi\rangle}{\sqrt{\langle \psi | M_m^\dagger M_m | \psi \rangle}}. $$<p>（值得注意的是：(a) 分母只是概率 $p(m)$ 的平方根；(b) 这是一个适当归一化的量子态。）测量算符满足<em>完备性关系</em>（我们所陈述的公设是一些量子力学教科书中所给出的表述的推广，基于通常称为投影测量的概念。这两个表述是等价的，与其他公设结合使用时。我们选择当前的表述是因为它在数学上更简单和更强大，而不是基于投影测量的表述。我们认为这种表述应该从量子力学教科书中删除。）,</p>
+$$ \sum_m M_m^\dagger M_m = I. $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在这个公设中有很多内容。但它主要表达了我们已经看到的想法，尽管之前是隐藏的。我们会在稍后给出一个具体的例子，但首先要解释完备性关系的含义。它只是表达了概率和为1的想法。通过在完备性关系前乘以 $\langle \psi|$ 并在后乘以 $|\psi\rangle$，我们可以看到这给出了</p>
+$$ \sum_m p(m) = \sum_m \langle \psi | M_m^\dagger M_m | \psi \rangle = \langle \psi | I | \psi \rangle = \langle \psi | \psi \rangle = 1, $$<p>其中我们假设 $|\psi\rangle$ 是一个量子态，因此归一化为长度为1。</p>
+<p>为了理解第三公设的意义，最好通过具体案例来说明，比如在计算基中测量单个量子比特。在这种情况下，测量算符是 $M_0 = |0\rangle\langle 0|$ 和 $M_1 = |1\rangle\langle 1|$。如果我们用显式的振幅写出量子态 $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$，应用第三公设最简单。根据第三公设，结果 $0$ 的概率为：</p>
+$$ p(0) = \langle \psi | M_0^\dagger M_0 | \psi \rangle = \langle \psi | 0 \rangle \langle 0 | 0 \rangle \langle 0 | \psi \rangle. $$<p>当然，$|0\rangle$ 是归一化的，所以 $\langle 0 | 0 \rangle = 1$，这变成了：</p>
+$$ p(0) = \langle \psi | 0 \rangle \langle 0 | \psi \rangle = |\langle 0 | \psi \rangle|^2. $$<p>但 $\langle 0 | \psi \rangle = \alpha$，因此这告诉我们测量结果 $0$ 的概率是 $p(0) = |\alpha|^2$，正如我们所预期的。完全相同的计算，只是将 $0$ 替换为 $1$，显示了 $p(1) = |\beta|^2$，也如我们所预期的。</p>
+<p>后验状态呢？让我们考虑测量结果 $m = 0$ 的情况。在这种情况下，第三公设告诉我们后验状态为</p>
+$$ \frac{| 0 \rangle \langle 0 | \psi\rangle}{\sqrt{p(0)}}. $$<p>我们已经看到 $p(0) = |\alpha|^2$。当然，$\langle 0 | \psi \rangle = \alpha$。因此，后验状态为：</p>
+$$ \frac{\alpha}{|\alpha|} |0\rangle. $$<p>这是一个看起来很奇怪的状态！前面的因子 $\alpha / |\alpha|$ 看起来很复杂，但它只是一个全局相位因子。在<a target="_blank" rel="noopener" href="https://quantum.country/qcvc">《非常好奇的量子计算》</a>中，我们观察到这样的全局相位因子永远不会影响测量概率，因此通常认为只在全局相位因子上有所不同的量子态是相同的。因此，上述状态可以被认为等同于量子态 $|0\rangle$，正如我们预期的那样。在类似的方式下，我们可以显示，如果测量结果是 $1$，则后验状态是 $|1\rangle$（同样，我们忽略全局相位因子）。</p>
+<p>在<a target="_blank" rel="noopener" href="https://quantum.country/qcvc">《非常好奇的量子计算》</a>中，我们对忽略全局相位因子的论证是含糊的。事实上，这些公设可以用来使论证无懈可击。假设我们有两个量子态，它们通过一个全局相位因子相关联，$|\psi'\rangle = e^{i\theta} |\psi\rangle$。那么这两个状态的测量概率总是相同的：</p>
+$$ p'(m) = \langle \psi' | M_m^\dagger M_m | \psi' \rangle = \langle \psi | M_m^\dagger M_m | \psi \rangle = p(m). $$<p>虽然我们不会明确展示，但全局相位因子也会在幺正动力学和后验状态计算中保持不变。因此，这样的相位因子对任何可观测量都没有影响。实际上，有时人们会用不同的表述重新陈述这些公设，完全消除这样的全局相位因子。我们没有这样做的原因是这会显著复杂化表述。使用我们已经提出的非正式论证既更简单也更符合常规。</p>
+<p>顺便提一句，你可能会想，如果在第三公设中，后验状态中的分母 $\sqrt{\langle \psi | M_m^\dagger M_m | \psi \rangle}$ 为零会发生什么？那样不会使后验状态未定义吗？幸运的是，这只能在测量结果的概率为零时发生。这也意味着测量结果永远不会发生，所以我们不需要担心。</p>
+<p>我们进行了大量工作只是为了分析一个量子测量！好消息是我们很少需要进行这样的工作。相反，你会建立一个常见测量算符模式的库。实际上，在量子计算中，你主要会对计算基中的测量感兴趣。而且还有一些其他常见的测量，我们将在本文后面讨论。在实践中，你很少需要进行如上所述的计算。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>让我们介绍一种新类型的测量，这是我们在之前的文章中没有见过的。这是一种单量子比特测量，但不是在计算基中进行的测量。回忆一下等幅叠加态：</p>
+$$ |+⟩ = \frac{|0⟩ + |1⟩}{\sqrt{2}}; \quad |−⟩ = \frac{|0⟩ - |1⟩}{\sqrt{2}}。$$<p>现在我们定义的测量是所谓的“在 $ |+⟩, |−⟩ $ 基中进行的测量”。特别地，我们定义测量算符 $ M_+ = |+⟩⟨+| $ 和 $ M_− = |−⟩⟨−| $。我们不会详细推导计算过程，但如果你愿意，可以检查完备关系 $ M_+^\dagger M_+ + M_-^\dagger M_- = I $。进行这个检查只是一个小小的矩阵计算。我们要重点理解的是测量概率和后验状态。</p>
+<p>从被测量的状态展开为 $ |ψ⟩ = α |0⟩ + β |1⟩ $ 开始是很有诱惑力的——事实上，这是一个好主意！如果你这样做了，你可以推导出测量概率和后验状态。但有一个技巧可以简化这个过程。值得停下来想一下，看你能不能想出这个技巧是什么。有什么想法吗？</p>
+<p>这个技巧是：观察到我们同样可以将 $ |ψ⟩ $ 展开为 $ |+⟩ $ 和 $ |−⟩ $ 态，即 $ |ψ⟩ = γ |+⟩ + δ |−⟩ $。我们当然可以这样做，因为 $ |+⟩ $ 和 $ |−⟩ $ 是二维向量空间中线性无关（实际上是正交归一）的态。你现在能猜出测量概率和后验状态是什么吗，通过与在计算基中测量的类比？</p>
+<p>我们稍后会详细计算，但值得先陈述结果：$ + $ 结果的概率是 $ |γ|^2 $，后验状态是 $ |+⟩ $；而 $ − $ 结果的概率是 $ |δ|^2 $，后验状态是 $ |−⟩ $。这很像计算基中的测量，计算过程也很像之前计算基中测量的过程。特别地，对于 $ + $ 测量，我们有：</p>
+$$ p(+) = ⟨ψ| M_+^\dagger M_+ |ψ⟩ = (γ^* ⟨+| + δ^* ⟨−|) |+⟩⟨+|+⟩⟨+| (γ |+⟩ + δ |−⟩)。$$<p>当然，$ ⟨+|+⟩ = 1 $。如果你忘了，快速计算表明 $ ⟨+|−⟩ = 0 $，即 $ |+⟩ $ 和 $ |−⟩ $ 状态是正交的。因此，上述表达式变成：</p>
+$$ p(+) = (γ^* ⟨+| + δ^* ⟨−|) |+⟩⟨+| (γ |+⟩ + δ |−⟩) = |γ|^2。$$<p>类似但更简单的计算表明 $ M_+ |ψ⟩ = γ |+⟩ $，因此对应的后验状态是 $ \frac{γ}{|γ|} |+⟩ $，这在一个全局相位因子上是 $ |+⟩ $ 状态。类似的计算表明，$ − $ 结果的概率是 $ |δ|^2 $，后验状态是 $ |−⟩ $（同样，忽略全局相位）。实际上，我们只说后验状态分别是 $ |+⟩ $ 和 $ |−⟩ $。</p>
+<p>如果我们坚持 $ |ψ⟩ = α |0⟩ + β |1⟩ $ 会发生什么？计算会稍微复杂一些，但当然我们最终会得到相同的结果，尽管是用 $ α $ 和 $ β $ 表示，而不是 $ γ $ 和 $ δ $。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><strong>可观察量</strong></p>
+<p>更一般地说，如果我们有一组测量算符 $\{M_m\}$，那么平均结果是
+$$
+\sum_m p(m)m = \sum_m \langle \psi | M_m^\dagger M_m | \psi \rangle m,
+$$
+其中左边的项只是平均值的定义，而右边的项来自第三公设。但我们可以将求和放到内部，我们看到平均值只是 $ \langle \psi | M | \psi \rangle $，其中
+$$
+M := \sum_m m M_m^\dagger M_m.
+$$</p>
+<p>$M$ 被称为对应于测量 $\{M_m\}$ 的<em>可观察量</em>。这个可观察量是一个单一的、固定的算符，仅依赖于测量结果 $m$ 和测量算符 $M_m$。然而，如果你知道可观察量，那么计算平均测量结果通常很容易：它只是 $ \langle \psi | M | \psi \rangle $。事实上，这非常方便，以至于它经常以缩写形式表示为 $ \langle M \rangle := \langle \psi | M | \psi \rangle $。因此，人们经常使用 $\langle M \rangle$ 作为量子力学中平均值的符号。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>更一般地说，我们可以颠倒这个过程，使用某个可观察量来定义量子测量。具体来说，假设 $M$ 是一个作用在量子系统状态空间上的厄米矩阵。那么，线性代数中的一个称为谱定理的结果保证了 $M$ 可以分解为：
+$$
+M = \sum_{\lambda} \lambda |\lambda\rangle\langle\lambda|,
+$$
+其中求和是对 $M$ 的所有特征值 $\lambda$ 和相应的（规范化的）特征向量 $|\lambda\rangle_{\text{norm}} = \frac{|\lambda\rangle}{\sqrt{\langle \lambda | \lambda \rangle}}$ 进行的。我们可以定义一个量子测量，其测量算符为 $M_{\lambda} = |\lambda\rangle\langle\lambda|$。容易验证完备性关系是真实的，因此这是一个有效的量子测量。此外，你可以验证 $M$ 是对应于这些测量算符的可观察量。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>我们需要验证 $M_{\lambda} = |\lambda\rangle\langle\lambda|$ 的完备性关系，即
+$$ \sum_{\lambda} M_{\lambda}^\dagger M_{\lambda} = I. $$</p>
+<p>这可以通过以下方法来证明：</p>
+<ul>
+<li>选择一个任意的量子态 $ |\psi\rangle $，计算 $ \sum_{\lambda} |\lambda\rangle\langle\lambda| $ 作用在 $ |\psi\rangle $ 上的结果：</li>
+</ul>
+<p>$$ \left( \sum_{\lambda} |\lambda\rangle\langle\lambda| \right) |\psi\rangle. $$</p>
+<ul>
+<li>展开这个表达式：</li>
+</ul>
+<p>$$ \left( \sum_{\lambda} |\lambda\rangle\langle\lambda| \right) |\psi\rangle = \sum_{\lambda} |\lambda\rangle\langle\lambda|\psi\rangle. $$</p>
+<ul>
+<li>由于 $ \langle\lambda|\psi\rangle $ 是 $ |\psi\rangle $ 在 $ |\lambda\rangle $ 基底上的投影系数，这里我们可以得到：</li>
+</ul>
+<p>$$ \sum_{\lambda} |\lambda\rangle\langle\lambda|\psi\rangle = |\psi\rangle. $$</p>
+<ul>
+<li>这表明，无论 $ |\psi\rangle $ 是什么，应用 $ \sum_{\lambda} |\lambda\rangle\langle\lambda| $ 后得到的结果仍然是 $ |\psi\rangle $。因此：</li>
+</ul>
+<p>$$ \sum_{\lambda} M_{\lambda}^\dagger M_{\lambda} = \sum_{\lambda} |\lambda\rangle\langle\lambda| = I. $$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果量子系统的状态在测量前是 $|\psi\rangle$，那么结果 $\lambda$ 出现的概率由下式给出：</p>
+$$
+p(\lambda) = \langle \psi | M_{\lambda}^\dagger M_{\lambda} | \psi \rangle
+= \langle \psi | (|\lambda\rangle\langle\lambda|)^\dagger (|\lambda\rangle\langle\lambda|) | \psi \rangle
+= \langle \psi | \lambda \rangle \langle\lambda|\lambda\rangle \langle \lambda | \psi \rangle
+= (\langle \lambda | \psi \rangle)^\dagger \langle \lambda | \psi \rangle = |\langle \lambda | \psi \rangle|^2,
+$$<p>而系统在测量后的状态，通常称为<em>后验状态</em>，为</p>
+$$
+\frac{M_{\lambda} |\psi\rangle}{\sqrt{\langle \psi | M_{\lambda}^\dagger M_{\lambda} | \psi \rangle}}
+= \frac{(|\lambda\rangle\langle\lambda|) |\psi\rangle}{|\langle \lambda | \psi \rangle|}
+= \frac{|\lambda\rangle \langle\lambda|\psi\rangle}{|\langle \lambda | \psi \rangle|}
+= \frac{\langle\lambda|\psi\rangle}{|\langle \lambda | \psi \rangle|} |\lambda\rangle.
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第三公设还有另一种看法，似乎它几乎是第二公设的推广。假设我们进行一个只有单一测量结果的测量。这听起来很奇怪——如果测量设备总是显示相同的答案，你会认为它坏了——但至少在逻辑上是有意义的。根据第三公设，这样的测量将由一个单一的测量算符描述，我们可以称之为 $M$（不需要标签，因为结果总是相同的）。</p>
+<p>在这种情况下，完备性关系变为 $M^\dagger M = I$。这只是 $M$ 是幺正的条件。当然，结果的概率是 $\langle \psi | M^\dagger M | \psi \rangle = \langle \psi | I | \psi \rangle = 1$，所以这个结果会以概率1发生，即每次都会发生。考虑到只有一个可能的结果，这正是我们所期望的！因此，第二公设似乎是第三公设的特例，其中只有一个结果。</p>
+<p>我们说“似乎”。事情并没有那么简单。毕竟，第三公设讨论的是一个系统正在被测量，可能是通过与某些测量设备的相互作用，而第二公设讨论的是孤立物理系统的动力学。所以这两个公设讨论的是完全不同的物理情况。要说第二公设是第三公设的特例，仅仅数学上对得上是不够的：你还需要一个统一且概念上合理的物理图景。不过，你可以想象尝试重新表述这些公设，使第二和第三公设成为单一公设的统一方面。试图找到概念上的统一使其成立是很有趣的。我们在这里不做，但你可能会喜欢思考如何做到这一点。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><strong>为什么存在两种动力学？</strong></p>
+<p>量子力学的一个奇特之处在于它有两种不同的描述状态变化的方式：幺正动力学和与测量相关的动力学。这引发了一系列引人注目的难题。假设我们有一个正在被测量的量子系统——我们称之为 <em>Q</em>。测量装置本身也是一个量子系统。因此，似乎应该可以找到一个包含 <em>Q</em> 和测量装置且孤立的更大的量子系统。根据第二公设，该更大的系统正在进行幺正演化。</p>
+<p>这意味着量子力学现在提供了两种看似不同的描述被测量系统演化的方式：要么通过测量算符和概率，如第三公设所述；要么在更大的系统的幺正演化下，以完全确定的方式进行。</p>
+<p>对于同一情形有两种不同的描述方式引出了许多问题：我们能保证这两种描述总是相互一致的吗？是否可以从一种描述推导出另一种描述？概率是如何从看似确定的更大系统的描述中产生的？特别是，当组合系统的量子态以纯确定的方式演化时，被测量系统的量子态为何以随机的方式变化？我们不应该能从组合系统状态的确定性演化中推导出测量概率吗？简而言之：我们如何调和这两种观点？</p>
+<p>这些都是很好的问题。这些问题及其他相关问题通常被称为量子力学中的<em>测量问题</em>。许多物理学家提出了测量问题的解决方案。不幸的是，整个物理学界尚未达成完全一致的解决方案。我们听到过许多变体：“这个问题已经被玻尔解决了；被冯·诺伊曼解决了；被埃弗雷特解决了；被玻姆解决了；等等”。然而，对于已经发表的数十或数百种解决方案，也有标准的反驳意见。实际上，一个有趣的（非常大的）项目想法是收集完整的论证树，包含所有最强的论据和反驳意见，以及争论的关键点。</p>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+<hr>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>将经典物理量替换为算符是量子化过程的核心步骤。这种替换反映了量子力学的基本原理，即物理量不再是确定的数值，而是通过算符作用于波函数或量子态上来描述。这一过程允许我们使用量子力学的数学框架来描述和预测物理系统的行为，从而揭示经典力学所不能解释的现象。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%E5%8E%84%E7%B1%B3%E5%85%B1%E8%BD%AD-(Hermitian-Conjugate)">&#21380;&#31859;&#20849;&#36717; (Hermitian Conjugate)<a class="anchor-link" href="#%E5%8E%84%E7%B1%B3%E5%85%B1%E8%BD%AD-(Hermitian-Conjugate)">&#182;</a></h3><p><strong>定义：</strong> 一个算子 $ A $ 的厄米共轭 $ A^\dagger $ 是通过取其复共轭转置得到的，即 $ (A^\dagger)_{ij} = \overline{A_{ji}} $。</p>
+<p><strong>详细解释：</strong> 厄米共轭是定义自伴性和幺正性的基础。它的计算涉及两个步骤：首先取矩阵的转置，然后对每个元素取复共轭。</p>
+<h3 id="%E8%87%AA%E4%BC%B4%E6%80%A7-(Self-adjointness)">&#33258;&#20276;&#24615; (Self-adjointness)<a class="anchor-link" href="#%E8%87%AA%E4%BC%B4%E6%80%A7-(Self-adjointness)">&#182;</a></h3><p><strong>定义：</strong> 一个算子 $ A $ 如果满足 $ A = A^\dagger $，则称其为自伴算子。这里 $ A^\dagger $ 是 $ A $ 的厄米共轭。</p>
+<p><strong>详细解释：</strong> 在量子力学中，自伴算子对应于可观察量。自伴性保证了算子的特征值都是实数，且其特征向量构成完备正交系。</p>
+<h3 id="%E5%B9%BA%E6%AD%A3%E6%80%A7-(Unitarity)">&#24186;&#27491;&#24615; (Unitarity)<a class="anchor-link" href="#%E5%B9%BA%E6%AD%A3%E6%80%A7-(Unitarity)">&#182;</a></h3><p><strong>定义：</strong> 一个算子 $ U $ 如果满足 $ U^\dagger U = UU^\dagger = I $，则称其为幺正算子。这里 $ I $ 是单位算子， $ U^\dagger $ 是 $ U $ 的厄米共轭。</p>
+<p><strong>详细解释：</strong> 幺正算子在量子力学中描述保守系统中的时间演化算子，因为它保持内积，即保持概率守恒。</p>
+<h3 id="%E5%BA%94%E7%94%A8%EF%BC%9A">&#24212;&#29992;&#65306;<a class="anchor-link" href="#%E5%BA%94%E7%94%A8%EF%BC%9A">&#182;</a></h3><ul>
+<li><strong>自伴性</strong>：在量子力学中，自伴算子对应物理上的可观测量，如位置、动量和哈密顿算子。</li>
+<li><strong>幺正性</strong>：幺正算子用于描述量子系统的时间演化（例如量子态的时间演化算子）。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Pauli-Fierz-%E5%93%88%E5%AF%86%E9%A1%BF%E7%AE%97%E7%AC%A6%E7%9A%84%E8%87%AA%E4%BC%B4%E6%80%A7">Pauli-Fierz &#21704;&#23494;&#39039;&#31639;&#31526;&#30340;&#33258;&#20276;&#24615;<a class="anchor-link" href="#Pauli-Fierz-%E5%93%88%E5%AF%86%E9%A1%BF%E7%AE%97%E7%AC%A6%E7%9A%84%E8%87%AA%E4%BC%B4%E6%80%A7">&#182;</a></h3><p>Pauli-Fierz 哈密顿算符的自伴性是量子力学和量子场论中的一个关键数学性质，尤其在非相对论量子电动力学 (NRQED) 的背景下。Pauli-Fierz 哈密顿算符描述了带电粒子（如电子）与电磁场在非相对论情况下的相互作用。</p>
+<h4 id="Pauli-Fierz-%E5%93%88%E5%AF%86%E9%A1%BF%E7%AE%97%E7%AC%A6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">Pauli-Fierz &#21704;&#23494;&#39039;&#31639;&#31526;&#26159;&#20160;&#20040;&#65311;<a class="anchor-link" href="#Pauli-Fierz-%E5%93%88%E5%AF%86%E9%A1%BF%E7%AE%97%E7%AC%A6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">&#182;</a></h4><p>Pauli-Fierz 哈密顿算符的形式如下：</p>
+$$
+H_{\text{NRQED}} = \sum_{j=1}^N \frac{1}{2m} \left( \mathbf{p}_j - e \mathbf{A}(\mathbf{q}_j) \right)^2 + V_c(\mathbf{q}) + H_f 
+$$<p>这里：</p>
+<ul>
+<li>$ \mathbf{p}_j $ 是粒子的动量。</li>
+<li>$ \mathbf{q}_j $ 是粒子的位置。</li>
+<li>$ e $ 是粒子的电荷。</li>
+<li>$ \mathbf{A}(\mathbf{q}_j) $ 是在位置 $ \mathbf{q}_j $ 处的电磁场矢势。</li>
+<li>$ V_c(\mathbf{q}) $ 表示带电粒子之间的库仑相互作用。</li>
+<li>$ H_f $ 是自由电磁场（光子）的哈密顿算符。</li>
+</ul>
+<h4 id="%E8%87%AA%E4%BC%B4%E6%80%A7">&#33258;&#20276;&#24615;<a class="anchor-link" href="#%E8%87%AA%E4%BC%B4%E6%80%A7">&#182;</a></h4><p>在量子力学中，一个算符（如哈密顿算符）必须是自伴的，以确保其本征值（对应于可测量的量如能量）是实数，并且它能够产生幺正的时间演化（确保概率随时间的守恒）。</p>
+<p>对于 Pauli-Fierz 哈密顿算符，证明自伴性涉及几个步骤：</p>
+<ol>
+<li><strong>定义域</strong>：需要定义一个合适的算符作用域，使得哈密顿算符在该域上是良定义并且有下界。</li>
+<li><strong>对称性</strong>：证明哈密顿算符在该定义域上是对称的。一个对称算符 $ H $ 满足 $ \langle \psi, H \phi \rangle = \langle H \psi, \phi \rangle $ 对于定义域内所有的 $\psi$ 和 $\phi$ 成立。</li>
+<li><strong>自伴扩展</strong>：为了使算符是自伴的，它必须与其伴随算符 $ H^* $ 具有相同的定义域，并满足 $ H = H^* $。这通常是一个复杂的任务，通常需要证明哈密顿算符有一个唯一的自伴扩展。</li>
+</ol>
+<h4 id="%E5%9C%A8%E9%87%8F%E5%AD%90%E7%94%B5%E5%8A%A8%E5%8A%9B%E5%AD%A6%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7">&#22312;&#37327;&#23376;&#30005;&#21160;&#21147;&#23398;&#20013;&#30340;&#37325;&#35201;&#24615;<a class="anchor-link" href="#%E5%9C%A8%E9%87%8F%E5%AD%90%E7%94%B5%E5%8A%A8%E5%8A%9B%E5%AD%A6%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7">&#182;</a></h4><p>Pauli-Fierz 哈密顿算符的自伴性确保了几个关键性质：</p>
+<ul>
+<li><strong>实数本征值</strong>：系统的能谱是实数，这是物理测量所必需的。</li>
+<li><strong>幺正演化</strong>：时间演化算符 $ e^{-iHt} $ 是幺正的，确保了概率的守恒。</li>
+<li><strong>稳定性</strong>：系统是稳定的，即能量有下界。</li>
+</ul>
+<h4 id="%E6%95%B0%E5%AD%A6%E6%8A%80%E6%9C%AF">&#25968;&#23398;&#25216;&#26415;<a class="anchor-link" href="#%E6%95%B0%E5%AD%A6%E6%8A%80%E6%9C%AF">&#182;</a></h4><p>证明自伴性通常使用来自泛函分析和算符理论的高级数学技术，如：</p>
+<ul>
+<li><strong>Kato-Rellich 定理</strong>：用于证明自伴算符的某些扰动仍然是自伴的。</li>
+<li><strong>形式方法</strong>：涉及与算符相关的二次型技术。</li>
+<li><strong>谱理论</strong>：分析算符的谱以确保其是实数且行为良好。</li>
+</ul>
+<h4 id="%E6%96%87%E7%8C%AE%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8">&#25991;&#29486;&#20013;&#30340;&#24341;&#29992;<a class="anchor-link" href="#%E6%96%87%E7%8C%AE%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8">&#182;</a></h4><p>Pauli-Fierz 哈密顿算符的自伴性已经在各种背景下被广泛研究和证明。主要参考文献包括：</p>
+<ul>
+<li>H. Spohn 和 R. D. Lang，他们研究了量子电动力学和 Pauli-Fierz 哈密顿算符的数学基础。</li>
+<li>M. Reed 和 B. Simon 在他们的“现代数学物理方法”系列中详细讨论了这一主题。</li>
+</ul>
+<p>理解 Pauli-Fierz 哈密顿算符的自伴性对于确保 NRQED 模型的数学一致性和物理可靠性至关重要。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>如何用非相对论性量子电动力学推导出非相对论性量子运动学（Non-relativistic Quantum Kinematics）？</p>
+<p>要从非相对论性量子电动力学（NRQED）推导出非相对论性量子力学（NRQM），需要理解这两者之间的关系和概念。NRQED 是一个包含更多相互作用和复杂性的理论，而 NRQM 是一个简化的子集，专注于粒子的波函数和基本量子行为。以下是一个简化的过程，展示如何从 NRQED 推导出 NRQM 。</p>
+<h3 id="%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B">&#27010;&#24565;&#31616;&#20171;<a class="anchor-link" href="#%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B">&#182;</a></h3><h4 id="%E9%9D%9E%E7%9B%B8%E5%AF%B9%E8%AE%BA%E6%80%A7%E9%87%8F%E5%AD%90%E7%94%B5%E5%8A%A8%E5%8A%9B%E5%AD%A6%EF%BC%88NRQED%EF%BC%89">&#38750;&#30456;&#23545;&#35770;&#24615;&#37327;&#23376;&#30005;&#21160;&#21147;&#23398;&#65288;NRQED&#65289;<a class="anchor-link" href="#%E9%9D%9E%E7%9B%B8%E5%AF%B9%E8%AE%BA%E6%80%A7%E9%87%8F%E5%AD%90%E7%94%B5%E5%8A%A8%E5%8A%9B%E5%AD%A6%EF%BC%88NRQED%EF%BC%89">&#182;</a></h4><p>NRQED 描述低能量情况下电子与电磁场的相互作用。它包含电子的非相对论性运动以及电子与光子的相互作用。NRQED 通常使用量子场论的方法，包括拉格朗日量、路径积分和费曼图。</p>
+<h4 id="%E9%9D%9E%E7%9B%B8%E5%AF%B9%E8%AE%BA%E6%80%A7%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%EF%BC%88NRQM%EF%BC%89">&#38750;&#30456;&#23545;&#35770;&#24615;&#37327;&#23376;&#21147;&#23398;&#65288;NRQM&#65289;<a class="anchor-link" href="#%E9%9D%9E%E7%9B%B8%E5%AF%B9%E8%AE%BA%E6%80%A7%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%EF%BC%88NRQM%EF%BC%89">&#182;</a></h4><p>NRQM 描述单个或多个粒子的波函数演化，不涉及电磁场的量子效应。其核心方程是薛定谔方程。</p>
+<h3 id="%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B">&#25512;&#23548;&#36807;&#31243;<a class="anchor-link" href="#%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B">&#182;</a></h3><ol>
+<li><p><strong>NRQED 的基本拉格朗日量</strong>
+NRQED 的拉格朗日量描述了电子（费米子）和电磁场（光子）的相互作用。它通常包括自由电子部分、自由电磁场部分以及它们之间的相互作用项。
+$$
+\mathcal{L}_{NRQED} = \mathcal{L}_{\text{electron}} + \mathcal{L}_{\text{photon}} + \mathcal{L}_{\text{interaction}}
+$$</p>
+<ul>
+<li>自由电子部分：
+$$
+\mathcal{L}_{\text{electron}} = \psi^\dagger \left( i \hbar \frac{\partial}{\partial t} + \frac{\hbar^2}{2m} \nabla^2 \right) \psi
+$$</li>
+<li>自由电磁场部分：
+$$
+\mathcal{L}_{\text{photon}} = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu}
+$$</li>
+<li>相互作用部分（最简单的情况下）：
+$$
+\mathcal{L}_{\text{interaction}} = -e \psi^\dagger \psi A_0 + \frac{e}{m} \psi^\dagger \mathbf{p} \cdot \mathbf{A} \psi
+$$</li>
+</ul>
+</li>
+<li><p><strong>忽略电磁场的贡献</strong>
+要从 NRQED 得到 NRQM，我们可以假设在某些情况下，电磁场的贡献可以忽略。这意味着光子的自由部分和相互作用部分不再起主要作用，只关注电子的运动。</p>
+</li>
+<li><p><strong>简化拉格朗日量</strong>
+在忽略电磁场后，NRQED 的拉格朗日量简化为仅包含电子的部分：
+$$
+\mathcal{L}_{\text{electron}} = \psi^\dagger \left( i \hbar \frac{\partial}{\partial t} + \frac{\hbar^2}{2m} \nabla^2 \right) \psi
+$$</p>
+<p>这与非相对论性量子力学中的拉格朗日量形式一致。</p>
+</li>
+<li><p><strong>从拉格朗日量到哈密顿量</strong>
+使用标准的量子场论方法，将拉格朗日量转换为哈密顿量：
+$$
+\mathcal{H}_{\text{electron}} = \psi^\dagger \left( -\frac{\hbar^2}{2m} \nabla^2 \right) \psi
+$$</p>
+<p>这是电子的自由哈密顿量，在无相互作用的情况下，描述了电子的运动。</p>
+</li>
+<li><p><strong>得到薛定谔方程</strong>
+通过量子化电子场并引入波函数$\psi$，可以得到薛定谔方程：
+$$
+i \hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m} \nabla^2 \psi
+$$</p>
+<p>这是非相对论性量子力学的核心方程，描述了单个粒子的波函数随时间的演化。</p>
+</li>
+</ol>
+<h3 id="%E6%80%BB%E7%BB%93">&#24635;&#32467;<a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><p>通过简化非相对论性量子电动力学（NRQED）中的拉格朗日量，并忽略电磁场的贡献，我们可以得到仅包含电子部分的拉格朗日量或哈密顿量。这实际上就是非相对论性量子力学（NRQM）的核心内容。最终，通过量子化电子场并引入波函数，我们得到了薛定谔方程，从而在理论上从 NRQED 推导出了 NRQM。这展示了 NRQM 是 NRQED 的一种简化形式，适用于不考虑电磁相互作用的情况。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h3 id="%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E8%B7%AF%E5%BE%91%E7%A9%8D%E5%88%86%E8%A1%A8%E8%BF%B0">&#36335;&#24452;&#31215;&#20998;&#34920;&#36848;</a><a class="anchor-link" href="#%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E8%A1%A8%E8%BF%B0">&#182;</a></h3><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Path_integral_formulation">Path integral formulation</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>最小作用量原理和拉格朗日量之间的关系在于拉格朗日量是描述物理系统动态行为的函数，而最小作用量原理使用拉格朗日量来确定系统的真实路径或演化。</p>
+<h3 id="%E6%9C%80%E5%B0%8F%E4%BD%9C%E7%94%A8%E9%87%8F%E5%8E%9F%E7%90%86">&#26368;&#23567;&#20316;&#29992;&#37327;&#21407;&#29702;<a class="anchor-link" href="#%E6%9C%80%E5%B0%8F%E4%BD%9C%E7%94%A8%E9%87%8F%E5%8E%9F%E7%90%86">&#182;</a></h3><p>最小作用量原理（Principle of Least Action）是物理学中的一个基本原理，它断言在一个物理系统中，实际发生的运动或过程是使得作用量（Action）达到最小值（或极值）的运动或过程。</p>
+<h3 id="%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E9%87%8F">&#25289;&#26684;&#26391;&#26085;&#37327;<a class="anchor-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E9%87%8F">&#182;</a></h3><p>拉格朗日量（Lagrangian）是一个函数，它在经典力学中通常表示为：</p>
+$$ L = T - V $$<p>其中 $ T $ 是系统的动能，$ V $ 是系统的势能。在一般形式下，拉格朗日量是系统广义坐标 $ q $ 和广义速度 $ \dot{q} $ 的函数，即：</p>
+$$ L = L(q, \dot{q}, t) $$<h3 id="%E4%BD%9C%E7%94%A8%E9%87%8F">&#20316;&#29992;&#37327;<a class="anchor-link" href="#%E4%BD%9C%E7%94%A8%E9%87%8F">&#182;</a></h3><p>作用量（Action）是拉格朗日量关于时间的积分，定义为：</p>
+$$ S = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt $$<p>其中 $ t_1 $ 和 $ t_2 $ 是时间的起始和结束点。</p>
+<h3 id="%E6%9C%80%E5%B0%8F%E4%BD%9C%E7%94%A8%E9%87%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E9%87%8F%E7%9A%84%E5%85%B3%E7%B3%BB">&#26368;&#23567;&#20316;&#29992;&#37327;&#21407;&#29702;&#19982;&#25289;&#26684;&#26391;&#26085;&#37327;&#30340;&#20851;&#31995;<a class="anchor-link" href="#%E6%9C%80%E5%B0%8F%E4%BD%9C%E7%94%A8%E9%87%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E9%87%8F%E7%9A%84%E5%85%B3%E7%B3%BB">&#182;</a></h3><p>根据最小作用量原理，一个系统的真实路径是使作用量 $ S $ 最小的路径。这意味着要找到使作用量 $ S $ 取极值的路径。数学上，这可以通过变分法来实现，即通过求解以下欧拉-拉格朗日方程：</p>
+$$ \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}} \right) - \frac{\partial L}{\partial q} = 0 $$<h3 id="%E6%AC%A7%E6%8B%89-%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%96%B9%E7%A8%8B">&#27431;&#25289;-&#25289;&#26684;&#26391;&#26085;&#26041;&#31243;<a class="anchor-link" href="#%E6%AC%A7%E6%8B%89-%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%96%B9%E7%A8%8B">&#182;</a></h3><p>欧拉-拉格朗日方程是从最小作用量原理导出的，其推导过程如下：</p>
+<ol>
+<li>取一个路径 $ q(t) $ 并在其上加上一个微小变化 $ \delta q(t) $。</li>
+<li>计算作用量的变化 $ \delta S $。</li>
+<li>要使 $ \delta S = 0 $，这对应于路径 $ q(t) $ 使作用量 $ S $ 取极值。</li>
+</ol>
+<p>令 $ \delta S = 0 $，并进行积分和变分处理，可以得到欧拉-拉格朗日方程。</p>
+<h3 id="%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#29289;&#29702;&#24847;&#20041;<a class="anchor-link" href="#%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#182;</a></h3><ul>
+<li><strong>拉格朗日量</strong>：提供了系统的动力学描述，通过动能和势能的差描述系统的行为。</li>
+<li><strong>作用量</strong>：是系统在一个时间段内的总量度，通过拉格朗日量的积分得到。</li>
+<li><strong>最小作用量原理</strong>：通过使作用量极小化，确定了系统的实际运动路径或过程。</li>
+<li><strong>欧拉-拉格朗日方程</strong>：通过解决这个方程，可以找到系统的运动方程，从而描述系统的动态行为。</li>
+</ul>
+<h3 id="%E6%80%BB%E7%BB%93">&#24635;&#32467;<a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><p>最小作用量原理通过作用量的极值化来确定物理系统的真实路径，而作用量本身是通过拉格朗日量的时间积分定义的。拉格朗日量包含了系统的动能和势能信息，是描述系统动力学的核心函数。通过求解欧拉-拉格朗日方程，可以得到系统的运动方程，这在经典力学、场论和量子力学等多个物理学分支中都有广泛应用。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%E8%B4%B9%E6%9B%BC%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%EF%BC%88Feynman-Path-Integral%EF%BC%89">&#36153;&#26364;&#36335;&#24452;&#31215;&#20998;&#65288;Feynman Path Integral&#65289;<a class="anchor-link" href="#%E8%B4%B9%E6%9B%BC%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%EF%BC%88Feynman-Path-Integral%EF%BC%89">&#182;</a></h3><p>费曼路径积分是由理查德・费曼提出的一种量子力学表述方法，它将粒子从一个点到另一个点的概率振幅的计算视为对所有可能路径的概率振幅进行求和。具体来说，粒子从空间点 $ q_1 $ 在时间 $ t_1 $ 移动到空间点 $ q_2 $ 在时间 $ t_2 $ 的概率振幅 $ K(q_2, t_2; q_1, t_1) $ 可以表示为所有可能路径的总和，每条路径 $ q(t) $ 都有一个对应的相位因子 $ e^{iS[q]/\hbar} $，其中 $ S[q] $ 是路径的作用量。</p>
+<p>路径积分公式如下：</p>
+$$ K(q_2, t_2; q_1, t_1) = \int \mathcal{D}[q(t)] \, e^{iS[q]/\hbar} $$<p>这里 $ \int \mathcal{D}[q(t)] $ 表示对所有可能路径的积分。</p>
+<h3 id="%E4%BD%9C%E7%94%A8%E9%87%8F%EF%BC%88Action%EF%BC%89">&#20316;&#29992;&#37327;&#65288;Action&#65289;<a class="anchor-link" href="#%E4%BD%9C%E7%94%A8%E9%87%8F%EF%BC%88Action%EF%BC%89">&#182;</a></h3><p>作用量 $ S $ 是一个量度，它是路径上的拉格朗日量 $ L $ 关于时间的积分：</p>
+$$ S[q] = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt $$<p>其中 $ L $ 是拉格朗日量，它通常表示为动能 $ T $ 和势能 $ V $ 的差：</p>
+$$ L = T - V $$<h3 id="%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E5%92%8C%E4%BD%9C%E7%94%A8%E9%87%8F%E7%9A%84%E5%85%B3%E7%B3%BB">&#36335;&#24452;&#31215;&#20998;&#21644;&#20316;&#29992;&#37327;&#30340;&#20851;&#31995;<a class="anchor-link" href="#%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E5%92%8C%E4%BD%9C%E7%94%A8%E9%87%8F%E7%9A%84%E5%85%B3%E7%B3%BB">&#182;</a></h3><ol>
+<li><p><strong>路径的权重</strong>：在路径积分公式中，每条路径的贡献由一个相位因子 $ e^{iS[q]/\hbar} $ 来决定。这个相位因子中的 $ S[q] $ 是路径的作用量。因此，作用量直接影响到每条路径在路径积分中的权重。</p>
+</li>
+<li><p><strong>经典路径和作用量极值</strong>：当 $\hbar \rightarrow 0$ 时，路径积分中的相位因子变化迅速，只有那些作用量 $ S $ 取极值的路径对积分有主要贡献。这些路径满足经典力学中的欧拉-拉格朗日方程，描述了经典路径。</p>
+</li>
+<li><p><strong>量子态的演化</strong>：路径积分方法将量子态的演化描述为对所有可能路径的求和，这些路径的振幅由作用量决定。因此，作用量在量子态的时间演化中起着核心作用。</p>
+</li>
+</ol>
+<h3 id="%E5%85%B7%E4%BD%93%E4%BE%8B%E5%AD%90">&#20855;&#20307;&#20363;&#23376;<a class="anchor-link" href="#%E5%85%B7%E4%BD%93%E4%BE%8B%E5%AD%90">&#182;</a></h3><p>例如，对于自由粒子，拉格朗日量 $ L $ 仅由动能组成：</p>
+$$ L = \frac{1}{2}m\dot{q}^2 $$<p>作用量 $ S $ 则为：</p>
+$$ S[q] = \int_{t_1}^{t_2} \frac{1}{2}m\dot{q}^2 \, dt $$<p>在路径积分中，计算所有可能路径的振幅 $ e^{iS[q]/\hbar} $，并对这些路径进行积分，即可得到粒子从 $ q_1 $ 到 $ q_2 $ 的传播振幅。</p>
+<h3 id="%E6%80%BB%E7%BB%93">&#24635;&#32467;<a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><p>费曼路径积分和作用量的关系非常密切。路径积分方法通过对所有可能路径进行求和来描述量子系统的演化，而这些路径的量子振幅由路径的作用量 $ S[q] $ 确定。作用量的极值路径对应于经典路径，在经典极限下路径积分主要由这些路径贡献。因此，作用量在费曼路径积分中起到了核心的作用，通过影响每条路径的权重来决定系统的量子行为。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>费曼图的修正・费曼图的阶数・费曼未来求和（Feynman Sum Over Futures）・费曼路径概率振幅模为相同路径的个数</p>
+<hr />
+<p>概率波的塌缩・量子态的突变・费曼图的衍生・初态相同的费曼图之间的终态突变</p>
+<p>如果采用「波粒二象性」这种物理图像，那么就会有「波的塌缩」这种物理图像，并会有「电子吸收光子时，波是怎么塌缩的？」这种物理问题。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>我们用原子发射器发射一个原子，等待光屏上某个位置出现一个亮点，然后再发射一个，以此类推。一开始实验的现象符合我们的常识。每一个原子从原子发生器射出后，就像子弹一样穿过缝隙、撞击光屏的某一点而激发一个亮点。但是从原子发生器到第二块光屏，原子的运动真的跟子弹一样吗？如果说实验一开始看不出量子力学有什么奇特之处，当撞击到光屏上的原子越来越多时，相应被激发的光点逐渐积累，光屏上又出现了明暗相间的干涉图形。原子是一个一个单独通过缝隙的，所以排除了原子与原子之间发生碰撞或者干扰的可能性，这说明原子发生器并没有像造浪机一样射出原子波。同时我们也无法回答一个已经提到过的问题，只打开一侧的缝隙时，光屏上的那道条带却在我们打开第二条缝隙的时候消失了，尽管额外的一条缝隙在我们看来只是增加了原子撞击后方光屏的途径而已，但是原子在原本位置上的撞击还是消失了。看起来就像是从一侧缝隙穿过的原子似乎知道另一侧的缝隙有没有打开，并据此改变了自己的运动轨迹！</p>
+<p>——《神秘的量子生命》</p>
+</blockquote>
+<p>只有两种可能：</p>
+<ol>
+<li>电子们是神。</li>
+<li>电子们被神所引导。</li>
+</ol>
+<p>主恢复说：</p>
+<ol>
+<li>众子们是神。</li>
+<li>众子们被神所引导。</li>
+</ol>
+<p>我们可以一个一个地释放电子出来，而不是一次释放一群电子出来。</p>
+<p>从两门出来的是两个不同电子的经历不一样。如果电子是通过相互交换信息知道门的开闭情况，那么实验过程中应该会有一些迹象或者端倪，可以表明出电子们的所知有限。否则，电子可能一开始就知道全宇宙的情况。</p>
+<p>实际上，电子可能没有必要知道全宇宙的情况。因为，神知道全宇宙的情况并且可以给每个电子相应的引导。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>借助探测器，我们就能够对穿过缝隙的原子进行检测。比如，在左侧的缝隙安装一个探测器，每当有原子通过左侧缝隙撞向后方光屏的时候，它就能给出一个信号（比如“哔哔”的声音）。同样的道理，我们也可以在右侧的缝隙再安装一个探测器。接下来，如果有原子通过左侧或者右侧的缝隙，那我们就能听到来自相应一侧的探测器信号；而如果原子真的能够以某种方式在通过双缝时摈弃它如同子弹一般的粒子性，同时穿过两个缝隙，那么两侧的探测器应当会同时响起。</p>
+<p>如今我们知道，当只发射一个原子并在后方光屏上激发一个光点的时候，左边或者右边的探测器就会给出信号，但是从来不会出现两个探测器同时被激发的情况。这似乎足以证明，虽然原子束发生了干涉现象，但是每个原子的确是从左右缝隙中的一条，而不是同时从两条中穿过。但是先不要急于下结论，随着原子的发射和光屏上光点的积累，我们发现光屏上出现的图形不再是干涉图像。后方光屏上显示的仅仅是两道明亮的条带，原子的运动方向就如我们在使用子弹的实验中看到的那样，被严格“限制”在两条缝隙之后。</p>
+<p>——《神秘的量子生命》</p>
+</blockquote>
+<p>如果电子遇到了光子，那么电子就会改变自己的计划。</p>
+<p>我们可以在门后设置一位盲人守门员扔出苹果喂他的小狗。如果苹果被进门的小孩子接住并吃掉了，那么另一侧的小狗因为没有吃到苹果就会汪汪叫。</p>
+<p>如果我们在门后设置一位盲人守门员伸手摸小孩子或者扔苹果喂小孩子，小孩子们的行为就又会变化，以至于改变自己的计划。</p>
+<blockquote>
+<p>波的表现形式在任何时刻都囊括了整个环境的信息。这个波并不能被直接识别，但是它会产生经验性结果，因为它会按照某种方式影响粒子的运动，并且能附加在常规的力效应之上。</p>
+<p>——《牛津通识读本精选集・量子理论》</p>
+<p>玻姆的导航波理论</p>
+</blockquote>
+<p>如果光子遇到电子，那么神就会改变对电子的引导。</p>
+<p>我把光子遇到电子、类比为、守门员的手掌摸到小孩子或者守门员的苹果落到小孩子。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>也许探测器就是问题所在，是探测器干扰了原子穿过缝隙时奇异而又脆弱的运动方式。我们可以通过移除一个探测器的方式来验证，比如移走右侧的探测器。即便少了一台探测器，我们依旧可以获得和两台探测器时一样的信息：在发射原子后，如果探测器发出信号并且光屏上出现亮点，那么原子就是经过了左侧的缝隙；而如果发射的原子仅仅在光屏上激发了亮点却没有触发探测器，那么原子就是通过右侧的缝隙到达光屏的。这样我们依然可以知道原子经过了哪一侧的缝隙，但是我们仅仅“干扰”了其中一侧的原子。如果探测器的确是造成原子运动改变的原因，那么我们将看到触发探测器的原子表现为粒子性，而没有触发探测器的原子（也就是穿过右侧缝隙的原子）表现为波动性。要是果真如此，我们也许能在光屏上看到子弹样图形（从左侧缝隙穿过的原子）和干涉样图形（从右侧缝隙穿过的原子）的混合图像。</p>
+<p>但是这样的图像并没有出现。即便撤走了一边的探测器，我们还是看不到原先的干涉图形，光屏上只能看到每条缝隙后面的子弹样图形。看起来仅仅一个用于检测原子的探测器存在，就足以打乱两条缝隙内原子的波动性运动，哪怕这个探测器与另一条缝隙间还有一定的距离！</p>
+<p>当然，也可能是左侧的探测器对原子的运动产生了物理阻挡，就像湍急溪流中的一块大石头改变了水流一样，因此我们尝试关闭探测器。探测器依旧在原位，如果它阻挡了原子的运动，那它还会有阻挡的影响。然而，当探测器还在原来的位置，只是关闭了之后，干涉条纹居然重新在光屏上出现了！所有的原子又再次表现出波的性质。为什么左边的探测器在工作的时候原子表现为粒子性，而一旦关闭，原子就表现为波动性呢？为什么通过右侧缝隙的原子会知道左侧的探测器到底是打开的还是关闭的呢？</p>
+<p>——《神秘的量子生命》</p>
+</blockquote>
+<p>概率波会塌缩成测量出的概率波。</p>
+<p>在费曼图中，路径概率振幅的长度等于相同路径的个数。</p>
+<p>神是怎么引导电子们的？</p>
+<ul>
+<li>对于想吃苹果的小孩子们，神预定了对他们的引导。</li>
+<li>对于不想吃苹果的小孩子们，神预定了对他们的引导。<ul>
+<li>有些小孩子不想吃苹果也不想从守门员的旁边经过。他们要走的路是宽的。</li>
+<li>有些小孩子不想吃苹果却想冒险从守门员的苹果树旁边经过。他们要走的路是窄的。</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h3 id="%E6%A6%82%E7%8E%87%E6%8C%AF%E5%B9%85%E7%9A%84%E5%AE%9A%E4%B9%89">&#27010;&#29575;&#25391;&#24133;&#30340;&#23450;&#20041;<a class="anchor-link" href="#%E6%A6%82%E7%8E%87%E6%8C%AF%E5%B9%85%E7%9A%84%E5%AE%9A%E4%B9%89">&#182;</a></h3><p>在量子力学中，<strong>概率振幅</strong>（probability amplitude）是用来描述一个量子态向另一个量子态转变的可能性的一个复数。通过概率振幅，可以计算出相应的概率。</p>
+<h3 id="%E6%B3%A2%E5%87%BD%E6%95%B0%E5%92%8C%E6%A6%82%E7%8E%87%E6%8C%AF%E5%B9%85">&#27874;&#20989;&#25968;&#21644;&#27010;&#29575;&#25391;&#24133;<a class="anchor-link" href="#%E6%B3%A2%E5%87%BD%E6%95%B0%E5%92%8C%E6%A6%82%E7%8E%87%E6%8C%AF%E5%B9%85">&#182;</a></h3><p>波函数 $\psi$ 是描述量子系统状态的核心工具。波函数本身是一个概率振幅的例子。对于一个粒子在位置 $\mathbf{r}$ 处的波函数 $\psi(\mathbf{r})$，它的模平方 $ |\psi(\mathbf{r})|^2 $ 表示在位置 $\mathbf{r}$ 处找到粒子的概率密度。</p>
+<h3 id="%E5%85%B3%E7%B3%BB%E5%BC%8F">&#20851;&#31995;&#24335;<a class="anchor-link" href="#%E5%85%B3%E7%B3%BB%E5%BC%8F">&#182;</a></h3><p>若 $\psi(\mathbf{r})$ 是波函数，则：
+$$ P(\mathbf{r}) = |\psi(\mathbf{r})|^2 $$
+其中 $P(\mathbf{r})$ 是粒子在位置 $\mathbf{r}$ 处的概率密度。</p>
+<h3 id="%E9%87%8F%E5%AD%90%E6%80%81%E8%BD%AC%E5%8F%98%E5%92%8C%E6%A6%82%E7%8E%87%E6%8C%AF%E5%B9%85">&#37327;&#23376;&#24577;&#36716;&#21464;&#21644;&#27010;&#29575;&#25391;&#24133;<a class="anchor-link" href="#%E9%87%8F%E5%AD%90%E6%80%81%E8%BD%AC%E5%8F%98%E5%92%8C%E6%A6%82%E7%8E%87%E6%8C%AF%E5%B9%85">&#182;</a></h3><p>假设量子系统从初态 $|\psi_i\rangle$ 演化到末态 $|\psi_f\rangle$，则概率振幅通常表示为 $\langle \psi_f | \psi_i \rangle$。这个内积是一个复数，其模平方给出量子态从 $|\psi_i\rangle$ 转变到 $|\psi_f\rangle$ 的概率。</p>
+$$ P_{i \to f} = |\langle \psi_f | \psi_i \rangle|^2 $$<h3 id="%E5%8F%A0%E5%8A%A0%E5%8E%9F%E7%90%86">&#21472;&#21152;&#21407;&#29702;<a class="anchor-link" href="#%E5%8F%A0%E5%8A%A0%E5%8E%9F%E7%90%86">&#182;</a></h3><p>概率振幅遵循叠加原理，这意味着多个路径或态的概率振幅可以叠加。假设一个系统可以通过两条不同路径从初态 $|\psi_i\rangle$ 到末态 $|\psi_f\rangle$，对应的概率振幅分别为 $\langle \psi_f | \psi_i \rangle_1$ 和 $\langle \psi_f | \psi_i \rangle_2$，则总的概率振幅是这些单个振幅的和：</p>
+$$ \langle \psi_f | \psi_i \rangle = \langle \psi_f | \psi_i \rangle_1 + \langle \psi_f | \psi_i \rangle_2 $$<h3 id="%E5%B9%B2%E6%B6%89%E7%8E%B0%E8%B1%A1">&#24178;&#28041;&#29616;&#35937;<a class="anchor-link" href="#%E5%B9%B2%E6%B6%89%E7%8E%B0%E8%B1%A1">&#182;</a></h3><p>由于概率振幅是复数，当多个振幅相加时，它们的相位关系会导致干涉现象。正干涉（相长干涉）或负干涉（相消干涉）取决于振幅的相对相位，这会影响最终的概率。</p>
+<h3 id="%E4%BE%8B%E5%AD%90">&#20363;&#23376;<a class="anchor-link" href="#%E4%BE%8B%E5%AD%90">&#182;</a></h3><ol>
+<li><p><strong>双缝实验</strong>：</p>
+<ul>
+<li>在双缝实验中，电子通过两条路径到达屏幕上的某一点。每条路径对应一个概率振幅，两个路径的概率振幅相加后取模平方得到最终在该点的概率。不同路径的振幅相位差导致屏幕上出现干涉条纹。</li>
+</ul>
+</li>
+<li><p><strong>量子态叠加</strong>：</p>
+<ul>
+<li>若有两个态 $|\psi_1\rangle$ 和 $|\psi_2\rangle$，则它们的叠加态 $|\psi\rangle = a|\psi_1\rangle + b|\psi_2\rangle$ 中，$a$ 和 $b$ 是复数系数（概率振幅）。叠加态的模平方 $|a|^2 + |b|^2$ 给出态的概率。</li>
+</ul>
+</li>
+</ol>
+<h3 id="%E6%80%BB%E7%BB%93">&#24635;&#32467;<a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><p><strong>概率振幅</strong>是量子力学中一个基本概念，描述了量子态之间转变的可能性。它是一个复数，其模平方给出概率。通过概率振幅的叠加和相位关系，可以解释和预测量子系统的各种干涉和叠加现象。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%E6%8C%AF%E5%B9%85%E5%8F%A0%E5%8A%A0%EF%BC%88Quantum-Superposition%EF%BC%89">&#25391;&#24133;&#21472;&#21152;&#65288;Quantum Superposition&#65289;<a class="anchor-link" href="#%E6%8C%AF%E5%B9%85%E5%8F%A0%E5%8A%A0%EF%BC%88Quantum-Superposition%EF%BC%89">&#182;</a></h3><p>振幅叠加描述的是量子态在不同可能状态上的相干叠加。一个量子系统可以处于多个态的线性叠加，这种叠加态具有相干性和量子干涉效应。</p>
+<h4 id="%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0">&#25968;&#23398;&#25551;&#36848;<a class="anchor-link" href="#%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0">&#182;</a></h4><p>如果一个量子系统可以处于状态 $|\psi_1\rangle$ 和 $|\psi_2\rangle$，那么它的叠加态可以表示为：
+$$ |\psi\rangle = \alpha |\psi_1\rangle + \beta |\psi_2\rangle $$
+其中 $\alpha$ 和 $\beta$ 是复数系数，满足归一化条件：
+$$ |\alpha|^2 + |\beta|^2 = 1 $$</p>
+<p>这种叠加态的密度矩阵表示为：
+$$ \rho = |\psi\rangle \langle \psi| = (\alpha |\psi_1\rangle + \beta |\psi_2\rangle)(\alpha^* \langle \psi_1| + \beta^* \langle \psi_2|) $$
+$$ \rho = |\alpha|^2 |\psi_1\rangle \langle \psi_1| + \alpha \beta^* |\psi_1\rangle \langle \psi_2| + \alpha^* \beta |\psi_2\rangle \langle \psi_1| + |\beta|^2 |\psi_2\rangle \langle \psi_2| $$</p>
+<p>用矩阵表示为：
+$$ \rho = \begin{pmatrix}
+|\alpha|^2 &amp; \alpha \beta^* \\
+\alpha^* \beta &amp; |\beta|^2
+\end{pmatrix} $$
+这个矩阵的迹（trace）为1：
+$$ \text{Tr}(\rho) = 1 $$</p>
+<h4 id="%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#29289;&#29702;&#24847;&#20041;<a class="anchor-link" href="#%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#182;</a></h4><ul>
+<li><strong>相干性</strong>：叠加态中，不同量子态之间的相位关系保留，导致量子干涉现象。</li>
+<li><strong>量子干涉</strong>：相干性使得不同路径或状态的叠加可以相互干涉，产生干涉条纹等量子现象。</li>
+</ul>
+<h3 id="%E6%A6%82%E7%8E%87%E6%B7%B7%E5%90%88%EF%BC%88Classical-Probability-Mixture%EF%BC%89">&#27010;&#29575;&#28151;&#21512;&#65288;Classical Probability Mixture&#65289;<a class="anchor-link" href="#%E6%A6%82%E7%8E%87%E6%B7%B7%E5%90%88%EF%BC%88Classical-Probability-Mixture%EF%BC%89">&#182;</a></h3><p>概率混合描述的是系统在不同纯态上的经典概率分布。每个纯态出现的概率是确定的，但系统整体上处于哪种状态是不确定的。</p>
+<h4 id="%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0">&#25968;&#23398;&#25551;&#36848;<a class="anchor-link" href="#%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0">&#182;</a></h4><p>如果一个系统有两个可能的纯态 $|\psi_1\rangle$ 和 $|\psi_2\rangle$，其概率分别是 $p_1$ 和 $p_2$，那么混合态的密度矩阵为：
+$$ \rho = p_1 |\psi_1\rangle \langle \psi_1| + p_2 |\psi_2\rangle \langle \psi_2| $$
+其中 $p_1 + p_2 = 1$。</p>
+<p>用矩阵表示为：
+$$ \rho = \begin{pmatrix}
+p_1 &amp; 0 \\
+0 &amp; p_2
+\end{pmatrix} $$
+同样，这个矩阵的迹（trace）为1：
+$$ \text{Tr}(\rho) = 1 $$</p>
+<h4 id="%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#29289;&#29702;&#24847;&#20041;<a class="anchor-link" href="#%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#182;</a></h4><ul>
+<li><strong>无相干性</strong>：混合态中，不同纯态之间没有相位关系，不存在量子干涉现象。</li>
+<li><strong>经典概率分布</strong>：混合态反映的是系统在不同纯态上的经典概率分布，类似于经典统计力学中的概率分布。</li>
+</ul>
+<h3 id="%E7%BA%AF%E6%80%81%E4%B8%8E%E6%B7%B7%E5%90%88%E6%80%81%E7%9A%84%E5%8C%BA%E5%88%AB">&#32431;&#24577;&#19982;&#28151;&#21512;&#24577;&#30340;&#21306;&#21035;<a class="anchor-link" href="#%E7%BA%AF%E6%80%81%E4%B8%8E%E6%B7%B7%E5%90%88%E6%80%81%E7%9A%84%E5%8C%BA%E5%88%AB">&#182;</a></h3><ul>
+<li><strong>纯态（叠加态）</strong>：系统的状态由一个确定的波函数 $|\psi\rangle$ 描述，密度矩阵 $\rho = |\psi\rangle \langle \psi|$ 是一个投影算符，满足 $\rho^2 = \rho$、$\text{Tr}(\rho^2) = \text{Tr}(\rho) = 1$。</li>
+<li><strong>混合态（经典概率分布）</strong>：系统的状态是若干纯态的概率混合，密度矩阵是这些纯态的加权和，满足 $\rho^2 \neq \rho$（除非是特殊情况）、$\text{Tr}(\rho^2) &lt; \text{Tr}(\rho) = 1$。</li>
+</ul>
+<h4 id="%E6%95%B0%E5%AD%A6%E8%A1%A8%E7%A4%BA">&#25968;&#23398;&#34920;&#31034;<a class="anchor-link" href="#%E6%95%B0%E5%AD%A6%E8%A1%A8%E7%A4%BA">&#182;</a></h4><p>纯度 $ P $ 可以通过下式计算：
+$$ P = \text{Tr}(\rho^2) $$</p>
+<p>其中，$\rho$ 是系统的密度矩阵。</p>
+<h4 id="%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#29289;&#29702;&#24847;&#20041;<a class="anchor-link" href="#%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#182;</a></h4><p>纯度反映了量子系统在实验观测中所表现出的确定性和相干性。纯度越接近1，系统越接近于一个确定的量子态；纯度越接近0，系统越是一个混合态，显示出更多的不确定性和经典的特征。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="%E9%87%8F%E5%AD%90%E7%9B%B8%E5%B9%B2%E6%80%A7">&#37327;&#23376;&#30456;&#24178;&#24615;<a class="anchor-link" href="#%E9%87%8F%E5%AD%90%E7%9B%B8%E5%B9%B2%E6%80%A7">&#182;</a></h3><p><strong>量子相干性</strong>是量子力学中的一个基本概念，它指的是量子系统中不同量子态之间存在的相位关系。这些相位关系使得量子态可以干涉，从而展示出量子特有的行为。</p>
+<p>系统与环境之间的相干性是指量子系统和其环境在量子叠加态下共同表现的量子相干性。这种相干性意味着系统和环境之间存在着量子纠缠，并且这种纠缠影响着它们的整体行为。理解系统与环境之间的相干性对于量子去相干理论和量子测量问题非常重要。</p>
+<h3 id="%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%8E%AF%E5%A2%83%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E5%B9%B2%E6%80%A7">&#31995;&#32479;&#19982;&#29615;&#22659;&#20043;&#38388;&#30340;&#30456;&#24178;&#24615;<a class="anchor-link" href="#%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%8E%AF%E5%A2%83%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E5%B9%B2%E6%80%A7">&#182;</a></h3><p>当我们讨论系统与环境之间的相干性时，我们通常指的是量子系统和其外部环境之间的量子纠缠。这个纠缠可以用以下几个方面来解释：</p>
+<ol>
+<li><p><strong>量子纠缠</strong>：</p>
+<ul>
+<li>当量子系统与环境发生相互作用时，它们的量子态可以纠缠在一起。纠缠态是一种特殊的量子态，其中系统和环境的状态不能独立描述，而是必须作为一个整体来描述。</li>
+<li>在纠缠态中，系统的状态和环境的状态紧密关联，一个的状态会影响另一个的状态。</li>
+</ul>
+</li>
+<li><p><strong>量子叠加</strong>：</p>
+<ul>
+<li>在没有相互作用的情况下，系统可以处于多个量子态的叠加态。这种叠加态具有相干性，因为不同态之间存在相位关系。</li>
+<li>当系统与环境相互作用时，这种叠加态会扩展到包含环境的状态。</li>
+</ul>
+</li>
+<li><p><strong>相干性丧失</strong>：</p>
+<ul>
+<li>相干性丧失（去相干）是指量子系统在与环境相互作用过程中失去量子相干性的现象。去相干的结果是，量子系统的叠加态变成了经典的概率混合态。</li>
+<li>去相干过程中，系统的量子态与环境的量子态纠缠在一起。环境态的变化使得系统不同态之间的相位关系被清除，导致系统的状态相干性消失。</li>
+</ul>
+</li>
+</ol>
+<h3 id="%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%B9%B2%E6%80%A7%E7%9A%84%E4%BE%8B%E5%AD%90">&#31995;&#32479;&#19982;&#29615;&#22659;&#30456;&#24178;&#24615;&#30340;&#20363;&#23376;<a class="anchor-link" href="#%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%B9%B2%E6%80%A7%E7%9A%84%E4%BE%8B%E5%AD%90">&#182;</a></h3><ol>
+<li><p><strong>双缝干涉实验</strong>：</p>
+<ul>
+<li>在经典的双缝干涉实验中，电子可以通过两条路径到达屏幕，产生干涉图样。这是因为电子处于两条路径的叠加态，并且保持相干性。</li>
+<li>如果电子与环境（例如空气分子）相互作用，这种相互作用会导致电子的路径信息泄露到环境中，从而破坏电子的相干性，最终导致干涉图样消失。</li>
+</ul>
+</li>
+<li><p><strong>Schrödinger's Cat</strong>：</p>
+<ul>
+<li>Schrödinger's Cat 思想实验展示了宏观量子叠加态的概念。在这个实验中，猫的生死状态与一个微观量子态（如放射性原子）的状态纠缠在一起。</li>
+<li>实际上，猫与其周围环境（空气分子、光子等）之间的相互作用会迅速导致去相干，使得我们只能观察到猫处于死或活的经典状态，而不是叠加态。</li>
+</ul>
+</li>
+</ol>
+<h3 id="%E5%8E%BB%E7%9B%B8%E5%B9%B2%E7%9A%84%E6%9C%BA%E5%88%B6">&#21435;&#30456;&#24178;&#30340;&#26426;&#21046;<a class="anchor-link" href="#%E5%8E%BB%E7%9B%B8%E5%B9%B2%E7%9A%84%E6%9C%BA%E5%88%B6">&#182;</a></h3><p>量子去相干是理解为什么我们在宏观世界中看不到量子叠加态的关键。以下是去相干的主要机制：</p>
+<ol>
+<li><p><strong>环境相互作用</strong>：</p>
+<ul>
+<li>当一个量子系统与大量环境粒子相互作用时，这些相互作用会导致系统态与环境态纠缠。</li>
+<li>由于环境具有大量自由度，系统与环境的纠缠会使得系统态的相干性被环境的随机扰动所洗出，导致系统态向经典概率分布演化。</li>
+</ul>
+</li>
+<li><p><strong>相位随机化</strong>：</p>
+<ul>
+<li>去相干过程中，系统的不同量子态之间的相位关系被环境的自由度随机化。</li>
+<li>这种随机化相当于系统态的相干性在环境态的影响下被统计平均化了，使得我们在宏观尺度上只能观察到经典行为。</li>
+</ul>
+</li>
+</ol>
+<p>去相干过程可以看作是系统从振幅叠加态转变为概率混合态的过程。当系统与环境相互作用时，系统的相干性被环境清除，最终系统状态表现为经典概率分布。这解释了为什么在宏观世界中我们观察不到量子叠加态，而是经典概率现象。</p>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+<hr>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>量子退相干是量子力学中的一个重要现象，描述了量子系统由于与环境的相互作用而丧失相干性的过程。多种理论模型被提出和研究以解释和描述量子退相干的机制。以下是一些主要的量子退相干模型：</p>
+<h3 id="1.-%E7%8E%AF%E5%A2%83%E8%AF%B1%E5%AF%BC%E9%80%80%E7%9B%B8%E5%B9%B2%E6%A8%A1%E5%9E%8B%EF%BC%88Environment-Induced-Decoherence%EF%BC%89">1. &#29615;&#22659;&#35825;&#23548;&#36864;&#30456;&#24178;&#27169;&#22411;&#65288;Environment-Induced Decoherence&#65289;<a class="anchor-link" href="#1.-%E7%8E%AF%E5%A2%83%E8%AF%B1%E5%AF%BC%E9%80%80%E7%9B%B8%E5%B9%B2%E6%A8%A1%E5%9E%8B%EF%BC%88Environment-Induced-Decoherence%EF%BC%89">&#182;</a></h3><h4 id="%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#25551;&#36848;&#65306;<a class="anchor-link" href="#%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#182;</a></h4><ul>
+<li>这种模型研究了量子系统与其周围环境的相互作用如何导致系统的相干性丧失。</li>
+<li>主要观点是，系统和环境之间的纠缠会导致系统的密度矩阵从纯态变为混合态，从而丧失相干性。</li>
+</ul>
+<h4 id="%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#20851;&#38190;&#28857;&#65306;<a class="anchor-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#182;</a></h4><ul>
+<li><strong>Hamiltonian</strong>：包含系统、环境和它们之间的相互作用项。</li>
+<li><strong>主方程</strong>：常用Lindblad方程或量子主方程来描述系统的演化。</li>
+</ul>
+<h4 id="%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%EF%BC%9A">&#21442;&#32771;&#27169;&#22411;&#65306;<a class="anchor-link" href="#%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%EF%BC%9A">&#182;</a></h4><ul>
+<li><strong>Caldeira-Leggett 模型</strong>：一个著名的环境诱导退相干模型，主要研究量子系统（如一个粒子）与大量环境振动模式（例如，热浴）的相互作用。</li>
+</ul>
+<h3 id="2.-%E7%9B%B8%E5%B9%B2%E6%80%81%E8%A1%A8%E7%A4%BA%E6%A8%A1%E5%9E%8B%EF%BC%88Coherent-State-Representation%EF%BC%89">2. &#30456;&#24178;&#24577;&#34920;&#31034;&#27169;&#22411;&#65288;Coherent State Representation&#65289;<a class="anchor-link" href="#2.-%E7%9B%B8%E5%B9%B2%E6%80%81%E8%A1%A8%E7%A4%BA%E6%A8%A1%E5%9E%8B%EF%BC%88Coherent-State-Representation%EF%BC%89">&#182;</a></h3><h4 id="%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#25551;&#36848;&#65306;<a class="anchor-link" href="#%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#182;</a></h4><ul>
+<li>使用相干态来描述环境中的振动模式，并研究这些模式如何与系统相互作用。</li>
+<li>相干态表示环境的经典极限，在这种表示下，退相干效应显现得更清晰。</li>
+</ul>
+<h4 id="%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#20851;&#38190;&#28857;&#65306;<a class="anchor-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#182;</a></h4><ul>
+<li><strong>Wigner函数</strong>：用于描述系统的量子态，可以看作是经典相空间中的概率分布。</li>
+<li><strong>Feynman-Vernon路径积分方法</strong>：用于处理系统与环境之间的相互作用。</li>
+</ul>
+<h3 id="3.-%E8%87%AA%E6%97%8B%E6%B5%B4%E6%A8%A1%E5%9E%8B%EF%BC%88Spin-Boson-Model%EF%BC%89">3. &#33258;&#26059;&#28020;&#27169;&#22411;&#65288;Spin-Boson Model&#65289;<a class="anchor-link" href="#3.-%E8%87%AA%E6%97%8B%E6%B5%B4%E6%A8%A1%E5%9E%8B%EF%BC%88Spin-Boson-Model%EF%BC%89">&#182;</a></h3><h4 id="%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#25551;&#36848;&#65306;<a class="anchor-link" href="#%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#182;</a></h4><ul>
+<li>这种模型研究一个两能级系统（自旋1/2粒子）与一个由无穷多谐振子（热浴）组成的环境之间的相互作用。</li>
+<li>该模型可以推广到多自旋系统，与多模环境相互作用。</li>
+</ul>
+<h4 id="%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#20851;&#38190;&#28857;&#65306;<a class="anchor-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#182;</a></h4><ul>
+<li><strong>Hamiltonian</strong>：包含自旋与环境谐振子的相互作用项。</li>
+<li><strong>解决方法</strong>：通过积分出环境自由度，得到自旋系统的有效动力学行为。</li>
+</ul>
+<h3 id="4.-%E5%8A%A8%E5%8A%9B%E5%AD%A6%E9%80%80%E7%9B%B8%E5%B9%B2%E6%A8%A1%E5%9E%8B%EF%BC%88Dynamical-Decoherence-Model%EF%BC%89">4. &#21160;&#21147;&#23398;&#36864;&#30456;&#24178;&#27169;&#22411;&#65288;Dynamical Decoherence Model&#65289;<a class="anchor-link" href="#4.-%E5%8A%A8%E5%8A%9B%E5%AD%A6%E9%80%80%E7%9B%B8%E5%B9%B2%E6%A8%A1%E5%9E%8B%EF%BC%88Dynamical-Decoherence-Model%EF%BC%89">&#182;</a></h3><h4 id="%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#25551;&#36848;&#65306;<a class="anchor-link" href="#%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#182;</a></h4><ul>
+<li>研究系统与环境之间动态相互作用导致的退相干。</li>
+<li>通过具体的动力学过程，如碰撞和相互作用，研究退相干时间和机制。</li>
+</ul>
+<h4 id="%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#20851;&#38190;&#28857;&#65306;<a class="anchor-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#182;</a></h4><ul>
+<li><strong>散射理论</strong>：用于描述粒子与环境中的其他粒子之间的碰撞过程。</li>
+<li><strong>Lindblad主方程</strong>：用来描述系统的非单位时间演化。</li>
+</ul>
+<h3 id="5.-%E5%99%AA%E5%A3%B0%E6%A8%A1%E5%9E%8B%EF%BC%88Noise-Models%EF%BC%89">5. &#22122;&#22768;&#27169;&#22411;&#65288;Noise Models&#65289;<a class="anchor-link" href="#5.-%E5%99%AA%E5%A3%B0%E6%A8%A1%E5%9E%8B%EF%BC%88Noise-Models%EF%BC%89">&#182;</a></h3><h4 id="%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#25551;&#36848;&#65306;<a class="anchor-link" href="#%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#182;</a></h4><ul>
+<li>研究系统在噪声背景下的演化，噪声可以是经典的（如随机电场）或量子的（如零点能量波动）。</li>
+<li>通过引入噪声源来模拟环境的影响，并研究其对系统相干性的影响。</li>
+</ul>
+<h4 id="%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#20851;&#38190;&#28857;&#65306;<a class="anchor-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#182;</a></h4><ul>
+<li><strong>随机Hamiltonian</strong>：包含系统与噪声源的相互作用项。</li>
+<li><strong>随机过程</strong>：用来描述噪声的时间演化，如白噪声和色噪声。</li>
+</ul>
+<h3 id="6.-%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E6%96%B9%E6%B3%95%EF%BC%88Path-Integral-Methods%EF%BC%89">6. &#36335;&#24452;&#31215;&#20998;&#26041;&#27861;&#65288;Path Integral Methods&#65289;<a class="anchor-link" href="#6.-%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86%E6%96%B9%E6%B3%95%EF%BC%88Path-Integral-Methods%EF%BC%89">&#182;</a></h3><h4 id="%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#25551;&#36848;&#65306;<a class="anchor-link" href="#%E6%8F%8F%E8%BF%B0%EF%BC%9A">&#182;</a></h4><ul>
+<li>使用Feynman路径积分方法来研究系统与环境的相互作用。</li>
+<li>可以处理复杂的相互作用形式，特别是非微扰相互作用。</li>
+</ul>
+<h4 id="%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#20851;&#38190;&#28857;&#65306;<a class="anchor-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A">&#182;</a></h4><ul>
+<li><strong>影响函数（Influence Functional）</strong>：用于描述环境对系统演化的影响。</li>
+<li><strong>路径积分</strong>：用于求解系统的时间演化算符。</li>
+</ul>
+<h3 id="%E6%80%BB%E7%BB%93">&#24635;&#32467;<a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><p>量子退相干的理论模型涵盖了从微观机制到宏观现象的广泛研究领域。这些模型不仅帮助理解量子系统在现实环境中的行为，也为量子计算和量子信息处理提供了重要的理论基础和指导。在实践中，选择合适的模型取决于具体的量子系统和环境的特性。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Göran Lindblad 在 1976 年通过对量子力学中开放系统的非单位时间演化进行严格分析，推导出了 Lindblad 方程。这个方程描述了系统与其环境相互作用时的动力学行为。以下是 Lindblad 方程推导的关键步骤和基本思想：</p>
+<h3 id="%E6%8E%A8%E5%AF%BC%E6%80%9D%E8%B7%AF">&#25512;&#23548;&#24605;&#36335;<a class="anchor-link" href="#%E6%8E%A8%E5%AF%BC%E6%80%9D%E8%B7%AF">&#182;</a></h3><ol>
+<li><p><strong>开放量子系统的动力学</strong>：</p>
+<ul>
+<li>考虑一个量子系统 $ S $ 和一个环境 $ E $，合成系统 $ S + E $ 的状态由一个联合密度矩阵 $\rho_{SE}$ 描述。</li>
+<li>系统 $ S $ 的状态可以通过对环境自由度 $ E $ 进行部分迹操作得到，即 $\rho_S = \text{Tr}_E (\rho_{SE})$。</li>
+</ul>
+</li>
+<li><p><strong>完全正变换（Completely Positive Map）</strong>：</p>
+<ul>
+<li>Lindblad 方程假设量子系统的演化是完全正的（completely positive），即密度矩阵在演化过程中不会产生非物理的负概率。</li>
+<li>这种演化可以由 Kraus 算符表示，其形式为：
+$$
+\rho(t+\Delta t) = \sum_k M_k \rho(t) M_k^\dagger
+$$
+其中，Kraus 算符 $M_k$ 满足：
+$$
+\sum_k M_k^\dagger M_k = I
+$$
+以保证演化过程的概率守恒。</li>
+</ul>
+</li>
+<li><p><strong>微分形式</strong>：</p>
+<ul>
+<li>Lindblad 方程考虑时间演化的微分形式，即在很短的时间步长 $\Delta t$ 内，系统密度矩阵的变化可以线性化处理。</li>
+<li>设 $\rho(t+\Delta t) = \rho(t) + \Delta \rho$，通过展开得到：
+$$
+\Delta \rho = \sum_k M_k \rho(t) M_k^\dagger - \rho(t)
+$$</li>
+</ul>
+</li>
+<li><p><strong>算符表示</strong>：</p>
+<ul>
+<li>将 Kraus 算符 $ M_k $ 表示为：
+$$
+M_k = \delta_{k0} I + \epsilon L_k
+$$
+其中 $ \epsilon $ 是一个很小的量，$ L_k $ 是跳算符。</li>
+</ul>
+</li>
+<li><p><strong>Lindblad 形式</strong>：</p>
+<ul>
+<li>将 $ M_k $ 代入微分形式，并展开到一阶，忽略高阶小量，得到：
+$$
+\Delta \rho = -i [H, \rho] \Delta t + \sum_k \left( L_k \rho L_k^\dagger - \frac{1}{2} \{L_k^\dagger L_k, \rho\} \right) \Delta t
+$$
+其中，$ H $ 是系统的哈密顿量，对应于单位时间内的无耗散演化部分。</li>
+</ul>
+</li>
+</ol>
+<h3 id="%E5%AE%8C%E6%95%B4%E7%9A%84-Lindblad-%E6%96%B9%E7%A8%8B">&#23436;&#25972;&#30340; Lindblad &#26041;&#31243;<a class="anchor-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84-Lindblad-%E6%96%B9%E7%A8%8B">&#182;</a></h3><p>将以上结果推广到连续时间，得到 Lindblad 方程：
+$$
+\frac{d\rho}{dt} = -\frac{i}{\hbar} [H, \rho] + \sum_k \left( L_k \rho L_k^\dagger - \frac{1}{2} \{L_k^\dagger L_k, \rho\} \right)
+$$</p>
+<h3 id="%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#29289;&#29702;&#24847;&#20041;<a class="anchor-link" href="#%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89">&#182;</a></h3><ul>
+<li><strong>哈密顿项</strong> $ H $：描述系统的无耗散演化部分。</li>
+<li><strong>跳算符</strong> $ L_k $：描述系统与环境之间的相互作用，每个 $ L_k $ 对应一种特定的耗散机制或相互作用过程。</li>
+<li><strong>对易子</strong> $ [H, \rho] $ 和<strong>反对易子</strong> $ \{L_k^\dagger L_k, \rho\} $：分别描述了量子系统的单位演化和耗散过程。</li>
+</ul>
+<h3 id="%E6%80%BB%E7%BB%93">&#24635;&#32467;<a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><p>Göran Lindblad 的推导利用了完全正变换和微分形式的思想，通过严格的数学推导，得出了开放量子系统在与环境相互作用时的标准演化方程。Lindblad 方程在量子信息、量子计算和量子光学等领域有着广泛的应用，描述了系统在开放条件下的动力学行为。</p>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2024/05/19/biobuilder/glossary/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <script data-isso="https://jhub.dtype.info/isso/" src="https://jhub.dtype.info/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2024-07-31 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li> <li><a href="/tags/Quantum/">Quantum<span>4</span></a></li> <li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2024 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>
