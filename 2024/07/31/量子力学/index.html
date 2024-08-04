@@ -215,7 +215,7 @@ $$ \sum_m M_m^\dagger M_m = I. $$
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>在这个公设中有很多内容。但它主要表达了我们已经看到的想法，尽管之前是隐藏的。我们会在稍后给出一个具体的例子，但首先要解释完备性关系的含义。它只是表达了概率和为1的想法。通过在完备性关系前乘以 $\langle \psi|$ 并在后乘以 $|\psi\rangle$，我们可以看到这给出了</p>
-$$ \sum_m p(m) = \sum_m \langle \psi | M_m^\dagger M_m | \psi \rangle = \langle \psi | I | \psi \rangle = \langle \psi | \psi \rangle = 1, $$<p>其中我们假设 $|\psi\rangle$ 是一个量子态，因此归一化为长度为1。</p>
+$$ \sum_m p(m) = \sum_m \langle \psi | M_m^\dagger M_m | \psi \rangle = \langle \psi | I | \psi \rangle = \langle \psi | \psi \rangle = 1, $$<p>其中我们假设 $|\psi\rangle$ 是一个量子态，因此被归一化后的长度为1。</p>
 <p>为了理解第三公设的意义，最好通过具体案例来说明，比如在计算基中测量单个量子比特。在这种情况下，测量算符是 $M_0 = |0\rangle\langle 0|$ 和 $M_1 = |1\rangle\langle 1|$。如果我们用显式的振幅写出量子态 $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$，应用第三公设最简单。根据第三公设，结果 $0$ 的概率为：</p>
 $$ p(0) = \langle \psi | M_0^\dagger M_0 | \psi \rangle = \langle \psi | 0 \rangle \langle 0 | 0 \rangle \langle 0 | \psi \rangle. $$<p>当然，$|0\rangle$ 是归一化的，所以 $\langle 0 | 0 \rangle = 1$，这变成了：</p>
 $$ p(0) = \langle \psi | 0 \rangle \langle 0 | \psi \rangle = |\langle 0 | \psi \rangle|^2. $$<p>但 $\langle 0 | \psi \rangle = \alpha$，因此这告诉我们测量结果 $0$ 的概率是 $p(0) = |\alpha|^2$，正如我们所预期的。完全相同的计算，只是将 $0$ 替换为 $1$，显示了 $p(1) = |\beta|^2$，也如我们所预期的。</p>
