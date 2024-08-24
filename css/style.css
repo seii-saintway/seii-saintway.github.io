@@ -391,12 +391,12 @@ h4 {
 }
 
 .page .entry h2{
-  display:block; overflow: hidden; width: 0; height: 0;
-  margin: -20px 0;
+  display:block; overflow: hidden; /* width: 0; height: 0; */
+  /* margin: -20px 0; */
 }
 
 .page .entry h3{
-  display:block; overflow: hidden; width: 0; height: 0;
+  display:block; overflow: hidden; /* width: 0; height: 0; */
 }
 
 .page .entry .col-md-8{
