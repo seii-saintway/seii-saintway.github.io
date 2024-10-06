@@ -16121,10 +16121,284 @@ Updating files: 100% (145/145), done.
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><code>WebDriver Protocol</code> 的发展历史：</p>
+<ol>
+<li><strong>Browser Driver</strong><ul>
+<li><strong>出现时间</strong>：最早</li>
+<li><strong>描述</strong>：Browser Driver 是最早出现的自动化测试工具之一。其目的是自动化浏览器中的 Web 应用程序。最著名的实现是 <strong>Selenium WebDriver</strong>，它允许在各种浏览器（如 Chrome、Firefox、Safari）中进行自动化测试。Selenium WebDriver 首次发布于 2008 年。</li>
+</ul>
+</li>
+<li><strong>iOS Application Driver</strong><ul>
+<li><strong>出现时间</strong>：次之</li>
+<li><strong>描述</strong>：iOS Application Driver 的出现较晚。最著名的实现是 <strong>WebDriverAgent</strong>，它由 Facebook 开发，用于为 iOS 应用程序提供 WebDriver 协议的支持。WebDriverAgent 是 Appium 的 iOS 驱动程序的一部分，并在 2015 年左右推出。它允许自动化测试 iOS 应用程序的 UI 元素。</li>
+</ul>
+</li>
+<li><strong>Windows Application Driver</strong><ul>
+<li><strong>出现时间</strong>：最晚</li>
+<li><strong>描述</strong>：Windows Application Driver (WinAppDriver) 是由 Microsoft 开发的自动化测试工具，支持 Windows 桌面应用程序的自动化测试。WinAppDriver 于 2016 年发布，旨在为 Windows 应用程序提供类似于 WebDriver 的自动化测试支持。它允许使用 WebDriver 协议来测试 Windows 桌面应用程序。</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>http+usbmux</code> 是一个用于指定协议的 URL 方案，特别是在涉及 Apple 设备时。让我们详细解释一下这个方案及其组件：</p>
+<h3 id="http+usbmux-%E7%9A%84%E5%90%AB%E4%B9%89"><code>http+usbmux</code> &#30340;&#21547;&#20041;<a class="anchor-link" href="#http+usbmux-%E7%9A%84%E5%90%AB%E4%B9%89">&#182;</a></h3><ul>
+<li><strong><code>http</code></strong>: 表示超文本传输协议（Hypertext Transfer Protocol），用于在网络上发送和接收数据。</li>
+<li><strong><code>+usbmux</code></strong>: 这是一个扩展方案，表示通过 USB 多路复用协议（USB Multiplexing Protocol，简称 MUX）进行通信。</li>
+</ul>
+<h3 id="MUX-%E7%9A%84%E5%90%AB%E4%B9%89"><code>MUX</code> &#30340;&#21547;&#20041;<a class="anchor-link" href="#MUX-%E7%9A%84%E5%90%AB%E4%B9%89">&#182;</a></h3><ul>
+<li><strong>MUX</strong>: 是“Multiplexer”（多路复用器）的缩写，表示一个技术，用于在一个通信链路上传输多个信号。它能够将多个数据流整合到一个通道中，从而优化资源使用和提高传输效率。</li>
+</ul>
+<h3 id="http+usbmux-%E7%9A%84%E5%85%B7%E4%BD%93%E5%90%AB%E4%B9%89"><code>http+usbmux</code> &#30340;&#20855;&#20307;&#21547;&#20041;<a class="anchor-link" href="#http+usbmux-%E7%9A%84%E5%85%B7%E4%BD%93%E5%90%AB%E4%B9%89">&#182;</a></h3><p>在 Apple 设备中，<code>http+usbmux</code> 用于指示通过 USB 多路复用协议（USBMux）进行 HTTP 通信。USB 多路复用协议是 Apple 设备（如 iPhone 和 iPad）与计算机之间的一种通信协议，它允许通过 USB 连接同时进行多个数据传输。</p>
+<ul>
+<li><strong>用途</strong>: <code>http+usbmux</code> 协议通常用于开发和调试过程中，比如通过 USB 连接访问 iOS 设备上的 Web 服务或调试工具。</li>
+<li><strong>工作原理</strong>: 当一个应用程序使用 <code>http+usbmux</code> 方案时，它通过 USB 多路复用协议与 iOS 设备上的 Web 服务进行通信，允许通过 USB 进行 HTTP 请求和响应，而不是通过常规的网络连接。</li>
+</ul>
+<h3 id="%E6%80%BB%E7%BB%93">&#24635;&#32467;<a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><ul>
+<li><strong><code>http+usbmux</code></strong>: 是一个 URL 方案，表示通过 USB 多路复用协议进行的 HTTP 通信。</li>
+<li><strong><code>MUX</code></strong>: 表示多路复用，指的是将多个信号或数据流整合到一个通道中进行传输。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>USB</strong> 是“Universal Serial Bus”（通用串行总线）的缩写。它是一种用于连接计算机和外部设备的标准接口。USB 的主要功能包括：</p>
+<ol>
+<li><p><strong>数据传输</strong>: USB 提供了高速的数据传输能力，允许计算机与各种外部设备（如键盘、鼠标、打印机、外部存储器等）之间交换数据。</p>
+</li>
+<li><p><strong>电力供应</strong>: USB 也能够为连接的设备提供电力，这使得许多设备（例如手机和小型电子设备）可以通过 USB 端口充电。</p>
+</li>
+<li><p><strong>即插即用</strong>: USB 设备可以在计算机运行时连接和断开，而无需重启计算机，这种特性称为“即插即用”。</p>
+</li>
+</ol>
+<h3 id="USB-%E7%9A%84%E5%8E%86%E5%8F%B2%E5%92%8C%E7%89%88%E6%9C%AC">USB &#30340;&#21382;&#21490;&#21644;&#29256;&#26412;<a class="anchor-link" href="#USB-%E7%9A%84%E5%8E%86%E5%8F%B2%E5%92%8C%E7%89%88%E6%9C%AC">&#182;</a></h3><ul>
+<li><strong>USB 1.0/1.1</strong>: 第一个 USB 标准，支持低速（1.5 Mbps）和全速（12 Mbps）数据传输。</li>
+<li><strong>USB 2.0</strong>: 提供更高的数据传输速度（最高 480 Mbps），支持即插即用和更高功率的设备。</li>
+<li><strong>USB 3.0</strong>: 提供更高的数据传输速度（最高 5 Gbps），增加了对更高功率设备的支持。</li>
+<li><strong>USB 3.1/3.2</strong>: 提供更高的传输速度（最高 10 Gbps 和 20 Gbps），并引入了 Type-C 接口。</li>
+<li><strong>USB4</strong>: 支持更高的数据传输速度（最高 40 Gbps），与 Thunderbolt 3 兼容，并继续使用 Type-C 接口。</li>
+</ul>
+<h3 id="USB-%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%B1%BB%E5%9E%8B">USB &#25509;&#21475;&#30340;&#31867;&#22411;<a class="anchor-link" href="#USB-%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%B1%BB%E5%9E%8B">&#182;</a></h3><ul>
+<li><strong>Type-A</strong>: 标准的矩形接口，广泛用于计算机和外围设备。</li>
+<li><strong>Type-B</strong>: 通常用于打印机和其他外围设备的接口。</li>
+<li><strong>Mini-USB/Micro-USB</strong>: 较小的接口类型，常用于移动设备和小型电子产品。</li>
+<li><strong>Type-C</strong>: 最新的接口类型，支持更高的数据传输速度和功率，并具备双面可插的设计。</li>
+</ul>
+
+</div>
+</div>
+</div>
  
 
 
 
+
+<div class="tabs" id="gui"><ul class="nav-tabs"><li class="tab active"><a href="#gui-1">图形界面</a></li><li class="tab"><a href="#gui-2">GUI</a></li></ul><div class="tab-content"><div class="tab-pane active" id="gui-1"><p>以下是 <strong>PyWebView</strong>、<strong>Gradio</strong> 和 <strong>Tkinter</strong> 的比较：</p>
+<ol>
+<li><p><strong>用途与使用场景</strong>：</p>
+<ul>
+<li><strong>PyWebView</strong>：用于创建轻量级的桌面应用程序，通过将网页内容（HTML&#x2F;JS&#x2F;CSS）嵌入原生窗口中，能够将基于网页的应用作为桌面应用程序运行。适合需要使用 Web 技术构建桌面 GUI 的情况。</li>
+<li><strong>Gradio</strong>：主要用于创建简单的基于 Web 的用户界面，尤其适合机器学习模型的展示与交互。它非常适合快速搭建用户界面，与机器学习模型进行交互。</li>
+<li><strong>Tkinter</strong>：Python 标准库中的桌面 GUI 构建工具，适合构建传统的桌面应用程序界面，包含按钮、标签等组件。</li>
+</ul>
+</li>
+<li><p><strong>易用性</strong>：</p>
+<ul>
+<li><strong>PyWebView</strong>：如果熟悉 Web 开发，使用起来较为简单，可以利用 HTML 和 JavaScript 快速构建 UI，尤其适合想要将已有 Web 界面转为桌面应用的开发者。</li>
+<li><strong>Gradio</strong>：非常适合机器学习开发人员，几乎不需要任何 Web 开发知识就可以快速生成 Web UI，操作简单，主要用于展示模型。</li>
+<li><strong>Tkinter</strong>：尽管 Tkinter 的使用门槛不高，但对于复杂的界面，它的编程模式相对繁琐，而且其样式较为传统，无法轻松创建现代化界面。</li>
+</ul>
+</li>
+<li><p><strong>外观与灵活性</strong>：</p>
+<ul>
+<li><strong>PyWebView</strong>：由于可以使用各种前端框架（如 React、Vue 等），其外观和灵活性非常高，界面现代，适合需要高度定制化界面的应用。</li>
+<li><strong>Gradio</strong>：UI 定制选项有限，主要用于快速展示和简单交互，不适合需要复杂 UI 的应用程序。</li>
+<li><strong>Tkinter</strong>：提供了基本的窗口小部件，外观较为传统，现代化设计难度较大，且自定义样式能力有限。</li>
+</ul>
+</li>
+<li><p><strong>跨平台支持</strong>：</p>
+<ul>
+<li><strong>PyWebView</strong>：支持跨平台（Windows、macOS 和 Linux），易于构建适用于多个操作系统的桌面应用程序。</li>
+<li><strong>Gradio</strong>：基于 Web，因此在任何浏览器上都可以运行，适合部署在线应用，但不适用于创建桌面应用。</li>
+<li><strong>Tkinter</strong>：同样支持跨平台（Windows、macOS、Linux），但界面的外观可能在不同平台上略有差异。</li>
+</ul>
+</li>
+<li><p><strong>性能</strong>：</p>
+<ul>
+<li><strong>PyWebView</strong>：对于简单的网页内容，性能表现良好，但对于复杂的 Web 应用，可能会出现卡顿情况。</li>
+<li><strong>Gradio</strong>：适用于轻量级的机器学习展示和用户界面，性能取决于后端的模型复杂度。</li>
+<li><strong>Tkinter</strong>：性能较好，适合简单的桌面应用程序，运行速度快，但对于现代化、复杂的 UI 来说可能不够灵活。</li>
+</ul>
+</li>
+<li><p><strong>与 Python 的集成</strong>：</p>
+<ul>
+<li><strong>PyWebView</strong>：支持 Python 和 JavaScript 之间的双向通信，易于在前端使用 Web 技术，后端使用 Python 处理逻辑。</li>
+<li><strong>Gradio</strong>：与机器学习框架（如 PyTorch、TensorFlow）无缝集成，便于快速展示模型输入和输出。</li>
+<li><strong>Tkinter</strong>：作为 Python 的标准库，完全集成于 Python 中，适用于一般的 Python 应用程序开发，但对于现代 UI 的构建稍显不足。</li>
+</ul>
+</li>
+<li><p><strong>最佳使用场景</strong>：</p>
+<ul>
+<li><strong>PyWebView</strong>：适合有 Web 开发背景的开发者，想要将 Web 应用打包成桌面应用程序。</li>
+<li><strong>Gradio</strong>：适合快速构建机器学习模型的用户界面并进行展示与分享。</li>
+<li><strong>Tkinter</strong>：适合传统桌面应用程序的开发，不依赖于外部库的情况下可以轻松创建简单的应用。</li>
+</ul>
+</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li><strong>PyWebView</strong>：适合构建基于 Web 技术的现代化桌面应用。</li>
+<li><strong>Gradio</strong>：适合快速构建机器学习模型展示的 Web 界面。</li>
+<li><strong>Tkinter</strong>：适合传统的本地桌面 GUI 应用程序构建。</li>
+</ul>
+<p>每个工具都有其独特的使用场景和优势，具体选择取决于你的项目需求和开发背景。</p></div><div class="tab-pane" id="gui-2"><p>Here’s a comparison of <strong>PyWebView</strong>, <strong>Gradio</strong>, and <strong>Tkinter</strong> across various key aspects:</p>
+<ol>
+<li><p><strong>Purpose and Use Case</strong>:</p>
+<ul>
+<li><strong>PyWebView</strong>: Used to create lightweight desktop applications by embedding web content (HTML&#x2F;JS&#x2F;CSS) in a native window. It allows web-based apps to run as desktop applications. Primarily for desktop UI with web technologies.</li>
+<li><strong>Gradio</strong>: Primarily designed for creating simple web-based UIs for machine learning models and other applications. It excels at quickly sharing models and data processing workflows through a web interface.</li>
+<li><strong>Tkinter</strong>: The standard Python library for building desktop GUI applications. It’s used for creating traditional desktop interfaces with widgets like buttons, labels, and menus.</li>
+</ul>
+</li>
+<li><p><strong>Ease of Use</strong>:</p>
+<ul>
+<li><strong>PyWebView</strong>: Fairly simple to use if you’re familiar with web technologies. You just need HTML and JavaScript to create the interface, making it ideal for developers who want to reuse their web development skills for desktop apps.</li>
+<li><strong>Gradio</strong>: Extremely easy for ML developers and those who want to quickly prototype web UIs for models or data workflows. You don’t need to be familiar with web development, as Gradio generates interfaces with very little code.</li>
+<li><strong>Tkinter</strong>: More complex compared to Gradio and PyWebView but still fairly accessible due to its inclusion in the Python standard library. However, creating complex or modern-looking GUIs can be challenging due to its more traditional widget set.</li>
+</ul>
+</li>
+<li><p><strong>Appearance and Flexibility</strong>:</p>
+<ul>
+<li><strong>PyWebView</strong>: Offers high flexibility since you can use any front-end web framework (like React, Vue, or plain HTML&#x2F;CSS) to design modern, polished UIs. Appearance depends entirely on your web development skills.</li>
+<li><strong>Gradio</strong>: Limited in terms of UI customization but good for rapid prototyping. It’s excellent for showcasing machine learning models but lacks the depth for more intricate GUI applications.</li>
+<li><strong>Tkinter</strong>: Comes with a set of pre-built widgets, which are relatively basic in appearance. Styling options are limited, and it can be challenging to create visually modern interfaces without heavy customization.</li>
+</ul>
+</li>
+<li><p><strong>Platform Support</strong>:</p>
+<ul>
+<li><strong>PyWebView</strong>: Cross-platform (Windows, macOS, and Linux), making it easy to create desktop applications that work on all major operating systems.</li>
+<li><strong>Gradio</strong>: Web-based, so it runs on any platform with a browser, but it’s not a desktop application framework. It’s typically used to host interfaces online.</li>
+<li><strong>Tkinter</strong>: Cross-platform (Windows, macOS, Linux) with native support, but the look and feel of the widgets may differ slightly between operating systems.</li>
+</ul>
+</li>
+<li><p><strong>Performance</strong>:</p>
+<ul>
+<li><strong>PyWebView</strong>: Relatively fast, but performance depends on the complexity of the web content you embed. For basic HTML&#x2F;JS, it runs smoothly, but heavy web apps can be slow.</li>
+<li><strong>Gradio</strong>: Lightweight and optimized for simple UIs to interact with models. Performance is tied to your backend or model, but for general UI tasks, it’s quite efficient.</li>
+<li><strong>Tkinter</strong>: Very fast for simple GUI applications since it’s native to Python and doesn’t rely on external libraries or browsers. However, it’s not ideal for highly complex UIs or apps requiring high customization.</li>
+</ul>
+</li>
+<li><p><strong>Integration with Python</strong>:</p>
+<ul>
+<li><strong>PyWebView</strong>: Allows two-way communication between Python and JavaScript, making it easy to control the backend logic with Python and the frontend with web technologies.</li>
+<li><strong>Gradio</strong>: Seamless integration with Python and particularly machine learning frameworks like PyTorch and TensorFlow, providing ready-made components for input and output of models.</li>
+<li><strong>Tkinter</strong>: Fully integrated with Python since it’s part of the standard library, making it highly compatible for general-purpose Python applications. However, it’s more verbose to set up complex UIs compared to web-based alternatives.</li>
+</ul>
+</li>
+<li><p><strong>Best Suited For</strong>:</p>
+<ul>
+<li><strong>PyWebView</strong>: Best for developers looking to create cross-platform desktop apps using web technologies or who already have web-based interfaces they want to deploy as desktop apps.</li>
+<li><strong>Gradio</strong>: Ideal for data scientists or ML developers who want a simple, fast way to prototype and share models with interactive UIs.</li>
+<li><strong>Tkinter</strong>: Best suited for traditional desktop applications where no web content is involved and the developer prefers to work within Python’s native ecosystem without external dependencies.</li>
+</ul>
+</li>
+</ol>
+<p>Summary:</p>
+<ul>
+<li><strong>PyWebView</strong>: Flexible, modern web-based desktop apps.</li>
+<li><strong>Gradio</strong>: Quick web interfaces for models, with minimal coding.</li>
+<li><strong>Tkinter</strong>: Traditional, native Python desktop GUIs.</li>
+</ul>
+<p>Each tool shines in its respective domain: <strong>PyWebView</strong> for web-driven desktop apps, <strong>Gradio</strong> for rapid machine learning demos, and <strong>Tkinter</strong> for simple native Python GUIs.</p></div></div></div>
+
+<table>
+<thead>
+<tr>
+<th>特性&nbsp;</th>
+<th>&nbsp;<strong>Dash</strong>&nbsp;</th>
+<th>&nbsp;<strong>PyWebIO</strong>&nbsp;</th>
+<th>&nbsp;<strong>Gradio</strong>&nbsp;</th>
+<th>&nbsp;<strong>Streamlit</strong>&nbsp;</th>
+<th>&nbsp;<strong>Panel</strong>&nbsp;</th>
+<th>&nbsp;<strong>Voila</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>目标</strong>&nbsp;</td>
+<td>&nbsp;构建复杂的数据可视化和分析应用&nbsp;</td>
+<td>&nbsp;快速构建简单的交互式 Web 应用&nbsp;</td>
+<td>&nbsp;快速创建机器学习模型的交互界面&nbsp;</td>
+<td>&nbsp;简化数据应用的开发流程&nbsp;</td>
+<td>&nbsp;数据可视化和仪表板&nbsp;</td>
+<td>&nbsp;将 Jupyter Notebook 转换为 Web 应用</td>
+</tr>
+<tr>
+<td><strong>界面设计</strong>&nbsp;</td>
+<td>&nbsp;自定义布局和交互&nbsp;</td>
+<td>&nbsp;简单的文本输入和输出&nbsp;</td>
+<td>&nbsp;自动生成用户友好的界面&nbsp;</td>
+<td>&nbsp;自定义界面，易于设计&nbsp;</td>
+<td>&nbsp;灵活的布局，支持多种控件&nbsp;</td>
+<td>&nbsp;基于 Jupyter Notebook 的输出</td>
+</tr>
+<tr>
+<td><strong>交互性</strong>&nbsp;</td>
+<td>&nbsp;支持复杂的交互，适合构建数据仪表板&nbsp;</td>
+<td>&nbsp;支持基本交互，适合简单应用&nbsp;</td>
+<td>&nbsp;强大的交互性，支持实时更新&nbsp;</td>
+<td>&nbsp;强大的交互性，支持多种输入类型&nbsp;</td>
+<td>&nbsp;支持复杂交互&nbsp;</td>
+<td>&nbsp;基于 Notebook 的交互性</td>
+</tr>
+<tr>
+<td><strong>学习曲线</strong>&nbsp;</td>
+<td>&nbsp;中等，需了解 Dash 的组件&nbsp;</td>
+<td>&nbsp;低，简单易用&nbsp;</td>
+<td>&nbsp;低，特别适合机器学习应用&nbsp;</td>
+<td>&nbsp;低，适合数据科学家和工程师&nbsp;</td>
+<td>&nbsp;中等，需了解 HoloViz 生态&nbsp;</td>
+<td>&nbsp;低，适合 Jupyter 用户</td>
+</tr>
+<tr>
+<td><strong>部署方式</strong>&nbsp;</td>
+<td>&nbsp;可通过 Flask 部署，支持复杂的服务器功能&nbsp;</td>
+<td>&nbsp;需要服务端支持，通常需要 Flask 支持&nbsp;</td>
+<td>&nbsp;使用简单的命令行部署&nbsp;</td>
+<td>&nbsp;支持多种部署方式，包括云部署&nbsp;</td>
+<td>&nbsp;可通过 Bokeh Server 或静态文件部署&nbsp;</td>
+<td>&nbsp;通过命令行轻松部署</td>
+</tr>
+<tr>
+<td><strong>生态系统</strong>&nbsp;</td>
+<td>&nbsp;Plotly 生态系统，支持丰富的可视化库&nbsp;</td>
+<td>&nbsp;独立&nbsp;</td>
+<td>&nbsp;强大的机器学习和数据科学生态&nbsp;</td>
+<td>&nbsp;数据科学和机器学习生态&nbsp;</td>
+<td>&nbsp;HoloViz 生态系统&nbsp;</td>
+<td>&nbsp;基于 Jupyter Notebook 的生态</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong>&nbsp;</td>
+<td>&nbsp;企业级应用、复杂数据可视化和仪表板&nbsp;</td>
+<td>&nbsp;快速原型、简单应用&nbsp;</td>
+<td>&nbsp;机器学习模型演示、交互式实验&nbsp;</td>
+<td>&nbsp;数据应用、可视化和交互式报告&nbsp;</td>
+<td>&nbsp;数据分析仪表板、复杂可视化&nbsp;</td>
+<td>&nbsp;教学、展示分析结果</td>
+</tr>
+</tbody></table>
 
 	
 	</div>
@@ -16173,45 +16447,45 @@ Updating files: 100% (145/145), done.
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
 			<li><a href="/tags/Quantum/">Quantum<span>4</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
 			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
