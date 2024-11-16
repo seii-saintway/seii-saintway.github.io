@@ -16205,187 +16205,229 @@ Updating files: 100% (145/145), done.
 
 
 
-<div class="tabs" id="gui"><ul class="nav-tabs"><li class="tab active"><a href="#gui-1">图形界面</a></li><li class="tab"><a href="#gui-2">GUI</a></li></ul><div class="tab-content"><div class="tab-pane active" id="gui-1"><p>以下是 <strong>PyWebView</strong>、<strong>Gradio</strong> 和 <strong>Tkinter</strong> 的比较：</p>
+<div class="tabs" id="gui"><ul class="nav-tabs"><li class="tab active"><a href="#gui-1">图形界面</a></li><li class="tab"><a href="#gui-2">GUI</a></li></ul><div class="tab-content"><div class="tab-pane active" id="gui-1"><p>以下是 <code>PyWebView</code>、<code>Gradio</code> 和 <code>Tkinter</code> 的比较：</p>
 <ol>
-<li><p><strong>用途与使用场景</strong>：</p>
-<ul>
-<li><strong>PyWebView</strong>：用于创建轻量级的桌面应用程序，通过将网页内容（HTML&#x2F;JS&#x2F;CSS）嵌入原生窗口中，能够将基于网页的应用作为桌面应用程序运行。适合需要使用 Web 技术构建桌面 GUI 的情况。</li>
-<li><strong>Gradio</strong>：主要用于创建简单的基于 Web 的用户界面，尤其适合机器学习模型的展示与交互。它非常适合快速搭建用户界面，与机器学习模型进行交互。</li>
-<li><strong>Tkinter</strong>：Python 标准库中的桌面 GUI 构建工具，适合构建传统的桌面应用程序界面，包含按钮、标签等组件。</li>
-</ul>
-</li>
-<li><p><strong>易用性</strong>：</p>
-<ul>
-<li><strong>PyWebView</strong>：如果熟悉 Web 开发，使用起来较为简单，可以利用 HTML 和 JavaScript 快速构建 UI，尤其适合想要将已有 Web 界面转为桌面应用的开发者。</li>
-<li><strong>Gradio</strong>：非常适合机器学习开发人员，几乎不需要任何 Web 开发知识就可以快速生成 Web UI，操作简单，主要用于展示模型。</li>
-<li><strong>Tkinter</strong>：尽管 Tkinter 的使用门槛不高，但对于复杂的界面，它的编程模式相对繁琐，而且其样式较为传统，无法轻松创建现代化界面。</li>
-</ul>
-</li>
-<li><p><strong>外观与灵活性</strong>：</p>
-<ul>
-<li><strong>PyWebView</strong>：由于可以使用各种前端框架（如 React、Vue 等），其外观和灵活性非常高，界面现代，适合需要高度定制化界面的应用。</li>
-<li><strong>Gradio</strong>：UI 定制选项有限，主要用于快速展示和简单交互，不适合需要复杂 UI 的应用程序。</li>
-<li><strong>Tkinter</strong>：提供了基本的窗口小部件，外观较为传统，现代化设计难度较大，且自定义样式能力有限。</li>
-</ul>
-</li>
-<li><p><strong>跨平台支持</strong>：</p>
-<ul>
-<li><strong>PyWebView</strong>：支持跨平台（Windows、macOS 和 Linux），易于构建适用于多个操作系统的桌面应用程序。</li>
-<li><strong>Gradio</strong>：基于 Web，因此在任何浏览器上都可以运行，适合部署在线应用，但不适用于创建桌面应用。</li>
-<li><strong>Tkinter</strong>：同样支持跨平台（Windows、macOS、Linux），但界面的外观可能在不同平台上略有差异。</li>
-</ul>
-</li>
-<li><p><strong>性能</strong>：</p>
-<ul>
-<li><strong>PyWebView</strong>：对于简单的网页内容，性能表现良好，但对于复杂的 Web 应用，可能会出现卡顿情况。</li>
-<li><strong>Gradio</strong>：适用于轻量级的机器学习展示和用户界面，性能取决于后端的模型复杂度。</li>
-<li><strong>Tkinter</strong>：性能较好，适合简单的桌面应用程序，运行速度快，但对于现代化、复杂的 UI 来说可能不够灵活。</li>
-</ul>
-</li>
-<li><p><strong>与 Python 的集成</strong>：</p>
-<ul>
-<li><strong>PyWebView</strong>：支持 Python 和 JavaScript 之间的双向通信，易于在前端使用 Web 技术，后端使用 Python 处理逻辑。</li>
-<li><strong>Gradio</strong>：与机器学习框架（如 PyTorch、TensorFlow）无缝集成，便于快速展示模型输入和输出。</li>
-<li><strong>Tkinter</strong>：作为 Python 的标准库，完全集成于 Python 中，适用于一般的 Python 应用程序开发，但对于现代 UI 的构建稍显不足。</li>
-</ul>
-</li>
-<li><p><strong>最佳使用场景</strong>：</p>
-<ul>
-<li><strong>PyWebView</strong>：适合有 Web 开发背景的开发者，想要将 Web 应用打包成桌面应用程序。</li>
-<li><strong>Gradio</strong>：适合快速构建机器学习模型的用户界面并进行展示与分享。</li>
-<li><strong>Tkinter</strong>：适合传统桌面应用程序的开发，不依赖于外部库的情况下可以轻松创建简单的应用。</li>
+<li><strong>用途与使用场景</strong>：<ul>
+<li><code>PyWebView</code>：用于创建轻量级的桌面应用程序，通过将网页内容（HTML&#x2F;JS&#x2F;CSS）嵌入原生窗口中，能够将基于网页的应用作为桌面应用程序运行。适合需要使用 Web 技术构建桌面 GUI 的情况。</li>
+<li><code>Gradio</code>：主要用于创建简单的基于 Web 的用户界面，尤其适合机器学习模型的展示与交互。它非常适合快速搭建用户界面，与机器学习模型进行交互。</li>
+<li><code>Tkinter</code>：Python 标准库中的桌面 GUI 构建工具，适合构建传统的桌面应用程序界面，包含按钮、标签等组件。</li>
 </ul>
 </li>
 </ol>
+<br />
+
+<ol start="2">
+<li><strong>易用性</strong>：<ul>
+<li><code>PyWebView</code>：如果熟悉 Web 开发，使用起来较为简单，可以利用 HTML 和 JavaScript 快速构建 UI，尤其适合想要将已有 Web 界面转为桌面应用的开发者。</li>
+<li><code>Gradio</code>：非常适合机器学习开发人员，几乎不需要任何 Web 开发知识就可以快速生成 Web UI，操作简单，主要用于展示模型。</li>
+<li><code>Tkinter</code>：尽管 Tkinter 的使用门槛不高，但对于复杂的界面，它的编程模式相对繁琐，而且其样式较为传统，无法轻松创建现代化界面。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="3">
+<li><strong>外观与灵活性</strong>：<ul>
+<li><code>PyWebView</code>：由于可以使用各种前端框架（如 React、Vue 等），其外观和灵活性非常高，界面现代，适合需要高度定制化界面的应用。</li>
+<li><code>Gradio</code>：UI 定制选项有限，主要用于快速展示和简单交互，不适合需要复杂 UI 的应用程序。</li>
+<li><code>Tkinter</code>：提供了基本的窗口小部件，外观较为传统，现代化设计难度较大，且自定义样式能力有限。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="4">
+<li><strong>跨平台支持</strong>：<ul>
+<li><code>PyWebView</code>：支持跨平台（Windows、macOS 和 Linux），易于构建适用于多个操作系统的桌面应用程序。</li>
+<li><code>Gradio</code>：基于 Web，因此在任何浏览器上都可以运行，适合部署在线应用，但不适用于创建桌面应用。</li>
+<li><code>Tkinter</code>：同样支持跨平台（Windows、macOS、Linux），但界面的外观可能在不同平台上略有差异。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="5">
+<li><strong>性能</strong>：<ul>
+<li><code>PyWebView</code>：对于简单的网页内容，性能表现良好，但对于复杂的 Web 应用，可能会出现卡顿情况。</li>
+<li><code>Gradio</code>：适用于轻量级的机器学习展示和用户界面，性能取决于后端的模型复杂度。</li>
+<li><code>Tkinter</code>：性能较好，适合简单的桌面应用程序，运行速度快，但对于现代化、复杂的 UI 来说可能不够灵活。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="6">
+<li><strong>与 Python 的集成</strong>：<ul>
+<li><code>PyWebView</code>：支持 Python 和 JavaScript 之间的双向通信，易于在前端使用 Web 技术，后端使用 Python 处理逻辑。</li>
+<li><code>Gradio</code>：与机器学习框架（如 PyTorch、TensorFlow）无缝集成，便于快速展示模型输入和输出。</li>
+<li><code>Tkinter</code>：作为 Python 的标准库，完全集成于 Python 中，适用于一般的 Python 应用程序开发，但对于现代 UI 的构建稍显不足。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="7">
+<li><strong>最佳使用场景</strong>：<ul>
+<li><code>PyWebView</code>：适合有 Web 开发背景的开发者，想要将 Web 应用打包成桌面应用程序。</li>
+<li><code>Gradio</code>：适合快速构建机器学习模型的用户界面并进行展示与分享。</li>
+<li><code>Tkinter</code>：适合传统桌面应用程序的开发，不依赖于外部库的情况下可以轻松创建简单的应用。</li>
+</ul>
+</li>
+</ol>
+<br />
+
 <p>总结：</p>
 <ul>
-<li><strong>PyWebView</strong>：适合构建基于 Web 技术的现代化桌面应用。</li>
-<li><strong>Gradio</strong>：适合快速构建机器学习模型展示的 Web 界面。</li>
-<li><strong>Tkinter</strong>：适合传统的本地桌面 GUI 应用程序构建。</li>
+<li><code>PyWebView</code>：适合构建基于 Web 技术的现代化桌面应用。</li>
+<li><code>Gradio</code>：适合快速构建机器学习模型展示的 Web 界面。</li>
+<li><code>Tkinter</code>：适合传统的本地桌面 GUI 应用程序构建。</li>
 </ul>
-<p>每个工具都有其独特的使用场景和优势，具体选择取决于你的项目需求和开发背景。</p></div><div class="tab-pane" id="gui-2"><p>Here’s a comparison of <strong>PyWebView</strong>, <strong>Gradio</strong>, and <strong>Tkinter</strong> across various key aspects:</p>
+<br />
+
+<p>每个工具都有其独特的使用场景和优势，具体选择取决于你的项目需求和开发背景。</p></div><div class="tab-pane" id="gui-2"><p>Here’s a comparison of <code>PyWebView</code>, <code>Gradio</code>, and <code>Tkinter</code> across various key aspects:</p>
 <ol>
-<li><p><strong>Purpose and Use Case</strong>:</p>
-<ul>
-<li><strong>PyWebView</strong>: Used to create lightweight desktop applications by embedding web content (HTML&#x2F;JS&#x2F;CSS) in a native window. It allows web-based apps to run as desktop applications. Primarily for desktop UI with web technologies.</li>
-<li><strong>Gradio</strong>: Primarily designed for creating simple web-based UIs for machine learning models and other applications. It excels at quickly sharing models and data processing workflows through a web interface.</li>
-<li><strong>Tkinter</strong>: The standard Python library for building desktop GUI applications. It’s used for creating traditional desktop interfaces with widgets like buttons, labels, and menus.</li>
-</ul>
-</li>
-<li><p><strong>Ease of Use</strong>:</p>
-<ul>
-<li><strong>PyWebView</strong>: Fairly simple to use if you’re familiar with web technologies. You just need HTML and JavaScript to create the interface, making it ideal for developers who want to reuse their web development skills for desktop apps.</li>
-<li><strong>Gradio</strong>: Extremely easy for ML developers and those who want to quickly prototype web UIs for models or data workflows. You don’t need to be familiar with web development, as Gradio generates interfaces with very little code.</li>
-<li><strong>Tkinter</strong>: More complex compared to Gradio and PyWebView but still fairly accessible due to its inclusion in the Python standard library. However, creating complex or modern-looking GUIs can be challenging due to its more traditional widget set.</li>
-</ul>
-</li>
-<li><p><strong>Appearance and Flexibility</strong>:</p>
-<ul>
-<li><strong>PyWebView</strong>: Offers high flexibility since you can use any front-end web framework (like React, Vue, or plain HTML&#x2F;CSS) to design modern, polished UIs. Appearance depends entirely on your web development skills.</li>
-<li><strong>Gradio</strong>: Limited in terms of UI customization but good for rapid prototyping. It’s excellent for showcasing machine learning models but lacks the depth for more intricate GUI applications.</li>
-<li><strong>Tkinter</strong>: Comes with a set of pre-built widgets, which are relatively basic in appearance. Styling options are limited, and it can be challenging to create visually modern interfaces without heavy customization.</li>
-</ul>
-</li>
-<li><p><strong>Platform Support</strong>:</p>
-<ul>
-<li><strong>PyWebView</strong>: Cross-platform (Windows, macOS, and Linux), making it easy to create desktop applications that work on all major operating systems.</li>
-<li><strong>Gradio</strong>: Web-based, so it runs on any platform with a browser, but it’s not a desktop application framework. It’s typically used to host interfaces online.</li>
-<li><strong>Tkinter</strong>: Cross-platform (Windows, macOS, Linux) with native support, but the look and feel of the widgets may differ slightly between operating systems.</li>
-</ul>
-</li>
-<li><p><strong>Performance</strong>:</p>
-<ul>
-<li><strong>PyWebView</strong>: Relatively fast, but performance depends on the complexity of the web content you embed. For basic HTML&#x2F;JS, it runs smoothly, but heavy web apps can be slow.</li>
-<li><strong>Gradio</strong>: Lightweight and optimized for simple UIs to interact with models. Performance is tied to your backend or model, but for general UI tasks, it’s quite efficient.</li>
-<li><strong>Tkinter</strong>: Very fast for simple GUI applications since it’s native to Python and doesn’t rely on external libraries or browsers. However, it’s not ideal for highly complex UIs or apps requiring high customization.</li>
-</ul>
-</li>
-<li><p><strong>Integration with Python</strong>:</p>
-<ul>
-<li><strong>PyWebView</strong>: Allows two-way communication between Python and JavaScript, making it easy to control the backend logic with Python and the frontend with web technologies.</li>
-<li><strong>Gradio</strong>: Seamless integration with Python and particularly machine learning frameworks like PyTorch and TensorFlow, providing ready-made components for input and output of models.</li>
-<li><strong>Tkinter</strong>: Fully integrated with Python since it’s part of the standard library, making it highly compatible for general-purpose Python applications. However, it’s more verbose to set up complex UIs compared to web-based alternatives.</li>
-</ul>
-</li>
-<li><p><strong>Best Suited For</strong>:</p>
-<ul>
-<li><strong>PyWebView</strong>: Best for developers looking to create cross-platform desktop apps using web technologies or who already have web-based interfaces they want to deploy as desktop apps.</li>
-<li><strong>Gradio</strong>: Ideal for data scientists or ML developers who want a simple, fast way to prototype and share models with interactive UIs.</li>
-<li><strong>Tkinter</strong>: Best suited for traditional desktop applications where no web content is involved and the developer prefers to work within Python’s native ecosystem without external dependencies.</li>
+<li><strong>Purpose and Use Case</strong>:<ul>
+<li><code>PyWebView</code>: Used to create lightweight desktop applications by embedding web content (HTML&#x2F;JS&#x2F;CSS) in a native window. It allows web-based apps to run as desktop applications. Primarily for desktop UI with web technologies.</li>
+<li><code>Gradio</code>: Primarily designed for creating simple web-based UIs for machine learning models and other applications. It excels at quickly sharing models and data processing workflows through a web interface.</li>
+<li><code>Tkinter</code>: The standard Python library for building desktop GUI applications. It’s used for creating traditional desktop interfaces with widgets like buttons, labels, and menus.</li>
 </ul>
 </li>
 </ol>
+<br />
+
+<ol start="2">
+<li><strong>Ease of Use</strong>:<ul>
+<li><code>PyWebView</code>: Fairly simple to use if you’re familiar with web technologies. You just need HTML and JavaScript to create the interface, making it ideal for developers who want to reuse their web development skills for desktop apps.</li>
+<li><code>Gradio</code>: Extremely easy for ML developers and those who want to quickly prototype web UIs for models or data workflows. You don’t need to be familiar with web development, as Gradio generates interfaces with very little code.</li>
+<li><code>Tkinter</code>: More complex compared to Gradio and PyWebView but still fairly accessible due to its inclusion in the Python standard library. However, creating complex or modern-looking GUIs can be challenging due to its more traditional widget set.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="3">
+<li><strong>Appearance and Flexibility</strong>:<ul>
+<li><code>PyWebView</code>: Offers high flexibility since you can use any front-end web framework (like React, Vue, or plain HTML&#x2F;CSS) to design modern, polished UIs. Appearance depends entirely on your web development skills.</li>
+<li><code>Gradio</code>: Limited in terms of UI customization but good for rapid prototyping. It’s excellent for showcasing machine learning models but lacks the depth for more intricate GUI applications.</li>
+<li><code>Tkinter</code>: Comes with a set of pre-built widgets, which are relatively basic in appearance. Styling options are limited, and it can be challenging to create visually modern interfaces without heavy customization.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="4">
+<li><strong>Platform Support</strong>:<ul>
+<li><code>PyWebView</code>: Cross-platform (Windows, macOS, and Linux), making it easy to create desktop applications that work on all major operating systems.</li>
+<li><code>Gradio</code>: Web-based, so it runs on any platform with a browser, but it’s not a desktop application framework. It’s typically used to host interfaces online.</li>
+<li><code>Tkinter</code>: Cross-platform (Windows, macOS, Linux) with native support, but the look and feel of the widgets may differ slightly between operating systems.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="5">
+<li><strong>Performance</strong>:<ul>
+<li><code>PyWebView</code>: Relatively fast, but performance depends on the complexity of the web content you embed. For basic HTML&#x2F;JS, it runs smoothly, but heavy web apps can be slow.</li>
+<li><code>Gradio</code>: Lightweight and optimized for simple UIs to interact with models. Performance is tied to your backend or model, but for general UI tasks, it’s quite efficient.</li>
+<li><code>Tkinter</code>: Very fast for simple GUI applications since it’s native to Python and doesn’t rely on external libraries or browsers. However, it’s not ideal for highly complex UIs or apps requiring high customization.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="6">
+<li><strong>Integration with Python</strong>:<ul>
+<li><code>PyWebView</code>: Allows two-way communication between Python and JavaScript, making it easy to control the backend logic with Python and the frontend with web technologies.</li>
+<li><code>Gradio</code>: Seamless integration with Python and particularly machine learning frameworks like PyTorch and TensorFlow, providing ready-made components for input and output of models.</li>
+<li><code>Tkinter</code>: Fully integrated with Python since it’s part of the standard library, making it highly compatible for general-purpose Python applications. However, it’s more verbose to set up complex UIs compared to web-based alternatives.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="8">
+<li><strong>Best Suited For</strong>:<ul>
+<li><code>PyWebView</code>: Best for developers looking to create cross-platform desktop apps using web technologies or who already have web-based interfaces they want to deploy as desktop apps.</li>
+<li><code>Gradio</code>: Ideal for data scientists or ML developers who want a simple, fast way to prototype and share models with interactive UIs.</li>
+<li><code>Tkinter</code>: Best suited for traditional desktop applications where no web content is involved and the developer prefers to work within Python’s native ecosystem without external dependencies.</li>
+</ul>
+</li>
+</ol>
+<br />
+
 <p>Summary:</p>
 <ul>
-<li><strong>PyWebView</strong>: Flexible, modern web-based desktop apps.</li>
-<li><strong>Gradio</strong>: Quick web interfaces for models, with minimal coding.</li>
-<li><strong>Tkinter</strong>: Traditional, native Python desktop GUIs.</li>
+<li><code>PyWebView</code>: Flexible, modern web-based desktop apps.</li>
+<li><code>Gradio</code>: Quick web interfaces for models, with minimal coding.</li>
+<li><code>Tkinter</code>: Traditional, native Python desktop GUIs.</li>
 </ul>
-<p>Each tool shines in its respective domain: <strong>PyWebView</strong> for web-driven desktop apps, <strong>Gradio</strong> for rapid machine learning demos, and <strong>Tkinter</strong> for simple native Python GUIs.</p></div></div></div>
+<br />
+
+<p>Each tool shines in its respective domain: <code>PyWebView</code> for web-driven desktop apps, <code>Gradio</code> for rapid machine learning demos, and <code>Tkinter</code> for simple native Python GUIs.</p></div></div></div>
 
 <br />
 
-<p>PyQt6 可以替代 PyWebView 或 CEF Python 来嵌入网页内容，但它的适用性取决于你的具体需求和项目要求。让我们来比较 PyQt6、PyWebView 和 CEF Python，并讨论各自的优缺点以及在什么情况下 PyQt6 可以作为合适的替代方案。</p>
+<p><code>PyQt6</code> 可以替代 <code>PyWebView</code> 或 <code>CEF Python</code> 来嵌入网页内容，但它的适用性取决于你的具体需求和项目要求。让我们来比较 <code>PyQt6</code>、<code>PyWebView</code> 和 <code>CEF Python</code>，并讨论各自的优缺点以及在什么情况下 <code>PyQt6</code> 可以作为合适的替代方案。</p>
 <ol>
-<li><p>PyQt6 的适用场景<br>PyQt6 是基于 Qt 库的 Python 绑定，提供了丰富的桌面 GUI 功能。它可以通过 QWebEngineView（基于 Chromium 的浏览器组件）或 QWebView（基于 WebKit）嵌入网页内容。与 PyWebView 和 CEF Python 相比，PyQt6 提供了更强大的桌面应用开发能力，可以构建复杂的用户界面。</p>
+<li><p><code>PyQt6</code> 的适用场景<br><code>PyQt6</code> 是基于 Qt 库的 Python 绑定，提供了丰富的桌面 GUI 功能。它可以通过 <code>QWebEngineView</code>（基于 Chromium 的浏览器组件）或 <code>QWebView</code>（基于 WebKit）嵌入网页内容。与 <code>PyWebView</code> 和 <code>CEF Python</code> 相比，<code>PyQt6</code> 提供了更强大的桌面应用开发能力，可以构建复杂的用户界面。</p>
 <p>优点：</p>
 <ul>
-<li>完整的桌面应用框架：PyQt6 不仅支持嵌入网页，还能构建复杂的本地 GUI 应用，提供丰富的 UI 控件。</li>
-<li>跨平台：支持 Windows、macOS 和 Linux，Qt 本身就是跨平台的，PyQt6 继承了这一特性。</li>
-<li>嵌入 Chromium 或 WebKit：PyQt6 的 QWebEngineView 基于 Chromium 引擎，功能类似于 CEF Python，可以渲染现代网页应用程序。</li>
-<li>与本地代码的深度集成：可以通过 PyQt6 完全控制窗口行为、桌面通知、本地文件系统交互等。</li>
+<li>完整的桌面应用框架：<code>PyQt6</code> 不仅支持嵌入网页，还能构建复杂的本地 GUI 应用，提供丰富的 UI 控件。</li>
+<li>跨平台：支持 Windows、macOS 和 Linux，Qt 本身就是跨平台的，<code>PyQt6</code> 继承了这一特性。</li>
+<li>嵌入 Chromium 或 WebKit：<code>PyQt6</code> 的 <code>QWebEngineView</code> 基于 Chromium 引擎，功能类似于 <code>CEF Python</code>，可以渲染现代网页应用程序。</li>
+<li>与本地代码的深度集成：可以通过 <code>PyQt6</code> 完全控制窗口行为、桌面通知、本地文件系统交互等。</li>
 </ul>
 <p>缺点：</p>
 <ul>
-<li>复杂性：PyQt6 的 API 非常强大，但学习曲线相对较陡，尤其是对于只需要简单 Web 嵌入功能的项目。</li>
-<li>打包体积大：因为 QWebEngineView 使用 Chromium 内核，打包 PyQt6 应用时体积较大，接近 CEF Python 的水平。</li>
-<li>与 Web 技术集成相对较弱：虽然 PyQt6 可以嵌入网页，但它的主要强项是桌面 GUI，而不是 Web UI。如果你只需要简单嵌入网页内容，PyQt6 可能显得过于复杂。</li>
+<li>复杂性：<code>PyQt6</code> 的 API 非常强大，但学习曲线相对较陡，尤其是对于只需要简单 Web 嵌入功能的项目。</li>
+<li>打包体积大：因为 <code>QWebEngineView</code> 使用 Chromium 内核，打包 <code>PyQt6</code> 应用时体积较大，接近 <code>CEF Python</code> 的水平。</li>
+<li>与 Web 技术集成相对较弱：虽然 <code>PyQt6</code> 可以嵌入网页，但它的主要强项是桌面 GUI，而不是 Web UI。如果你只需要简单嵌入网页内容，<code>PyQt6</code> 可能显得过于复杂。</li>
 </ul>
 </li>
-<li><p>PyWebView 的适用场景<br>PyWebView 是一个轻量级的库，专注于将 HTML、CSS 和 JavaScript 应用嵌入到本地 Python 程序中。它的核心目标是提供一个最小的浏览器窗口，用于呈现 Web 内容。</p>
+<li><p><code>PyWebView</code> 的适用场景<br><code>PyWebView</code> 是一个轻量级的库，专注于将 HTML、CSS 和 JavaScript 应用嵌入到本地 Python 程序中。它的核心目标是提供一个最小的浏览器窗口，用于呈现 Web 内容。</p>
 <p>优点：</p>
 <ul>
-<li>轻量和简单：相比 PyQt6 和 CEF Python，PyWebView 更加轻量和简单，易于学习和使用。对于简单的 Web 嵌入需求，它是一个理想的选择。</li>
-<li>较小的打包体积：PyWebView 使用系统自带的 WebKit（macOS）或 EdgeHTML（Windows），所以应用体积不会太大。</li>
-<li>快速开发：如果你的应用以 Web 技术为主，并且只需要一个简单的窗口来展示网页，PyWebView 是一个非常高效的工具。</li>
+<li>轻量和简单：相比 <code>PyQt6</code> 和 <code>CEF Python</code>，<code>PyWebView</code> 更加轻量和简单，易于学习和使用。对于简单的 Web 嵌入需求，它是一个理想的选择。</li>
+<li>较小的打包体积：<code>PyWebView</code> 使用系统自带的 WebKit（macOS）或 EdgeHTML（Windows），所以应用体积不会太大。</li>
+<li>快速开发：如果你的应用以 Web 技术为主，并且只需要一个简单的窗口来展示网页，<code>PyWebView</code> 是一个非常高效的工具。</li>
 </ul>
 <p>缺点：</p>
 <ul>
-<li>功能较弱：PyWebView 缺乏桌面 GUI 控件库，不能像 PyQt6 那样提供复杂的本地桌面控件。</li>
-<li>不适合复杂的本地集成：与 PyQt6 相比，PyWebView 对本地系统功能的集成相对较少。如果你需要深度集成桌面功能（如文件对话框、拖放、通知等），PyWebView 可能不够用。</li>
+<li>功能较弱：<code>PyWebView</code> 缺乏桌面 GUI 控件库，不能像 <code>PyQt6</code> 那样提供复杂的本地桌面控件。</li>
+<li>不适合复杂的本地集成：与 <code>PyQt6</code> 相比，<code>PyWebView</code> 对本地系统功能的集成相对较少。如果你需要深度集成桌面功能（如文件对话框、拖放、通知等），<code>PyWebView</code> 可能不够用。</li>
 </ul>
 </li>
-<li><p>CEF Python 的适用场景<br>CEF Python 是基于 Chromium Embedded Framework（CEF）的 Python 绑定，允许你在桌面应用中嵌入一个完整的 Chromium 浏览器。这使得它非常适合需要复杂 Web 内容的应用。</p>
+<li><p><code>CEF Python</code> 的适用场景<br><code>CEF Python</code> 是基于 Chromium Embedded Framework（CEF）的 Python 绑定，允许你在桌面应用中嵌入一个完整的 Chromium 浏览器。这使得它非常适合需要复杂 Web 内容的应用。</p>
 <p>优点：</p>
 <ul>
-<li>完整的 Chromium 支持：CEF Python 提供了现代网页功能支持，包括 HTML5、CSS3、JavaScript 和 WebAssembly，因此非常适合构建基于 Web 技术的复杂应用。</li>
-<li>强大的扩展能力：CEF Python 提供了强大的 API 来与本地应用进行交互，例如在 Python 中执行 JavaScript、操作 DOM 等。</li>
-<li>高性能：由于使用 Chromium 内核，CEF Python 对于渲染现代网页应用具有出色的性能。</li>
+<li>完整的 Chromium 支持：<code>CEF Python</code> 提供了现代网页功能支持，包括 HTML5、CSS3、JavaScript 和 WebAssembly，因此非常适合构建基于 Web 技术的复杂应用。</li>
+<li>强大的扩展能力：<code>CEF Python</code> 提供了强大的 API 来与本地应用进行交互，例如在 Python 中执行 JavaScript、操作 DOM 等。</li>
+<li>高性能：由于使用 Chromium 内核，<code>CEF Python</code> 对于渲染现代网页应用具有出色的性能。</li>
 </ul>
 <p>缺点：</p>
 <ul>
-<li>较大的体积：CEF Python 的体积较大，因为它包含了完整的 Chromium 内核，打包后的应用体积也较大。</li>
-<li>复杂性：CEF Python 的 API 相对复杂，虽然功能强大，但需要较多的配置和编程工作。</li>
+<li>较大的体积：<code>CEF Python</code> 的体积较大，因为它包含了完整的 Chromium 内核，打包后的应用体积也较大。</li>
+<li>复杂性：<code>CEF Python</code> 的 API 相对复杂，虽然功能强大，但需要较多的配置和编程工作。</li>
 </ul>
 </li>
-<li><p>PyQt6 能否替代 PyWebView 或 CEF Python？</p>
-<p>PyQt6 替代 PyWebView</p>
+<li><p><code>PyQt6</code> 能否替代 <code>PyWebView</code> 或 <code>CEF Python</code>？</p>
+<p><code>PyQt6</code> 替代 <code>PyWebView</code></p>
 <ul>
-<li>如果你的应用需要复杂的 GUI 组件、桌面功能（如文件选择、拖放等），PyQt6 是更好的选择。PyWebView 虽然轻量，但功能非常有限，无法提供 PyQt6 那样的丰富控件。</li>
-<li>如果你只需要嵌入简单的网页，并且不需要复杂的桌面功能，PyWebView 更合适。PyQt6 在这种场景下显得有些“重量过大”。</li>
+<li>如果你的应用需要复杂的 GUI 组件、桌面功能（如文件选择、拖放等），<code>PyQt6</code> 是更好的选择。<code>PyWebView</code> 虽然轻量，但功能非常有限，无法提供 <code>PyQt6</code> 那样的丰富控件。</li>
+<li>如果你只需要嵌入简单的网页，并且不需要复杂的桌面功能，<code>PyWebView</code> 更合适。<code>PyQt6</code> 在这种场景下显得有些“重量过大”。</li>
 </ul>
-<p>PyQt6 替代 CEF Python</p>
+<p><code>PyQt6</code> 替代 <code>CEF Python</code></p>
 <ul>
-<li>如果你需要一个嵌入式浏览器来显示复杂的 Web 内容，PyQt6 的 QWebEngineView 可以作为 CEF Python 的替代品。它也是基于 Chromium 引擎的，因此在渲染现代网页方面与 CEF Python 有相似的能力。</li>
-<li>如果你需要深度的 Web 技术支持（如执行复杂的 JavaScript 代码、与 DOM 的双向通信），CEF Python 提供更强的 API 和更好的集成。虽然 QWebEngineView 可以处理网页，但 CEF Python 的定制化程度更高。</li>
+<li>如果你需要一个嵌入式浏览器来显示复杂的 Web 内容，<code>PyQt6</code> 的 <code>QWebEngineView</code> 可以作为 <code>CEF Python</code> 的替代品。它也是基于 Chromium 引擎的，因此在渲染现代网页方面与 <code>CEF Python</code> 有相似的能力。</li>
+<li>如果你需要深度的 Web 技术支持（如执行复杂的 JavaScript 代码、与 DOM 的双向通信），<code>CEF Python</code> 提供更强的 API 和更好的集成。虽然 <code>QWebEngineView</code> 可以处理网页，但 <code>CEF Python</code> 的定制化程度更高。</li>
 </ul>
 </li>
 <li><p>结论</p>
 <ul>
-<li>使用 PyQt6 替代 PyWebView：当你需要更多的桌面控件、本地系统功能以及更加复杂的 GUI 时，PyQt6 是一个功能强大的替代方案。但如果你只需要简单的 Web 嵌入，PyWebView 更轻量，可能是更好的选择。</li>
-<li>使用 PyQt6 替代 CEF Python：对于大多数嵌入网页的需求，PyQt6 的 QWebEngineView 可以胜任，但如果你对 Web 功能有更多要求，特别是需要深度的 Chromium 控制和 JavaScript 与 Python 间的通信，CEF Python 仍然是更好的选择。</li>
+<li>使用 <code>PyQt6</code> 替代 <code>PyWebView</code>：当你需要更多的桌面控件、本地系统功能以及更加复杂的 GUI 时，<code>PyQt6</code> 是一个功能强大的替代方案。但如果你只需要简单的 Web 嵌入，<code>PyWebView</code> 更轻量，可能是更好的选择。</li>
+<li>使用 <code>PyQt6</code> 替代 <code>CEF Python</code>：对于大多数嵌入网页的需求，<code>PyQt6</code> 的 <code>QWebEngineView</code> 可以胜任，但如果你对 Web 功能有更多要求，特别是需要深度的 Chromium 控制和 JavaScript 与 Python 间的通信，<code>CEF Python</code> 仍然是更好的选择。</li>
 </ul>
-<p>总之，选择 PyQt6 还是 PyWebView&#x2F;CEF Python 取决于你的项目复杂度和你对桌面应用或 Web 功能的需求。</p>
+<p>总之，选择 <code>PyQt6</code> 还是 <code>PyWebView</code> 或 <code>CEF Python</code> 取决于你的项目复杂度和你对桌面应用或 Web 功能的需求。</p>
 </li>
 </ol>
 <br />
@@ -16396,7 +16438,7 @@ Updating files: 100% (145/145), done.
 <th>特性&nbsp;</th>
 <th>&nbsp;<strong>Dash</strong>&nbsp;</th>
 <th>&nbsp;<strong>PyWebIO</strong>&nbsp;</th>
-<th>&nbsp;<strong>Gradio</strong>&nbsp;</th>
+<th>&nbsp;<code>Gradio</code>&nbsp;</th>
 <th>&nbsp;<strong>Streamlit</strong>&nbsp;</th>
 <th>&nbsp;<strong>Panel</strong>&nbsp;</th>
 <th>&nbsp;<strong>Voila</strong></th>
@@ -16514,45 +16556,45 @@ Updating files: 100% (145/145), done.
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
 			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>4</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>4</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
