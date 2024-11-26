@@ -572,7 +572,38 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-<p><a target="_blank" rel="noopener" href="https://github.com/ku-nlp/jumanpp/releases/download/v2.0.0-rc4/jumanpp-2.0.0-rc4.tar.xz">https://github.com/ku-nlp/jumanpp/releases/download/v2.0.0-rc4/jumanpp-2.0.0-rc4.tar.xz</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ku-nlp/jumanpp/releases/download/v2.0.0-rc4/jumanpp-2.0.0-rc4.tar.xz">Juman++ 2.0.0 rc4</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://scoop.sh/">Scoop</a> on Windows 11</p>
+<div class="highlight"><pre><span></span><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+<span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="n">https</span><span class="p">://</span><span class="n">get</span><span class="p">.</span><span class="n">scoop</span><span class="p">.</span><span class="n">sh</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
+<span class="n">scoop</span> <span class="n">bucket</span> <span class="n">add</span> <span class="n">main</span>
+<span class="n">scoop</span> <span class="n">install</span> <span class="n">main</span><span class="p">/</span><span class="n">cmake</span>
+<span class="n">scoop</span> <span class="n">install</span> <span class="n">main</span><span class="p">/</span><span class="n">make</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ubuntu</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>g++-10<span class="w"> </span>clang<span class="w"> </span>cmake
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libprotobuf-dev<span class="w"> </span>protobuf-compiler
+<span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>tar<span class="w"> </span>xvf<span class="w"> </span>jumanpp-2.0.0-rc4.tar.xz
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/jumanpp-2.0.0-rc4/build
+<span class="nb">cd</span><span class="w"> </span>~/jumanpp-2.0.0-rc4/build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/usr/local
+<span class="nb">cd</span><span class="w"> </span>~/jumanpp-2.0.0-rc4/build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span>
+sudo<span class="w"> </span>make<span class="w"> </span>install
+</pre></div>
 
 </div>
 </div>
@@ -581,7 +612,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-<p><a target="_blank" rel="noopener" href="https://lotus.kuee.kyoto-u.ac.jp/nl-resource/jumanpp/jumanpp-1.02.tar.xz">https://lotus.kuee.kyoto-u.ac.jp/nl-resource/jumanpp/jumanpp-1.02.tar.xz</a></p>
+<p><a target="_blank" rel="noopener" href="https://lotus.kuee.kyoto-u.ac.jp/nl-resource/jumanpp/jumanpp-1.02.tar.xz">Juman++ 1.02</a> with Model File</p>
 
 </div>
 </div>
@@ -614,6 +645,14 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On Linux</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -622,6 +661,28 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
 sudo<span class="w"> </span>apt<span class="w"> </span>update
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libboost-all-dev
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On macOS</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+brew<span class="w"> </span>install<span class="w"> </span>boost
 </pre></div>
 
     </div>
