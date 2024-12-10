@@ -1482,6 +1482,23 @@
 <p>　　她听说我想考 N1。向我提出了“個別授業”（５０分＝３５００円）、“Eメールで指導”（１０回＝１５０００円）。按照中国家教的收费情况来看，好像有点贵。50 分钟视频 210 块人民币。1 次邮件 90 块人民币。由于不是公司出钱，所以我用“ちょっと考えます”回复她了。最主要的原因是，她不是那位我想要深入了解的人呐。</p>
 <p>　　说到家教，我感觉这是我大学经历里的一个遗憾。我觉得，家教是一个极好的社会实践方式呢。曾经想过试试做家教。但被我姑姑劝说，“不需要你去做家教赚生活费。你有这个时间不如去好好准备出国留学。”结果，到头来，我也没有好好准备出国留学的事情。心愿很美好。但是，结果却往往事与愿违。仿佛保罗那句话“立志行善由得我，行出来却由不得我。”（罗马书 7:18）虽说现在在日本的公司上班，也算是出国了，但是我真的是没有为这件事特意付出过多少努力。</p>
 <p>　　不知道远方的你有没有曾经给别人上过家教？现在能在外面教授补习班吗？</p>
+<br />
+
+<blockquote>
+<p>我们知道律法是属灵的，我却是属肉体的，已经卖给罪了。因为我所作的，我不明白；我所愿意的，我没有去作，我所恨恶的，我倒去作。如果我所不愿意的，我倒去作，我就不得不承认律法是好的。既是这样，那就不是我作的，而是住在我里面的罪作的。我知道在我里面，就是在我肉体之中，没有良善，因为立志行善由得我，行出来却由不得我。所以我愿意行的善，我没有去行；我不愿意作的恶，我倒去作了。我若作自己不愿意作的事，那就不是我作的，而是住在我里面的罪作的。因此，我发现了一个律，就是我想向善的时候，恶就在我里面出现。按着我里面的人来说，我是喜欢　神的律，但我发觉肢体中另有一个律，和我心中的律争战，把我掳去附从肢体中的罪律。我这个人真是苦啊！谁能救我脱离这使我死亡的身体呢？<br>(罗马书 7:14-24 新译本)</p>
+</blockquote>
+<p>保罗童年的房角石是对于父母师长的敬重和对于火湖的畏惧。</p>
+<br />
+
+<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/dwMKOPPDpcg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>伊斯兰教徒在『义』的重压之下寻求『圣战』作为出路。</p>
+<br />
+
+<blockquote>
+<p>感谢　神，藉着我们的主耶稣基督就能脱离了。可见，一方面我自己心里服事　神的律，另一方面我的肉体却服事罪的律。<br>(罗马书 7:25 新译本)</p>
+</blockquote>
+<p>保罗找到了主雅苏和他的复活。</p>
 
 	
 	</div>
@@ -1646,6 +1663,21 @@
 <p>我经过懒惰人的田地，<br> 全无心思之人的葡萄园；<br> 只见蒺藜长满了地皮！<br> 刺草盖满了田面！<br> 其石墙也翻毁了！<br> 我看了就留心思想，<br> 我看着就得了训诲：<br> 『且睡片时，且打盹片时，<br> 且抱着手躺着片时』，<br> 你的贫穷就如拦路贼忽来，<br> 你的穷乏就像武装匪来到了！<br> (箴言 24:30-34 吕振中)</p>
 </blockquote>
 <hr>
+<h2 id="Change-Post-Sorting"><a href="#Change-Post-Sorting" class="headerlink" title="Change Post Sorting"></a>Change Post Sorting</h2><blockquote>
+<p>Sort Posts Based on Markdown File Paths</p>
+</blockquote>
+<h3 id="node-modules-hexo-lib-plugins-generator-post-js"><a href="#node-modules-hexo-lib-plugins-generator-post-js" class="headerlink" title="node_modules&#x2F;hexo&#x2F;lib&#x2F;plugins&#x2F;generator&#x2F;post.js"></a>node_modules&#x2F;hexo&#x2F;lib&#x2F;plugins&#x2F;generator&#x2F;post.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">postGenerator</span>(<span class="params">locals</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> posts = locals.<span class="property">posts</span>.<span class="title function_">sort</span>(<span class="string">&#x27;-path&#x27;</span>).<span class="title function_">toArray</span>();</span><br><span class="line">  <span class="keyword">const</span> &#123; length &#125; = posts;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> posts.<span class="title function_">map</span>(<span class="function">(<span class="params">post, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; path, layout &#125; = post;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!layout || layout === <span class="string">&#x27;false&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        path,</span><br><span class="line">        <span class="attr">data</span>: post.<span class="property">content</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (i) post.<span class="property">prev</span> = posts[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (i &lt; length - <span class="number">1</span>) post.<span class="property">next</span> = posts[i + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> layouts = [<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;page&#x27;</span>, <span class="string">&#x27;index&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (layout !== <span class="string">&#x27;post&#x27;</span>) layouts.<span class="title function_">unshift</span>(layout);</span><br><span class="line"></span><br><span class="line">    post.<span class="property">__post</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      path,</span><br><span class="line">      <span class="attr">layout</span>: layouts,</span><br><span class="line">      <span class="attr">data</span>: post</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = postGenerator;</span><br></pre></td></tr></table></figure>
+
+<h3 id="node-modules-hexo-generator-index-index-js"><a href="#node-modules-hexo-generator-index-index-js" class="headerlink" title="node_modules&#x2F;hexo-generator-index&#x2F;index.js"></a>node_modules&#x2F;hexo-generator-index&#x2F;index.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* global hexo */</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">config</span>.<span class="property">index_generator</span> = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;</span><br><span class="line">  <span class="attr">per_page</span>: <span class="keyword">typeof</span> hexo.<span class="property">config</span>.<span class="property">per_page</span> === <span class="string">&#x27;undefined&#x27;</span> ? <span class="number">10</span> : hexo.<span class="property">config</span>.<span class="property">per_page</span>,</span><br><span class="line">  <span class="attr">order_by</span>: <span class="keyword">typeof</span> hexo.<span class="property">config</span>.<span class="property">per_page</span> === <span class="string">&#x27;undefined&#x27;</span> ? <span class="string">&#x27;-date&#x27;</span> : hexo.<span class="property">config</span>.<span class="property">order_by</span></span><br><span class="line">&#125;, hexo.<span class="property">config</span>.<span class="property">index_generator</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">generator</span>.<span class="title function_">register</span>(<span class="string">&#x27;index&#x27;</span>, <span class="built_in">require</span>(<span class="string">&#x27;./lib/generator&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pagination</span></span><br><span class="line"><span class="comment">## Set per_page to 0 to disable pagination</span></span><br><span class="line"><span class="attr">per_page:</span> <span class="number">10</span></span><br><span class="line"><span class="attr">pagination_dir:</span> <span class="string">page</span></span><br><span class="line"><span class="attr">order_by:</span> <span class="string">-path</span></span><br><span class="line"></span><br><span class="line"><span class="attr">archive_generator:</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-path</span></span><br><span class="line"></span><br><span class="line"><span class="attr">tag_generator:</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-path</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="freemind-layout-partial-archive-ejs"><a href="#freemind-layout-partial-archive-ejs" class="headerlink" title="freemind&#x2F;layout&#x2F;_partial&#x2F;archive.ejs"></a>freemind&#x2F;layout&#x2F;_partial&#x2F;archive.ejs</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% posts.<span class="title function_">sort</span>(<span class="string">&#x27;path&#x27;</span>, -<span class="number">1</span>).<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params">item</span>)&#123; %&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="freemind-layout-tags-ejs"><a href="#freemind-layout-tags-ejs" class="headerlink" title="freemind&#x2F;layout&#x2F;tags.ejs"></a>freemind&#x2F;layout&#x2F;tags.ejs</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% site.<span class="property">posts</span>.<span class="title function_">sort</span>(<span class="string">&#x27;path&#x27;</span>, -<span class="number">1</span>).<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">it</span>)&#123; %&gt;</span><br></pre></td></tr></table></figure>
+
+<br />
+
 <blockquote>
 <p>我为自己动大工程，建造房屋，为自己栽种葡萄园，为自己修造庭园和园圃，在其中栽种各样果木树；我为自己挖造水池，用来浇灌生长的树林。我买了仆婢，也有生于家中的仆婢；我又有许多牛群羊群，胜过我以前所有在耶路撒冷的人。我又为自己积蓄着金银、和君王的珍宝、各省的珍宝；我得了男女歌唱者和人类所喜爱之物、并许多的妃嫔。<br>(传道书 2:4-8 吕振中)</p>
 </blockquote>
@@ -1738,6 +1770,121 @@
 <blockquote>
 <p>关于所应许的、主并不耽延，像有些人就看为耽延了；不，他乃是以恒忍待你们的；他不愿有人灭亡，惟愿人人都进到悔改的地步。<br>(彼得后书 3:9 吕振中)</p>
 </blockquote>
+<p>比较天主教的炼狱与摩尔门教的灵界：</p>
+<ol>
+<li>基本概念<ul>
+<li>天主教的炼狱：<ul>
+<li>炼狱是天主教教义中的一种临时状态，指灵魂在进入天堂之前需要经历净化，以除去轻罪或未赎的暂罚罪。</li>
+<li>它是为已经得救但尚未完全圣洁的灵魂准备的，净化后灵魂可进入天堂。</li>
+<li>炼狱的教义依据主要来源于《圣经》的次经（如《马加比二书》）和圣传。</li>
+</ul>
+</li>
+<li>摩尔门教的灵界：<ul>
+<li>摩尔门教认为灵界（Spirit World）是死后灵魂的一个过渡阶段。</li>
+<li>灵界分为两个部分：<ul>
+<li>乐园（Paradise）：为义人提供安息。</li>
+<li>灵的监狱（Spirit Prison）：为未接受福音或有罪的人提供悔改和学习的机会。</li>
+</ul>
+</li>
+<li>在灵的监狱中，灵魂有机会听从耶稣基督的教导并接受救赎。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>目的<ul>
+<li>炼狱：<ul>
+<li>净化灵魂，使其达到进入天堂的圣洁标准。</li>
+<li>重点是弥补罪行的后果，而非接受新的教导。</li>
+</ul>
+</li>
+<li>灵界：<ul>
+<li>为那些在世未接受福音或悔改的人提供最后的机会。</li>
+<li>灵界的核心在于教育和救赎，而非纯粹的净化。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>救赎与祷告的作用<ul>
+<li>炼狱：<ul>
+<li>活着的信徒通过祷告、弥撒和善行可以为炼狱中的灵魂缩短净化的时间。</li>
+<li>教会鼓励为炼狱中的亡者代祷。</li>
+</ul>
+</li>
+<li>灵界：<ul>
+<li>活着的信徒无法通过祷告直接影响灵界的灵魂。</li>
+<li>但摩尔门教强调活人可以通过『代理洗礼』等仪式帮助死者接受福音。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>时间性<ul>
+<li>炼狱：<ul>
+<li>被视为短暂状态，虽然具体时长不明确。</li>
+<li>最终所有灵魂都会进入天堂。</li>
+</ul>
+</li>
+<li>灵界：<ul>
+<li>是死后到复活之间的灵魂阶段，持续到最终审判为止。</li>
+<li>最终灵魂会根据接受福音与否，被分配到不同的荣耀（如三重天或外在黑暗）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>神学基础<ul>
+<li>炼狱：<ul>
+<li>建基于天主教对罪、救赎和善行的神学理解。</li>
+<li>强调通过痛苦和祷告达到灵魂的完全净化。</li>
+</ul>
+</li>
+<li>灵界：<ul>
+<li>根植于摩尔门教的独特教义，即神会为所有灵魂提供救赎机会。</li>
+<li>强调神的恩典与个人选择的结合。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>总结<br>天主教的炼狱与摩尔门教的灵界都描述了灵魂在死后最终归属之前的一个过渡阶段，但两者在目的、时间性和救赎的机制上有显著差异：</p>
+<ul>
+<li>炼狱偏向罪的清算与净化。</li>
+<li>灵界则更关注教育、悔改和接受福音的机会。<br>两者共同反映了对灵魂状态与救赎体系的复杂理解，但其教义背景和实践方式反映了两个教派截然不同的神学传统。</li>
+</ul>
+<br />
+
+<p>代理洗礼是摩尔门教的一项独特宗教仪式，用于为那些在世时没有机会接受福音并受洗的人提供救恩的机会。这项实践基于该教会对《圣经》和《摩尔门经》特定经文的理解，特别是《哥林多前书》15:29提到的『为死人受洗』。</p>
+<p>如何实行代理洗礼？</p>
+<ol>
+<li>准备工作：</li>
+</ol>
+<ul>
+<li>教会成员通过家谱研究识别自己去世的亲属。</li>
+<li>家谱信息被提交到教会的家谱系统（FamilySearch）中。</li>
+</ul>
+<ol start="2">
+<li>圣殿仪式：</li>
+</ol>
+<ul>
+<li>代理洗礼只能在摩尔门教的圣殿中进行，由持有圣职（男性成员）进行仪式。</li>
+<li>活着的教会成员以去世亲属的名义接受洗礼，浸没于水中。</li>
+</ul>
+<ol start="3">
+<li>象征意义：</li>
+</ol>
+<ul>
+<li>这不是强制性的救赎，而是一种机会。去世的人可以在灵界中选择是否接受。</li>
+</ul>
+<ol start="4">
+<li>灵界的作用：</li>
+</ol>
+<ul>
+<li>摩尔门教认为灵界是死后灵魂停留的地方，分为『乐园』和『监狱』。</li>
+<li>未听过福音的人将在灵界有机会学习并接受救恩。</li>
+</ul>
+<p>对于实践的看法</p>
+<ul>
+<li>教会内：被认为是一种爱的表达，给予所有人公平的救恩机会。</li>
+<li>其他基督教派：许多人质疑这项实践的圣经依据，并认为它与传统基督教教义不符。</li>
+</ul>
 <hr>
 <blockquote>
 <p>『若不是我怕仇敌惹我发怒，<br>我原想着说：「我必将他们割裂成块，<br>使他们的名号都灭绝于人间」；<br>恐怕敌人判断错了，<br>恐怕他们说：「是我们的手高举起来作的，<br>并不是永恒主行了这一切事啊。」<br>(申命记 32:26-27 吕振中)</p>
@@ -1767,6 +1914,9 @@
 </li>
 </ol>
 <p>尼采对父亲的怀念充满敬爱与遗憾，同时也成为他哲学反思的重要起点。父亲的虔诚与早逝既是尼采幼年情感的根源，也为他后来的哲学批判和探索提供了内在的动力。这种复杂的情感，使尼采的作品充满了既温情又批判的独特张力。</p>
+<br />
+
+<p>脱离基督教家庭的人是因为苦难和刑罚。<br>进入基督教家庭的人是因为罪恶和公义。</p>
 <hr>
 <blockquote>
 <p>『因为他们是缺乏智谋的国，<br>他们心中毫无聪明。<br>只要他们有智慧，就会明白这事，<br>就肯思想他们自己的结局了。<br>(申命记 32:28-29 吕振中)</p>
@@ -2063,45 +2213,45 @@
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>4</span></a></li>
-		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>4</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
 			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
 			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
