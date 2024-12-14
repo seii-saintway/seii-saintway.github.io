@@ -1,0 +1,917 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>量子虚拟机 | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="量子计算模拟器（Quantum Computing Simulator）和量子虚拟机（Quantum Virtual Machine）
+量子虚拟机通常被认为比量子计算模拟器更高级，主要体现在以下几个方面：
+
+模拟的层次与范围
+
+
+量子计算模拟器：
+量子计算模拟器通常专注于模拟量子计算机的具体行为，例">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="量子虚拟机"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 量子虚拟机</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>量子计算模拟器（Quantum Computing Simulator）和量子虚拟机（Quantum Virtual Machine）</p>
+<p>量子虚拟机通常被认为比量子计算模拟器更高级，主要体现在以下几个方面：</p>
+<ol>
+<li>模拟的层次与范围</li>
+</ol>
+<ul>
+<li>量子计算模拟器：<ul>
+<li>量子计算模拟器通常专注于模拟量子计算机的具体行为，例如量子比特的状态、量子门操作和量子算法执行等。它通常模拟的是量子计算过程的核心部分，即量子电路的运行。</li>
+<li>由于其主要模拟量子比特的操作和量子算法，它的应用范围更多集中于小规模的量子系统，因为随着量子比特数量的增加，计算复杂度也会快速增长。</li>
+</ul>
+</li>
+<li>量子虚拟机：<ul>
+<li>量子虚拟机提供了一个更为完整和高级的虚拟量子计算环境，不仅模拟量子比特的操作，还模拟整个量子计算机的硬件和资源管理。例如，它可以管理量子比特的分配、量子门的执行，以及量子计算中的资源调度等。</li>
+<li>量子虚拟机允许开发者运行和调试量子程序，并在一个类似于实际量子计算机的环境中进行开发。它支持模拟更复杂的量子计算系统，且通常包括对量子硬件特性（如量子误差、退相干等）的模拟。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>功能与资源管理</li>
+</ol>
+<ul>
+<li>量子计算模拟器：<ul>
+<li>量子计算模拟器通常侧重于单一功能——模拟量子计算的操作和算法。它是为开发、测试和验证量子算法而设计的工具，主要通过数值计算来实现量子计算过程的模拟。</li>
+<li>模拟器通常不涉及量子计算机硬件资源的管理和调度，也不完全模拟量子计算机的工作环境。</li>
+</ul>
+</li>
+<li>量子虚拟机：<ul>
+<li>量子虚拟机提供了一个完整的虚拟量子计算平台，不仅模拟量子计算的算法，还模拟量子计算机的硬件资源、管理和调度。例如，它可以处理量子比特之间的交互、量子门的应用、量子算法的执行等多个层面。</li>
+<li>量子虚拟机能够支持量子硬件抽象层，使得用户在开发量子程序时无需直接关注硬件细节，能够在虚拟环境中模拟量子计算机的所有操作和行为。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>适用性与扩展性</li>
+</ol>
+<ul>
+<li>量子计算模拟器：<ul>
+<li>通常用于量子算法验证和研究，尤其适用于在没有量子硬件的情况下进行测试。</li>
+<li>适合用于小规模的量子系统，因为经典计算机的计算能力有限，无法有效模拟大量量子比特的行为。</li>
+</ul>
+</li>
+<li>量子虚拟机：<ul>
+<li>量子虚拟机更适合用于量子程序开发和调试，特别是当开发者需要一个更完整的虚拟量子计算机环境来运行和优化程序时。</li>
+<li>它通常具有更好的扩展性，可以支持较大规模的量子计算系统，且不受经典计算机的计算能力的限制。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>模拟的细致程度</li>
+</ol>
+<ul>
+<li>量子计算模拟器：<ul>
+<li>模拟器通常关注量子算法的执行，提供的是一个较为简化的模型，专注于模拟量子比特之间的量子门操作及量子计算流程。</li>
+</ul>
+</li>
+<li>量子虚拟机：<ul>
+<li>虚拟机则提供了更细致的模拟，不仅模拟量子操作，还能模拟整个量子计算机的运行环境，包括量子计算机的硬件特性、资源分配、调度策略、量子误差等。它是一个接近实际量子计算机的虚拟化工具，允许开发者运行、调试、优化和执行量子算法。</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>开发和应用场景</li>
+</ol>
+<ul>
+<li>量子计算模拟器：<ul>
+<li>主要用于量子计算算法的测试和验证，适合在实验室环境中或教育平台中使用。它为量子研究人员提供了一个低成本的工具来验证和调试量子算法。</li>
+</ul>
+</li>
+<li>量子虚拟机：<ul>
+<li>除了用于量子算法的开发，还可用于量子程序的调试、性能优化和与硬件接口的对接。它允许开发者进行更复杂的模拟，尤其在没有实际量子硬件的情况下，能够提供更为丰富的开发体验。</li>
+</ul>
+</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>量子虚拟机通常被认为是比量子计算模拟器更高级的工具，因为它提供了一个完整的虚拟量子计算环境，不仅模拟量子计算的核心过程，还涉及资源管理、硬件抽象、程序调试等多个层面。</li>
+<li>量子计算模拟器专注于量子算法的测试与验证，适用于较小规模的量子系统，而量子虚拟机则能够模拟更复杂的量子计算系统和硬件特性，支持量子程序的开发和调试。</li>
+</ul>
+<p>因此，量子虚拟机更适合用于量子算法的开发、测试和调试，而量子计算模拟器则更多用于算法验证和基础研究。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>研究综述</p>
+<ul>
+<li><p>1 研究基础</p>
+<ul>
+<li><p>1.1 VeePalms平台和OpenModelica Compute Unit（OMCU）</p>
+<p>OMCU主要完成：与负载均衡服务器通信；将XML编译成Modelica文件；调用OpenModelica Compiler（OMC）将Modelica文件编译成C语言文件；调用C语言编译器将C语言文件编译成可执行的EXE文件；执行并监控EXE文件以完成交互式仿真。</p>
+<ul>
+<li>1.1.1 华科Resolver源代码（即OMCU）</li>
+<li>1.1.2 VeePalms相关论文<ul>
+<li>1.1.2.1 《Interactive Simulation of SysML Models using Modelica》（2009）</li>
+<li>1.1.2.2 《多领域仿真建模求解器的交互性研究与实现》（华科，2012）</li>
+<li>1.1.2.3 《面向多学科虚拟实验的任务管理机制研究》（华科，2012）</li>
+<li>1.1.2.4 《面向多学科虚拟实验平台的仿真任务流监控》（华科，2013）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>1.2 编译原理</p>
+<ul>
+<li><p>1.2.1 《现代编译原理（C语言描述）》，（美）Andrew。</p>
+<p>（主要关注基本原理和一些工具实现，如下）</p>
+<ul>
+<li>1.2.1.1 关于Regular Expression的Scanner Generator，比如Lex</li>
+<li>1.2.1.2 关于BNF Grammar的Parser Generator，比如Yacc</li>
+</ul>
+</li>
+<li><p>1.2.2 关于Modelica语言</p>
+<ul>
+<li>1.2.2.1 《Modelica Language Specification Version 3.0》</li>
+<li>1.2.2.2 一个应用实例《OpenModelica for Analog IC Design》</li>
+<li>1.2.2.3 NETLAB相关实例</li>
+</ul>
+</li>
+<li><p>1.2.3 关于RML和MetaModelica</p>
+<ul>
+<li>1.2.3.1 《A Compiler for Natural Semantics》</li>
+<li>1.2.3.2 《Developing Efficient Language Implementations from Structural and Natural Semantics》</li>
+<li>1.2.3.3 《Meta-Programming and Language Modeling with MetaModelica 1.0》
+（OpenModelicaMetaProgramming.pdf）</li>
+<li>1.2.3.4 《Modelica Text Template Language Susan Users Guide》
+（OpenModelicaTemplateProgramming.pdf）</li>
+<li>1.2.3.5 PELAB相关论文<ul>
+<li>《A Template-Based Code Generator for the OpenModelica Compiler》</li>
+<li>《A Template-Based Java Code Generator for OpenModelica and MetaModelica》</li>
+<li>《OMCCp: A MetaModelica Based Parser Generator Applied to Modelica》</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>1.2.4 MWorks相关论文</p>
+<ul>
+<li>1.2.4.1 《多领域统一建模语言分析器研究与实现》（华科，2005）</li>
+<li>1.2.4.2 《多领域建模仿真平台中语义分析关键机制研究与实现》（华科，2006）</li>
+<li>1.2.4.3 《多领域建模与仿真编译器前端交互若干关键技术研究》（华科，2007）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>1.3 并行计算</p>
+<ul>
+<li>1.3.1 《OpenCL异构计算》(2012)</li>
+<li>1.3.2 与OpenMP、MPI、TBB相关的教程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2 研究方向</p>
+<ul>
+<li><p>2.1 并行编译（分布式编译，Distributed Compilation）</p>
+<p>利用多核CPU或异构的计算机网络，并行地完成编译任务。</p>
+<p><strong>参考：</strong>distcc</p>
+</li>
+<li><p>2.2 直接编译</p>
+<p>当前OMCU的编译步骤为XML=&gt;Modelica=&gt;C=&gt;Binary Code。考虑简化编译步骤。</p>
+<p><strong>相关参考：</strong></p>
+<ul>
+<li>《Template Based XML and Modelica Unparser in OpenModelica》（2012）</li>
+<li>《GCC　Internals》</li>
+</ul>
+</li>
+<li><p>2.3 增量编译</p>
+<p>通过Modelica Library共享，避免修改场景Modelica文件后，重复加载、编译Modelica Library。</p>
+<p><strong>相关参考：</strong></p>
+<ul>
+<li>《Incremental Compilation and Dynamic Loading of Functions in OpenModelica》（2008）</li>
+<li>《面向多学科虚拟实验平台的仿真任务流监控》（华科，2013）</li>
+</ul>
+</li>
+<li><p>2.4 并行仿真</p>
+<p>改进OMC以生成并行版本的EXE文件。</p>
+<p><strong>相关参考：</strong></p>
+<ul>
+<li>《Automatic Parallelization of Equation-Based Simulation Programs》（2006）</li>
+<li>《ParModelica: Extending the Algorithmic Subset of Modelica with Explicit Parallel Language Constructs》（2011）</li>
+<li>《Simulation of Modelica Models on the CUDA Architecture》（2009）</li>
+<li>《Tools and Methods for Analysis, Debugging, and Performance Improvement of Equation-Based Models》（2015）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>同阶无穷小因子</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>圆弧长 $ \overline{(\theta) (2r)} $ 与直径 $ \overline{(2r)} $ 的比为 $ \theta $ 。</li>
+<li>圆弧所对应的弦长 $ \overline{(\sin \theta) (2r)} $ 与直径 $ \overline{(2r)} $ 的比为 $ \sin \theta $ 。</li>
+<li>圆弧所对应的弦心距 $ \overline{(\cos \theta) (r)} $ 与半径 $ \overline{(r)} $ 的比为 $ \cos \theta $ 。</li>
+<li>经过圆弧中点的切线段长 $ \overline{(\tan \theta) (2r)} $ 与直径 $ \overline{(2r)} $ 的比为 $ \tan \theta $ 。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+\left. \begin{array} {l}
+1: \overline{(\sin \theta) (2r)} &lt; \overline{(\theta) (2r)} \implies \sin \theta &lt; \theta \implies \frac{\sin \theta}{\theta} - 1 &lt; 0
+\\\\
+\left. \begin{array} {l}
+\left. \begin{array} {l}
+\left. \begin{array} {l}
+2: \overline{(\theta) (2r)} = \overset{\smallfrown}{\int} \overline{(\delta \theta) (2r)} \implies
+\frac{\overline{(\theta) (2r)} \times \overline{(r)}}{2} = \frac{[\overset{\smallfrown}{\int} \overline{(\delta \theta) (2r)}] \times \overline{(r)}}{2}
+\\
+3: \overset{\smallfrown}{\int} \overline{(\delta \theta) (2r)} = \overset{\smallfrown}{\int} \overline{(\sin \delta \theta) (2r)} \implies
+\frac{[\overset{\smallfrown}{\int} \overline{(\delta \theta) (2r)}] \times \overline{(r)}}{2} = \frac{[\overset{\smallfrown}{\int} \overline{(\sin \delta \theta) (2r)}] \times \overline{(r)}}{2}
+\\
+4: \frac{[\overset{\smallfrown}{\int} \overline{(\sin \delta \theta) (2r)}] \times \overline{(r)}}{2} = \overset{\smallfrown}{\int} \frac{\overline{(\sin \delta \theta) (2r)} \times \overline{(r)}}{2}
+\end{array} \right\} \implies
+\
+\frac{\overline{(\theta) (2r)} \times \overline{(r)}}{2} = \overset{\smallfrown}{\int} \frac{\overline{(\sin \delta \theta) (2r)} \times \overline{(r)}}{2}
+\\\\
+5: \overset{\smallfrown}{\int} \frac{\overline{(\sin \delta \theta) (2r)} \times \overline{(r)}}{2} &lt; \frac{\overline{(\tan \theta) (2r)} \times \overline{(r)}}{2}
+\end{array} \right\} \implies
+\
+\theta &lt; \tan \theta
+\\\\
+\left. \begin{array} {l}
+\begin{array} {l}
+6: \frac{\overline{(\cos \theta) (r)} \times \overline{(\sin \theta) (2r) / 2}}{2} + \frac{\overline{(r)}^2}{2} + \frac{\overline{(\cos \theta) (r)} \times \overline{(\sin \theta) (2r) / 2}}{2} \\
+= \frac{[\overline{(\cos \theta) (r)} + \overline{(\sin \theta) (2r) / 2}] \times [\overline{(\cos \theta) (r)} - \overline{(\sin \theta) (2r) / 2}]}{2} + [\overline{(\cos \theta) (r)} + \overline{(\sin \theta) (2r) / 2}] \times \overline{(\sin \theta) (2r) / 2}
+\\
+\implies \sin^2 \theta + \cos^2 \theta = 1
+\end{array}
+\\\\
+7: \theta &lt; \arcsin \sqrt{(\epsilon)(2 - \epsilon)} \implies \sin \theta &lt; \sqrt{(\epsilon)(2 - \epsilon)}
+\end{array} \right\} \implies
+\
+1 - \epsilon &lt; \cos \theta
+\\\\
+8: \frac{\overline{(\tan \theta) (2r) / 2}}{\overline{(r)}} = \frac{\overline{(\sin \theta) (2r) / 2}}{\overline{(\cos \theta) (r)}} \implies (\tan \theta) (\cos \theta) = \sin \theta
+\end{array} \right\} \implies
+\
+(\theta) (1 - \epsilon) &lt; \sin \theta \implies \frac{\sin \theta}{\theta} - 1 &gt; - \epsilon
+\end{array} \right\} \implies
+\
+\left| \frac{\sin \theta}{\theta} - 1 \right| &lt; \epsilon \implies \lim_{\theta \to 0^+} \frac{\sin \theta}{\theta} = 1
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>圆周运动</p>
+$$ \frac{\| \delta \vert v \rangle \|}{\| \vert v \rangle \|} = \frac{\| \delta \vert r \rangle \|}{\| \vert r \rangle\|}$$$$ \frac{\| \vert a \rangle \delta t \|}{\| \vert v \rangle \|} = \frac{\| \vert v \rangle \delta t \|}{\| \vert r \rangle\|}$$$$ \frac{\| \vert a \rangle \| \delta t}{\| \vert v \rangle \|} = \frac{\| \vert v \rangle \| \delta t}{\| \vert r \rangle\|}$$$$ \| \vert a \rangle \| = \frac{\| \vert v \rangle \|^2}{\| \vert r \rangle\|}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>描述碳原子中电子在库仑势中的运动需要解决多电子系统中的薛定谔方程。这比氢原子复杂得多，因为碳原子有六个电子，电子之间的相互作用不能被忽略。以下是描述过程的详细步骤：</p>
+<h3 id="1.-%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%93%88%E5%AF%86%E9%A1%BF%E7%AE%97%E7%AC%A6">1. &#31995;&#32479;&#30340;&#21704;&#23494;&#39039;&#31639;&#31526;<a class="anchor-link" href="#1.-%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%93%88%E5%AF%86%E9%A1%BF%E7%AE%97%E7%AC%A6">&#182;</a></h3><p>碳原子的哈密顿算符不仅包含电子在原子核库仑势中的动能和势能，还需要考虑电子之间的相互作用势能。哈密顿算符一般形式为：
+$$ \hat{H} = \sum_{i=1}^{6} \left( -\frac{\hbar^2}{2m} \nabla_i^2 - \frac{Z e^2}{4 \pi \epsilon_0 r_i} \right) + \sum_{i&lt;j}^{6} \frac{e^2}{4 \pi \epsilon_0 r_{ij}} $$</p>
+<p>其中：</p>
+<ul>
+<li>$ Z $ 是碳原子的核电荷数（即6），</li>
+<li>$ r_i $ 是第 $ i $ 个电子到原子核的距离，</li>
+<li>$ r_{ij} $ 是第 $ i $ 个电子和第 $ j $ 个电子之间的距离，</li>
+<li>第一个求和项代表每个电子的动能和与原子核的库仑相互作用势能，</li>
+<li>第二个求和项代表电子之间的库仑相互作用势能。</li>
+</ul>
+<h3 id="2.-%E8%96%9B%E5%AE%9A%E8%B0%94%E6%96%B9%E7%A8%8B">2. &#34203;&#23450;&#35860;&#26041;&#31243;<a class="anchor-link" href="#2.-%E8%96%9B%E5%AE%9A%E8%B0%94%E6%96%B9%E7%A8%8B">&#182;</a></h3><p>对于多电子原子，薛定谔方程写成：
+$$ \hat{H} \Psi(\mathbf{r}_1, \mathbf{r}_2, \ldots, \mathbf{r}_6) = E \Psi(\mathbf{r}_1, \mathbf{r}_2, \ldots, \mathbf{r}_6) $$</p>
+<p>其中，$\Psi$ 是整个系统的多电子波函数，包含所有电子的空间坐标。</p>
+<h3 id="3.-%E5%A4%9A%E7%94%B5%E5%AD%90%E6%B3%A2%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%91%E4%BC%BC%E6%96%B9%E6%B3%95">3. &#22810;&#30005;&#23376;&#27874;&#20989;&#25968;&#30340;&#36817;&#20284;&#26041;&#27861;<a class="anchor-link" href="#3.-%E5%A4%9A%E7%94%B5%E5%AD%90%E6%B3%A2%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%91%E4%BC%BC%E6%96%B9%E6%B3%95">&#182;</a></h3><p>由于直接求解上述多电子薛定谔方程非常困难，通常使用近似方法，如哈特里-福克（Hartree-Fock）方法或密度泛函理论（DFT）。</p>
+<h4 id="%E5%93%88%E7%89%B9%E9%87%8C-%E7%A6%8F%E5%85%8B%E6%96%B9%E6%B3%95">&#21704;&#29305;&#37324;-&#31119;&#20811;&#26041;&#27861;<a class="anchor-link" href="#%E5%93%88%E7%89%B9%E9%87%8C-%E7%A6%8F%E5%85%8B%E6%96%B9%E6%B3%95">&#182;</a></h4><p>哈特里-福克方法将多电子波函数近似为单电子轨道波函数的反对称乘积（斯莱特行列式），并通过变分法找到使总能量最低的单电子波函数。</p>
+<ol>
+<li><p><strong>单电子轨道波函数</strong>：
+设单电子波函数为 $\psi_i(\mathbf{r})$，则多电子波函数可以近似为：
+$$ \Psi(\mathbf{r}_1, \mathbf{r}_2, \ldots, \mathbf{r}_6) \approx \frac{1}{\sqrt{6!}} \text{det} [\psi_i(\mathbf{r}_j)] $$</p>
+</li>
+<li><p><strong>哈特里-福克方程</strong>：
+每个单电子波函数满足哈特里-福克方程，该方程通过考虑平均场近似来包含电子之间的相互作用。</p>
+</li>
+</ol>
+<h4 id="%E5%AF%86%E5%BA%A6%E6%B3%9B%E5%87%BD%E7%90%86%E8%AE%BA%EF%BC%88DFT%EF%BC%89">&#23494;&#24230;&#27867;&#20989;&#29702;&#35770;&#65288;DFT&#65289;<a class="anchor-link" href="#%E5%AF%86%E5%BA%A6%E6%B3%9B%E5%87%BD%E7%90%86%E8%AE%BA%EF%BC%88DFT%EF%BC%89">&#182;</a></h4><p>DFT是一种计算效率更高的方法，它使用电子密度而不是波函数来描述系统。</p>
+<ol>
+<li><p><strong>电子密度</strong>：
+$$ \rho(\mathbf{r}) = \sum_{i=1}^{6} |\psi_i(\mathbf{r})|^2 $$</p>
+</li>
+<li><p><strong>能量泛函</strong>：
+总能量表示为电子密度的泛函，通过求解Kohn-Sham方程找到使能量泛函最小的电子密度。</p>
+</li>
+</ol>
+<h3 id="4.-%E5%8D%95%E7%94%B5%E5%AD%90%E8%BF%91%E4%BC%BC%EF%BC%9A%E8%87%AA%E6%B4%BD%E5%9C%BA%E6%96%B9%E6%B3%95">4. &#21333;&#30005;&#23376;&#36817;&#20284;&#65306;&#33258;&#27965;&#22330;&#26041;&#27861;<a class="anchor-link" href="#4.-%E5%8D%95%E7%94%B5%E5%AD%90%E8%BF%91%E4%BC%BC%EF%BC%9A%E8%87%AA%E6%B4%BD%E5%9C%BA%E6%96%B9%E6%B3%95">&#182;</a></h3><p>在自洽场（Self-consistent field, SCF）方法中，通过迭代求解单电子薛定谔方程来逐步逼近多电子系统的解。</p>
+<ol>
+<li><p><strong>初始猜测</strong>：
+初始猜测电子波函数或电子密度。</p>
+</li>
+<li><p><strong>求解单电子方程</strong>：
+在初始场中求解单电子薛定谔方程，得到新的电子波函数或电子密度。</p>
+</li>
+<li><p><strong>更新场</strong>：
+用新的波函数或密度计算新的有效场。</p>
+</li>
+<li><p><strong>迭代</strong>：
+迭代上述步骤直到收敛，即波函数或电子密度不再显著变化。</p>
+</li>
+</ol>
+<h3 id="5.-%E6%80%BB%E7%BB%93">5. &#24635;&#32467;<a class="anchor-link" href="#5.-%E6%80%BB%E7%BB%93">&#182;</a></h3><p>虽然直接求解碳原子中所有电子的薛定谔方程非常复杂且不现实，但通过近似方法，如哈特里-福克和密度泛函理论，可以有效地描述电子在库仑势中的运动。这些方法使用单电子轨道的近似和迭代求解技术，在计算上更加可行，并且能够提供较准确的电子结构信息。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Quantum_Monte_Carlo">量子蒙特卡罗</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://doi.org/10.1103/PhysRevLett.122.250501">Variational Quantum Monte Carlo Method with a Neural-Network Ansatz for Open Quantum Systems</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nature05678">Evidence for wavelike energy transfer through quantum coherence in photosynthetic systems</a>. Engel, G. S., Calhoun, T. R., Read, E. L., Ahn, T. K., Mančal, T., Cheng, Y. C., ... &amp; Fleming, G. R. (2007). Nature, 446(7137), 782.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>D. Hayes, G. B. Grifﬁn and G. S. Engel, “Engineering coherence among excited states in synthetic heterodimer systems,” Science, vol. 340: 6139 (2013), pp. 1431–4.</p>
+<p>Dorfman et al., “Photosynthetic reaction center as a quantum heat engine.”</p>
+<p>C. Creatore, M. A. Parker, S. Emmott and A. W. Chin, “An efﬁcient biologically-inspired photocell enhanced by quantum coherence,” arXiv preprint, arXiv:1307.5093, 2013.</p>
+<p>C. Tan, S. Saurabh, M. P. Bruchez, R. Schwartz and P. Leduc, “Molecular crowding shapes gene expression in synthetic cellular nanosystems,” Nature Nanotechnology, vol. 8: 8 (2013), pp. 602–8; M. S. Cheung, D. Klimov and D. Thirumalai, “Molecular crowding enhances native state stability and refolding rates of globular proteins,” Proceedings of the National Academy of Sciences, vol. 102: 13 (2005), pp. 4753–8.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第一篇论文：</p>
+<p>Title: Quantum entanglement between the electron clouds of nucleic acids in DNA
+Authors: Rieper, E., Vedral, V.
+Journal: Quantum Information Processing (2012)
+Rieper, E.: Centre for Quantum Technologies, National University of Singapore, Singapore
+Vedral, V.: Department of Physics, University of Oxford, Oxford, UK</p>
+<p>第二篇论文：</p>
+<p>Title: Quantum coherence in microtubules: A neural basis for emergent consciousness?
+Authors: Hameroff, S.R., Penrose, R.
+Journal: Journal of Cosmology (2011)
+Hameroff, S.R.: Center for Consciousness Studies, Department of Anesthesiology and Psychology, University of Arizona, Tucson, AZ, USA
+Penrose, R.: Mathematical Institute, University of Oxford, Oxford, UK</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Jennifer C. Brookes, Filio Hartoutsiou, A. P. Horsfield, and A. M. Stoneham. <a target="_blank" rel="noopener" href="https://doi.org/10.1103/PhysRevLett.98.038101">Could Humans Recognize Odor by Phonon Assisted Tunneling?</a> Phys. Rev. Lett. 98, 038101 – Published 16 January 2007</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Brookes, J.C.; Horsfield, A.P.; Stoneham, A.M. <a target="_blank" rel="noopener" href="https://doi.org/10.3390/s121115709">The Swipe Card Model of Odorant Recognition</a>. Sensors 2012, 12, 15709-15749. <a target="_blank" rel="noopener" href="https://doi.org/10.3390/s121115709">https://doi.org/10.3390/s121115709</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>弹性（$\tau_{T0}$）和非弹性（$\tau_{T1}$）从D到A的电子转移（ET）时间对于Turin的机制的成功或失败至关重要。我们将D和A视为具有能量$\varepsilon_D$和$\varepsilon_A$的单个分子轨道，它们通过一个弱跃迁积分$t$相互耦合，但不与其他电子态耦合。由于D和A之间的跃迁在电子时间尺度上是缓慢的，其余电子耦合必须非常弱以防止电子泄漏。然而，D和A将与气味分子、受体蛋白和更广泛环境中的振荡子耦合。D到A的ET速率可以从标准理论中计算出来，但需要显式处理气味分子的振荡子。我们考虑一个频率为$\omega_o$的气味分子振荡子，它与D（A）以强度$\gamma_D$（$\gamma_A$）耦合。环境被视为具有频率$\omega_q$和耦合强度$\gamma_{qD}$和$\gamma_{qA}$的多个振荡子。完整系统由哈密顿量$H = \hat{H}_D + \hat{H}_A + \hat{v}$描述，其中
+$$ \hat{H}_X = |X\rangle \langle X| (\varepsilon_X + \hat{H}_{osc} + \hat{H}_{e-osc,X}) \quad (X为D或A) $$
+$$ \hat{v} = t (|D\rangle \langle A| + |A\rangle \langle D|) $$
+并且$|D\rangle$ ($|A\rangle$)是D（A）上的电子态。
+$$ \hat{H}_{osc} = (\hat{a}^\dagger \hat{a} + 1) \hbar \omega_o + \sum_q (\hat{a}_q^\dagger \hat{a}_q + \frac{1}{2}) \hbar \omega_q $$
+是气味分子和环境的振荡子哈密顿量，
+$$ \hat{H}_{e-osc,X} = \gamma_X (\hat{a} + \hat{a}^\dagger) + \sum_q \gamma_{qX} (\hat{a}_q + \hat{a}_q^\dagger) $$
+耦合电子与振荡子。哈密顿量$\hat{H}_{osc}$的本征态为$|nN\rangle$，其中$n$是气味分子振荡子的占据数，$N$对应一组环境振荡子的占据数$\{n_q\}$。哈密顿量$\hat{H}_X$的本征态为
+$$ |\Psi_{XnN}\rangle = \exp(u_X (\hat{a} - \hat{a}^\dagger) + \sum_q u_{qX} (\hat{a}_q - \hat{a}_q^\dagger)) |X nN\rangle $$
+具有本征值
+$$ E_{XnN} = \varepsilon_X + (n + 1 - u_X^2) \hbar \omega_o + \sum_q (n_q + 1 - u_{qX}^2) \hbar \omega_q $$
+状态$|XnN\rangle$是未扰动的电子和振荡子基态的乘积，
+$$ u_X = \gamma_X / \hbar \omega_o $$
+$$ u_{qX} = \gamma_{qX} / \hbar \omega_q $$
+时间$\tau_{T0}$和$\tau_{T1}$根据系统中电子在D和气味分子振荡子处于基态时到达A和气味分子振荡子处于激发态的耦合，可以通过标准的金色规则结果求得：
+$$ \frac{1}{\tau_{Tn}} = \frac{2\pi}{\hbar} \sum_{N,N'} P_N |\langle \Psi_{D0N} | \hat{v} | \Psi_{AnN'} \rangle|^2 $$
+其中$P_N$是系统以状态$|ΨD0N⟩$开始的概率。在对电子耦合到声子浴的标准近似和将背景波动视为低频之后，我们得到马库斯型表达式：
+$$ \frac{1}{\tau_{Tn}} = \frac{2\pi}{\hbar} t^2 \frac{\sigma_n}{\sqrt{4\pi k_B T \lambda}} \exp \left( -\frac{(\epsilon_n - \lambda)^2}{4k_B T \lambda} \right) $$
+其中
+$$ \sigma_n = \exp(-S) \frac{S^n}{n!}, $$
+$$ S = (u_D - u_A)^2 $$（这是一个Huang-Rhys因子），
+$$ \epsilon_n = \varepsilon_D - \varepsilon_A - n \hbar \omega_o, $$
+$$ \beta = \frac{1}{k_B T}, $$
+$$ \lambda = \sum_q S_q \hbar \omega_q $$（重组能量），
+$$ S_q = (u_{qD} - u_{qA})^2. $$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Constants</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="mf">1.0545718e-34</span>  <span class="c1"># Reduced Planck constant (J·s)</span>
+<span class="n">k_B</span> <span class="o">=</span> <span class="mf">1.38064852e-23</span>  <span class="c1"># Boltzmann constant (J/K)</span>
+
+<span class="k">def</span> <span class="nf">huang_rhys_factor</span><span class="p">(</span><span class="n">gamma_D</span><span class="p">,</span> <span class="n">gamma_A</span><span class="p">,</span> <span class="n">omega_o</span><span class="p">):</span>
+    <span class="n">u_D</span> <span class="o">=</span> <span class="n">gamma_D</span> <span class="o">/</span> <span class="p">(</span><span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_o</span><span class="p">)</span>
+    <span class="n">u_A</span> <span class="o">=</span> <span class="n">gamma_A</span> <span class="o">/</span> <span class="p">(</span><span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_o</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">u_D</span> <span class="o">-</span> <span class="n">u_A</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">sigma_n</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">S</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">S</span> <span class="o">**</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">reorganization_energy</span><span class="p">(</span><span class="n">gamma_qD</span><span class="p">,</span> <span class="n">gamma_qA</span><span class="p">,</span> <span class="n">omega_q</span><span class="p">):</span>
+    <span class="n">u_qD</span> <span class="o">=</span> <span class="n">gamma_qD</span> <span class="o">/</span> <span class="p">(</span><span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_q</span><span class="p">)</span>
+    <span class="n">u_qA</span> <span class="o">=</span> <span class="n">gamma_qA</span> <span class="o">/</span> <span class="p">(</span><span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_q</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">u_qD</span> <span class="o">-</span> <span class="n">u_qA</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_q</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">marcus_rate</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">epsilon_D</span><span class="p">,</span> <span class="n">epsilon_A</span><span class="p">,</span> <span class="n">omega_o</span><span class="p">,</span> <span class="n">gamma_D</span><span class="p">,</span> <span class="n">gamma_A</span><span class="p">,</span> <span class="n">gamma_qD</span><span class="p">,</span> <span class="n">gamma_qA</span><span class="p">,</span> <span class="n">omega_q</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">huang_rhys_factor</span><span class="p">(</span><span class="n">gamma_D</span><span class="p">,</span> <span class="n">gamma_A</span><span class="p">,</span> <span class="n">omega_o</span><span class="p">)</span>
+    <span class="n">lambda_</span> <span class="o">=</span> <span class="n">reorganization_energy</span><span class="p">(</span><span class="n">gamma_qD</span><span class="p">,</span> <span class="n">gamma_qA</span><span class="p">,</span> <span class="n">omega_q</span><span class="p">)</span>
+    
+    <span class="n">k_ET</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>  <span class="c1"># Sum over a reasonable range of n</span>
+        <span class="n">epsilon_n</span> <span class="o">=</span> <span class="n">epsilon_D</span> <span class="o">-</span> <span class="n">epsilon_A</span> <span class="o">-</span> <span class="n">n</span> <span class="o">*</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_o</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">hbar</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma_n</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">term</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">epsilon_n</span> <span class="o">-</span> <span class="n">lambda_</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">k_B</span> <span class="o">*</span> <span class="n">T</span> <span class="o">*</span> <span class="n">lambda_</span><span class="p">))</span>
+        <span class="n">term</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">k_B</span> <span class="o">*</span> <span class="n">T</span> <span class="o">*</span> <span class="n">lambda_</span><span class="p">)</span>
+        <span class="n">k_ET</span> <span class="o">+=</span> <span class="n">term</span>
+    
+    <span class="k">return</span> <span class="n">k_ET</span>
+
+<span class="c1"># Example parameters (these need to be adjusted to realistic values for a specific system)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mf">1e-3</span>  <span class="c1"># Hopping integral (J)</span>
+<span class="n">epsilon_D</span> <span class="o">=</span> <span class="mf">1e-19</span>  <span class="c1"># Energy of D (J)</span>
+<span class="n">epsilon_A</span> <span class="o">=</span> <span class="mf">1.1e-19</span>  <span class="c1"># Energy of A (J)</span>
+<span class="n">omega_o</span> <span class="o">=</span> <span class="mf">1e13</span>  <span class="c1"># Frequency of odorant oscillator (Hz)</span>
+<span class="n">gamma_D</span> <span class="o">=</span> <span class="mf">1e-21</span>  <span class="c1"># Coupling strength for D (J)</span>
+<span class="n">gamma_A</span> <span class="o">=</span> <span class="mf">1e-21</span>  <span class="c1"># Coupling strength for A (J)</span>
+<span class="n">omega_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1e12</span><span class="p">,</span> <span class="mf">2e12</span><span class="p">])</span>  <span class="c1"># Frequencies of environment oscillators (Hz)</span>
+<span class="n">gamma_qD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1e-22</span><span class="p">,</span> <span class="mf">2e-22</span><span class="p">])</span>  <span class="c1"># Coupling strengths for D (J)</span>
+<span class="n">gamma_qA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5e-22</span><span class="p">,</span> <span class="mf">2.5e-22</span><span class="p">])</span>  <span class="c1"># Coupling strengths for A (J)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Temperature (K)</span>
+
+<span class="c1"># Calculate the electron transfer rate</span>
+<span class="n">k_ET</span> <span class="o">=</span> <span class="n">marcus_rate</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">epsilon_D</span><span class="p">,</span> <span class="n">epsilon_A</span><span class="p">,</span> <span class="n">omega_o</span><span class="p">,</span> <span class="n">gamma_D</span><span class="p">,</span> <span class="n">gamma_A</span><span class="p">,</span> <span class="n">gamma_qD</span><span class="p">,</span> <span class="n">gamma_qA</span><span class="p">,</span> <span class="n">omega_q</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Electron transfer rate k_ET: </span><span class="si">{</span><span class="n">k_ET</span><span class="si">:</span><span class="s1">.3e</span><span class="si">}</span><span class="s1"> s^-1&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Electron transfer rate k_ET: 2.510e-25 s^-1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;电子转移频率：</span><span class="si">{</span><span class="n">k_ET</span><span class="si">:</span><span class="s1">.3e</span><span class="si">}</span><span class="s1"> s^-1 ；</span><span class="se">\n</span><span class="s1">在马库斯理论中，表示每秒发生的电子转移事件的数量。&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>电子转移频率：2.510e-25 s^-1 ；
+在马库斯理论中，表示每秒发生的电子转移事件的数量。
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>马库斯理论中的电子转移速率公式为：</p>
+$$ k_{ET} = \frac{V^2}{h} \sqrt{\frac{\pi}{\lambda k_B T}} \exp\left( -\frac{(\lambda + \Delta G)^2}{4 \lambda k_B T} \right) $$<p>其中：</p>
+<ul>
+<li>$ k_{ET} $ 是电子转移速率。</li>
+<li>$ V $ 是电子耦合（电子隧穿）能量。</li>
+<li>$ h $ 是普朗克常数。</li>
+<li>$ \lambda $ 是重组能。</li>
+<li>$ k_B $ 是玻尔兹曼常数。</li>
+<li>$ T $ 是绝对温度。</li>
+<li>$ \Delta G $ 是吉布斯自由能变化。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">const</span>
+
+<span class="c1"># 普朗克常数 (J·s)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">const</span><span class="o">.</span><span class="n">h</span>
+
+<span class="c1"># 约化普朗克常数 (J·s)</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="n">const</span><span class="o">.</span><span class="n">hbar</span>
+
+<span class="c1"># 将普朗克常数和约化普朗克常数转换为 eV·s</span>
+<span class="n">h_ev_s</span> <span class="o">=</span> <span class="n">h</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">eV</span>
+<span class="n">hbar_ev_s</span> <span class="o">=</span> <span class="n">hbar</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">eV</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;普朗克常数:</span><span class="se">\n</span><span class="si">{</span><span class="n">h_ev_s</span><span class="si">:</span><span class="s1">.5e</span><span class="si">}</span><span class="s1"> eV·s&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;约化普朗克常数:</span><span class="se">\n</span><span class="si">{</span><span class="n">hbar_ev_s</span><span class="si">:</span><span class="s1">.5e</span><span class="si">}</span><span class="s1"> eV·s&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>普朗克常数:
+4.13567e-15 eV·s
+约化普朗克常数:
+6.58212e-16 eV·s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">const</span>
+
+<span class="c1"># 将玻尔兹曼常数从 J/K 转换为 eV/K</span>
+<span class="n">k_B</span> <span class="o">=</span> <span class="n">const</span><span class="o">.</span><span class="n">Boltzmann</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">eV</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Boltzmann constant in eV/K:</span><span class="se">\n</span><span class="si">{</span><span class="n">k_B</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Boltzmann constant in eV/K:
+8.617333262145179e-05
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2014/10/25/彼拉多对耶稣说：『真理是什么？』/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2013/01/25/I-m-missing-you/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <script data-isso="https://jhub.dtype.info/isso/" src="https://jhub.dtype.info/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-07-04 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2024 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>

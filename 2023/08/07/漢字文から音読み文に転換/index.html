@@ -572,6 +572,96 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
+<p><strong>Jumandic 模型</strong> 和 <strong>GPT 模型</strong> 都是用于自然语言处理的模型，但它们的设计目标、架构和应用场景有显著的不同。以下是对这两个模型的比较：</p>
+<h3 id="1.-%E7%9B%AE%E7%9A%84%E4%B8%8E%E5%BA%94%E7%94%A8"><strong>1. &#30446;&#30340;&#19982;&#24212;&#29992;</strong><a class="anchor-link" href="#1.-%E7%9B%AE%E7%9A%84%E4%B8%8E%E5%BA%94%E7%94%A8">&#182;</a></h3><ul>
+<li><p><strong>Jumandic 模型</strong>（用于 Juman++）主要用于 <strong>日语形态素分析</strong>。它的目标是将日语文本分解成词和词性标注，并为每个单词生成详细的语法信息（例如词性、子类别等）。这是一个基于规则和词典的统计模型，适用于需要精确语法分析的任务，如日语文本解析和机器翻译。</p>
+<ul>
+<li><strong>主要应用</strong>：日语文本分词、词性标注、句法分析。</li>
+</ul>
+</li>
+<li><p><strong>GPT 模型</strong>（Generative Pre-trained Transformer）则是一个基于 <strong>深度学习</strong> 的生成模型，目标是生成连贯且具有上下文理解能力的自然语言文本。GPT 使用大量的预训练数据进行语言建模，能够生成新的文本、回答问题、进行对话等，适用于多种语言任务。</p>
+<ul>
+<li><strong>主要应用</strong>：文本生成、对话系统、文本摘要、翻译、代码生成等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2.-%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%9E%B6%E6%9E%84"><strong>2. &#25216;&#26415;&#22522;&#30784;&#19982;&#26550;&#26500;</strong><a class="anchor-link" href="#2.-%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%9E%B6%E6%9E%84">&#182;</a></h3><ul>
+<li><p><strong>Jumandic</strong> 使用 <strong>基于词典的模型</strong> 和 <strong>RNN（循环神经网络）</strong>，结合了传统的基于规则的系统和现代深度学习技术。它通过大量的标注语料库来进行训练，优化形态素分析的精度要依赖于先验知识的词典和规则，适用于细粒度的语言解析。</p>
+</li>
+<li><p><strong>GPT</strong> 是基于 <strong>Transformer</strong> 架构的深度学习模型，采用 <strong>自注意力机制</strong> 来理解和生成文本。GPT 是一种无监督学习模型，通过大规模的语料库进行预训练，然后通过微调（fine-tuning）来适应特定任务。</p>
+<ul>
+<li>该模型通过从大量数据中学习语言的统计规律来生成文本。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3.-%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AE%AD%E7%BB%83"><strong>3. &#25968;&#25454;&#19982;&#35757;&#32451;</strong><a class="anchor-link" href="#3.-%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AE%AD%E7%BB%83">&#182;</a></h3><ul>
+<li><strong>Jumandic</strong> 依赖于 <strong>标注语料库</strong>，例如 <strong>京都大学语料库</strong>、<strong>每日新闻语料库</strong>，这些语料库包含了手动标注的词汇和词性信息为输入。</li>
+<li><strong>GPT</strong> 则通过 <strong>大规模的未标注语料库</strong> 进行训练，例如网络文章、书籍、新闻报道等。它通过无监督学习方式训练，理解语言结构和上下文关系。</li>
+</ul>
+<h3 id="4.-%E7%94%9F%E6%88%90%E8%83%BD%E5%8A%9B"><strong>4. &#29983;&#25104;&#33021;&#21147;</strong><a class="anchor-link" href="#4.-%E7%94%9F%E6%88%90%E8%83%BD%E5%8A%9B">&#182;</a></h3><ul>
+<li><strong>Jumandic</strong> 专注于 <strong>精确的词汇分割</strong> 和 <strong>语法分析</strong>，主要任务是分解和标注文本中的每个词汇。因此，它并不生成新的文本或语句。</li>
+<li><strong>GPT</strong> 则是一种 <strong>生成模型</strong>，能够从给定的上下文生成自然流畅的文本，甚至在对话中模拟人类的语言反应。GPT 不仅能够解析文本，还能根据需求生成内容。</li>
+</ul>
+<h3 id="5.-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%B8%8E%E5%BA%94%E7%94%A8"><strong>5. &#27169;&#22411;&#35757;&#32451;&#19982;&#24212;&#29992;</strong><a class="anchor-link" href="#5.-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%B8%8E%E5%BA%94%E7%94%A8">&#182;</a></h3><ul>
+<li><strong>Jumandic</strong> 于日语领域，通过对语料库进行训练来改进模型的解析能力。它适用于需要高精度的日语词汇分析和标注的任务。</li>
+<li><strong>GPT</strong> 作为一种通用的语言模型，能够处理范围更广，不仅限于特定语言（如日语），还支持多种语言的处理。GPT 适用于对话生成、文本摘要、创意写作等多种任务。</li>
+</ul>
+<h3 id="%E6%80%BB%E7%BB%93"><strong>&#24635;&#32467;</strong><a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><ul>
+<li><strong>Jumandic</strong> 是一个专门针对日语形言的详细解析与词性标注。</li>
+<li><strong>GPT</strong> 是一个通用的文本生成模型，能够在多种语言任务中进行推理和生成，适用于更广泛的自然语言处理任务。</li>
+</ul>
+<p>尽管两者都是自然语言处理领域的重要模型，但它们各自的侧重点和应用场景有显著差异。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>在 <strong>Juman++</strong> 项目中，使用的 <strong>RNN（循环神经网络）</strong> 是一种语言模型，具体称为 <strong>RNNLM（Recurrent Neural Network Language Model）</strong>。这个 RNNLM 主要用于提高形态素解析的准确性，通过考虑单词序列的语义合理性来进行更准确的词性标注和分词。</p>
+<h3 id="RNNLM-%E7%9A%84%E7%89%B9%E7%82%B9"><strong>RNNLM &#30340;&#29305;&#28857;</strong><a class="anchor-link" href="#RNNLM-%E7%9A%84%E7%89%B9%E7%82%B9">&#182;</a></h3><ol>
+<li><p><strong>语言模型的用途</strong>：</p>
+<ul>
+<li>RNNLM 在 Juman++ 中用于判断单词序列的<strong>语义自然性</strong>。通过这种方式，解析器不仅依赖于规则和统计模型，还结合了上下文的语义信息。</li>
+</ul>
+</li>
+<li><p><strong>实现细节</strong>：</p>
+<ul>
+<li>Juman++ 提供了对 <strong>Mikolov RNN</strong>（一种经典的 RNN 语言模型）的支持。</li>
+<li>RNN 模型能够预测下一个单词，或者评估给定单词序列的概率，从而在分词和词性标注时帮助选择最合理的候选项。</li>
+</ul>
+</li>
+<li><p><strong>训练与集成</strong>：</p>
+<ul>
+<li>RNN 模型通常需要通过大量标注语料库进行训练，如 <strong>Mainichi Shinbun（每日新闻语料库 1995）</strong> 或 <strong>Kyoto University Corpus</strong>。</li>
+<li>在 Juman++ 的训练过程中，可以通过命令行参数 <code>--rnn-model</code> 加载预训练的 RNN 模型文件。</li>
+</ul>
+</li>
+<li><p><strong>代码中的应用</strong>：</p>
+<ul>
+<li>在 Juman++ 源代码的 <strong><code>mikolov_rnn_test.cc</code></strong> 文件中，可以看到 RNN 模型的推理过程和上下文处理的实现。</li>
+</ul>
+</li>
+<li><p><strong>性能提升</strong>：</p>
+<ul>
+<li>使用 RNNLM 后，Juman++ 的解析速度和准确性有显著提升，解析速度比原版 Juman 提高了超过 250 倍。</li>
+</ul>
+</li>
+</ol>
+<h3 id="%E6%80%BB%E7%BB%93"><strong>&#24635;&#32467;</strong><a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><ul>
+<li><strong>Juman++</strong> 使用 <strong>RNNLM</strong> 来增强形态素解析的上下文理解能力。</li>
+<li>RNN 模型的实现基于 <strong>Mikolov RNN</strong>，并通过训练语料库学习单词序列的语义关系。</li>
+<li>在实际应用中，通过参数 <code>--rnn-model</code> 加载预训练 RNN 模型来提高解析质量。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <p><a target="_blank" rel="noopener" href="https://github.com/ku-nlp/jumanpp/releases/download/v2.0.0-rc4/jumanpp-2.0.0-rc4.tar.xz">Juman++ 2.0.0 rc4</a></p>
 
 </div>
@@ -711,6 +801,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
+<h3 id="%E4%BD%BF%E7%94%A8-Juman-%E8%BF%9B%E8%A1%8C%E6%97%A5%E8%AF%AD%E8%A7%A3%E6%9E%90%E5%92%8C-LaTeX-%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%9A%84%E5%B7%A5%E5%85%B7"><strong>&#20351;&#29992; Juman &#36827;&#34892;&#26085;&#35821;&#35299;&#26512;&#21644; LaTeX &#26684;&#24335;&#21270;&#30340;&#24037;&#20855;</strong><a class="anchor-link" href="#%E4%BD%BF%E7%94%A8-Juman-%E8%BF%9B%E8%A1%8C%E6%97%A5%E8%AF%AD%E8%A7%A3%E6%9E%90%E5%92%8C-LaTeX-%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%9A%84%E5%B7%A5%E5%85%B7">&#182;</a></h3><p><strong>A Tool for Japanese Parsing and LaTeX Formatting Using Juman</strong></p>
 
 </div>
 </div>
