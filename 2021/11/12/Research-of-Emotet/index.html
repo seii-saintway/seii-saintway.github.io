@@ -269,12 +269,182 @@ English中文The EMOTET group managed to take email as an attack vector to a nex
 <li>右键点击显示的进程，选择 “结束进程”。</li>
 </ol>
 <p>即便是 Chrome 和 Outlook 也受到影响，这太恶心了。想到系统部门的老男人可能会窥探女性员工的搜索历史，真是太可怕了。</p>
-<p>无法删除文件夹时，可以参考以下 URL，通过移除 administrators 权限并授予 everyone 完全控制权限来删除文件夹：</p>
+<p>无法删除文件夹时，可以通过移除 administrators 权限并授予 everyone 完全控制权限来删除文件夹。</p>
 <h3 id="二、服务停止与启动脚本"><a href="#二、服务停止与启动脚本" class="headerlink" title="二、服务停止与启动脚本"></a><a target="_blank" rel="noopener" href="https://note.com/ironhead/n/n2720b588193a">二、服务停止与启动脚本</a></h3><p>昨天写的删除方法，其实不用删除注册表也可以停止服务。但是，如果想彻底清理，建议删除注册表项目。</p>
 <p>因为有些公司可能会在删除后抱怨，所以我创建了停止和启动服务的 bat 文件。请在自担风险下使用。</p>
 <h4 id="服务停止-bat"><a href="#服务停止-bat" class="headerlink" title="服务停止.bat"></a>服务停止.bat</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 禁用服务并停止，移动模块</span><br><span class="line">sc config &quot;Swd&quot; start= disabled</span><br><span class="line">net stop &quot;Swd&quot;</span><br><span class="line">move C:\Windows\wds C:\kasu\wds</span><br><span class="line"></span><br><span class="line">sc config &quot;awssm&quot; start= disabled</span><br><span class="line">net stop &quot;awssm&quot;</span><br><span class="line">move C:\WINDOWS\avv5sm C:\kasu\avv5sm</span><br><span class="line"></span><br><span class="line">rem 终止进程</span><br><span class="line">taskkill /F /im CtlCli64.exe</span><br><span class="line">taskkill /F /im LogChromeNativeHost.exe</span><br><span class="line">taskkill /F /im AstAgent.exe</span><br><span class="line">taskkill /F /im CtlCli.exe</span><br><span class="line">taskkill /F /im SvcMon.exe</span><br><span class="line">taskkill /F /im SKYSEAHS.exe</span><br><span class="line"></span><br><span class="line">rem 禁用其他服务</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= disabled</span><br><span class="line">sc config &quot;CompactSvc&quot; start= disabled</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= disabled</span><br><span class="line">sc config &quot;AstExAgt&quot; start= disabled</span><br><span class="line">sc config &quot;ScvSvc&quot; start= disabled</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= disabled</span><br><span class="line">sc config &quot;LogSvr&quot; start= disabled</span><br><span class="line">sc config &quot;IceSvc&quot; start= disabled</span><br><span class="line"></span><br><span class="line">rem 停止其他服务</span><br><span class="line">net stop &quot;SCVCabProxySvr&quot;</span><br><span class="line">net stop &quot;CompactSvc&quot;</span><br><span class="line">net stop &quot;ScvUpdSvc&quot;</span><br><span class="line">net stop &quot;AstExAgt&quot;</span><br><span class="line">net stop &quot;ScvSvc&quot;</span><br><span class="line">net stop &quot;SCV LogAgentService&quot;</span><br><span class="line">net stop &quot;LogSvr&quot;</span><br><span class="line">net stop &quot;IceSvc&quot;</span><br><span class="line"></span><br><span class="line">rem 移动 C:\Program Files (x86)\Sky Product 文件夹</span><br><span class="line">move &quot;C:\Program Files (x86)\Sky Product&quot; &quot;C:\kasu&quot;</span><br></pre></td></tr></table></figure>
 
 <h4 id="服务启动-bat"><a href="#服务启动-bat" class="headerlink" title="服务启动.bat"></a>服务启动.bat</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 启用服务并启动，移动模块</span><br><span class="line">sc config &quot;Swd&quot; start= auto</span><br><span class="line">net start &quot;Swd&quot;</span><br><span class="line">move C:\kasu\wds C:\Windows\wds</span><br><span class="line"></span><br><span class="line">sc config &quot;awssm&quot; start= auto</span><br><span class="line">net start &quot;awssm&quot;</span><br><span class="line">move C:\kasu\avv5sm C:\WINDOWS\avv5sm</span><br><span class="line"></span><br><span class="line">rem 启用其他服务</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= auto</span><br><span class="line">sc config &quot;CompactSvc&quot; start= auto</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= auto</span><br><span class="line">sc config &quot;AstExAgt&quot; start= auto</span><br><span class="line">sc config &quot;ScvSvc&quot; start= auto</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= auto</span><br><span class="line">sc config &quot;LogSvr&quot; start= auto</span><br><span class="line">sc config &quot;IceSvc&quot; start= auto</span><br><span class="line"></span><br><span class="line">rem 启动其他服务</span><br><span class="line">net start &quot;SCVCabProxySvr&quot;</span><br><span class="line">net start &quot;CompactSvc&quot;</span><br><span class="line">net start &quot;ScvUpdSvc&quot;</span><br><span class="line">net start &quot;AstExAgt&quot;</span><br><span class="line">net start &quot;ScvSvc&quot;</span><br><span class="line">net start &quot;SCV LogAgentService&quot;</span><br><span class="line">net start &quot;LogSvr&quot;</span><br><span class="line">net start &quot;IceSvc&quot;</span><br><span class="line"></span><br><span class="line">rem 移动 C:\Program Files (x86)\Sky Product 文件夹回原位置</span><br><span class="line">move &quot;C:\kasu\Sky Product&quot; &quot;C:\Program Files (x86)&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组织域管理员"><a href="#组织域管理员" class="headerlink" title="组织域管理员"></a>组织域管理员</h2><h3 id="创建本地管理员账户"><a href="#创建本地管理员账户" class="headerlink" title="创建本地管理员账户"></a>创建本地管理员账户</h3><p>组织域管理员登录到某个计算机终端并使用 <code>cmd</code> 或 <code>PowerShell</code> 创建一个新的本地管理员账户：</p>
+<ul>
+<li><p>通过 <code>cmd</code> 创建本地管理员：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> user NewLocalAdmin password /add</span><br><span class="line"><span class="built_in">net</span> localgroup Administrators NewLocalAdmin /add</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 <code>PowerShell</code> 创建本地管理员：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-LocalUser</span> <span class="string">&quot;NewLocalAdmin&quot;</span> <span class="literal">-Password</span> (<span class="built_in">ConvertTo-SecureString</span> <span class="string">&quot;password&quot;</span> <span class="literal">-AsPlainText</span> <span class="literal">-Force</span>)</span><br><span class="line"><span class="built_in">Add-LocalGroupMember</span> <span class="literal">-Group</span> <span class="string">&quot;Administrators&quot;</span> <span class="literal">-Member</span> <span class="string">&quot;NewLocalAdmin&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这会在本地计算机上创建一个名为 <code>NewLocalAdmin</code> 的用户，并将其添加到 <code>Administrators</code> 组中，从而赋予该账户管理员权限。</p>
+<h3 id="删除本地管理员账户"><a href="#删除本地管理员账户" class="headerlink" title="删除本地管理员账户"></a>删除本地管理员账户</h3><p>假设你希望任务在 2024 年 12 月 25 日午夜 12 点删除本地管理员账户，可以按照如下方式创建任务：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn &quot;DeleteCurrentAdmin&quot; /tr &quot;<span class="built_in">net</span> user CurrentAdmin /delete&quot; /sc once /st <span class="number">00</span>:<span class="number">00</span> /sd <span class="number">12</span>/<span class="number">25</span>/<span class="number">2024</span></span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<li><code>/sc once</code>：表示这是一个只执行一次的任务。</li>
+<li><code>/st 00:00</code>：设定任务的开始时间为午夜12点（00:00）。</li>
+<li><code>/sd 12/25/2024</code>：指定任务的具体日期为 2024 年 12 月 25 日。</li>
+</ul>
+<p>这样，任务将在指定的日期和时间执行并删除本地管理员账户。</p>
+<h2 id="禁用-Windows-远程管理"><a href="#禁用-Windows-远程管理" class="headerlink" title="禁用 Windows 远程管理"></a>禁用 Windows 远程管理</h2><p>Windows 远程管理涉及多个功能，如 <strong>PowerShell 远程</strong>、<strong>远程桌面</strong> 和 **Windows 远程管理服务 (WinRM)**。您可以逐一禁用这些功能。</p>
+<h3 id="禁用-PowerShell-远程"><a href="#禁用-PowerShell-远程" class="headerlink" title="禁用 PowerShell 远程"></a>禁用 PowerShell 远程</h3><p>在 <strong>PowerShell</strong> 中运行以下命令来禁用 PowerShell 远程功能：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Disable-PSRemoting</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="禁用远程桌面-RDP"><a href="#禁用远程桌面-RDP" class="headerlink" title="禁用远程桌面 (RDP)"></a>禁用远程桌面 (RDP)</h3><ol>
+<li><p><strong>通过设置禁用远程桌面：</strong></p>
+<ul>
+<li>按 <code>Win + I</code> 打开 <strong>设置</strong>。</li>
+<li>选择 <strong>系统</strong> -&gt; <strong>远程桌面</strong>。</li>
+<li>将 <strong>启用远程桌面</strong> 选项关闭。</li>
+</ul>
+</li>
+<li><p><strong>通过命令提示符禁用远程桌面：</strong><br>打开命令提示符（管理员权限），运行以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections /t REG_DWORD /d <span class="number">1</span> /f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>停止远程桌面服务：</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sc stop TermService</span><br><span class="line">sc config TermService <span class="built_in">start</span>= disabled</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="禁用-Windows-Management-Instrumentation-WMI"><a href="#禁用-Windows-Management-Instrumentation-WMI" class="headerlink" title="禁用 Windows Management Instrumentation (WMI)"></a>禁用 Windows Management Instrumentation (WMI)</h3><p>PowerShell Remoting 依赖于 WMI（Windows Management Instrumentation）来查询计算机的状态。禁用 WMI 服务可以防止通过 WMI 查询用户和权限。</p>
+<p>在 PowerShell 中执行以下命令禁用 WMI 服务：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> winmgmt</span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> winmgmt <span class="literal">-StartupType</span> Disabled</span><br></pre></td></tr></table></figure>
+
+<p>或者，在 <strong>服务管理器</strong> 中手动禁用 <code>Windows Management Instrumentation</code> 服务。</p>
+<h3 id="禁用-SMB-协议"><a href="#禁用-SMB-协议" class="headerlink" title="禁用 SMB 协议"></a>禁用 SMB 协议</h3><p>为了防止远程查看和管理，可以禁用 <strong>Server Message Block (SMB)</strong> 协议。</p>
+<p>禁用 <strong>SMB1 协议</strong>和 <strong>SMB2 协议</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-SmbServerConfiguration</span> <span class="literal">-EnableSMB1Protocol</span> <span class="variable">$false</span></span><br><span class="line"><span class="built_in">Set-SmbServerConfiguration</span> <span class="literal">-EnableSMB2Protocol</span> <span class="variable">$false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="禁用-WinRM-服务（远程管理服务）"><a href="#禁用-WinRM-服务（远程管理服务）" class="headerlink" title="禁用 WinRM 服务（远程管理服务）"></a>禁用 WinRM 服务（远程管理服务）</h3><p>在命令提示符或 PowerShell 中，运行以下命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止 WinRM 服务</span></span><br><span class="line"><span class="built_in">Stop-Service</span> WinRM</span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁用 WinRM 服务开机启动</span></span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> WinRM <span class="literal">-StartupType</span> Disabled</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置防火墙规则"><a href="#配置防火墙规则" class="headerlink" title="配置防火墙规则"></a>配置防火墙规则</h3><p>通过配置防火墙规则，可以阻止来自特定 IP 或网络的远程访问。</p>
+<ul>
+<li>手动创建防火墙端口规则：</li>
+</ul>
+<p>通过防火墙限制远程连接，特别是禁用 <strong>PowerShell Remoting</strong> 或 <strong>WMI</strong> 查询：</p>
+<ol>
+<li>打开 <strong>Windows 防火墙</strong>。</li>
+<li>创建新的出站或入站规则，阻止端口 <code>5985</code> (HTTP) 和 <code>5986</code> (HTTPS)，这两个端口是 PowerShell Remoting 和 WMI 查询的默认端口。</li>
+</ol>
+<ul>
+<li>通过执行命令，配置阻止远程管理端口的规则。</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;Block PowerShell Remoting&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-Protocol</span> TCP <span class="literal">-LocalPort</span> <span class="number">5985</span>,<span class="number">5986</span> <span class="literal">-Action</span> Block</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过执行命令，配置阻止 RDP（远程桌面协议）端口的规则。</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;Block RDP&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-Protocol</span> TCP <span class="literal">-LocalPort</span> <span class="number">3389</span> <span class="literal">-Action</span> Block</span><br></pre></td></tr></table></figure>
+
+<h3 id="禁用-Remote-Registry-服务"><a href="#禁用-Remote-Registry-服务" class="headerlink" title="禁用 Remote Registry 服务"></a>禁用 <code>Remote Registry</code> 服务</h3><p><code>Remote Registry</code> 服务允许远程计算机访问本地注册表，进而查看用户和权限信息。<br>禁用 <code>Remote Registry</code> 服务可以防止远程用户访问计算机的注册表，查看或修改用户信息、权限等。</p>
+<ol>
+<li>打开 <strong>服务管理器</strong>，找到 <strong>Remote Registry</strong> 服务。</li>
+<li>禁用该服务，并将启动类型设置为 <strong>禁用</strong>。</li>
+</ol>
+<p>或者，你可以在 PowerShell 中执行以下命令禁用服务：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> RemoteRegistry</span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> RemoteRegistry <span class="literal">-StartupType</span> Disabled</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用组策略限制权限"><a href="#使用组策略限制权限" class="headerlink" title="使用组策略限制权限"></a>使用组策略限制权限</h3><p>通过 <strong>组策略</strong>（GPO）来限制域管理员的远程访问权限，禁止某些账户或组执行特定操作。</p>
+<ul>
+<li>禁止远程管理</li>
+</ul>
+<ol>
+<li>打开 <strong>组策略编辑器</strong>（<code>gpedit.msc</code>）。</li>
+<li>导航到 <strong>计算机配置</strong> -&gt; <strong>管理模板</strong> -&gt; <strong>Windows 组件</strong> -&gt; <strong>Windows PowerShell</strong>。</li>
+<li>启用 <strong>禁用远程脚本</strong> 策略，以防止通过 PowerShell 远程执行脚本。</li>
+</ol>
+<ul>
+<li>限制管理员权限</li>
+</ul>
+<p>你还可以限制某些管理员的权限，限制其在目标计算机上的操作。通过组策略，你可以定义哪些用户组可以执行管理任务。</p>
+<h3 id="禁用登录脚本和远程任务"><a href="#禁用登录脚本和远程任务" class="headerlink" title="禁用登录脚本和远程任务"></a>禁用登录脚本和远程任务</h3><p>禁用目标计算机的登录脚本和计划任务可以防止域管理员通过这些方式远程监视计算机。</p>
+<ul>
+<li>禁用计划任务</li>
+</ul>
+<ol>
+<li>打开 <strong>任务计划程序</strong>。</li>
+<li>禁用或删除与远程监控相关的计划任务。</li>
+</ol>
+<h2 id="卸载或禁用-ESET-Security"><a href="#卸载或禁用-ESET-Security" class="headerlink" title="卸载或禁用 ESET Security"></a>卸载或禁用 ESET Security</h2><p>ESET Security 是防病毒和安全保护软件，禁用或卸载它需要一定的步骤和权限，特别是在企业环境中可能会受到策略限制。<br>如果您没有 <strong>ESET Security</strong> 的管理员密码，但需要禁用或卸载它，可以尝试以下方法。不过请注意，在公司设备上这样做可能违反 IT 政策，需谨慎操作。</p>
+<h3 id="方法-1-使用-ESET-卸载工具（在安全模式下）"><a href="#方法-1-使用-ESET-卸载工具（在安全模式下）" class="headerlink" title="方法 1: 使用 ESET 卸载工具（在安全模式下）"></a>方法 1: 使用 ESET 卸载工具（在安全模式下）</h3><p>ESET 提供了专门的卸载工具，可以在 <strong>安全模式</strong> 下强制卸载 ESET Security，绕过管理员密码。</p>
+<h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p><strong>下载 ESET Uninstaller 工具：</strong>   - 从 ESET 官方支持页面下载 <strong>ESET Uninstaller</strong> 工具：<br>  <a target="_blank" rel="noopener" href="https://support.eset.com/en/kb2289-uninstall-eset-manually-using-the-eset-uninstaller-tool">ESET Uninstaller 下载链接</a></p>
+</li>
+<li><p><strong>进入安全模式：</strong></p>
+<ul>
+<li>按 <code>Win + R</code>，输入 <code>msconfig</code>，按回车。</li>
+<li>在 <strong>引导</strong> 选项卡中，勾选 <strong>安全引导</strong>，然后点击 <strong>确定</strong> 并重启电脑。</li>
+</ul>
+</li>
+<li><p><strong>运行 ESET Uninstaller 工具：</strong></p>
+<ul>
+<li>在安全模式下，运行下载的 <strong>ESET Uninstaller</strong> 工具 (<code>ESETUninstaller.exe</code>)。</li>
+<li>按照提示，输入确认信息并选择要卸载的 ESET 产品。</li>
+<li>等待卸载完成。</li>
+</ul>
+</li>
+<li><p><strong>重新启动电脑</strong>：</p>
+<ul>
+<li>卸载完成后，重新启动电脑并返回正常模式。</li>
+<li>记得取消 <strong>安全引导</strong> 选项（在 <code>msconfig</code> 中取消勾选 <strong>安全引导</strong>）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法-2-通过注册表重置-ESET-管理员密码"><a href="#方法-2-通过注册表重置-ESET-管理员密码" class="headerlink" title="方法 2: 通过注册表重置 ESET 管理员密码"></a>方法 2: 通过注册表重置 ESET 管理员密码</h3><p>您可以尝试通过修改注册表来重置或移除 ESET Security 的管理员密码。</p>
+<h4 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p><strong>打开注册表编辑器：</strong></p>
+<ul>
+<li>按 <code>Win + R</code>，输入 <code>regedit</code>，然后按回车。</li>
+</ul>
+</li>
+<li><p><strong>定位到 ESET 密码存储路径：</strong></p>
+<ul>
+<li>路径：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE\SOFTWARE\ESET\ESET Security\CurrentVersion\Info</span><br></pre></td></tr></table></figure></li>
+<li>在部分版本中，路径可能略有不同。</li>
+</ul>
+</li>
+<li><p><strong>删除密码值：</strong></p>
+<ul>
+<li>找到名为 <strong><code>Password</code></strong> 或 <strong><code>AdminPassword</code></strong> 的项。</li>
+<li>右键点击该项，选择 <strong>删除</strong>。</li>
+<li>关闭注册表编辑器。</li>
+</ul>
+</li>
+<li><p><strong>重启电脑</strong>：</p>
+<ul>
+<li>重启后，尝试打开 ESET Security，密码应该被移除。</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法-3-通过任务管理器禁用-ESET-启动项和服务"><a href="#方法-3-通过任务管理器禁用-ESET-启动项和服务" class="headerlink" title="方法 3: 通过任务管理器禁用 ESET 启动项和服务"></a>方法 3: 通过任务管理器禁用 ESET 启动项和服务</h3><ol>
+<li><p><strong>打开任务管理器：</strong></p>
+<ul>
+<li>按 <code>Ctrl + Shift + Esc</code>。</li>
+</ul>
+</li>
+<li><p><strong>禁用启动项：</strong></p>
+<ul>
+<li>转到 <strong>启动</strong> 选项卡。</li>
+<li>找到 <strong>ESET Security</strong>，右键点击并选择 <strong>禁用</strong>。</li>
+</ul>
+</li>
+<li><p><strong>禁用 ESET 服务：</strong></p>
+<ul>
+<li>转到 <strong>服务</strong> 选项卡。</li>
+<li>找到所有与 ESET 相关的服务，右键点击，选择 <strong>停止</strong>。</li>
+<li>按 <code>Win + R</code>，输入 <code>services.msc</code>，回车。</li>
+<li>在服务列表中找到 <strong>ESET 服务</strong>，右键选择 <strong>属性</strong>，将 <strong>启动类型</strong> 设置为 <strong>禁用</strong>。</li>
+</ul>
+</li>
+</ol>
 
 	</div>
 

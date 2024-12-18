@@ -265,7 +265,7 @@ blockquote {
 }
 
 blockquote p, blockquote ol, blockquote ul, blockquote li, .slogan{
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Ubuntu, "Hiragino Sans GB", '楷体', 'STKaiti';
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Ubuntu, "Hiragino Sans GB", "Microsoft YaHei", 'STKaiti';
 }
 
 /* =============================================================================
