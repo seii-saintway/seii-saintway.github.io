@@ -894,7 +894,32 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 
 <h4 id="服务启动-bat"><a href="#服务启动-bat" class="headerlink" title="服务启动.bat"></a>服务启动.bat</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 启用服务并启动，移动模块</span><br><span class="line">sc config &quot;Swd&quot; start= auto</span><br><span class="line">net start &quot;Swd&quot;</span><br><span class="line">move C:\kasu\wds C:\Windows\wds</span><br><span class="line"></span><br><span class="line">sc config &quot;awssm&quot; start= auto</span><br><span class="line">net start &quot;awssm&quot;</span><br><span class="line">move C:\kasu\avv5sm C:\WINDOWS\avv5sm</span><br><span class="line"></span><br><span class="line">rem 启用其他服务</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= auto</span><br><span class="line">sc config &quot;CompactSvc&quot; start= auto</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= auto</span><br><span class="line">sc config &quot;AstExAgt&quot; start= auto</span><br><span class="line">sc config &quot;ScvSvc&quot; start= auto</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= auto</span><br><span class="line">sc config &quot;LogSvr&quot; start= auto</span><br><span class="line">sc config &quot;IceSvc&quot; start= auto</span><br><span class="line"></span><br><span class="line">rem 启动其他服务</span><br><span class="line">net start &quot;SCVCabProxySvr&quot;</span><br><span class="line">net start &quot;CompactSvc&quot;</span><br><span class="line">net start &quot;ScvUpdSvc&quot;</span><br><span class="line">net start &quot;AstExAgt&quot;</span><br><span class="line">net start &quot;ScvSvc&quot;</span><br><span class="line">net start &quot;SCV LogAgentService&quot;</span><br><span class="line">net start &quot;LogSvr&quot;</span><br><span class="line">net start &quot;IceSvc&quot;</span><br><span class="line"></span><br><span class="line">rem 移动 C:\Program Files (x86)\Sky Product 文件夹回原位置</span><br><span class="line">move &quot;C:\kasu\Sky Product&quot; &quot;C:\Program Files (x86)&quot;</span><br></pre></td></tr></table></figure>
 
-<h2 id="组织域管理员"><a href="#组织域管理员" class="headerlink" title="组织域管理员"></a>组织域管理员</h2><h3 id="创建本地管理员账户"><a href="#创建本地管理员账户" class="headerlink" title="创建本地管理员账户"></a>创建本地管理员账户</h3><p>组织域管理员登录到某个计算机终端并使用 <code>cmd</code> 或 <code>PowerShell</code> 创建一个新的本地管理员账户：</p>
+<h2 id="组织域管理员"><a href="#组织域管理员" class="headerlink" title="组织域管理员"></a>组织域管理员</h2><p>域管理员在未联网的计算机终端上用 CMD 执行的命令不会被域级审计，因为域级审计依赖于计算机与域控制器之间的通信。若计算机与域控制器断开连接（未联网），域级审计无法实时获取和记录该计算机的操作信息。</p>
+<p>详细解释</p>
+<ol>
+<li>域级审计的工作原理：<ul>
+<li>域级审计通过域控制器推送审计策略，监控和收集域中计算机的操作信息。</li>
+<li>当计算机执行某些命令或操作时，会向域控制器发送事件日志，存储在域控制器的安全日志中。</li>
+</ul>
+</li>
+<li>未联网时的影响：<ul>
+<li>如果计算机未连接到网络或无法访问域控制器，任何在该计算机上执行的命令都无法实时同步到域控制器。</li>
+<li>因此，域级审计无法记录这些操作。</li>
+</ul>
+</li>
+<li>本地审计的作用：<ul>
+<li>虽然无法进行域级审计，但本地审计策略（如进程创建审计、登录审计）仍然有效。</li>
+<li>这些操作会记录到本地安全日志中（在事件查看器的安全日志下）。</li>
+<li>例如，Windows 事件 ID 4688 会记录新进程的创建。</li>
+</ul>
+</li>
+<li>联网后同步：<ul>
+<li>当未联网的计算机重新连接到域后，域策略可以再次应用，但在断网期间生成的本地日志不会自动上传到域控制器。</li>
+<li>需要手动导出或通过集中式日志管理工具收集这些本地日志。</li>
+</ul>
+</li>
+</ol>
+<h3 id="创建本地管理员账户"><a href="#创建本地管理员账户" class="headerlink" title="创建本地管理员账户"></a>创建本地管理员账户</h3><p>组织域管理员登录到某个计算机终端并使用 <code>cmd</code> 或 <code>PowerShell</code> 创建一个新的本地管理员账户：</p>
 <ul>
 <li><p>通过 <code>cmd</code> 创建本地管理员：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> user NewLocalAdmin password /add</span><br><span class="line"><span class="built_in">net</span> localgroup Administrators NewLocalAdmin /add</span><br></pre></td></tr></table></figure>
@@ -913,6 +938,68 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 <li><code>/sd 12/25/2024</code>：指定任务的具体日期为 2024 年 12 月 25 日。</li>
 </ul>
 <p>这样，任务将在指定的日期和时间执行并删除本地管理员账户。</p>
+<h3 id="禁用本地审计"><a href="#禁用本地审计" class="headerlink" title="禁用本地审计"></a>禁用本地审计</h3><p>要在 Windows 系统上禁用本地审计，可以通过本地组策略编辑器或命令行工具来进行。以下是两种常见方法：</p>
+<h4 id="方法-1：使用本地组策略编辑器禁用本地审计"><a href="#方法-1：使用本地组策略编辑器禁用本地审计" class="headerlink" title="方法 1：使用本地组策略编辑器禁用本地审计"></a>方法 1：使用本地组策略编辑器禁用本地审计</h4><ol>
+<li>打开本地组策略编辑器：<ul>
+<li>按下 Win + R，输入 gpedit.msc，然后按 Enter。</li>
+</ul>
+</li>
+<li>导航到审计策略：<ul>
+<li>路径：计算机配置 → Windows 设置 → 安全设置 → 本地策略 → 审核策略。</li>
+</ul>
+</li>
+<li>禁用所需的审计项：<ul>
+<li>在右侧面板中找到需要禁用的审计项（例如登录审核、对象访问审核、进程创建审核等）。</li>
+<li>双击需要禁用的项，在弹出的窗口中选择不审核，然后点击确定。</li>
+</ul>
+</li>
+<li>应用更改：<ul>
+<li>关闭组策略编辑器，重启计算机或运行以下命令以使更改生效：</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpupdate /force</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法-2：使用命令行工具禁用本地审计"><a href="#方法-2：使用命令行工具禁用本地审计" class="headerlink" title="方法 2：使用命令行工具禁用本地审计"></a>方法 2：使用命令行工具禁用本地审计</h4><p>可以使用 auditpol 命令来禁用特定的审计策略。</p>
+<ul>
+<li>查看当前的审计策略</li>
+</ul>
+<p>在命令提示符或 PowerShell 中，运行以下命令查看当前的审计策略：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auditpol /get /category:*</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>禁用特定审计项</li>
+</ul>
+<p>要禁用特定审计项（例如登录&#x2F;注销类别下的所有审核），可以使用以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auditpol /<span class="built_in">set</span> /category:&quot;Logon/Logoff&quot; /success:disable /failure:disable</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>禁用所有审计项</li>
+</ul>
+<p>要禁用所有审计类别的审计，可以逐项禁用，或者使用批处理命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /f &quot;tokens=*&quot; %a <span class="keyword">in</span> (&#x27;auditpol /get /category:* ^| <span class="built_in">findstr</span> /r &quot;^[A-Z]&quot;&#x27;) <span class="keyword">do</span> auditpol /<span class="built_in">set</span> /category:&quot;%a&quot; /success:disable /failure:disable</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意事项</li>
+</ul>
+<ol>
+<li>权限要求：<ul>
+<li>修改审计策略需要管理员权限，请确保在具有管理员权限的账户下执行这些操作。</li>
+</ul>
+</li>
+<li>安全风险：<ul>
+<li>禁用本地审计会使系统无法记录安全事件和用户活动，可能导致安全风险，降低问题排查和安全合规性。</li>
+</ul>
+</li>
+<li>重新启用审计：<ul>
+<li>如果需要重新启用本地审计，可以通过组策略编辑器将相关项设置为成功审核或失败审核，或者使用 auditpol 命令启用。</li>
+</ul>
+</li>
+</ol>
+<p>示例命令重新启用审计：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auditpol /<span class="built_in">set</span> /category:&quot;Logon/Logoff&quot; /success:enable /failure:enable</span><br></pre></td></tr></table></figure>
+
+<p>通过这些方法，可以有效控制本地审计的启用和禁用。</p>
 <h2 id="禁用-Windows-远程管理"><a href="#禁用-Windows-远程管理" class="headerlink" title="禁用 Windows 远程管理"></a>禁用 Windows 远程管理</h2><p>Windows 远程管理涉及多个功能，如 <strong>PowerShell 远程</strong>、<strong>远程桌面</strong> 和 **Windows 远程管理服务 (WinRM)**。您可以逐一禁用这些功能。</p>
 <h3 id="禁用-PowerShell-远程"><a href="#禁用-PowerShell-远程" class="headerlink" title="禁用 PowerShell 远程"></a>禁用 PowerShell 远程</h3><p>在 <strong>PowerShell</strong> 中运行以下命令来禁用 PowerShell 远程功能：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Disable-PSRemoting</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
@@ -1967,45 +2054,45 @@ jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span 
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+		
 			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
