@@ -846,7 +846,23 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 </li>
 </ol></div></div></div>
 
-<h2 id="SKYSEA-这个间谍软件的删除方法"><a href="#SKYSEA-这个间谍软件的删除方法" class="headerlink" title="SKYSEA 这个间谍软件的删除方法"></a>SKYSEA 这个间谍软件的删除方法</h2><h3 id="一、详细操作指南"><a href="#一、详细操作指南" class="headerlink" title="一、详细操作指南"></a><a target="_blank" rel="noopener" href="https://note.com/ironhead/n/na2410e5d8d1a">一、详细操作指南</a></h3><p>社内PC上未经允许安装并获取操作日志的麻烦间谍软件。让我们根除这个间谍软件，提高生活质量（QOL）。</p>
+<h2 id="SKYSEA-这个间谍软件的删除方法"><a href="#SKYSEA-这个间谍软件的删除方法" class="headerlink" title="SKYSEA 这个间谍软件的删除方法"></a>SKYSEA 这个间谍软件的删除方法</h2><ul>
+<li>Microsoft Policy Platform</li>
+<li>Microsoft Endpoint Manager<ul>
+<li>Microsoft Endpoint Configuration Manager<ul>
+<li>Configuration Manager Remote Control Service</li>
+</ul>
+</li>
+<li>Microsoft Intune<ul>
+<li>Microsoft Intune Management Extension</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Microsoft Azure Information Protection</li>
+<li>Azure Monitor Agent</li>
+</ul>
+<h3 id="一、详细操作指南"><a href="#一、详细操作指南" class="headerlink" title="一、详细操作指南"></a><a target="_blank" rel="noopener" href="https://note.com/ironhead/n/na2410e5d8d1a">一、详细操作指南</a></h3><p>社内PC上未经允许安装并获取操作日志的麻烦间谍软件。让我们根除这个间谍软件，提高生活质量（QoL）。</p>
 <ol>
 <li><p>使用 <a target="_blank" rel="noopener" href="https://registry-finder.com/bin/2.51.0.0/RegistryFinder64.zip">RegistryFinder</a> 删除注册表中所有包含 “skysea” 的项。也可以使用 regedit，但比较麻烦。</p>
 <p>删除注册表中 Key 列和 Value 列中包含 “SKYSEA” 的记录（右键点击 → 从注册表中删除）。</p>
@@ -1016,6 +1032,16 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> winmgmt</span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> winmgmt <span class="literal">-StartupType</span> Disabled</span><br></pre></td></tr></table></figure>
 
 <p>或者，在 <strong>服务管理器</strong> 中手动禁用 <code>Windows Management Instrumentation</code> 服务。</p>
+<h3 id="如何检查和设置-WMI-权限："><a href="#如何检查和设置-WMI-权限：" class="headerlink" title="如何检查和设置 WMI 权限："></a>如何检查和设置 WMI 权限：</h3><ul>
+<li>可使用 Component Services 或 WMI Control 控制台来查看和配置 WMI 的访问权限。</li>
+<li>步骤：<ol>
+<li>打开 compmgmt.msc（计算机管理）。</li>
+<li>导航到 Services and Applications &gt; WMI Control。</li>
+<li>右键点击 WMI Control，选择 Properties。</li>
+<li>在 Security 选项卡中，可以查看和配置 WMI 命名空间的权限。</li>
+</ol>
+</li>
+</ul>
 <h3 id="禁用-SMB-协议"><a href="#禁用-SMB-协议" class="headerlink" title="禁用 SMB 协议"></a>禁用 SMB 协议</h3><p>为了防止远程查看和管理，可以禁用 <strong>Server Message Block (SMB)</strong> 协议。</p>
 <p>禁用 <strong>SMB1 协议</strong>和 <strong>SMB2 协议</strong>：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-SmbServerConfiguration</span> <span class="literal">-EnableSMB1Protocol</span> <span class="variable">$false</span></span><br><span class="line"><span class="built_in">Set-SmbServerConfiguration</span> <span class="literal">-EnableSMB2Protocol</span> <span class="variable">$false</span></span><br></pre></td></tr></table></figure>
@@ -1074,7 +1100,10 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 <h2 id="卸载或禁用-ESET-Security"><a href="#卸载或禁用-ESET-Security" class="headerlink" title="卸载或禁用 ESET Security"></a>卸载或禁用 ESET Security</h2><p>ESET Security 是防病毒和安全保护软件，禁用或卸载它需要一定的步骤和权限，特别是在企业环境中可能会受到策略限制。<br>如果您没有 <strong>ESET Security</strong> 的管理员密码，但需要禁用或卸载它，可以尝试以下方法。不过请注意，在公司设备上这样做可能违反 IT 政策，需谨慎操作。</p>
 <h3 id="方法-1-使用-ESET-卸载工具（在安全模式下）"><a href="#方法-1-使用-ESET-卸载工具（在安全模式下）" class="headerlink" title="方法 1: 使用 ESET 卸载工具（在安全模式下）"></a>方法 1: 使用 ESET 卸载工具（在安全模式下）</h3><p>ESET 提供了专门的卸载工具，可以在 <strong>安全模式</strong> 下强制卸载 ESET Security，绕过管理员密码。</p>
 <h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
-<li><p><strong>下载 ESET Uninstaller 工具：</strong>   - 从 ESET 官方支持页面下载 <strong>ESET Uninstaller</strong> 工具：<br>  <a target="_blank" rel="noopener" href="https://support.eset.com/en/kb2289-uninstall-eset-manually-using-the-eset-uninstaller-tool">ESET Uninstaller 下载链接</a></p>
+<li><p><strong>下载 ESET Uninstaller 工具：</strong></p>
+<ul>
+<li>从 ESET 官方支持页面下载 <strong>ESET Uninstaller</strong> 工具：<br><a target="_blank" rel="noopener" href="https://support.eset.com/en/kb2289-uninstall-eset-manually-using-the-eset-uninstaller-tool">ESET Uninstaller 下载链接</a></li>
+</ul>
 </li>
 <li><p><strong>进入安全模式：</strong></p>
 <ul>
@@ -1166,6 +1195,543 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 <li>你应该能够看到 <strong>Apple Mobile Device Ethernet</strong> 或类似名称的适配器，这表示 iPhone 正在通过 USB 共享网络。</li>
 <li>如果看到该适配器，右键点击它并选择 <strong>启用</strong>。</li>
 </ul>
+<p>使用 <a target="_blank" rel="noopener" href="https://mypublicwifi.com/">MyPublicWiFi</a> 创建虚拟无线路由器：</p>
+<ul>
+<li>特点：<ul>
+<li>提供创建无线局域网和网络监控功能。</li>
+<li>无需依赖 Hosted Network 支持。</li>
+</ul>
+</li>
+<li>适用情况：<ul>
+<li>支持较旧的 Windows 系统和大部分无线网卡。</li>
+</ul>
+</li>
+</ul>
+<p>在 <strong>Windows 11</strong> 中开启<strong>移动热点</strong>：</p>
+<ol>
+<li>按下 <strong>Win + I</strong> 打开设置，或者点击<strong>开始菜单</strong>，选择<strong>设置</strong>。</li>
+<li>在设置界面，选择左侧菜单中的<strong>网络和互联网</strong>。</li>
+<li>在<strong>网络和互联网</strong>页面中，找到并点击<strong>移动热点</strong>。</li>
+<li><strong>选择网络连接来源</strong>：<ul>
+<li>在<strong>共享我的互联网连接</strong>下拉菜单中，选择用于共享的网络连接来源（例如 Wi-Fi 或以太网）。</li>
+</ul>
+</li>
+<li><strong>配置网络名称和密码（可选）</strong>：<ul>
+<li>点击<strong>编辑</strong>按钮，设置你的热点名称（SSID）和密码。确保密码满足至少8位字符的要求。</li>
+</ul>
+</li>
+<li>将<strong>移动热点</strong>开关切换到<strong>开</strong>的状态。</li>
+<li>系统会显示热点的网络名称和密码，你可以使用其他设备连接到此热点。</li>
+<li>在移动热点设置页面，可以查看并管理连接到热点的设备。</li>
+</ol>
+<p>使用 <a target="_blank" rel="noopener" href="https://github.com/DesktopECHO/Pi-Hole-for-WSL1/tree/master">Pi-Hole-for-WSL1</a> 阻塞网络监控通信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pihole -b self.events.data.microsoft.com</span><br><span class="line">pihole -b teams.events.data.microsoft.com</span><br><span class="line">pihole -b browser-intake-datadoghq.com</span><br><span class="line">pihole -b dns.msftncsi.com</span><br><span class="line">pihole -b msftconnecttest.com</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pihole restartdns</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pihole -t</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ipconfig</span> /flushdns</span><br></pre></td></tr></table></figure>
+
+<h2 id="圆周运动"><a href="#圆周运动" class="headerlink" title="圆周运动"></a>圆周运动</h2><div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>pyautogui
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># 圆周运动的参数</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># 圆的半径</span>
+<span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># 屏幕中心点</span>
+<span class="n">angle_step</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># 每步移动的角度增量，单位是度</span>
+
+<span class="c1"># 进入无限循环</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">angle_step</span><span class="p">):</span>
+            <span class="c1"># 计算当前角度的弧度值</span>
+            <span class="n">radian</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="c1"># 计算新坐标</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">center_x</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+            <span class="c1"># 移动鼠标</span>
+            <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="c1"># 可以调整时间间隔来控制运动速度</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'圆周运动已停止。'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>pyautogui<span class="w"> </span>pynput
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">pynput</span> <span class="kn">import</span> <span class="n">keyboard</span>
+
+<span class="k">class</span> <span class="nc">MouseCircleApp</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Mouse Circle App'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">'300x100'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s1">'-topmost'</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">'Start Circle'</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">toggle_circle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">listener</span> <span class="o">=</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Listener</span><span class="p">(</span><span class="n">on_press</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_key_press</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listener</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">toggle_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">'Stop Circle'</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_circle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">'Start Circle'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">start_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">angle_step</span> <span class="o">=</span> <span class="mi">5</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">angle_step</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">radian</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">center_x</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+                <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Key</span><span class="o">.</span><span class="n">esc</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">'Start Circle'</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">MouseCircleApp</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
+pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>--noconsole<span class="w"> </span>circle.py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr/>
+<p><code>awake.py</code></p>
+<p>使用 <code>ctypes</code> 库来调用 Windows API <code>SetThreadExecutionState</code> 防止系统进入睡眠或关闭显示器。</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>pystray<span class="w"> </span>pillow
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">pystray</span> <span class="kn">import</span> <span class="n">Icon</span><span class="p">,</span> <span class="n">MenuItem</span><span class="p">,</span> <span class="n">Menu</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">pynput</span> <span class="kn">import</span> <span class="n">keyboard</span>
+
+<span class="c1"># Constants for preventing sleep using SetThreadExecutionState API</span>
+<span class="n">ES_CONTINUOUS</span> <span class="o">=</span> <span class="mh">0x80000000</span>  <span class="c1"># Ensure the state is reset when the program exits</span>
+<span class="n">ES_DISPLAY_REQUIRED</span> <span class="o">=</span> <span class="mh">0x00000002</span>  <span class="c1"># Prevent the display from turning off</span>
+<span class="n">ES_SYSTEM_REQUIRED</span> <span class="o">=</span> <span class="mh">0x00000001</span>  <span class="c1"># Prevent the system from entering sleep</span>
+
+<span class="c1"># Global variables for mouse circle functionality</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">circle_thread</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">button</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">prevent_sleep</span><span class="p">():</span>
+    <span class="c1"># Call the Windows API to prevent sleep and display off</span>
+    <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">SetThreadExecutionState</span><span class="p">(</span>
+        <span class="n">ES_CONTINUOUS</span> <span class="o">|</span> <span class="n">ES_DISPLAY_REQUIRED</span> <span class="o">|</span> <span class="n">ES_SYSTEM_REQUIRED</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">allow_sleep</span><span class="p">():</span>
+    <span class="c1"># Reset the system to allow sleep and display off</span>
+    <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">SetThreadExecutionState</span><span class="p">(</span><span class="n">ES_CONTINUOUS</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">keep_awake</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Function to simulate user activity to keep the system awake</span>
+        <span class="n">prevent_sleep</span><span class="p">()</span>
+        <span class="n">pyautogui</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Slight mouse movement to prevent idle state</span>
+        <span class="n">pyautogui</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Move back to original position</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Sleep for 3 minutes before repeating</span>
+
+<span class="k">def</span> <span class="nf">on_quit</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+    <span class="c1"># Handle the quit action from the system tray menu</span>
+    <span class="n">icon</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># Stop the tray icon</span>
+    <span class="n">allow_sleep</span><span class="p">()</span>  <span class="c1"># Allow the system to sleep again</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>  <span class="c1"># Quit the Tkinter main loop</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Ensure the process exits completely</span>
+
+<span class="k">def</span> <span class="nf">show_window</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="c1"># Show the main application window</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">deiconify</span><span class="p">()</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s1">'-topmost'</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Bring the window to the front</span>
+
+<span class="k">def</span> <span class="nf">hide_window</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="c1"># Hide the main application window</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">create_tray_icon</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="c1"># Create a system tray icon with a menu</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">,</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Simple black icon</span>
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">(</span>
+        <span class="n">MenuItem</span><span class="p">(</span><span class="s1">'Open Window'</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">icon</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">show_window</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">MenuItem</span><span class="p">(</span><span class="s1">'Exit'</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">icon</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">on_quit</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="n">root</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">Icon</span><span class="p">(</span><span class="s1">'Awake'</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="s1">'Keep Awake'</span><span class="p">,</span> <span class="n">menu</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">toggle_circle</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">circle_thread</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">'Stop Circle'</span><span class="p">)</span>
+        <span class="c1"># Start the circle motion</span>
+        <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">circle_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">start_circle</span><span class="p">)</span>
+        <span class="n">circle_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">'Start Circle'</span><span class="p">)</span>
+        <span class="c1"># Stop the circle motion</span>
+        <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">circle_thread</span> <span class="ow">and</span> <span class="n">circle_thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="n">circle_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">start_circle</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">running</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">angle_step</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="k">while</span> <span class="n">running</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">angle_step</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">running</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">radian</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">center_x</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+            <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">button</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Key</span><span class="o">.</span><span class="n">esc</span><span class="p">:</span>
+        <span class="n">toggle_circle</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Set up the main Tkinter window</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Awake &amp; Circle'</span><span class="p">)</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">'350x100'</span><span class="p">)</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>  <span class="c1"># Fix the window size</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s1">'-topmost'</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Keep the window on top</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">'WM_DELETE_WINDOW'</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">hide_window</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>  <span class="c1"># Hide on close</span>
+
+    <span class="c1"># Create the mouse circle button in the main window</span>
+    <span class="k">global</span> <span class="n">button</span>
+    <span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">'Start Circle'</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">toggle_circle</span><span class="p">(</span><span class="n">button</span><span class="p">))</span>
+    <span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Start a background thread to keep the system awake</span>
+    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">keep_awake</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Start the keyboard listener</span>
+    <span class="n">listener</span> <span class="o">=</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Listener</span><span class="p">(</span><span class="n">on_press</span><span class="o">=</span><span class="n">on_key_press</span><span class="p">)</span>
+    <span class="n">listener</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Create and run the system tray icon</span>
+    <span class="n">icon</span> <span class="o">=</span> <span class="n">create_tray_icon</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">icon</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Run the Tkinter main loop</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>说明：</p>
+<ol>
+<li><p><code>SetThreadExecutionState</code>：</p>
+<ul>
+<li><code>ES_CONTINUOUS</code>：保持该设置直到下一次调用。</li>
+<li><code>ES_DISPLAY_REQUIRED</code>：防止屏幕关闭。</li>
+<li><code>ES_SYSTEM_REQUIRED</code>：防止系统进入睡眠。</li>
+</ul>
+</li>
+<li><p><strong>防止和恢复</strong>：</p>
+<ul>
+<li><code>prevent_sleep()</code>：调用后，系统不会进入睡眠或关闭显示器。</li>
+<li><code>allow_sleep()</code>：调用后恢复系统默认的电源管理设置。</li>
+</ul>
+</li>
+<li><p><strong>运行和停止</strong>：</p>
+<ul>
+<li>运行脚本后，它会每分钟保持系统活跃，防止自动熄屏和锁屏。</li>
+<li>使用 <code>Ctrl + C</code> 停止脚本运行，并恢复系统默认设置。</li>
+</ul>
+</li>
+</ol>
+<p>注意：</p>
+<ul>
+<li>这个脚本仅在 Windows 操作系统上有效。</li>
+<li><code>SetThreadExecutionState</code> 是 Windows 提供的 API，用于管理电源和系统状态。务必小心使用，防止意外阻止系统进入节能状态。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
+pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>--noconsole<span class="w"> </span>awake.py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr/>
+<p><code>setup.py</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">mypyc.build</span> <span class="kn">import</span> <span class="n">mypycify</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">'awake'</span><span class="p">,</span>
+    <span class="n">ext_modules</span><span class="o">=</span><span class="n">mypycify</span><span class="p">([</span><span class="s1">'awake.py'</span><span class="p">]),</span>
+    <span class="n">zip_safe</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>mypy
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
+python<span class="w"> </span>setup.py<span class="w"> </span>build_ext<span class="w"> </span>--inplace
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr/>
+<p><code>main.py</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">awake</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">awake</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>  <span class="c1"># 调用编译后的模块的 main 函数</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span>%%bash
+pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>main.py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr/>
+<p>WMI 服务管理与清理自动化</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">def</span> <span class="nf">stop_and_disable_service</span><span class="p">(</span><span class="n">service_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">'''停止并禁用指定的服务'''</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 停止服务</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">'sc'</span><span class="p">,</span> <span class="s1">'stop'</span><span class="p">,</span> <span class="n">service_name</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'服务已停止：</span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="c1"># 禁用服务</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">'sc'</span><span class="p">,</span> <span class="s1">'config'</span><span class="p">,</span> <span class="n">service_name</span><span class="p">,</span> <span class="s1">'start='</span><span class="p">,</span> <span class="s1">'disabled'</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'服务已禁用：</span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'操作服务 </span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s1"> 时发生错误：</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">clear_folder_contents</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">'''清理文件夹下的所有内容'''</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 删除文件夹下的所有文件和子目录</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+                <span class="n">item_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">item_path</span><span class="p">):</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'成功清理文件夹内容：</span><span class="si">{</span><span class="n">folder_path</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'清理文件夹 </span><span class="si">{</span><span class="n">folder_path</span><span class="si">}</span><span class="s1"> 时发生错误：</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'路径不存在：</span><span class="si">{</span><span class="n">folder_path</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="c1"># 停止并禁用服务</span>
+    <span class="n">stop_and_disable_service</span><span class="p">(</span><span class="s1">'winmgmt'</span><span class="p">)</span>
+    <span class="n">stop_and_disable_service</span><span class="p">(</span><span class="s1">'CcmExec'</span><span class="p">)</span>
+
+    <span class="c1"># 定义文件夹路径</span>
+    <span class="n">wbem_base_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">wbem'</span>
+    <span class="n">auto_recover_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wbem_base_path</span><span class="p">,</span> <span class="s1">'AutoRecover'</span><span class="p">)</span>
+    <span class="n">repository_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wbem_base_path</span><span class="p">,</span> <span class="s1">'Repository'</span><span class="p">)</span>
+    <span class="n">remote_control_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">CCM</span><span class="se">\\</span><span class="s1">RemCtrl'</span>
+
+    <span class="c1"># 清理 wbem/AutoRecover 和 wbem/Repository 文件夹</span>
+    <span class="n">clear_folder_contents</span><span class="p">(</span><span class="n">auto_recover_path</span><span class="p">)</span>
+    <span class="n">clear_folder_contents</span><span class="p">(</span><span class="n">repository_path</span><span class="p">)</span>
+    <span class="c1"># 清理 CCM/RemCtrl 文件夹</span>
+    <span class="n">clear_folder_contents</span><span class="p">(</span><span class="n">remote_control_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
 
 	
 	</div>
@@ -2070,45 +2636,45 @@ jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span 
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
 			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
 		
 			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
