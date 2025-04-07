@@ -6080,7 +6080,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /usr/local/libexec/
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-<p>jumanpp</p>
+<p>jumanpp test</p>
 
 </div>
 </div>
@@ -6159,6 +6159,15 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /usr/local/libexec/
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>annotate epub</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -17810,6 +17819,76 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>蛋白质工程（Protein Engineering） 在现代生物医药中的应用，特别是在抗体疗法、抗体-药物偶联物（ADCs）、双特异性抗体（BITEs）、DARPins 和 CAR-T 细胞治疗等领域的核心原理。</p>
+<ol>
+<li><p>关键概念</p>
+<ol>
+<li><p>生物制药平台技术：</p>
+<p>・单克隆抗体（Therapeutic antibodies）：用于靶向治疗癌症、免疫疾病等。</p>
+<p>・抗体-药物偶联物（ADCs, Antibody-Drug Conjugates）：抗体携带小分子药物，特异性杀死癌细胞。</p>
+<p>・特异性 T 细胞衔接器（BITEs, Bispecific T-cell Engagers）：可同时结合癌细胞和 T 细胞，促进免疫攻击。</p>
+<p>・DARPins（Designed Ankyrin Repeat Proteins）：比传统抗体更稳定、更易于生产的蛋白质结合物。</p>
+<p>・CAR-T 细胞疗法（CAR-based therapeutics）：利用基因工程改造 T 细胞，使其能识别并杀死癌细胞。</p>
+<br />
+</li>
+<li><p>所有这些平台的共同点：</p>
+<p>・核心目标：设计一种人工蛋白质，使其能高效结合某种与疾病相关的靶标蛋白。</p>
+<p>・蛋白质结合（Protein Binding）：药物分子（如抗体）必须精准、高效地附着在目标蛋白上，以发挥治疗作用。</p>
+<br />
+</li>
+<li><p>蛋白质工程的数学模型：一个『最小化问题』：</p>
+<p>・输入：目标蛋白的 3D 结构（通常来自 PDB 文件，即 蛋白质数据库 .pdb）。</p>
+<p>・目标：寻找一条氨基酸序列，使其编码的蛋白（称为 binder，即结合物）能紧密结合目标蛋白。</p>
+<br />
+</li>
+</ol>
+</li>
+<li><p>『最小化问题』意味着什么？</p>
+<p>蛋白质工程的本质是优化（Optimization）：</p>
+<ul>
+<li>目标函数（Objective Function）：<ul>
+<li>评估不同氨基酸序列与目标蛋白结合的紧密程度（亲和力）。</li>
+<li>亲和力越高，结合越牢固，药效越好。</li>
+</ul>
+</li>
+<li>搜索空间（Search Space）：<ul>
+<li>由于蛋白质由 20 种氨基酸 组成，假设我们需要设计一个 100 个氨基酸 的结合物，则可能的组合数量是：$20^{100} \approx 10^{130}$</li>
+<li>这个搜索空间远远超过了传统计算能力，因此需要计算机模拟、机器学习和量子计算来加速搜索。</li>
+</ul>
+</li>
+</ul>
+<br />
+</li>
+<li><p>现实应用</p>
+<ul>
+<li>药物发现：用于筛选高效的蛋白质药物，如 新冠病毒的抗体开发 就涉及这种优化过程。</li>
+<li>计算方法：<ul>
+<li>经典计算：使用蒙特卡罗方法（Monte Carlo）、分子动力学（Molecular Dynamics, MD）进行模拟。</li>
+<li>人工智能：AlphaFold 2、RosettaFold 通过深度学习预测蛋白质结构和结合能力。</li>
+<li>量子计算：利用 量子搜索（Grover）、量子变分优化（VQE）加速找到最优氨基酸序列。</li>
+</ul>
+</li>
+</ul>
+<br />
+</li>
+<li><p>总结</p>
+<p>这段话说明了蛋白质工程在现代生物制药中的核心作用，并将其归结为一个优化问题：</p>
+<ul>
+<li>输入：疾病相关的 目标蛋白 3D 结构（.pdb 文件）。</li>
+<li>优化目标：寻找一条氨基酸序列，使其编码的蛋白能最紧密地结合目标蛋白（最小化结合能量）。</li>
+<li>方法：结合计算机模拟、AI、量子计算进行搜索，以加速药物发现。</li>
+</ul>
+<br />
+</li>
+</ol>
+<p>简单来说，这是一种『让蛋白质变成理想药物』的数学优化问题！</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><a target="_blank" rel="noopener" href="https://www.k.u-tokyo.ac.jp/exam/">https://www.k.u-tokyo.ac.jp/exam/</a></p>
 
 </div>
@@ -18536,45 +18615,45 @@ Updating files: 100% (145/145), done.
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
 			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
 		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>

@@ -237,6 +237,185 @@
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/qsharp/tree/main/vscode">Microsoft Azure Q#</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/qulacs/qulacs">Qulacs</a><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.qulacs.org/en/latest/intro/4.1_python_tutorial.html">Python Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.qulacs.org/en/latest/guide/2.0_python_advanced.html">Qulacs Python Advanced Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://dojo.qulacs.org/ja/latest/notebooks/3.1_Qulacs_tutorial.html">シミュレータQulacsの使い方</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Qaqarot/qaqarot">blueqat</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/OpenJij/OpenJij">OpenJij</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qulacs</span> <span class="kn">import</span> <span class="n">QuantumState</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qulacs.gate</span> <span class="kn">import</span> <span class="n">X</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">RX</span><span class="p">,</span> <span class="n">RY</span>
+
+<span class="k">def</span> <span class="nf">dump_machine</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State vector:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">get_vector</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">run_example</span><span class="p">():</span>
+    <span class="c1"># 初始化 1 量子比特的量子态</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">set_zero_state</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State |0⟩:&quot;</span><span class="p">)</span>
+    <span class="n">dump_machine</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="c1"># 创建量子电路</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 应用 X 门</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">X</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">update_quantum_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State |1⟩:&quot;</span><span class="p">)</span>
+    <span class="n">dump_machine</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="c1"># 应用 H 门</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">update_quantum_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State |-⟩:&quot;</span><span class="p">)</span>
+    <span class="n">dump_machine</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="c1"># 应用 S 门</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">update_quantum_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State |-i⟩:&quot;</span><span class="p">)</span>
+    <span class="n">dump_machine</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="c1"># 应用 RX 和 RY 门</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">RX</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">RY</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">update_quantum_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Uneven superposition state:&quot;</span><span class="p">)</span>
+    <span class="n">dump_machine</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="c1"># 复位量子比特（Qulacs 没有 Reset 直接操作，需手动设为 |0⟩）</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">set_zero_state</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reset to state |0⟩:&quot;</span><span class="p">)</span>
+    <span class="n">dump_machine</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+<span class="n">run_example</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">qulacs</span> <span class="kn">import</span> <span class="n">QuantumState</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qulacs.gate</span> <span class="kn">import</span> <span class="n">X</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 创建一个 1 量子比特的状态</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 生成一个随机的复数态向量</span>
+<span class="n">random_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 生成随机复数向量</span>
+<span class="n">random_vector</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">random_vector</span><span class="p">)</span>  <span class="c1"># 归一化处理</span>
+
+<span class="c1"># 加载随机态</span>
+<span class="n">state</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">random_vector</span><span class="p">)</span>
+
+<span class="c1"># 创建一个量子电路并添加 X 门</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">X</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># 对量子比特 0 施加 X 门</span>
+
+<span class="c1"># 在应用 X 门之前打印状态</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;应用 X 门前的状态:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">get_vector</span><span class="p">())</span>
+
+<span class="c1"># 运行电路</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">update_quantum_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+<span class="c1"># 在应用 X 门后打印状态</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;应用 X 门后的状态:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">get_vector</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">qulacs</span> <span class="kn">import</span> <span class="n">QuantumState</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qulacs.gate</span> <span class="kn">import</span> <span class="n">H</span><span class="p">,</span> <span class="n">Measurement</span>
+
+<span class="k">def</span> <span class="nf">random_bit</span><span class="p">():</span>
+    <span class="c1"># 创建一个量子状态（1 个量子比特）</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">set_zero_state</span><span class="p">()</span>  <span class="c1"># 初始化为 |0&gt;</span>
+
+    <span class="c1"># 创建量子线路并应用 Hadamard 门</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">H</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># H 门作用于量子比特 0</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">update_quantum_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="c1"># 测量量子比特</span>
+    <span class="n">measurement_result</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 采样一次，返回 0 或 1</span>
+
+    <span class="k">return</span> <span class="n">measurement_result</span>
+
+<span class="c1"># 运行测试</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random_bit</span><span class="p">())</span>  <span class="c1"># 每次运行应该随机返回 0 或 1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<ul>
+<li><a target="_blank" rel="noopener" href="https://quantum.country/search">Quantum Search Algorithm</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/renatawong/quantum-protein-structure-prediction">使用 Grover 算法预测蛋白质折叠</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/quantum-challenge/2019">IBM Quantum Challenge 2019</a><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/quantum-challenge/2019/blob/master/problems/final/Final.ipynb">チャレンジ問題</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/quantum-challenge/2019/blob/master/problems/final/answer_and_comment_by_judges.ipynb">チャレンジ解説</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://dojo.qulacs.org/ja/latest/notebooks/8.2_Grovers_algorithm.html">グローバーのアルゴリズム</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/quantum/concepts-grovers">Grover 搜索算法理论</a><ul>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/quantum/tutorial-qdk-grovers-search">在 Q# 中实现 Grover 的搜索算法</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://quantum.microsoft.com/en-us/tools/quantum-katas">Microsoft Quantum katas</a><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/QuantumKatas/tree/main/BoundedKnapsack">BoundedKnapsack Quantum kata</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 <p>CPU、GPU 和 QPU 的全称及解释：</p>
 <ol>
 <li>CPU：Central Processing Unit（中央处理单元）</li>
