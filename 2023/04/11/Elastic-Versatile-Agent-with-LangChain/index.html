@@ -8,24 +8,7 @@
   <title>Elastic Versatile Agent with LangChain | Andrew&#39;s Blog</title>
   <meta name="author" content="Andrew">
   
-  <meta name="description" content="Microsoft TaskMatrix&amp;#182;
-
-
-
-
-
-
-Elastic Versatile Agent with LangChain&amp;#182;
-
-
-
-
-
-
-
-在 macOS 上安装 Redis 可以通过 Homebrew 进行安装。以下是安装步骤：
-
-打开终端应用程序（Terminal）">
+  <meta name="description" content="&amp;#36965;&amp;#24819;&amp;#24403;&amp;#24180; AlphaGo &amp;#25171;&amp;#36133;&amp;#20154;&amp;#31867;&amp;#39030;&amp;#23574;&amp;#22260;&amp;#26827;&amp;#36873;&amp;#25163;&amp;#182;在 AlphaGo 于 2016 年击败顶尖职">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -159,7 +142,775 @@ Elastic Versatile Agent with LangChain&amp;#182;
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Microsoft-TaskMatrix"><a target="_blank" rel="noopener" href="https://github.com/microsoft/TaskMatrix">Microsoft TaskMatrix</a><a class="anchor-link" href="#Microsoft-TaskMatrix">&#182;</a></h2>
+<h2 id="%E9%81%A5%E6%83%B3%E5%BD%93%E5%B9%B4-AlphaGo-%E6%89%93%E8%B4%A5%E4%BA%BA%E7%B1%BB%E9%A1%B6%E5%B0%96%E5%9B%B4%E6%A3%8B%E9%80%89%E6%89%8B">&#36965;&#24819;&#24403;&#24180; AlphaGo &#25171;&#36133;&#20154;&#31867;&#39030;&#23574;&#22260;&#26827;&#36873;&#25163;<a class="anchor-link" href="#%E9%81%A5%E6%83%B3%E5%BD%93%E5%B9%B4-AlphaGo-%E6%89%93%E8%B4%A5%E4%BA%BA%E7%B1%BB%E9%A1%B6%E5%B0%96%E5%9B%B4%E6%A3%8B%E9%80%89%E6%89%8B">&#182;</a></h2><p>在 AlphaGo 于 2016 年击败顶尖职业棋手之后，许多围棋职业选手的『出路』主要体现在以下几个方面：</p>
+<ol>
+<li>部分棋手选择退役或转型</li>
+</ol>
+<ul>
+<li>李世石在 2016 年 3 月与 AlphaGo 的五番棋比赛中以 1:4 失利后，于 2019 年 11 月宣布退役，理由是『无法再在围棋上达到顶峰』。</li>
+<li>柯洁在 2017 年 5 月 0:3 不敌 AlphaGo 后，转而深入研究 AI 对局，从中汲取新思路，并在此后对人类对弈大幅获益，甚至一度取得 22 连胜。</li>
+</ul>
+<ol start="2">
+<li>专业棋手越来越多地投入教学与解说</li>
+</ol>
+<ul>
+<li>职业棋手通常分为『竞赛派』和『教学派』两类。竞赛派以参加各类赛事实物奖励为生；而教学派则通过解说电视、撰写围棋书籍、开设围棋学校、线上授课和直播等多元化方式获得收入。</li>
+<li>AlphaGo 的出现反而刺激了教学需求：大众希望通过 AI 训练提升棋力，教学派棋手借此推出了 AI 驱动的训练课程和『一对一 AI 辅导』服务。</li>
+</ul>
+<ol start="3">
+<li>利用 AI 工具提升自身和学员水平</li>
+</ol>
+<ul>
+<li>围棋职业选手开始将 AI 对弈引擎（如 Leela Zero、KataGo 等）纳入日常训练，通过解析 AI 托底的『最佳着法』和『定式创新』，大幅加快学习进度。</li>
+<li>一项研究表明，职业棋手在与 AI 共同复盘（『双人围棋』）后，其棋力平均提升了数个段位，AI 不再是对手，而是成了『最强训练伙伴』。</li>
+</ul>
+<ol start="4">
+<li>跨界进入 AI 与科技领域</li>
+</ol>
+<ul>
+<li>有的顶尖棋手受邀参与人工智能研究或 AI 应用产品开发，比如担任 AI 围棋项目的咨询顾问或算法评估专家。</li>
+<li>也有棋手转向内容创作（YouTube 频道、知识付费平台）以及赛事与俱乐部运营管理，利用自身影响力为围棋生态持续赋能。</li>
+</ul>
+<p>(教学、AI 本身。)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Google DeepMind 的 AlphaEvolve</p>
+<p>让我们从 Google DeepMind 开始，这家公司的「Alpha」系列开发长期以来一直在革新 AI 领域。你是否还记得传奇性的 AlphaGo？它是第一个在复杂棋类游戏围棋中击败世界冠军的 AI 系统。随后是 AlphaZero，这是一种通用型游戏 AI，不依赖人类数据就能掌握国际象棋、将棋和围棋。它通过自我对弈学习，展现出蒙特卡罗树搜索（MCTS）算法在决策下一步棋时的强大能力。</p>
+<p>其中最杰出的突破之一是 AlphaFold，它解决了生物学中最大的难题之一：如何仅凭氨基酸序列预测蛋白质的三维结构。得益于机器学习、进化生物学与结构建模的结合，它彻底改变了我们理解蛋白质的方式，节省了数年的实验室工作时间。AlphaFold 预测了超过两亿个蛋白质的结构，加速了药物研发与医学研究。最终，AlphaFold 的两位主要开发者 Demis Hassabis 和 John Jumper 因此获得了诺贝尔化学奖。</p>
+<p>Google DeepMind 在问题求解工具方面的成果也同样值得关注。AlphaGeometry 擅长解决复杂几何问题，其表现可与数学奥林匹克中的顶尖人类选手媲美。AlphaProof 则结合语言模型与强化学习技术，将自然语言问题转化为形式化证明，其水平相当于国际数学奥林匹克的银牌选手。</p>
+<p>可见，Google DeepMind 的开发成果不仅限于人工智能，还服务于我们世界中的关键实际领域，并构建出最强大的自我学习算法。而现在，轮到全新的 AlphaEvolve 登场了。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf">AlphaEvolve</a> 是 DeepMind 提出的一种用于自动发现算法或数学程序的 AI 系统。它结合了大型语言模型（如 Gemini）、进化算法和强化学习（AlphaZero 风格），能在无需人类指导的情况下自动『进化』出解决复杂数学或算法问题的程序，例如整数因式分解、排序等。</p>
+<p>AlphaEvolve 本质上是一个先进的 AI 工具，能够帮助大语言模型（LLM）在解决复杂问题（如改进计算机系统或应对科学挑战）方面变得更强。它是一个受到「进化」概念启发的编程代理系统，其工作原理类似自然选择：不断尝试代码变化、获取反馈，并持续优化。这个工具实现了科学发现过程中一部分的自动化，包括头脑风暴、实验尝试、从失败中学习并精炼结果。这个过程往往需要数年时间，但通过让 AI 来完成大量工作，AlphaEvolve 大大加快了这一进程。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在过去一周里，我反复阅读了《AlphaEvolve》这篇论文，每次阅读都能发现新的、令人着迷的细节。毫不夸张地说，我认为 AlphaEvolve 可能是去年最重要的 AI 突破之一。通往通用人工智能（AGI）的道路可能有多种形式，其中一种可能就是 AI 自主发现新的 AI，也就是发现新的算法——而这正是 AlphaEvolve 的核心所在。那么，它是如何做到的？让我们深入探讨。</p>
+<p>进化算法与大型语言模型（LLMs）的融合，正在开启科学与算法发现的前所未有的新篇章。在 DeepMind 最近发布的白皮书《AlphaEvolve：用于科学与算法发现的编码智能体》中，他们提出了一种全新的智能体架构，它在一个进化框架中协调 LLM 的运作，实现了对算法的自主生成与优化。通过引入测试时的反馈循环（test-time feedback loops）并利用前沿的大型语言模型，AlphaEvolve 不仅产生了在数学上具有重要意义的结果，还为 Google 的生产基础设施带来了实际改进。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>参考围棋界的经验，以及当前 AI 发展的趋势，可以总结出程序员在被 AI Agent 打败之后可能的出路有以下几种方向：</p>
+<ol>
+<li>转型为 AI 教练、指挥或系统集成专家</li>
+</ol>
+<ul>
+<li>AI Agent 本身虽然能编程，但它们仍需要人类规划大目标、设定多阶段任务、检查整体逻辑。</li>
+<li>顶级程序员可以转向设计复杂系统架构，担任『AI 指挥官』，不是亲自写代码，而是让 AI 写并做高级审核与集成。</li>
+</ul>
+<ol start="2">
+<li>深化与 AI 的协作，成为超级个体</li>
+</ol>
+<ul>
+<li>像过去用 IDE 一样自然地用 AI Agent，单人能完成原本需要几十人才能完成的项目。</li>
+<li>精通 Prompt Engineering、AI Agent Workflow 设计，成为『AI 助力型开发者』。</li>
+</ul>
+<ol start="3">
+<li>转向 AI 不擅长的领域</li>
+</ol>
+<ul>
+<li>AI 在常规编程任务上非常强，但在人类价值判断、伦理设计、跨文化沟通、用户体验设计等领域依然有短板。</li>
+<li>程序员可以转型为偏向产品经理、伦理顾问、用户体验工程师等角色。</li>
+</ul>
+<ol start="4">
+<li>投身 AI 工程本身</li>
+</ol>
+<ul>
+<li>参与 AI Agent 的训练、优化、评价体系建设，比如设计更好的训练数据集、设定评估标准、控制 hallucination（幻觉现象）。</li>
+<li>成为『AI 编程教练』：训练和提升 AI 编程系统，就像今天训练一只 AlphaZero。</li>
+</ul>
+<ol start="5">
+<li>教育与传播</li>
+</ol>
+<ul>
+<li>培养下一代人类程序员，或者教授大众如何使用、审查、定制 AI 程序员。</li>
+<li>围绕 AI 编程工具建立新的教育生态，比如 Prompt 设计、Agent 协作课程。</li>
+</ul>
+<ol start="6">
+<li>跨界与创业</li>
+</ol>
+<ul>
+<li>结合 AI 编程能力，跨界进入新的行业（医疗、金融、能源、制造业），用『程序员思维 + AI 工具』开创新商业模式。</li>
+<li>AI 本身会拉低程序开发门槛，但真正懂得行业痛点的人依然稀缺。</li>
+</ul>
+<p>(教学、AI 本身、雇佣 AI。)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ChatGPT:</p>
+<p>『人人成为机器人老板』的时代确实可能成为未来的一大趋势，尤其是在 AI 代理（AI Agents）、自动化系统和 Web3 技术的推动下。未来，人们可能会通过 AI 代理管理自己的业务、自动执行任务、甚至创造新的收入模式，而不是传统意义上的雇员或雇主关系。</p>
+<p>为什么这个趋势可能会发生？</p>
+<ol>
+<li>AI 代理的普及</li>
+</ol>
+<ul>
+<li>OpenAI 的 Operator 这类服务，能够帮助个人完成复杂的任务，如预订、研究、交易等。未来更智能的 AI 代理可能会自动化管理整个业务。</li>
+</ul>
+<ol start="2">
+<li>Web3 和去中心化自治组织（DAO）</li>
+</ol>
+<ul>
+<li>未来，个人可以利用去中心化技术，让 AI 代理在 Web3 生态中执行智能合约、投资、运营虚拟企业，而无需传统中介。</li>
+</ul>
+<ol start="3">
+<li>自动化创业成本下降</li>
+</ol>
+<ul>
+<li>低代码/无代码工具+AI 代理，使得『创业』门槛大幅降低，个人可以用 AI 运营电商、内容平台，甚至虚拟公司。</li>
+</ul>
+<ol start="4">
+<li>AI 驱动的个性化服务</li>
+</ol>
+<ul>
+<li>AI 可以深度学习个人需求，提供高度定制化的产品与服务，从而形成新的商业模式。</li>
+</ul>
+<p>什么样的人会有竞争优势？</p>
+<ol>
+<li>具备 AI 驾驭能力的人</li>
+</ol>
+<ul>
+<li>能够训练、优化、管理 AI 代理，而不仅仅是被 AI 替代。例如，懂得如何指挥 AI 代理进行高效搜索、交易、编写代码等。</li>
+</ul>
+<ol start="2">
+<li>跨学科融合能力强的人</li>
+</ol>
+<ul>
+<li>未来世界将是 AI + X，如果一个人既懂 AI，又懂金融、艺术、市场营销、法律等，能够创造新型商业模式，就更具竞争力。</li>
+</ul>
+<ol start="3">
+<li>懂 Web3、智能合约、自主经济的人</li>
+</ol>
+<ul>
+<li>Web3 让个体拥有更多自主权，比如通过 DAO 让 AI 代理管理资产。掌握这些技术，能在去中心化经济中抢占先机。</li>
+</ul>
+<ol start="4">
+<li>善于品牌打造和社交影响力的人</li>
+</ol>
+<ul>
+<li>AI 可以帮你自动化业务，但人们仍然信任『人』。那些能建立个人品牌、影响力、社区的人，能更好地与 AI 互补。</li>
+</ul>
+<ol start="5">
+<li>适应变化、终身学习的人</li>
+</ol>
+<ul>
+<li>AI 发展极快，唯一的安全感就是持续学习，快速适应新技术、新趋势，而不是固守已有技能。</li>
+</ul>
+<p>总结</p>
+<p>未来，人与 AI 的关系将不再是替代，而是协同。真正有竞争力的人，不是那些与 AI 竞争的人，而是能够驾驭 AI、创造新机会的人。这个时代不是『人人都变成机器人』，而是『人人都拥有 AI 代理，成为 AI 赋能的个体企业家』。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>DeepSeek:</p>
+<p>『人人成为机器人老板』的时代确实可能是未来的趋势之一，尤其是在人工智能和自动化技术快速发展的背景下。随着机器人、自动化系统和AI技术的普及，个人和企业将能够更高效地管理资源、优化流程并创造价值。这种趋势可能会改变传统的工作方式和商业模式，使得更多人能够以『机器人老板』的身份参与经济活动。</p>
+<p>这种趋势的背景</p>
+<ol>
+<li><p>技术进步：AI、机器人技术和自动化系统的成本逐渐降低，性能不断提升，使得个人和小型企业也能负担得起这些技术。</p>
+</li>
+<li><p>平台化经济：共享经济、云计算和SaaS（软件即服务）等模式使得个人可以轻松获取和使用先进的技术工具。</p>
+</li>
+<li><p>去中心化：区块链和分布式技术使得资源分配和管理更加透明和高效，减少了对传统中介的依赖。</p>
+</li>
+</ol>
+<p>什么样的人会有竞争优势？</p>
+<p>在『人人成为机器人老板』的时代，以下几类人可能会更具竞争优势：</p>
+<ol>
+<li>技术理解者：</li>
+</ol>
+<ul>
+<li>优势：能够理解和应用AI、机器人技术和自动化工具。</li>
+<li>原因：技术是这一趋势的核心驱动力，掌握技术的人能够更好地利用这些工具创造价值。</li>
+</ul>
+<ol start="2">
+<li>创新者：</li>
+</ol>
+<ul>
+<li>优势：能够提出新的商业模式、产品和服务。</li>
+<li>原因：在自动化普及的背景下，创新是区分竞争者的关键因素。</li>
+</ul>
+<ol start="3">
+<li>跨领域整合者：</li>
+</ol>
+<ul>
+<li>优势：能够将不同领域的技术和知识结合起来，解决复杂问题。</li>
+<li>原因：未来的挑战往往是跨学科的，能够整合资源的人将更具竞争力。</li>
+</ul>
+<ol start="4">
+<li>数据驱动决策者：</li>
+</ol>
+<ul>
+<li>优势：能够利用数据分析做出更明智的决策。</li>
+<li>原因：数据是AI和自动化系统的核心，能够有效利用数据的人将更具优势。</li>
+</ul>
+<ol start="5">
+<li>情商高的人际管理者：</li>
+</ol>
+<ul>
+<li>优势：能够有效管理和激励团队，处理复杂的人际关系。</li>
+<li>原因：尽管技术可以处理许多任务，但人类的情感和创造力仍然是不可替代的。</li>
+</ul>
+<ol start="6">
+<li>终身学习者：</li>
+</ol>
+<ul>
+<li>优势：能够不断学习新技能，适应快速变化的环境。</li>
+<li>原因：技术和社会的变化速度越来越快，持续学习是保持竞争力的关键。</li>
+</ul>
+<ol start="7">
+<li>伦理和法规理解者：</li>
+</ol>
+<ul>
+<li>优势：能够理解和遵守相关法律法规，并在技术应用中考虑伦理问题。</li>
+<li>原因：随着技术的发展，伦理和法规问题将变得越来越重要。</li>
+</ul>
+<p>总结</p>
+<p>『人人成为机器人老板』的时代可能会带来更多的机会和挑战。那些能够理解并应用技术、具备创新精神、跨领域整合能力、数据驱动决策能力、高情商、持续学习能力以及对伦理和法规有深刻理解的人，将在这个新时代中占据竞争优势。未来的成功将不仅仅依赖于技术本身，还依赖于如何将这些技术与人类的创造力、情感和智慧结合起来。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Model-Context-Protocol"><a target="_blank" rel="noopener" href="https://github.com/modelcontextprotocol">Model Context Protocol</a><a class="anchor-link" href="#Model-Context-Protocol">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/microsoft/TaskMatrix">Microsoft TaskMatrix</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.-LLM-%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%8E%A8%E7%90%86">1. LLM &#26412;&#22320;&#37096;&#32626;&#19982;&#25512;&#29702;<a class="anchor-link" href="#1.-LLM-%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%8E%A8%E7%90%86">&#182;</a></h3><ul>
+<li>利用 <strong>Apple Silicon 原生加速</strong>，你可以部署量子化的轻量级 LLM 模型，如：<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ggerganov/llama.cpp"><code>llama.cpp</code></a>（支持 M 系列 GPU 和 Neural Engine）</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mlc-ai/mlc-llm"><code>mlc-llm</code></a>（专为 Apple Silicon 优化）</li>
+</ul>
+</li>
+<li>利用 <strong>Metal + Neural Engine</strong>，可以进行高效推理，适合开发和测试。</li>
+</ul>
+<hr />
+<h3 id="2.-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%BC%80%E5%8F%91">2. &#26426;&#22120;&#23398;&#20064;&#19982;&#31070;&#32463;&#32593;&#32476;&#24320;&#21457;<a class="anchor-link" href="#2.-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%BC%80%E5%8F%91">&#182;</a></h3><ul>
+<li>使用 Apple 提供的 <a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/coreml/">Core ML</a> 框架，让模型部署和运行充分利用 Neural Engine。</li>
+<li>用 Python + PyTorch 或 TensorFlow + MPS（Metal Performance Shader） 后端训练和微调中小型模型。</li>
+<li>推荐关注 <a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/mlcompute">ML Compute</a> —— Apple 对机器学习任务的加速支持。</li>
+</ul>
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="MCP-Playwright-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A1%86%E6%9E%B6%E6%AF%94%E8%BE%83">MCP Playwright &#23458;&#25143;&#31471;&#26694;&#26550;&#27604;&#36739;<a class="anchor-link" href="#MCP-Playwright-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A1%86%E6%9E%B6%E6%AF%94%E8%BE%83">&#182;</a></h2><p>以下表格总结了 Semantic Kernel、LangChain、AutoGen、mcp-agent 和 fast-agent 这五个框架在关键维度下的特点对比：</p>
+<table>
+<thead>
+<tr>
+  <th>框架</th>
+  <th>原生MCP支持 (Playwright调用)</th>
+  <th>安装与部署</th>
+  <th>LLM 集成支持</th>
+  <th>多 Agent/链式协作支持</th>
+  <th>扩展性/插件能力</th>
+  <th>社区支持与文档质量</th>
+  <th>性能/资源消耗</th>
+  <th>推荐用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Semantic Kernel</td>
+  <td>原生支持MCP（Python 1.28+、.NET 均可）。示例代码通过 <code>npx @playwright/mcp@latest</code> 启动 Playwright MCP 服务，并自动将其函数映射为 Kernel 插件。</td>
+  <td>提供 C#（NuGet）和 Python（pip）SDK，需要相应运行时。.NET 版集成 Azure/OpenAI；Python 版与常规 Python 环境兼容。</td>
+  <td>支持 Azure OpenAI、OpenAI 等云端模型，并提供本地模型连接器（如 Ollama）。</td>
+  <td>以单 Agent 或函数调用为主，缺乏内置的多代理编排。用户可通过函数编排实现链式调用。</td>
+  <td>支持插件模式，可将外部工具/函数打包为 KernelFunctions，生态扩展主要依赖社区实现的 Connector（如 Ollama Connector）。</td>
+  <td>微软官方支持，文档齐全且权威。社区规模中等（较 LangChain 小），但有逐渐扩大的用户群。</td>
+  <td>C# 版执行效率高，Python 版性能与常见 Python 框架相似。总体资源开销适中。</td>
+  <td>适合企业级部署和成熟场景，尤其是在 .NET/Azure 生态中构建稳健的 AI 应用。对于需要调用 Playwright 等工具的自动化应用非常便利。</td>
+</tr>
+<tr>
+  <td>LangChain</td>
+  <td>非原生 MCP 客户端，但可通过官方 <code>langchain-mcp-adapters</code> 库访问 MCP 服务。可将任意 MCP 服务器定义的工具集成进 LangChain Agent。</td>
+  <td>Python 框架（pip 安装），依赖较多（涉及各类 LLM 库和工具），但安装和环境配置流程成熟。</td>
+  <td>原生支持 OpenAI、Anthropic 等主流云服务，还可利用 Hugging Face Pipeline 本地运行模型。提供多种 LLM 包装器（OpenAI、Ollama、HuggingFace 等）。</td>
+  <td>支持复杂的多代理架构（LangGraph 多Agent 系统），提供网络拓扑、监督者、层级等多种协作模式。易于搭建串行/并行链式工作流。</td>
+  <td>框架组件模块化，拥有 600+ 集成插件，几乎可对接所有常见服务和数据库。用户可自定义 Chain、Tool、Memory 等，多层次的扩展性极佳。</td>
+  <td>社区规模最大（3000+ 贡献者，600+ 集成），文档丰富（官方教程、示例、博客等）。支持 Python/JavaScript 两种语言，社区资源和生态最为完善。</td>
+  <td>纯 Python 实现，性能依赖具体用法和并发控制。一般情况下可通过 LangSmith 等工具监控与优化。并非针对轻量化极限优化，但在生产环境已被多家公司验证可用。</td>
+  <td>适合快速原型开发和生产部署，尤其是需要灵活构建复杂链式推理或多模型组合场景。大社区支持易于入门，适合研究和业务验证。</td>
+</tr>
+<tr>
+  <td>AutoGen</td>
+  <td>原生未直接支持 MCP，但社区提供了扩展（如 <code>autogen-ext-mcp</code>）。可通过 Agent 中的接口调用外部工具（需手动接入 MCP 客户端）。</td>
+  <td>Python 框架（pip 安装 <code>autogen-core</code>），要求 Python 3.10+。另需安装 OpenAI 扩展（<code>autogen-ext[openai]</code>）以使用云模型。</td>
+  <td>支持 OpenAI/Azure OpenAI（云服务），并支持本地推理（如 LiteLLM、Ollama）的接入。可灵活切换模型后端。</td>
+  <td>内置多 Agent 设计：支持“GroupChat”等模式，可在同一会话中组合多个智能体协同工作。还提供助手 API，实现多技能协同（代码执行、RAG检索、函数调用等）。</td>
+  <td>AutoGen 提供多种组件（Agent、技能、工作流）。可定制工具（如 CodeInterpreter）、状态管理和技能库，具备一定的插件式架构。</td>
+  <td>由微软维护，文档涵盖教程和示例，官网和 GitHub 文档可用。社区相对较小，主要以学术和内部使用者为主，但有官方示例和案例支撑。</td>
+  <td>Python 实现，基于代理通信和上下文缓存，资源开销依赖于模型大小和并行度。具有良好的扩展能力，但为了多 Agent 通讯可能存在额外开销。</td>
+  <td>适合需要多智能体协作或人机混合交互的场景（例如可视化工作流、教育或研究用途）。借助 AutoGen Studio 可快速构建复杂 Agent 系统。</td>
+</tr>
+<tr>
+  <td>mcp-agent</td>
+  <td>原生支持 MCP 协议，是为此设计的轻量级框架。自动管理多个 MCP 服务连接，可将各类工具（如文件系统、网络抓取等）作为 Agent 工具使用。</td>
+  <td>Python 包（<code>pip install mcp-agent</code>），配置简单，可用 YAML 文件指定 MCP 服务器。运行时无需额外部署，只需 Python 环境。</td>
+  <td>通过“Augmented LLM”抽象接入任意 LLM，默认支持 OpenAI（可指定 GPT-4o）。用户可替换为其它模型提供者或自定义 LLM 客户端。</td>
+  <td>专注多代理协作：内置多种工作流模式（并行、路由、意图分类、OpenAI Swarm 等），完美复刻 Anthropic 提出的模式。可轻松实现并行评分、代理级联等复杂任务。</td>
+  <td>框架本身即插件化，可通过添加新的 MCP 服务器或自定义 Agent 逻辑扩展功能。所依赖的扩展主要通过配置不同的 MCP 服务来实现。</td>
+  <td>目前社区规模较小（Lastmile/Anthropic 团队开发），但开源活跃。文档包括 GitHub 示例和快速上手教程，示例覆盖多种使用场景。</td>
+  <td>设计轻量，仅依赖 Python 异步和 MCP 通信，相对高效。资源占用与所连接服务数量和并行代理数成线性关系，适合中小规模部署。</td>
+  <td>适合构建符合“Building Effective Agents”理念的生产系统，尤其擅长多 Agent 编排和复杂工作流。适用于需要稳定、高可控型 Agent 系统的企业应用。</td>
+</tr>
+<tr>
+  <td>fast-agent</td>
+  <td>完全原生的 MCP 客户端框架，从零开始面向 MCP 设计。可直接配置并调用任意 MCP 服务（示例中使用内置的“fetch”服务）。</td>
+  <td>Python 包（通过 <code>uvx pip install fast-agent-mcp</code> 安装），提供命令行工具（<code>fast-agent</code> 命令）快速初始化项目。依赖 UV 管理器，但安装部署与普通 Python 应用类似。</td>
+  <td>支持 Anthropic（Haiku/Opus）、OpenAI（gpt-4o/gpt-4.1 系列）以及本地模型（如 Ollama 模型）。可在运行时通过参数灵活切换模型，内置多模态（文本、图像、PDF）支持。</td>
+  <td>内置链式和多 Agent 模式：框架实现了《Building Effective Agents》中的流水线模式，允许定义多个 Agent 串联执行。支持对话式调试和人机交互，便于协作式工作流设计。</td>
+  <td>强调低代码和可配置：Agents 和 Workflows 通过 YAML/JSON 描述，框架负责解析执行。提供多模态资源和采样功能，易于插入自定义组件。</td>
+  <td>新兴框架，GitHub 社区快速增长（1000+ 星标），文档活跃（<a target="_blank" rel="noopener" href="https://fast-agent.ai">fast-agent.ai</a> 提供教程和参考）。中文资料较少，但英文文档详实。PulseMCP 等媒体有相关介绍。</td>
+  <td>类似于 mcp-agent 的设计，性能主要取决于所调用的 LLM 和工具服务。多 Agent 并行时会占用更多资源，但对于原型开发来说开销可接受。</td>
+  <td>适用于快速原型开发和多 Agent 编排场景，非常适合演示和实验性质的应用。低代码特性使其易于快速构建复杂工作流，适合研究人员和开发者快速试验 MCP 工具集成。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Semantic-Kernel-%E7%AE%80%E8%BF%B0">Semantic Kernel &#31616;&#36848;<a class="anchor-link" href="#Semantic-Kernel-%E7%AE%80%E8%BF%B0">&#182;</a></h3><p>Semantic Kernel（SK）由微软推出，<strong>原生支持 MCP 协议</strong>。新版本的 SK（Python 1.28+ 和 .NET）内置了 MCP 客户端功能，可以通过标准配置调用任意 MCP 服务。例如示例中使用 C# 代码通过 <code>npx @playwright/mcp@latest</code> 启动 Playwright MCP 服务，并自动将其提供的工具函数映射为 Semantic Kernel 的插件函数。安装方面，SK 提供 C# 和 Python SDK，C# 版可通过 <code>dotnet add package Microsoft.SemanticKernel</code> 安装，Python 版通过 <code>pip install semantic-kernel</code> 安装，均需要对应的运行时环境。.NET 版内置对 Azure OpenAI 的支持（示例代码中通过 <code>AddAzureOpenAIChatCompletion</code> 配置）；同时微软提供了本地模型连接器（如 Ollama 连接器），可让 SK 调用本地部署的 LLM。SK 主要聚焦于单个智能体和函数调用流程，尚未提供内置的多代理编排功能；但其插件系统强大，可将任何外部服务包装为 KernelFunctions 加入工作流。文档上由微软官方维护，示例代码丰富且权威，社区规模中等。总体而言，SK 性能良好（尤其是 .NET 版），适合企业级部署：如果项目本身在微软生态（如需要与 Azure 服务集成或使用 C#），Semantic Kernel 是稳定且功能齐全的选择。</p>
+<h3 id="LangChain-%E7%AE%80%E8%BF%B0">LangChain &#31616;&#36848;<a class="anchor-link" href="#LangChain-%E7%AE%80%E8%BF%B0">&#182;</a></h3><p>LangChain 是一个开源的 Python 框架，本身不直接内置 MCP 支持，但通过官方的 <code>langchain-mcp-adapters</code> 库可以接入 MCP 服务。安装方式简单（使用 pip），但依赖项较多，需要各种 LLM 客户端和工具库。LangChain 对 LLM 的集成非常全面：可直接调用 OpenAI、Anthropic 等云端模型，也可利用 Hugging Face Pipeline 运行本地模型。在多代理和链式工作流方面，LangChain（特别是新推出的 LangGraph）提供了丰富的体系结构支持，如网络拓扑、监督者、层级等多种多 Agent 协作模式。扩展性是其一大优势：拥有超过 600 个官方和社区集成，包括各种外部 API、数据库、工具等，可自定义 Chain、Tool、Memory 等组件。LangChain 拥有<strong>最大规模的社区和文档</strong>（3000+ 贡献者、广泛教程等），资料多、支持好。性能方面，由于完全基于 Python 实现，运行效率依赖于用户代码优化；但 LangChain 提供了 LangSmith 等工具用于性能观察和调优。总体而言，LangChain 易于快速迭代并支持生产环境（已有大量企业案例），特别适合需要灵活构建复杂链式推理或多模型组合的应用场景。</p>
+<h3 id="AutoGen-%E7%AE%80%E8%BF%B0">AutoGen &#31616;&#36848;<a class="anchor-link" href="#AutoGen-%E7%AE%80%E8%BF%B0">&#182;</a></h3><p>AutoGen（微软开源框架）主要面向多智能体和代理协作。安装时使用 Python（要求 &gt;=3.10），核心库 <code>autogen-core</code> 可通过 pip 安装；若使用 OpenAI，需要安装相应扩展（如 <code>autogen-ext[openai]</code>）。AutoGen 支持接入主流云端 LLM，也引入了对本地推理引擎（例如 LiteLLM 或 Ollama） 的支持。在多代理设计上，AutoGen 内置了多种应用模式，如 <code>GroupChat</code> 可以组合多个 Agent 协同完成任务，并支持使用 Azure 的 Assistant API 来管理状态和工具调用。框架提供 Agent、技能、工作流等构建块，用户可扩展各种“技能”或工具（如代码执行、检索工具等）。文档方面有官方指南和示例，社区以教育和研究用户为主。性能上，AutoGen 与普通 Python 相似，资源消耗取决于模型和运行时环境。总的来说，AutoGen 适用于那些需要多智能体协作或结合人机交互的场景（如教育、可视化工作流），并且可通过 AutoGen Studio 提供图形化配置界面，降低开发门槛。</p>
+<h3 id="mcp-agent-%E7%AE%80%E8%BF%B0">mcp-agent &#31616;&#36848;<a class="anchor-link" href="#mcp-agent-%E7%AE%80%E8%BF%B0">&#182;</a></h3><p>mcp-agent 是 lastmile-ai 推出的轻量级 Agent 框架，<strong>原生支持 MCP</strong> 协议。它自动管理多个 MCP 服务器的生命周期，用户只需在配置文件中指定需要的服务器（如 <code>fetch</code>、<code>filesystem</code> 等），框架会将这些服务器的工具自动纳入 Agent 可调用范围。安装部署非常简单，只需 Python 环境和 <code>pip install mcp-agent</code>。mcp-agent 采用“Augmented LLM”抽象，可附加任何 LLM；示例默认使用 OpenAI（GPT-4o）。该框架内置了丰富的工作流模式（并行、路由、意图分类、OpenAI Swarm 等），对应 Anthropic “Building Effective Agents” 一书中的模式。通过这些模式，开发者可以轻松构建多 Agent 协作的系统。扩展性方面，mcp-agent 本身关注底层逻辑，用户扩展时通常添加新的 MCP 服务或自定义 Agent 行为即可。社区还处于发展初期（主要由 Anthropic/Lastmile 团队维护），但已有丰富示例说明如何构建协作式工作流。总体来看，mcp-agent 框架轻巧高效，非常适合用于基于 MCP 协议的多智能体应用开发，特别适合需要高度可控和可扩展的生产环境。</p>
+<h3 id="fast-agent-%E7%AE%80%E8%BF%B0">fast-agent &#31616;&#36848;<a class="anchor-link" href="#fast-agent-%E7%AE%80%E8%BF%B0">&#182;</a></h3><p>fast-agent 由 evalstate 开发，是首个从头打造的 MCP 原生智能体框架。它以<strong>快速开发</strong>为目标，提供命令行工具和低代码配置来定义代理和工作流。安装时通过 <code>pip install fast-agent-mcp</code>（或使用 uv 管理环境），框架提供 <code>fast-agent setup</code> 等命令自动生成示例项目。LLM 支持方面，fast-agent 可使用 Anthropic（Haiku/Sonnet/Opus）和 OpenAI（GPT-4o/4.1 系列）模型，并且能灵活切换本地 Ollama 模型。它还支持多模态输入（文本、图像、PDF）。在工作流编排上，fast-agent 内置了多智能体串联执行的模式：开发者可通过简单的装饰器语法定义多个 Agent，并用 <code>@fast.chain</code> 将它们串联。框架还提供交互式调试前端，方便在开发中检查 Agent 对话。fast-agent 的扩展主要通过配置文件完成，框架负责加载和管理组件。该项目目前新兴但活跃（GitHub 已有上千星标），英文文档详尽，社区正在增长。性能方面与其他 Python 框架类似，关注快速迭代和多 Agent 协作的效率。总的来说，fast-agent 非常适合<strong>快速构建</strong>原型、实验性项目或演示应用，尤其是在需要组合多个代理、集成多种模型和服务的场景中表现出色。</p>
+<h3 id="%E6%9C%80%E7%BB%88%E6%8E%A8%E8%8D%90">&#26368;&#32456;&#25512;&#33616;<a class="anchor-link" href="#%E6%9C%80%E7%BB%88%E6%8E%A8%E8%8D%90">&#182;</a></h3><p>综上所述，五个框架各有侧重：如果<strong>快速构建</strong>原型或需要大量开源支持，推荐使用 LangChain 或 fast-agent；两者均易上手、社区活跃，其中 fast-agent 对 MCP 原生支持更好，特别适合多代理串联应用。对于<strong>企业级部署</strong>，若项目偏向微软/.NET 生态或需与 Azure 服务深度集成，则 Semantic Kernel 是稳健之选；LangChain 也已被众多企业采用，适合多模型、多数据源场景。若项目核心强调<strong>多智能体协作和复杂工作流编排</strong>，则 mcp-agent 和 fast-agent 更具优势，它们提供了完整的多 Agent 模式和工作流范式；LangChain（LangGraph）在这一方面也颇为成熟。最后，如果需要可视化界面或教育/研究用途，AutoGen (及其 Studio) 提供了低代码图形化开发流程。每个框架均可作为 MCP Playwright 客户端使用：其中 SK 和 fast-agent 对 Playwright MCP 服务器的支持更明确（如上文示例），LangChain 需借助适配器，mcp-agent 和 AutoGen 则可通过通用 MCP 调用机制接入。用户可根据自身语言栈、部署需求和工作流复杂度选择最合适的工具。</p>
+<p><strong>引用来源：</strong> 本文参考了各框架文档和示例，包括 Semantic Kernel 和 Playwright MCP 教程、LangChain 官方文档、AutoGen 用户指南、mcp-agent 仓库说明、以及 fast-agent 官方资料。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Open-source-AI-Developer-Assistant-Projects">Open-source AI Developer Assistant Projects<a class="anchor-link" href="#Open-source-AI-Developer-Assistant-Projects">&#182;</a></h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Pythagora-io/gpt-pilot"><strong>Pythagora-IO/GPT-Pilot</strong></a> is an open-source project designed to act as a real AI developer. It can autonomously create applications based on natural language requirements, handling tasks such as code generation, project structuring, and iterative improvements.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/TabbyML/tabby"><strong>TabbyML/Tabby</strong></a> is a self-hosted, open-source AI coding assistant that integrates with editors like VS Code. It provides intelligent code completion and suggestions for multiple programming languages while ensuring data privacy through local deployment.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/continuedev/continue"><strong>ContinueDev/Continue</strong></a> is an open-source project that brings AI-powered code assistance into popular IDEs such as VS Code and JetBrains. It allows developers to create, customize, and share AI coding assistants through a modular system of models, prompts, rules, and extensions.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/cline/cline"><strong>Cline/Cline</strong></a> is an open-source autonomous coding agent that integrates into IDEs like VS Code. It can automatically create or edit files, execute commands, and perform web browsing tasks, always asking for user approval before taking any action to ensure safety and control.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%F0%9F%A7%B1-%E5%B9%B3%E5%8F%B0%E5%B1%82%EF%BC%88%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%89%98%E7%AE%A1%EF%BC%89">&#129521; <strong>&#24179;&#21488;&#23618;&#65288;&#24320;&#21457;&#26694;&#26550;&#19982;&#25176;&#31649;&#65289;</strong><a class="anchor-link" href="#%F0%9F%A7%B1-%E5%B9%B3%E5%8F%B0%E5%B1%82%EF%BC%88%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%89%98%E7%AE%A1%EF%BC%89">&#182;</a></h2><h3 id="Agent-%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6">Agent &#24320;&#21457;&#26694;&#26550;<a class="anchor-link" href="#Agent-%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langchain-ai/langchain">LangChain</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langchain-ai/langchain">https://github.com/langchain-ai/langchain</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/jerryjliu/llama_index">LlamaIndex</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/jerryjliu/llama_index">https://github.com/jerryjliu/llama_index</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/microsoft/semantic-kernel">Semantic Kernel</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/microsoft/semantic-kernel">https://github.com/microsoft/semantic-kernel</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/griptape-ai/griptape">Griptape</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/griptape-ai/griptape">https://github.com/griptape-ai/griptape</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Agent-%E6%89%98%E7%AE%A1">Agent &#25176;&#31649;<a class="anchor-link" href="#Agent-%E6%89%98%E7%AE%A1">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/ollama/ollama">Ollama</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/ollama/ollama">https://github.com/ollama/ollama</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langchain-ai/langserve">LangServe</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langchain-ai/langserve">https://github.com/langchain-ai/langserve</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/e2b-dev/e2b">E2B</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/e2b-dev/e2b">https://github.com/e2b-dev/e2b</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Agent-%E8%AF%84%E4%BC%B0">Agent &#35780;&#20272;<a class="anchor-link" href="#Agent-%E8%AF%84%E4%BC%B0">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://smith.langchain.com">LangSmith</a></td>
+  <td><a target="_blank" rel="noopener" href="https://smith.langchain.com">https://smith.langchain.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langfuse/langfuse">LangFuse</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langfuse/langfuse">https://github.com/langfuse/langfuse</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://whylabs.ai">WhyLabs</a></td>
+  <td><a target="_blank" rel="noopener" href="https://whylabs.ai">https://whylabs.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.agentops.ai">AgentOps</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.agentops.ai">https://www.agentops.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.braintrustdata.com">BrainTrust</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.braintrustdata.com">https://www.braintrustdata.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.context.chat">Context</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.context.chat">https://www.context.chat</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="%F0%9F%A7%A0-%E8%AE%B0%E5%BF%86%E5%B1%82%EF%BC%88%E4%B8%AA%E6%80%A7%E5%8C%96%E3%80%81%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%8A%E4%B8%8B%E6%96%87%EF%BC%89">&#129504; <strong>&#35760;&#24518;&#23618;&#65288;&#20010;&#24615;&#21270;&#12289;&#23384;&#20648;&#12289;&#19978;&#19979;&#25991;&#65289;</strong><a class="anchor-link" href="#%F0%9F%A7%A0-%E8%AE%B0%E5%BF%86%E5%B1%82%EF%BC%88%E4%B8%AA%E6%80%A7%E5%8C%96%E3%80%81%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%8A%E4%B8%8B%E6%96%87%EF%BC%89">&#182;</a></h2><h3 id="%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%B0%E5%BF%86">&#20010;&#24615;&#21270;&#35760;&#24518;<a class="anchor-link" href="#%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%B0%E5%BF%86">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://whyhow.ai">WhyHowAI</a></td>
+  <td><a target="_blank" rel="noopener" href="https://whyhow.ai">https://whyhow.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://cognee.ai">Cognee</a></td>
+  <td><a target="_blank" rel="noopener" href="https://cognee.ai">https://cognee.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://graphlit.com">Graphlit</a></td>
+  <td><a target="_blank" rel="noopener" href="https://graphlit.com">https://graphlit.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langroid/langmem">LangMem</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langroid/langmem">https://github.com/langroid/langmem</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/cpacker/MemGPT">MemGPT</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/cpacker/MemGPT">https://github.com/cpacker/MemGPT</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E5%AD%98%E5%82%A8">&#23384;&#20648;<a class="anchor-link" href="#%E5%AD%98%E5%82%A8">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.pinecone.io">Pinecone</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.pinecone.io">https://www.pinecone.io</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/chroma-core/chroma">Chroma</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/chroma-core/chroma">https://github.com/chroma-core/chroma</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/weaviate/weaviate">Weaviate</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/weaviate/weaviate">https://github.com/weaviate/weaviate</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.mongodb.com">MongoDB</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.mongodb.com">https://www.mongodb.com</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86">&#19978;&#19979;&#25991;&#31649;&#29702;<a class="anchor-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/unstructure-ai/unstructure">Unstructure</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/unstructure-ai/unstructure">https://github.com/unstructure-ai/unstructure</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="%F0%9F%A7%A9-%E8%A7%84%E5%88%92%E4%B8%8E%E7%BC%96%E6%8E%92%E5%B1%82%EF%BC%88%E6%8C%81%E4%B9%85%E5%8C%96%E4%B8%8E%E8%B0%83%E5%BA%A6%EF%BC%89">&#129513; <strong>&#35268;&#21010;&#19982;&#32534;&#25490;&#23618;&#65288;&#25345;&#20037;&#21270;&#19982;&#35843;&#24230;&#65289;</strong><a class="anchor-link" href="#%F0%9F%A7%A9-%E8%A7%84%E5%88%92%E4%B8%8E%E7%BC%96%E6%8E%92%E5%B1%82%EF%BC%88%E6%8C%81%E4%B9%85%E5%8C%96%E4%B8%8E%E8%B0%83%E5%BA%A6%EF%BC%89">&#182;</a></h2><h3 id="%E6%8C%81%E4%B9%85%E5%8C%96-/-%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92">&#25345;&#20037;&#21270; / &#20219;&#21153;&#32534;&#25490;<a class="anchor-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96-/-%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/inngest/inngest">Inngest</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/inngest/inngest">https://github.com/inngest/inngest</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.hatchetlabs.ai">Hatchet</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.hatchetlabs.ai">https://www.hatchetlabs.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/temporalio/temporal">Temporal</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/temporalio/temporal">https://github.com/temporalio/temporal</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/triggerdotdev/trigger.dev">Trigger.dev</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/triggerdotdev/trigger.dev">https://github.com/triggerdotdev/trigger.dev</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E7%BC%96%E6%8E%92%E7%B3%BB%E7%BB%9F">&#32534;&#25490;&#31995;&#32479;<a class="anchor-link" href="#%E7%BC%96%E6%8E%92%E7%B3%BB%E7%BB%9F">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/stanford-crfm/dspy">DSPy</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/stanford-crfm/dspy">https://github.com/stanford-crfm/dspy</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/microsoft/autogen">AutoGen</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/microsoft/autogen">https://github.com/microsoft/autogen</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.sema4.ai">Sema4.ai</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.sema4.ai">https://www.sema4.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langchain-ai/langgraph">LangGraph</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/langchain-ai/langgraph">https://github.com/langchain-ai/langgraph</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/joaomdmoura/crewAI">CrewAI</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/joaomdmoura/crewAI">https://github.com/joaomdmoura/crewAI</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://fixpoint.ai">Fixpoint</a></td>
+  <td><a target="_blank" rel="noopener" href="https://fixpoint.ai">https://fixpoint.ai</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="%E2%9A%99%EF%B8%8F-%E6%89%A7%E8%A1%8C%E5%B1%82%EF%BC%88%E6%93%8D%E4%BD%9C%E3%80%81%E6%8E%88%E6%9D%83%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%89">&#9881;&#65039; <strong>&#25191;&#34892;&#23618;&#65288;&#25805;&#20316;&#12289;&#25480;&#26435;&#12289;&#33258;&#21160;&#21270;&#65289;</strong><a class="anchor-link" href="#%E2%9A%99%EF%B8%8F-%E6%89%A7%E8%A1%8C%E5%B1%82%EF%BC%88%E6%93%8D%E4%BD%9C%E3%80%81%E6%8E%88%E6%9D%83%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%89">&#182;</a></h2><h3 id="%E5%B1%95%E7%A4%BA-/-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6">&#23637;&#31034; / &#21069;&#31471;&#26694;&#26550;<a class="anchor-link" href="#%E5%B1%95%E7%A4%BA-/-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/agentlabsdev">AgentLabs</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/agentlabsdev">https://github.com/agentlabsdev</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8">&#24037;&#20855;&#35843;&#29992;<a class="anchor-link" href="#%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://platform.openai.com/docs/guides/function-calling">OpenAI Function Calling</a></td>
+  <td><a target="_blank" rel="noopener" href="https://platform.openai.com/docs/guides/function-calling">https://platform.openai.com/docs/guides/function-calling</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://python.langchain.com/docs/modules/agents/tools">LangChain Tools</a></td>
+  <td><a target="_blank" rel="noopener" href="https://python.langchain.com/docs/modules/agents/tools">https://python.langchain.com/docs/modules/agents/tools</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E6%8E%88%E6%9D%83%E4%B8%8E%E8%BA%AB%E4%BB%BD%E7%AE%A1%E7%90%86">&#25480;&#26435;&#19982;&#36523;&#20221;&#31649;&#29702;<a class="anchor-link" href="#%E6%8E%88%E6%9D%83%E4%B8%8E%E8%BA%AB%E4%BB%BD%E7%AE%A1%E7%90%86">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.anon.com">ANON</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.anon.com">https://www.anon.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.statics.ai">Statics.ai</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.statics.ai">https://www.statics.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.mindware.org">Mindware</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.mindware.org">https://www.mindware.org</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://clerk.dev">Clerk</a></td>
+  <td><a target="_blank" rel="noopener" href="https://clerk.dev">https://clerk.dev</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="UI-%E8%87%AA%E5%8A%A8%E5%8C%96-/-Agent-%E5%8D%B3%E6%9C%8D%E5%8A%A1">UI &#33258;&#21160;&#21270; / Agent &#21363;&#26381;&#21153;<a class="anchor-link" href="#UI-%E8%87%AA%E5%8A%A8%E5%8C%96-/-Agent-%E5%8D%B3%E6%9C%8D%E5%8A%A1">&#182;</a></h3><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://reworkd.com">Reworkd</a></td>
+  <td><a target="_blank" rel="noopener" href="https://reworkd.com">https://reworkd.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://induced.ai">Induced AI</a></td>
+  <td><a target="_blank" rel="noopener" href="https://induced.ai">https://induced.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://github.com/homanp/superagent">Superagent</a></td>
+  <td><a target="_blank" rel="noopener" href="https://github.com/homanp/superagent">https://github.com/homanp/superagent</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://browse.ai">Browse AI</a></td>
+  <td><a target="_blank" rel="noopener" href="https://browse.ai">https://browse.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.basepilot.ai">basepilot</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.basepilot.ai">https://www.basepilot.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.tinyfish.ai">TinyFish</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.tinyfish.ai">https://www.tinyfish.ai</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="%F0%9F%8C%90-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD">&#127760; <strong>&#27983;&#35272;&#22120;&#22522;&#30784;&#35774;&#26045;</strong><a class="anchor-link" href="#%F0%9F%8C%90-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD">&#182;</a></h2><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://browserbase.com">Browserbase</a></td>
+  <td><a target="_blank" rel="noopener" href="https://browserbase.com">https://browserbase.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.browserless.io">browserless</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.browserless.io">https://www.browserless.io</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://apify.com">APIFY</a></td>
+  <td><a target="_blank" rel="noopener" href="https://apify.com">https://apify.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.cloudflare.com">Cloudflare</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.cloudflare.com">https://www.cloudflare.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://brightdata.com">Bright Data</a></td>
+  <td><a target="_blank" rel="noopener" href="https://brightdata.com">https://brightdata.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://platform.sh">Platform.sh</a></td>
+  <td><a target="_blank" rel="noopener" href="https://platform.sh">https://platform.sh</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="%F0%9F%A7%AA-%E5%BA%94%E7%94%A8%E5%B1%82%EF%BC%88%E6%9C%80%E7%BB%88%E4%BA%A7%E5%93%81%E5%BD%A2%E6%80%81%EF%BC%89">&#129514; <strong>&#24212;&#29992;&#23618;&#65288;&#26368;&#32456;&#20135;&#21697;&#24418;&#24577;&#65289;</strong><a class="anchor-link" href="#%F0%9F%A7%AA-%E5%BA%94%E7%94%A8%E5%B1%82%EF%BC%88%E6%9C%80%E7%BB%88%E4%BA%A7%E5%93%81%E5%BD%A2%E6%80%81%EF%BC%89">&#182;</a></h2><table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.perplexity.ai">Perplexity AI</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.perplexity.ai">https://www.perplexity.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://hebbia.ai">Hebbia</a></td>
+  <td><a target="_blank" rel="noopener" href="https://hebbia.ai">https://hebbia.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://www.cognition-labs.com">Devin (Cognition AI)</a></td>
+  <td><a target="_blank" rel="noopener" href="https://www.cognition-labs.com">https://www.cognition-labs.com</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://multion.ai">MultiOn</a></td>
+  <td><a target="_blank" rel="noopener" href="https://multion.ai">https://multion.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://npi.ai">NPi AI</a></td>
+  <td><a target="_blank" rel="noopener" href="https://npi.ai">https://npi.ai</a></td>
+</tr>
+<tr>
+  <td><a target="_blank" rel="noopener" href="https://imprompt.ai">Imprompt</a></td>
+  <td><a target="_blank" rel="noopener" href="https://imprompt.ai">https://imprompt.ai</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+
 </div>
 </div>
 </div>
@@ -296,7 +1047,7 @@ brew<span class="w"> </span>uninstall<span class="w"> </span>redis
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-<p><a target="_blank" rel="noopener" href="https://github.com/corca-ai/EVAL/blob/main/core/tools/cpu.py">https://github.com/corca-ai/EVAL/blob/main/core/tools/cpu.py</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/corca-ai/EVAL/blob/main/core/tools/cpu.py">EVAL 项目中 CPU 工具模块</a></p>
 
 </div>
 </div>

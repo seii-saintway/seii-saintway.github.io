@@ -779,7 +779,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libprotobuf-dev<span class="w"> </span>protobuf-compiler
 <span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>tar<span class="w"> </span>xvf<span class="w"> </span>jumanpp-2.0.0-rc4.tar.xz
 mkdir<span class="w"> </span>-p<span class="w"> </span>~/jumanpp-2.0.0-rc4/build
-<span class="nb">cd</span><span class="w"> </span>~/jumanpp-2.0.0-rc4/build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/usr/local
+<span class="nb">cd</span><span class="w"> </span>~/jumanpp-2.0.0-rc4/build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/usr/local<span class="w"> </span>-DCMAKE_POLICY_VERSION_MINIMUM<span class="o">=</span><span class="m">3</span>.5
 <span class="nb">cd</span><span class="w"> </span>~/jumanpp-2.0.0-rc4/build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span>
 sudo<span class="w"> </span>make<span class="w"> </span>install
 </pre></div>
@@ -1686,7 +1686,7 @@ Successfully installed deprecated-1.2.14 jaconv-0.3.4 pykakasi-2.2.1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pykakasi</span>
@@ -2482,6 +2482,172 @@ $\displaystyle $
 
 <div class="output_latex output_subarea ">
 $\displaystyle \frac{ゲン}{嚴}\frac{アカツキ}{曉}\frac{アキラ}{亮}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle $
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Math</span>
+<span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">render_to_latex</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">如何顯示前后差異？</span>
+<span class="s1">EKS 是基於 Kubernetes 嗎？</span>
+<span class="s1">我是盛偉。昨天和您見過一面。能不能問一個非常基本的問題？UAT 環境和 ITST 環境是什麼？它們有開發環境嗎？</span>
+<span class="s1">它們好像是測試環境。使用或者更改它們需要申請嗎？</span>
+<span class="s1">如何用 AWS CLI 調查某個與 Lambda 相關的指標和閾值是如何設置的？是用 CloudWatch 還是 Datadog ？</span>
+<span class="s1">哦哦。非常感謝。我看到兩者有比較多相同的 Lambda 。</span>
+<span class="s1">順便一提，我是用日文輸入法輸入中文。要安裝中文輸入法得申請吧？</span>
+<span class="s1">對啊。下載的時候出現錯誤。</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">+=</span> <span class="n">word</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle $
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \frac{イカ}{如何}\frac{ケンジ}{顯示}\frac{マエ}{前}\frac{キサキ}{后}\frac{サイ？}{差異？}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \frac{ＥＫＳ　}{ＥＫＳ　}\frac{コレ}{是}\frac{モト}{基}\frac{オ}{於}\frac{　Ｋｕｂｅｒｎｅｔｅｓ　}{　Ｋｕｂｅｒｎｅｔｅｓ　}\frac{？}{嗎？}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \frac{ワレ}{我}\frac{コレ}{是}\frac{ジョウ}{盛}\frac{イ。}{偉。}\frac{サク}{昨}\frac{テンホウ}{天和}\frac{您}{您}\frac{ケン}{見}\frac{カ}{過}\frac{イチメン。}{一面。}\frac{ノウ}{能}\frac{フノウ}{不能}\frac{トン}{問}\frac{イッコ}{一個}\frac{ヒジョウ}{非常}\frac{キホンテキモンダイ？}{基本的問題？}\frac{ＵＡＴ　}{ＵＡＴ　}\frac{カンキョウ}{環境}\frac{ワ}{和}\frac{　ＩＴＳＴ　}{　ＩＴＳＴ　}\frac{カンキョウ}{環境}\frac{コレ}{是}\frac{インモ？}{什麼？}\frac{タ}{它}\frac{ラ}{們}\frac{アリ}{有}\frac{カイハツカンキョウ}{開發環境}\frac{？}{嗎？}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \frac{タ}{它}\frac{ラ}{們}\frac{コウ}{好}\frac{ゾウ}{像}\frac{コレ}{是}\frac{ソク}{測}\frac{シ}{試}\frac{カンキョウ。}{環境。}\frac{シヨウ}{使用}\frac{アル}{或}\frac{モノ}{者}\frac{コウカイ}{更改}\frac{タ}{它}\frac{ラ}{們}\frac{ジュヨウ}{需要}\frac{シンセイ}{申請}\frac{？}{嗎？}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \frac{イカ}{如何}\frac{ヨウ}{用}\frac{　ＡＷＳ　ＣＬＩ　}{　ＡＷＳ　ＣＬＩ　}\frac{チョウ}{調}\frac{查}{查}\frac{ボウ}{某}\frac{コ}{個}\frac{ヨ}{與}\frac{　Ｌａｍｂｄａ　}{　Ｌａｍｂｄａ　}\frac{ソウカン}{相關}\frac{テキ}{的}\frac{シヒョウ}{指標}\frac{ワ}{和}\frac{イキ}{閾}\frac{值}{值}\frac{コレ}{是}\frac{イカ}{如何}\frac{セッチ}{設置}\frac{テキ？}{的？}\frac{コレ}{是}\frac{ヨウ}{用}\frac{　ＣｌｏｕｄＷａｔｃｈ　}{　ＣｌｏｕｄＷａｔｃｈ　}\frac{カン}{還}\frac{コレ}{是}\frac{　Ｄａｔａｄｏｇ　？}{　Ｄａｔａｄｏｇ　？}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \frac{ガ}{哦}\frac{ガ。}{哦。}\frac{ヒジョウ}{非常}\frac{カンシャ。}{感謝。}\frac{ワレ}{我}\frac{カン}{看}\frac{トウ}{到}\frac{リョウシャ}{兩者}\frac{アリ}{有}\frac{ヒカク}{比較}\frac{タソウ}{多相}\frac{ドウ}{同}\frac{テキ}{的}\frac{　Ｌａｍｂｄａ　。}{　Ｌａｍｂｄａ　。}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \frac{ジュン}{順}\frac{ビン}{便}\frac{イチ}{一}\frac{テイ}{提}\frac{，}{，}\frac{ワレ}{我}\frac{コレ}{是}\frac{ヨウ}{用}\frac{ニチブン}{日文}\frac{ユニュウ}{輸入}\frac{ホウ}{法}\frac{ユニュウ}{輸入}\frac{チュウブン。}{中文。}\frac{ヨウ}{要}\frac{アン}{安}\frac{ソウ}{裝}\frac{チュウブン}{中文}\frac{ユニュウ}{輸入}\frac{ホウ}{法}\frac{エ}{得}\frac{シンセイ}{申請}\frac{？}{吧？}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \frac{ツイ}{對}\frac{。}{啊。}\frac{シタ}{下}\frac{サイ}{載}\frac{テキ}{的}\frac{ジコウ}{時候}\frac{シュツゲン}{出現}\frac{サクゴ。}{錯誤。}$
 </div>
 
 </div>

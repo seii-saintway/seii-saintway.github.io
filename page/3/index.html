@@ -140,6 +140,595 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2023-04-07 </div>
+			<div class="article-title"><a href="/2023/04/07/Robotic-Process-Automation/" >Robotic Process Automation</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>General Artificial Intelligence Agent</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://python.langchain.com/v0.2/docs/integrations/toolkits/openapi/">Hierarchical Planning Agent</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.langchain.dev/planning-agents/">Plan-and-Execute Agents</a></li>
+</ul>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/langchain-ai/langgraph">LangGraph</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/langchain-ai/langgraph/blob/main/examples/multi_agent/hierarchical_agent_teams.ipynb">Hierarchical Agent Teams</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/TransformerOptimus/AutoNode">Cognitive GUI Automation</a><ul>
+<li><a target="_blank" rel="noopener" href="https://superagi.com/introducing-autonode-advancing-rpa-with-a-multi-expert-ai-system/">Introducing AutoNode: Advancing RPA with a Multi-Expert AI System</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/UB-Mannheim/tesseract/wiki">Tesseract at UB Mannheim</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/TransformerOptimus/AutoNode.git<span class="w"> </span>~/AutoNode
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cloning into &#39;AutoNode&#39;...
+remote: Enumerating objects: 436, done.        
+remote: Counting objects: 100% (164/164), done.        
+remote: Compressing objects: 100% (126/126), done.        
+remote: Total 436 (delta 65), reused 83 (delta 38), pack-reused 272        
+Receiving objects: 100% (436/436), 254.46 MiB | 10.35 MiB/s, done.
+Resolving deltas: 100% (187/187), done.
+Updating files: 100% (145/145), done.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/AutoNode
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>cp<span class="w"> </span>~/AutoNode/autonode/.env.example<span class="w"> </span>~/AutoNode/autonode/.env
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>cp<span class="w"> </span>~/AutoNode/ocr/ocr/.env.example<span class="w"> </span>~/AutoNode/ocr/ocr/.env
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>cp<span class="w"> </span>~/AutoNode/yolo/yolo/.env.example<span class="w"> </span>~/AutoNode/yolo/yolo/.env
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>/usr/local/bin/docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>~/AutoNode/docker-compose.yaml<span class="w"> </span>up<span class="w"> </span>--build
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>/usr/local/bin/docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>~/AutoNode/docker-compose.yaml<span class="w"> </span>up
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><code>WebDriver Protocol</code> 的发展历史：</p>
+<ol>
+<li><strong>Browser Driver</strong><ul>
+<li><strong>出现时间</strong>：最早</li>
+<li><strong>描述</strong>：Browser Driver 是最早出现的自动化测试工具之一。其目的是自动化浏览器中的 Web 应用程序。最著名的实现是 <strong>Selenium WebDriver</strong>，它允许在各种浏览器（如 Chrome、Firefox、Safari）中进行自动化测试。Selenium WebDriver 首次发布于 2008 年。</li>
+</ul>
+</li>
+<li><strong>iOS Application Driver</strong><ul>
+<li><strong>出现时间</strong>：次之</li>
+<li><strong>描述</strong>：iOS Application Driver 的出现较晚。最著名的实现是 <strong>WebDriverAgent</strong>，它由 Facebook 开发，用于为 iOS 应用程序提供 WebDriver 协议的支持。WebDriverAgent 是 Appium 的 iOS 驱动程序的一部分，并在 2015 年左右推出。它允许自动化测试 iOS 应用程序的 UI 元素。</li>
+</ul>
+</li>
+<li><strong>Windows Application Driver</strong><ul>
+<li><strong>出现时间</strong>：最晚</li>
+<li><strong>描述</strong>：Windows Application Driver (WinAppDriver) 是由 Microsoft 开发的自动化测试工具，支持 Windows 桌面应用程序的自动化测试。WinAppDriver 于 2016 年发布，旨在为 Windows 应用程序提供类似于 WebDriver 的自动化测试支持。它允许使用 WebDriver 协议来测试 Windows 桌面应用程序。</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>http+usbmux</code> 是一个用于指定协议的 URL 方案，特别是在涉及 Apple 设备时。让我们详细解释一下这个方案及其组件：</p>
+<h3 id="http+usbmux-%E7%9A%84%E5%90%AB%E4%B9%89"><code>http+usbmux</code> &#30340;&#21547;&#20041;<a class="anchor-link" href="#http+usbmux-%E7%9A%84%E5%90%AB%E4%B9%89">&#182;</a></h3><ul>
+<li><strong><code>http</code></strong>: 表示超文本传输协议（Hypertext Transfer Protocol），用于在网络上发送和接收数据。</li>
+<li><strong><code>+usbmux</code></strong>: 这是一个扩展方案，表示通过 USB 多路复用协议（USB Multiplexing Protocol，简称 MUX）进行通信。</li>
+</ul>
+<h3 id="MUX-%E7%9A%84%E5%90%AB%E4%B9%89"><code>MUX</code> &#30340;&#21547;&#20041;<a class="anchor-link" href="#MUX-%E7%9A%84%E5%90%AB%E4%B9%89">&#182;</a></h3><ul>
+<li><strong>MUX</strong>: 是“Multiplexer”（多路复用器）的缩写，表示一个技术，用于在一个通信链路上传输多个信号。它能够将多个数据流整合到一个通道中，从而优化资源使用和提高传输效率。</li>
+</ul>
+<h3 id="http+usbmux-%E7%9A%84%E5%85%B7%E4%BD%93%E5%90%AB%E4%B9%89"><code>http+usbmux</code> &#30340;&#20855;&#20307;&#21547;&#20041;<a class="anchor-link" href="#http+usbmux-%E7%9A%84%E5%85%B7%E4%BD%93%E5%90%AB%E4%B9%89">&#182;</a></h3><p>在 Apple 设备中，<code>http+usbmux</code> 用于指示通过 USB 多路复用协议（USBMux）进行 HTTP 通信。USB 多路复用协议是 Apple 设备（如 iPhone 和 iPad）与计算机之间的一种通信协议，它允许通过 USB 连接同时进行多个数据传输。</p>
+<ul>
+<li><strong>用途</strong>: <code>http+usbmux</code> 协议通常用于开发和调试过程中，比如通过 USB 连接访问 iOS 设备上的 Web 服务或调试工具。</li>
+<li><strong>工作原理</strong>: 当一个应用程序使用 <code>http+usbmux</code> 方案时，它通过 USB 多路复用协议与 iOS 设备上的 Web 服务进行通信，允许通过 USB 进行 HTTP 请求和响应，而不是通过常规的网络连接。</li>
+</ul>
+<h3 id="%E6%80%BB%E7%BB%93">&#24635;&#32467;<a class="anchor-link" href="#%E6%80%BB%E7%BB%93">&#182;</a></h3><ul>
+<li><strong><code>http+usbmux</code></strong>: 是一个 URL 方案，表示通过 USB 多路复用协议进行的 HTTP 通信。</li>
+<li><strong><code>MUX</code></strong>: 表示多路复用，指的是将多个信号或数据流整合到一个通道中进行传输。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>USB</strong> 是“Universal Serial Bus”（通用串行总线）的缩写。它是一种用于连接计算机和外部设备的标准接口。USB 的主要功能包括：</p>
+<ol>
+<li><p><strong>数据传输</strong>: USB 提供了高速的数据传输能力，允许计算机与各种外部设备（如键盘、鼠标、打印机、外部存储器等）之间交换数据。</p>
+</li>
+<li><p><strong>电力供应</strong>: USB 也能够为连接的设备提供电力，这使得许多设备（例如手机和小型电子设备）可以通过 USB 端口充电。</p>
+</li>
+<li><p><strong>即插即用</strong>: USB 设备可以在计算机运行时连接和断开，而无需重启计算机，这种特性称为“即插即用”。</p>
+</li>
+</ol>
+<h3 id="USB-%E7%9A%84%E5%8E%86%E5%8F%B2%E5%92%8C%E7%89%88%E6%9C%AC">USB &#30340;&#21382;&#21490;&#21644;&#29256;&#26412;<a class="anchor-link" href="#USB-%E7%9A%84%E5%8E%86%E5%8F%B2%E5%92%8C%E7%89%88%E6%9C%AC">&#182;</a></h3><ul>
+<li><strong>USB 1.0/1.1</strong>: 第一个 USB 标准，支持低速（1.5 Mbps）和全速（12 Mbps）数据传输。</li>
+<li><strong>USB 2.0</strong>: 提供更高的数据传输速度（最高 480 Mbps），支持即插即用和更高功率的设备。</li>
+<li><strong>USB 3.0</strong>: 提供更高的数据传输速度（最高 5 Gbps），增加了对更高功率设备的支持。</li>
+<li><strong>USB 3.1/3.2</strong>: 提供更高的传输速度（最高 10 Gbps 和 20 Gbps），并引入了 Type-C 接口。</li>
+<li><strong>USB4</strong>: 支持更高的数据传输速度（最高 40 Gbps），与 Thunderbolt 3 兼容，并继续使用 Type-C 接口。</li>
+</ul>
+<h3 id="USB-%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%B1%BB%E5%9E%8B">USB &#25509;&#21475;&#30340;&#31867;&#22411;<a class="anchor-link" href="#USB-%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%B1%BB%E5%9E%8B">&#182;</a></h3><ul>
+<li><strong>Type-A</strong>: 标准的矩形接口，广泛用于计算机和外围设备。</li>
+<li><strong>Type-B</strong>: 通常用于打印机和其他外围设备的接口。</li>
+<li><strong>Mini-USB/Micro-USB</strong>: 较小的接口类型，常用于移动设备和小型电子产品。</li>
+<li><strong>Type-C</strong>: 最新的接口类型，支持更高的数据传输速度和功率，并具备双面可插的设计。</li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+<div class="tabs" id="gui"><ul class="nav-tabs"><li class="tab active"><a href="#gui-1">图形界面</a></li><li class="tab"><a href="#gui-2">GUI</a></li></ul><div class="tab-content"><div class="tab-pane active" id="gui-1"><p>以下是 <code>PyWebView</code>、<code>Gradio</code> 和 <code>Tkinter</code> 的比较：</p>
+<ol>
+<li><strong>用途与使用场景</strong>：<ul>
+<li><code>PyWebView</code>：用于创建轻量级的桌面应用程序，通过将网页内容（HTML&#x2F;JS&#x2F;CSS）嵌入原生窗口中，能够将基于网页的应用作为桌面应用程序运行。适合需要使用 Web 技术构建桌面 GUI 的情况。</li>
+<li><code>Gradio</code>：主要用于创建简单的基于 Web 的用户界面，尤其适合机器学习模型的展示与交互。它非常适合快速搭建用户界面，与机器学习模型进行交互。</li>
+<li><code>Tkinter</code>：Python 标准库中的桌面 GUI 构建工具，适合构建传统的桌面应用程序界面，包含按钮、标签等组件。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="2">
+<li><strong>易用性</strong>：<ul>
+<li><code>PyWebView</code>：如果熟悉 Web 开发，使用起来较为简单，可以利用 HTML 和 JavaScript 快速构建 UI，尤其适合想要将已有 Web 界面转为桌面应用的开发者。</li>
+<li><code>Gradio</code>：非常适合机器学习开发人员，几乎不需要任何 Web 开发知识就可以快速生成 Web UI，操作简单，主要用于展示模型。</li>
+<li><code>Tkinter</code>：尽管 Tkinter 的使用门槛不高，但对于复杂的界面，它的编程模式相对繁琐，而且其样式较为传统，无法轻松创建现代化界面。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="3">
+<li><strong>外观与灵活性</strong>：<ul>
+<li><code>PyWebView</code>：由于可以使用各种前端框架（如 React、Vue 等），其外观和灵活性非常高，界面现代，适合需要高度定制化界面的应用。</li>
+<li><code>Gradio</code>：UI 定制选项有限，主要用于快速展示和简单交互，不适合需要复杂 UI 的应用程序。</li>
+<li><code>Tkinter</code>：提供了基本的窗口小部件，外观较为传统，现代化设计难度较大，且自定义样式能力有限。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="4">
+<li><strong>跨平台支持</strong>：<ul>
+<li><code>PyWebView</code>：支持跨平台（Windows、macOS 和 Linux），易于构建适用于多个操作系统的桌面应用程序。</li>
+<li><code>Gradio</code>：基于 Web，因此在任何浏览器上都可以运行，适合部署在线应用，但不适用于创建桌面应用。</li>
+<li><code>Tkinter</code>：同样支持跨平台（Windows、macOS、Linux），但界面的外观可能在不同平台上略有差异。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="5">
+<li><strong>性能</strong>：<ul>
+<li><code>PyWebView</code>：对于简单的网页内容，性能表现良好，但对于复杂的 Web 应用，可能会出现卡顿情况。</li>
+<li><code>Gradio</code>：适用于轻量级的机器学习展示和用户界面，性能取决于后端的模型复杂度。</li>
+<li><code>Tkinter</code>：性能较好，适合简单的桌面应用程序，运行速度快，但对于现代化、复杂的 UI 来说可能不够灵活。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="6">
+<li><strong>与 Python 的集成</strong>：<ul>
+<li><code>PyWebView</code>：支持 Python 和 JavaScript 之间的双向通信，易于在前端使用 Web 技术，后端使用 Python 处理逻辑。</li>
+<li><code>Gradio</code>：与机器学习框架（如 PyTorch、TensorFlow）无缝集成，便于快速展示模型输入和输出。</li>
+<li><code>Tkinter</code>：作为 Python 的标准库，完全集成于 Python 中，适用于一般的 Python 应用程序开发，但对于现代 UI 的构建稍显不足。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="7">
+<li><strong>最佳使用场景</strong>：<ul>
+<li><code>PyWebView</code>：适合有 Web 开发背景的开发者，想要将 Web 应用打包成桌面应用程序。</li>
+<li><code>Gradio</code>：适合快速构建机器学习模型的用户界面并进行展示与分享。</li>
+<li><code>Tkinter</code>：适合传统桌面应用程序的开发，不依赖于外部库的情况下可以轻松创建简单的应用。</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<p>总结：</p>
+<ul>
+<li><code>PyWebView</code>：适合构建基于 Web 技术的现代化桌面应用。</li>
+<li><code>Gradio</code>：适合快速构建机器学习模型展示的 Web 界面。</li>
+<li><code>Tkinter</code>：适合传统的本地桌面 GUI 应用程序构建。</li>
+</ul>
+<br />
+
+<p>每个工具都有其独特的使用场景和优势，具体选择取决于你的项目需求和开发背景。</p></div><div class="tab-pane" id="gui-2"><p>Here’s a comparison of <code>PyWebView</code>, <code>Gradio</code>, and <code>Tkinter</code> across various key aspects:</p>
+<ol>
+<li><strong>Purpose and Use Case</strong>:<ul>
+<li><code>PyWebView</code>: Used to create lightweight desktop applications by embedding web content (HTML&#x2F;JS&#x2F;CSS) in a native window. It allows web-based apps to run as desktop applications. Primarily for desktop UI with web technologies.</li>
+<li><code>Gradio</code>: Primarily designed for creating simple web-based UIs for machine learning models and other applications. It excels at quickly sharing models and data processing workflows through a web interface.</li>
+<li><code>Tkinter</code>: The standard Python library for building desktop GUI applications. It’s used for creating traditional desktop interfaces with widgets like buttons, labels, and menus.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="2">
+<li><strong>Ease of Use</strong>:<ul>
+<li><code>PyWebView</code>: Fairly simple to use if you’re familiar with web technologies. You just need HTML and JavaScript to create the interface, making it ideal for developers who want to reuse their web development skills for desktop apps.</li>
+<li><code>Gradio</code>: Extremely easy for ML developers and those who want to quickly prototype web UIs for models or data workflows. You don’t need to be familiar with web development, as Gradio generates interfaces with very little code.</li>
+<li><code>Tkinter</code>: More complex compared to Gradio and PyWebView but still fairly accessible due to its inclusion in the Python standard library. However, creating complex or modern-looking GUIs can be challenging due to its more traditional widget set.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="3">
+<li><strong>Appearance and Flexibility</strong>:<ul>
+<li><code>PyWebView</code>: Offers high flexibility since you can use any front-end web framework (like React, Vue, or plain HTML&#x2F;CSS) to design modern, polished UIs. Appearance depends entirely on your web development skills.</li>
+<li><code>Gradio</code>: Limited in terms of UI customization but good for rapid prototyping. It’s excellent for showcasing machine learning models but lacks the depth for more intricate GUI applications.</li>
+<li><code>Tkinter</code>: Comes with a set of pre-built widgets, which are relatively basic in appearance. Styling options are limited, and it can be challenging to create visually modern interfaces without heavy customization.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="4">
+<li><strong>Platform Support</strong>:<ul>
+<li><code>PyWebView</code>: Cross-platform (Windows, macOS, and Linux), making it easy to create desktop applications that work on all major operating systems.</li>
+<li><code>Gradio</code>: Web-based, so it runs on any platform with a browser, but it’s not a desktop application framework. It’s typically used to host interfaces online.</li>
+<li><code>Tkinter</code>: Cross-platform (Windows, macOS, Linux) with native support, but the look and feel of the widgets may differ slightly between operating systems.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="5">
+<li><strong>Performance</strong>:<ul>
+<li><code>PyWebView</code>: Relatively fast, but performance depends on the complexity of the web content you embed. For basic HTML&#x2F;JS, it runs smoothly, but heavy web apps can be slow.</li>
+<li><code>Gradio</code>: Lightweight and optimized for simple UIs to interact with models. Performance is tied to your backend or model, but for general UI tasks, it’s quite efficient.</li>
+<li><code>Tkinter</code>: Very fast for simple GUI applications since it’s native to Python and doesn’t rely on external libraries or browsers. However, it’s not ideal for highly complex UIs or apps requiring high customization.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="6">
+<li><strong>Integration with Python</strong>:<ul>
+<li><code>PyWebView</code>: Allows two-way communication between Python and JavaScript, making it easy to control the backend logic with Python and the frontend with web technologies.</li>
+<li><code>Gradio</code>: Seamless integration with Python and particularly machine learning frameworks like PyTorch and TensorFlow, providing ready-made components for input and output of models.</li>
+<li><code>Tkinter</code>: Fully integrated with Python since it’s part of the standard library, making it highly compatible for general-purpose Python applications. However, it’s more verbose to set up complex UIs compared to web-based alternatives.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<ol start="8">
+<li><strong>Best Suited For</strong>:<ul>
+<li><code>PyWebView</code>: Best for developers looking to create cross-platform desktop apps using web technologies or who already have web-based interfaces they want to deploy as desktop apps.</li>
+<li><code>Gradio</code>: Ideal for data scientists or ML developers who want a simple, fast way to prototype and share models with interactive UIs.</li>
+<li><code>Tkinter</code>: Best suited for traditional desktop applications where no web content is involved and the developer prefers to work within Python’s native ecosystem without external dependencies.</li>
+</ul>
+</li>
+</ol>
+<br />
+
+<p>Summary:</p>
+<ul>
+<li><code>PyWebView</code>: Flexible, modern web-based desktop apps.</li>
+<li><code>Gradio</code>: Quick web interfaces for models, with minimal coding.</li>
+<li><code>Tkinter</code>: Traditional, native Python desktop GUIs.</li>
+</ul>
+<br />
+
+<p>Each tool shines in its respective domain: <code>PyWebView</code> for web-driven desktop apps, <code>Gradio</code> for rapid machine learning demos, and <code>Tkinter</code> for simple native Python GUIs.</p></div></div></div>
+
+<br />
+
+<p><code>PyQt6</code> 可以替代 <code>PyWebView</code> 或 <code>CEF Python</code> 来嵌入网页内容，但它的适用性取决于你的具体需求和项目要求。让我们来比较 <code>PyQt6</code>、<code>PyWebView</code> 和 <code>CEF Python</code>，并讨论各自的优缺点以及在什么情况下 <code>PyQt6</code> 可以作为合适的替代方案。</p>
+<ol>
+<li><p><code>PyQt6</code> 的适用场景<br><code>PyQt6</code> 是基于 Qt 库的 Python 绑定，提供了丰富的桌面 GUI 功能。它可以通过 <code>QWebEngineView</code>（基于 Chromium 的浏览器组件）或 <code>QWebView</code>（基于 WebKit）嵌入网页内容。与 <code>PyWebView</code> 和 <code>CEF Python</code> 相比，<code>PyQt6</code> 提供了更强大的桌面应用开发能力，可以构建复杂的用户界面。</p>
+<p>优点：</p>
+<ul>
+<li>完整的桌面应用框架：<code>PyQt6</code> 不仅支持嵌入网页，还能构建复杂的本地 GUI 应用，提供丰富的 UI 控件。</li>
+<li>跨平台：支持 Windows、macOS 和 Linux，Qt 本身就是跨平台的，<code>PyQt6</code> 继承了这一特性。</li>
+<li>嵌入 Chromium 或 WebKit：<code>PyQt6</code> 的 <code>QWebEngineView</code> 基于 Chromium 引擎，功能类似于 <code>CEF Python</code>，可以渲染现代网页应用程序。</li>
+<li>与本地代码的深度集成：可以通过 <code>PyQt6</code> 完全控制窗口行为、桌面通知、本地文件系统交互等。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>复杂性：<code>PyQt6</code> 的 API 非常强大，但学习曲线相对较陡，尤其是对于只需要简单 Web 嵌入功能的项目。</li>
+<li>打包体积大：因为 <code>QWebEngineView</code> 使用 Chromium 内核，打包 <code>PyQt6</code> 应用时体积较大，接近 <code>CEF Python</code> 的水平。</li>
+<li>与 Web 技术集成相对较弱：虽然 <code>PyQt6</code> 可以嵌入网页，但它的主要强项是桌面 GUI，而不是 Web UI。如果你只需要简单嵌入网页内容，<code>PyQt6</code> 可能显得过于复杂。</li>
+</ul>
+</li>
+<li><p><code>PyWebView</code> 的适用场景<br><code>PyWebView</code> 是一个轻量级的库，专注于将 HTML、CSS 和 JavaScript 应用嵌入到本地 Python 程序中。它的核心目标是提供一个最小的浏览器窗口，用于呈现 Web 内容。</p>
+<p>优点：</p>
+<ul>
+<li>轻量和简单：相比 <code>PyQt6</code> 和 <code>CEF Python</code>，<code>PyWebView</code> 更加轻量和简单，易于学习和使用。对于简单的 Web 嵌入需求，它是一个理想的选择。</li>
+<li>较小的打包体积：<code>PyWebView</code> 使用系统自带的 WebKit（macOS）或 EdgeHTML（Windows），所以应用体积不会太大。</li>
+<li>快速开发：如果你的应用以 Web 技术为主，并且只需要一个简单的窗口来展示网页，<code>PyWebView</code> 是一个非常高效的工具。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>功能较弱：<code>PyWebView</code> 缺乏桌面 GUI 控件库，不能像 <code>PyQt6</code> 那样提供复杂的本地桌面控件。</li>
+<li>不适合复杂的本地集成：与 <code>PyQt6</code> 相比，<code>PyWebView</code> 对本地系统功能的集成相对较少。如果你需要深度集成桌面功能（如文件对话框、拖放、通知等），<code>PyWebView</code> 可能不够用。</li>
+</ul>
+</li>
+<li><p><code>CEF Python</code> 的适用场景<br><code>CEF Python</code> 是基于 Chromium Embedded Framework（CEF）的 Python 绑定，允许你在桌面应用中嵌入一个完整的 Chromium 浏览器。这使得它非常适合需要复杂 Web 内容的应用。</p>
+<p>优点：</p>
+<ul>
+<li>完整的 Chromium 支持：<code>CEF Python</code> 提供了现代网页功能支持，包括 HTML5、CSS3、JavaScript 和 WebAssembly，因此非常适合构建基于 Web 技术的复杂应用。</li>
+<li>强大的扩展能力：<code>CEF Python</code> 提供了强大的 API 来与本地应用进行交互，例如在 Python 中执行 JavaScript、操作 DOM 等。</li>
+<li>高性能：由于使用 Chromium 内核，<code>CEF Python</code> 对于渲染现代网页应用具有出色的性能。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>较大的体积：<code>CEF Python</code> 的体积较大，因为它包含了完整的 Chromium 内核，打包后的应用体积也较大。</li>
+<li>复杂性：<code>CEF Python</code> 的 API 相对复杂，虽然功能强大，但需要较多的配置和编程工作。</li>
+</ul>
+</li>
+<li><p><code>PyQt6</code> 能否替代 <code>PyWebView</code> 或 <code>CEF Python</code>？</p>
+<p><code>PyQt6</code> 替代 <code>PyWebView</code></p>
+<ul>
+<li>如果你的应用需要复杂的 GUI 组件、桌面功能（如文件选择、拖放等），<code>PyQt6</code> 是更好的选择。<code>PyWebView</code> 虽然轻量，但功能非常有限，无法提供 <code>PyQt6</code> 那样的丰富控件。</li>
+<li>如果你只需要嵌入简单的网页，并且不需要复杂的桌面功能，<code>PyWebView</code> 更合适。<code>PyQt6</code> 在这种场景下显得有些“重量过大”。</li>
+</ul>
+<p><code>PyQt6</code> 替代 <code>CEF Python</code></p>
+<ul>
+<li>如果你需要一个嵌入式浏览器来显示复杂的 Web 内容，<code>PyQt6</code> 的 <code>QWebEngineView</code> 可以作为 <code>CEF Python</code> 的替代品。它也是基于 Chromium 引擎的，因此在渲染现代网页方面与 <code>CEF Python</code> 有相似的能力。</li>
+<li>如果你需要深度的 Web 技术支持（如执行复杂的 JavaScript 代码、与 DOM 的双向通信），<code>CEF Python</code> 提供更强的 API 和更好的集成。虽然 <code>QWebEngineView</code> 可以处理网页，但 <code>CEF Python</code> 的定制化程度更高。</li>
+</ul>
+</li>
+<li><p>结论</p>
+<ul>
+<li>使用 <code>PyQt6</code> 替代 <code>PyWebView</code>：当你需要更多的桌面控件、本地系统功能以及更加复杂的 GUI 时，<code>PyQt6</code> 是一个功能强大的替代方案。但如果你只需要简单的 Web 嵌入，<code>PyWebView</code> 更轻量，可能是更好的选择。</li>
+<li>使用 <code>PyQt6</code> 替代 <code>CEF Python</code>：对于大多数嵌入网页的需求，<code>PyQt6</code> 的 <code>QWebEngineView</code> 可以胜任，但如果你对 Web 功能有更多要求，特别是需要深度的 Chromium 控制和 JavaScript 与 Python 间的通信，<code>CEF Python</code> 仍然是更好的选择。</li>
+</ul>
+<p>总之，选择 <code>PyQt6</code> 还是 <code>PyWebView</code> 或 <code>CEF Python</code> 取决于你的项目复杂度和你对桌面应用或 Web 功能的需求。</p>
+</li>
+</ol>
+<br />
+
+<table>
+<thead>
+<tr>
+<th>特性&nbsp;</th>
+<th>&nbsp;<strong>Dash</strong>&nbsp;</th>
+<th>&nbsp;<strong>PyWebIO</strong>&nbsp;</th>
+<th>&nbsp;<code>Gradio</code>&nbsp;</th>
+<th>&nbsp;<strong>Streamlit</strong>&nbsp;</th>
+<th>&nbsp;<strong>Panel</strong>&nbsp;</th>
+<th>&nbsp;<strong>Voila</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>目标</strong>&nbsp;</td>
+<td>&nbsp;构建复杂的数据可视化和分析应用&nbsp;</td>
+<td>&nbsp;快速构建简单的交互式 Web 应用&nbsp;</td>
+<td>&nbsp;快速创建机器学习模型的交互界面&nbsp;</td>
+<td>&nbsp;简化数据应用的开发流程&nbsp;</td>
+<td>&nbsp;数据可视化和仪表板&nbsp;</td>
+<td>&nbsp;将 Jupyter Notebook 转换为 Web 应用</td>
+</tr>
+<tr>
+<td><strong>界面设计</strong>&nbsp;</td>
+<td>&nbsp;自定义布局和交互&nbsp;</td>
+<td>&nbsp;简单的文本输入和输出&nbsp;</td>
+<td>&nbsp;自动生成用户友好的界面&nbsp;</td>
+<td>&nbsp;自定义界面，易于设计&nbsp;</td>
+<td>&nbsp;灵活的布局，支持多种控件&nbsp;</td>
+<td>&nbsp;基于 Jupyter Notebook 的输出</td>
+</tr>
+<tr>
+<td><strong>交互性</strong>&nbsp;</td>
+<td>&nbsp;支持复杂的交互，适合构建数据仪表板&nbsp;</td>
+<td>&nbsp;支持基本交互，适合简单应用&nbsp;</td>
+<td>&nbsp;强大的交互性，支持实时更新&nbsp;</td>
+<td>&nbsp;强大的交互性，支持多种输入类型&nbsp;</td>
+<td>&nbsp;支持复杂交互&nbsp;</td>
+<td>&nbsp;基于 Notebook 的交互性</td>
+</tr>
+<tr>
+<td><strong>学习曲线</strong>&nbsp;</td>
+<td>&nbsp;中等，需了解 Dash 的组件&nbsp;</td>
+<td>&nbsp;低，简单易用&nbsp;</td>
+<td>&nbsp;低，特别适合机器学习应用&nbsp;</td>
+<td>&nbsp;低，适合数据科学家和工程师&nbsp;</td>
+<td>&nbsp;中等，需了解 HoloViz 生态&nbsp;</td>
+<td>&nbsp;低，适合 Jupyter 用户</td>
+</tr>
+<tr>
+<td><strong>部署方式</strong>&nbsp;</td>
+<td>&nbsp;可通过 Flask 部署，支持复杂的服务器功能&nbsp;</td>
+<td>&nbsp;需要服务端支持，通常需要 Flask 支持&nbsp;</td>
+<td>&nbsp;使用简单的命令行部署&nbsp;</td>
+<td>&nbsp;支持多种部署方式，包括云部署&nbsp;</td>
+<td>&nbsp;可通过 Bokeh Server 或静态文件部署&nbsp;</td>
+<td>&nbsp;通过命令行轻松部署</td>
+</tr>
+<tr>
+<td><strong>生态系统</strong>&nbsp;</td>
+<td>&nbsp;Plotly 生态系统，支持丰富的可视化库&nbsp;</td>
+<td>&nbsp;独立&nbsp;</td>
+<td>&nbsp;强大的机器学习和数据科学生态&nbsp;</td>
+<td>&nbsp;数据科学和机器学习生态&nbsp;</td>
+<td>&nbsp;HoloViz 生态系统&nbsp;</td>
+<td>&nbsp;基于 Jupyter Notebook 的生态</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong>&nbsp;</td>
+<td>&nbsp;企业级应用、复杂数据可视化和仪表板&nbsp;</td>
+<td>&nbsp;快速原型、简单应用&nbsp;</td>
+<td>&nbsp;机器学习模型演示、交互式实验&nbsp;</td>
+<td>&nbsp;数据应用、可视化和交互式报告&nbsp;</td>
+<td>&nbsp;数据分析仪表板、复杂可视化&nbsp;</td>
+<td>&nbsp;教学、展示分析结果</td>
+</tr>
+</tbody></table>
+<br />
+
+<div class="tabs" id="operator"><ul class="nav-tabs"><li class="tab active"><a href="#operator-1">操作员</a></li><li class="tab"><a href="#operator-2">オペレーター</a></li></ul><div class="tab-content"><div class="tab-pane active" id="operator-1"><p>OpenAI 的 Operator 于 2025 年 1 月 23 日首次在美国发布，最初仅面向美国的 ChatGPT Pro 用户提供服务。</p>
+<p>美国 OpenAI 于 2 月 21 日宣布，开始向日本提供其代理服务 『Operator』，该服务可代替用户执行 Web 上的任务。OpenAI 在其官方 X（@OpenAI）上发布消息称，该功能已开放给月费 200 美元的付费计划 『ChatGPT Pro』 用户。</p>
+<p>Operator 现已向澳大利亚、巴西、加拿大、印度、日本、新加坡、韩国、英国以及大多数支持 ChatGPT 的地区的 Pro 用户推出。</p>
+<p>目前，Operator 仍无法在欧盟、瑞士、挪威、列支敦士登、冰岛等地区使用。OpenAI 承诺将持续更新有关未来发展的信息，但具体时间表尚未公布。OpenAI 仍在努力让 Operator 在欧盟、瑞士、挪威、列支敦士登和冰岛可用。</p>
+<p>Operator 是一种代理服务，可代替用户执行 Web 任务，例如预订餐厅和酒店。例如，用户在聊天中指示 『请预订 7 月 7 日至 12 日在石垣岛的酒店』，AI 就会根据该条件进行 Web 搜索。记者测试后发现，AI 会打开 Booking.com 并继续进行酒店预订。</p>
+<p>低代码／无代码工具＋AI 代理，使得『创业』门槛大幅降低，个人可以用 AI 运营电商、内容平台，甚至虚拟公司。</p></div><div class="tab-pane" id="operator-2"><p>OpenAIのOperatorは、2025年1月23日にアメリカで初めてリリースされ、当初はアメリカのChatGPT Proユーザー向けに提供されました。</p>
+<p>米OpenAIは2月21日、Web上のタスクを代行するエージェントサービス「Operator」を日本向けに提供を始めたと発表しました。OpenAIは公式X（@OpenAI）で、この機能を月額200ドルの有料プラン「ChatGPT Pro」のユーザー向けに開放したと投稿しました。</p>
+<p>Operatorは現在、オーストラリア、ブラジル、カナダ、インド、日本、シンガポール、韓国、イギリス、およびChatGPTが利用可能なほとんどの地域のProユーザー向けに提供されています。</p>
+<p>現在、Operatorは欧州連合、スイス、ノルウェー、リヒテンシュタイン、アイスランドなどの地域ではまだ利用できません。OpenAIは、今後の展開について継続的に情報を更新すると約束していますが、具体的なスケジュールはまだ明らかにされていません。OpenAIは、引き続きOperatorを欧州連合、スイス、ノルウェー、リヒテンシュタイン、アイスランドで利用可能にするために取り組んでいます。</p>
+<p>Operatorは、レストランやホテルの予約など、Web上でのタスクを代行してくれるエージェントサービスです。例えば、ユーザーがチャットで「7月7日から12日まで泊まれる石垣島のホテルを予約してください」と指示すると、AIがその条件でWeb検索を行います。記者が試してみたところ、AIはBooking.comを開き、ホテルの予約を進めました。</p>
+<p>AIがWebを操作している様子は、チャット画面上で確認できる他、行動履歴も文章として残してくれる。また途中、「石垣島の7月7日から12日までの宿泊先を検索したところ、182軒のホテルが見つかりました。特定の予算や希望の設備、または場所などのご希望はありますか？それに応じてホテルを選びたいと思います」と予算感などについて、再度人間側に判断を仰ぐ場合もある。</p>
+<p>ローコード／ノーコードツールとAIエージェントを組み合わせることで、「起業」のハードルが大幅に低くなり、個人はAIを使ってECサイト、コンテンツプラットフォーム、さらには仮想企業を運営できるようになります。</p></div></div></div>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/04/07/Robotic-Process-Automation/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2023-04-07 </div>
 			<div class="article-title"><a href="/2023/04/07/A-Study-on-Network-Isolation-Measures-for-Dealing-with-Intelligent-Viruses/" >A Study on Network Isolation Measures for Dealing with &#34;Intelligent Viruses&#34;</a></div>						
 		</h3>
 	
@@ -15099,74 +15688,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-02-18 </div>
-			<div class="article-title"><a href="/2023/02/18/psalms/psalm-32/" >Blessed Is the One</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/iVvzlBYeogQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<div class="tabs" id="psalm-32"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-32-1">Blessed Is the One</a></li><li class="tab"><a href="#psalm-32-2">这人有福啊</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-32-1"><blockquote>
-<p>Blessed Is the One<br>by Raelyn</p>
-<hr>
-<p>Blessed is the one<br>Whose transgression is forgiven<br>Whose transgression is forgiven<br>Whose sin is covered<br>Blessed is the one<br>To whom the LORD will not count sin, oh<br>To whom the LORD will not count sin, oh<br>In whose spirit is no deceit<br>In whose spirit is no deceit</p>
-<hr>
-<p>When I kept silent<br>My bones wasted away<br>Through my groaning all day and all night<br>Your hand was heavy upon me<br>And my strength dried up as in the summer’s heat<br>Then I acknowledged my sin to You<br>And I did not cover my iniquity<br>I said, “I’ll confess my sins to the LORD”<br>And He forgave, yeah, He forgave<br>Yeah, He forgave the guilt of my sin, oh</p>
-<hr>
-<p>Blessed is the one<br>Whose transgression is forgiven<br>To whom the LORD will not count sin, oh<br>Whose sin is covered<br>Blessed is the one<br>Whose transgression is forgiven<br>To whom the LORD will not count sin, oh<br>In whose spirit is no deceit</p>
-<hr>
-<p>Therefore let everyone who’s godly<br>Pray to You in a time You may be found<br>Surely in the midst of the deep and raging waters<br>He shall be shielded from them<br>They won’t come near to the man of God</p>
-<hr>
-<p>You are my hiding place<br>You always keep me safe<br>You surround me with songs of deliverance</p>
-<hr>
-<p>You surround me<br>You surround me<br>You surround me with songs of deliverance</p>
-<hr>
-<p>I will instruct you and teach you the way you should go<br>I will counsel you with my eye upon you<br>Do not be stubborn like the horse or the mule<br>Without understanding<br>Who must be pulled to follow<br>Curbed with bit and bridle<br>Or they will not draw near<br>Or they will not draw near their master</p>
-<hr>
-<p>Many are the sorrows of the wicked<br>But steadfast love surrounds the one who trusts in the LORD</p>
-<hr>
-<p>Be glad in the LORD and rejoice, O righteous<br>Shout for joy all you upright in heart</p>
-<hr>
-<p>Blessed is the one<br>Whose transgression is forgiven<br>To whom the LORD will not count sin, oh<br>Whose transgression is forgiven</p>
-<hr>
-<p>Whose sin is covered</p>
-</blockquote></div><div class="tab-pane" id="psalm-32-2"><blockquote>
-<p>其过犯蒙赦免、其罪得掩没的、<br>这人有福啊！<br>心灵无诡诈、<br>永恒主不算他为有罪的、<br>这人有福啊！</p>
-<hr>
-<p>我闭口不认罪时，<br>我的骨头都因终日哀哼而磨损。<br>因为你的手昼夜重重压着我；<br>我的精液起了恶变化、<br>如在夏天的炎热中。<br>（细拉）</p>
-<hr>
-<p>我的罪我让你知道，<br>我的罪孽我没有掩盖着；<br>我说：『我要向永恒主承认我的过犯』；<br>那么你就赦免我罪的孽债。<br>（细拉）</p>
-<hr>
-<p>为这缘故、一切坚贞之士<br>在窘迫时都当向你祷告；<br>大水泛溢时，那水不会触害着他。<br>惟独你是我的隐匿处；<br>愿你守护着我脱离患难，<br>以解救之欢呼四面环绕着我。<br>（细拉）</p>
-<hr>
-<p>我要训诲你、指教你当走的路；<br>我要定睛于你身上而忠告你。<br>你不可像无知的骡马，<br>须用嚼环辔头做装备去勒住牠，<br>否则牠不走近你。</p>
-<hr>
-<p>恶人有许多痛苦；<br>惟独倚靠永恒主的、有坚固之爱<br>四面环绕着他。<br>义人哪，你们要因永恒主而欢喜快乐；<br>心里正直的人哪，你们都要欢呼。</p>
-<hr>
-<p>(诗篇 32:1-11 吕振中)</p>
-</blockquote></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/02/18/psalms/psalm-32/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -15207,43 +15728,43 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
 			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+		
 			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
 			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
@@ -15259,6 +15780,10 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
+      </li>
+    
+      <li>
         <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
       </li>
     
@@ -15272,10 +15797,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
     
       <li>
         <a href="/2024/05/16/人脑海马体的经典计算模型/" ><i class="fa fa-file-o"></i>人脑海马体的经典计算模型</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/15/biobuilder/chapter-10/" ><i class="fa fa-file-o"></i>金面包</a>
       </li>
     
   </ul>

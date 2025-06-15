@@ -140,6 +140,93 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2015-09-03 </div>
+			<div class="article-title"><a href="/2015/09/03/My-Second-Test/" >My Second Test</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a><a target="_blank" rel="noopener" href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">ECMAScript</a></h2><p>遮蔽（遮盖、屏蔽），可见（作用域、可见域）；生存期。</p>
+<h2 id="Octopress"><a href="#Octopress" class="headerlink" title="Octopress"></a><a target="_blank" rel="noopener" href="http://octopress.org/docs/setup/">Octopress</a></h2><h2 id="Start-Command-Prompt-with-Ruby"><a href="#Start-Command-Prompt-with-Ruby" class="headerlink" title="Start Command Prompt with Ruby"></a>Start Command Prompt with Ruby</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DevKit</span></span><br><span class="line">ruby dk.rb init</span><br><span class="line">ruby dk.rb install</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">ruby --version <span class="comment"># Should report Ruby 1.9.3</span></span><br><span class="line">gem install bundler</span><br><span class="line">bundle install</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install rubypython <span class="comment"># not necessary for Octopress now</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake new_post[<span class="string">&quot;title&quot;</span>]</span><br><span class="line">rake preview <span class="comment"># http://localhost:4000/</span></span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">bundle <span class="built_in">exec</span> rake new_post[<span class="string">&quot;title&quot;</span>]</span><br><span class="line">bundle <span class="built_in">exec</span> rake preview</span><br><span class="line">bundle <span class="built_in">exec</span> rake deploy</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pbcopy &lt; ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># Copies the contents of the id_rsa.pub file to your clipboard</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:seii-saintway/seii-saintway.github.io.git Octopress</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout -b <span class="built_in">source</span> origin/source</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git checkout <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&#x27;your message&#x27;</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Windows-Command-Prompt"><a href="#Windows-Command-Prompt" class="headerlink" title="Windows Command Prompt"></a>Windows Command Prompt</h2><p>Add the “cmd” directory of “git” to System Environment Variable “Path”.</p>
+<p>Add the “bin” directory of “Ruby” to System Environment Variable “Path”.</p>
+<p>Add the “Python” directory to System Environment Variable “Path”.</p>
+<h2 id="My-“rake-setup-github-pages”-with-“git-init”"><a href="#My-“rake-setup-github-pages”-with-“git-init”" class="headerlink" title="My “rake setup_github_pages” with “git init”"></a>My “rake setup_github_pages” with “git init”</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:seii-saintway/seii-saintway.github.io.git</span><br><span class="line">git checkout -b <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> _deploy</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:seii-saintway/seii-saintway.github.io.git</span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">rake generate</span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Octopress</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;Fresh Start!&quot;</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm --registry <span class="string">&quot;http://npm.hacknodejs.com/&quot;</span> install underscore </span><br><span class="line">npm --registry <span class="string">&quot;http://registry.npmjs.vitecho.com/&quot;</span> install underscore </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a>npm install</h2><h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>command + shift + G</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">npm install --save</span><br><span class="line">node_modules/hexo/bin/hexo server --debug</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://hexo.io/</span></span><br><span class="line">npm install hexo-cli --save</span><br><span class="line">npm install hexo --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"><span class="comment"># Clean the cache file (db.json) and generated files (public).</span></span><br><span class="line"><span class="comment"># 在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gg</span><br><span class="line">G</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g eslint</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Continuous-Integration"><a href="#Continuous-Integration" class="headerlink" title="Continuous Integration"></a>Continuous Integration</h2><h2 id="git-submodule"><a href="#git-submodule" class="headerlink" title="git submodule"></a>git submodule</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached -r themes/freemind</span><br><span class="line">git submodule add https://github.com/seii-saintway/hexo-theme-freemind.git themes/freemind</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="git-update-index"><a href="#git-update-index" class="headerlink" title="git update-index"></a>git update-index</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git update-index --assume-unchanged .idea/workspace.xml</span><br><span class="line">git update-index --no-assume-unchanged .idea/workspace.xml</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="encoding"><a href="#encoding" class="headerlink" title="encoding"></a>encoding</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/03/My-Second-Test/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-03 </div>
 			<div class="article-title"><a href="/2015/09/03/My-First-Test/" >My First Test</a></div>						
 		</h3>
 	
@@ -1960,732 +2047,6 @@ $$ k_{ET} = \frac{V^2}{h} \sqrt{\frac{\pi}{\lambda k_B T}} \exp\left( -\frac{(\l
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2008-08-20 </div>
-			<div class="article-title"><a href="/2008/08/20/ultimate-facts/研究机构/" >研究机构</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%E4%BA%9A%E5%88%A9%E6%A1%91%E9%82%A3%E5%A4%A7%E5%AD%A6"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E4%BA%9A%E5%88%A9%E6%A1%91%E9%82%A3%E5%A4%A7%E5%AD%A6">&#20122;&#21033;&#26705;&#37027;&#22823;&#23398;</a><a class="anchor-link" href="#%E4%BA%9A%E5%88%A9%E6%A1%91%E9%82%A3%E5%A4%A7%E5%AD%A6">&#182;</a></h2><h3 id="%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6%E5%92%8C%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6"><a target="_blank" rel="noopener" href="https://online.arizona.edu/programs/undergraduate/online-bachelor-science-neuroscience-and-cognitive-science-bs">&#31070;&#32463;&#31185;&#23398;&#21644;&#35748;&#30693;&#31185;&#23398;</a><a class="anchor-link" href="#%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6%E5%92%8C%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6">&#182;</a></h3><h4 id="Neurobiology-Emphasis"><a target="_blank" rel="noopener" href="https://www.arizona.edu/degree-search/majors/neuroscience-and-cognitive-science-neurobiology-emphasis">Neurobiology Emphasis</a><a class="anchor-link" href="#Neurobiology-Emphasis">&#182;</a></h4><ul>
-<li><a target="_blank" rel="noopener" href="https://slate.admissions.arizona.edu/account/login">申请进度</a></li>
-<li><a target="_blank" rel="noopener" href="https://everywhere.arizona.edu/english-proficiency">English Proficiency</a></li>
-<li><a target="_blank" rel="noopener" href="https://online.arizona.edu/admissions/program-dates-deadlines">Deadlines</a></li>
-<li><a target="_blank" rel="noopener" href="https://online.arizona.edu/cost-aid/financial-aid">Financial Aid</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.arizona.edu/admissions/returning/apply">Apply as a Returning Student</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.arizona.edu/admissions/non-degree-seeking/apply">Non-Degree Seeking Student</a></li>
-</ul>
-<p>将所有高中成绩单/国际大学成绩单发送至：</p>
-<pre><code>International Admissions
-The University of Arizona
-Global Center
-615 N Park Avenue
-Tucson, AZ 85721
-</code></pre>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.toefl-ibt.jp/test_takers/at-home/2/">托福报名</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.ets.org/mytoefl">My TOEFL Home</a></li>
-<li><a target="_blank" rel="noopener" href="https://ibtprod-rp.ets.org/ibt/unifyinfo_rp.html">ETS Test Launch Instructions</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E3%80%80%E5%A4%A7%E5%AD%A6%E9%99%A2">&#22823;&#38442;&#22823;&#23398;&#12288;&#22823;&#23398;&#38498;<a class="anchor-link" href="#%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E3%80%80%E5%A4%A7%E5%AD%A6%E9%99%A2">&#182;</a></h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/research/labs/bdr/comput_mol_des/index.html">計算分子設計研究チーム</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.fbs.osaka-u.ac.jp/ja/">生命機能研究科</a><ul>
-<li>基幹講座<ul>
-<li><a target="_blank" rel="noopener" href="https://www.fbs.osaka-u.ac.jp/ja/research_group/detail/29">1細胞神経生物学研究室</a></li>
-</ul>
-</li>
-<li>特別研究推進講座<ul>
-<li>神経可塑性生理学研究グループ</li>
-<li>神経回路形成研究グループ</li>
-</ul>
-</li>
-<li>兼任教員<ul>
-<li><a target="_blank" rel="noopener" href="https://www.med.osaka-u.ac.jp/introduction/research/anatomy/molecular">解剖学講座／分子神経科学</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.med.osaka-u.ac.jp/introduction/research/genome/rna">ゲノム生物学講座／神経遺伝子学</a></li>
-<li><a target="_blank" rel="noopener" href="https://sites.google.com/site/takatoshihikidalaboratory/research?authuser=0">蛋白質高次機能学研究部門／高次脳機能学研究室</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.protein.osaka-u.ac.jp/furukawa_lab/recruit.html">蛋白質高次機能学研究部門／分子発生学研究室</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.chem.es.osaka-u.ac.jp/suzuki/research.html">遺伝子工学／ゲノム編集</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.fbs.osaka-u.ac.jp/ja/application/admission/">入試概要</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.fbs.osaka-u.ac.jp/ja/files/application/2023gonen.pdf">博士　募集要項</a><ul>
-<li>出願期間　2022年11月7日（月）〜 2022年11月11日（金）【17時必着】</li>
-<li>試験日　2022年12月6日（火）</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.fbs.osaka-u.ac.jp/ja/files/application/2023hennyu4.pdf">博士　第3年次編入　募集要項</a><ul>
-<li>出願期間　2023年1月5日（木）～ 1月11日（水）（17時必着）</li>
-<li>口述試験実施日時　2023年1月31日（火） 10時 ～（予定）</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.fbs.osaka-u.ac.jp/ja/files/application/2022boshu_attendance.pdf">研究生　募集要項</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%E5%90%8C%E5%BF%97%E7%A4%BE%E5%A4%A7%E5%AD%A6%E3%80%80%E5%A4%A7%E5%AD%A6%E9%99%A2"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%90%8C%E5%BF%97%E7%A4%BE%E5%A4%A7%E5%AD%B8">&#21516;&#24535;&#31038;&#22823;&#23398;</a>&#12288;&#22823;&#23398;&#38498;<a class="anchor-link" href="#%E5%90%8C%E5%BF%97%E7%A4%BE%E5%A4%A7%E5%AD%A6%E3%80%80%E5%A4%A7%E5%AD%A6%E9%99%A2">&#182;</a></h2><ul>
-<li><a target="_blank" rel="noopener" href="https://brainscience.doshisha.ac.jp/">脳科学研究科</a><ul>
-<li>分子細胞脳科学分野</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://shingakunet.com/syakaijin/0001864765/0001864765.html">从咨询网站来的学位介绍</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%E7%90%86%E5%8C%96%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%89%80"><a target="_blank" rel="noopener" href="https://www.riken.jp/">&#29702;&#21270;&#23398;&#30740;&#31350;&#25152;</a><a class="anchor-link" href="#%E7%90%86%E5%8C%96%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%89%80">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/programs/">若手研究者の登用・育成制度</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/programs/jra/">大学院生リサーチ・アソシエイト（JRA）</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/careers/programs/jra/">Junior Research Associate Program</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/programs/">若手研究者の登用・育成制度</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/programs/ipa/">国際プログラム・アソシエイト（IPA）</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/careers/programs/ipa/">International Program Associate</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/medialibrary/riken/careers/programs/ipa/adjunct-j.pdf">連携（客員）教員一覧</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>东京工业大学　材料与化学技术学院
-东京大学　前沿科学研究科
-埼玉大学　理工科
-神户大学　理学研究科　医学研究科
-横滨市立大学　纳米生物科学研究科　基因组系统科学系
-筑波大学　科学技术研究生院　综合人文科学研究科
-大阪大学　前沿生命科学研究科　医学研究科
-京都大学　医学研究科　生物研究科
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/programs/">若手研究者の登用・育成制度</a><ul>
-<li>夜間大学院就学支援制度（一定の条件を満たす事務系職員対象）</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/collab/partnerships/">与理研合作的研究机构</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/collab/research/index.html">Partnerships</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>理化学研究所的顾老师说：</p>
-<blockquote>
-<p>其实我们实验室主要是做啮齿类动物的行为环路的，分子机制虽然有涉及但并不是主要的研究对象。如果你博士阶段研修计算神经生物学的蛋白组学分析或者 RNA 组学分析的话，一方面会有很多和分子机制研究组有很多合作，另一方面以后转去分子实验室做博后也会相对容易很多。理研大阪所的 Makoto Taiji 老师你可以看看是不是你更有兴趣。</p>
-</blockquote>
-<hr />
-<ul>
-<li><a target="_blank" rel="noopener" href="http://www.qbic.riken.jp/japanese/research/index.html">生命システム研究センター</a><ul>
-<li><a target="_blank" rel="noopener" href="http://www.qbic.riken.jp/japanese/research/outline/lab-09.html">計算分子設計研究グループ</a><ul>
-<li><a target="_blank" rel="noopener" href="http://www.qbic.riken.jp/english/research/outline/lab-09.html">Laboratory for Computational Molecular Design</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr />
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/research/labs/bdr/index.html">生命機能科学研究センター</a>　<a target="_blank" rel="noopener" href="https://www.riken.jp/research/labs/bdr/comput_mol_des/index.html">計算分子設計研究チーム</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/researchers/20201116_1/index.html"><strong>リサーチアソシエイト募集！</strong></a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/careers/researchers/20201116_1/index.html">Seeking <strong>Research Associates !</strong></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr />
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.bdr.riken.jp/en/research/labs/taiji-m/index.html">BDR | 計算分子設計研究チーム</a></li>
-</ul>
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">saintway</span><span class="o">/</span><span class="n">Google</span>\ <span class="n">Drive</span><span class="o">/</span>\<span class="o">!</span>_RESUME/Riken/CMD2001
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pdfunite</span> <span class="mi">1</span>\ <span class="o">-</span>\ <span class="n">rikencv_jp</span><span class="o">.</span><span class="n">xlsx</span>\ <span class="o">-</span>\ <span class="mi">1</span><span class="n">ページ目</span><span class="o">.</span><span class="n">pdf</span> <span class="mi">2</span>\ <span class="o">-</span>\ <span class="n">添付書類</span><span class="o">.</span><span class="n">pdf</span> <span class="mi">3</span>\ <span class="o">-</span>\ <span class="n">master</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="mf">21310005.</span><span class="n">pdf</span> <span class="mi">4</span>\ <span class="o">-</span>\ <span class="n">undergraduate</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">pdf</span> <span class="err">［</span><span class="n">CMD2001</span><span class="err">］</span><span class="n">盛偉</span><span class="o">.</span><span class="n">pdf</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<p>BashScript</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">saintway</span><span class="o">/</span><span class="n">Google</span>\ <span class="n">Drive</span><span class="o">/</span>\<span class="o">!</span>_RESUME/Riken/BIC2001
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pdfunite</span> <span class="mi">1</span>\ <span class="o">-</span>\ <span class="n">rikencv_jp</span><span class="o">.</span><span class="n">pdf</span> <span class="mi">3</span>\ <span class="o">-</span>\ <span class="n">自己アピール文</span><span class="o">.</span><span class="n">pdf</span> <span class="mi">5</span>\ <span class="o">-</span>\ <span class="n">master</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="mf">21310005.</span><span class="n">pdf</span> <span class="mi">6</span>\ <span class="o">-</span>\ <span class="n">undergraduate</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">pdf</span> <span class="err">［</span><span class="n">BIC2001</span><span class="err">］</span><span class="n">盛偉</span><span class="o">.</span><span class="n">pdf</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<p>BashScript</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pdf2image</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Collecting pdf2image
-  Downloading pdf2image-1.16.3-py3-none-any.whl (11 kB)
-Requirement already satisfied: pillow in /usr/local/anaconda3/envs/ipymock/lib/python3.10/site-packages (from pdf2image) (9.4.0)
-Installing collected packages: pdf2image
-Successfully installed pdf2image-1.16.3
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<p>Python</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pdf2image</span> <span class="kn">import</span> <span class="n">convert_from_path</span>
-
-<span class="k">def</span> <span class="nf">convert_pdf_to_png</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">):</span>
-    <span class="c1"># 将 PDF 的每一页转换为 PNG 图像</span>
-    <span class="n">images</span> <span class="o">=</span> <span class="n">convert_from_path</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">)</span>
-
-    <span class="c1"># 保存每个图像为单独的 PNG 文件</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
-        <span class="n">image_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_folder</span><span class="si">}</span><span class="s1">/［BIC2001］盛偉_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.png&#39;</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="s1">&#39;PNG&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Page </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> saved as </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="c1"># 使用示例</span>
-<span class="n">pdf_file</span> <span class="o">=</span> <span class="s1">&#39;/Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉.pdf&#39;</span>
-<span class="n">output_folder</span> <span class="o">=</span> <span class="s1">&#39;/Users/saintway/Google Drive/!_RESUME/Riken/BIC2001&#39;</span>
-<span class="n">convert_pdf_to_png</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Page 0 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_0.png
-Page 1 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_1.png
-Page 2 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_2.png
-Page 3 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_3.png
-Page 4 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_4.png
-Page 5 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_5.png
-Page 6 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_6.png
-Page 7 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_7.png
-Page 8 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_8.png
-Page 9 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_9.png
-Page 10 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_10.png
-Page 11 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_11.png
-Page 12 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_12.png
-Page 13 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_13.png
-Page 14 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_14.png
-Page 15 saved as /Users/saintway/Google Drive/!_RESUME/Riken/BIC2001/［BIC2001］盛偉_15.png
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<p>BashScript</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">saintway</span><span class="o">/</span><span class="n">Google</span>\ <span class="n">Drive</span><span class="o">/</span>\<span class="o">!</span>_RESUME/FBS/<span class="se">\!</span>_2023_10
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pdfunite</span> <span class="mi">1</span>\ <span class="o">-</span>\ <span class="n">修士論文要旨</span><span class="o">.</span><span class="n">pdf</span> <span class="mi">2</span>\ <span class="o">-</span>\ <span class="n">修士論文</span><span class="o">.</span><span class="n">pdf</span> <span class="n">修士論文及び要旨</span><span class="o">.</span><span class="n">pdf</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/">計算科学研究センター</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/comput_mol_sci/index.html">量子系分子科学研究チーム</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/comput_biophys/index.html">粒子系生物物理研究チーム</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/comput_struct_biol/index.html">計算構造生物学研究チーム</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/hpc_ai_drive_drug_dev_plat/index.html">HPC/AI駆動型医薬プラットフォーム部門</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/hpc_ai_drive_drug_dev_plat/biomed_comput_intell/index.html">バイオメディカル計算知能ユニット</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/hpc_ai_drive_drug_dev_plat/med_chem_intell_appl_ai/index.html">創薬化学AIアプリケーションユニット</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/hpc_ai_drive_drug_dev_plat/mol_des_comput_intell/index.html">分⼦デザイン計算知能ユニット</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/hpc_ai_drive_drug_dev_plat/ai_drug_discov_collab/index.html">AI創薬連携基盤ユニット</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/research/labs/cbs/">脳神経科学研究センター (CBS)</a><ul>
-<li><a target="_blank" rel="noopener" href="https://cbs2.riken.jp/renkei/jp/about_program.html">大学院生受け入れ制度</a></li>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/jp/TP/">脳科学塾</a><ul>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/en/TP/schedule.html">BSTP Schedule</a></li>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/img/TP/Full_Sylabuss_06.pdf">BSTP Syllabus</a></li>
-<li>RIKEN CBS <strong>Brain Science Training Program</strong></li>
-<li>Application Deadline: <strong>2022/09/26</strong></li>
-<li>十月开始到明年六月。</li>
-<li>假如招生不足，也会考虑在工作的人。</li>
-<li>得写文章综述。</li>
-<li>可以算为、东京大学、京都大学、早稲田大学、的学分。</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/en/summer/index.html">RIKEN CBS Summer Program</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/jp/faculty/j.johansen/">学習・記憶神経回路研究チーム（Joshua Johansen）</a><ul>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/jp/careers/20210902_w21143_j.johansen_p.html">学習・記憶神経回路研究チーム　研究パートタイマー募集</a></li>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/jp/careers/20210222_w20289_j.johansen_r.html">学習・記憶神経回路研究チーム　研究員または特別研究員募集</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/openings/index.html">採用情報検索</a> → 脳<ul>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/jp/careers/20211007_w21172_k.shibata_t.html">人間認知・学習研究チーム　テクニカルスタッフ募集</a></li>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/jp/careers/20210915_w21151_m.tanaka_p.html">タンパク質構造疾患研究チーム　研究パートタイマー募集</a></li>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/jp/careers/20210907_w21147_bm.mna_t.html">マーモセット神経構造研究チーム　テクニカルスタッフI募集</a></li>
-<li><a target="_blank" rel="noopener" href="https://cbs.riken.jp/jp/careers/20210901_w21144_a.ishida_t.html">脳発達病態研究チーム　テクニカルスタッフⅠ又はⅡ募集</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/research/labs/bdr/synth_biol/">生命機能科学研究センター　合成生物学研究チーム</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/researchers/20211004_2/index.html">合成生物学研究チーム　パートタイマー募集</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/careers/researchers/20211201_5/index.html">合成生物学研究チーム　テクニカルスタッフ募集</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="http://www.sci.kobe-u.ac.jp/exam/index.htm">神戸大学　大学院　理学研究科</a><ul>
-<li><a target="_blank" rel="noopener" href="http://www.sci.kobe-u.ac.jp/exam/master2023.pdf">博士課程　前期課程</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.sci.kobe-u.ac.jp/exam/doctor2023_1.pdf">博士課程　後期課程</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%E4%BA%BA%E9%96%93%E7%B7%8F%E5%90%88%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%E3%80%80%E5%A4%A7%E5%AD%A6%E9%99%A2"><a target="_blank" rel="noopener" href="https://ja.wikipedia.org/wiki/%E4%BA%BA%E9%96%93%E7%B7%8F%E5%90%88%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6">&#20154;&#38291;&#32207;&#21512;&#31185;&#23398;&#22823;&#23398;</a>&#12288;&#22823;&#23398;&#38498;<a class="anchor-link" href="#%E4%BA%BA%E9%96%93%E7%B7%8F%E5%90%88%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6%E3%80%80%E5%A4%A7%E5%AD%A6%E9%99%A2">&#182;</a></h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.human.ac.jp/sp/cm/gakubugakka-aisatsu3.html">人間総合科学研究科 心身健康科学専攻</a><ul>
-<li>医科学</li>
-<li>通信制</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://shingakunet.com/syakaijin/0001759659/0001759659.html">从咨询网站来的学位介绍</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%80%80%E5%A4%A7%E5%AD%A6%E9%99%A2">&#20140;&#37117;&#22823;&#23398;&#12288;&#22823;&#23398;&#38498;<a class="anchor-link" href="#%E4%BA%AC%E9%83%BD%E5%A4%A7%E5%AD%A6%E3%80%80%E5%A4%A7%E5%AD%A6%E9%99%A2">&#182;</a></h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.riken.jp/en/research/labs/r-ccs/hpc_ai_drive_drug_dev_plat/ai_drug_discov_collab/index.html">AI創薬連携基盤ユニット</a><ul>
-<li><a target="_blank" rel="noopener" href="https://clinfo.med.kyoto-u.ac.jp/">京都大学大学院医学研究科 人間健康科学系専攻 ビッグデータ医科学分野</a></li>
-</ul>
-</li>
-</ul>
-<hr />
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/organization-staff/research/human_health/ns1401/">ビッグデータ医科学</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/apply/">入学希望の皆様へ</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/apply/open_campus/">オープンキャンパス</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/apply/campus_life/hs_campus_life/">学部：キャンパスライフ（人間健康科学科）</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/apply/ghs/">大学院：人間健康科学系専攻</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/apply/entrance_examination/">入試情報＜正規学生＞</a><ul>
-<li>先端看護科学　先端基盤看護科学　ビッグデータ医科学<ul>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/wp-content/uploads/2022/06/92e4d737a30a6a3377ad0921622958d9.pdf">人間健康科学系専攻（修士課程）</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/wp-content/uploads/2022/06/55ed72f86576d89405b5bec0a2edb3ad.pdf">人間健康科学系専攻（博士後期課程）</a></li>
-</ul>
-</li>
-<li>出願のためには、募集要項（願書）を請求する必要があります。郵送で請求する場合は、返信用封筒（角形２号・332 mm × 240 mm）をご用意ください。返信用封筒には、請求者の郵便番号・住所・氏名を明記してください。あわせて封筒表に｢〇〇〇〇年度医学研究科人間健康科学系専攻（修士課程 or 博士後期課程）募集要項請求｣と朱書してください。また、250 円分の切手を貼付してください。返信用封筒は、以下宛先に郵送してください。<ul>
-<li>〒606-8501　京都府京都市左京区吉田近衛町　京都大学大学院医学研究科教務課人間健康教務掛　宛</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/apply/researcher/">研究生・研修員＜非正規学生＞</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.med.kyoto-u.ac.jp/wp-content/uploads/2017/03/hs_h29kenkyusei.pdf">研究生出願手続き案内</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.i.kyoto-u.ac.jp/introduction/labs.html">京都大学　大学院　情報学研究科</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.h.kyoto-u.ac.jp/academic/gr/course1/course13/">京都大学　大学院　人間・環境学研究科　認知・行動科学講座</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.nips.ac.jp/sp/recruit/index.html">生理学研究所　求人情報</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.nips.ac.jp/sp/recruit/2021/04/post-312.html">技術支援員募集（電子顕微鏡室）</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.nips.ac.jp/sp/recruit/2021/07/post-316.html">技術支援員募集（神経ダイナミクス）</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://sites.google.com/view/moriguchidevscilab/home">渡部さんの研究室</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.ouj.ac.jp/admission/doctor/flow/guidance/">放送大学大学院博士全科生</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Cortical-Labs"><a target="_blank" rel="noopener" href="https://corticallabs.com/">Cortical Labs</a><a class="anchor-link" href="#Cortical-Labs">&#182;</a></h2><p>Cortical Labs, a startup working on a new approach to AI that combines lab grown brain cells with computer chips raised a $10 million round. (April 23, 2023)</p>
-<pre><code>Cortical Labs 成立于 2019 年，目标是利用合成生物技术开发具有流动智力的新型人工智能。
-他们认为生物神经元能够通过自组织解决陌生问题、比数字电路有更强的适应性和可扩展性、同时更省电。
-比如人类的大脑有超过 10 亿个神经元，能够产生通用智能却只消耗 20 瓦特的能量。
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>这家位于澳大利亚的实验室 Cortical Labs 成立于 2019 年，目标是把活体生物神经元与传统硅集成电路结合在一起，创造出「芯片新物种」——即体外神经元（In vitro neurons）。
-他们希望这些合成迷你大脑能够在消耗较少能量的同时，完成很多人工智能软件可以执行的任务。
-创始人钟宏文曾介绍说，Cortical Labs 使用两种方法来制造硬件：或从胚胎中提取小鼠神经元，或使用某种技术将人类的皮肤细胞逆向转化为干细胞，然后诱导它发育成人类神经元。
-目前，他们的团队有五名核心成员。
-</code></pre>
-<pre><code>Cortical Labs 的创始人兼 CEO 钟宏文是一位经验丰富的创业者，他的创业精神建立在其拥有的丰富的医疗和技术专业知识的基础上。
-此前，他是医疗硬件初创公司 CliniCloud 的创始人兼首席技术官，而该公司也获得了临床医生的好评。
-他是一名执业医学博士和软件工程师，曾在约翰·霍普金斯大学信息学系学习，他经常会利用自己丰富的经验和多学科背景来促进生物学和计算机科学领域之间的合作。
-</code></pre>
-<pre><code>Cortical Labs 另一位创始人 Andy 是一名计算机科学家、研究员和软件工程师，拥有在三家高科技初创公司的工作经历。
-Andy 还是墨尔本第一个提供深度学习咨询的技术团队的核心成员，到现在已经发表了几篇关于人工智能的同行评议论文。
-他是一个长期社区组织者，也是备受尊敬的墨尔本 ML/AI Meetup 的创始人，该组织拥有 6000 多名成员。
-</code></pre>
-<pre><code>他们的团队中还有首席硬件工程师 Andrew Doherty，首席科学家 Brett Kagan 博士，首席设计师 Laura Summers。
-</code></pre>
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2008/08/20/ultimate-facts/研究机构/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -2702,7 +2063,7 @@ Andy 还是墨尔本第一个提供深度学习咨询的技术团队的核心成
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
 
 		
-          <li class="next disabled"><a>Next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+		   <li class="next"> <a href="/page/15/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
         
 	
 </ul>
@@ -2726,43 +2087,43 @@ Andy 还是墨尔本第一个提供深度学习咨询的技术团队的核心成
 		
 			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
 			<li><a href="/tags/Notebooks/">Notebooks<span>14</span></a></li>
 		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>21</span></a></li>
@@ -2778,6 +2139,10 @@ Andy 还是墨尔本第一个提供深度学习咨询的技术团队的核心成
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
+      </li>
+    
+      <li>
         <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
       </li>
     
@@ -2791,10 +2156,6 @@ Andy 还是墨尔本第一个提供深度学习咨询的技术团队的核心成
     
       <li>
         <a href="/2024/05/16/人脑海马体的经典计算模型/" ><i class="fa fa-file-o"></i>人脑海马体的经典计算模型</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/15/biobuilder/chapter-10/" ><i class="fa fa-file-o"></i>金面包</a>
       </li>
     
   </ul>
