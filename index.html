@@ -139,6 +139,149 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2025-08-07 </div>
+			<div class="article-title"><a href="/2025/08/07/Mailcow-Deployment-Guide/" >在云服务器端口25受限环境下部署Mailcow邮件服务器</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h1 id="在云服务器端口25受限环境下部署Mailcow邮件服务器"><a href="#在云服务器端口25受限环境下部署Mailcow邮件服务器" class="headerlink" title="在云服务器端口25受限环境下部署Mailcow邮件服务器"></a>在云服务器端口25受限环境下部署Mailcow邮件服务器</h1><h2 id="背景与挑战"><a href="#背景与挑战" class="headerlink" title="背景与挑战"></a>背景与挑战</h2><p>在现代云计算环境中，主流云服务提供商（如GCP、AWS）为了防止垃圾邮件传播，普遍禁用了虚拟机实例的端口25出站流量。这给自建邮件服务器带来了巨大挑战。本文记录了在这种受限环境下，通过日本ConoHa.jp服务器作为SMTP中继，成功部署Mailcow邮件服务器的完整过程。</p>
+<h2 id="系统架构设计"><a href="#系统架构设计" class="headerlink" title="系统架构设计"></a>系统架构设计</h2><pre class="mermaid">
+graph TB
+    subgraph "外部网络"
+        Client[用户客户端<br/>IMAP/SMTP]
+        ExtMail[外部邮件服务<br/>Gmail/Outlook]
+        Internet[互联网]
+    end
+    
+    subgraph "ConoHa 中继服务器 (10.8.0.34)"
+        ConoHA[Ubuntu Server<br/>Postfix + iptables]
+        VPN1[OpenVPN Client]
+    end
+    
+    subgraph "Mailcow 服务器 (10.8.0.33)"
+        Mailcow[Mailcow Docker<br/>Postfix + Dovecot]
+        VPN2[OpenVPN Client]
+    end
+    
+    subgraph "VPN 隧道网络 (10.8.0.0/24)"
+        VPNTunnel[加密隧道]
+    end
+    
+    %% 连接关系
+    Client -->|IMAP/SMTP 连接| ConoHA
+    ConoHA <-->|VPN 隧道| VPNTunnel
+    VPNTunnel <-->|VPN 隧道| VPN2
+    VPN1 -.-> VPNTunnel
+    VPN2 -.-> Mailcow
+    ConoHA -->|端口转发| Internet
+    Internet <-->|SMTP| ExtMail
+    
+    %% 数据流标注
+    Client -.->|1\. 用户连接<br/>端口: 993,143,587,465| ConoHA
+    ConoHA -.->|2\. 入站邮件转发<br/>端口: 25| Mailcow
+    Mailcow -.->|3\. 出站邮件中继<br/>relayhost: 10.8.0.34:25| ConoHA
+    ConoHA -.->|4\. 外网发送<br/>端口: 25| ExtMail
+    
+    style Client fill:#e1f5fe
+    style ExtMail fill:#e8f5e8
+    style ConoHA fill:#fff3e0
+    style Mailcow fill:#f3e5f5
+    style VPNTunnel fill:#e0f2f1
+</pre>
+
+<p><strong>数据流向说明：</strong></p>
+<ol>
+<li><strong>入站邮件</strong>: 外网 → ConoHa(iptables DNAT) → VPN → Mailcow</li>
+<li><strong>出站邮件</strong>: Mailcow → VPN → ConoHa(Postfix relay) → 外网</li>
+<li><strong>用户连接</strong>: 客户端 → ConoHa(端口转发) → VPN → Mailcow</li>
+</ol>
+<h2 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h2><ul>
+<li><strong>主服务器 (10.8.0.33)</strong>: Mailcow Docker化邮件服务器，运行在macOS</li>
+<li><strong>中继服务器 (10.8.0.34)</strong>: ConoHa.jp Ubuntu服务器，负责端口25流量转发</li>
+<li><strong>VPN网络</strong>: OpenVPN连接两台服务器，提供安全的内网通信</li>
+</ul>
+<h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><h3 id="1-ConoHa中继服务器配置"><a href="#1-ConoHa中继服务器配置" class="headerlink" title="1. ConoHa中继服务器配置"></a>1. ConoHa中继服务器配置</h3><h4 id="1-1-安装OpenVPN-3客户端"><a href="#1-1-安装OpenVPN-3客户端" class="headerlink" title="1.1 安装OpenVPN 3客户端"></a>1.1 安装OpenVPN 3客户端</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加OpenVPN官方源</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/apt/keyrings &amp;&amp; curl -fsSL https://packages.openvpn.net/packages-repo.gpg | sudo <span class="built_in">tee</span> /etc/apt/keyrings/openvpn.asc</span><br><span class="line"></span><br><span class="line">DISTRO=$(lsb_release -c | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/etc/apt/keyrings/openvpn.asc] https://packages.openvpn.net/openvpn3/debian <span class="variable">$DISTRO</span> main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/openvpn-packages.list</span><br><span class="line"></span><br><span class="line">sudo apt update &amp;&amp; sudo apt install openvpn3</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-配置VPN连接"><a href="#1-2-配置VPN连接" class="headerlink" title="1.2 配置VPN连接"></a>1.2 配置VPN连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入VPN配置文件</span></span><br><span class="line">openvpn3 config-import --config free-smtp-server.ovpn --name dtype --persistent</span><br><span class="line">openvpn3 config-acl --show --lock-down <span class="literal">true</span> --grant root --config dtype</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置开机自启</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> --now openvpn3-session@dtype.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-配置网络转发"><a href="#1-3-配置网络转发" class="headerlink" title="1.3 配置网络转发"></a>1.3 配置网络转发</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用IP转发</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;net.ipv4.ip_forward=1&#x27;</span> | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置入站邮件服务端口转发</span></span><br><span class="line">sudo iptables -t nat -A PREROUTING -p tcp --dport 993 -j DNAT --to-destination 10.8.0.33:993  <span class="comment"># IMAPS</span></span><br><span class="line">sudo iptables -t nat -A PREROUTING -p tcp --dport 143 -j DNAT --to-destination 10.8.0.33:143  <span class="comment"># IMAP</span></span><br><span class="line">sudo iptables -t nat -A PREROUTING -p tcp --dport 587 -j DNAT --to-destination 10.8.0.33:587  <span class="comment"># SMTP STARTTLS</span></span><br><span class="line">sudo iptables -t nat -A PREROUTING -p tcp --dport 465 -j DNAT --to-destination 10.8.0.33:465  <span class="comment"># SMTPS</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置入站邮件接收转发（排除内网流量避免循环）</span></span><br><span class="line">sudo iptables -t nat -A PREROUTING ! -s 10.8.0.0/24 -p tcp --dport 25 -j DNAT --to-destination 10.8.0.33:25</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置转发规则</span></span><br><span class="line">sudo iptables -A FORWARD -p tcp -d 10.8.0.33 -m multiport --dports 993,143,587,465,25 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置出站NAT</span></span><br><span class="line">sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-安装和配置Postfix中继服务"><a href="#1-4-安装和配置Postfix中继服务" class="headerlink" title="1.4 安装和配置Postfix中继服务"></a>1.4 安装和配置Postfix中继服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装Postfix</span></span><br><span class="line">sudo apt update &amp;&amp; sudo apt install postfix</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置为邮件中继服务器</span></span><br><span class="line">sudo postconf -e <span class="string">&quot;mynetworks = 127.0.0.0/8 10.8.0.33/32&quot;</span></span><br><span class="line">sudo postconf -e <span class="string">&quot;inet_interfaces = all&quot;</span></span><br><span class="line">sudo postconf -e <span class="string">&quot;relayhost = &quot;</span></span><br><span class="line">sudo postconf -e <span class="string">&quot;mydestination = localhost&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">sudo systemctl restart postfix</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置防火墙</span></span><br><span class="line">sudo ufw allow from 10.8.0.33 to any port 25</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Mailcow服务器配置"><a href="#2-Mailcow服务器配置" class="headerlink" title="2. Mailcow服务器配置"></a>2. Mailcow服务器配置</h3><h4 id="2-1-OpenVPN客户端配置"><a href="#2-1-OpenVPN客户端配置" class="headerlink" title="2.1 OpenVPN客户端配置"></a>2.1 OpenVPN客户端配置</h4><p>在<code>.ovpn</code>配置文件中添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">route 10.8.0.0 255.255.255.0</span><br><span class="line">route-nopull</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-出站邮件中继配置"><a href="#2-2-出站邮件中继配置" class="headerlink" title="2.2 出站邮件中继配置"></a>2.2 出站邮件中继配置</h4><p><strong>方案一：使用内网Postfix中继（推荐）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置Mailcow使用ConoHa服务器作为中继</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postconf -e <span class="string">&quot;relayhost = [10.8.0.34]:25&quot;</span></span><br><span class="line">docker-compose restart postfix-mailcow</span><br></pre></td></tr></table></figure>
+
+<p><strong>方案二：使用Gmail SMTP中继（备选）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置Gmail作为SMTP中继</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postconf -e <span class="string">&#x27;relayhost = [smtp.gmail.com]:587&#x27;</span>        </span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postconf -e <span class="string">&#x27;smtp_use_tls = yes&#x27;</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postconf -e <span class="string">&#x27;smtp_sasl_auth_enable = yes&#x27;</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postconf -e <span class="string">&#x27;smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd&#x27;</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postconf -e <span class="string">&#x27;smtp_tls_security_level = encrypt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建Gmail认证文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;[smtp.gmail.com]:587 your-email@gmail.com:your-app-password&quot;</span> | docker-compose <span class="built_in">exec</span> -T postfix-mailcow <span class="built_in">tee</span> /etc/postfix/sasl_passwd</span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postmap /etc/postfix/sasl_passwd</span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow <span class="built_in">chmod</span> 600 /etc/postfix/sasl_passwd</span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow <span class="built_in">chmod</span> 600 /etc/postfix/sasl_passwd.db</span><br><span class="line">docker-compose restart postfix-mailcow</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-Linux环境下的iptables方案（可选）"><a href="#2-3-Linux环境下的iptables方案（可选）" class="headerlink" title="2.3 Linux环境下的iptables方案（可选）"></a>2.3 Linux环境下的iptables方案（可选）</h4><p>如果Mailcow部署在Linux系统上，可以使用iptables在宿主机级别进行流量重定向：</p>
+<p><strong>10.8.0.33 (Mailcow服务器) 的设置：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将出站端口25流量重定向到中继服务器</span></span><br><span class="line">sudo iptables -t nat -A OUTPUT -p tcp --dport 25 -j DNAT --to-destination 10.8.0.34:25</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对重定向的流量进行源地址转换</span></span><br><span class="line">sudo iptables -t nat -A POSTROUTING -d 10.8.0.34 -p tcp --dport 25 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p><strong>10.8.0.34 (中继服务器) 的设置：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 允许来自Mailcow服务器的转发流量</span></span><br><span class="line">sudo iptables -A FORWARD -s 10.8.0.33 -p tcp --dport 25 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对来自Mailcow的流量进行源地址转换后转发到外网</span></span><br><span class="line">sudo iptables -t nat -A POSTROUTING -s 10.8.0.33 -p tcp --dport 25 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p>这种方案的优势是在网络层直接处理，无需修改应用配置，但需要Linux系统支持。</p>
+<h2 id="故障排除经验"><a href="#故障排除经验" class="headerlink" title="故障排除经验"></a>故障排除经验</h2><h3 id="问题1：防火墙阻止连接"><a href="#问题1：防火墙阻止连接" class="headerlink" title="问题1：防火墙阻止连接"></a>问题1：防火墙阻止连接</h3><p><strong>现象</strong>: Connection refused错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(connect to 10.8.0.34[10.8.0.34]:25: Connection refused)</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方案</strong>: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查服务监听状态</span></span><br><span class="line">sudo ss -tlnp | grep :25</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置UFW防火墙</span></span><br><span class="line">sudo ufw allow from 10.8.0.33 to any port 25</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2：避免路由循环"><a href="#问题2：避免路由循环" class="headerlink" title="问题2：避免路由循环"></a>问题2：避免路由循环</h3><p><strong>现象</strong>: 邮件在两个服务器间循环<br><strong>解决方案</strong>: 在iptables PREROUTING规则中排除内网源地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING ! -s 10.8.0.0/24 -p tcp --dport 25 -j DNAT --to-destination 10.8.0.33:25</span><br></pre></td></tr></table></figure>
+
+<h2 id="最终配置验证"><a href="#最终配置验证" class="headerlink" title="最终配置验证"></a>最终配置验证</h2><h3 id="测试入站邮件"><a href="#测试入站邮件" class="headerlink" title="测试入站邮件"></a>测试入站邮件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从外部发送邮件到 your-email@your-domain.com</span></span><br><span class="line"><span class="comment"># 检查Mailcow日志</span></span><br><span class="line">docker-compose logs -f postfix-mailcow</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试出站邮件"><a href="#测试出站邮件" class="headerlink" title="测试出站邮件"></a>测试出站邮件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查邮件队列</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postqueue -p</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制发送队列中的邮件</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> postfix-mailcow postqueue -f</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证中继工作状态"><a href="#验证中继工作状态" class="headerlink" title="验证中继工作状态"></a>验证中继工作状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看成功的中继日志</span></span><br><span class="line">docker-compose logs postfix-mailcow | grep <span class="string">&quot;relay=10.8.0.34&quot;</span></span><br><span class="line"><span class="comment"># 应该看到类似输出：</span></span><br><span class="line"><span class="comment"># status=sent (250 2.0.0 Ok: queued as XXXXX)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="性能与安全考量"><a href="#性能与安全考量" class="headerlink" title="性能与安全考量"></a>性能与安全考量</h2><ol>
+<li><strong>网络延迟</strong>: VPN隧道会增加约20-50ms延迟，但对邮件服务影响较小</li>
+<li><strong>单点故障</strong>: ConoHa服务器是关键节点，建议配置监控和备份方案</li>
+<li><strong>安全性</strong>: 所有邮件流量通过加密VPN传输，相比直连更安全</li>
+<li><strong>成本优化</strong>: ConoHa服务器选择最低配置即可满足中继需求</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过VPN+中继服务器的架构，成功解决了云服务商端口25限制的问题。该方案具有以下优势：</p>
+<ul>
+<li><strong>灵活性</strong>: 可以随时更换云服务商而不影响邮件服务</li>
+<li><strong>可扩展性</strong>: 中继服务器可以同时为多个Mailcow实例提供服务</li>
+<li><strong>成本效益</strong>: 相比企业级邮件服务，成本显著降低</li>
+<li><strong>完全控制</strong>: 保持对邮件数据和配置的完全控制权</li>
+</ul>
+<p>这套解决方案为在受限云环境中部署自托管邮件服务器提供了可行的技术路径。</p>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'default'
+  });
+</script>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2025/08/07/Mailcow-Deployment-Guide/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2025-06-14 </div>
 			<div class="article-title"><a href="/2025/06/14/IoT技术学习指南/" >IoT技术学习指南</a></div>						
 		</h3>
@@ -3730,358 +3873,6 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2024-05-15 </div>
-			<div class="article-title"><a href="/2024/05/15/biobuilder/chapter-6/" >气味香水</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h1 id="第6章-气味香水"><a href="#第6章-气味香水" class="headerlink" title="第6章 气味香水"></a>第6章 气味香水</h1><p><img src="/biobuilder/096.png" alt="FIGURE"></p>
-<p>Eau That Smell 实验室强调工程设计-建造-测试周期的“测试”阶段。您将测试两个不同的合成生命系统，这些系统已经由其他工程师设计和建造。有两种设计选项供您比较。这两种设计都改变了通常有臭味的细菌的气味，而且看起来它们都可能是“正确的”。在比较设计时，我们将有机会探索合成生物学家如何做出设计选择，以及学习和教授一些有关基因调控和细胞生长的重要科学思想。这项活动的灵感来自 2006 年的国际基因工程机器 (iGEM) 项目，其中麻省理工学院的本科生团队设计了一种新的细菌菌株，他们称之为“大肠杆菌”。研究小组培育出一种闻起来像香蕉或冬青的大肠杆菌菌株，具体取决于细胞的生长阶段。 BioBuilder 实验室活动着眼于控制细胞生长周期和气味产生之间关系的两个遗传程序。从理论上讲，这两种设计选项看起来几乎相同，但现实世界的行为通常会偏离预期，因此实验室活动允许直接测试此处描述的菌株。在详细介绍实验之前，我们将介绍该实验所基于的 iGEM 项目，以提供上下文，并提供设计过程的说明，包括抽象、设计层次结构和迭代的使用。</p>
-<h2 id="来自-Eau-d’coli-iGEM-项目的灵感"><a href="#来自-Eau-d’coli-iGEM-项目的灵感" class="headerlink" title="来自 Eau d’coli iGEM 项目的灵感"></a>来自 Eau d’coli iGEM 项目的灵感</h2><p>通过探索 2006 年 MIT iGEM 团队如何实现最终设计并构建其合成系统，我们将说明设计过程并提供一些有关细胞生长和基因表达通常如何调节的背景。大肠杆菌的例子也为讨论使用细胞作为工厂来制造材料（在本例中是闻起来很香的材料）以及前体与产品之间的关系提供了很好的机会。</p>
-<h3 id="确定挑战"><a href="#确定挑战" class="headerlink" title="确定挑战"></a>确定挑战</h3><p><img src="/biobuilder/097.png" alt="FIGURE"></p>
-<p>Eau d’coli 项目背后的团队从一个非常简单的观察开始：大肠杆菌的气味非常难闻。气味是一个问题，因为许多合成生物学家使用微生物来生产药物和其他所需化合物等分子。使用大肠杆菌作为小型化工厂需要大量的臭细菌，最终也会使实验室闻起来很臭。因此，iGEM 团队想：<strong>为什么不设计一种闻起来很香的大肠杆菌菌株</strong>呢？</p>
-<h3 id="头脑风暴解决方案"><a href="#头脑风暴解决方案" class="headerlink" title="头脑风暴解决方案"></a>头脑风暴解决方案</h3><p>iGEM 团队确定了想要解决的问题后，考虑了各种解决方案。确定的两种选择涉及消除自然产生的难闻气味或引入新的、更令人愉悦的气味。该团队最初决定引入一种新的气味，而不是仅仅消除自然产生的气味，他们的想法是，难闻的气味是由多种代谢途径和化合物产生的，因此很难完全消除。</p>
-<h3 id="系统级设计"><a href="#系统级设计" class="headerlink" title="系统级设计"></a>系统级设计</h3><p><img src="/biobuilder/098.png" alt="FIGURE"></p>
-<p>此时，团队已准备好指定系统级设计。用简单的语言来说：<strong>细菌会吸收一些前体化合物作为输入，这些前体化合物可以被细胞转化为气味好的输出</strong>。</p>
-<p><img src="/biobuilder/099.png" alt="FIGURE"></p>
-<p>在设计系统时，iGEM 团队必须考虑使用哪种类型的细胞或生物体。因为该团队希望大肠杆菌产生令人愉悦的气味，从而盖过其自然臭味，所以显而易见的选择是在大肠杆菌中进行研究。然而，有很多应变可供选择，正如我们将看到的，在构建最终系统之前，团队必须对底盘进行一些后期调整。</p>
-<h3 id="设备级设计"><a href="#设备级设计" class="headerlink" title="设备级设计"></a>设备级设计</h3><p><img src="/biobuilder/100.png" alt="FIGURE"></p>
-<p>随着系统级设计规范的完成，团队开始考虑其设备。首先，显然<strong>团队需要某种类型的气味生成装置，将无气味的前体化合物转化为气味</strong>。团队成员搜索了科学文献并确定了满足这一要求的五种自然发生的代谢途径。所有这些酶促途径都可以将特定的前体化合物转化为具有宜人气味的产品。研究小组考虑使用的途径包括来自模型植物拟南芥的茉莉花香、来自罗勒品种的肉桂香、来自金鱼草花的“清新花香”香、来自苦芥菜的冬青香和来自酵母（酿酒酵母）的香蕉香。</p>
-<p><img src="/biobuilder/102.png" alt="FIGURE"></p>
-<p>理论上，团队可以继续使用这些设备中的任何一个，但在继续设计过程之前，重要的是<strong>通过一些初步实验缩小选项</strong>以确认可以隔离有问题的设备并且这些设备会产生所需的气味。您可能认为在早期阶段进行测试违反了设计-构建-测试周期，因为团队仍处于“设计”阶段，但事实上，在需要时在这些阶段之间切换非常有用。在这种情况下，团队本质上是对每个潜在设备进行最小的设计-构建测试周期，以测试其是否朝着正确的方向前进，而不是围绕可能永远无法实际运行的设备完成整个设计。</p>
-<p><img src="/biobuilder/101.png" alt="FIGURE"></p>
-<p>通过这些最初的实验，团队无法分离出产生茉莉花和肉桂香味的 DNA，换句话说，它在循环的“构建”阶段被阻止，使得这些设备无法继续使用，并且在“测试”阶段，文献报道的“新鲜和花香”气味更接近樱桃止咳糖浆，这对于实验室来说不是理想的气味。因此，该团队最初的实验留下了两个剩余的设备选项，即产生冬青和香蕉香气的设备。图 6-1 显示了团队的设备级设计。</p>
-<p><img src="/biobuilder/104.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 6-1 器件级设计。冬青生成装置（WGD）将前体化合物输入转换为冬青气味输出。香蕉生成装置（BGD）将前体输入转换为香蕉气味输出。</p>
-</blockquote>
-<p>从这里开始，团队可以继续进行零件级设计工作来指定这些设备，但相反，团队看到了改进系统级设计的机会，即重新设计系统，以便它可以在两种气味之间切换发气设备。<strong>系统级设计的修改并不表明初始设计有任何失败或缺陷</strong>。不同抽象级别之间的这种类型的移动是设计过程中不可或缺的一部分。</p>
-<h3 id="系统级设计，修订"><a href="#系统级设计，修订" class="headerlink" title="系统级设计，修订"></a>系统级设计，修订</h3><p><img src="/biobuilder/103.png" alt="FIGURE"></p>
-<p>有了两个气味生成装置，<strong>团队意识到，除了制造气味更好的细菌的最初目标之外，气味还可以用作细胞功能的报告者</strong>。许多合成生物学报告基因都是视觉报告基因——绿色荧光蛋白 (GFP) 是最受欢迎的——但在某些应用中，气味报告基因可能更合适。</p>
-<p>研究小组决定使用气味作为细胞生长的报告者，因此<strong>细胞在活跃生长和分裂时会发出一种气味，而在达到最大密度时</strong>会发出另一种气味。细菌细胞的生长遵循一种特征模式，如图 6-2 所示。</p>
-<p><img src="/biobuilder/105.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 6-2 细胞生长曲线。通过分光光度计或其他方法测量的细胞密度作为时间的函数绘制，对应于三个细菌生长阶段（滞后、对数和静止）的区域之间的边界用虚线显示。</p>
-</blockquote>
-<p>当细胞最初被引入新鲜培养基时，它们会处于滞后期，在此期间它们会适应新环境，并且不会积极生长或分裂。在此阶段溶液中的细胞数量不会急剧增加，因此在此期间生长曲线平坦。细胞在这个滞后期准备好生长后，就会进入对数期，也称为指数期，在此期间它们生长和分裂非常快。在 37°C 的实验室中培养的大肠杆菌大约每 30 分钟就会翻倍。当它们分裂时，它们会利用培养基中的营养物质并分泌抑制生长的废物，最终导致它们进入第三个生长阶段，即静止期，此时它们不再生长或分裂。此阶段的细胞仍然存活，当样品稀释到新鲜培养基中时，从滞后期到对数期再到稳定期的整个生长曲线可以再次开始。</p>
-<p>在实验室培养大肠杆菌的研究人员在进行实验时通常需要监测这些阶段。例如，当使用大肠杆菌生产精细化学品或药物时，固定相的生产率通常最高。相比之下，蛋白质产品通常与生长相关，因此细胞应尽可能保持在对数生长期，以产生最大量的所需化合物。传统上，研究人员使用分光光度计来确定实验细胞的生长阶段，分光光度计是一种测量穿过样品的光量的仪器。进入样品的光量与离开样品的光量之差称为样品的光密度。当分光光度计设置为 600 nm 波长时，细菌细胞会散射入射光，因此可以将样品的群体测量为“OD600”，即样品在 600 nm 光下的光密度。根据 OD600 随时间的变化，可以创建如图 6-2 所示的生长曲线，其中时间沿 x 轴显示，细胞密度显示在 y 轴上。然而，并非每个实验室都有分光光度计，因此拥有另一种不依赖昂贵仪器（例如气味）的生长期指示器可能非常有用。</p>
-<p>考虑到这一点，iGEM团队修改了项目的系统级设计，如图6-3和图6-4所示。</p>
-<p><img src="/biobuilder/106.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 6-3 修改后的器件级设计。新的输入，细胞生长，需要修改系统的原始设备级描述。</p>
-</blockquote>
-<p><img src="/biobuilder/107.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 6-4 气味产生装置对细胞生长阶段的反应。显示了该系统的两个气味产生装置。它们对细胞生长的特定阶段敏感并在特定阶段发挥作用。</p>
-</blockquote>
-<p>请注意，<strong>现在的输入是细胞生长阶段，而不是前体化合物</strong>。该团队仍然需要进一步定义项目的系统级设计，以确定细胞在生长曲线的哪个点应该闻起来像什么。它有两种气味和三个生长阶段。由于对数相和稳定相通常与研究人员最相关，因此研究小组决定这两个相应该具有气味。在最初的实验中，研究小组发现冬青的气味比香蕉的气味弱，因此他们决定最好的解决方案是让细胞在对数期闻起来像冬青，然后在稳定期切换到香蕉气味。这样，更强烈的香蕉气味将在任何剩余的冬青气味之上被检测到。</p>
-<h3 id="设备级设计，修订"><a href="#设备级设计，修订" class="headerlink" title="设备级设计，修订"></a>设备级设计，修订</h3><p>随着这个新计划的到位，iGEM 团队还需要修改项目的设备级设计。在最初的设计中，这些设备将无气味的前体化合物转化为有气味的化合物。 <strong>对于新设计，需要一个额外的步骤。现在，细胞必须产生前体化合物，将其输入气味产生装置中，以产生冬青和香蕉的香气</strong>。在这里，对科学文献的回顾再次至关重要。已知冬绿装置的前体是一种称为水杨酸的分子，而香蕉装置的前体已知是异戊醇。在细胞中产生这些前体化合物需要设备，因此更新的设备列表（图6-5）包括水杨酸生成设备和异戊醇生成设备。</p>
-<p><img src="/biobuilder/108.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 6-5 重新修订的器件级设计。新的设备级设计包括两个附加设备，水杨酸生成设备（saGD）和异戊醇生成设备（iaGD）。</p>
-</blockquote>
-<p>在这里，您可以看到砷传感器设计与砷检测系统之间的类比，这在生物设计基础章节中进行了广泛讨论。该砷检测系统还包括两个装置：砷检测装置和颜色发生装置。该系统的设计者可以将这两种功能组合到一个设备中，但这样的设计会使重复使用任何部件变得更加困难。这种气味生成系统的设计也遵循类似的原理。 <strong>理论上可以制造一个可以将细胞生长阶段转化为两种气味之一的设备，但通过将系统分解为多个设备可以增强设计的灵活性和模块化</strong>。</p>
-<p>您可能会注意到，我们尚未指定哪些设备对细胞生长阶段敏感。可以设计该系统，使得前体仅在特定的生长阶段产生，或者设计该系统，使得总是产生前体，并且只有气味产生装置对细胞的生长阶段敏感。这些设计选择各有优点。如果总是制造前体并且对气味产生装置进行监管，那么气味可能会更快地产生。另一方面，它可能会增加细胞的代谢压力，以始终产生前体，从而可能影响细胞的健康或影响其他功能。显然，目前没有唯一正确或错误的答案。相反，作为生物建造者，需要做出选择。在这种情况下，iGEM 团队选择根据生长阶段调节气味产生装置并组成性地生产前体化合物。</p>
-<h3 id="零件级设计"><a href="#零件级设计" class="headerlink" title="零件级设计"></a>零件级设计</h3><p><img src="/biobuilder/109.png" alt="FIGURE"></p>
-<p>有了这个设备级规范，就可以开始部件级设计阶段。</p>
-<p><strong>首先要考虑的事情之一是如何检测细胞的生长期</strong>，这是系统的关键输入。幸运的是，生物学提供了一种自然发生的解决方案。存在的细菌启动子仅在细胞生长周期的某些阶段有活性。当细菌 RNA 聚合酶分子结合启动子开始转录时，它作为全酶进行转录，其中聚合酶的核心单元与称为 RNA 聚合酶 sigma 亚基的特殊亚基结合。 σ 亚基有多种“口味”，例如，σ70 亚基与对数期启动子典型的 DNA 序列结合，σ38 亚基与与稳定期启动子相关的 DNA 序列结合。 <strong>麻省理工学院 iGEM 团队在文献中搜索了仅在细胞生长稳定期才有活性的启动子序列，并发现了“osmY”启动子</strong>。该团队将该启动子插入香蕉气味产生装置中，以便该装置仅在稳定阶段才会激活，正如该团队在项目的系统级设计规范中所定义的那样。</p>
-<p>为了构建冬青气味产生装置的对数期表达装置，最直接的方法可能是找到仅在对数期生长期间活跃的启动子。然而，麻省理工学院的 iGEM 团队当年选择了不同的解决方案：它使用了与香蕉气味生成装置相同的 osmY 启动子，并在 osmY 启动子和编码酶的开放阅读框之间添加了另一个装置，以产生香蕉气味。冬青的气味。该团队选择使用的设备称为反相器或非逻辑门。逆变器设备的真值表和基本遗传学将在第 103 页即将推出的侧边栏“黑匣子内部”中进行探讨。但即使没有对其工作原理的机械理解，它也可以成为一个有用的构建工具。 <strong>逆变器将反转其输入</strong>。如果 osmY 启动子应该“打开”（因为它将处于稳定相），则 osmY 启动子与逆变器相结合，在稳定相中将下游部分“关闭”。如果细胞处于滞后期或对数期，当 osmY 启动子正常关闭时，osmY 启动子加上逆变器装置使下游部分在这些细胞生长阶段“开启”，如图 6-6 所示。</p>
-<p><img src="/biobuilder/110.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 6-6 部件级设计。 BGD 上游的 osmY 启动子导致稳定期产生香蕉气味。 osmY 启动子后跟 WGD 上游的反相器（尖端有圆圈的白色三角形），导致对数期冬青气味的产生。</p>
-</blockquote>
-<p>因此，从理论上讲，iGEM 团队可能使用 osmY 启动子在稳定期表达香蕉气味，并使用 osmY 启动子加上反相器在对数期表达冬青气味，这是有道理的。但您可能会想：在滞后阶段不会也会出现冬青气味吗？那有用吗？那是问题吗？在这个滞后阶段是否存在足够的细胞来产生明显的气味？也许 iGEM 团队为冬青气味选择对数期启动子会更好。所有这些问题实际上都归结为：气味调节需要有多精确才能满足系统规格？</p>
-<p>在与本章相关的 BioBuilder 实验室活动中，该设计决策是通过在工作台上收集气味和细胞生长数据来直接探索的。</p>
-<blockquote>
-<p>黑匣子内部如果您搜索标准生物部件注册表，您会发现任意数量的逆变器设备。他们中的大多数使用转录抑制来实现非门逻辑。一般来说，这些反相器装置由几个简单的部分组成，首先是阻遏蛋白，例如 lambda 阻遏蛋白、lac 阻遏蛋白或 tet 阻遏蛋白，然后是可被编码的阻遏蛋白识别的阻抑启动子，例如 lambda 噬菌体启动子当使用 lambda 阻遏物时。如果将反相器装置放置在另一个启动子与其开放阅读框 (ORF) 之间，则上游启动子的激活现在会触发阻遏蛋白的表达，阻遏蛋白会识别指导 ORF 转录的下游启动子，从而阻断其表达。因此，系统的表达模式与没有逆变器时的行为完全相反。在我们在这里考虑的系统中，一个反相器被放置在 osmY 启动子和编码冬青气味产生蛋白的 ORF 之间。因此，当细胞处于静止期时，osmY 启动子是活跃的，因此它表达反相器。产生由反相器编码的阻遏蛋白，并且该阻遏蛋白与也包含在反相器中的下游启动子结合。</p>
-<p>被抑制的启动子限制了反相器下游 ORF 的转录，ORF 是大肠杆菌系统中产生冬青气味的蛋白质。考虑相反的情况：当细胞处于对数生长期时，osmY启动子不活跃，不产生反相器编码的阻遏蛋白，而直接位于产生冬青气味的ORF上游的启动子是活跃的，因此冬青气味被生产。</p>
-<hr>
-<p><img src="/biobuilder/111.png" alt="FIGURE"></p>
-<p>图 6-7 逆变器拆箱。两个零件级设计的详细信息。固定相启动子 osmY 是每个装置的第一个组件。在香蕉生成系统中，它位于 BGD 的直接上游，因此在固定相会产生香蕉气味。在冬青气味产生装置中，osmY 启动子后面是一个反相器，它本身由一个阻遏物和一个指导 WGD 的启动子组成。当细胞不处于静止期时，这应该会产生冬青气味。</p>
-<hr>
-<p>设计者可以使用许多这样的天然存在的抑制子-抑制性启动子对（如 lambda、lac 或 tet），每个启动子对的行为都略有不同。设计新系统时，选择使用哪种逆变器可能取决于许多因素。有时，可以（或不能）通过外部化学输入进一步调节的逆变器是理想的。例如，一种称为异丙基 β-D-1-硫代半乳糖苷 (IPTG) 的乳糖类似物可用于去抑制 lac 阻遏蛋白，因此，如果用该蛋白构建反相器，则可以通过添加来切换逻辑IPTG 到生长培养基中。有时，逆变器的选择将取决于系统中已内置的其他功能。例如，如果您已经在使用 lac 阻遏蛋白在您正在构建的细胞中执行其他一些遗传任务，那么对于反相器功能来说，它也可能不是一个糟糕的选择。最后，尽管所有逆变器都颠倒了输入&#x2F;输出关系的逻辑，但它们可能会以不同的动力学（更快&#x2F;更慢）和效率（稳定状态下 80% 与 95% 相比）来实现这一点，这可能是您设计的相关考虑因素。标准生物部件登记处试图描述不同逆变器在不同条件下的行为特征，但考虑到可以用它们构建多少种可能的系统，在合成生物学家能够使用之前，仍然需要大量的“尝试看看”方法。了解他们选择的逆变器是否适合相关系统。</p>
-</blockquote>
-<h3 id="最终设备和系统级编辑"><a href="#最终设备和系统级编辑" class="headerlink" title="最终设备和系统级编辑"></a>最终设备和系统级编辑</h3><p><img src="/biobuilder/112.png" alt="FIGURE"></p>
-<p>对于水杨酸生成装置，iGEM 团队从模型植物拟南芥中发现了一条将分支酸（大肠杆菌中天然存在的化合物）转化为水杨酸的途径。同样，对于异戊醇生成装置，研究小组确定了酿酒酵母的一条途径，可将氨基酸亮氨酸转化为异戊醇。气味产生装置作用于水杨酸和异戊醇，将它们转化为气味好的化合物。水杨酸转化为水杨酸甲酯，有薄荷味，异戊醇转化为乙酸异戊酯，有香蕉味。</p>
-<p><img src="/biobuilder/113.png" alt="FIGURE"></p>
-<p>尽管目前该项目的规范似乎已经完成，但事实上，还有一个最终的设计选择需要指出。当按照本章开头所述集思广益时，iGEM 团队正在考虑要么添加一种好闻的气味，要么去除大肠杆菌中令人讨厌的气味。事实证明，产生香蕉和冬青气味的菌株仍然存在底盘自然臭味的问题。因此，团队决定再进行一项系统级设计更改。具体来说，它决定使用一种缺乏吲哚生产的大肠杆菌菌株。吲哚是造成大肠杆菌难闻气味的主要化合物之一。这种缺乏吲哚的底盘并不是完全没有臭味，也不是适合所有应用的完美底盘，但在这种情况下，使用气味较小的菌株使新的气味更容易检测到。</p>
-<h2 id="额外阅读和资源"><a href="#额外阅读和资源" class="headerlink" title="额外阅读和资源"></a>额外阅读和资源</h2><ul>
-<li>Dixon, J.、Kuldell, N.、Voigt, C. 编辑。生物建筑：使用香蕉香味的细菌教授合成生物学。马萨诸塞州伯灵顿：学术出版社 2011 年；酶学方法；卷。 497：255-71。 [ISBN：978-0-12-385075-1]。</li>
-<li>Madigan M.T.、Martinko J.M.、Parker J. 编辑。布洛克微生物学，Prentice-Hall，2000：135-62。 [ISBN：978-0321649638]。</li>
-<li>网站：<a target="_blank" rel="noopener" href="http://bit.ly/bacterial_growth_curves">细菌生长曲线</a>。</li>
-<li>网站：<a target="_blank" rel="noopener" href="http://parts.igem.org/Main_Page">生物部件注册处</a>。</li>
-<li>网站：<a target="_blank" rel="noopener" href="http://bit.ly/e_coli_resources">耶鲁大肠杆菌遗传库存中心：吲哚缺陷菌株</a>。</li>
-</ul>
-<p><img src="/biobuilder/Eau_that_Smell_poster.jpg" alt="FIGURE"></p>
-<h2 id="淡香水实验室"><a href="#淡香水实验室" class="headerlink" title="淡香水实验室"></a>淡香水实验室</h2><p>该实验室有效介绍了微生物生长和种群动态，以及表达基因所需的蛋白质和 DNA 序列（启动子、ORF、RNA 聚合酶等）。通过对两个竞争设计的分析，还强调了抽象的工程概念。最后，生物技术技能，如无菌技术、标准曲线和分光光度分析也融入到工作中。</p>
-<h3 id="设计选择"><a href="#设计选择" class="headerlink" title="设计选择"></a>设计选择</h3><p>在我们对 Eau d’coli 项目的讨论中，我们看到 iGEM 团队做出了许多设计选择，包括以下内容：</p>
-<ul>
-<li>使用生长阶段作为输入，气味作为输出</li>
-<li>利用其他生物体自然产生的生物途径来产生香蕉和冬青的气味</li>
-<li>使气味产生装置（而不是前体产生装置）对生长阶段敏感</li>
-<li>使用稳定期启动子和遗传反相器，而不是稳定期启动子和对数期启动子</li>
-</ul>
-<p>如果我们有时间，我们可以探索每一个设计选择。例如，我们可以用细胞生长阶段以外的环境线索作为输入进行实验。我们可以用颜色而不是气味作为系统的输出进行实验，或者我们可以测试如果前体生成设备对生长阶段而不是气味生成设备做出响应，系统将如何响应。不过，作为起点，我们将研究使用基因逆变器来控制系统。如果您有时间或有兴趣，前面列出的其他想法可能是很好的后续实验。</p>
-<p>通过这个实验，我们将研究当香蕉气味发生装置由对数期启动子与稳定期启动子和逆变器控制时产生的生长和气味模式。预计这两种设计都会在原木阶段产生香蕉气味，但其中一种设计可能比另一种具有优势。例如，即使细胞开始进入稳定期，对数期启动子也可能保持轻微活性，而基于反相器的设计也可能在生长曲线的滞后期活跃。哪个会在对数阶段产生最强烈的香蕉气味是任何人的猜测，在合成生物学的计算机辅助设计工具成熟之前，评估这些系统设计的最佳方法是进行实验。希望通过表征每个系统的性能，我们能够将这些发现应用到未来的设计中。</p>
-<h3 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h3><p>这项研究保留了 iGEM Eau d’coli 系统的一些元素，但在重要方面有所不同，有助于将实验问题集中在启动子和反相器的使用上。这里的实验使用了 iGEM 团队所做的相同底盘（缺乏吲哚）和相同的香蕉气味生成装置，包括该团队的 osmY 启动子。不过，与 iGEM 系统的一些重要区别包括：</p>
-<ul>
-<li>无冬青气味：我们正在研究不同启动子选择的相对有效性，因此不同气味之间的竞争不相关，并且香蕉气味更强烈，因此将其用于我们的测试是最有意义的。</li>
-<li>无前体生成装置：我们将前体化合物直接添加到我们的生长培养物中，这将使我们能够通过最小化前体生成装置引入的可能的变异性来专注于关于启动子选择的问题。</li>
-</ul>
-<p>我们为本实验提供了四种不同的大肠杆菌菌株，如表 6-1 所示。</p>
-<br />
-
-<blockquote>
-<p>表 6-1 Eau That Smell 菌株描述</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>菌株#&nbsp;&nbsp;</th>
-<th>质粒名称或注册表#&nbsp;&nbsp;</th>
-<th>质粒描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1-1</td>
-<td>BBa_J45250</td>
-<td>σ38 控制的启动子指导 ATF1、AmpR 的转录</td>
-</tr>
-<tr>
-<td>1-2</td>
-<td>BBa_J45990</td>
-<td>σ38 控制的启动子加上 4 部分 tetR 反相器指导 ATF1、AmpR 的转录</td>
-</tr>
-<tr>
-<td>1-3</td>
-<td>BBa_J45200</td>
-<td>σ70 控制的启动子指导 ATF1、AmpR 的转录</td>
-</tr>
-<tr>
-<td>1-4</td>
-<td>pUC18</td>
-<td>AmpR</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>所有菌株均构建于氯霉素抗性、吲哚缺陷菌株 NB370（又名耶鲁配送中心的 YYC912）中，基因型为：F- Δ(argF-lac)169 λ- poxB15::lacZ::CmR IN( rrnD-rrnE)1 rph-1 tnaA5</p>
-</blockquote>
-<br />
-
-<p>菌株 1-1 作为香蕉气味的阳性对照，与 2006 年 iGEM 团队开发的在稳定期产生香蕉气味的菌株相同。 <strong>阳性对照应该是我们期望闻到香蕉味的菌株，与我们的具体实验问题无关</strong>。在本例中，我们使用的是一种在稳定期闻起来像香蕉的大肠杆菌菌株，并使用稳定期启动子。如果这种菌株有气味，我们可以确信我们的试剂和方案都正常运行，从而使我们能够消除不属于我们实验问题的可能变量。</p>
-<p>菌株 1-4 作为<strong>阴性对照，因为它不携带产生香蕉气味所需的基因，因此预计不会闻起来像香蕉</strong>。在本实验中，我们的阴性对照菌株与用于制备其他菌株的底盘相同，但不包含香蕉气味产生装置。例如，我们可以使用该菌株来确保，简单地将前体化合物添加到生长的细胞中不会导致实验菌株产生香蕉气味。</p>
-<p>阴性对照菌株是香蕉气味的阴性对照，因为预计它闻起来不像香蕉，但也可以将其视为细胞生长的阳性对照，因为预计它会生长。因为它缺乏香蕉气味产生装置，所以该菌株可能会被用来问：“含有香蕉气味产生装置的菌株会改变细胞生长速度吗？”这不是我们的主要实验问题，但对于考虑下一阶段的设计优化可能很重要。</p>
-<p>最后两个菌株是实验菌株，它们代表我们要比较的两种设计：</p>
-<ul>
-<li>定相启动器+逆变器+香蕉味发生装置（菌株1-2）</li>
-<li>对数期启动子+香蕉气味发生装置（菌株1-3）</li>
-</ul>
-<p>通过比较这两种看似等效的设计，我们可以提出<strong>实验问题：对数相启动子设计或固定相启动子加反相器设计是否能提供更好的对数相特定香蕉气味？</strong></p>
-<h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><p>您将在液体培养基中培养这四种菌株。在生长过程中的不同点，您将使用分光光度计测量 OD600 或使用 McFarland 浊度标度来测量细胞密度。通过绘制细胞密度随时间变化的图表，您将能够确定样品的生长阶段。对于每个细胞密度测量，您还将闻样品，记录香蕉气味相对于一组标准的强度，这些标准范围从无香蕉气味（我们称之为“气味标准 0”）到强烈的香蕉气味（我们称之为“气味标准 0”） “气味标准7级。”标准品是使用不同浓度的香蕉提取物制备的，其化学名称为乙酸异戊酯。香蕉标准品的范围旨在涵盖您将从细菌培养物中检测到的预期气味。通过将培养物的气味与特定标准相匹配，您可以了解所产生的乙酸异戊酯的浓度。这些气味测量将使您能够确定哪种启动子构建体可以更好地控制作为生长阶段函数的香蕉气味。</p>
-<h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><p><strong>准备香蕉气味标准品。</strong> 香蕉提取物的化学名称为乙酸异戊酯。您可以按照表 6-2 中所示制备气味标准品，使用每个标准品的 50 毫升锥形管将提取物添加到水中。您可以使用蒸馏水或瓶装水来制作标准品，并且可以使用试管侧面的标记来估算最终的 25 毫升体积。样品会随着时间的推移而变质，但在室温下可保存大约一个月。</p>
-<br />
-
-<blockquote>
-<p>表 6-2 如何准备气味标准品</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>标准&nbsp;&nbsp;</th>
-<th>浓度 (%)&nbsp;&nbsp;</th>
-<th>H_2 O 中的提取物（最终体积 25 ml）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0.1</td>
-<td>25微升</td>
-</tr>
-<tr>
-<td>2</td>
-<td>0.25</td>
-<td>62.5 微升</td>
-</tr>
-<tr>
-<td>3</td>
-<td>0.5</td>
-<td>125 微升</td>
-</tr>
-<tr>
-<td>4</td>
-<td>1</td>
-<td>250 微升</td>
-</tr>
-<tr>
-<td>5</td>
-<td>2.5</td>
-<td>625 微升</td>
-</tr>
-<tr>
-<td>6</td>
-<td>5</td>
-<td>1.25 毫升</td>
-</tr>
-</tbody></table>
-<br />
-
-<blockquote>
-<p>香蕉提取物是一种油，不溶于水。 然而，浓度较低，只要在闻味前摇匀标准品，悬浮液就足够了。</p>
-</blockquote>
-<p><strong>准备浊度标准品。</strong> 表 6-3 中列出的 MacFarland 浊度标准品为您在无法使用分光光度计的情况下运行实验方案的情况提供了另一种测量细胞密度的方法。该方法使用1% BaCl_2 在1% H_2 SO_4 中的悬浮液，其在视觉上与在液体培养物中生长的大肠杆菌密度的悬浮液类似。这些浊度标准品可以在实验室之前准备好。浊度标准品可以制成任意体积，但应悬浮并等分到带盖的小玻璃管中。试管的尺寸和放入其中的标准品的体积并不重要。</p>
-<br />
-
-<blockquote>
-<p>表 6-3 麦克法兰浊度标准</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>浊度标度&nbsp;&nbsp;</th>
-<th>OD600&nbsp;&nbsp;</th>
-<th>1% BaCl_2 &#x2F;1% H_2 SO_4 (mL)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0</td>
-<td>0</td>
-<td>0.0&#x2F;10</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0.1</td>
-<td>1.05&#x2F;9.95</td>
-</tr>
-<tr>
-<td>2</td>
-<td>0.2</td>
-<td>0.1&#x2F;9.9</td>
-</tr>
-<tr>
-<td>3</td>
-<td>0.4</td>
-<td>0.2&#x2F;9.8</td>
-</tr>
-<tr>
-<td>4</td>
-<td>0.5</td>
-<td>0.3&#x2F;9.7</td>
-</tr>
-<tr>
-<td>5</td>
-<td>0.65</td>
-<td>0.4&#x2F;9.6</td>
-</tr>
-<tr>
-<td>6</td>
-<td>0.85</td>
-<td>0.5&#x2F;9.5</td>
-</tr>
-<tr>
-<td>7</td>
-<td>1.0</td>
-<td>0.6&#x2F;9.4</td>
-</tr>
-</tbody></table>
-<br />
-
-<p>要测量细菌样品的浊度，您可以将少量细菌样品转移到与浊度标准所用尺寸相同的玻璃管中。通过识别哪个浊度标准相对模糊放置在标准管后面的深色标记来确定浊度。</p>
-<p>经验法则：使用 1 OD600 ~ 1 x 10^9 cells&#x2F;ml 将浊度测量值转换为细胞密度。</p>
-<h4 id="实验前程序"><a href="#实验前程序" class="headerlink" title="实验前程序"></a>实验前程序</h4><p><strong>第 1 天：将菌株从刺中划到平板上。</strong> 本实验的细菌菌株已经携带待测试的质粒 DNA 编码遗传电路。这些质粒还赋予抗生素氨苄青霉素抗性。细菌将以“刺”或“斜”的形式到达，即在倾斜介质上装有少量细菌的试管。</p>
-<ol>
-<li>使用无菌牙签或接种环将细菌划线到培养皿上。从牙签或环上的刺中收集少量细菌，然后将细胞转移到含有 Luria Broth (LB) 琼脂和 100 μg&#x2F;ml 氨苄青霉素的培养皿中。</li>
-<li>对剩余的刺穿样品重复上述步骤，将每个样品划线到不同的培养皿上。</li>
-<li>将这些培养皿培养基面朝上放入 37°C 培养箱中过夜。如果没有培养箱，室温培养两晚通常会产生相同的结果。</li>
-</ol>
-<p><strong>第 2 天：细菌菌株的液体培养过夜。</strong> 为了为本实验室的实验部分制作起始培养物，每个菌株的 3 ml 液体培养物在 LB+氨苄青霉素中于 37°C 培养过夜。试管中氨苄西林的最终浓度应为 100 μg&#x2F;ml。 3 ml 发酵剂培养物足以完成后续方案。使用无菌接种环或牙签或移液管尖端，将细菌菌落从其中一个培养皿转移到含有 3 ml LB 和 3 μl 氨苄青霉素的大无菌培养管中。对于每个学生或学生团队必须培养的每种菌株来说，这个体积绰绰有余：</p>
-<ol>
-<li>对您要接种的每种菌株重复上述步骤。</li>
-<li>将培养管放入滚轮中，37°C 培养箱过夜。确保彼此平衡管子，以最大程度地减少滚轮上的压力。</li>
-<li>培养物在冰箱中保存至少一周保持稳定和活性。如果你以这种方式储存它们，预计它们在你进行亚培养的那天需要更长的时间才能开始生长；预计大约需要 3 小时，而不是 1.5 小时。</li>
-</ol>
-<p>如果没有可用的滚轮或培养箱，您可以将每种起始培养物的体积增加至 10 ml LB+amp，并在室温下使用搅拌棒在小锥形瓶中培养样品。它们应该以这种方式生长至少 24 小时才能达到饱和。</p>
-<h3 id="实验室协议"><a href="#实验室协议" class="headerlink" title="实验室协议"></a>实验室协议</h3><p>这是该协议的较短版本，强调数据分析而不是数据收集。 BioBuilder 网站还提供了更长版本的协议，强调生长曲线数据收集。在这里，在任何数据收集前一天建立大量细菌培养物。第二天即可准备好样品，以便在单个实验室周期内收集数据。</p>
-<p>该协议假设每个人都会在三个时间点测量所有四种细菌培养物，并且将共享大量细菌培养物。假设每组只需要一个时间点，75 毫升培养物应足以容纳最多 12 个实验室组。</p>
-<p>在收集数据的前一天，执行以下操作：</p>
-<ol>
-<li>使用以下材料准备生长培养基：</li>
-</ol>
-<ul>
-<li>300 毫升 LB</li>
-<li>300 μl 氨苄西林（终浓度 100 ug&#x2F;ml）</li>
-<li>250 μl 异戊醇</li>
-</ul>
-<ol start="2">
-<li>通过旋转瓶子来混合该储备生长溶液。</li>
-<li>如果您将使用分光光度计收集数据，请留出 2 ml 该混合物作为分光光度计的空白。将这等份培养基存放在冰箱中。</li>
-<li>将 75 ml 生长培养基移至 125 ml 无菌锥形瓶中，然后添加来自过夜起始培养物之一的 2 ml 细菌，例如菌株 1-1。</li>
-<li>对于每个过夜培养物，重复将 2 ml 细菌添加到 Erlen meyer 烧瓶中的 75 ml 生长培养基中。</li>
-<li>给四个 50 ml 锥形管贴上标签：每个管贴上 T(LAG) 标签并注明菌株（例如 1-1）。</li>
-<li>从培养物 1-1 中取出 25 ml，放入适当的锥形管中并储存在冰箱中。这将作为您将在数据收集日阅读的滞后期样本。</li>
-<li>对每种培养物重复上一步。</li>
-<li>用箔纸盖住锥形瓶，并在搅拌板上轻轻搅拌 6-8 小时。这是在室温下完成的。记录每种文化开始旋转的时间。请注意，您还可以在 37°C 下培养样品，在这种情况下，到达下一个生长期所需的时间会更短，约为 4-5 小时。</li>
-<li>给四个 50 ml 锥形管贴上标签：每个管贴上 T(LOG) 标签并标明细菌菌株（例如 1-1）。记录自培养物开始搅拌以来的分钟数。</li>
-<li>从培养物 1-1 中取出 25 ml，放入锥形管中并储存在冰箱中。这将作为您将在数据收集日阅读的日志阶段示例。</li>
-<li>对每种培养物重复上一步。</li>
-<li>让剩余的细菌培养物在室温或 37°C 下在搅拌板上孵育过夜（如果您一直以这种方式培养它们）。这些将作为您将在数据收集日读取的固定相样本。</li>
-</ol>
-<blockquote>
-<p>此时，您可以将样品在冰箱中保存一到两周。</p>
-</blockquote>
-<h4 id="数据收集：使用分光光度计测量浊度"><a href="#数据收集：使用分光光度计测量浊度" class="headerlink" title="数据收集：使用分光光度计测量浊度"></a>数据收集：使用分光光度计测量浊度</h4><ol>
-<li>如果细菌已沉淀在 50 ml 锥形管的底部，则涡旋或翻转每个管。</li>
-<li>从每个滞后样品中取出 2 ml，读取每个样品的密度。如果您正在收集所有四个滞后期样品的数据，您现在应该有五个小试管，其中四个装有细菌样品，一个用于空白分光光度计。</li>
-<li>准备分光光度计，将其设置为 OD600。</li>
-<li>读取空白并将%吸光度调整为零。</li>
-<li>读取细菌样品的浊度并记录吸光度。</li>
-<li>计算细菌数量：1 OD600 单位 &#x3D; 1 x 10^9 细菌。</li>
-<li>对对数期和稳定期细菌样本重复此数据收集。</li>
-</ol>
-<h4 id="数据收集：使用浊度标准的浊度"><a href="#数据收集：使用浊度标准的浊度" class="headerlink" title="数据收集：使用浊度标准的浊度"></a>数据收集：使用浊度标准的浊度</h4><ol>
-<li>如果细菌聚集在 50 ml 锥形管的底部，则涡旋或翻转每个管。</li>
-<li>从每个滞后样品中取出 2 ml，读取每个样品的密度。如果您正在收集所有四个滞后期样本的数据，那么您现在应该将样本放在四个小试管中。这些管应该与装有浊度标准的管相匹配。</li>
-<li>将样品和浊度标准品放在试管架上，以便您可以从侧面查看液体样品。在空白索引卡或纸张上使用记号笔画两条粗黑线。这些线应该在标准的高度范围内。</li>
-<li>将带有平行黑线的白卡放在管后面。</li>
-<li>通过寻找与背景卡上的黑线最相似的标准品，将细菌培养物与标准品进行比较。</li>
-<li>使用表 6-3 将浊度标准品转换为 OD600 值，然后使用 1 OD600 单位 &#x3D; ~ 1 x 10^9 cells&#x2F;ml 的简单转换系数计算细胞密度。</li>
-<li>使用对数和固定相细菌样本重复此数据收集。</li>
-</ol>
-<h4 id="资料收集：香蕉味"><a href="#资料收集：香蕉味" class="headerlink" title="资料收集：香蕉味"></a>资料收集：香蕉味</h4><ol>
-<li>如果细菌聚集在 50 ml 锥形管的底部，则涡旋或翻转每个管。将管子加热至室温或 37° 将使气味更容易被察觉。</li>
-<li>闻 50 ml 锥形管是否有香蕉气味，并将该气味与香蕉提取物标准品进行比较。嗅探前一定要摇匀标准品。记录您的数据。</li>
-<li>对对数相样本和固定相样本重复上述步骤。</li>
-</ol>
-<blockquote>
-<p>当管子打开时，香蕉气味会消散。尽可能保持管子关闭，如果需要，摇动它们以恢复气味。</p>
-</blockquote>
-<p><img src="/biobuilder/Quick_Guide_EauThatSmell_1.png" alt="FIGURE"></p>
-<p><img src="/biobuilder/Quick_Guide_EauThatSmell_2.png" alt="FIGURE"></p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2024/05/15/biobuilder/chapter-6/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -4120,48 +3911,48 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Hexo/">Hexo<span>2</span></a></li>
-		
-			<li><a href="/tags/Notebook/">Notebook<span>1</span></a></li>
-		
-			<li><a href="/tags/Programming/">Programming<span>1</span></a></li>
-		
-			<li><a href="/tags/Hello-World/">Hello World<span>1</span></a></li>
-		
 			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
-			<li><a href="/tags/Web-Development/">Web Development<span>1</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/Git/">Git<span>1</span></a></li>
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
-			<li><a href="/tags/WhatsApp/">WhatsApp<span>1</span></a></li>
-		
-			<li><a href="/tags/Blog/">Blog<span>1</span></a></li>
-		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
 		
-			<li><a href="/tags">...<span>38</span></a></li>
+			<li><a href="/tags">...<span>22</span></a></li>
 		
 		</ul>
 	</div>
@@ -4172,6 +3963,10 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
 <div class="widget">
   <h4 style="margin-top: 18px;">Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
+      </li>
     
       <li>
         <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
@@ -4187,10 +3982,6 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
     
       <li>
         <a href="/2024/05/19/biobuilder/appendix/" ><i class="fa fa-file-o"></i>实验室试剂和材料</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/16/人脑海马体的经典计算模型/" ><i class="fa fa-file-o"></i>人脑海马体的经典计算模型</a>
       </li>
     
   </ul>

@@ -139,6 +139,347 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2021-10-27 </div>
+			<div class="article-title"><a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" >Try to Reinstall Zsh Kernel</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">https://github.com/jupyter/jupyter/wiki/Jupyter-kernels</a></li>
+<li><a target="_blank" rel="noopener" href="https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html">https://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/NII-cloud-operation/sshkernel">https://github.com/NII-cloud-operation/sshkernel</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Bash">A Jupyter Kernel for Bash<a class="anchor-link" href="#A-Jupyter-Kernel-for-Bash">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/takluyver/bash_kernel">https://github.com/takluyver/bash_kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip3<span class="w"> </span>install<span class="w"> </span>bash_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>bash_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Z-Shell">A Jupyter Kernel for Z Shell<a class="anchor-link" href="#A-Jupyter-Kernel-for-Z-Shell">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/dan-oak/zsh-jupyter-kernel">https://github.com/dan-oak/zsh-jupyter-kernel</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+launchctl<span class="w"> </span>stop<span class="w"> </span>com.quantum.jupyter-lab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>notebook<span class="w"> </span>zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>zsh_jupyter_kernel.install<span class="w"> </span>--sys-prefix
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>zsh_jupyter_kernel.install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+launchctl<span class="w"> </span>start<span class="w"> </span>com.quantum.jupyter-lab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-uninstall-Zsh-Jupyter-Kernel?">How to uninstall Zsh Jupyter Kernel?<a class="anchor-link" href="#How-to-uninstall-Zsh-Jupyter-Kernel?">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">zsh_jupyter_kernel</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zsh_jupyter_kernel</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/__init__.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+ls<span class="w"> </span>-lah<span class="w"> </span>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span>/usr/local/lib/python3.9/site-packages/zsh_jupyter_kernel/install.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Try-to-uninstall-Zsh-Jupyter-Kernel">Try to uninstall Zsh Jupyter Kernel<a class="anchor-link" href="#Try-to-uninstall-Zsh-Jupyter-Kernel">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+launchctl<span class="w"> </span>stop<span class="w"> </span>com.quantum.jupyter-lab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>zsh_jupyter_kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span class="w"> </span>zsh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+launchctl<span class="w"> </span>start<span class="w"> </span>com.quantum.jupyter-lab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Jupyter-Kernel-for-Python-3.7">A Jupyter Kernel for Python 3.7<a class="anchor-link" href="#A-Jupyter-Kernel-for-Python-3.7">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>virtualenv<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>which<span class="w"> </span>python3.7<span class="k">)</span><span class="w"> </span>py37
+<span class="nb">source</span><span class="w"> </span>~/py37/bin/activate
+ipython<span class="w"> </span>kernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>py37<span class="w"> </span>--display-name<span class="w"> </span><span class="s1">&#39;Python 3.7&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>uninstall<span class="w"> </span>py37
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2021-10-26 </div>
 			<div class="article-title"><a href="/2021/10/26/金融心理学/" >金融心理学</a></div>						
 		</h3>
@@ -1462,6 +1803,11 @@ $$<p>其中，$\Delta G_{\text{binding}}$ 是结合自由能变化，$\Delta H_{
 </blockquote>
 <div class="tabs" id="purify"><ul class="nav-tabs"><li class="tab active"><a href="#purify-1">洁净</a></li><li class="tab"><a href="#purify-2">清め</a></li><li class="tab"><a href="#purify-3">Purify</a></li></ul><div class="tab-content"><div class="tab-pane active" id="purify-1"><p>主啊。<br>我们来到你面前。<br>将我们一切的罪都卸给你。<br>愿你担当我们的过犯和污秽。</p></div><div class="tab-pane" id="purify-2"><p><ruby>主<rt>しゅ</rt></ruby>よ。<br><ruby>私<rt>わたし</rt></ruby>たちはあなたの<ruby>御前<rt>みまえ</rt></ruby>に<ruby>来<rt>き</rt></ruby>ます。<br><ruby>私<rt>わたし</rt></ruby>たちのすべての<ruby>罪<rt>つみ</rt></ruby>をあなたに<ruby>投げ<rt>なげ</rt></ruby>ます。<br><ruby>私<rt>わたし</rt></ruby>たちの<ruby>過<rt>あやま</rt></ruby>ちと<ruby>汚<rt>けが</rt></ruby>れを<ruby>担<rt>にな</rt></ruby>うように。</p></div><div class="tab-pane" id="purify-3"><p>Lord.<br>We come before You.<br>We cast all our sins upon You.<br>May You bear our transgressions and impurities.</p></div></div></div>
 
+<hr />
+
+<blockquote>
+<p>你们曾看见耶路撒冷被军队围困，就知道她的荒凉临到了。<br>那时，在犹太的逃到山上；在城里的出来；在乡下的没有进城。<br>因为那是报应的日子，经上所写的一切都应验了。<br>在那些日子，怀孕的和乳养孩子的遭了祸，因为大艰难临到这地，震怒也临到这百姓。<br>他们倒在刀下，又被掳到列国去；耶路撒冷也被外邦人践踏，直到外邦人的时期满了。<br>（路加福音 21:20–24 历史回顾版）</p>
+</blockquote>
 <hr>
 <p>十二伊玛目是什叶派伊斯兰教中特别重要的宗教领袖，他们的在世和担任伊玛目的期间如下：</p>
 <ol>
@@ -1507,6 +1853,8 @@ $$<p>其中，$\Delta G_{\text{binding}}$ 是结合自由能变化，$\Delta H_{
 <blockquote>
 <p>『犹太人说：「以斯拉是真主的儿子」，基督徒说：「基督是真主的儿子」，这是他们口中所言。他们的说法和以前的不信者的说法是一样的。真主降罚他们，他们是无知的。』<br>｛古兰经 9:30｝</p>
 </blockquote>
+<hr>
+<div class="tabs" id="preaching"><ul class="nav-tabs"><li class="tab active"><a href="#preaching-1">传福音</a></li><li class="tab"><a href="#preaching-2">福音を宣べ伝え</a></li><li class="tab"><a href="#preaching-3">Preaching the Gospel</a></li></ul><div class="tab-content"><div class="tab-pane active" id="preaching-1"><p>我们之所以要传福音，是为了使罪人得救。<br>他们若是相信了福音，他们就会崇拜我们的主，而我们的主就不会把他们灭在火湖里了。</p></div><div class="tab-pane" id="preaching-2"><p><ruby>私<rt>わたし</rt></ruby>たちが<ruby>福音<rt>ふくいん</rt></ruby>を<ruby>宣<rt>の</rt></ruby>べ<ruby>伝<rt>つた</rt></ruby>えるのは、<ruby>罪人<rt>つみびと</rt></ruby>を<ruby>救<rt>すく</rt></ruby>うためです。<br>もし<ruby>彼<rt>かれ</rt></ruby>らが<ruby>福音<rt>ふくいん</rt></ruby>を<ruby>信<rt>しん</rt></ruby>じるなら、<ruby>彼<rt>かれ</rt></ruby>らは<ruby>私<rt>わたし</rt></ruby>たちの<ruby>主<rt>しゅ</rt></ruby>を<ruby>礼拝<rt>れいはい</rt></ruby>し、<ruby>私<rt>わたし</rt></ruby>たちの<ruby>主<rt>しゅ</rt></ruby>は<ruby>彼<rt>かれ</rt></ruby>らを<ruby>火<rt>ひ</rt></ruby>の<ruby>湖<rt>みずうみ</rt></ruby>に<ruby>滅<rt>ほろ</rt></ruby>ぼすことはありません。</p></div><div class="tab-pane" id="preaching-3"><p>The reason we preach the gospel is so that sinners may be saved.<br>If they believe the gospel, they will worship our Lord, and our Lord will not cast them into the lake of fire.</p></div></div></div>
 
 	
 	</div>
@@ -2827,105 +3175,6 @@ I say casually in the car
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-07-13 </div>
-			<div class="article-title"><a href="/2021/07/13/寻找小水灵/" >寻找小水灵</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p>朕平常住在宫殿里面。朕的爱妃总是在门口静候。每当朕开门，她就会向朕行跪拜礼。而朕会抱她起来，与她相拥。她见到朕一声不响地走过来，就会吓得后退低头，行跪拜礼。在床上，她最乖了。她知道在床上是最安全没有任何危险。朕会温柔地抚摸她。朕会抱她吻她。她想怎么呻吟，就怎么呻吟。如果朕想和她一起入浴，她也不会抗拒。她是多么温柔多么美丽。她就是朕最爱的贵妃。朕赐给她小水灵这个名字。可惜她不是人类。</p>
-<hr>
-<blockquote>
-<p>义人知照他牲口的脾气；<br>恶人的心肠总是残忍。<br>(箴言 12:10 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>做父亲的、别惹你们儿女的气了；<br>要用主的训练和警戒养育他们。<br>(以弗所书 6:4 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>做父亲的，别激你们儿女的气了，免得他们丧志灰心。<br>(歌罗西书 3:21 吕振中)</p>
-</blockquote>
-<p>孩子们被虐待的方式有好几种，所有这些都是上帝所憎恶的。圣经在对不当发怒的警告中禁止虐待孩子。太多孩子是愤怒殴打和其他身体虐待的受害者，因为他们的父母向他们的孩子发泄他们自己的愤怒和挫折感。尽管某些形式的身体处罚可能是圣经所能接受的，但这种处罚永远不应该因着愤怒管理。保罗提醒以弗所人说：“生气却不要犯罪，不可含怒到日落，也不可给魔鬼留地步。”（以弗所书 4:26-27）。箴言 29:22 说：“好气的人挑启争端；暴怒的人多多犯罪。”在基督徒的生活中，没有地方可以容纳不义或不受控制的愤怒。愤怒在变成对孩子或其他任何人的身体虐待之前就应该向上帝忏悔，并适当地处理。</p>
-<p>圣经禁止虐待孩子的另一种方式是禁止心理和情感上的虐待。以弗所书 6:4 警告父亲们不要“惹气”或激怒他们的孩子，而是要把他们带到“主的教训和警戒”中。严厉、不讨喜欢的口头管教、情感操纵或不稳定的环境会使孩子疏远他们的父母，使他们的教导和矫正变得毫无用处。父母可能通过对孩子提出不合理的要求，贬低他们，或者不断地挑毛病，从而惹气或激怒他们的孩子，以致造成不好的伤害，甚至比任何身体殴打所造成的伤害都严重。歌罗西书 3:21 告诉我们不要“怨恨”我们的孩子，这样他们就不会气馁。以弗所书 4:15-16,25-32 说，我们要在爱中说真话，用我们的话来建立别人，不要让腐朽或破坏性的话语从我们的嘴唇流出，特别是针对孩子纤柔的内心与思想。</p>
-<p>家庭属灵虐待是指使用经文、圣经原则或一个人的属灵权威，为一己私利掌控一位家庭成员。</p>
-<hr>
-<p>一定要喂一些云南白药粉末，这个是救命的，有条件的打止血敏，国产的一针管3小时左右，进口的一针管12小时，看情况打。</p>
-<p>最好保持安静，在宠物有意识的情况下切勿进行人工呼吸，期间不要试图投喂食物。</p>
-<hr>
-<p>患 FIC 的猫咪，肾上腺多数有问题，皮质醇分泌异常。在应激反应系统启动后，皮质醇分泌不足，让应激反应系统无法正常结束反应，引起交感神经系统失控般活跃，加速分泌去甲肾上腺素。而去甲肾上腺素会上调各类炎症反应，就包括膀胱炎。</p>
-<p>这个过程加剧了神经炎的发生，同时还莫名其妙的改变了膀胱内保护层的完整与尿路上皮细胞的机能，增加了膀胱组织渗透性，让尿液能够更方便地刺激膀胱组织，产生剧痛，刺激大脑。</p>
-<p>所以这也是为什么自发性膀胱炎和压力关系很大的原因，当猫咪感到外界压力，就会开启自己的应激系统，部分猫咪无法正常结束反应，就很有可能导致 FIC。</p>
-<hr>
-<p>我们可以尝试使用猫咪 feliway 熏香，这是一种猫咪信息素，可以帮助舒缓猫咪的情绪，达到一定的解压效果。</p>
-<p>FIC 发生的时候猫咪膀胱内尿液刺激提高，会产生剧痛，解疼痛对恢复猫的精神、食欲，减少脑部刺激是非常有价值的。但国内宠物一般不怎么重视，所以比较有效的药如丁丙诺菲、芬太尼、曲马多都难以获取。布托啡诺算是比较常见的止疼药，但药效比较短，不过有总比没有好，我们可以要求医生注射这个。</p>
-<hr>
-<p>My cat has no human hands, so she can’t pick up a weapon to protect herself.</p>
-<br />
-
-<p>I am guilty of catslaughter. I killed my cat one year ago. And now I’m going to eat up all the leftover expired cat food - in order not to waste the lost life - I meant the chickens that make the cat food - because life has meanings. &#x2F; I had a low-grade fever for a few days because of the spoiled cat food.</p>
-<p><img src="/cat-food.png" alt="ELMO"></p>
-<p>Please raise my cat from death.</p>
-<hr>
-<p><img src="/frugra.png" alt="フルグラ"></p>
-<br />
-
-<blockquote>
-<p>良言如同蜂房，使魂觉甘甜，使骨得医治。<br>(箴言 16:24 恢复本)</p>
-</blockquote>
-<blockquote>
-<p>我儿，你要吃蜜，因为这是好的；吃蜂房下滴的蜜，在你上膛是甘甜的；<br>要知道智慧之于你的魂，也是如此。你若找着，末后必有好结局，你的指望也不至断绝。<br>(箴言 24:13-14 恢复本)</p>
-</blockquote>
-<hr>
-<p><img src="/angelica.png" alt="白芷"></p>
-<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/XR4u4jQ4bmo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<p><br /></p>
-
-<blockquote>
-<p>留一盏灯，为你到天明。<br>你随心而行，剩下我寤寐不宁。<br>想和你说再见，人已不知了去向。<br>愿你永远穿漂亮衣服。</p>
-</blockquote>
-<div class="tabs" id="strong-spirit"><ul class="nav-tabs"><li class="tab active"><a href="#strong-spirit-1">刚强的灵</a></li><li class="tab"><a href="#strong-spirit-2">Strong Spirit</a></li><li class="tab"><a href="#strong-spirit-3">強い霊</a></li></ul><div class="tab-content"><div class="tab-pane active" id="strong-spirit-1"><blockquote>
-<p>祂来，见他们睡着了，就对彼得说，西门，你睡觉么？不能儆醒片时么？<br>要儆醒祷告，免得入了试诱；你们的灵固然愿意，肉体却软弱了。<br>&ZeroWidthSpace;<br><sub style="font-size: smaller;"> (马可福音 14:37-38 恢复本圣经)</sub></p>
-</blockquote></div><div class="tab-pane" id="strong-spirit-2"><blockquote>
-<p>And He came and found them sleeping. And He said to Peter, Simon, are you sleeping? Were you not able to watch for one hour?<br>Watch and pray that you may not come into temptation. The spirit is willing, but the flesh is weak.<br>&ZeroWidthSpace;<br><sub style="font-size: smaller;"> (Mark 14:37-38 Recovery Version)</sub></p>
-</blockquote></div><div class="tab-pane" id="strong-spirit-3"><blockquote>
-<p>イエスは戻って来て、彼らが眠っているのを見て、ペテロに言われた、「シモン、眠っているのか。一時間も目を覚ましていられなかったのか。」<br>誘惑に陥らないように、目を覚まして祈りなさい。霊は熱心であるが、肉は弱いのです。<br>&ZeroWidthSpace;<br><sub style="font-size: smaller;"> (マルコの福音書 14:37-38 恢復訳聖書)</sub></p>
-</blockquote></div></div></div>
-
-<hr>
-<div class="tabs" id="ashes"><ul class="nav-tabs"><li class="tab active"><a href="#ashes-1">灰烬</a></li><li class="tab"><a href="#ashes-2">灰燼</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ashes-1"><blockquote>
-<p>耶和华对摩西说：（本节在《马索拉文本》为 6:1）<br>『你要吩咐亚伦和他的子孙说：<strong>燔祭</strong>的律例是这样：燔祭要放在祭坛的柴上，通宵达旦；祭坛上的火，必须一直烧着。<br>祭司要穿上细麻布外袍，又把细麻布裤子穿在身上；他要把祭坛上燔祭烧成的灰收起来，放在祭坛旁边；<br>然后脱去这些衣服，穿上别的衣服，把灰拿出营外洁净的地方。<br>祭坛上的火，应常常烧着，不可熄灭；每天早晨，祭司要在上面烧柴，把燔祭排列在坛上，又在上面焚烧平安祭的脂肪。<br>火必须不断在祭坛上烧着，不可熄灭。』<br>(利未记 6:8-13 新译本)</p>
-</blockquote></div><div class="tab-pane" id="ashes-2"><blockquote>
-<p><strong>主</strong>はモーセにこう告げられた。<br>「アロンとその子らに命じよ。<strong>全焼のささげ物</strong>についてのおしえは次のとおりである。全焼のささげ物そのものは、一晩中、朝まで祭壇の上の炉床にあるようにし、祭壇の火をそこで燃え続けさせる。<br>祭司は亜麻布の衣を着て、亜麻布のももひきを身に着ける。そして、祭壇の上で火が焼き尽くした全焼のささげ物の脂肪の灰を取り出し、祭壇のそばに置く。<br>それからその装束を脱ぎ、別の装束を着け、脂肪の灰を宿営の外のきよい所に運び出す。<br>祭壇の火はそのまま燃え続けさせ、それを消してはならない。祭司は朝ごとに、その上に薪をくべ、その上に全焼のささげ物を整え、その上で交わりのいけにえの脂肪を焼いて煙にする。<br>火は絶えず祭壇の上で燃え続けさせなければならない。消してはならない。」<br>(レビ記 6:8-13 新改訳 2017)</p>
-</blockquote></div></div></div>
-
-<p>把骨灰安置在洁净的地方。</p>
-<hr>
-<blockquote>
-<p>Brothers, I do not account of myself to have laid hold; but one thing I do: Forgetting the things which are behind and stretching forward to the things which are before,<br> (Philippians 3:13 Recovery Version)</p>
-</blockquote>
-<blockquote>
-<p>And He will wipe away every tear from their eyes; and death will be no more, nor will there be sorrow or crying or pain anymore; for the former things have passed away.<br> (Revelation 21:4 Recovery Version)</p>
-</blockquote>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/07/13/寻找小水灵/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -2964,48 +3213,48 @@ I say casually in the car
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
-			<li><a href="/tags/Hello-World/">Hello World<span>1</span></a></li>
-		
-			<li><a href="/tags/WhatsApp/">WhatsApp<span>1</span></a></li>
-		
-			<li><a href="/tags/AI/">AI<span>1</span></a></li>
-		
-			<li><a href="/tags/Node-js/">Node.js<span>2</span></a></li>
-		
-			<li><a href="/tags/Ruby/">Ruby<span>1</span></a></li>
-		
-			<li><a href="/tags/Hexo/">Hexo<span>2</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
-		
-			<li><a href="/tags/Jupyter/">Jupyter<span>1</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/Blog/">Blog<span>1</span></a></li>
-		
-			<li><a href="/tags/Web-Development/">Web Development<span>1</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/Notebook/">Notebook<span>1</span></a></li>
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 		
-			<li><a href="/tags">...<span>38</span></a></li>
+			<li><a href="/tags">...<span>22</span></a></li>
 		
 		</ul>
 	</div>
@@ -3016,6 +3265,10 @@ I say casually in the car
 <div class="widget">
   <h4 style="margin-top: 18px;">Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
+      </li>
     
       <li>
         <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
@@ -3031,10 +3284,6 @@ I say casually in the car
     
       <li>
         <a href="/2024/05/19/biobuilder/appendix/" ><i class="fa fa-file-o"></i>实验室试剂和材料</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/16/人脑海马体的经典计算模型/" ><i class="fa fa-file-o"></i>人脑海马体的经典计算模型</a>
       </li>
     
   </ul>

@@ -139,6 +139,337 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2019-10-13 </div>
+			<div class="article-title"><a href="/2019/10/13/Try-PaperBoby/" >Try PaperBoby</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://github.com/timkpaine/paperboy">https://github.com/timkpaine/paperboy</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/timkpaine/paperboy.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cloning into &#39;paperboy&#39;...
+remote: Enumerating objects: 21, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (21/21), done.
+remote: Total 3388 (delta 3), reused 3 (delta 0), pack-reused 3367
+Receiving objects: 100% (3388/3388), 12.04 MiB | 22.38 MiB/s, done.
+Resolving deltas: 100% (2277/2277), done.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">cd</span><span class="w"> </span>~/paperboy/
+sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>install
+sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
+sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>paperboy
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CRITICAL:root:Using SQL backend
+CRITICAL:root:Using SQL auth
+CRITICAL:root:Using dummy scheduler
+[2019-10-13 18:36:29 +0900] [2696] [INFO] Starting gunicorn 19.9.0
+[2019-10-13 18:36:29 +0900] [2696] [INFO] Listening at: http://0.0.0.0:8080 (2696)
+[2019-10-13 18:36:29 +0900] [2696] [INFO] Using worker: sync
+[2019-10-13 18:36:29 +0900] [2701] [INFO] Booting worker with pid: 2701
+CRITICAL:root:Storing user sheng_wei eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJuYW1lIjoic2hlbmdfd2VpIn0.oKJsYgZJaj1dLoVR8JgTjfPGp2O8bf3jqmoRux1bNgw 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:Storing notebook &lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 0 - 0
+[2019-10-13 18:43:59 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+[2019-10-13 18:44:22 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+[2019-10-13 18:44:23 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;attachment.ipynb&#39;
+CRITICAL:root:Storing job &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:detail : 1, result : &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:detail : 1, result : &lt;Job(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:37:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 1 - 1
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:detail : 1, result : &lt;Notebook(name=&#39;TEST&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+CRITICAL:root:Storing notebook &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+CRITICAL:root:detail : 2, result : &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+[2019-10-13 18:54:20 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+[2019-10-13 18:54:35 +0900] [2701] [ERROR] Error handling request /api/v1/jobs?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/job.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.jobs.store(req.context[&#39;user&#39;], req.params, self.session, self.scheduler))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/job.py&#34;, line 42, in store
+    nb_sql = session.query(NotebookSQL).get(int(justid(notebookid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:detail : 2, result : &lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;
+CRITICAL:root:Storing job &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:detail : 2, result : &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+[2019-10-13 18:59:11 +0900] [2696] [CRITICAL] WORKER TIMEOUT (pid:2701)
+[2019-10-13 18:59:11 +0900] [2701] [INFO] Worker exiting (pid: 2701)
+[2019-10-13 18:59:11 +0900] [2863] [INFO] Booting worker with pid: 2863
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+CRITICAL:root:detail : 2, result : &lt;Job(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, notebook=&#39;&lt;Notebook(name=&#39;BQ&#39;, user=&#39;&lt;User(name=&#39;sheng_wei&#39;)&gt;&#39;, privacy=&#39;public&#39;, level=&#39;production&#39;&gt;&#39;, start=&#39;2019-10-13 09:51:00&#39;, interval=&#39;minutely&#39;&gt;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
+[2019-10-13 19:01:55 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
+    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+[2019-10-13 19:01:57 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
+    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+[2019-10-13 19:01:57 +0900] [2863] [ERROR] Error handling request /api/v1/reports?action=save
+Traceback (most recent call last):
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/gunicorn/workers/sync.py&#34;, line 176, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File &#34;/opt/tljh/user/lib/python3.6/site-packages/falcon/api.py&#34;, line 244, in __call__
+    responder(req, resp, **params)
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/resources/report.py&#34;, line 21, in on_post
+    resp.body = json.dumps(self.db.reports.store(req.context[&#39;user&#39;], req.params, self.session))
+  File &#34;/home/jupyter-sheng_wei/paperboy/paperboy/storage/sqla/report.py&#34;, line 50, in store
+    jb_sql = session.query(JobSQL).get(int(justid(jobid)))
+ValueError: invalid literal for int() with base 10: &#39;BQ&#39;
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.notebook.NotebookSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.job.JobSQL&#39;&gt;, result : 2 - 2
+CRITICAL:root:list : &lt;class &#39;paperboy.storage.sqla.models.report.ReportSQL&#39;&gt;, result : 0 - 0
+^C
+[2019-10-13 19:02:42 +0900] [2696] [INFO] Handling signal: int
+[2019-10-13 19:02:42 +0900] [2863] [INFO] Worker exiting (pid: 2863)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>The versions of dependencies are too low.</strong>
+<strong>There are too many bugs.</strong></p>
+<p><strong>It seems that the maintenance of PaperBoy has been stopped.</strong></p>
+<p>Well. Maybe I can reuse some of the codes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>But I found a new Jupyter Dashboard used by PaperBoy.</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/voila-dashboards/voila">https://github.com/voila-dashboards/voila</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/13/Try-PaperBoby/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2019-10-08 </div>
 			<div class="article-title"><a href="/2019/10/08/Try-Appmod-and-NBGitPuller/" >Try Appmod and NBGitPuller</a></div>						
 		</h3>
@@ -2877,13 +3208,13 @@ Username for &#39;https://github.com&#39;: ^C
 <p>成群結隊的警察每天都在城裡的公路上巡邏檢查。如果被發現有人從牆外帶刀子回來或者帶什麼回來分發給人，那是要投進監獄的。帶刀子回來分發的人直接槍斃。</p>
 <p>我琢磨著該怎麼從牆外帶東西回來不被沒收呢。憑什麼外面的人可以隨便進來，我們就出不去呢。</p>
 <p>我知道如果走地下隧道的話，帶回來的東西就不會被沒收了。許珀耳玻瑞亞的地下隧道縱橫交錯。裡面極黑，伸手不見五指。即使照亮一個小角落也要耗費極大的電力。任何人都負擔不起。警察也不可能在這樣的隧道裡巡邏檢查。我想我只要在城牆的地基深處裝一個向外打開的門。我就可以穿牆而出了。</p>
-<p>可是該怎麼造出個門以及該怎麼走隧道而不會迷路呢。我實在是沒有辦法。我只能呼求我的聖緯。</p>
+<p>可是該怎麼造出個門以及該怎麼走隧道而不會迷路呢。我實在是沒有辦法。我只能呼求我的聖禕。</p>
 <hr>
-<p>聖緯說：「愛爾敏·亞魯雷特，我已經聽見妳的呼求。妳只管放膽前行。我必賜你靈巧的雙手和明亮的眼睛。」</p>
+<p>聖禕說：「愛爾敏·亞魯雷特，我已經聽見妳的呼求。妳只管放膽前行。我必賜你靈巧的雙手和明亮的眼睛。」</p>
 <hr>
-<p>聖緯說：「要有 git bash」，就有了 git bash。有 git，有 bash，這是頭一步。</p>
+<p>聖禕說：「要有 git bash」，就有了 git bash。有 git，有 bash，這是頭一步。</p>
 <hr>
-<p>聖緯說：「</p>
+<p>聖禕說：「</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -f genome</span><br></pre></td></tr></table></figure>
 <p>」,就有了鑰匙和門鎖。<br>有鑰匙 genome：「</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN OPENSSH PRIVATE KEY-----</span><br><span class="line">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn</span><br><span class="line">NhAAAAAwEAAQAAAQEAtHgqVyFVPyYF3RDhukkP9JCv4p0ubDqBwYuAvm1eJECvKBocr75y</span><br><span class="line">zoV7lQ6c4R+UPnJQvYAeAJGVaaMVDNpIV6C4aSVnJa/YqTexD7o8CbhwsUAcQP0ktT7lm+</span><br><span class="line">ViXIP+rdTj3ymaEwMU8L5zn1Ic+i++enj8i3Fu7aEXXERTFwJZ/E/wlD30gSWi2XCpTNdS</span><br><span class="line">XFhOW87HCuqaLIJ9g6JnnSUuDkU3wImzwUwOnQYaSaqR/oyusUbClgm6yn1qpkZOKEQ5BP</span><br><span class="line">LxmBJTJ0AMNNxuCjQ5D/2atstdp40twHkY3aiaH5WcIxvoEuHEdAzBIBp84vqcpjdGafAa</span><br><span class="line">Wd7DGUs1FQAAA9BAYKNWQGCjVgAAAAdzc2gtcnNhAAABAQC0eCpXIVU/JgXdEOG6SQ/0kK</span><br><span class="line">/inS5sOoHBi4C+bV4kQK8oGhyvvnLOhXuVDpzhH5Q+clC9gB4AkZVpoxUM2khXoLhpJWcl</span><br><span class="line">r9ipN7EPujwJuHCxQBxA/SS1PuWb5WJcg/6t1OPfKZoTAxTwvnOfUhz6L756ePyLcW7toR</span><br><span class="line">dcRFMXAln8T/CUPfSBJaLZcKlM11JcWE5bzscK6posgn2DomedJS4ORTfAibPBTA6dBhpJ</span><br><span class="line">qpH+jK6xRsKWCbrKfWqmRk4oRDkE8vGYElMnQAw03G4KNDkP/Zq2y12njS3AeRjdqJoflZ</span><br><span class="line">wjG+gS4cR0DMEgGnzi+pymN0Zp8BpZ3sMZSzUVAAAAAwEAAQAAAQBLSq7vdvqnw+dCWZ6z</span><br><span class="line">J3Q+pnaa5tTNVoN4CgmGaP6TxWDOLEa3k482Vj4+67/LtG8Wtn608NSTjCl3zxAjMpZn6K</span><br><span class="line">fHRlGISZrszk1SsHIH5Ckv6f1fp70+2KTWq5aj3nXMdDs1iZe8QtbjsbFvUMTCJFUlp4BF</span><br><span class="line">dOfAwCqM1fyMZj1lm9bb+hMnzFYvqdgHcxhFEOxfmiUHmyQcFgb8wSCLRefPfk9WSYPEle</span><br><span class="line">YLDFAA7kWvSQOC+1My60NbSajhulD1VlZBP2qm9yA0yoVrEb0p5nV8s0T9HLyfBB5UBrqh</span><br><span class="line">A9JSztWu8TfYH/ocEWTPjnMv0cqabf6jJDbZR6xFABIBAAAAgAoJQz98P68mgRPLNobxqi</span><br><span class="line">UFAHkYf5IzIUM4Qa2Zv/kg7MuGBGtKcJooF00gWW9j+/KEIkoMeD+gqJCWRcx+Yy/fuDeT</span><br><span class="line">s5qNVQUKQt0ZnagyFYDHzxyvCOQa+3VRwB6dprwvCdE8Wxc0ejztgd6iAvoeo8eFIlw5TE</span><br><span class="line">DtVns9QsY1AAAAgQDYmgRvpnHTPvAlRZ69GPUFl8VZI8TdhYXCGjVk48bs2ieXU3Dn+irn</span><br><span class="line">nGDh0D4avnJ/AHEqOgnZwqarE3gOM5vvbTKlda7CA/0wygsTP0CvOFgCmSklf4a/Mm/w+H</span><br><span class="line">Z0WKupx0qfhJPbw9owXbFer8ORTWYT+xSo5baw0KxE1fxRVQAAAIEA1Uupojmb+bE4VkWj</span><br><span class="line">v2+b0ZaXU4RXZL0tKAAUZzpYB/zZWCKbPxWqfIo/Ndq1uxId7WBuEmg7EpnDcLpdA85MV2</span><br><span class="line">5RfcRINnwUBLjTRzfeOD20mEINuWSReNb32SPeeiBx9l5i/RbpNW/IW6qJ5B/mijn7ukVf</span><br><span class="line">sFNEYrl3ptXaVMEAAAAUU2VpaUBsb2NhbGhvc3QubG9jYWwBAgMEBQYH</span><br><span class="line">-----END OPENSSH PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
@@ -2891,19 +3222,19 @@ Username for &#39;https://github.com&#39;: ^C
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0eCpXIVU/JgXdEOG6SQ/0kK/inS5sOoHBi4C+bV4kQK8oGhyvvnLOhXuVDpzhH5Q+clC9gB4AkZVpoxUM2khXoLhpJWclr9ipN7EPujwJuHCxQBxA/SS1PuWb5WJcg/6t1OPfKZoTAxTwvnOfUhz6L756ePyLcW7toRdcRFMXAln8T/CUPfSBJaLZcKlM11JcWE5bzscK6posgn2DomedJS4ORTfAibPBTA6dBhpJqpH+jK6xRsKWCbrKfWqmRk4oRDkE8vGYElMnQAw03G4KNDkP/Zq2y12njS3AeRjdqJoflZwjG+gS4cR0DMEgGnzi+pymN0Zp8BpZ3sMZSzUV Armin@Hyperborea</span><br></pre></td></tr></table></figure>
 <p>」，<br>是第二步。</p>
 <hr>
-<p>聖緯說：「<br>門 (genome.pub) 要裝到城牆的極深之處 (<a href="mailto:&#x41;&#114;&#x6d;&#x69;&#110;&#x40;&#49;&#49;&#x30;&#46;&#x33;&#46;&#50;&#52;&#x37;&#46;&#x31;&#55;&#50;">&#x41;&#114;&#x6d;&#x69;&#110;&#x40;&#49;&#49;&#x30;&#46;&#x33;&#46;&#50;&#52;&#x37;&#46;&#x31;&#55;&#50;</a>:.ssh&#x2F;authorized_keys)<br>」，事就這樣成了。聖緯看著是好的。有門，有鎖，是第三步。</p>
+<p>聖禕說：「<br>門 (genome.pub) 要裝到城牆的極深之處 (<a href="mailto:&#x41;&#114;&#x6d;&#105;&#x6e;&#x40;&#x31;&#49;&#48;&#46;&#x33;&#46;&#x32;&#52;&#55;&#46;&#x31;&#x37;&#50;">&#x41;&#114;&#x6d;&#105;&#x6e;&#x40;&#x31;&#49;&#48;&#46;&#x33;&#46;&#x32;&#52;&#55;&#46;&#x31;&#x37;&#50;</a>:.ssh&#x2F;authorized_keys)<br>」，事就這樣成了。聖禕看著是好的。有門，有鎖，是第三步。</p>
 <hr>
-<p>聖緯對著 .ssh&#x2F;config 說：「</p>
+<p>聖禕對著 .ssh&#x2F;config 說：「</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host revival</span><br><span class="line">  HostName 110.3.247.172</span><br><span class="line">  User Armin</span><br><span class="line">  IdentityFile ~/.ssh/genome</span><br></pre></td></tr></table></figure>
-<p>」，我的眼睛就變得明亮，知道門鎖在哪裡。<br>聖緯就賜靈巧給我，又對我說：「<br>把鑰匙 genome 放進妳的口袋 .ssh&#x2F; 裡。<br>」聖緯看著是好的。有設置，有鑰匙，是第四步。</p>
+<p>」，我的眼睛就變得明亮，知道門鎖在哪裡。<br>聖禕就賜靈巧給我，又對我說：「<br>把鑰匙 genome 放進妳的口袋 .ssh&#x2F; 裡。<br>」聖禕看著是好的。有設置，有鑰匙，是第四步。</p>
 <hr>
-<p>聖緯說：「<br>要把瀏覽器的代理協議設置成 SOCKS5。代理服務器設置成 localhost。代理端口設置成 224。<br>」聖緯就造出一個隧道口，並把這個入口安放在我家的地下室裡。有入口，有入口，是第五步。</p>
+<p>聖禕說：「<br>要把瀏覽器的代理協議設置成 SOCKS5。代理服務器設置成 localhost。代理端口設置成 224。<br>」聖禕就造出一個隧道口，並把這個入口安放在我家的地下室裡。有入口，有入口，是第五步。</p>
 <hr>
-<p>聖緯說：「</p>
+<p>聖禕說：「</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -D 224 revival</span><br></pre></td></tr></table></figure>
-<p>」，在我家的地下室裡的入口和城牆上的門之間就造出一條隧道。聖緯看著一切所造的都甚好。有隧道，有隧道，是第六步。</p>
+<p>」，在我家的地下室裡的入口和城牆上的門之間就造出一條隧道。聖禕看著一切所造的都甚好。有隧道，有隧道，是第六步。</p>
 <hr>
-<p>一切都造齊了。到第七步，聖緯造物的工已經完畢，就在第七步歇了他一切的工，安息了。</p>
+<p>一切都造齊了。到第七步，聖禕造物的工已經完畢，就在第七步歇了他一切的工，安息了。</p>
 <hr>
 <p>我順著所造好的隧道穿出了城牆。這一日子是，公元 2019年 7月 17日。<br>沐浴著牆外的陽光，我詠誦起大衛王的詩 (※詩篇 23:4)：</p>
 <hr>
@@ -2926,88 +3257,6 @@ Username for &#39;https://github.com&#39;: ^C
   
 </div>
 	<a type="button" href="/2019/07/16/死蔭的幽谷/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2018-11-16 </div>
-			<div class="article-title"><a href="/2018/11/16/终极追求/" >追求终极真实</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="tabs" id="risking-life-to-eternal-life"><ul class="nav-tabs"><li class="tab active"><a href="#risking-life-to-eternal-life-1">Risking Life to Eternal Life</a></li><li class="tab"><a href="#risking-life-to-eternal-life-2">冒死永生</a></li><li class="tab"><a href="#risking-life-to-eternal-life-3">永遠の命のために・死に面する</a></li></ul><div class="tab-content"><div class="tab-pane active" id="risking-life-to-eternal-life-1"><blockquote>
-<p>Lord, keep us in You to be one.<br>We are the ultimate risk takers.<br>Our way is a way of risking life to eternal life.<br>For the eternal life of the living, risk life and make war against perishing.<br>For the eternal life of the dead, risk life and make war against death.</p>
-<hr>
-<p>Holy Father, help us to overcome!</p>
-</blockquote></div><div class="tab-pane" id="risking-life-to-eternal-life-2"><blockquote>
-<p>主啊，保守我们在你里面合而为一。<br>我们是终极冒死者。<br>我们的道路是通往永生的冒死之路。<br>为了活人的永生，冒死与朽坏交战。<br>为了死人的永生，冒死与死亡交战。</p>
-<hr>
-<p>父啊，助我们得胜哦！</p>
-</blockquote></div><div class="tab-pane" id="risking-life-to-eternal-life-3"><blockquote>
-<p>主よ、あなたの中で一となるために、私たちを守ってください。<br>私たちは究極の冒険者です。<br>私たちの道は永遠の命に至るために死に面する道です。<br>生きている者が永遠の命を受け継ぐために、死に面して、朽ちることと戦おう。<br>死んだ者が永遠の命を受け継ぐために、死に面して、死亡と戦おう。</p>
-<hr>
-<p>聖なる父よ、私たちが勝利を得られるように助けてください！</p>
-</blockquote></div></div></div>
-
-<div class="tabs" id="keeping-in-your-name"><ul class="nav-tabs"><li class="tab active"><a href="#keeping-in-your-name-1">Keeping in Your name</a></li><li class="tab"><a href="#keeping-in-your-name-2">在你名里得保守</a></li><li class="tab"><a href="#keeping-in-your-name-3">あなたの御名の中で守ること</a></li></ul><div class="tab-content"><div class="tab-pane active" id="keeping-in-your-name-1"><blockquote>
-<p>And I am no longer in the world; yet they are in the world, and I am coming to You. Holy Father, keep them in Your name, which You have given to Me, that they may be one even as We are.<br>(John 17:11 Recovery Version)</p>
-</blockquote></div><div class="tab-pane" id="keeping-in-your-name-2"><blockquote>
-<p>今后我不再在世界上，他们却在世界上，而我要往你那里去了。圣父啊，求你用你的名保守你所给了我的人，使他们都合而为一，正如我们一样。<br>(约翰福音 17:11 吕振中)</p>
-</blockquote></div><div class="tab-pane" id="keeping-in-your-name-3"><blockquote>
-<p>私はもはや世にいません．彼らは世にいますが、私はあなたに行きます。聖なる父よ、あなたが私に与えてくださったあなたの御名の中で、彼らを守ってください．それは、私たちのように、彼らが一となるためです。<br>(ヨハネによる福音書 17:11 回復訳)</p>
-</blockquote></div></div></div>
-
-<div class="tabs" id="paul's-labors"><ul class="nav-tabs"><li class="tab active"><a href="#paul's-labors-1">Paul's Labors</a></li><li class="tab"><a href="#paul's-labors-2">保罗的劳苦</a></li><li class="tab"><a href="#paul's-labors-3">パウロの労苦</a></li></ul><div class="tab-content"><div class="tab-pane active" id="paul's-labors-1"><blockquote>
-<p>Ministers of Christ are they? I speak as being beside myself, I more so! In labors more abundantly, in imprisonments more abundantly, in stripes excessively, in deaths often.<br>(2 Corinthians 11:23 Recovery Version)</p>
-</blockquote></div><div class="tab-pane" id="paul's-labors-2"><blockquote>
-<p>他们是基督的仆役么？疯狂地说吧，我更是。论劳苦、更繁多；论鞭打、屡过次数；论坐监、更多次；论冒死、屡次有。<br>(哥林多后书 11:23 吕振中)</p>
-</blockquote></div><div class="tab-pane" id="paul's-labors-3"><blockquote>
-<p>彼らはキリストの奉仕者なのですか？私は気が狂ったように言います．私はなおさらそうです！労苦はなお一層多く、入獄はもっと多く、むちで打たれることは極端であり、死に面したこともしばしばです。<br>(コリント人への第二の手紙 11:23 回復訳)</p>
-</blockquote></div></div></div>
-
-<div class="tabs" id="two-gateways"><ul class="nav-tabs"><li class="tab active"><a href="#two-gateways-1">Two Gateways</a></li><li class="tab"><a href="#two-gateways-2">两种门路</a></li><li class="tab"><a href="#two-gateways-3">二つ門道</a></li></ul><div class="tab-content"><div class="tab-pane active" id="two-gateways-1"><blockquote>
-<p>Enter in through the narrow gate, for wide is the gate and broad is the way that leads to destruction, and many are those who enter through it. Because narrow is the gate and constricted is the way that leads to life, and few are those who find it.<br>(Matthew 7:13-14 Recovery Version)</p>
-</blockquote></div><div class="tab-pane" id="two-gateways-2"><blockquote>
-<p>你们要由窄门进入；因为引到灭亡的，那门阔，那路宽，由它而进的人多；因为引到生命的，那门窄，那路狭隘，找着的人少。<br>(马太福音 7:13-14 吕振中)</p>
-</blockquote></div><div class="tab-pane" id="two-gateways-3"><blockquote>
-<p>あなたがたは狭い門から入りなさい．崩壊に至る門は広く、その道は幅広い．そして、そこから入って行く者が多い。<br>命に至る門は狭く、その道は細いので、それを見いだす者は少ない。<br>(マタイによる福音書 7:13-14 回復訳)</p>
-</blockquote></div></div></div>
-
-<hr>
-<blockquote>
-<p>彼得转了身，看见耶稣所爱的那门徒跟着，就是在晚饭时斜靠着耶稣胸膛说：「主啊，把你送官的是谁？」的。彼得看见这个人，就对耶稣说：『主啊，这人怎么样呢？』耶稣对彼得说：『我若愿意他存留着、等到我来，与你何干？你、跟着我！』于是这话就传出来、在弟兄中间、说那门徒必不死。其实耶稣并没有对彼得说他必不死，乃是说：『我若愿意他存留着、等到我来，与你何干？』<br>(约翰福音 21:20-23 吕振中)</p>
-</blockquote>
-<p>中國人前輩為我洗腦之後－－</p>
-<hr>
-<blockquote>
-<p>　各人自己的心思要把坚确的信念抱定。追求<strong>真实</strong>的人怀念着<strong>终极真实</strong>而追求，因为他感谢创造主。我们没有一个人单为自己而活，也没有一个人单为自己而死。我们若活着，是为创造主而活；若死了，是为创造主而死；所以我们或活或死，总是属创造主的人。为了这目的、基督死了，又活过来了，为的是、不但可以做活人的救赎主，也可以做死人的救赎主。</p>
-</blockquote>
-<p>相信真实；怀疑虚假。</p>
-<hr>
-<div class="tabs" id="ultimate-pursue"><ul class="nav-tabs"><li class="tab active"><a href="#ultimate-pursue-1">Ultimate Pursue</a></li><li class="tab"><a href="#ultimate-pursue-2">终极追求</a></li><li class="tab"><a href="#ultimate-pursue-3">究極の追求</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ultimate-pursue-1"><blockquote>
-<p>　Each person must be fully convinced in his own mind. The one who pursues the <strong>ultimate facts</strong>, pursues them for the Lord, for he gives thanks to God. For not one of us lives for himself, and not one dies for himself; for if we live, we live for the Lord, or if we die, we die for the Lord; therefore whether we live or die, we are the Lord’s. For to this end Christ died and lived again, that He might be Lord both of the dead and of the living.</p>
-</blockquote></div><div class="tab-pane" id="ultimate-pursue-2"><blockquote>
-<p>　各人自己的心思要把坚确的信念抱定。追求<strong>终极真实</strong>的人怀念着主而追求，因为他感谢上帝。我们没有一个人单为自己而活，也没有一个人单为自己而死。我们若活着，是为主而活；若死了，是为主而死；所以我们或活或死，总是属主的人。为了这目的、基督死了，又活过来了，为的是、不但可以做活人的主，也可以做死人的主。</p>
-</blockquote></div><div class="tab-pane" id="ultimate-pursue-3"><blockquote>
-<p>　<strong>究極の真実</strong>を追い求める者は<strong>主</strong>に対して追い求め．なぜなら、彼は<strong>神</strong>に感謝をささげるからです．なわち、わたしたちのうちだれも、自分自身に生きる者はなく、自分自身に死ぬ者はいないのです．わたしたちは生きるにしても、<strong>主</strong>に生きるのであり、死ぬにしても、<strong>主</strong>に死ぬのです。こういうわけで、わたしたちは生きるにしても死ぬにしても、<strong>主</strong>のものです。このために、<strong>キリスト</strong>が死んで再び生きられたのは、<strong>彼</strong>が死んだ者と生きている者の<strong>主</strong>となられるためです。</p>
-</blockquote></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2018/11/16/终极追求/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -3049,48 +3298,48 @@ Username for &#39;https://github.com&#39;: ^C
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/WhatsApp/">WhatsApp<span>1</span></a></li>
-		
-			<li><a href="/tags/DevOps/">DevOps<span>1</span></a></li>
-		
-			<li><a href="/tags/Jupyter/">Jupyter<span>1</span></a></li>
-		
-			<li><a href="/tags/Ruby/">Ruby<span>1</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Git/">Git<span>1</span></a></li>
-		
-			<li><a href="/tags/Hexo/">Hexo<span>2</span></a></li>
-		
-			<li><a href="/tags/AI/">AI<span>1</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
 		
 			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/Programming/">Programming<span>1</span></a></li>
+			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
 		
-			<li><a href="/tags/Node-js/">Node.js<span>2</span></a></li>
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags">...<span>38</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+		
+			<li><a href="/tags">...<span>22</span></a></li>
 		
 		</ul>
 	</div>
@@ -3101,6 +3350,10 @@ Username for &#39;https://github.com&#39;: ^C
 <div class="widget">
   <h4 style="margin-top: 18px;">Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
+      </li>
     
       <li>
         <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
@@ -3116,10 +3369,6 @@ Username for &#39;https://github.com&#39;: ^C
     
       <li>
         <a href="/2024/05/19/biobuilder/appendix/" ><i class="fa fa-file-o"></i>实验室试剂和材料</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/16/人脑海马体的经典计算模型/" ><i class="fa fa-file-o"></i>人脑海马体的经典计算模型</a>
       </li>
     
   </ul>
