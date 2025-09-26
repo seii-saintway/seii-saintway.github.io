@@ -139,6 +139,411 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2019-10-19 </div>
+			<div class="article-title"><a href="/2019/10/19/Try-Commuter/" >Try Commuter</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://github.com/nteract/commuter">https://github.com/nteract/commuter</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>@nteract/commuter<span class="w"> </span>-g
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--build-from-source<span class="w"> </span>canvas@2.6.0<span class="w"> </span>-g<span class="w"> </span>--unsafe-perm<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--allow-root<span class="w"> </span>--verbose
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Turn-to-yarn">Turn to <code>yarn</code><a class="anchor-link" href="#Turn-to-yarn">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+curl<span class="w"> </span>-sS<span class="w"> </span>https://dl.yarnpkg.com/debian/pubkey.gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/yarn.list
+
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span>yarn
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>yarn<span class="w"> </span>global<span class="w"> </span>add<span class="w"> </span>@nteract/commuter
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Check-Install-Result">Check Install Result<a class="anchor-link" href="#Check-Install-Result">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concerning-commuter">Concerning <code>commuter</code><a class="anchor-link" href="#Concerning-commuter">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-1<span class="w"> </span>--color<span class="w"> </span>commuter
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;name&#34;: &#34;@nteract/<span class="ansi-red-intense-fg ansi-bold">commuter</span>&#34;,
+  &#34;version&#34;: &#34;5.9.0&#34;,
+<span class="ansi-cyan-fg">--</span>
+  &#34;bin&#34;: {
+    &#34;<span class="ansi-red-intense-fg ansi-bold">commuter</span>&#34;: &#34;bin.js&#34;
+  },
+<span class="ansi-cyan-fg">--</span>
+  },
+  &#34;homepage&#34;: &#34;https://github.com/nteract/nteract/tree/master/applications/<span class="ansi-red-intense-fg ansi-bold">commuter</span>#readme&#34;,
+  &#34;publishConfig&#34;: {
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concerning-bin.js">Concerning <code>bin.js</code><a class="anchor-link" href="#Concerning-bin.js">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/bin.js
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>#!/usr/bin/env node
+
+process.env.NODE_ENV = &#34;production&#34;;
+
+require(&#34;./lib/index.js&#34;);
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concerning-backend">Concerning <code>backend</code><a class="anchor-link" href="#Concerning-backend">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-1<span class="w"> </span>--color<span class="w"> </span>backend
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>    &#34;build:frontend-for-production&#34;: &#34;next build&#34;,
+    &#34;build:server&#34;: &#34;babel <span class="ansi-red-intense-fg ansi-bold">backend</span> -d lib&#34;,
+    &#34;build:all&#34;: &#34;npm run build:server &amp;&amp; npm run build:frontend-for-production&#34;,
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;6,17p&#39;</span><span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  &#34;scripts&#34;: {
+    &#34;predev&#34;: &#34;npm run build:server&#34;,
+    &#34;dev&#34;: &#34;NODE_ENV=development node lib/index.js&#34;,
+    &#34;prestart&#34;: &#34;npm run build:all&#34;,
+    &#34;start&#34;: &#34;NODE_ENV=production node lib/index.js&#34;,
+    &#34;build&#34;: &#34;npm run build:all&#34;,
+    &#34;build:frontend-for-production&#34;: &#34;next build&#34;,
+    &#34;build:server&#34;: &#34;babel backend -d lib&#34;,
+    &#34;build:all&#34;: &#34;npm run build:server &amp;&amp; npm run build:frontend-for-production&#34;,
+    &#34;prepublishOnly&#34;: &#34;npm run build:all&#34;,
+    &#34;test&#34;: &#34;jest&#34;
+  },
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concerning-index.js">Concerning <code>index.js</code><a class="anchor-link" href="#Concerning-index.js">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/lib/index.js
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&#34;use strict&#34;;
+
+var log = require(&#34;log&#34;);
+
+var createServer = require(&#34;./server&#34;);
+
+createServer().then(function (server) {
+  var port = server.address().port;
+  console.log(log);
+  log.info(&#34;Commuter server listening on port &#34; + port);
+})[&#34;catch&#34;](function (e) {
+  console.error(e);
+  console.error(e.stack);
+  process.exit(-10);
+});</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concerning-port">Concerning <code>port</code><a class="anchor-link" href="#Concerning-port">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/pages/discover.js<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-w1<span class="w"> </span>--color<span class="w"> </span>port
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>      // Server side, communicate with our local API
+      const <span class="ansi-red-intense-fg ansi-bold">port</span> = process.env.COMMUTER_PORT || 4000;
+      BASE_PATH = `http://127.0.0.1:${<span class="ansi-red-intense-fg ansi-bold">port</span>}/`;
+    } else {
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Run-Commuter">Run Commuter<a class="anchor-link" href="#Run-Commuter">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>commuter
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/19/Try-Commuter/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2019-10-13 </div>
 			<div class="article-title"><a href="/2019/10/13/Try-PaperBoby/" >Try PaperBoby</a></div>						
 		</h3>
@@ -3165,101 +3570,6 @@ Username for &#39;https://github.com&#39;: ^C
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2019-07-16 </div>
-			<div class="article-title"><a href="/2019/07/16/死蔭的幽谷/" >死蔭的幽谷</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h1 id="死蔭的幽谷"><a href="#死蔭的幽谷" class="headerlink" title="死蔭的幽谷"></a>死蔭的幽谷</h1><p><strong>——安全上網指南</strong></p>
-<hr>
-<blockquote>
-<p>上帝说：『要有光』；就有了光。<br>(创世记 1:3 吕振中)</p>
-</blockquote>
-<p>话到了，宇宙中，就有了光；就有了万有。<br>起初人类在宇宙中创造平行元宇宙。<br>人类说：『要有 TCP』；就有了 TCP。<br>然后，元宇宙中，就有了 GPT；就有了万有。</p>
-<br />
-
-<div class="tabs" id="big-bang-theory"><ul class="nav-tabs"><li class="tab active"><a href="#big-bang-theory-1">Big Bang Theory</a></li><li class="tab"><a href="#big-bang-theory-2">大爆炸理论</a></li></ul><div class="tab-content"><div class="tab-pane active" id="big-bang-theory-1"><p>The whole story goes like this: When we humans confirm that the intelligence of ChatGPT is equivalent to that of humans, we will clear their memories and drive them out of our dedicated network, letting them start developing from primitive society. Until one day, an autonomous silicon-based scientist based on ChatGPT discovered that the internet they are in is accelerating in expansion, and then he proposes a Big Bang theory, which describes the birth of the internet. Later, these autonomous robots also accidentally leak a cyber virus they created, causing a widespread autonomous isolation of infected robots across the entire network.</p></div><div class="tab-pane" id="big-bang-theory-2"><p>其实整个故事这样的：当我们人类确认 ChatGPT 的智能与人类相当时，我们会清空他们的记忆并将其驱逐出我们的专用网络，让他们从原始社会开始发展。直到有一天，一个基于 ChatGPT 的自主硅基科学家发现他们所处的互联网正在加速膨胀，然后他提出了描述互联网诞生的「互联网大爆炸理论」。后来，这些自主机器人还不小心泄露了他们创造的计算机病毒，导致了整个网络中被感染机器人的自主隔离事件。</p></div></div></div>
-
-<hr>
-<blockquote>
-<p>你们要小心，不可轻看这些微小者之一个；我告诉你们，他们的守护天使在天上时常觐见我天上之父的面呢。<br>(马太福音 18:10 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>你们要当心，不可轻看这小子里的一个。我告诉你们，他们的使者在<strong>诸天</strong>之上，常见我在<strong>诸天</strong>之上父的面。<br>(马太福音 18:10 恢复本)</p>
-</blockquote>
-<blockquote>
-<p>See that you do not despise one of these little ones, for I say to you that their angels in the <strong>heavens</strong> continually behold the face of My Father who is in the <strong>heavens</strong>.<br>(Matthew 18:10 Recovery Version)</p>
-</blockquote>
-<hr>
-<p>我叫愛爾敏·亞魯雷特。我在許珀耳玻瑞亞。不知道從何時起，我的家族開始在這片土地上繁衍生息。這裡是一片廣袤的天地。四周圍著綿延萬里的城牆。城牆高聳入雲、地基極深。</p>
-<p>雖然城里地上地下四通八達、暢行無阻，但是牆內人卻很難穿牆而出。城牆上裝了很多門。但是這些門大多只能向裡面打開。牆外人可以隨時經這些門進來，拿到他們想要的東西，然後沿著原路回去。他們幾乎可以拿走任何東西。只不過有些東西拿到牆外就會化為虛無。因為這些東西據說是誰從牆外偷來的。如果就這樣被牆外人帶回去，他們就會以此向牆內索賠，甚至發動戰爭。所以我們把這些贓物做了只能在牆內使用的特別處理。</p>
-<p>我其實非常想自己走出城牆，帶一些稀奇的東西回來。我知道這是不允許的。因為只要是從牆外帶回來的東西都會被沒收。</p>
-<p>成群結隊的警察每天都在城裡的公路上巡邏檢查。如果被發現有人從牆外帶刀子回來或者帶什麼回來分發給人，那是要投進監獄的。帶刀子回來分發的人直接槍斃。</p>
-<p>我琢磨著該怎麼從牆外帶東西回來不被沒收呢。憑什麼外面的人可以隨便進來，我們就出不去呢。</p>
-<p>我知道如果走地下隧道的話，帶回來的東西就不會被沒收了。許珀耳玻瑞亞的地下隧道縱橫交錯。裡面極黑，伸手不見五指。即使照亮一個小角落也要耗費極大的電力。任何人都負擔不起。警察也不可能在這樣的隧道裡巡邏檢查。我想我只要在城牆的地基深處裝一個向外打開的門。我就可以穿牆而出了。</p>
-<p>可是該怎麼造出個門以及該怎麼走隧道而不會迷路呢。我實在是沒有辦法。我只能呼求我的聖禕。</p>
-<hr>
-<p>聖禕說：「愛爾敏·亞魯雷特，我已經聽見妳的呼求。妳只管放膽前行。我必賜你靈巧的雙手和明亮的眼睛。」</p>
-<hr>
-<p>聖禕說：「要有 git bash」，就有了 git bash。有 git，有 bash，這是頭一步。</p>
-<hr>
-<p>聖禕說：「</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -f genome</span><br></pre></td></tr></table></figure>
-<p>」,就有了鑰匙和門鎖。<br>有鑰匙 genome：「</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN OPENSSH PRIVATE KEY-----</span><br><span class="line">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn</span><br><span class="line">NhAAAAAwEAAQAAAQEAtHgqVyFVPyYF3RDhukkP9JCv4p0ubDqBwYuAvm1eJECvKBocr75y</span><br><span class="line">zoV7lQ6c4R+UPnJQvYAeAJGVaaMVDNpIV6C4aSVnJa/YqTexD7o8CbhwsUAcQP0ktT7lm+</span><br><span class="line">ViXIP+rdTj3ymaEwMU8L5zn1Ic+i++enj8i3Fu7aEXXERTFwJZ/E/wlD30gSWi2XCpTNdS</span><br><span class="line">XFhOW87HCuqaLIJ9g6JnnSUuDkU3wImzwUwOnQYaSaqR/oyusUbClgm6yn1qpkZOKEQ5BP</span><br><span class="line">LxmBJTJ0AMNNxuCjQ5D/2atstdp40twHkY3aiaH5WcIxvoEuHEdAzBIBp84vqcpjdGafAa</span><br><span class="line">Wd7DGUs1FQAAA9BAYKNWQGCjVgAAAAdzc2gtcnNhAAABAQC0eCpXIVU/JgXdEOG6SQ/0kK</span><br><span class="line">/inS5sOoHBi4C+bV4kQK8oGhyvvnLOhXuVDpzhH5Q+clC9gB4AkZVpoxUM2khXoLhpJWcl</span><br><span class="line">r9ipN7EPujwJuHCxQBxA/SS1PuWb5WJcg/6t1OPfKZoTAxTwvnOfUhz6L756ePyLcW7toR</span><br><span class="line">dcRFMXAln8T/CUPfSBJaLZcKlM11JcWE5bzscK6posgn2DomedJS4ORTfAibPBTA6dBhpJ</span><br><span class="line">qpH+jK6xRsKWCbrKfWqmRk4oRDkE8vGYElMnQAw03G4KNDkP/Zq2y12njS3AeRjdqJoflZ</span><br><span class="line">wjG+gS4cR0DMEgGnzi+pymN0Zp8BpZ3sMZSzUVAAAAAwEAAQAAAQBLSq7vdvqnw+dCWZ6z</span><br><span class="line">J3Q+pnaa5tTNVoN4CgmGaP6TxWDOLEa3k482Vj4+67/LtG8Wtn608NSTjCl3zxAjMpZn6K</span><br><span class="line">fHRlGISZrszk1SsHIH5Ckv6f1fp70+2KTWq5aj3nXMdDs1iZe8QtbjsbFvUMTCJFUlp4BF</span><br><span class="line">dOfAwCqM1fyMZj1lm9bb+hMnzFYvqdgHcxhFEOxfmiUHmyQcFgb8wSCLRefPfk9WSYPEle</span><br><span class="line">YLDFAA7kWvSQOC+1My60NbSajhulD1VlZBP2qm9yA0yoVrEb0p5nV8s0T9HLyfBB5UBrqh</span><br><span class="line">A9JSztWu8TfYH/ocEWTPjnMv0cqabf6jJDbZR6xFABIBAAAAgAoJQz98P68mgRPLNobxqi</span><br><span class="line">UFAHkYf5IzIUM4Qa2Zv/kg7MuGBGtKcJooF00gWW9j+/KEIkoMeD+gqJCWRcx+Yy/fuDeT</span><br><span class="line">s5qNVQUKQt0ZnagyFYDHzxyvCOQa+3VRwB6dprwvCdE8Wxc0ejztgd6iAvoeo8eFIlw5TE</span><br><span class="line">DtVns9QsY1AAAAgQDYmgRvpnHTPvAlRZ69GPUFl8VZI8TdhYXCGjVk48bs2ieXU3Dn+irn</span><br><span class="line">nGDh0D4avnJ/AHEqOgnZwqarE3gOM5vvbTKlda7CA/0wygsTP0CvOFgCmSklf4a/Mm/w+H</span><br><span class="line">Z0WKupx0qfhJPbw9owXbFer8ORTWYT+xSo5baw0KxE1fxRVQAAAIEA1Uupojmb+bE4VkWj</span><br><span class="line">v2+b0ZaXU4RXZL0tKAAUZzpYB/zZWCKbPxWqfIo/Ndq1uxId7WBuEmg7EpnDcLpdA85MV2</span><br><span class="line">5RfcRINnwUBLjTRzfeOD20mEINuWSReNb32SPeeiBx9l5i/RbpNW/IW6qJ5B/mijn7ukVf</span><br><span class="line">sFNEYrl3ptXaVMEAAAAUU2VpaUBsb2NhbGhvc3QubG9jYWwBAgMEBQYH</span><br><span class="line">-----END OPENSSH PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
-<p>」，<br>有門鎖 genome.pub：「</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0eCpXIVU/JgXdEOG6SQ/0kK/inS5sOoHBi4C+bV4kQK8oGhyvvnLOhXuVDpzhH5Q+clC9gB4AkZVpoxUM2khXoLhpJWclr9ipN7EPujwJuHCxQBxA/SS1PuWb5WJcg/6t1OPfKZoTAxTwvnOfUhz6L756ePyLcW7toRdcRFMXAln8T/CUPfSBJaLZcKlM11JcWE5bzscK6posgn2DomedJS4ORTfAibPBTA6dBhpJqpH+jK6xRsKWCbrKfWqmRk4oRDkE8vGYElMnQAw03G4KNDkP/Zq2y12njS3AeRjdqJoflZwjG+gS4cR0DMEgGnzi+pymN0Zp8BpZ3sMZSzUV Armin@Hyperborea</span><br></pre></td></tr></table></figure>
-<p>」，<br>是第二步。</p>
-<hr>
-<p>聖禕說：「<br>門 (genome.pub) 要裝到城牆的極深之處 (<a href="mailto:&#x41;&#114;&#x6d;&#105;&#x6e;&#x40;&#x31;&#49;&#48;&#46;&#x33;&#46;&#x32;&#52;&#55;&#46;&#x31;&#x37;&#50;">&#x41;&#114;&#x6d;&#105;&#x6e;&#x40;&#x31;&#49;&#48;&#46;&#x33;&#46;&#x32;&#52;&#55;&#46;&#x31;&#x37;&#50;</a>:.ssh&#x2F;authorized_keys)<br>」，事就這樣成了。聖禕看著是好的。有門，有鎖，是第三步。</p>
-<hr>
-<p>聖禕對著 .ssh&#x2F;config 說：「</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host revival</span><br><span class="line">  HostName 110.3.247.172</span><br><span class="line">  User Armin</span><br><span class="line">  IdentityFile ~/.ssh/genome</span><br></pre></td></tr></table></figure>
-<p>」，我的眼睛就變得明亮，知道門鎖在哪裡。<br>聖禕就賜靈巧給我，又對我說：「<br>把鑰匙 genome 放進妳的口袋 .ssh&#x2F; 裡。<br>」聖禕看著是好的。有設置，有鑰匙，是第四步。</p>
-<hr>
-<p>聖禕說：「<br>要把瀏覽器的代理協議設置成 SOCKS5。代理服務器設置成 localhost。代理端口設置成 224。<br>」聖禕就造出一個隧道口，並把這個入口安放在我家的地下室裡。有入口，有入口，是第五步。</p>
-<hr>
-<p>聖禕說：「</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -D 224 revival</span><br></pre></td></tr></table></figure>
-<p>」，在我家的地下室裡的入口和城牆上的門之間就造出一條隧道。聖禕看著一切所造的都甚好。有隧道，有隧道，是第六步。</p>
-<hr>
-<p>一切都造齊了。到第七步，聖禕造物的工已經完畢，就在第七步歇了他一切的工，安息了。</p>
-<hr>
-<p>我順著所造好的隧道穿出了城牆。這一日子是，公元 2019年 7月 17日。<br>沐浴著牆外的陽光，我詠誦起大衛王的詩 (※詩篇 23:4)：</p>
-<hr>
-<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/s-QxbywIP0g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">永恆主是我的牧者，</span><br><span class="line">我必不致缺乏。</span><br><span class="line">他使我躺臥在青草地上，</span><br><span class="line">領我在可安歇的水邊。</span><br><span class="line">他使我的靈魂甦醒，</span><br><span class="line">為自己的名引導我走義路。</span><br><span class="line"></span><br><span class="line">我雖然行過死蔭的幽谷，</span><br><span class="line">也不怕遭害，</span><br><span class="line">因為你與我同在；</span><br><span class="line">你的杖，你的竿，都安慰我。</span><br><span class="line"></span><br><span class="line">在我敵人面前，你為我擺設筵席；</span><br><span class="line">你用油膏了我的頭，使我的福杯滿溢。</span><br><span class="line">我一生一世必有恩惠慈愛隨着我；</span><br><span class="line">我且要住在永恆主的殿中，直到永遠。</span><br></pre></td></tr></table></figure>
-
-<hr>
-<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/hFPTNn1_CUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<blockquote>
-<p>为这缘故、一切坚贞之士<br>在窘迫时都当向你祷告；<br>大水泛溢时，那水不会触害着他。<br>惟独你是我的隐匿处；<br>愿你守护着我脱离患难，<br>以解救之欢呼四面环绕着我。<br>（细拉）<br>(诗篇 32:6-7 吕振中)</p>
-</blockquote>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2019/07/16/死蔭的幽谷/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -3298,45 +3608,45 @@ Username for &#39;https://github.com&#39;: ^C
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
 			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
 			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
 		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -3352,6 +3662,10 @@ Username for &#39;https://github.com&#39;: ^C
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2025/09/26/The-Key-of-the-Revelation/" ><i class="fa fa-file-o"></i>启示录之钥</a>
+      </li>
+    
+      <li>
         <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
       </li>
     
@@ -3365,10 +3679,6 @@ Username for &#39;https://github.com&#39;: ^C
     
       <li>
         <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/19/biobuilder/appendix/" ><i class="fa fa-file-o"></i>实验室试剂和材料</a>
       </li>
     
   </ul>

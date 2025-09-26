@@ -140,6 +140,629 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2020-04-10 </div>
+			<div class="article-title"><a href="/2020/04/10/Try-JupyterHub-and-BinderHub/" >Try JupyterHub and BinderHub</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://github.com/jupyterhub/jupyterhub-deploy-teaching">https://github.com/jupyterhub/jupyterhub-deploy-teaching</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Authentication-and-User-Basics">Authentication and User Basics<a class="anchor-link" href="#Authentication-and-User-Basics">&#182;</a></h1><p><a target="_blank" rel="noopener" href="https://jupyterhub.readthedocs.io/en/stable/getting-started/authenticators-users-basics.html">https://jupyterhub.readthedocs.io/en/stable/getting-started/authenticators-users-basics.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Zero-to-JupyterHub">Zero to JupyterHub<a class="anchor-link" href="#Zero-to-JupyterHub">&#182;</a></h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jupyterhub/zero-to-jupyterhub-k8s">https://github.com/jupyterhub/zero-to-jupyterhub-k8s</a></li>
+<li><a target="_blank" rel="noopener" href="https://z2jh.jupyter.org/en/latest/optimization.html">https://z2jh.jupyter.org/en/latest/optimization.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://z2jh.jupyter.org/en/latest/advanced.html">https://z2jh.jupyter.org/en/latest/advanced.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jupyterhub/oauthenticator">https://github.com/jupyterhub/oauthenticator</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mogthesprog/jwtauthenticator">https://github.com/mogthesprog/jwtauthenticator</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54636656/how-do-i-use-google-iap-for-authenticating-to-jupyterhub">https://stackoverflow.com/questions/54636656/how-do-i-use-google-iap-for-authenticating-to-jupyterhub</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="JupyterLab-on-JupyterHub">JupyterLab on JupyterHub<a class="anchor-link" href="#JupyterLab-on-JupyterHub">&#182;</a></h1><ul>
+<li><a target="_blank" rel="noopener" href="https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html">https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55132540/jupyterlab-on-jupyterhub">https://stackoverflow.com/questions/55132540/jupyterlab-on-jupyterhub</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Add-a-custom-login-page-and-assignments-directory-for-each-user-on-a-Jupyter-Hub-server">Add a custom login page and assignments directory for each user on a Jupyter Hub server<a class="anchor-link" href="#Add-a-custom-login-page-and-assignments-directory-for-each-user-on-a-Jupyter-Hub-server">&#182;</a></h1><p><a target="_blank" rel="noopener" href="https://pythonforundergradengineers.com/assignments-dir-and-custom-login-page-to-jupyterhub.html">https://pythonforundergradengineers.com/assignments-dir-and-custom-login-page-to-jupyterhub.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Security-in-the-Jupyter-notebook-server">Security in the Jupyter notebook server<a class="anchor-link" href="#Security-in-the-Jupyter-notebook-server">&#182;</a></h1><p><a target="_blank" rel="noopener" href="https://jupyter-notebook.readthedocs.io/en/stable/security.html#Our-security-model">https://jupyter-notebook.readthedocs.io/en/stable/security.html#Our-security-model</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Try-BinderHub">Try BinderHub<a class="anchor-link" href="#Try-BinderHub">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>create<span class="w"> </span><span class="err">\</span>
+  <span class="o">--</span><span class="n">machine</span><span class="o">-</span><span class="nb">type</span> <span class="n">n1</span><span class="o">-</span><span class="n">standard</span><span class="o">-</span><span class="mi">1</span> \
+  <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">1</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">autoscaling</span> <span class="o">--</span><span class="nb">min</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">0</span> <span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">nodes</span> <span class="mi">2</span> \
+  <span class="o">--</span><span class="n">zone</span> <span class="n">us</span><span class="o">-</span><span class="n">central1</span><span class="o">-</span><span class="n">b</span> <span class="o">--</span><span class="n">cluster</span><span class="o">-</span><span class="n">version</span> <span class="n">latest</span> \
+  <span class="n">jhub</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>get-credentials<span class="w"> </span>jhub<span class="w"> </span>--zone<span class="w"> </span>us-central1-b<span class="w"> </span>--project<span class="w"> </span>sandbox-243014
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>clusterrolebinding<span class="w"> </span>cluster-admin-binding<span class="w"> </span><span class="err">\</span>
+  <span class="o">--</span><span class="n">clusterrole</span><span class="o">=</span><span class="n">cluster</span><span class="o">-</span><span class="n">admin</span> \
+  <span class="o">--</span><span class="n">user</span><span class="o">=</span><span class="n">saintway</span><span class="o">.</span><span class="n">sakaru</span><span class="nd">@gmail</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>--namespace<span class="w"> </span>kube-system<span class="w"> </span>create<span class="w"> </span>serviceaccount<span class="w"> </span>tiller
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>clusterrolebinding<span class="w"> </span>tiller<span class="w"> </span>--clusterrole<span class="o">=</span>cluster-admin<span class="w"> </span>--serviceaccount<span class="o">=</span>kube-system:tiller
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>init<span class="w"> </span>--service-account<span class="w"> </span>tiller<span class="w"> </span>--wait<span class="w"> </span>--upgrade
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>kronhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Install-JupyterHub">Install JupyterHub<a class="anchor-link" href="#Install-JupyterHub">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>jupyterhub<span class="w"> </span>https://jupyterhub.github.io/helm-chart/
+helm<span class="w"> </span>repo<span class="w"> </span>update
+helm<span class="w"> </span>upgrade<span class="w"> </span>jupyterhub<span class="w"> </span>jupyterhub/jupyterhub<span class="w"> </span>--install<span class="w"> </span>--namespace<span class="w"> </span>kronhub<span class="w"> </span>--values<span class="w"> </span>config.yaml
+helm<span class="w"> </span>list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>--namespace<span class="w"> </span>kronhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>describe<span class="w"> </span>service<span class="w"> </span>proxy-public<span class="w"> </span>--namespace<span class="w"> </span>kronhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Install-BinderHub">Install BinderHub<a class="anchor-link" href="#Install-BinderHub">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Service Account kronhub-builder (groups can be set!)</span>
+<span class="o">!</span>mkdir<span class="w"> </span>~/kronhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>one way for <code>secret.yaml</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/secret.yaml</span>
+<span class="s">jupyterhub:</span>
+<span class="s">  hub:</span>
+<span class="s">    services:</span>
+<span class="s">      binder:</span>
+<span class="s">        apiToken: &quot;$(openssl rand -hex 32)&quot;</span>
+<span class="s">  proxy:</span>
+<span class="s">    secretToken: &quot;$(openssl rand -hex 32)&quot;</span>
+<span class="s">registry:</span>
+<span class="s">  url: https://gcr.io</span>
+<span class="s">  password: |</span>
+<span class="s">$(cat ~/sandbox-243014-09712d6ea91c.json | sed -r &#39;s#[ ]*([^ ].*)#    \1#g&#39;)</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>another way for <code>secret.yaml</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\</span>
+<span class="s2">jupyterhub:</span>
+<span class="s2">  hub:</span>
+<span class="s2">    services:</span>
+<span class="s2">      binder:</span>
+<span class="s2">        apiToken: \&quot;</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="k">)</span><span class="s2">\&quot;</span>
+<span class="s2">  proxy:</span>
+<span class="s2">    secretToken: \&quot;</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="k">)</span><span class="s2">\&quot;</span>
+<span class="s2">registry:</span>
+<span class="s2">  url: https://gcr.io</span>
+<span class="s2">  password: |</span>
+<span class="k">$(</span>cat<span class="w"> </span>~/sandbox-243014-09712d6ea91c.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;s#[ ]*([^ ].*)#    \1#g&#39;</span><span class="k">)</span><span class="s2">\</span>
+<span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/kronhub/secret.yaml
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>config.yaml</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+<span class="s">replicas: 1.0</span>
+<span class="s">config:</span>
+<span class="s">  BinderHub:</span>
+<span class="s">    use_registry: true</span>
+<span class="s">    image_prefix: gcr.io/$(\</span>
+<span class="s">      cat ~/sandbox-243014-09712d6ea91c.json \</span>
+<span class="s">    | grep -oe &#39;&quot;project_id&quot;: &quot;[^&quot;]*&quot;,&#39; \</span>
+<span class="s">    | sed -r &#39;s#&quot;project_id&quot;: &quot;([^&quot;]*)&quot;,#\1#g&#39; \</span>
+<span class="s">    )/kronhub-</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get project id in many ways</span>
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>get-value<span class="w"> </span>project
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>list<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;value(core.project)&#39;</span>
+<span class="o">!</span>gcloud<span class="w"> </span>config<span class="w"> </span>configurations<span class="w"> </span>list<span class="w"> </span>--format<span class="w"> </span><span class="s1">&#39;value(PROJECT)&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>jupyterhub<span class="w"> </span>https://jupyterhub.github.io/helm-chart
+helm<span class="w"> </span>repo<span class="w"> </span>update
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="helm-install"><strong>helm install</strong><a class="anchor-link" href="#helm-install">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+helm<span class="w"> </span>install<span class="w"> </span>jupyterhub/binderhub<span class="w"> </span>--version<span class="o">=</span><span class="m">0</span>.2.0-29e7546<span class="w"> </span>--name<span class="o">=</span>binderhub<span class="w"> </span>--namespace<span class="o">=</span>kronhub<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>~/kronhub/secret.yaml<span class="w"> </span>-f<span class="w"> </span>~/kronhub/config.yaml
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><a target="_blank" rel="noopener" href="https://helm.sh/docs/using_helm/#securing-your-helm-installation">Securing your Helm Installation</a></strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jupyterhub/binderhub.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/binderhub/helm-chart/binderhub<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>helm<span class="w"> </span>dependency<span class="w"> </span>update
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>~/binderhub/helm-chart<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>helm<span class="w"> </span>dep<span class="w"> </span>up<span class="w"> </span>binderhub
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://helm.sh/docs/developing_charts/">https://helm.sh/docs/developing_charts/</a></li>
+<li><a target="_blank" rel="noopener" href="https://helm.sh/docs/using_helm/#quickstart">https://helm.sh/docs/using_helm/#quickstart</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+<span class="s">replicas: 1.0</span>
+<span class="s">config:</span>
+<span class="s">  BinderHub:</span>
+<span class="s">    use_registry: true</span>
+<span class="s">    image_prefix: gcr.io/$(\</span>
+<span class="s">      cat ~/sandbox-243014-09712d6ea91c.json \</span>
+<span class="s">    | grep -oe &#39;&quot;project_id&quot;: &quot;[^&quot;]*&quot;,&#39; \</span>
+<span class="s">    | sed -r &#39;s#&quot;project_id&quot;: &quot;([^&quot;]*)&quot;,#\1#g&#39; \</span>
+<span class="s">    )/kronhub-</span>
+<span class="s">    hub_url: $(kubectl --namespace=kronhub get svc proxy-public \</span>
+<span class="s">               -o custom-columns=&#39;:.status.loadBalancer.ingress[0].ip&#39; \</span>
+<span class="s">             | grep -oe &#39;[^\n]*&#39;)</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>helm<span class="w"> </span>upgrade<span class="w"> </span>binderhub<span class="w"> </span>jupyterhub/binderhub<span class="w"> </span>--version<span class="o">=</span><span class="m">0</span>.2.0-29e7546<span class="w"> </span>-f<span class="w"> </span>~/kronhub/secret.yaml<span class="w"> </span>-f<span class="w"> </span>~/kronhub/config.yaml
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>--namespace<span class="w"> </span>kronhub<span class="w"> </span>proxy-public<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.loadBalancer.ingress[0].ip}&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>kubectl<span class="w"> </span>--namespace<span class="o">=</span>kronhub<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>binder
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="BinderHub---Enabling-Authentication"><a target="_blank" rel="noopener" href="https://binderhub.readthedocs.io/en/latest/authentication.html">BinderHub - Enabling Authentication</a><a class="anchor-link" href="#BinderHub---Enabling-Authentication">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ~/kronhub/config.yaml</span>
+<span class="s">replicas: 1.0</span>
+<span class="s">config:</span>
+<span class="s">  BinderHub:</span>
+<span class="s">    use_registry: true</span>
+<span class="s">    image_prefix: gcr.io/$(\</span>
+<span class="s">      cat ~/sandbox-243014-09712d6ea91c.json \</span>
+<span class="s">    | grep -oe &#39;&quot;project_id&quot;: &quot;[^&quot;]*&quot;,&#39; \</span>
+<span class="s">    | sed -r &#39;s#&quot;project_id&quot;: &quot;([^&quot;]*)&quot;,#\1#g&#39; \</span>
+<span class="s">    )/kronhub-</span>
+<span class="s">    hub_url: $(kubectl --namespace=kronhub get svc proxy-public \</span>
+<span class="s">               -o custom-columns=&#39;:.status.loadBalancer.ingress[0].ip&#39; \</span>
+<span class="s">             | grep -oe &#39;[^\n]*&#39;)</span>
+<span class="s">    auth_enabled: true</span>
+
+<span class="s">jupyterhub:</span>
+<span class="s">  cull:</span>
+<span class="s">    # do cull authenticated users</span>
+<span class="s">    users: True</span>
+
+<span class="s">  hub:</span>
+<span class="s">    redirectToServer: false</span>
+<span class="s">    services:</span>
+<span class="s">      binder:</span>
+<span class="s">        oauth_redirect_uri: &quot;http://$(kubectl --namespace=kronhub get svc binder -o jsonpath=&#39;{.status.loadBalancer.ingress[0].ip}&#39;)/oauth_callback&quot;</span>
+<span class="s">        oauth_client_id: &quot;binder-oauth-client-test&quot;</span>
+<span class="s">    extraConfig:</span>
+<span class="s">      binder: |</span>
+<span class="s">        from kubespawner import KubeSpawner</span>
+
+<span class="s">        class BinderSpawner(KubeSpawner):</span>
+<span class="s">          def start(self):</span>
+<span class="s">            if &#39;image&#39; in self.user_options:</span>
+<span class="s">              # binder service sets the image spec via user options</span>
+<span class="s">              self.image = self.user_options[&#39;image&#39;]</span>
+<span class="s">            return super().start()</span>
+<span class="s">        c.JupyterHub.spawner_class = BinderSpawner</span>
+
+<span class="s">  singleuser:</span>
+<span class="s">    # to make notebook servers aware of hub</span>
+<span class="s">    cmd: jupyterhub-singleuser</span>
+
+<span class="s">  auth: {}</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2020/04/10/Try-JupyterHub-and-BinderHub/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2020-04-10 </div>
 			<div class="article-title"><a href="/2020/04/10/Try-NTERACT/" >Try NTERACT</a></div>						
 		</h3>
 	
@@ -794,6 +1417,7 @@
 
 <h1 class="sleep-title">睡眠周期与活力</h1>
 
+<p><a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-cn/%E7%9D%A1%E7%9C%A0%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6">睡眠神经科学</a></p>
 <div class="emotion-container">
     <table class="emotion-table">
         <!-- 顶层 -->
@@ -4105,411 +4729,6 @@ GROUP BY
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2019-10-19 </div>
-			<div class="article-title"><a href="/2019/10/19/Try-Commuter/" >Try Commuter</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a target="_blank" rel="noopener" href="https://github.com/nteract/commuter">https://github.com/nteract/commuter</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>@nteract/commuter<span class="w"> </span>-g
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--build-from-source<span class="w"> </span>canvas@2.6.0<span class="w"> </span>-g<span class="w"> </span>--unsafe-perm<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--allow-root<span class="w"> </span>--verbose
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Turn-to-yarn">Turn to <code>yarn</code><a class="anchor-link" href="#Turn-to-yarn">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>%%bash
-curl<span class="w"> </span>-sS<span class="w"> </span>https://dl.yarnpkg.com/debian/pubkey.gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/yarn.list
-
-sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span>yarn
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>yarn<span class="w"> </span>global<span class="w"> </span>add<span class="w"> </span>@nteract/commuter
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Check-Install-Result">Check Install Result<a class="anchor-link" href="#Check-Install-Result">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Concerning-commuter">Concerning <code>commuter</code><a class="anchor-link" href="#Concerning-commuter">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-1<span class="w"> </span>--color<span class="w"> </span>commuter
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{
-  &#34;name&#34;: &#34;@nteract/<span class="ansi-red-intense-fg ansi-bold">commuter</span>&#34;,
-  &#34;version&#34;: &#34;5.9.0&#34;,
-<span class="ansi-cyan-fg">--</span>
-  &#34;bin&#34;: {
-    &#34;<span class="ansi-red-intense-fg ansi-bold">commuter</span>&#34;: &#34;bin.js&#34;
-  },
-<span class="ansi-cyan-fg">--</span>
-  },
-  &#34;homepage&#34;: &#34;https://github.com/nteract/nteract/tree/master/applications/<span class="ansi-red-intense-fg ansi-bold">commuter</span>#readme&#34;,
-  &#34;publishConfig&#34;: {
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Concerning-bin.js">Concerning <code>bin.js</code><a class="anchor-link" href="#Concerning-bin.js">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/bin.js
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>#!/usr/bin/env node
-
-process.env.NODE_ENV = &#34;production&#34;;
-
-require(&#34;./lib/index.js&#34;);
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Concerning-backend">Concerning <code>backend</code><a class="anchor-link" href="#Concerning-backend">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-1<span class="w"> </span>--color<span class="w"> </span>backend
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>    &#34;build:frontend-for-production&#34;: &#34;next build&#34;,
-    &#34;build:server&#34;: &#34;babel <span class="ansi-red-intense-fg ansi-bold">backend</span> -d lib&#34;,
-    &#34;build:all&#34;: &#34;npm run build:server &amp;&amp; npm run build:frontend-for-production&#34;,
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;6,17p&#39;</span><span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/package.json
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>  &#34;scripts&#34;: {
-    &#34;predev&#34;: &#34;npm run build:server&#34;,
-    &#34;dev&#34;: &#34;NODE_ENV=development node lib/index.js&#34;,
-    &#34;prestart&#34;: &#34;npm run build:all&#34;,
-    &#34;start&#34;: &#34;NODE_ENV=production node lib/index.js&#34;,
-    &#34;build&#34;: &#34;npm run build:all&#34;,
-    &#34;build:frontend-for-production&#34;: &#34;next build&#34;,
-    &#34;build:server&#34;: &#34;babel backend -d lib&#34;,
-    &#34;build:all&#34;: &#34;npm run build:server &amp;&amp; npm run build:frontend-for-production&#34;,
-    &#34;prepublishOnly&#34;: &#34;npm run build:all&#34;,
-    &#34;test&#34;: &#34;jest&#34;
-  },
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Concerning-index.js">Concerning <code>index.js</code><a class="anchor-link" href="#Concerning-index.js">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/lib/index.js
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>&#34;use strict&#34;;
-
-var log = require(&#34;log&#34;);
-
-var createServer = require(&#34;./server&#34;);
-
-createServer().then(function (server) {
-  var port = server.address().port;
-  console.log(log);
-  log.info(&#34;Commuter server listening on port &#34; + port);
-})[&#34;catch&#34;](function (e) {
-  console.error(e);
-  console.error(e.stack);
-  process.exit(-10);
-});</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Concerning-port">Concerning <code>port</code><a class="anchor-link" href="#Concerning-port">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>/usr/local/share/.config/yarn/global/node_modules/@nteract/commuter/pages/discover.js<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-w1<span class="w"> </span>--color<span class="w"> </span>port
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>      // Server side, communicate with our local API
-      const <span class="ansi-red-intense-fg ansi-bold">port</span> = process.env.COMMUTER_PORT || 4000;
-      BASE_PATH = `http://127.0.0.1:${<span class="ansi-red-intense-fg ansi-bold">port</span>}/`;
-    } else {
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Run-Commuter">Run Commuter<a class="anchor-link" href="#Run-Commuter">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>commuter
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2019/10/19/Try-Commuter/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -4548,45 +4767,45 @@ createServer().then(function (server) {
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
 			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
 		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -4602,6 +4821,10 @@ createServer().then(function (server) {
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2025/09/26/The-Key-of-the-Revelation/" ><i class="fa fa-file-o"></i>启示录之钥</a>
+      </li>
+    
+      <li>
         <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
       </li>
     
@@ -4615,10 +4838,6 @@ createServer().then(function (server) {
     
       <li>
         <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/19/biobuilder/appendix/" ><i class="fa fa-file-o"></i>实验室试剂和材料</a>
       </li>
     
   </ul>

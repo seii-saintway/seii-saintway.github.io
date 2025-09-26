@@ -7490,6 +7490,184 @@ is_error = True
 <li><strong>awslabs&#x2F;mcp&#x2F;terraform-mcp-server</strong> 更侧重 AWS 场景、IaC落地、安全合规、命令实际执行。</li>
 <li><strong>hashicorp&#x2F;terraform-mcp-server</strong> 更偏 Registry 文档&#x2F;模块&#x2F;策略导航与集成，通用性更强，生态兼容更广。</li>
 </ul>
+<hr>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/guides/anthropic_api">Use DeepSeek in Claude Code</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/Downloads<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aws-samples/bedrock-access-gateway
+<span class="nb">cd</span><span class="w"> </span>~/Downloads/bedrock-access-gateway/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3.12<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip3.12<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+brew<span class="w"> </span>install<span class="w"> </span>awscli
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>ap-northeast-1
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>YOUR--AWS-ACCESS-KEY
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>your--aws-secret-access-key--for-gateway
+
+<span class="nb">cd</span><span class="w"> </span>~/Downloads/bedrock-access-gateway/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3.12<span class="w"> </span>-m<span class="w"> </span>uvicorn<span class="w"> </span>api.app:app<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_BASE_URL</span><span class="o">=</span>http://127.0.0.1:8000/api
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_AUTH_TOKEN</span><span class="o">=</span>bedrock
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_TIMEOUT_MS</span><span class="o">=</span><span class="m">600000</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_MODEL</span><span class="o">=</span>apac.anthropic.claude-sonnet-4-20250514-v1:0
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_SMALL_FAST_MODEL</span><span class="o">=</span>anthropic.claude-3-haiku-20240307-v1:0
+<span class="nb">export</span><span class="w"> </span><span class="nv">CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</span><span class="o">=</span><span class="m">1</span>
+
+curl<span class="w"> </span><span class="nv">$ANTHROPIC_BASE_URL</span>/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$ANTHROPIC_AUTH_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;model&quot;: &quot;anthropic.claude-3-haiku-20240307-v1:0&quot;,</span>
+<span class="s1">    &quot;messages&quot;: [</span>
+<span class="s1">      {</span>
+<span class="s1">        &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">        &quot;content&quot;: &quot;Hello!&quot;</span>
+<span class="s1">      }</span>
+<span class="s1">    ]</span>
+<span class="s1">  }&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_BASE_URL</span><span class="o">=</span>http://127.0.0.1:8000/api
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_AUTH_TOKEN</span><span class="o">=</span>bedrock
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_TIMEOUT_MS</span><span class="o">=</span><span class="m">600000</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_MODEL</span><span class="o">=</span>apac.anthropic.claude-sonnet-4-20250514-v1:0
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_SMALL_FAST_MODEL</span><span class="o">=</span>anthropic.claude-3-haiku-20240307-v1:0
+<span class="nb">export</span><span class="w"> </span><span class="nv">CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</span><span class="o">=</span><span class="m">1</span>
+
+curl<span class="w"> </span><span class="nv">$ANTHROPIC_BASE_URL</span>/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$ANTHROPIC_AUTH_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">&quot;model&quot;: &quot;apac.anthropic.claude-sonnet-4-20250514-v1:0&quot;,</span>
+<span class="s1">&quot;max_tokens&quot;: 2048,</span>
+<span class="s1">&quot;messages&quot;: [{</span>
+<span class="s1">&quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">&quot;content&quot;: &quot;Hello!&quot;</span>
+<span class="s1">}],</span>
+<span class="s1">&quot;extra_body&quot;: {</span>
+<span class="s1">&quot;anthropic_beta&quot;: [&quot;interleaved-thinking-2025-05-14&quot;],</span>
+<span class="s1">&quot;thinking&quot;: {&quot;type&quot;: &quot;enabled&quot;, &quot;budget_tokens&quot;: 4096}</span>
+<span class="s1">}</span>
+<span class="s1">}&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_BASE_URL</span><span class="o">=</span>http://127.0.0.1:8000/api
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_AUTH_TOKEN</span><span class="o">=</span>bedrock
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_TIMEOUT_MS</span><span class="o">=</span><span class="m">600000</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_MODEL</span><span class="o">=</span>apac.anthropic.claude-3-sonnet-20240229-v1:0
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_SMALL_FAST_MODEL</span><span class="o">=</span>anthropic.claude-3-haiku-20240307-v1:0
+<span class="nb">export</span><span class="w"> </span><span class="nv">CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_BASE_URL</span><span class="o">=</span>http://127.0.0.1:8000/api
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_AUTH_TOKEN</span><span class="o">=</span>bedrock
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_TIMEOUT_MS</span><span class="o">=</span><span class="m">600000</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_MODEL</span><span class="o">=</span>apac.anthropic.claude-3-5-sonnet-20241022-v2:0
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_SMALL_FAST_MODEL</span><span class="o">=</span>anthropic.claude-3-haiku-20240307-v1:0
+<span class="nb">export</span><span class="w"> </span><span class="nv">CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</span><span class="o">=</span><span class="m">1</span>
+
+curl<span class="w"> </span><span class="nv">$ANTHROPIC_BASE_URL</span>/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$ANTHROPIC_AUTH_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">&quot;model&quot;: &quot;apac.anthropic.claude-3-7-sonnet-20250219-v1:0&quot;,</span>
+<span class="s1">&quot;max_tokens&quot;: 2048,</span>
+<span class="s1">&quot;messages&quot;: [{</span>
+<span class="s1">&quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">&quot;content&quot;: &quot;Hello!&quot;</span>
+<span class="s1">}],</span>
+<span class="s1">&quot;extra_body&quot;: {</span>
+<span class="s1">&quot;anthropic_beta&quot;: [&quot;interleaved-thinking-2025-05-14&quot;],</span>
+<span class="s1">&quot;thinking&quot;: {&quot;type&quot;: &quot;enabled&quot;, &quot;budget_tokens&quot;: 4096}</span>
+<span class="s1">}</span>
+<span class="s1">}&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/guides/anthropic_api">Use DeepSeek in Claude Code</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_BASE_URL</span><span class="o">=</span>https://api.deepseek.com/anthropic
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_AUTH_TOKEN</span><span class="o">=</span><span class="si">${</span><span class="nv">YOUR_API_KEY</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_TIMEOUT_MS</span><span class="o">=</span><span class="m">600000</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_MODEL</span><span class="o">=</span>deepseek-chat
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_SMALL_FAST_MODEL</span><span class="o">=</span>deepseek-chat
+<span class="nb">export</span><span class="w"> </span><span class="nv">CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
 
 	</div>
 

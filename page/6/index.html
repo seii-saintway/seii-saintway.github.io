@@ -139,6 +139,193 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2022-07-26 </div>
+			<div class="article-title"><a href="/2022/07/26/biobuilder/chapter-3/" >DNA 工程基础</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h1 id="第3章-DNA-工程基础"><a href="#第3章-DNA-工程基础" class="headerlink" title="第3章 DNA 工程基础"></a>第3章 DNA 工程基础</h1><p><img src="/biobuilder/056.png" alt="FIGURE"></p>
+<p>您可用于构建的工具通常会定义工程成果。例如，起重机等新型建筑设备使建造摩天大楼成为可能，不断改进的晶体管使我们的计算机运行得越来越快。在本章中，我们考虑合成生物学的一个关键工具，即 DNA 工程。如果我们希望我们在编写遗传密码方面的流畅度与我们在其他编程语言中的流畅度相匹配，就必须有轻松编写、编译和调试 DNA 代码的方法。在本章中，我们将考虑标准化工程技术如何帮助实现这一目标，以及当前的 DNA 工程工具如何工作并适应该环境。</p>
+<h2 id="构建讨论"><a href="#构建讨论" class="headerlink" title="构建讨论"></a>构建讨论</h2><p>轻而易举。别紧张。非常简单。</p>
+<p><img src="/biobuilder/057.png" alt="FIGURE"></p>
+<p>将“轻松”等同于“快乐”的文化习语无处不在。我们似乎向往一种挑战更少的生活，以及一种一切轻松自如的生活。谁不想这样？然而事实证明，<strong>让事情变得简单并不容易</strong>。例如，想想无处不在的自动洗碗机设备。据最新统计，大约 85% 的美国家庭都有洗碗机，尽管我们只用双手、一些热水和海绵就可以完成同样的任务。显然，大多数房主认为将叉子扔进机器比用手清洁更容易。</p>
+<p><img src="/biobuilder/058.png" alt="FIGURE"></p>
+<p>然而，将洗碗机放入如此多的家庭需要 150 多年的发明时间。洗碗机最初是带有手摇曲柄的木箱，可以通过溅水旋转一排盘子。第一个可靠的省时洗碗机是 Josephine Cochrane 的专利发明，她厌倦了她精美的瓷器因手洗而遭受的损坏。由于 KitchenAid 公司的成立（由同一位发明专利的女性创立）以及现代管道的多次升级，这些电器变得广泛可用。甚至可以说，由于热水器、洗碗皂的发明以及可以为孩子们从洗碗机中清空盘子提供的每周津贴，洗碗变得容易了。从这个例子可以清楚地看出，让事情变得更容易需要付出很多努力，而且通常需要很长时间。</p>
+<p>使事情变得简单所涉及的艰苦工作在这里是相关的，因为<strong>许多合成生物学家希望使生物学更容易设计</strong>。任何在生物研究实验室工作过的人都会告诉你，该领域要实现这一目标还有很长的路要走。让生物学按照我们的意愿行事是一项挑战。在活细胞中，变异比比皆是，我们对细胞的工作原理有很好的了解，但并不完全了解。因此，看似简单的实验如果能够成功完成，通常需要比预期更长的时间来完成。工程师们对这些工作的延误和不可预测性感到沮丧，他们敦促合成生物学对基础构建工具、通用编程语言和制造中心进行长期投资。他们争辩说，我们不可能建造复杂的结构，例如帝国大厦，如果没有起重机，可以举起非常重的物体，没有建筑商可以遵循的蓝图，没有钢铁厂来提供所需的建筑材料，那么如果没有类似的东西，我们怎么能建造复杂的生物学呢？用于设计和构建活细胞的资源？</p>
+<p><strong>显而易见的紧张关系是改进工程工具所需的时间和精力与每个人都渴望完成给定工作的渴望之间的关系</strong>。我们之前考虑的洗碗机示例说明了具有相同张力的旧案例。据报道，约瑟芬·科克伦（Josephine Cochrane）对制造机械工作版本的机器需要多长时间感到厌恶，因此她于 1866 年自己发明了这台机器。然而，她的第一台洗碗机的成本很高，使其仅适用于诸如此类的商业场所。作为餐厅和酒店。洗碗机成为家居用品需要 50 多年的成本降低和工程改进。</p>
+<p>在本章中，我们探讨了合成生物学的一个基本要素，如果生物学工程变得更容易，它必须改进：DNA 工程。我们将专注于标准化作为促进这一过程的一种方法，从更强大的工程学科的历史案例中汲取灵感。我们通过研究克隆和聚合酶链式反应 (PCR) 技术，将这些关于标准化的想法应用到 DNA 工程中，这些技术已经超过了一代人的历史，然后我们将注意力转向了一些更现代的 DNA 序列组装技术。</p>
+<h2 id="零件和测量的标准化"><a href="#零件和测量的标准化" class="headerlink" title="零件和测量的标准化"></a>零件和测量的标准化</h2><p>标准，例如电源插座的形状和电压（如图 3-1 所示）以及杯子或克的标准量度，<strong>通过带来一致性和用于描述的通用词汇使工程和生活变得更容易事物</strong>。通过在我们构建或测量时同意某些标准，我们可以确信当我们将它们组合在一起时它们会“匹配”。在没有标准的情况下，我们会遇到令人沮丧的不一致——比如我们为手机或笔记本电脑带错了充电器。</p>
+<hr>
+<p><img src="/biobuilder/059.png" alt="FIGURE"></p>
+<p><strong>图 3-1</strong> 世界各地电源插座标准的变化。世界各地的电源插座标准各不相同，澳大利亚（左）、意大利（中）和美国（右）要求使用独特的插头。</p>
+<hr>
+<h3 id="什么是标准化？"><a href="#什么是标准化？" class="headerlink" title="什么是标准化？"></a>什么是标准化？</h3><p>标准化是成熟工程学科的一个关键属性，因为它使工程师能够更快地实施令人兴奋、创新和有用的解决方案。例如，考虑工业革命期间出现的制造装配线。在此之前，大多数产品都是手工制作的，通常由一个人精心制作所有单独的零件并将它们组合在一起。这个过程发生了变化，<strong>制造因标准和可互换零件的可用性而发生了革命性的变化</strong>。单个零件可以在一个工厂用机器生产，然后在别处组装成各种产品。</p>
+<p>突然之间，在一个地方制造的杠杆可以用于制造钟表、缝纫机或火车车厢，从而提高制造效率并加快工程设计周期。毫无疑问，标准化零件的可用性使工程师能够更快地制作新想法的原型。</p>
+<p><strong>常见的标准化特征包括组件的尺寸、形状、材料属性和行为</strong>。正如乐高积木的巧妙设计所示，这些方面对于正确组装零件非常重要。乐高积木很容易拼合在一起，因为它们都有一定大小和间距的凸块和孔。任何乐高积木顶部的凸块都适合任何其他乐高积木底部的孔，并且这些部件都是由相同的硬塑料制成的，因此它们可以互换并用于构建许多东西。</p>
+<p>世界各地的电源插座为零件的组装标准提供了一个有趣的对比。在这种情况下，“组装”是指将设备插入插座。随着时间的推移，世界各国为其电源插座开发了不同的尺寸、形状和电压。因此，为在美国使用而设计的电器不能直接在其他国家使用，因为插头根本无法插入插座。根据这个讨论，你可能会想，“嘿，等一下，如果世界上有各种类型的电源插座，这些东西肯定不是标准化的！”事实是，标准化并不一定意味着就单一标准达成一致。例如，另一个人可以制作类似乐高积木的不同大小或间距的凸块和孔。尽管如此，每个国家（或类似乐高积木的积木制造商）都必须有自己内部一致的标准，但现有的所有部件并不需要普遍可互换。可变性的缺点是零件不再完全可互换。</p>
+<p>因此，在实践中，工程师们同意使用有限数量的标准，只要它们可以相互转换并且清楚哪个标准单元用于给定项目，它们就可以很好地工作。正如我们将在下一节中讨论的那样，长度测量为标准的重要性和竞争标准的存在提供了一个很好的例子。</p>
+<h3 id="竞争标准"><a href="#竞争标准" class="headerlink" title="竞争标准"></a>竞争标准</h3><p>标准可以（而且确实！）来自任何地方。例如，主要在美国使用的“脚”尺寸（图 3-2）最初是基于人脚的大致长度。当然，不同人的脚长差异很大，所以在最初的形式中，这个“我的脚长”标准可能对个人有用，例如建筑商，独自建造房子。但是，如果这个建筑商需要从木匠那里获取材料，如果他的脚和木匠的脚不一样，那么建筑商就有麻烦了。所需的 16 英尺长的木板可能太长或太短，这取决于谁的脚更大。当然，现在我们有一个标准化的英尺测量来消除这种不一致。</p>
+<hr>
+<p><img src="/biobuilder/060.png" alt="FIGURE"></p>
+<p><strong>图 3-2</strong> 竞争标准示例。我们熟悉的竞争标准的一些示例包括英制与公制长度测量（左）、.tiff 与 .jpg 图像文件（中）以及交流电 (AC) 与直流电 (DC)（右）。</p>
+<hr>
+<p>另一种距离标准，米，最初被定义为赤道和北极之间距离的百万分之一。这个距离因人而异，但很难独立测量。如果建造房屋的建造者以米为单位测量材料而不是用脚测量，他无法直接测量从赤道到北极的分数距离，因此他需要一根米尺来估算所有长度，因为木匠会。</p>
+<p>英尺和米是长度的替代单位，它们提供了竞争标准的示例，以及每种替代标准的优缺点。脚更直接有用，而米更标准。任何给定的标准都没有“正确”或“错误”之分，只有一个可能或多或少适合特定应用的标准。对于需要木匠提供的木板的建筑商来说，重要的是他们都使用相同的单元，否则原定 16 英尺长的木板可能会到达 16 米。而且现在英尺和米都是标准化的，如果需要，工程师也可以在这两种度量之间进行转换，所以两个标准的存在是可行的。</p>
+<p><strong>竞争标准，即使是可互换的标准，也可能导致一些荒谬的解决方法。</strong> 例如，1873 年，马萨诸塞州汤顿的 Mason Machine Works 为大西洋、密西西比和俄亥俄铁路制造了一种漂亮的新火车发动机。但是由于铁路的轨距在制造火车的马萨诸塞州和交付火车的俄亥俄州的轨距不同，因此火车无法在马萨诸塞州的轨道上行驶，必须在平地上运送到目的地车。</p>
+<p><img src="/biobuilder/061.png" alt="FIGURE"></p>
+<p>这个例子说明了标准单元的明显好处，但在实践中，<strong>开发和遵守单一标准对于任何领域来说都是困难的</strong>。除了相互竞争的英制和公制测量系统之外，其他历史示例包括用于视频的 Betamax 与 VHS 以及用于电力的交流电与直流电。也许不同的利益相关者有不同的目标或优先事项，这些偏好导致他们提倡一种标准而不是另一种标准。即使是一个优于另一个标准的标准，如果作为替代品进行推广，也会带来技术、实践和心理障碍。</p>
+<h3 id="如何建立标准"><a href="#如何建立标准" class="headerlink" title="如何建立标准"></a>如何建立标准</h3><p>所有领域都存在如此多的竞争标准的部分原因是<strong>标准可能以一种特别的方式出现</strong>。单个研究人员或工程师可能会开发适合特定需求的测量或制造实践。然后其他人可能会认为该单元很有用并采用它，也许会稍作修改以使其更适合他们自己的目的。这种类型的有机标准开发可能会很混乱，因为研究人员会根据自己的目的以不同的方式调整单元，在新兴标准中产生细微的变化，但它也可以为实验和优化提供极好的机会。围绕这种非正式开发的“伪标准”逐渐达成共识也可以节省时间和金钱，特别是在容易向意想不到的方向发展的快速变化的领域，使得最终所需的标准在一开始就无法得知。</p>
+<p>致力于该领域基础性进展的合成生物学家 Jason Kelly 博士引用了 1858 年铺设的第一条跨大西洋电缆作为特别标准制定的指导性研究。由于跨大西洋电缆必须在水下运行，工程师们面临着测量和维修方面的挑战，这是他们在 1840 年代使用陆地电报线时从未遇到过的挑战。如果固定电话不起作用，则可以对其进行目视检查、测量，然后将其调整为正常运行。海底电缆的维修需要一个不同的计划，因为没有简单的方法可以目视检查它们。相反，工程师们回到了基础。电缆铜线的制造商可以使用各种类型的电池来测量其电气特性以产生标准电压，并使用校准的电流计来记录电流。 <strong>测量结果表明，每根电缆的电阻因制造商而异</strong>，这并不令人惊讶，因为电缆中的铜最多只有 50% 的纯度。尽管如此，对导电特性的精确测量使得即使是不均匀的铜线单元也可以组装成电缆，可以在 2000 多海里和 12000 英尺的海水下运行。 1858 年电缆铺设成功，维多利亚女王和詹姆斯·布坎南总统在英美之间交换信息所需的时间从几天缩短到几小时。</p>
+<p>然而，电报信息在仅仅三周后就结束了，海底电缆的绝缘层出现故障，电缆因无法修复而不得不废弃。然而，随着未来几年技术的改进，后续电缆的故障可以从电缆的岸端追踪。为了粗略地定位故障，电缆制造商依靠他们精确记录的电阻率测量值，然后将维修船派往电路故障的大致位置。定位电报线路中的故障并不依赖于电阻率标准，而是依赖于非均匀电缆的预期行为。</p>
+<p>到 1860 年代后期，建议采用统一的电阻标准，以更好地比较每个电缆制造商收集的数据。英国科学促进会制定了一个新的物理参考标准来定义这个新标准。参考对象是黄铜外壳中的铂合金线圈，他们声称它产生了 1 欧姆的电阻。这个定义有点武断——单欧姆的电阻值没有什么神奇之处——但它提供了必要的基准。该参考标准易于复制，因此可以广泛分发给各个电缆制造商，并附有如何使用它测量电阻的说明，如图 3-3 所示。该参考标准使许多制造商更容易测量其电缆的电气特性，并允许在制造商之间对测量结果进行比较。最初的参考欧姆并不是一个完美的标准，它已经随着时间的推移进行了调整。即便如此，标准化的早期努力被证明对海底电报线的具体应用是有用的，它启动了欧姆标准的发展。</p>
+<p>这个例子的教训与合成生物学特别相关，合成生物学本身还处于标准化的早期阶段。多年来，世界各地的生物实验室一直在使用各种技术从 DNA 片段构建遗传回路，其中一些将在下一节中描述。然而，合成生物学强调遗传电路的可扩展组装，这需要标准化 DNA 的组装。下一节还描述了一些标准化 DNA 部件组合方式的早期想法和努力。</p>
+<hr>
+<p><img src="/biobuilder/062.png" alt="FIGURE"></p>
+<p>图 3-3 定义标准欧姆的参考对象。此图像类似于用于将欧姆定义为电阻测量值的物理参考标准。它包括一个用于进行电阻测量的金属物体及其使用说明。</p>
+<hr>
+<h2 id="DNA-工程实践"><a href="#DNA-工程实践" class="headerlink" title="DNA 工程实践"></a>DNA 工程实践</h2><p>在介绍了标准化在其他工程领域所扮演的角色之后，我们现在将探讨它如何应用于合成生物学以及合成生物学中主要组成部分的物理组装：DNA。</p>
+<p>你可能会想，“生物功能需要这么多重要的分子，比如蛋白质、脂质，以及 DNA 和 RNA——我们不只需要 DNA 来设计生物学吗？”你说得对，DNA 本身是一种惰性分子，只是细胞功能的关键参与者之一，但是由于信息通常从 DNA 流向 RNA 再到蛋白质（称为中心法则的范式），因此对有机体的任何变化 DNA 将影响所有下游功能。正是 DNA 编码的产物，如细胞的酶和结构分子，负责执行使细胞发挥功能的生化功能。归根结底，必须操纵这些功能，这是通过工程 DNA 完成的。换句话说，构建生物系统的部分力量和美妙之处在于，细胞可以仅根据它们所包含的 DNA 序列来改变它们的分子组成。通过这种方式，它们的行为有点像计算机读取软件，只是细胞不是解释零和一，而是读取以 DNA 语言出现的指令。</p>
+<p><img src="/biobuilder/063.png" alt="FIGURE"></p>
+<p>DNA 是一个大分子——更具体地说，它是由四种核苷酸结构单元组成的聚合物，它们头尾相连，形成数百万个核苷酸长的链。DNA 遵循与其他分子相同的化学规则，因此合成生物学家可以通过在核苷酸单体之间形成键来从头开始设计 DNA。此外，合成生物学家可以从从生物系统中提取的天然 DNA 中破坏和重建碱基之间的键。最常见的是，合成生物学家结合使用这两种方法将“合成”和天然存在的 DNA 片段组装成新的和所需的遗传回路。为此，工程师们找到了巧妙的方法来选择负责细胞中类似过程的天然存在的酶，以在称为分子克隆的过程中在试管中进行 DNA 工程反应（参见“克隆酶的起源”，第 54 页）。</p>
+<p>DNA 组装的最终产物称为重组 DNA (rDNA)。rDNA 是指在实验室用分子克隆技术制成的 DNA。产生的 DNA 可以是自然界中可能出现或不出现的序列的组合。rDNA 比现代合成生物学领域早几十年开发，是合成生物学基础章节中描述的传统分子生物学工具包的一部分。在以下部分中，我们将描述 DNA 操作方法中的一些共同原则。然后，我们探讨了三种采用不同标准化水平的具体方法，每种方法都有自己的优点和缺点。</p>
+<h3 id="DNA-组装基础知识"><a href="#DNA-组装基础知识" class="headerlink" title="DNA 组装基础知识"></a>DNA 组装基础知识</h3><p>DNA 组装需要一些基本组件和工具：</p>
+<ul>
+<li>大量 DNA，编码所需的特定功能</li>
+<li>一种精确组合 DNA 片段的方法</li>
+<li>一种将这些工程 DNA 成分引入目标生物体的方法</li>
+</ul>
+<p>可用于操作 DNA 的方法效率低下，因此通常 DNA 工程师从尽可能多的 DNA 开始，然后选择包含所有所需 DNA 成分的相对稀有的 DNA 组合。有几种不同的方法可以产生大量的初始 DNA，包括 PCR、质粒制备和合成。这些过程在我们继续进行时将更详细地讨论，可以单独使用或组合使用以产生广泛的重组 DNA。</p>
+<p>rDNA 通常作为称为质粒的小圆形 DNA 片段通过称为转化的过程引入细胞（见图 3-4）。您可以在多姿多彩的世界一章中阅读更多关于转型过程的信息。基于质粒的 DNA 工程方法的替代方法是直接编辑生物体的基因组，这是可能的，但我们不会在这里讨论。简单的质粒制备方案可以提供所需量的 DNA 作为进一步实验的起始材料。我们可以使用限制性内切酶操作许多市售质粒（参见第 54 页关于“克隆酶的起源”的侧栏）。最低限度，质粒编码一个选择标记，通常是一个赋予药物抗性的标记，以及一个多克隆位点，这是一个包含许多限制性位点的区域，我们可以轻松地插入或移除基因。这样一个最小的质粒可以被纯化，作为一个空白的画布或“骨架”，工程师可以在其中构建新的基因。或者，质粒可能已经包含感兴趣的基因；在这种情况下，质粒被纯化，以便通过几个后续步骤从质粒中提取该基因。在任何一种情况下，质粒制备方法都利用了细胞的自然复制能力，以最少的人力或干预来制作其 DNA 的许多拷贝。因为质粒 DNA 通常比基因组 DNA 更容易操作，所以 rDNA 通常在整个克隆过程中保持质粒形式。</p>
+<hr>
+<p><img src="/biobuilder/064.png" alt="FIGURE"></p>
+<p>图 3-4 标准质粒表示。灰色圆圈代表质粒。蓝色箭头代表质粒的功能部分，箭头代表该组件所需的转录方向。 XbaI、SpeI 和 PstI 标记将被相应限制酶切割的位点。</p>
+<hr>
+<p>PCR（图 3-5）是另一种生产组装所需 DNA 的常用方法。您可以在合成生物学基础章节中阅读有关 PCR 的更多信息。简而言之，使用 PCR，工程师可以生成许多拷贝的特定 DNA 序列，通常长达几千个核苷酸，以线性形式，从只有很少的拷贝开始。除了所需的 DNA 起始材料（也称为模板 DNA）之外，PCR 还需要引发寡聚体，有时称为“引物”，有时称为“寡聚体”，它们是长度可达约 50 个核苷酸的 DNA 短聚合物。为了进行 PCR，模板 DNA、引发寡聚体、酶和缓冲液被放置在机器中以循环通过不同的温度。通过 PCR 产生的 DNA 可以随后插入到质粒中，从而可以通过如前所述的简单质粒制备来分离 DNA 序列的副本。此外，可以对 PCR 产生的 DNA 进行工程改造，使其包含一些有用的修饰。例如，它可以通过将所需的修饰结合到引发寡聚体中而附加短序列，例如限制性位点。</p>
+<hr>
+<p><img src="/biobuilder/065.png" alt="FIGURE"></p>
+<p>图 3-5 聚合酶链式反应。蓝色条代表要扩增的 DNA 序列区域，黑色箭头代表定义该序列边缘的引发寡聚体。</p>
+<hr>
+<p>化学 DNA 合成（图 3-6）是另一种生成 DNA 的方法。核苷酸在试管中被一个一个地添加到不断增长的单链 DNA 链中。然而，指导 DNA 的化学合成有几个优点。一方面，核苷酸以化学方式相互连接，无需任何模板 DNA。因此，所需基因可以仅从有关所需序列的数字信息中产生，而不必事先存在于自然界中。化学 DNA 合成的另一个优点是产品的构建是外包的，这使研究人员可以腾出时间专注于其他实验。然而，在这一点上，化学合成最常用于制造用于 PCR 的引发寡聚体。就其本身而言，这种制造 DNA 的方法受到与合成相关的成本、生成产品所需的时间以及对超长序列合成的一些持续技术限制的限制。但是，将短 DNA 序列的化学合成与基于 PCR 的组装方法相结合的混合方法作为获取天然和合成基因的手段正变得越来越普遍。</p>
+<p>连接酶封闭了 DNA 中的切口，限制性内切酶破坏了 DNA 磷酸二酯骨架中的键。如图 3-7 所示，取决于酶。限制性内切酶和连接酶是分子和合成生物学家的便捷工具，但如果您好奇它们为什么存在于自然界中，下面的侧边栏会解释克隆酶的起源。质粒制备、PCR 和化学合成都是公认的生成起始材料以组装成 rDNA 的方法。如果用相同的限制酶切割不同的 DNA 片段，得到的末端将是互补的，DNA 片段可以相互连接。为了“剪切”和“粘贴”DNA 起始材料，通常使用限制性内切酶。如果使用多种酶，多个“粘性”突出端可以将切割的 DNA 片段相互连接。这些核酸内切酶只有在识别特定的 DNA 序列（称为限制性位点）时才会切割双链 DNA。在它们连接后，rDNA 组装的最后一步是“粘贴”这些片段，通常使用一种酶 DNA 连接酶。有数百种限制性内切酶，每一种都像一把剪刀一样，识别并切割其特定的 DNA 序列，并使一些 DNA 碱基平齐（“平端”）或不成对（“粘性末端”），</p>
+<hr>
+<p><img src="/biobuilder/066.png" alt="FIGURE"></p>
+<p>图 3-6 DNA 合成器。四个橙色小瓶代表试剂，一个用于组装成 DNA 链的每个 DNA 碱基。顶部的计算机界面允许工程师输入他们想要的序列。</p>
+<hr>
+<p><img src="/biobuilder/067.png" alt="FIGURE"></p>
+<p><strong>图 3-7</strong> 重组 DNA。黑色和蓝色条对代表双链 DNA，颜色编码以显示它在哪里被限制性内切酶切割，留下互补的“粘性末端”（左）或“平末端”（右），可以重新连接，如图所示。</p>
+<hr>
+<p><strong>克隆酶的起源</strong></p>
+<p>用于克隆 DNA 的酶来源于现有的生物体。例如，细胞需要 DNA 聚合酶在细胞分裂之前复制它们的基因组。限制性内切酶和连接酶在细胞存活和增殖中也发挥着重要作用：</p>
+<hr>
+<p>限制酶</p>
+<blockquote>
+<p>细菌细胞使用限制性内切酶来保护自己免受外来 DNA（例如病毒）的侵袭。这些酶进化为切割特定的 DNA 序列，统称为限制性位点。限制性位点通常有四到六个碱基对长。当病毒将其 DNA 注入宿主细胞时，该细胞的限制性内切酶会将 DNA 切割成许多片段，从而阻止其插入宿主基因组并抑制感染。任何给定的细菌种类都只会产生一种或几种类型的限制性内切酶，因为随着细胞中限制性内切酶数量的增加，宿主自身基因组中也存在限制性位点的可能性越来越大。拥有限制性位点的基因组拷贝可能会被证明具有破坏性，因为识别它的限制性内切酶可能会破坏细胞自身的基因组。近 600 种商业限制酶的可用集合来自数百种不同的生物，它们识别宿主基因组中缺失或修饰的限制位点，以防止酶将细胞的 DNA 切割成碎片。</p>
+</blockquote>
+<p>连接酶</p>
+<blockquote>
+<p>细胞通常使用 DNA 连接酶进行 DNA 复制和修复。在复制过程中，一条称为滞后链的 DNA 链在不连续的片段中合成。 DNA 连接酶用于连接这些片段以产生单个连续链。此外，连接酶会重新密封 DNA 主链中的缺口，这些缺口是在 DNA 受损或不正确的核苷酸被切除并被 DNA 复制期间活跃的校对机制取代时产生的。连接酶在分子生物学中用于密封 DNA 碱基对的粘性末端时保留在 DNA 骨架中的切口。</p>
+</blockquote>
+<hr>
+<h3 id="应用-DNA-组装的基础知识"><a href="#应用-DNA-组装的基础知识" class="headerlink" title="应用 DNA 组装的基础知识"></a>应用 DNA 组装的基础知识</h3><p>到目前为止，我们专注于制备 DNA 并将其引入细胞的常见方法。接下来，我们将探索如何将不同的 DNA 片段具体而精确地结合起来。为了说明这一点，我们描述了如何使用不同的 DNA 组装策略来制造质粒，这在 iTune 设备章节中占据中心位置。无需阅读该章节即可继续阅读。你需要知道的是，iTunes 实验室调查测试了当基因受到不同强度的调节元件控制时产生多少β-半乳糖苷酶。 iTunes 实验中使用的每个质粒都包括酶编码序列上游的三个可能的启动子之一和三个可能的核糖体结合位点 (RBS) 之一。启动子通过募集 RNA 聚合酶来指导基因的转录，而 RBS 则通过核糖体启动翻译以产生酶（图 3-8）。这些 DNA 元件和一个参考质粒的所有可能组合之前都已组装好。在这里，我们研究了如何使用传统克隆技术（参见第 57 页的“构建 DNA：传统分子克隆”）、BioBrick 组装（在第 60 页的“构建 DNA：BioBrick 组装”中）和 Gibson 组装（“构建DNA：Gibson 组装”，第 66 页）。</p>
+<hr>
+<p><img src="/biobuilder/068.png" alt="FIGURE"></p>
+<p><strong>图 3-8</strong> 分子生物学的中心法则。在最左边的面板中，RNA 聚合酶（绿豆形状）显示在未缠绕 DNA 的启动子区域附近。启动子区域由启动子（绿色箭头）和 RBS（栗色半圆）组成。在中图中，RNA 聚合酶已与启动子结合并开始转录 mRNA（显示为橙色条带）。显示为紫色形状的核糖体聚集在 mRNA 上的核糖体结合位点附近。右侧显示了 mRNA 向蛋白质的翻译，随着每个核糖体沿 mRNA 进一步翻译，橙色蛋白质的合成也在进行。</p>
+<hr>
+<p>正如您将看到的，每种策略都有自己的优点和缺点。传统的分子克隆技术可以可靠地工作，但您必须针对每个新的 DNA 组装挑战现场开发它们，因此它们需要相当多的专业知识才能完美地计划和执行。 BioBrick 组装代表了标准化传统克隆的首批尝试之一。它已获得国际基因工程机器 (iGEM) 团队的广泛认可，因为它与标准生物部件注册表中的许多免费提供的 BioBrick 兼容。 Gibson 组装是一种相对较新的技术，它与 BioBrick 零件兼容，但不需要它们。吉布森组装能够同时组装多条 DNA，被许多人认为代表了 DNA 组装的未来，但它尚未达到成熟工程方法所需的标准化。有一天，Gibson 组装，就像 BioBrick 组装一样，可能会成为一种标准化技术，但与其他新技术一样，标准化落后于创新。</p>
+<h4 id="构建-DNA：传统分子克隆"><a href="#构建-DNA：传统分子克隆" class="headerlink" title="构建 DNA：传统分子克隆"></a>构建 DNA：传统分子克隆</h4><p>商业 DNA 合成相当便宜，公司以几美分的价格提供服务。它们的自然版本存在，但它们也可以基于具有特定属性的新启动子或 RBS 的想法而发明。他们还经常发送足够的 DNA，以便将其用作最初几个克隆步骤的起始材料。克隆到 iTunes 质粒上的三个元素是启动子、RBS 和 β-半乳糖苷酶的编码序列。 此外，启动子序列很短，大约 35 个碱基，RBS 甚至更短。β-半乳糖苷酶是一种天然存在的酶，由大肠杆菌中的 lacZ 基因编码。产生如此短的起始 DNA 片段的最常见方法是化学合成 DNA 寡聚体，这些寡聚体随后可以在试管中组合以产生所需的双链 DNA 序列。因为 lacZ 基因有一个天然且容易获得的来源，并且因为该基因的序列是已知的，所以 PCR 是制造足够的起始 lacZ DNA 以进行克隆的合乎逻辑的方法。通常，在合成序列的任一端包含限制性位点也是明智的，从而允许对序列进行操作和克隆。如何制造足够的促进剂和 RBS 起始材料就不太明显了。</p>
+<p><strong>当 DNA 起始材料在手时，接下来有许多步骤可以使用传统的分子克隆技术将启动子</strong>、RBS 和 lacZ 基因克隆到质粒中（见图 3-9）。一般来说，您需要一个从头到尾的策略，因为通常一次只将一段 DNA 插入质粒。例如，为了制作 iTunes 质粒，用两种限制酶切割起始质粒和 lacZ PCR 产物可能是明智的：我们将这些酶称为“C”和“D”。理想情况下，酶 C 和 D 会在片段上留下粘性末端，因此 lacZ 和质粒 DNA 片段可以以可预测的方式相互结合。然后可以将这两个 DNA 片段连接起来，转化到大肠杆菌中，并选择在含有药物的培养基上生长。然后，您可以通过质粒制备从细胞中纯化新的“lacZ+质粒”DNA 的成功克隆，并将它们进行下一步，即添加 RBS。您可以使用限制酶“B”和“C”来进行这种 DNA 组装，这可能会留下粘性末端，使这些 DNA 片段正确对齐。同样，您可以连接这些片段，对其进行转化，然后选择菌落进行后续生长，以产生许多所需质粒的拷贝。在“RBS+lacZ+质粒”DNA 通过对 DNA 进行测序或使用限制性内切酶验证其模式被验证为正确之后，您最终可以使用限制性内切酶“A”和“B”再次切割它，连同起始启动子 DNA 材料“ 这次。再一次，DNA 成分可以被连接、转化、选择，并（最后）制备为最终所需的质粒。</p>
+<hr>
+<p><img src="/biobuilder/069.png" alt="FIGURE"></p>
+<p><strong>图 3-9</strong> 传统克隆。要使用传统克隆制作单个 iTunes 质粒，可以使用限制性酶“C”和“D”切割骨架质粒，并且可以使用 PCR 来生成两侧带有“C”和“D”限制性位点的所需 DNA。当这些片段连接在一起时，会产生一个新的骨架，然后它会被酶“B”和“C”切割，并与 RBS 的“B”和“C”侧翼 DNA 结合。然后将产生的骨架再切割一次，这次是用酶“A”和“B”，并与“A”和“B”侧翼的 DNA 结合，用于启动子组装最终的 iTunes 质粒。在每一步之间，必须将新的骨架质粒转化到大肠杆菌中并培养，以便提取 DNA，并验证其正确性。</p>
+<hr>
+<p>呸！几天后，这种策略可能会产生 iTunes 实验室所需的十种质粒中的一种，如图 3-10 所示（但请参阅第 59 页即将发布的侧边栏“现实生活中的 DNA 工程”以了解这种策略的一些方法）过程可能不成功）。令人高兴的是，您可以重复使用一些作为中间体制成的质粒（例如，“RBS+lacZ+质粒”）来帮助组装其他质粒。通过使用需要存在于所有质粒中的 lacZ 基因开始克隆，您可以并行执行许多后续步骤。</p>
+<hr>
+<p><img src="/biobuilder/070.png" alt="FIGURE"></p>
+<p><strong>图 3-10</strong> 扩展传统克隆。图 3-9 所示的传统克隆方法可以通过将第一个反应的产物分成三个不同批次，在每个反应中使用不同的 RBS 进行第二个克隆步骤，然后分离将这些产品质粒中的每一个分成三批，用于添加不同启动子的最后一步。此处概述的策略仅在要克隆的片段中不存在所需的限制位点（“A”、“B”、“C”或“D”）时才有效。</p>
+<hr>
+<p>总体而言，<strong>使用传统克隆，并假设所有步骤都进行得很好，组装所有 iTunes 质粒至少需要几天和大约 13 次消化&#x2F;连接反应</strong>。如果你认为应该有一种不那么特殊和更快的方式来组装 DNA，那么你的想法就像许多合成生物学家所做的那样。 BioBrick 和 Gibson Assembly 是两种方法，部分原因是对传统分子克隆技术的速度和临时性质的不满。</p>
+<hr>
+<p><strong>现实生活中的 DNA 工程</strong></p>
+<p>我们对传统分子克隆的讨论可能会让这个过程看起来很麻烦，但它实际上呈现了最好的情况。现实生活中的克隆可能会遇到许多障碍，包括行为不端的引物、转化效率低的细胞和无活性的酶。这只是实验室的生活——研究人员有时必须花时间排除故障和优化程序，从各方面来看，这些程序应该有效，但实际上并没有。当您进行一些 BioBuilder 实验室时，您可能会亲自体验到这一点。有完整的实验室手册专门用于解决这些类型的问题，这不是我们的重点。尽管如此，我们还是想介绍一些常见的陷阱，让您更好地了解在实验室中实际进行 DNA 工程意味着什么。</p>
+<hr>
+<p>限制酶使用的序列编辑</p>
+<blockquote>
+<p>限制性内切酶是各种基因工程方法的重要工具。工程师使用它们在特定的特征序列处切割 DNA，以便他们可以操纵序列的这一部分，例如通过插入一段新的 DNA。酶的序列特异性对于允许工程师以受控、有针对性的方式实施他们的设计至关重要，但工程师正在使用的 DNA 序列可能需要改变以使其适合与特定的限制酶一起使用。具体来说，除了工程师希望它切割的位置之外，酶的目标序列不得存在于序列中的任何位置。如果序列存在于它不应该存在的地方，工程师必须改变它，也许使用一种称为定点诱变的方法，然后再继续进行其余的克隆。幸运的是，遗传密码的冗余意味着，在大多数情况下，可以在不改变氨基酸序列的情况下改变有问题的序列。例如，如果 DNA 序列中的 TTC 变为 TTT，则 EcoRI 识别位点发生突变，但该序列仍编码苯丙氨酸。</p>
+</blockquote>
+<p>故障排除和更改策略</p>
+<blockquote>
+<p>即使是最精心计划的克隆方案也可能失败，这主要是由于生物系统的一些不可预测的行为。例如，关键酶，包括限制性内切酶、核酸酶和连接酶，如果在冰箱中放置时间过长，它们可能会停止工作。细胞可能会失去转化效率，使工程师根本无法知道之前的克隆步骤是否有效。这些问题中的大多数都相对容易解决——研究人员可以从公司订购新的酶或培养一批新的细胞——但这需要时间，因此挫折加起来。其他实验室问题可能更难解决。有时，某些引物或特定的克隆策略由于任何明显的原因不起作用。这对于总是想知道事情发生的原因的科学家来说可能非常令人沮丧，但通常最好的策略是继续前进并尝试一种全新的方法，因为传统的克隆工具箱足够大，几乎总是有多种方法设计一个特定的序列。</p>
+</blockquote>
+<hr>
+<h4 id="构建-DNA：BioBrick-组装"><a href="#构建-DNA：BioBrick-组装" class="headerlink" title="构建 DNA：BioBrick 组装"></a>构建 DNA：BioBrick 组装</h4><p>与传统的分子克隆一样，BioBrick 组装基于使用限制性内切酶和连接酶将 DNA 片段拼凑在一起的策略。然而，由于所有 DNA 片段都是标准化的 BioBrick 部件，因此简化了一些步骤，而完全跳过了其他步骤。 <strong>BioBrick 部件被定义为提供特定生物学功能的 DNA 序列</strong>。通常，启动子、RBS 和开放阅读框 (ORF) 都被定义为简单的“部分”。每个 BioBrick 部件都有一个唯一的识别部件号。例如，iTunes 质粒上的 lacZ 序列是 BBa_E0051 部分，其中“BBa”代表“BioBrick 系列 a”，E0051 表示该部分在标准生物部件登记处的唯一信息的目录号。 iTunes 质粒上的启动子部分和 RBS 部分也具有唯一的识别部分编号，因此任何有互联网连接的人都可以查找有关其序列和行为的信息。</p>
+<p>正如 MIT 的 Tom Knight 博士最初描述的那样，每个标准化 BioBrick 部件都夹在包含 EcoRI 和 XbaI 限制性位点的统一“前缀”序列和包含 SpeI 和 PstI 限制性位点的统一“后缀”序列之间，如如图 3-11 所示。 <strong>前缀和后缀上的限制位点经过仔细选择，以便 BioBrick 部件都可以通过单一克隆策略组装</strong>。具体来说，一个部分前缀中的 XbaI 限制位点可以连接到用 SpeI 切割第二部分后缀后剩余的粘性末端。这以可预测的顺序连接这两个部分，并使前缀和后缀中最外层的限制性位点保持完整，从而允许生成的组装（称为复合部分）用于另一个组装反应或克隆到质粒中进行表达.换句话说，BioBrick 部件，无论是简单部件还是复合部件，每次都可以以相同的方式切割，以将任何部件连接到任何其他部件。</p>
+<hr>
+<p><img src="/biobuilder/071.png" alt="FIGURE"></p>
+<p>图 3-11 标准化的 BioBrick 部件。DNA 编码的功能以蓝色显示，两侧是标准化的前缀序列“P”，它带有两个已知的限制性位点和一个标准化的后缀序列，具有两个不同的限制性位点。</p>
+<hr>
+<p>为了说明这一策略，我们可以考虑使用以下 BioBrick 部件构建 iTunes 质粒：</p>
+<ul>
+<li>BBa_J231106 u003d “中等强度”推广者</li>
+<li>BBa_B0034 u003d “强” RBS</li>
+<li>BBa_E0051 u003d lacZ 基因的修改版本。</li>
+</ul>
+<p><img src="/biobuilder/072.png" alt="FIGURE"></p>
+<p>值得一提的是，如果我们的组装包括一个未出现在注册表中的 DNA 片段，我们将需要在该过程中添加几个步骤，以使该 DNA 成为标准化的 BioBrick 部件，然后再继续执行后续步骤。这个要求说明了我们在本章前面考虑的标准化的一个方面，即标准化通常需要时间和精力，但从长远来看它可以证明是更有效的。</p>
+<p>需要两个组装步骤才能将三个部分放在一起。由于最终 DNA 组装中各部分的顺序很重要，因此必须从一开始就决定要切割哪些部分以及以什么顺序切割。许多选项都可以工作，但对于这个例子，我们假设我们决定首先将强 RBS (BBa_B0034) 放在 lacZ 基因 (BBa_E0051) 的上游。如图 3-12 所示，包含 BBa_B0034 的质粒可以在部分前缀用 EcoRI 切割，在部分后缀用 SpeI 切割。在一个单独的反应中，含有 BBa_E0051 的质粒可以在该部分的前缀中用 XbaI 切割，在其后缀用 PstI 切割。最后，可以用 EcoRI 切割将容纳新组件的目标质粒，以便与 BBa_B0034 的前缀和 PstI 匹配，使其准备好与 BBa_E0051 部分的后缀匹配。</p>
+<p>当你组合和连接这三个 DNA 片段时，如图 3-13 所示，得到的质粒带有一个新的复合部分 BBa_B0034+E0051，你可以给它一个新的部分编号：BBa_Xnnnnn。 <strong>此新部件符合 BioBrick 标准</strong>，因为它具有标准 BioBrick 前缀、原始 B0034 和 E0051 部件之间的“混合”位置，并且后跟标准 BioBrick 后缀。 SpeI 或 XbaI 不再识别原始部件之间的混合位点。相反，B0034+E0051 复合材料部件实际上是一种新的 BioBrick。您可以使用新的零件编号将其输入注册表，并将其与任何其他 BioBrick 组合，如图 3-14 所示。</p>
+<hr>
+<p><img src="/biobuilder/073.png" alt="FIGURE"></p>
+<p><strong>图 3-12</strong> BioBrick 组件。 BioBrick 组装需要用 EcoRI 和 SpeI 消化含有上游部分的质粒，用 XbaI 和 PstI 消化含有下游部分的质粒，并用 EcoRI 和 PstI 消化目标质粒。然后将这些片段组合并连接以创建携带新 BioBrick 部分的质粒。</p>
+<hr>
+<p><img src="/biobuilder/074.png" alt="FIGURE"></p>
+<p><strong>图 3-13</strong> BioBrick 复合材料部件的组装。即使下游部件是由其他基本部件组装而成的复合部件，组合标准化 BioBrick 部件的策略也不会改变。这是 BioBrick 组装方法的一个关键启用功能。</p>
+<hr>
+<p>与传统克隆相比，BioBrick 标准简化了 DNA 组装过程，并允许采用可靠、统一的策略将 DNA 片段拼凑在一起。 BioBrick 组装效率的提高部分归功于其他人的努力，他们事先对零件进行了标准化并将它们贡献给共享资源。 <strong>为了有用，BioBrick 部件必须经过改进，以便它们带有预期的前缀和后缀，并且它们本身不会有任何来自部件本身的前缀和后缀的限制位点</strong>。细化过程并非微不足道，并且确实需要工作。您可以通过分子生物学家工具包中称为定点诱变的技术或通过 DNA 的直接化学合成来对 DNA 序列进行必要的更改。无论哪种方式，所需的工作都需要能源投资，并且是采用该标准的障碍。也许这就是其他组装标准已经发展起来的原因之一，包括接下来描述的 Gibson 组装方法。</p>
+<hr>
+<p><img src="/biobuilder/075.png" alt="FIGURE"></p>
+<p><strong>图 3-14</strong> 缩放 BioBrick 组件。要创建整个 iTunes 库，您可以将 ORF BioBrick 与三个不同的 RBS BioBrick 并行组合。然后，您可以将生成的复合 BioBrick 部件分成三批，每批都将与不同的促进剂组合以生产最终的复合 BioBrick 部件。与传统克隆一样，您必须将每个新的复合 BioBrick 部件转化为大肠杆菌并使其生长，以便可以提取和验证 DNA，然后才能将其用作下一个组装步骤的起始材料。</p>
+<hr>
+<h4 id="构建-DNA：Gibson-组装"><a href="#构建-DNA：Gibson-组装" class="headerlink" title="构建 DNA：Gibson 组装"></a>构建 DNA：Gibson 组装</h4><p>Gibson 组装与传统的克隆和 BioBrick 组装方法相比有几个优点，其中最大的可能是它可以同时组装许多 DNA 部分。即使在其最早的发展阶段，一个吉布森组装反应也可以将大约十个 DNA 部分拼凑在一起。因此，与所描述的其他 DNA 组装方法相比，该技术在效率上显着提高，并且在组装复杂的遗传程序时特别有用，这些程序比我们在此处考虑的 iTunes 质粒集合中发现的部分和变异更多。</p>
+<p>Gibson 技术由 J. Craig Venter 研究所的 Daniel Gibson 博士在全基因组组装工作期间开发，<strong>它使用 PCR 制备多个 DNA 片段以同时组装</strong>（图 3-15）。 PCR 步骤既可以生成足够的 DNA，又可以用短序列修改每个 DNA 部分，这些短序列与最终组装中的配对部分重叠。与预期相邻部分的重叠序列必须至少有 25 个碱基对才能使该技术起作用。在第二步中，根据引入的重叠序列将 PCR 产物粘贴在一起。不需要限制酶或其同源限制位点。相反，一种市售的酶，一种外切核酸酶，会修剪每个 DNA 部分上的一条链，在片段的两端留下一个 DNA 突出端。核酸外切酶没有序列特异性；它只是简单地咀嚼从 3’ 到 5’ 方向移动的任何线性双链 DNA 片段。该反应揭示了由每个 DNA 部分的 PCR 扩增引入的定制“粘性末端”。</p>
+<p>将此技术应用于 iTunes 质粒的组装（图 3-16）提出了挑战，因为 iTunes DNA 组装中的某些部分非常短。例如，强 RBS BBa_B0034 只有 12 个碱基对长。可以使用 PCR 将这个带有 25 个碱基重叠的短 RBS 序列附加到其上游侧的启动子，并在其下游侧与 lacZ 基因重叠 25 个碱基。然而，即使每一端都有 25 个碱基，这个短 RBS 部分也不太可能在外切核酸酶处理后存活下来。很有可能它会被咀嚼成虚无！一些变通策略是可能的，但这些策略会将 DNA 组装工作重新变成实验，而不是稳健可靠的“开始”技术。此外，由于您必须为每个组件自定义构建每个部件之间的重叠序列，<strong>将 DNA 与这种技术放在一起感觉就像是实验，而不是标准化的工程工具</strong>。</p>
+<hr>
+<p><img src="/biobuilder/076.png" alt="FIGURE"></p>
+<p><strong>图 3-15</strong> 吉布森组件。所需最终质粒的不同部分包括功能部分——启动子、RBS 和 ORF——以浅蓝色显示。引导装配顺序和方向的工程侧翼序列由彩色条表示。</p>
+<hr>
+<p><img src="/biobuilder/077.png" alt="FIGURE"></p>
+<p>图 3-16 通过 Gibson 组装构建的 iTunes 质粒。最终的 DNA 构建体之一显示在部分之间的彩色条表示序列的部分，这些部分被设计为重叠，以便它们可以在单个组装反应中按顺序相互连接。</p>
+<hr>
+<h2 id="下一步是什么？"><a href="#下一步是什么？" class="headerlink" title="下一步是什么？"></a>下一步是什么？</h2><p>生物学本质上是可变的和不断变化的，但工程师想要可预测的和功能性的行为。为了弥合这一差距，需要一些创造性的设计思维。最具吸引力的设计可能会利用生物学的独特特性进行自组装，将细胞分子重新用作构建模块，并精确构建。本章的重点是标准化的工程原理，因为它适用于 DNA 组装技术。对于此处描述的每种组装技术，还有一些未包括在内，但最终可能会成为该领域的标准。方法的多样性说明了这一挑战正在吸引的创新想法以及缺乏完美的解决方案（目前！）。</p>
+<p>不过，随着时间的推移，这些问题本身可能会演变。设计思维通常会在流程结束时提出与开始时不同的问题。例如，如果您要求一卡车的三脚凳，以便您工厂的工人可以有地方坐下，您可能会发现实际上需要更改的是工作时间表，而您的情况会更好轮班时间更短，工人不那么累，而不是一套椅子。当他们开始谈论铺设跨大西洋电缆时，没有人想到欧姆标准，也许没有人想到设计 DNA 或生物学的最佳方法。</p>
+<h2 id="额外阅读和资源"><a href="#额外阅读和资源" class="headerlink" title="额外阅读和资源"></a>额外阅读和资源</h2><ul>
+<li>Alberts, B. 等，细胞的分子生物学，第 4 版。纽约：Garland Science，2002。开放获取：<a target="_blank" rel="noopener" href="http://bit.ly/mol_bio_of_the_cell">http://bit.ly/mol_bio_of_the_cell</a> 。</li>
+<li>Gibson, D. G. 等，高达数百千碱基的 DNA 分子的酶促组装。自然方法 2009；6: 343-5。</li>
+<li>Knight, T. Biobricks 标准组装的幂等向量设计。DSpace@MIT 可引用 URI 2003：（ <a target="_blank" rel="noopener" href="http://hdl.handle.net/1721.1/21168">http://hdl.handle.net/1721.1/21168</a> ）。</li>
+<li>网站：大西洋电缆和海底通信的历史 ( <a target="_blank" rel="noopener" href="http://atlantic-cable.com/">http://atlantic-cable.com/</a> )。</li>
+<li>网站：洗碗机发明者 Josephine Cochrane ( <a target="_blank" rel="noopener" href="http://bit.ly/dishwasher_cochran">http://bit.ly/dishwasher_cochran</a> )。</li>
+<li>网站：美国国家标准与技术研究院 ( <a target="_blank" rel="noopener" href="http://bit.ly/engineered_bio">http://bit.ly/engineered_bio</a> )。</li>
+</ul>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2022/07/26/biobuilder/chapter-3/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2022-07-25 </div>
 			<div class="article-title"><a href="/2022/07/25/biobuilder/chapter-2/" >生物设计基础</a></div>						
 		</h3>
@@ -2468,288 +2655,6 @@ OpenJDK 64-Bit Server VM (Temurin)(build 25.312-b07, mixed mode)
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-10-28 </div>
-			<div class="article-title"><a href="/2021/10/28/Add-Tweets-to-My-Blog/" >Add Tweets to My Blog</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Browser-Side">Browser Side<a class="anchor-link" href="#Browser-Side">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">layout</span><span class="o">/</span><span class="n">_widget</span><span class="o">/</span><span class="n">links</span><span class="o">.</span><span class="n">ejs</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">twitter</span><span class="o">.</span><span class="n">js</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>var twitter = (function() {
-  function escapeHtml(str) {
-    return $(&#39;&lt;div/&gt;&#39;).text(str).html();
-  }
-  function render(target, tweets) {
-    var i = 0, fragment = &#39;&#39;, t = $(target)[0];
-
-    for(i = 0; i &lt; tweets.length; ++i) {
-      fragment += &#39;&lt;li&gt;&lt;i class=&#34;fa fa-star&#34;&gt;&lt;/i&gt;&lt;a href=&#34;https://twitter.com/seii_saintway/status/&#39; + tweets[i].id + &#39;&#34;&gt;&#39;
-          + tweets[i].created_at.replace(&#39;T&#39;, &#39;　&#39;).replace(&#39;.000Z&#39;, &#39;&#39;) + &#39;&lt;/a&gt;&lt;p&gt;&#39; + escapeHtml(tweets[i].text||&#39;&#39;) + &#39;&lt;/p&gt;&lt;/li&gt;&#39;;
-    }
-    t.innerHTML = fragment;
-  }
-  return {
-    showTweets: function(options) {
-      options.blacklist = options.blacklist.split(&#39;,&#39;);
-      $.ajax({
-          url: &#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=&#39; + options.count
-        , dataType: &#39;json&#39;
-        , error: function (err) { $(options.target + &#39; li.loading&#39;).addClass(&#39;error&#39;).text(&#39;Error loading feed&#39;); }
-        , success: function (data) {
-          if (!data ) { return; }
-          var tweets = [];
-          for (var i = 0; i &lt; data.data.length; ++i) {
-            if (options.blacklist instanceof Array &amp;&amp; options.blacklist.indexOf(data.data[i].id) !== -1) { continue; }
-            tweets.push(data.data[i]);
-          }
-          render(options.target, tweets);
-        }
-      });
-    }
-  };
-})();
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/seii-saintway/hexo-theme-freemind/commit/420f1d9c1eda38b000f0b3d3f93b4b143f39ed93">Here</a> is all the changes at the browser side.</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Server-Side">Server Side<a class="anchor-link" href="#Server-Side">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/zldobbs/alert-mizzou">Here</a> is a solution using Flask to proxy Tweets API.</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BEARER_TOKEN</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline">https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=seii_saintway&amp;count=20&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a target="_blank" rel="noopener" href="https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets">https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/2/users/807092313298112512/tweets?tweet.fields=created_at&amp;max_results=10&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>My solution using <a target="_blank" rel="noopener" href="https://doc.traefik.io/traefik/v1.7/basics/#custom-headers">Traefik</a> to proxy Tweets API</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">tljh</span><span class="o">/</span><span class="n">state</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">tweets</span><span class="o">.</span><span class="n">toml</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
-
-<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="p">]</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="s2">&quot;tweets&quot;</span>
-
-<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r1</span><span class="p">]</span>
-<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;PathPrefix:/tweets/&quot;</span>
-
-<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r2</span><span class="p">]</span>
-<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;ReplacePath:/2/users/807092313298112512/tweets&quot;</span>
-
-<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customrequestheaders</span><span class="p">]</span>
-<span class="n">Authorization</span> <span class="o">=</span> <span class="s2">&quot;Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span>
-
-<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customresponseheaders</span><span class="p">]</span>
-<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
-
-<span class="p">[</span><span class="n">backends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">servers</span><span class="o">.</span><span class="n">s1</span><span class="p">]</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com&quot;</span>
-<span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="n">EOF</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/10/28/Add-Tweets-to-My-Blog/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -2788,45 +2693,45 @@ OpenJDK 64-Bit Server VM (Temurin)(build 25.312-b07, mixed mode)
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
 			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
 		
 			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
 		
 			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -2842,6 +2747,10 @@ OpenJDK 64-Bit Server VM (Temurin)(build 25.312-b07, mixed mode)
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2025/09/26/The-Key-of-the-Revelation/" ><i class="fa fa-file-o"></i>启示录之钥</a>
+      </li>
+    
+      <li>
         <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
       </li>
     
@@ -2855,10 +2764,6 @@ OpenJDK 64-Bit Server VM (Temurin)(build 25.312-b07, mixed mode)
     
       <li>
         <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/19/biobuilder/appendix/" ><i class="fa fa-file-o"></i>实验室试剂和材料</a>
       </li>
     
   </ul>

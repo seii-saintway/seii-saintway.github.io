@@ -139,6 +139,288 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2021-10-28 </div>
+			<div class="article-title"><a href="/2021/10/28/Add-Tweets-to-My-Blog/" >Add Tweets to My Blog</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Browser-Side">Browser Side<a class="anchor-link" href="#Browser-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">layout</span><span class="o">/</span><span class="n">_widget</span><span class="o">/</span><span class="n">links</span><span class="o">.</span><span class="n">ejs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="n">hexo</span><span class="o">/</span><span class="n">themes</span><span class="o">/</span><span class="n">freemind</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">twitter</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>var twitter = (function() {
+  function escapeHtml(str) {
+    return $(&#39;&lt;div/&gt;&#39;).text(str).html();
+  }
+  function render(target, tweets) {
+    var i = 0, fragment = &#39;&#39;, t = $(target)[0];
+
+    for(i = 0; i &lt; tweets.length; ++i) {
+      fragment += &#39;&lt;li&gt;&lt;i class=&#34;fa fa-star&#34;&gt;&lt;/i&gt;&lt;a href=&#34;https://twitter.com/seii_saintway/status/&#39; + tweets[i].id + &#39;&#34;&gt;&#39;
+          + tweets[i].created_at.replace(&#39;T&#39;, &#39;　&#39;).replace(&#39;.000Z&#39;, &#39;&#39;) + &#39;&lt;/a&gt;&lt;p&gt;&#39; + escapeHtml(tweets[i].text||&#39;&#39;) + &#39;&lt;/p&gt;&lt;/li&gt;&#39;;
+    }
+    t.innerHTML = fragment;
+  }
+  return {
+    showTweets: function(options) {
+      options.blacklist = options.blacklist.split(&#39;,&#39;);
+      $.ajax({
+          url: &#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=&#39; + options.count
+        , dataType: &#39;json&#39;
+        , error: function (err) { $(options.target + &#39; li.loading&#39;).addClass(&#39;error&#39;).text(&#39;Error loading feed&#39;); }
+        , success: function (data) {
+          if (!data ) { return; }
+          var tweets = [];
+          for (var i = 0; i &lt; data.data.length; ++i) {
+            if (options.blacklist instanceof Array &amp;&amp; options.blacklist.indexOf(data.data[i].id) !== -1) { continue; }
+            tweets.push(data.data[i]);
+          }
+          render(options.target, tweets);
+        }
+      });
+    }
+  };
+})();
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/seii-saintway/hexo-theme-freemind/commit/420f1d9c1eda38b000f0b3d3f93b4b143f39ed93">Here</a> is all the changes at the browser side.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Server-Side">Server Side<a class="anchor-link" href="#Server-Side">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/zldobbs/alert-mizzou">Here</a> is a solution using Flask to proxy Tweets API.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BEARER_TOKEN</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline">https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=seii_saintway&amp;count=20&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets">https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span> <span class="s1">&#39;https://api.twitter.com/2/users/807092313298112512/tweets?tweet.fields=created_at&amp;max_results=10&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>My solution using <a target="_blank" rel="noopener" href="https://doc.traefik.io/traefik/v1.7/basics/#custom-headers">Traefik</a> to proxy Tweets API</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">tljh</span><span class="o">/</span><span class="n">state</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">tweets</span><span class="o">.</span><span class="n">toml</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="p">]</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="s2">&quot;tweets&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r1</span><span class="p">]</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;PathPrefix:/tweets/&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">r2</span><span class="p">]</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="s2">&quot;ReplacePath:/2/users/807092313298112512/tweets&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customrequestheaders</span><span class="p">]</span>
+<span class="n">Authorization</span> <span class="o">=</span> <span class="s2">&quot;Bearer $</span><span class="si">{BEARER_TOKEN}</span><span class="s2">&quot;</span>
+
+<span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">customresponseheaders</span><span class="p">]</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+
+<span class="p">[</span><span class="n">backends</span><span class="o">.</span><span class="n">tweets</span><span class="o">.</span><span class="n">servers</span><span class="o">.</span><span class="n">s1</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com&quot;</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">traefik</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://jhub.name/tweets/?tweet.fields=created_at&amp;max_results=10&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/10/28/Add-Tweets-to-My-Blog/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2021-10-27 </div>
 			<div class="article-title"><a href="/2021/10/27/Try-To-Reinstall-Zsh-Kernel/" >Try to Reinstall Zsh Kernel</a></div>						
 		</h3>
@@ -1631,6 +1913,8 @@ $$<p>其中，$\Delta G_{\text{binding}}$ 是结合自由能变化，$\Delta H_{
 <p>基要派的名称最早来自1910年代出版的一套书籍，称为《基要》（The Fundamentals）。这些书旨在强调和捍卫基督教的基本教义，如《圣经》无误、基督的神性、处女生子、代赎等信仰。这一运动起源于对现代主义神学、圣经批判学和达尔文进化论的回应，试图维护传统的基督教信仰。</p>
 <p>最初的基要派注重的是捍卫信仰的『基础要义』。然而，在后来的发展中，一些基要派群体采取了更加激进的态度，对科学、文化多元化、宗教宽容等持强烈反对立场。这使得『基要派』逐渐与极端保守主义联系在一起。</p>
 <hr>
+<p>在中文文化里，最接近「弥赛亚」的词汇是，圣王、神圣的王。</p>
+<hr>
 <blockquote>
 <p>我就听见有大声音在天上说：<br>『我们的上帝的拯救、权能、国度、<br>和他所膏立的基督的权柄、<br>现在已经成立了。<br>因为那控告我们弟兄的、<br>那昼夜在我们的上帝面前控告他们的、<br>已被摔下了。<br>弟兄们胜过他，是因着羔羊的血，<br>因着他们所见证的道；<br>他们又是至死不爱惜性命的。<br>故此诸天和住在诸天中的，你们欢跃吧！<br>但地跟海有祸啊！<br>因为魔鬼知道自己只有短短的时间，<br>已怀着大暴怒下到你们那里去了。』</p>
 <hr />
@@ -2729,6 +3013,19 @@ British female writer. Her works mainly bear the imprint of philosophical and so
 <p>你们要谨慎，恐怕有人借着虚空而诱惑人的「哲学」、照人的传统教训、根据<strong>世界所信的星质之灵</strong>，而不根据基督、把你们掳了去做奴仆。因为<strong>神格</strong>之无限完全是以「身体」之形态居住在基督里面的；<br> (歌罗西书 2:8-9 吕振中)</p>
 </blockquote>
 <p>「神迹」不违背「宇宙规律」。<br>故意试探创造主：精通主所制定的自然规律却利用这规律伤害自己并寻求神迹的行为。</p>
+<br />
+
+<blockquote>
+<p>提摩太有慢性胃病，保罗劝他不要照常喝水。那时犹太人是在楼底下挖水池，装雨水，或将水引进去，水中生虫并不清洁。保罗劝提摩太稍微用点酒，（提前五23，）酒有温暖与活血的作用。保罗有医病的恩赐，也医治了相当多的病人，但他没有医治提摩太的病。提摩太自己也是有恩赐的人，却不能医治自己的胃病。神没有话。提摩太不能说，『我喝水也好，喝酒也好。』不！那是试探神，他不该喝泥池的水。试探神和相信神，外面的行为是一样的，不同的是有神的话或没有神的话。有神的话爬起来走，和没有神的话而爬起来走，外面看行为是一样的。没有神的话而行走是试探神，我去信神能医治我，这是试探神。有了神的话，什么卫生的律都不必管；但是没有神的话时，律就不敢违背。请看那枯干手的人。因为主对他说了话，他就不用等病状改变才信病好了。他能够不看病状，主叫他把手伸出来，他就伸出来。主的话是靠得住的，病状是靠不住的。瘫子不是等刚强了才拿褥子走，主叫他拿褥子回去，他就拿褥子回去。你有了主的话，就不要看脉搏好不好，热有没有退。何时没有神的话，就要守卫生的规矩。有了神的话，我们就是极端的人，什么都不怕。</p>
+<hr>
+<p>只有神的话是真实的，病状是虚假的。神的话说好了，就是好了。</p>
+<hr>
+<p>你若没有神的话，就当小心保守身体；若有了神的话，则千万不可再看病状。那些病状，只好当作是试探和谎言，它不能留在那里，必须离开。</p>
+<hr>
+<p>归纳起来说，有三件事：（一）没有神的话，不试探神；（二）有了神的话，不看病状；（三）若神的话是不立刻医治，则祂的恩典够用。祂绝没有意思让我们生病，又不给我们够用的恩典。保罗虽病，但他作的工比别人都多。疾病绝不会拦阻工作。要学习把自己交托给那忠诚、信实的主。</p>
+<hr>
+<p>张晤晨弟兄关于倪柝声弟兄的见证，第十九章，《今时代神圣启示的先见–倪柝声》，台湾福音书房，李常受</p>
+</blockquote>
 <hr>
 <h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><blockquote>
 <p>And Jehovah God caused a deep sleep to fall upon the man, and he slept; and He took one of his ribs and closed up the flesh in its place.<br> (Genesis 2:21 Recovery Version)</p>
@@ -2839,342 +3136,6 @@ British female writer. Her works mainly bear the imprint of philosophical and so
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-08-17 </div>
-			<div class="article-title"><a href="/2021/08/17/Cornelia-Street/" >Cornelia Street</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <blockquote>
-<p>永恒主的话传与我，说：<br> 『人若把妻子离出去，<br> 而妻子离开他而去，<br> 做了别人的妻子，<br> 她哪能再回转来归前夫呢？<br> 那么那妇人岂不是<br> 大大被玷污了么？<br> 然而你，你和许多情人行淫，<br> 还要回转来归于我？<br> 永恒主发神谕说。<br> (耶利米书 3:1 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>It is said,<br>If a man divorces his wife<br>And she goes from him<br>And becomes another man’s wife,<br>Will he return to her again?<br>Will not that land be<br>Utterly polluted?<br>But you have committed fornication with many lovers.<br>Yet return to Me, declares Jehovah.<br> (Jeremiah 3:1 Recovery Version)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>我必聘你永远归我为妻，<br> 以义气正直、以坚爱怜悯<br> 聘你归我。<br> (何西阿书 2:19 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>And I will betroth you to Myself forever;<br>Indeed I will betroth you to Myself<br>In righteousness and justice<br>And in lovingkindness and compassions;<br> (Hosea 2:19 Recovery Version)</p>
-</blockquote>
-<hr>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;I7CcVgw4_KE&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;width: 90%; aspect-ratio: 16/9;&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%html</span>
-<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 90%; aspect-ratio: 16/9;&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/I7CcVgw4_KE&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">border</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">framespacing</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">allow</span><span class="o">=</span><span class="s">&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/I7CcVgw4_KE" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Taylor-Swift---Cornelia-Street">Taylor Swift - Cornelia Street<a class="anchor-link" href="#Taylor-Swift---Cornelia-Street">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>We were in the backseat
-drunk on something stronger
-than the drinks in the bar
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>I rent a place on Cornelia Street,
-I say casually in the car
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>We were a fresh page on the desk
-ﬁlling in the blanks as we go
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>As if the streetlights pointed in an arrowhead
-leading us home
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And I hope I never lose you
-Hope it never ends
-I’d never walk Cornelia Street again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>That’s the kind of heartbreak
-Time could never mend
-I’d never walk Cornelia Street again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And baby I get mystiﬁed by how
-this city screams your name
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And baby I’m so terriﬁed of if you ever walk away
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Windows ﬂung right open
-Autumn air, jacket round my shoulders is yours
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>We bless the rains on Cornelia Street
-Memorize the creaks in the ﬂoor
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Back when we were card sharks
-Playing games
-I thought you were leading me on
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>I packed my bags, left Cornelia Street
-Before you even knew I was gone
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>But then you called
-Showed your hand
-I turned around before I hit the tunnel
-Sat on the roof, you and I
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>You hold my hand
-On the street
-Walk me back to that apartment
-Years ago we were just inside
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Barefoot in the kitchen
-Sacred new beginnings
-That became my religion
-Listen...
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>I hope I never lose you 
-I’d never walk Cornelia Street again 
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>Never again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And baby I get mystiﬁed by how
-this city screams your name
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>And baby I’m so terriﬁed of if you ever walk away
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again
-I’d never walk Cornelia Street again
-</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>I rent a place on Cornelia Street,
-I say casually in the car
-</code></pre>
-
-</div>
-</div>
-</div>
- 
-
-
-
-
-<hr>
-<blockquote>
-<p>所以要仔细留意、你们怎样地行；不要做无智慧的，总要做有智慧的人。要争取时机，因为现在的日子很险恶。故此别做糊涂人了，却要明晓主的旨意是什么。别醉酒了（醉中有放荡），却要充充满满地满有圣灵。以「诗篇」、颂词、诗歌、彼此对说，用心咏赞歌颂主；时常奉我们主耶稣基督的名为万事感谢父上帝，存敬畏基督的心彼此顺服。<br>(以弗所书 5:15-21 吕振中)</p>
-</blockquote>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/08/17/Cornelia-Street/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -3213,45 +3174,45 @@ I say casually in the car
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
 			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>2</span></a></li>
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -3267,6 +3228,10 @@ I say casually in the car
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2025/09/26/The-Key-of-the-Revelation/" ><i class="fa fa-file-o"></i>启示录之钥</a>
+      </li>
+    
+      <li>
         <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
       </li>
     
@@ -3280,10 +3245,6 @@ I say casually in the car
     
       <li>
         <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/19/biobuilder/appendix/" ><i class="fa fa-file-o"></i>实验室试剂和材料</a>
       </li>
     
   </ul>
