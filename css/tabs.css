@@ -101,6 +101,6 @@
   display: none;
 }
 
-.mypage .tabs .tab-content .tab-pane.active p {
+.mypage .tabs .tab-content .tab-pane.active > :last-child {
   margin: 0 0 20px;
 }

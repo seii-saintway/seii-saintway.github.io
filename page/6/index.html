@@ -1738,7 +1738,7 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auditpol /<span class="built_in">set</span> /category:&quot;Logon/Logoff&quot; /success:enable /failure:enable</span><br></pre></td></tr></table></figure>
 
 <p>通过这些方法，可以有效控制本地审计的启用和禁用。</p>
-<h2 id="禁用-Windows-远程管理"><a href="#禁用-Windows-远程管理" class="headerlink" title="禁用 Windows 远程管理"></a>禁用 Windows 远程管理</h2><p>Windows 远程管理涉及多个功能，如 <strong>PowerShell 远程</strong>、<strong>远程桌面</strong> 和 **Windows 远程管理服务 (WinRM)**。您可以逐一禁用这些功能。</p>
+<h2 id="禁用-Windows-远程管理"><a href="#禁用-Windows-远程管理" class="headerlink" title="禁用 Windows 远程管理"></a>禁用 Windows 远程管理</h2><p>Windows 远程管理涉及多个功能，如 <strong>PowerShell 远程</strong>、<strong>远程桌面</strong> 和 <strong>Windows 远程管理服务</strong> (<strong>WinRM</strong>)。您可以逐一禁用这些功能。</p>
 <h3 id="禁用-PowerShell-远程"><a href="#禁用-PowerShell-远程" class="headerlink" title="禁用 PowerShell 远程"></a>禁用 PowerShell 远程</h3><p>在 <strong>PowerShell</strong> 中运行以下命令来禁用 PowerShell 远程功能：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Disable-PSRemoting</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
 
@@ -1805,6 +1805,13 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 <p>或者，你可以在 PowerShell 中执行以下命令禁用服务：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> RemoteRegistry</span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> RemoteRegistry <span class="literal">-StartupType</span> Disabled</span><br></pre></td></tr></table></figure>
 
+<h3 id="隔离日志文件"><a href="#隔离日志文件" class="headerlink" title="隔离日志文件"></a>隔离日志文件</h3><p>Windows 的系统级事件日志保存在：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\winevt\Logs\System.evtx</span><br></pre></td></tr></table></figure>
+
+<p>只要让远程进程无法读取这个文件，也能阻止信息泄漏：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">icacls C:\Windows\System32\winevt\Logs\System.evtx /inheritance:<span class="built_in">r</span> /remove <span class="string">&quot;NT AUTHORITY\NETWORK SERVICE&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这会阻断大部分远程采集。</p>
 <h3 id="使用组策略限制权限"><a href="#使用组策略限制权限" class="headerlink" title="使用组策略限制权限"></a>使用组策略限制权限</h3><p>通过 <strong>组策略</strong>（GPO）来限制域管理员的远程访问权限，禁止某些账户或组执行特定操作。</p>
 <ul>
 <li>禁止远程管理</li>
@@ -1963,6 +1970,31 @@ $$w_t = (1 - \lambda) TV_t^* + \lambda {\Delta TV_t^* \over F_{t-1}^*}$$<p>符�
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ipconfig</span> /flushdns</span><br><span class="line">nslookup &lt;域名&gt; &lt;DNS服务器IPv4地址&gt;</span><br><span class="line">nslookup &lt;域名&gt; &lt;DNS服务器IPv6地址&gt;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有允许的端口 53 规则</span></span><br><span class="line">netsh advfirewall firewall show rule name=all | findstr <span class="string">&quot;53&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许 UDP 53</span></span><br><span class="line">netsh advfirewall firewall add rule name=<span class="string">&quot;Allow DNS UDP&quot;</span> <span class="built_in">dir</span>=<span class="keyword">in</span> action=allow protocol=UDP localport=<span class="number">53</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许 TCP 53</span></span><br><span class="line">netsh advfirewall firewall add rule name=<span class="string">&quot;Allow DNS TCP&quot;</span> <span class="built_in">dir</span>=<span class="keyword">in</span> action=allow protocol=TCP localport=<span class="number">53</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许 Pi-hole Web</span></span><br><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;Pi-hole Web&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-Action</span> Allow <span class="literal">-Protocol</span> TCP <span class="literal">-LocalPort</span> <span class="number">60080</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="dnsdist-的-postresolve-钩子"><a href="#dnsdist-的-postresolve-钩子" class="headerlink" title="dnsdist 的 postresolve 钩子"></a><a target="_blank" rel="noopener" href="https://github.com/PowerDNS/pdns">dnsdist</a> 的 postresolve 钩子</h2><p>监听 Windows 共享 Wi-Fi 的局域网 IP:53，作为客户端入口。</p>
+<ol>
+<li>客户端请求域名查询 → DNS Proxy</li>
+<li>DNS Proxy 将域名查询转发到上游 DNS 服务器或者 Pi‑hole（WSL 内 127.0.0.1:53 <a target="_blank" rel="noopener" href="https://thekelleys.org.uk/gitweb/?p=dnsmasq.git">dnsmasq</a>）</li>
+<li>上游 DNS 服务器返回 IP</li>
+<li>DNS Proxy 将返回的 IP 加入 Windows 防火墙 &#x2F; NAT 白名单</li>
+<li>DNS Proxy 再把 IP 返回给客户端</li>
+</ol>
+<p>Mac mini M4 Pro + UTM + Ubuntu Router VM + dnsdist + ipset + iptables<br>Windows 11 + Hyper-V + Ubuntu Router VM + dnsdist + ipset + iptables</p>
+<br />
+
+<p><strong>nftables 等价配置</strong></p>
+<p>创建 nftables 表、集合、链</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">table inet filter &#123;</span><br><span class="line"></span><br><span class="line">  # === 等价于 ipset whitelist ===</span><br><span class="line">  set whitelist &#123;</span><br><span class="line">    type ipv4_addr</span><br><span class="line">    flags interval</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  # === forward 链（等价于 iptables FORWARD）===</span><br><span class="line">  chain forward &#123;</span><br><span class="line">    type filter hook forward priority 0;</span><br><span class="line">    policy drop;</span><br><span class="line"></span><br><span class="line">    # 白名单命中 → 记录 + 放行</span><br><span class="line">    ip saddr @whitelist \</span><br><span class="line">      limit rate 10/second burst 50 packets \</span><br><span class="line">      log prefix &quot;[ACCEPT] &quot; level info \</span><br><span class="line">      accept</span><br><span class="line"></span><br><span class="line">    # 未命中白名单 → 记录 + 丢弃</span><br><span class="line">    limit rate 5/second burst 20 packets \</span><br><span class="line">      log prefix &quot;[DROP] &quot; level info \</span><br><span class="line">      drop</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>⚠️ 说明</p>
+<ul>
+<li><code>inet</code>：同时适用于 IPv4 &#x2F; IPv6（你现在先用 IPv4）</li>
+<li><code>policy drop</code>：默认拒绝，等价于你之前最后的 <code>DROP</code></li>
+</ul>
+<br />
+
+<p><strong>最小 dnsdist 示例</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setLocal(<span class="string">&#x27;0.0.0.0:53&#x27;</span>)</span><br><span class="line">newServer(&#123;address=<span class="string">&quot;1.1.1.1&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">addAction(AllRule(), LuaAction(<span class="function"><span class="keyword">function</span><span class="params">(dq)</span></span></span><br><span class="line">  <span class="keyword">for</span> _, ip <span class="keyword">in</span> <span class="built_in">ipairs</span>(dq:getIPs() <span class="keyword">or</span> &#123;&#125;) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">os</span>.<span class="built_in">execute</span>(<span class="string">&quot;nft add element inet filter whitelist &#123; &quot;</span>..ip..<span class="string">&quot; &#125; 2&gt;/dev/null&quot;</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">return</span> DNSAction.None</span><br><span class="line"><span class="keyword">end</span>))</span><br></pre></td></tr></table></figure>
 
 <h2 id="圆周运动"><a href="#圆周运动" class="headerlink" title="圆周运动"></a>圆周运动</h2><div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2695,45 +2727,45 @@ OpenJDK 64-Bit Server VM (Temurin)(build 25.312-b07, mixed mode)
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
 			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -2840,7 +2872,7 @@ OpenJDK 64-Bit Server VM (Temurin)(build 25.312-b07, mixed mode)
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2025 Andrew
+  &copy; 2026 Andrew
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>

@@ -151,7 +151,51 @@
 	<div class="col-md-12">
 	  
 	
-	  <p>A Revelation of the Apocalypse</p>
+	  <div id="player"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+  const playlist = [
+    "tiz8LQkGSlM",
+    "zgKOyJNuhqc",
+    "3w_uWP2jD5A",
+    "HbDH3RCiV98",
+    "YLuFY8DYq7o",
+    "2v8aLMcv3-Y",
+    "2zCxev9qsbY",
+    "zumk_5uemkI",
+    "s-QxbywIP0g",
+    "iVvzlBYeogQ",
+    "SR7aLsMTE3U"
+  ];
+
+  let player;
+  let currentIndex = 0;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      width: '90%',
+      videoId: playlist[currentIndex],
+      playerVars: {
+        autoplay: 1,
+        rel: 0
+      },
+      events: {
+        onStateChange: onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+      currentIndex = (currentIndex + 1) % playlist.length;
+      player.loadVideoById(playlist[currentIndex]);
+    }
+  }
+</script>
+
+<p>A Revelation of the Apocalypse</p>
 <p>The Apocalypse of St. John, illustrated with an analysis and scholia, in which the meaning is explained by Scripture and the predicted events are shown by histories. A general overview is prefixed hereunto; and at the end of the seventeenth chapter is inserted a refutation of Robert Bellarmine concerning Antichrist, in his third book on the Bishop of Rome. By Thomas Brightman.</p>
 <p>CHAPTER 2. (BOOK 2)<br>1 To the Angel of the Church of Ephesus write, these things says he, that holds those seven stars in his right hand, which walk in the midst of the seven candlesticks;<br>2 I know your works and your labor, and your patience, and that you cannot suffer the wicked: and have tried them, which say that they are apostles and are not, and have found them liars.<br>3 And you were burdened, and do endure, and for my name have labored and were not weary.<br>4 But I have something against you, that you have left your first love.<br>5 Be mindful therefore from whence you are fallen, and do the first works; or else I will come against you shortly, and remove your candlestick from its place, unless you do repent.<br>6 But this you have, that you hate the works of the Nicolaitans, which I also hate.<br>7 Let him that has an ear hear what the spirit says to the Churches, to him that overcomes I will give to eat of that tree of life, which is in the midst of the Paradise of God.<br>8 To the Angel of the Church of Smyrna write, these things says he that is the first and last, who was dead, and is alive.<br>9 I know your works and your affliction, and poverty (but you are rich) and the blasphemy of those who say they are Jews and are not, but the synagogue of Satan.<br>10 Fear none of those things which you will suffer: Behold it shall come to pass, that Satan shall cast some of you into prison, that you may be tried; and you shall have affliction ten days: Be faithful unto death, and I will give you the crown of life.<br>11 Let him that has an ear, hear what the spirit says to the Churches. He that shall overcome, shall not be hurt by the second death.<br>12 And to the Angel of the Church of Pergamus write, these things says he, that has that sharp two‑edged sword.<br>13 I know your works, and where you dwell, to wit, where Satan’s throne is, and that you keep my name, and have not denied my faith, yea even in those days in which Antipas that my faithful martyr was slain among you, where Satan dwells:<br>14 But I have a few things against you, that you have there those who hold the doctrine of Balaam, who taught Balak to lay a stumbling block before the children of Israel, that they should eat of those things, which were offered to idols, and that they should commit fornication,<br>15 So also have you them, which hold the doctrine of the Nicolaitans, which I hate.<br>16 Repent: or else I will come against you quickly and fight with them, with that sword of my mouth.<br>17 Let him that has an ear, hear what the spirit says to the Churches: I will give to him that overcomes, to eat of the hidden manna, and I will give him a white stone, and a new name written in the stone, which no man knows, but he that receives it.<br>18 And to the Angel of the Church of Thyatira, write, these things says the Son of God, which has eyes as a flame of fire, and whose feet are like fine brass.<br>19 I know your works, and love, and service, and faith, and patience, and your works, and your last are more than the first.<br>20 But I have a few things against you, that you suffer the woman Jezebel, which says she is a prophetess, to teach and deceive my servants, that they should commit fornication and eat of things which are offered to idols.<br>21 And I gave her time to repent of her fornication: but she has not repented.<br>22 Behold I will cast her into a bed and them that commit adultery with her into very great affliction, unless they repent of their works.<br>23 And I will kill her children with death, and all the Churches shall know that I am the searcher of the reins and of hearts, and I will give to every one of you according to your works.<br>24 And to you I say, and the rest of the Thyatirians, whosoever holds not this doctrine and who have not known the depths of Satan, as they say: I will lay no other burden upon you;<br>25 Yet that which you have, keep till I shall come:<br>26 For if any shall overcome, and observe my works unto the end, I will give him power over nations.<br>27 And he shall rule them with a rod of iron, and they shall be broken in pieces as earthen vessels, as I also have received of my father.<br>28 And I will give him the morning star.<br>29 Let him that has an ear, hear what the spirit says to the Churches.</p>
 <p>The Resolution. Until now, in common, that which pertains to all the seven churches: that which is proper to each one follows, an epistle being inscribed to each one separately. In each of them there is an inscription, narration, and conclusion. The first three concern churches falling into a worse state: Ephesus, Smyrna, and Pergamum. The other four return to the same, and as the next three are opposed to the first three and are answerable to each other: the Thiatiris to the Ephesians, the Sardis to the Smyrna, the Philippi to the Pergamon. Only Laodicea has no equal to which it may be compared.</p>
@@ -3761,45 +3805,45 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>4</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>1</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
+			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+		
 			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -3906,7 +3950,7 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2025 Andrew
+  &copy; 2026 Andrew
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
