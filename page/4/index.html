@@ -140,6 +140,320 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2023-03-13 </div>
+			<div class="article-title"><a href="/2023/03/13/Jupyter-Magic-Command/" >Jupyter Magic Command</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">lsmagic</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Available line magics:
+%alias  %alias_magic  %autoawait  %autocall  %automagic  %autosave  %bookmark  %cat  %cd  %clear  %colors  %conda  %config  %connect_info  %cp  %debug  %dhist  %dirs  %doctest_mode  %ed  %edit  %env  %gui  %hist  %history  %killbgscripts  %ldir  %less  %lf  %lk  %ll  %load  %load_ext  %loadpy  %logoff  %logon  %logstart  %logstate  %logstop  %ls  %lsmagic  %lx  %macro  %magic  %man  %matplotlib  %mkdir  %more  %mv  %notebook  %page  %pastebin  %pdb  %pdef  %pdoc  %pfile  %pinfo  %pinfo2  %pip  %popd  %pprint  %precision  %prun  %psearch  %psource  %pushd  %pwd  %pycat  %pylab  %qtconsole  %quickref  %recall  %rehashx  %reload_ext  %rep  %rerun  %reset  %reset_selective  %rm  %rmdir  %run  %save  %sc  %set_env  %store  %sx  %system  %tb  %time  %timeit  %unalias  %unload_ext  %who  %who_ls  %whos  %xdel  %xmode
+
+Available cell magics:
+%%!  %%HTML  %%SVG  %%bash  %%capture  %%debug  %%file  %%html  %%javascript  %%js  %%latex  %%markdown  %%perl  %%prun  %%pypy  %%python  %%python2  %%python3  %%ruby  %%script  %%sh  %%svg  %%sx  %%system  %%time  %%timeit  %%writefile
+
+Automagic is ON, % prefix IS NOT needed for line magics.</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="nx">javascript</span>
+<span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;javascript&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
+
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;fdf52ab3-f8c1-450f-86f2-5a25d43fc48d&#39;</span><span class="p">,</span>
+    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Juypyter Lab 有没有 zsh 的 magic command？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>JupyterLab 支持使用 <code>!</code> 前缀来执行命令，类似于在终端中执行命令。如果你想使用 zsh 的 magic command，可以在单元格中使用 <code>!zsh -c</code> 命令来执行，例如：</p>
+<pre><code>!zsh -c 'echo hello world'
+</code></pre>
+<p>这将会使用 zsh 来执行 <code>echo hello world</code> 命令。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Juypyter Lab 中 zsh 的 magic command 没有加载 ~/.zshrc，该怎么办呢？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>在 Jupyter Lab 中加载 zsh 的 magic command 时，如果发现没有加载 <code>~/.zshrc</code> 中的内容，可以尝试在 <code>~/.zshenv</code> 中添加以下内容：</p>
+<div class="highlight"><pre><span></span><span class="c1"># Load user&#39;s ~/.zshrc, but in non-interactive shell environments.</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ZSH_VERSION</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.zshrc&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.zshrc&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">fi</span>
+</pre></div>
+<p>这样在 Jupyter Lab 中执行 zsh 的 magic command 时，应该就能加载 <code>~/.zshrc</code> 中的内容了。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt;&gt; ~/.zshenv</span>
+
+<span class="s"># Load \`nvm\` in non-interactive shell environments.</span>
+<span class="s">if [[ -n &quot;$NVM_DIR&quot; ]]; then</span>
+<span class="s">    export NVM_DIR=&quot;$HOME/.nvm&quot;</span>
+<span class="s">    [ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;</span>
+<span class="s">fi</span>
+<span class="s">EOF</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>zsh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;cat ~/.zshenv&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>. &#34;$HOME/.cargo/env&#34;
+
+# Load `nvm` in non-interactive shell environments.
+if [[ -n &#34;/Users/saintway/.nvm&#34; ]]; then
+    export NVM_DIR=&#34;/Users/saintway/.nvm&#34;
+    [ -s &#34;/Users/saintway/.nvm/nvm.sh&#34; ] &amp;&amp; \. &#34;/Users/saintway/.nvm/nvm.sh&#34;
+fi
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>zsh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;nvm ls&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-blue-fg">    iojs-v1.0.4</span>
+<span class="ansi-green-fg">-&gt;      v19.7.0</span>
+<span class="ansi-yellow-fg">         system</span>
+<span class="ansi-green-fg">default</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">node</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>)
+<span class="ansi-red-fg">unstable</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span> <span class="ansi-white-fg">(default)</span>
+<span class="ansi-green-fg">node</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">stable</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-green-fg">stable</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">19.7</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-blue-fg">iojs</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-blue-fg">iojs-v1.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-blue-fg">iojs-v1.0.4</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-yellow-intense-fg ansi-bold">lts/*</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-yellow-intense-fg ansi-bold">lts/hydrogen</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/argon</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v4.9.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/boron</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v6.17.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/carbon</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v8.17.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/dubnium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v10.24.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/erbium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v12.22.12</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/fermium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v14.21.3</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/gallium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v16.19.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/hydrogen</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v18.15.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/03/13/Jupyter-Magic-Command/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2023-03-13 </div>
 			<div class="article-title"><a href="/2023/03/13/ChatGPT-Browser-Automation/" >ChatGPT Browser Automation</a></div>						
 		</h3>
 	
@@ -3790,7 +4104,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 	<div class="col-md-12">
 	  
 	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/iVvzlBYeogQ?loop=1&playlist=iVvzlBYeogQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/iVvzlBYeogQ?loop=1&playlist=iVvzlBYeogQ" title="YouTube Psalm 32" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <div class="tabs" id="psalm-32"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-32-1">Blessed Is the One</a></li><li class="tab"><a href="#psalm-32-2">这人有福啊</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-32-1"><blockquote>
@@ -3858,7 +4172,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 	<div class="col-md-12">
 	  
 	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/SR7aLsMTE3U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/SR7aLsMTE3U" title="YouTube Psalm 40" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <div class="tabs" id="psalm-40"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-40-1">He Raised Me Up</a></li><li class="tab"><a href="#psalm-40-2">他把我拉起来</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-40-1"><blockquote>
@@ -3934,7 +4248,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 	<div class="col-md-12">
 	  
 	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/zumk_5uemkI?loop=1&playlist=zumk_5uemkI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/zumk_5uemkI?loop=1&playlist=zumk_5uemkI" title="YouTube Psalm 08" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <div class="tabs" id="psalm-08"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-08-1">In All the Earth</a></li><li class="tab"><a href="#psalm-08-2">在全地</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-08-1"><blockquote>
@@ -3990,7 +4304,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 	<div class="col-md-12">
 	  
 	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/2zCxev9qsbY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/2zCxev9qsbY" title="YouTube Psalm 07" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <div class="tabs" id="psalm-07"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-07-1">Vindicate Me</a></li><li class="tab"><a href="#psalm-07-2">为我申正义</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-07-1"><blockquote>
@@ -4052,7 +4366,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 	<div class="col-md-12">
 	  
 	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/2v8aLMcv3-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/2v8aLMcv3-Y" title="YouTube Psalm 06" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <div class="tabs" id="psalm-06"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-06-1">Heal Me</a></li><li class="tab"><a href="#psalm-06-2">医治我</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-06-1"><blockquote>
@@ -4114,7 +4428,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 	<div class="col-md-12">
 	  
 	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/YLuFY8DYq7o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/YLuFY8DYq7o" title="YouTube Psalm 05" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <div class="tabs" id="psalm-05"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-05-1">Rejoice in You</a></li><li class="tab"><a href="#psalm-05-2">靠着你而欢欣</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-05-1"><blockquote>
@@ -4168,7 +4482,7 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 	<div class="col-md-12">
 	  
 	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/HbDH3RCiV98?loop=1&playlist=HbDH3RCiV98" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/HbDH3RCiV98?loop=1&playlist=HbDH3RCiV98" title="YouTube Psalm 04" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
 <div class="tabs" id="psalm-04"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-04-1">When I Call</a></li><li class="tab"><a href="#psalm-04-2">当我向他呼求时</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-04-1"><blockquote>
@@ -4203,72 +4517,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
   
 </div>
 	<a type="button" href="/2023/02/09/psalms/psalm-04/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-02-09 </div>
-			<div class="article-title"><a href="/2023/02/09/psalms/psalm-03/" >Lifter of My Head</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/3w_uWP2jD5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<div class="tabs" id="psalm-03"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-03-1">Lifter of My Head</a></li><li class="tab"><a href="#psalm-03-2">你让我抬起头来</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-03-1"><blockquote>
-<p>Lifter of My Head<br>by Daniel Brunz</p>
-<hr>
-<p>LORD, so many are rising up against me<br>Many are they who say of my soul<br>There is no help for me in God</p>
-<hr>
-<p>When they throw stones at me<br>I need not fear nor flee</p>
-<hr>
-<p>For You, O LORD, are a shield for me<br>My glory, and the lifter of my head<br>For You, O LORD, are a shield for me<br>My glory, and the lifter of my head</p>
-<hr>
-<p>I cried to the LORD with my voice<br>And He heard me, He heard me, He heard me<br>And I cried to the LORD with my voice<br>And He heard me, He heard me, He answered me</p>
-<hr>
-<p>And I lay down and slept<br>And I awoke for Your presence sustained me</p>
-<hr>
-<p>So when ten thousand fight me<br>I need not fear nor flee</p>
-<hr>
-<p>So when ten thousand fight me<br>I need not fear nor flee</p>
-<hr>
-<p>So when ten thousand fight me<br>I need not fear nor flee</p>
-<hr>
-<p>For You, O LORD, are a shield for me<br>My glory, and the lifter of my head<br>For You, O LORD, are a shield for me<br>My glory, and the lifter of my head</p>
-<hr>
-<p>Arise, O LORD, and save me, O my God<br>For You have struck my enemies<br>You have broken their teeth<br>For salvation comes from You alone<br>Your blessing is upon Your people forever</p>
-</blockquote></div><div class="tab-pane" id="psalm-03-2"><blockquote>
-<p>永恒主啊，我的敌人何其多呀！<br>有许多人起来攻击我。</p>
-<hr>
-<p>有许多人议论我说：<br>『他是不能由上帝得救助的。』<br>（细拉）</p>
-<hr>
-<p>但是你呢、永恒主啊，<br>你是我四围的盾牌；<br>你是我的光荣，是让我抬起头来的。<br>我出声呼求永恒主，<br>他从他的圣山上应了我。<br>（细拉）</p>
-<hr>
-<p>我躺下，我睡觉，我醒来，<br>都因永恒主在扶持着我。<br>虽有千万族民周围排列攻击我，<br>我也不怕。</p>
-<hr>
-<p>永恒主啊，求你起来；<br>我的上帝啊，拯救我哦；<br>因为你击打了我众仇敌的腮骨，<br>你敲碎了恶人的牙齿。</p>
-<hr>
-<p>拯救属于永恒主；<br>愿你的祝福在你人民身上。<br>（细拉）</p>
-<hr>
-<p>(诗篇 3:1-8 吕振中)</p>
-</blockquote></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/02/09/psalms/psalm-03/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -4310,45 +4558,45 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
 		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
-			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
-		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
-		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
 			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -4364,6 +4612,10 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2026/01/16/LLM-Hallucination/" ><i class="fa fa-file-o"></i>LLM 幻觉</a>
+      </li>
+    
+      <li>
         <a href="/2025/09/26/A-Revelation-of-the-Apocalypse/" ><i class="fa fa-file-o"></i>A Revelation of the Apocaly...</a>
       </li>
     
@@ -4377,10 +4629,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
     
       <li>
         <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
       </li>
     
   </ul>

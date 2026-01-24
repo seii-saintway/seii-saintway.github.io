@@ -139,6 +139,49 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2017-08-16 </div>
+			<div class="article-title"><a href="/2017/08/16/JavaScript/" >JavaScript</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function tt() &#123;</span><br><span class="line">    if (this === window) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    var ttt = function () &#123;</span><br><span class="line">        if (this === window) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    ttt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var tt = function () &#123;</span><br><span class="line">    if (this === window) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    var ttt = function () &#123;</span><br><span class="line">        if (this === window) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    ttt();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tt()</span><br><span class="line">window.tt()</span><br><span class="line">this.tt()</span><br><span class="line">new tt()</span><br><span class="line">new window.tt()</span><br><span class="line">new this.tt()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function tt() &#123;</span><br><span class="line">    if (this === window) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    var ttt = function () &#123;</span><br><span class="line">        if (this === window) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    window.ttt(); // TypeError</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function tt() &#123;</span><br><span class="line">    if (this === window) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    var ttt = function () &#123;</span><br><span class="line">        if (this === window) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    ttt.call(window);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function tt() &#123;</span><br><span class="line">    &quot;use strict&quot;;</span><br><span class="line">    if (this === undefined) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    var ttt = function () &#123;</span><br><span class="line">        if (this === undefined) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    ttt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var tt = function () &#123;</span><br><span class="line">    &quot;use strict&quot;;</span><br><span class="line">    if (this === undefined) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    var ttt = function () &#123;</span><br><span class="line">        if (this === undefined) console.log(&quot;TRUE&quot;); else console.log(&quot;FALSE&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    ttt();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tt()</span><br><span class="line">window.tt()</span><br><span class="line">this.tt()</span><br><span class="line">new tt()</span><br><span class="line">new window.tt()</span><br><span class="line">new this.tt()</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2017/08/16/JavaScript/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2017-07-24 </div>
 			<div class="article-title"><a href="/2017/07/24/Snippet/" >自分を休ませる</a></div>						
 		</h3>
@@ -6433,55 +6476,6 @@ This appears to be the end of the file content for a Windows resource script fil
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-10-23 </div>
-			<div class="article-title"><a href="/2015/10/23/Visual-Foundation-Models/" >Visual Foundation Models</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <p><a target="_blank" rel="noopener" href="https://graphics.stanford.edu/~jplewis/lscourse/">Practical Least-Squares for Computer Graphics</a></p>
-<hr>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/unilm">UniLM</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers">Hugging Face - Transformers</a></li>
-</ul>
-<hr>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/tools.html">LangChain Tools</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/visual-chatgpt">Visual ChatGPT</a></li>
-</ul>
-<hr>
-<p>x2vec embeddings</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://towhee.io/">https://towhee.io/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/towhee-io/towhee">https://github.com/towhee-io/towhee</a></li>
-</ul>
-<hr>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/CompVis/stable-diffusion">https://github.com/CompVis/stable-diffusion</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/CompVis/latent-diffusion">https://github.com/CompVis/latent-diffusion</a></li>
-<li><a target="_blank" rel="noopener" href="https://gligen.github.io/">https://gligen.github.io/</a></li>
-</ul>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2015/10/23/Visual-Foundation-Models/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -6520,45 +6514,45 @@ This appears to be the end of the file content for a Windows resource script fil
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
 			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
 			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -6574,6 +6568,10 @@ This appears to be the end of the file content for a Windows resource script fil
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2026/01/16/LLM-Hallucination/" ><i class="fa fa-file-o"></i>LLM 幻觉</a>
+      </li>
+    
+      <li>
         <a href="/2025/09/26/A-Revelation-of-the-Apocalypse/" ><i class="fa fa-file-o"></i>A Revelation of the Apocaly...</a>
       </li>
     
@@ -6587,10 +6585,6 @@ This appears to be the end of the file content for a Windows resource script fil
     
       <li>
         <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
       </li>
     
   </ul>

@@ -140,6 +140,90 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2020-04-10 </div>
+			<div class="article-title"><a href="/2020/04/10/Try-KubeCTL-by-Proxy/" >Try KubeCTL by Proxy</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Setup-proxy">Setup proxy<a class="anchor-link" href="#Setup-proxy">&#182;</a></h1><p>Add the following to <code>~/ssh_proxy.sh</code>:</p>
+<pre><code>gcloud config configurations activate sandbox-account
+gcloud compute ssh --zone &quot;us-west1-b&quot; &quot;andrew@jhub-gce&quot; --tunnel-through-iap --project &quot;sandbox-project&quot; -- -D 2244
+</code></pre>
+<p>Change bash permission:</p>
+<pre><code>chmod +x ~/ssh_proxy.sh
+</code></pre>
+<p>Add the following to <code>~/env_proxy.sh</code>:</p>
+<pre><code>export http_proxy='socks5://127.0.0.1:2244'
+export https_proxy='socks5://127.0.0.1:2244'
+</code></pre>
+<p>Change bash permission:</p>
+<pre><code>chmod +x ~/env_proxy.sh
+</code></pre>
+<h1 id="Enabling-autocompletion">Enabling autocompletion<a class="anchor-link" href="#Enabling-autocompletion">&#182;</a></h1><h2 id="Upgrade-bash">Upgrade bash<a class="anchor-link" href="#Upgrade-bash">&#182;</a></h2><p>You can install/upgrade it using Homebrew:</p>
+<pre><code>brew install bash
+sudo bash -c 'echo /usr/local/bin/bash &gt;&gt; /etc/shells'
+chsh -s /usr/local/bin/bash
+</code></pre>
+<p>Reload your shell and verify that the desired version is being used:</p>
+<pre><code>echo $BASH_VERSION $SHELL
+</code></pre>
+<h2 id="Install-bash-completion">Install bash-completion<a class="anchor-link" href="#Install-bash-completion">&#182;</a></h2><p>You can test if you have bash-completion v2 already installed with <code>type _init_completion</code>. If not, you can install it with Homebrew:</p>
+<pre><code>brew install bash-completion@2
+</code></pre>
+<p>As stated in the output of this command, add the following to your <code>~/.bash_profile file</code>:</p>
+<pre><code>export BASH_COMPLETION_COMPAT_DIR=&quot;/usr/local/etc/bash_completion.d&quot;
+[[ -r &quot;/usr/local/etc/profile.d/bash_completion.sh&quot; ]] &amp;&amp; . &quot;/usr/local/etc/profile.d/bash_completion.sh&quot;
+</code></pre>
+<p>Reload your shell and verify that bash-completion v2 is correctly installed with</p>
+<pre><code>type _init_completion
+</code></pre>
+<h2 id="Enable-kubectl-autocompletion">Enable kubectl autocompletion<a class="anchor-link" href="#Enable-kubectl-autocompletion">&#182;</a></h2><p>Source the completion script in your <code>~/.bash_profile file</code>:</p>
+<pre><code>echo 'source &lt;(kubectl completion bash)' &gt;&gt;~/.bash_profile
+</code></pre>
+<p>Add the completion script to the <code>/usr/local/etc/bash_completion.d</code> directory:</p>
+<pre><code>kubectl completion bash &gt;/usr/local/etc/bash_completion.d/kubectl
+</code></pre>
+<p>If you have an alias for kubectl, you can extend shell completion to work with that alias by adding the following to your <code>~/.bash_profile</code> file:</p>
+<pre><code>alias kroxyctl=&quot;http_proxy='socks5://127.0.0.1:2244' https_proxy='socks5://127.0.0.1:2244' kubectl&quot;
+complete -F __start_kubectl kroxyctl
+</code></pre>
+<h1 id="Setup-cluster-info">Setup cluster-info<a class="anchor-link" href="#Setup-cluster-info">&#182;</a></h1><pre><code>gcloud container clusters get-credentials jhub-cluster --zone us-central1-b --project sandbox-project
+kubectl config rename-context gke_sandbox-project_us-central1-b_jhub-cluster jhub-cluster
+</code></pre>
+<h1 id="Try-kubectl-by-proxy">Try kubectl by proxy<a class="anchor-link" href="#Try-kubectl-by-proxy">&#182;</a></h1><pre><code>kroxyctl --context=jhub-cluster get pods
+</code></pre>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2020/04/10/Try-KubeCTL-by-Proxy/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2020-04-10 </div>
 			<div class="article-title"><a href="/2020/04/10/Try-JupyterHub-and-BinderHub/" >Try JupyterHub and BinderHub</a></div>						
 		</h3>
 	
@@ -4744,110 +4828,6 @@ GROUP BY
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2019-10-19 </div>
-			<div class="article-title"><a href="/2019/10/19/Try-Jupyter-Dashboards/" >Try Jupyter Dashboards</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Jupyter-Dashboards">Jupyter Dashboards<a class="anchor-link" href="#Jupyter-Dashboards">&#182;</a></h1><p><a target="_blank" rel="noopener" href="https://github.com/jupyter/dashboards">https://github.com/jupyter/dashboards</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I think it is a bit like <code>appmode</code>.</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/oschuett/appmode">https://github.com/oschuett/appmode</a></p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>jupyter_dashboards
-<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>jupyter<span class="w"> </span>dashboards<span class="w"> </span>quick-setup<span class="w"> </span>--sys-prefix
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Jupyter-Dashboards-Demos"><a target="_blank" rel="noopener" href="https://jhub.name/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fjupyter%2Fdashboards.git&amp;subPath=etc%2Fnotebooks&amp;app=notebook">Jupyter Dashboards Demos</a><a class="anchor-link" href="#Jupyter-Dashboards-Demos">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-HE<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>~/dashboards.git/requirements-demo.txt
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Notebooks can not be well shown in Grid Layout with my Jupyter Dashboards.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>jupyter<span class="w"> </span>dashboards<span class="w"> </span>quick-remove<span class="w"> </span>--sys-prefix
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
- 
-
-
-
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2019/10/19/Try-Jupyter-Dashboards/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -4886,45 +4866,45 @@ GROUP BY
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
 			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
 		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
 		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
 			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
 		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -4940,6 +4920,10 @@ GROUP BY
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2026/01/16/LLM-Hallucination/" ><i class="fa fa-file-o"></i>LLM 幻觉</a>
+      </li>
+    
+      <li>
         <a href="/2025/09/26/A-Revelation-of-the-Apocalypse/" ><i class="fa fa-file-o"></i>A Revelation of the Apocaly...</a>
       </li>
     
@@ -4953,10 +4937,6 @@ GROUP BY
     
       <li>
         <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
-      </li>
-    
-      <li>
-        <a href="/2024/05/19/biobuilder/glossary/" ><i class="fa fa-file-o"></i>术语表</a>
       </li>
     
   </ul>

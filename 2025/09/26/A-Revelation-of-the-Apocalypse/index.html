@@ -146,7 +146,7 @@
 
 	<!-- content -->
 	<div class="mypage">
-	    <div id="player"></div>
+	    <div id="psalms-player"></div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 
@@ -162,14 +162,15 @@
     "zumk_5uemkI",
     "s-QxbywIP0g",
     "iVvzlBYeogQ",
-    "SR7aLsMTE3U"
+    "SR7aLsMTE3U",
+    "zWj1afeU--E"
   ];
 
   let player;
   let currentIndex = 0;
 
   function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
+    player = new YT.Player('psalms-player', {
       width: '90%',
       videoId: playlist[currentIndex],
       playerVars: {
@@ -406,9 +407,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/2026/01/16/LLM-Hallucination/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 

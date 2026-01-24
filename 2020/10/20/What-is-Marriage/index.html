@@ -8,9 +8,14 @@
   <title>What is Marriage? | Andrew&#39;s Blog</title>
   <meta name="author" content="Andrew">
   
-  <meta name="description" content="To BrightID:
-
-TL;DR: Hey, guys! You have made an amazing identification system in crypto space. How about building a DAO with civil law? We can start ">
+  <meta name="description" content="const playlist = [
+    &#34;7U7rb3OXo3c&#34;,
+    &#34;qzyL9SJ30do&#34;,
+    &#34;LXHs3VBE5cc&#34;,
+    &#34;8yZ1mIYX3RQ&#34;,
+    &#34;I7CcVgw4_KE&#34;,
+    &#34;Bi0idKMZRQA&#34;,
+    &#34;XR4u4jQ4bmo&#34;">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -141,7 +146,94 @@ TL;DR: Hey, guys! You have made an amazing identification system in crypto space
 
 	<!-- content -->
 	<div class="mypage">
-	    <blockquote>
+	    <div id="love-stories-player"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+  const playlist = [
+    "7U7rb3OXo3c",
+    "qzyL9SJ30do",
+    "LXHs3VBE5cc",
+    "8yZ1mIYX3RQ",
+    "I7CcVgw4_KE",
+    "Bi0idKMZRQA",
+    "XR4u4jQ4bmo",
+    "sHgG9szjNxY",
+    "8xg3vE8Ie_E",
+    "US54FpncMz4",
+    "Rbi_QGVY4EU",
+  ];
+
+  let player;
+  let currentIndex = 0;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('love-stories-player', {
+      width: '90%',
+      videoId: playlist[currentIndex],
+      playerVars: {
+        autoplay: 1,
+        rel: 0
+      },
+      events: {
+        onStateChange: onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+      currentIndex = (currentIndex + 1) % playlist.length;
+      player.loadVideoById(playlist[currentIndex]);
+    }
+  }
+</script>
+
+<p><br /></p>
+
+<blockquote>
+<p>すみません、やば、ちょっと上げてもらってもいいですか？</p>
+</blockquote>
+<p>作詞：宇多田ヒカル<br>作曲：宇多田ヒカル</p>
+<br />
+
+<p>最後のキスは<br>(我們的最後一個吻)<br>タバコの flavor がした<br>(帶著淡淡的菸味)<br>ニガくて<ruby>せつ<rt>切</rt></ruby>ない香り<br>(苦澀而又令人心碎)</p>
+<br />
+
+<p>明日の今頃には<br>(明天的這個時候)<br>あなたはどこにいるんだろう<br>(不知道你會在哪裡)<br>誰を想ってるんだろう<br>(你心裡又會想著誰)</p>
+<br />
+
+<p>You are always gonna be my love<br>いつか誰かとまた恋に落ちても<br>(如果我有朝一日愛上別人)<br>I’ll remember to love<br>You taught me how</p>
+<br />
+
+<p>You are always gonna be the one<br>今はまだ悲しい <ruby>love<rt>ラブ</rt></ruby> <ruby>song<rt>ソング</rt></ruby><br>(我現在依然唱著悲傷的情歌)<br>新しい歌　うたえるまで<br>(直到我會唱新歌為止)</p>
+<br />
+
+<p>立ち止まる時間が<br>(停滯不前的時光)<br>動き出そうとしてる<br>(即將開始轉動)<br>忘れたくないことばかり<br>(有那麼多事想永遠銘記在心)</p>
+<br />
+
+<p>明日の今頃には<br>(明天的這個時候)<br>私はきっと泣いてる<br>(我將哭泣不已)<br>あなたを想ってるんだろう<br>(想念著我深深愛過的你)</p>
+<br />
+
+<p>You will always be inside my heart<br>いつもあなただけの場所があるから<br>(在我心底為你留出一席之地)<br>I hope that I have a place in your heart too</p>
+<br />
+
+<p>Now and forever you are still the one<br>今はまだ悲しい <ruby>love<rt>ラブ</rt></ruby> <ruby>song<rt>ソング</rt></ruby><br>(我現在依然唱著悲傷的情歌)<br>新しい歌　うたえるまで<br>(直到我會唱新歌為止)</p>
+<br />
+
+<p>You are always gonna be my love<br>いつか誰かとまた恋に落ちても<br>(如果我有朝一日愛上別人)<br>I’ll remember to love<br>You taught me how</p>
+<br />
+
+<p>You are always gonna be the one<br>まだ悲しい <ruby>love<rt>ラブ</rt></ruby> <ruby>song<rt>ソング</rt></ruby><br>(我現在依然唱著悲傷的情歌)<br>Now and forever<br>(直到永遠)</p>
+<br />
+
+<blockquote>
+<p>もしもいつかまた会えたなら、今度は君の物語を聞かせてください。</p>
+</blockquote>
+<hr />
+
+<blockquote>
 <p><strong>To BrightID:</strong></p>
 <hr />
 TL;DR: Hey, guys! You have made an amazing identification system in crypto space. How about building a DAO with civil law? We can start with creating some smart contracts of marriage, concerning crypto property. And isn't NFT a good way to digitalize and represent marriage certificate? If we can connect two people, then we can connect three and build a real community. We can connect crypto space with the real world.<br />
@@ -159,6 +251,9 @@ best regards,<br />
 <hr>
 <p>best regards,<br>Andrew</p>
 </blockquote>
+<br />
+
+<p><ruby>私<rt>わたし</rt></ruby>たちは<ruby>花嫁<rt>はなよめ</rt></ruby>として、<ruby>結婚<rt>けっこん</rt></ruby><ruby>式<rt>しき</rt></ruby>の<ruby>宴<rt>うたげ</rt></ruby>に<ruby>参加<rt>さんか</rt></ruby>するために、<ruby>輝く<rt>かがやく</rt></ruby><ruby>清い<rt>きよい</rt></ruby><ruby>衣<rt>ころも</rt></ruby>を<ruby>身<rt>み</rt></ruby>にまとっていきましょう。</p>
 
 	</div>
 
