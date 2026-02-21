@@ -140,6 +140,285 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2023-03-13 </div>
+			<div class="article-title"><a href="/2023/03/13/Install-IJavaScript/" >Install IJavaScript</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="IJavaScript-Kernel"><a target="_blank" rel="noopener" href="https://github.com/n-riesco/ijavascript">IJavaScript Kernel</a><a class="anchor-link" href="#IJavaScript-Kernel">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
+
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;fdf52ab3-f8c1-450f-86f2-5a25d43fc48d&#39;</span><span class="p">,</span>
+    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="s1">&#39;介绍 IJavaScript&#39;</span>
+<span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>IJavaScript 是一种在 Jupyter Notebook 中运行 JavaScript 的内核。它基于 Node.js，并提供了一个 REPL（交互式解释器）界面，可以在 Jupyter Notebook 中运行 JavaScript 代码。</p>
+<p>使用 IJavaScript 内核，您可以在 Jupyter Notebook 中使用 JavaScript 编写代码，以及使用其他内核（如 Python、R、Julia 等）进行交互。这样，您就可以在同一个环境中使用不同的编程语言，同时享受到 Jupyter Notebook 提供的许多强大功能，如实时编辑、代码补全、图表绘制等。</p>
+<p>安装 IJavaScript 内核需要先安装 Node.js，然后通过 npm（Node.js 包管理器）安装 ijavascript 包。具体步骤如下：</p>
+<ol>
+<li>安装 Node.js：在 Node.js 官网（ <a target="_blank" rel="noopener" href="https://nodejs.org/">https://nodejs.org/</a> ）下载并安装Node.js，安装完成后打开终端（或命令行）并输入以下命令检查是否安装成功：</li>
+</ol>
+<pre><code>node -v
+</code></pre>
+<p>如果输出了 Node.js 版本号，则说明安装成功。</p>
+<ol start="2">
+<li>安装 ijavascript 包：在终端中输入以下命令安装 ijavascript 包：</li>
+</ol>
+<pre><code>npm install -g ijavascript
+</code></pre>
+<ol start="3">
+<li>安装完毕后，运行以下命令启动 Jupyter Notebook 服务器：</li>
+</ol>
+<pre><code>jupyter notebook
+</code></pre>
+<ol start="4">
+<li>在 Jupyter Notebook 中新建一个 Notebook，选择 IJavaScript 内核，即可开始编写 JavaScript 代码并运行。</li>
+</ol>
+<p>需要注意的是，IJavaScript 目前只支持 Node.js 中的 JavaScript 语法和功能，不支持浏览器中的 DOM 操作等特性。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Z shell</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nvm</span> <span class="n">install</span> <span class="n">node</span> <span class="o">--</span><span class="n">lts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nvm</span> <span class="n">alias</span> <span class="n">default</span> <span class="n">node</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nvm</span> <span class="n">use</span> <span class="n">v19</span><span class="mf">.7.0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nvm</span> <span class="n">ls</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-blue-fg">    iojs-v1.0.4</span>
+<span class="ansi-green-fg">-&gt;      v19.7.0</span>
+<span class="ansi-yellow-fg">         system</span>
+<span class="ansi-green-fg">default</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">node</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>)
+<span class="ansi-red-fg">unstable</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span> <span class="ansi-white-fg">(default)</span>
+<span class="ansi-green-fg">node</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">stable</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-green-fg">stable</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">19.7</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-blue-fg">iojs</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-blue-fg">iojs-v1.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-blue-fg">iojs-v1.0.4</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-yellow-intense-fg ansi-bold">lts/*</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-yellow-intense-fg ansi-bold">lts/hydrogen</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/argon</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v4.9.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/boron</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v6.17.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/carbon</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v8.17.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/dubnium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v10.24.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/erbium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v12.22.12</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/fermium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v14.21.3</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/gallium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v16.19.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/hydrogen</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v18.15.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">ijavascript</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">uuid</span><span class="nd">@latest</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ijsinstall</span> <span class="o">--</span><span class="n">install</span><span class="o">=</span><span class="k">global</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/03/13/Install-IJavaScript/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2023-03-13 </div>
 			<div class="article-title"><a href="/2023/03/13/Jupyter-Magic-Command/" >Jupyter Magic Command</a></div>						
 		</h3>
 	
@@ -4466,60 +4745,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-02-09 </div>
-			<div class="article-title"><a href="/2023/02/09/psalms/psalm-04/" >When I Call</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/HbDH3RCiV98?loop=1&playlist=HbDH3RCiV98" title="YouTube Psalm 04" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<div class="tabs" id="psalm-04"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-04-1">When I Call</a></li><li class="tab"><a href="#psalm-04-2">当我向他呼求时</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-04-1"><blockquote>
-<p>When I Call<br>by Melissa Breems</p>
-<hr>
-<p>Hear me as I call, O God<br>You′re all my righteousness<br>For You have rescued me<br>When I was drowning in the depths<br>Show favor again to me<br>And hear my prayer</p>
-<hr>
-<p>How long, O sons of men, will you tear me down with guilt and shame?<br>How long will you love what’s worthless?<br>How long will your hearts chase after lies?</p>
-<hr>
-<p>But know that God set me apart<br>And know that He has chosen me<br>And He will answer me<br>He will answer when I call</p>
-<hr>
-<p>Pour out your complaints, but do not sin<br>Commune with Your heart upon your bed and be still<br>Offer up your sacrifice and trust in Him<br>For there are many who say, “Who will show us any good?”<br>Lord, show us just how good You are<br>Unveil Your glory</p>
-<hr>
-<p>For You have put gladness in my heart<br>Even more than the wealthiest of earth<br>And I will lay me down, I will lay me down in peace<br>And I will sleep in Your peace<br>For You alone make me dwell in safety</p>
-<hr>
-<p>I can rest because You are good<br>I can rest because You are faithful<br>I can rest because You are good to me</p>
-</blockquote></div><div class="tab-pane" id="psalm-04-2"><blockquote>
-<p>显我理直的上帝啊<br>我呼求时、求你应我。<br>我在困苦中、你曾给我宽绰；<br>现在求你恩待我，听我的祷告。</p>
-<hr>
-<p>上流人哪，你们将我的光荣<br>变为侮辱、要到几时呢？<br>你们喜爱空洞，寻求虚谎、<br>要到几时呢？<br>（细拉）<br>要知道永恒主已分别坚贞之士归他自己<br>我向他呼求时、永恒主必听我。</p>
-<hr>
-<p>你们尽管激动战抖，可别犯罪；<br>在床上时、要心中说话，静默无声。<br>（细拉）<br>要献对的祭，<br>要倚靠永恒主。</p>
-<hr>
-<p>许多人总说：「谁能指示我们什么好处？」<br>永恒主啊，扬起你脸上的光来照我们哦。<br>你使我心里快乐，<br>胜过丰收了五谷新酒时的欢喜。<br>我必又平安、又躺下而睡觉，<br>因为只有永恒主、你能使我安然居住。</p>
-<hr>
-<p>(诗篇 4:1-8 吕振中)</p>
-</blockquote></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/02/09/psalms/psalm-04/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -4558,45 +4783,45 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
 		
-			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
 			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
 			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
 			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -4612,6 +4837,10 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2026/02/07/Agent-Browser/" ><i class="fa fa-file-o"></i>从 Playwright 到 agent-browse...</a>
+      </li>
+    
+      <li>
         <a href="/2026/01/16/LLM-Hallucination/" ><i class="fa fa-file-o"></i>LLM 幻觉</a>
       </li>
     
@@ -4625,10 +4854,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
     
       <li>
         <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
-      </li>
-    
-      <li>
-        <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
       </li>
     
   </ul>

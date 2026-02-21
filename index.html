@@ -139,6 +139,1073 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2026-02-07 </div>
+			<div class="article-title"><a href="/2026/02/07/Agent-Browser/" >从 Playwright 到 agent-browser：基于 Accessibility Tree 的浏览器自动化与 AI Agent 实践</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>这篇文章整理了一次从『传统浏览器自动化测试』一路深入到『AI Agent 驱动浏览器操作』的完整思考路径，核心关键词包括 <strong>Playwright</strong>、<strong>Rust</strong>、<strong>playwright-rs</strong>、<strong>agent-browser</strong>、<strong>Accessibility Tree</strong>、<strong>LLM</strong>。如果你正在思考如何让浏览器自动化更稳、更智能，或者如何把 LLM 接进真实网页操作，这篇总结可以作为一份系统性参考。</p>
+<hr>
+<h2 id="一、浏览器自动化的三条路线"><a href="#一、浏览器自动化的三条路线" class="headerlink" title="一、浏览器自动化的三条路线"></a>一、浏览器自动化的三条路线</h2><p>在讨论具体工具前，先明确三种常见路线：</p>
+<ol>
+<li><p><strong>官方 Playwright（Node.js &#x2F; Python &#x2F; Java &#x2F; .NET）</strong><br>工程能力最强，生态最成熟，适合严肃的 E2E 测试。</p>
+</li>
+<li><p><strong>Rust + Playwright</strong><br>通过 Rust bindings 调用 Playwright（如 <code>playwright-rs</code>），在 Rust 工程内完成浏览器自动化。</p>
+</li>
+<li><p><strong>Rust WebDriver &#x2F; Selenium 生态</strong><br>标准化强，但对现代浏览器能力（自动等待、可访问性、trace）支持有限。</p>
+</li>
+</ol>
+<p>本文重点集中在 <strong>路线 2</strong> 以及由此延伸出的 <strong>agent-browser + LLM</strong> 思路。</p>
+<hr>
+<h2 id="二、playwright-rs：在-Rust-中写浏览器自动化测试"><a href="#二、playwright-rs：在-Rust-中写浏览器自动化测试" class="headerlink" title="二、playwright-rs：在 Rust 中写浏览器自动化测试"></a>二、playwright-rs：在 Rust 中写浏览器自动化测试</h2><p><code>playwright-rs</code> 是目前最有前途的 Rust Playwright 绑定：</p>
+<ul>
+<li>基于 <strong>官方 Playwright Server（Node.js）</strong></li>
+<li>Rust 侧通过 JSON-RPC 调用</li>
+<li>支持 Chromium &#x2F; Firefox &#x2F; WebKit</li>
+<li>支持 Linux &#x2F; macOS &#x2F; Windows</li>
+<li>已在 GitHub Actions 跨平台跑通</li>
+</ul>
+<h3 id="一个最小的-Rust-测试用例"><a href="#一个最小的-Rust-测试用例" class="headerlink" title="一个最小的 Rust 测试用例"></a>一个最小的 Rust 测试用例</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#[tokio::test]</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">smoke_test</span>() <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;(), <span class="type">Box</span>&lt;<span class="keyword">dyn</span> std::error::Error&gt;&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">pw</span> = Playwright::<span class="title function_ invoke__">launch</span>().<span class="keyword">await</span>?;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">browser</span> = pw.<span class="title function_ invoke__">chromium</span>().<span class="title function_ invoke__">launch</span>().<span class="keyword">await</span>?;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">page</span> = browser.<span class="title function_ invoke__">new_page</span>().<span class="keyword">await</span>?;</span><br><span class="line"></span><br><span class="line">    page.<span class="title function_ invoke__">goto</span>(<span class="string">&quot;https://example.com&quot;</span>, <span class="literal">None</span>).<span class="keyword">await</span>?;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">heading</span> = page.<span class="title function_ invoke__">locator</span>(<span class="string">&quot;role=heading&quot;</span>).<span class="keyword">await</span>;</span><br><span class="line">    <span class="built_in">assert!</span>(heading.<span class="title function_ invoke__">is_visible</span>().<span class="keyword">await</span>?);</span><br><span class="line"></span><br><span class="line">    browser.<span class="title function_ invoke__">close</span>().<span class="keyword">await</span>?;</span><br><span class="line">    <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>关键点在于：推荐使用 role &#x2F; name 等基于可访问性语义的 locator，而不是 CSS selector。</p>
+<hr>
+<h2 id="三、Accessibility-Tree-是什么？为什么它更稳？"><a href="#三、Accessibility-Tree-是什么？为什么它更稳？" class="headerlink" title="三、Accessibility Tree 是什么？为什么它更稳？"></a>三、Accessibility Tree 是什么？为什么它更稳？</h2><ol>
+<li><p>它不是 DOM</p>
+<p>Accessibility Tree 是浏览器内部为屏幕阅读器和辅助技术维护的一棵语义树：</p>
+<ul>
+<li>节点是 button &#x2F; textbox &#x2F; heading &#x2F; link</li>
+<li>而不是 div &#x2F; span</li>
+<li>包含 role、accessible name、state（disabled&#x2F;checked&#x2F;expanded）</li>
+</ul>
+<p>它由浏览器从 DOM + CSS + ARIA 自动计算生成。</p>
+</li>
+<li><p>为什么适合自动化与 AI ？</p>
+<ul>
+<li>更贴近『人类理解的页面结构』</li>
+<li>对 class、布局、嵌套不敏感</li>
+<li>天然支持『这个按钮叫什么』『这个输入框是干嘛的』</li>
+</ul>
+</li>
+</ol>
+<p>Playwright 原生支持基于 accessibility 的定位，这也是它明显强于 Selenium 的地方。</p>
+<p>ARIA（Accessible Rich Internet Applications）是一套给 Web 元素补充『语义、名称和状态』的规范，<br>浏览器据此计算 Accessibility Tree，供辅助技术、测试工具和 AI 使用。<br>ARIA 不是 Accessibility Tree 的『开关』，而是『校准器』；没有 ARIA，浏览器也能计算出树，只是精度可能不同。</p>
+<hr>
+<h2 id="四、Selenium-为什么很难支持-Accessibility-Tree-？"><a href="#四、Selenium-为什么很难支持-Accessibility-Tree-？" class="headerlink" title="四、Selenium 为什么很难支持 Accessibility Tree ？"></a>四、Selenium 为什么很难支持 Accessibility Tree ？</h2><p>结论先行：<br>Selenium 短期内几乎不可能完整支持 accessibility tree。</p>
+<br />
+
+<p>原因包括：</p>
+<ul>
+<li>WebDriver 标准主要围绕 DOM</li>
+<li>Accessibility Tree 属于浏览器内部语义模型</li>
+<li>AOM（Accessibility Object Model）仍处于实验&#x2F;讨论阶段</li>
+<li>不同浏览器、不同操作系统的无障碍实现差异巨大</li>
+</ul>
+<p>因此，Selenium 通常只能：</p>
+<ul>
+<li>结合 axe-core 等工具做无障碍检测</li>
+<li>而不是『读取并操作 accessibility tree』</li>
+</ul>
+<hr>
+<h2 id="五、agent-browser：为-AI-Agent-设计的浏览器控制层"><a href="#五、agent-browser：为-AI-Agent-设计的浏览器控制层" class="headerlink" title="五、agent-browser：为 AI Agent 设计的浏览器控制层"></a>五、<a target="_blank" rel="noopener" href="https://github.com/vercel-labs/agent-browser">agent-browser</a>：为 AI Agent 设计的浏览器控制层</h2><ol>
+<li>agent-browser 是什么<ul>
+<li>Vercel Labs 出品</li>
+<li>一个 Rust CLI + Playwright 后端 的工具</li>
+<li>不是测试框架，而是『浏览器操作协议的 CLI 实现』</li>
+</ul>
+</li>
+</ol>
+<p>它的核心创新是：</p>
+<p>snapshot + ref-id 的交互模型</p>
+<hr>
+<ol start="2">
+<li>snapshot 的工作原理<ol>
+<li>从 Playwright 读取页面的 accessibility tree</li>
+<li>语义裁剪（去掉无关节点）</li>
+<li>为每个节点分配稳定的引用 ID（如 @e2）</li>
+<li>输出一份『当前页面可操作状态』</li>
+</ol>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@e1  heading &quot;Log in to Miro&quot;</span><br><span class="line">@e2  textbox &quot;Email&quot;</span><br><span class="line">@e3  button &quot;Continue&quot;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ol start="3">
+<li>用 ref-id 操作页面</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">agent-browser fill @e2 <span class="string">&quot;test@example.com&quot;</span></span><br><span class="line">agent-browser click @e3</span><br></pre></td></tr></table></figure>
+
+<p>完全不需要 CSS selector。</p>
+<hr>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第一步：确认你的环境前提</p>
+<p>agent-browser 的现实前提有三点，缺一不可。</p>
+<p>第一，macOS 本身没有问题，Intel 或 Apple Silicon 都可以。
+第二，需要 <strong>Node.js（用于 Playwright）</strong>。
+第三，需要 <strong>Rust（用于 agent-browser CLI）</strong>。</p>
+<p>你可以先快速确认一下：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>node<span class="w"> </span>-v
+npm<span class="w"> </span>-v
+rustc<span class="w"> </span>--version
+cargo<span class="w"> </span>--version
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>v20.19.4
+10.8.2
+rustc 1.58.1 (db9d1b20b 2022-01-20)
+cargo 1.58.0 (f01b232bc 2022-01-19)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果 Node 没装，建议直接用：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>node
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>pnpm<span class="w"> </span>setup
+pnpm<span class="w"> </span>config<span class="w"> </span>get<span class="w"> </span>global-dir
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/.pnpm-global
+pnpm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>global-dir<span class="w"> </span>~/.pnpm-global
+<span class="nb">source</span><span class="w"> </span>~/.zshrc
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果 Rust 没装：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>curl<span class="w"> </span>--proto<span class="w"> </span><span class="s1">&#39;=https&#39;</span><span class="w"> </span>--tlsv1.2<span class="w"> </span>-sSf<span class="w"> </span>https://sh.rustup.rs<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>rustup<span class="w"> </span>update<span class="w"> </span>stable
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>或者：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>curl<span class="w"> </span>--proto<span class="w"> </span><span class="s1">&#39;=https&#39;</span><span class="w"> </span>--tlsv1.2<span class="w"> </span>-sSf<span class="w"> </span>https://sh.rustup.rs<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>--<span class="w"> </span>-y<span class="w"> </span>--profile<span class="w"> </span>minimal
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>rustup<span class="w"> </span>update<span class="w"> </span>stable
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>装完记得重新开一个 shell，确保 <code>cargo</code> 在 PATH 里。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第二步：安装 Playwright（这是最容易被忽略的一步）</p>
+<p>agent-browser <strong>不是直接控制浏览器</strong>，它底层仍然依赖 Playwright 的 browser binaries。</p>
+<p>在一个干净目录里执行一次即可：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>npx<span class="w"> </span>playwright<span class="w"> </span>install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>或者：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>playwright@latest
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>playwright<span class="w"> </span>--version
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Version 1.58.2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>playwright<span class="w"> </span>install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这一步会下载 Chromium / Firefox / WebKit。
+macOS 上第一次运行浏览器时，系统可能会弹出『安全性与隐私』提示，允许即可。</p>
+<p>如果这一步没做，后面 agent-browser 会『能启动，但打不开页面』。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第三步：安装 agent-browser CLI</p>
+<p>现在开始真正的 agent-browser。</p>
+<p>官方仓库是：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vercel-labs/agent-browser">https://github.com/vercel-labs/agent-browser</a></p>
+<p>最直接、最稳妥的方式是 <strong>从源码安装</strong>：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vercel-labs/agent-browser.git
+<span class="nb">cd</span><span class="w"> </span>agent-browser
+pnpm<span class="w"> </span>install
+pnpm<span class="w"> </span>build
+pnpm<span class="w"> </span>build:native<span class="w">   </span><span class="c1"># Requires Rust (https://rustup.rs)</span>
+pnpm<span class="w"> </span>link<span class="w"> </span>--global<span class="w">  </span><span class="c1"># Makes agent-browser available globally</span>
+agent-browser<span class="w"> </span>install
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>安装成功后，你应该能看到：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>agent-browser<span class="w"> </span>--help
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+agent-browser - fast browser automation CLI for AI agents
+
+Usage: agent-browser &lt;command&gt; [args] [options]
+
+Core Commands:
+  open &lt;url&gt;                 Navigate to URL
+  click &lt;sel&gt;                Click element (or @ref)
+  dblclick &lt;sel&gt;             Double-click element
+  type &lt;sel&gt; &lt;text&gt;          Type into element
+  fill &lt;sel&gt; &lt;text&gt;          Clear and fill
+  press &lt;key&gt;                Press key (Enter, Tab, Control+a)
+  hover &lt;sel&gt;                Hover element
+  focus &lt;sel&gt;                Focus element
+  check &lt;sel&gt;                Check checkbox
+  uncheck &lt;sel&gt;              Uncheck checkbox
+  select &lt;sel&gt; &lt;val...&gt;      Select dropdown option
+  drag &lt;src&gt; &lt;dst&gt;           Drag and drop
+  upload &lt;sel&gt; &lt;files...&gt;    Upload files
+  download &lt;sel&gt; &lt;path&gt;      Download file by clicking element
+  scroll &lt;dir&gt; [px]          Scroll (up/down/left/right)
+  scrollintoview &lt;sel&gt;       Scroll element into view
+  wait &lt;sel|ms&gt;              Wait for element or time
+  screenshot [path]          Take screenshot
+  pdf &lt;path&gt;                 Save as PDF
+  snapshot                   Accessibility tree with refs (for AI)
+  eval &lt;js&gt;                  Run JavaScript
+  connect &lt;port|url&gt;         Connect to browser via CDP
+  close                      Close browser
+
+Navigation:
+  back                       Go back
+  forward                    Go forward
+  reload                     Reload page
+
+Get Info:  agent-browser get &lt;what&gt; [selector]
+  text, html, value, attr &lt;name&gt;, title, url, count, box, styles
+
+Check State:  agent-browser is &lt;what&gt; &lt;selector&gt;
+  visible, enabled, checked
+
+Find Elements:  agent-browser find &lt;locator&gt; &lt;value&gt; &lt;action&gt; [text]
+  role, text, label, placeholder, alt, title, testid, first, last, nth
+
+Mouse:  agent-browser mouse &lt;action&gt; [args]
+  move &lt;x&gt; &lt;y&gt;, down [btn], up [btn], wheel &lt;dy&gt; [dx]
+
+Browser Settings:  agent-browser set &lt;setting&gt; [value]
+  viewport &lt;w&gt; &lt;h&gt;, device &lt;name&gt;, geo &lt;lat&gt; &lt;lng&gt;
+  offline [on|off], headers &lt;json&gt;, credentials &lt;user&gt; &lt;pass&gt;
+  media [dark|light] [reduced-motion]
+
+Network:  agent-browser network &lt;action&gt;
+  route &lt;url&gt; [--abort|--body &lt;json&gt;]
+  unroute [url]
+  requests [--clear] [--filter &lt;pattern&gt;]
+
+Storage:
+  cookies [get|set|clear]    Manage cookies (set supports --url, --domain, --path, --httpOnly, --secure, --sameSite, --expires)
+  storage &lt;local|session&gt;    Manage web storage
+
+Tabs:
+  tab [new|list|close|&lt;n&gt;]   Manage tabs
+
+Debug:
+  trace start|stop [path]    Record trace
+  record start &lt;path&gt; [url]  Start video recording (WebM)
+  record stop                Stop and save video
+  console [--clear]          View console logs
+  errors [--clear]           View page errors
+  highlight &lt;sel&gt;            Highlight element
+
+Sessions:
+  session                    Show current session name
+  session list               List active sessions
+
+Setup:
+  install                    Install browser binaries
+  install --with-deps        Also install system dependencies (Linux)
+
+Snapshot Options:
+  -i, --interactive          Only interactive elements
+  -c, --compact              Remove empty structural elements
+  -d, --depth &lt;n&gt;            Limit tree depth
+  -s, --selector &lt;sel&gt;       Scope to CSS selector
+
+Options:
+  --session &lt;name&gt;           Isolated session (or AGENT_BROWSER_SESSION env)
+  --profile &lt;path&gt;           Persistent browser profile (or AGENT_BROWSER_PROFILE env)
+  --state &lt;path&gt;             Load storage state from JSON file (or AGENT_BROWSER_STATE env)
+  --headers &lt;json&gt;           HTTP headers scoped to URL&#39;s origin (for auth)
+  --executable-path &lt;path&gt;   Custom browser executable (or AGENT_BROWSER_EXECUTABLE_PATH)
+  --extension &lt;path&gt;         Load browser extensions (repeatable)
+  --args &lt;args&gt;              Browser launch args, comma or newline separated (or AGENT_BROWSER_ARGS)
+                             e.g., --args &#34;--no-sandbox,--disable-blink-features=AutomationControlled&#34;
+  --user-agent &lt;ua&gt;          Custom User-Agent (or AGENT_BROWSER_USER_AGENT)
+  --proxy &lt;server&gt;           Proxy server URL (or AGENT_BROWSER_PROXY)
+                             e.g., --proxy &#34;http://user:pass@127.0.0.1:7890&#34;
+  --proxy-bypass &lt;hosts&gt;     Bypass proxy for these hosts (or AGENT_BROWSER_PROXY_BYPASS)
+                             e.g., --proxy-bypass &#34;localhost,*.internal.com&#34;
+  --ignore-https-errors      Ignore HTTPS certificate errors
+  --allow-file-access        Allow file:// URLs to access local files (Chromium only)
+  -p, --provider &lt;name&gt;      Browser provider: ios, browserbase, kernel, browseruse
+  --device &lt;name&gt;            iOS device name (e.g., &#34;iPhone 15 Pro&#34;)
+  --json                     JSON output
+  --full, -f                 Full page screenshot
+  --headed                   Show browser window (not headless)
+  --cdp &lt;port&gt;               Connect via CDP (Chrome DevTools Protocol)
+  --debug                    Debug output
+  --version, -V              Show version
+
+Environment:
+  AGENT_BROWSER_SESSION          Session name (default: &#34;default&#34;)
+  AGENT_BROWSER_EXECUTABLE_PATH  Custom browser executable path
+  AGENT_BROWSER_PROVIDER         Browser provider (ios, browserbase, kernel, browseruse)
+  AGENT_BROWSER_STREAM_PORT      Enable WebSocket streaming on port (e.g., 9223)
+  AGENT_BROWSER_IOS_DEVICE       Default iOS device name
+  AGENT_BROWSER_IOS_UDID         Default iOS device UDID
+
+Examples:
+  agent-browser open example.com
+  agent-browser snapshot -i              # Interactive elements only
+  agent-browser click @e2                # Click by ref from snapshot
+  agent-browser fill @e3 &#34;test@example.com&#34;
+  agent-browser find role button click --name Submit
+  agent-browser get text @e1
+  agent-browser screenshot --full
+  agent-browser --cdp 9222 snapshot      # Connect via CDP port
+  agent-browser --profile ~/.myapp open example.com  # Persistent profile
+
+iOS Simulator (requires Xcode and Appium):
+  agent-browser -p ios open example.com                    # Use default iPhone
+  agent-browser -p ios --device &#34;iPhone 15 Pro&#34; open url   # Specific device
+  agent-browser -p ios device list                         # List simulators
+  agent-browser -p ios swipe up                            # Swipe gesture
+  agent-browser -p ios tap @e1                             # Touch element
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果提示 command not found，检查 <code>$HOME/.cargo/bin</code> 是否在 PATH 中。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第四步：做一次最小可行测试（不接 LLM）</p>
+<p>不要一上来就连 LLM，先验证三件事：</p>
+<ol>
+<li>Playwright 能起浏览器</li>
+<li>agent-browser 能读 accessibility tree</li>
+<li>snapshot 能正常输出</li>
+</ol>
+<p>按顺序来：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>agent-browser<span class="w"> </span>open<span class="w"> </span>https://miro.com/login/<span class="w"> </span>--headed
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-green-fg">✓</span> <span class="ansi-bold">Sign in | Miro | The Visual Workspace for Innovation</span>
+  https://miro.com/login/
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你应该能看到浏览器窗口被打开。</p>
+<p>接着：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>agent-browser<span class="w"> </span>snapshot
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>- document:
+  - button &#34;Skip to main content&#34; [ref=e1]
+  - banner:
+    - link &#34;Go to Miro main page&#34; [ref=e2]:
+      - /url: /index/
+      - text: Miro Logo
+    - button &#34;Language&#34; [ref=e3]: en
+    - text: &#34;Current language is: English&#34;
+    - link &#34;Sign up&#34; [ref=e4]:
+      - /url: https://miro.com/signup/
+  - main:
+    - heading &#34;Sign in to Miro&#34; [ref=e5] [level=1]
+    - group &#34;Sign-in options&#34;:
+      - button &#34;SSO&#34; [ref=e6]
+      - button &#34;Google&#34; [ref=e7]
+      - button &#34;Microsoft 365&#34; [ref=e8]
+      - button &#34;Show more sign-in options&#34; [ref=e9]
+    - text: Email
+    - textbox &#34;Email&#34; [ref=e10]:
+      - /placeholder: Enter your email address
+    - text: Password
+    - textbox &#34;Password&#34; [ref=e11]:
+      - /placeholder: Enter your password
+    - link &#34;Forgot password?&#34; [ref=e12]:
+      - /url: https://miro.com/recover/
+    - checkbox &#34;Remember me&#34; [ref=e13] [checked]
+    - paragraph:
+      - paragraph: Remember me
+    - button &#34;Continue with email&#34; [ref=e14]
+    - button &#34;Sign in to a different region or a private organization&#34; [ref=e15]
+    - paragraph:
+      - text: Trouble signing in?
+      - link &#34;Request a magic sign in link&#34; [ref=e16]:
+        - /url: /login/passwordless/
+      - text: or
+      - link &#34;reset your password&#34; [ref=e17]:
+        - /url: /recover/
+      - text: .
+  - alert
+  - iframe
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>正常情况下，会输出类似：</p>
+<pre><code>@e1 heading &quot;Example Domain&quot;
+@e2 paragraph &quot;This domain is for use in illustrative examples...&quot;
+@e3 link &quot;More information...&quot;
+</code></pre>
+<p>只要这一步成功，说明你的 <strong>macOS + Playwright + agent-browser 环境是健康的</strong>。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第五步：实际操作页面（验证 ref-id 模型）</p>
+<p>继续在 example.com 上试：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>agent-browser<span class="w"> </span>click<span class="w"> </span>@e22
+agent-browser<span class="w"> </span>snapshot
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你会看到页面发生变化，ref-id 全部重新分配。
+这一步非常关键，它验证了你对 agent-browser 核心原则的理解：</p>
+<blockquote>
+<p>ref-id 只在当前 snapshot 有意义</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>agent-browser<span class="w"> </span>click<span class="w"> </span>@e4
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>agent-browser<span class="w"> </span>fill<span class="w"> </span>@e6<span class="w"> </span><span class="s2">&quot;andy@dtype.info&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第六步：测试一个真实复杂页面（推荐）</p>
+<p>不要立刻上 Miro、Google 这种登录页，先选一个『复杂但不反爬』的页面，比如：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>agent-browser<span class="w"> </span>open<span class="w"> </span>https://news.ycombinator.com
+agent-browser<span class="w"> </span>snapshot
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你会看到大量：</p>
+<pre><code>@e1 link &quot;Hacker News&quot;
+@e2 link &quot;new&quot;
+@e3 link &quot;past&quot;
+...
+</code></pre>
+<p>试着：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span>agent-browser<span class="w"> </span>click<span class="w"> </span>@e2
+agent-browser<span class="w"> </span>snapshot
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果这一步稳定，说明 accessibility tree + ref-id 在真实页面上是可用的。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第七步：macOS 上几个非常常见的坑</p>
+<p>这里是我强烈建议你提前注意的：</p>
+<ol>
+<li><p><strong>中文输入法干扰</strong>
+在 fill textbox 时，尽量用英文输入法，否则某些页面会出现奇怪的 key event。</p>
+</li>
+<li><p><strong>系统权限</strong>
+第一次运行 Playwright 控制的浏览器时，macOS 可能阻止『自动化控制』。
+去：
+系统设置 → 隐私与安全性 → 辅助功能 / 自动化
+放行你的终端（iTerm / Terminal）。</p>
+</li>
+<li><p><strong>页面一变就 snapshot</strong>
+不 snapshot 就继续 click / fill，是 agent-browser 使用中最常见的逻辑错误。</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>第八步：准备接 LLM（但暂时别急）</p>
+<p>在 macOS 上，推荐的下一步架构是：</p>
+<ul>
+<li>agent-browser 作为 <strong>纯执行层</strong></li>
+<li>你自己写一个 <strong>controller（Rust / Python / Node 都行）</strong></li>
+<li>LLM 只负责：<ul>
+<li>读 snapshot 文本</li>
+<li>输出下一条命令（严格受限）</li>
+</ul>
+</li>
+</ul>
+<p>现在这个阶段，<strong>先不要上 MCP、不要上多 agent</strong>，先把『单步 → snapshot → 单步』这条链跑顺。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+<hr>
+<h2 id="六、用-agent-browser-操作-Miro-登录页（示例）"><a href="#六、用-agent-browser-操作-Miro-登录页（示例）" class="headerlink" title="六、用 agent-browser 操作 Miro 登录页（示例）"></a>六、用 agent-browser 操作 Miro 登录页（示例）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">agent-browser open https://miro.com/login/</span><br><span class="line">agent-browser snapshot</span><br><span class="line">agent-browser fill @e2 <span class="string">&quot;test@example.com&quot;</span></span><br><span class="line">agent-browser click @e3</span><br><span class="line">agent-browser snapshot</span><br></pre></td></tr></table></figure>
+
+<p>核心原则只有一句话：<br>页面一变，就重新 snapshot。<br>ref-id 是『当前页面状态下的逻辑锚点』，不是全局 ID。</p>
+<hr>
+<h2 id="七、agent-browser-vs-playwright-mcp"><a href="#七、agent-browser-vs-playwright-mcp" class="headerlink" title="七、agent-browser vs playwright-mcp"></a>七、agent-browser vs playwright-mcp</h2><table>
+<thead>
+<tr>
+<th>维度&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;agent-browser&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;playwright-mcp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>形态&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;CLI 工具&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;MCP Server</td>
+</tr>
+<tr>
+<td>面向对象&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;脚本 &#x2F; AI Agent&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;MCP 客户端（IDE &#x2F; 桌面）</td>
+</tr>
+<tr>
+<td>交互方式&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;命令 + snapshot&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;工具调用</td>
+</tr>
+<tr>
+<td>状态管理&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;外部控制器&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;MCP 会话</td>
+</tr>
+<tr>
+<td>适合场景&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;自建 agent loop、&nbsp;&nbsp;<br />&nbsp;&nbsp;CI、脚本&nbsp;&nbsp;</td>
+<td>&nbsp;&nbsp;IDE 内 AI 助手</td>
+</tr>
+</tbody></table>
+<br />
+
+<p>一句话区分：</p>
+<ul>
+<li>agent-browser：浏览器能力 &#x3D; 一组命令</li>
+<li>playwright-mcp：浏览器能力 &#x3D; MCP 工具集</li>
+</ul>
+<hr>
+<h2 id="八、如何把-LLM-和-agent-browser-结合？"><a href="#八、如何把-LLM-和-agent-browser-结合？" class="headerlink" title="八、如何把 LLM 和 agent-browser 结合？"></a>八、如何把 LLM 和 agent-browser 结合？</h2><p>典型的 ReAct &#x2F; Tool Loop：</p>
+<ol>
+<li>open 页面</li>
+<li>snapshot 获取页面状态</li>
+<li>把 snapshot + 目标发给 LLM</li>
+<li>LLM 输出下一条命令（受限 DSL）</li>
+<li>执行命令</li>
+<li>重复直到完成或失败</li>
+</ol>
+<p>关键工程要点：</p>
+<ul>
+<li>命令白名单</li>
+<li>域名限制</li>
+<li>步数 &#x2F; 时间上限</li>
+<li>失败自动截图</li>
+</ul>
+<p>本质分工是：<br>LLM 负责决策，agent-browser 负责执行。</p>
+<br />
+
+<p>使用 agent-browser 搭配 Claude Code 的方法也一并介绍。</p>
+<p>通过在 AGENTS.md &#x2F; CLAUDE.md 中像下面这样写明 agent-browser 的操作方式，就可以让 Claude Code 具备浏览器操作能力。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## Browser Automation</span></span><br><span class="line"></span><br><span class="line">Use <span class="code">`agent-browser`</span> for web automation. Run <span class="code">`agent-browser --help`</span> for all commands.</span><br><span class="line"></span><br><span class="line">Core workflow:</span><br><span class="line"><span class="bullet">1.</span> <span class="code">`agent-browser open &lt;url&gt;`</span> - Navigate to page</span><br><span class="line"><span class="bullet">2.</span> <span class="code">`agent-browser snapshot -i`</span> - Get interactive elements with refs (@e1, @e2)</span><br><span class="line"><span class="bullet">3.</span> <span class="code">`agent-browser click @e1`</span> / <span class="code">`fill @e2 &quot;text&quot;`</span> - Interact using refs</span><br><span class="line"><span class="bullet">4.</span> Re-snapshot after page change</span><br></pre></td></tr></table></figure>
+
+<p>安装 <a target="_blank" rel="noopener" href="https://mac.getutm.app/">UTM</a> &#x2F; <a target="_blank" rel="noopener" href="https://cua.ai/docs/lume">Lume</a></p>
+<p>安装 <a target="_blank" rel="noopener" href="https://ubuntu.com/download/server/arm">Ubuntu Server for ARM</a> &#x2F; macOS</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[FAILED] Failed unmounting cdrom.mount - /cdrom</span><br><span class="line">Please remove the installation medium, <span class="keyword">then</span> press ENTER</span><br></pre></td></tr></table></figure>
+
+<p>在 UTM 里操作方法如下。</p>
+<ol>
+<li>在 UTM 窗口顶部菜单点击虚拟机的设置按钮</li>
+<li>找到 CD&#x2F;DVD 或 Drives</li>
+<li>把挂载的 Ubuntu ISO 文件移除（Eject &#x2F; Clear &#x2F; 删除 ISO）</li>
+</ol>
+<p>做完后，再回到虚拟机窗口按 ENTER。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">IFACE=$(ip -o <span class="built_in">link</span> show | awk -F<span class="string">&#x27;: &#x27;</span> <span class="string">&#x27;&#123;print $2&#125;&#x27;</span> | grep -v lo | <span class="built_in">head</span> -n1)</span><br><span class="line"></span><br><span class="line">sudo bash -c <span class="string">&quot;cat &gt; /etc/netplan/01-netcfg.yaml &lt;&lt;EOF</span></span><br><span class="line"><span class="string">network:</span></span><br><span class="line"><span class="string">  version: 2</span></span><br><span class="line"><span class="string">  renderer: networkd</span></span><br><span class="line"><span class="string">  ethernets:</span></span><br><span class="line"><span class="string">    <span class="variable">$&#123;IFACE&#125;</span>:</span></span><br><span class="line"><span class="string">      dhcp4: true</span></span><br><span class="line"><span class="string">EOF&quot;</span></span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">chmod</span> 600 /etc/netplan/01-netcfg.yaml</span><br><span class="line">sudo netplan generate</span><br><span class="line">sudo netplan apply</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip a</span><br><span class="line">ip route</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> &gt;&gt; /home/hijirii/.bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)&quot;&#x27;</span> &gt;&gt; /home/hijirii/.bashrc</span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="subst">$(whoami)</span> ALL=(ALL) NOPASSWD: ALL&quot;</span> | sudo <span class="built_in">tee</span> /etc/sudoers.d/$(<span class="built_in">whoami</span>) &gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 22 &amp;&amp; nvm <span class="built_in">alias</span> default 22 &amp;&amp; nvm use 22</span><br></pre></td></tr></table></figure>
+
+<p>安装并配置 <a target="_blank" rel="noopener" href="https://github.com/openclaw/openclaw">OpenClaw</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g openclaw@latest</span><br><span class="line">openclaw onboard --install-daemon</span><br></pre></td></tr></table></figure>
+
+<p>配置局域网终端访问 OpenClaw Dashboard</p>
+<ul>
+<li>配置 <a target="_blank" rel="noopener" href="https://tailscale.com/">Tailscale</a></li>
+<li>配置 Nginx<br>1.⁠ ⁠配置 Nginx HTTPS 反向代理<br>2.⁠ ⁠修改 OpenClaw 配置 - 添加 ⁠<code>controlUi.dangerouslyDisableDeviceAuth: true</code> (<a target="_blank" rel="noopener" href="https://docs.openclaw.ai/web/control-ui#device-pairing-first-connection">Device pairing</a>)<br>3.⁠ ⁠重启 Gateway - 尝试让新配置生效</li>
+</ul>
+<h2 id="配置-OpenClaw"><a href="#配置-OpenClaw" class="headerlink" title="配置 OpenClaw"></a>配置 OpenClaw</h2><h3 id="禁用-web-search"><a href="#禁用-web-search" class="headerlink" title="禁用 web_search"></a>禁用 web_search</h3><p>如果不想使用 Brave API（需要绑定信用卡），可以在配置中禁用 web_search：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw config <span class="built_in">set</span> <span class="string">&#x27;tools.web.search.enabled&#x27;</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>重启后 <code>web_search</code> 工具将被禁用，<code>web_fetch</code> 仍然可用。如需禁用 web_fetch：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw config <span class="built_in">set</span> <span class="string">&#x27;tools.web.fetch.enabled&#x27;</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="新增-Skill-时添加环境变量"><a href="#新增-Skill-时添加环境变量" class="headerlink" title="新增 Skill 时添加环境变量"></a>新增 Skill 时添加环境变量</h3><p>当创建的 Skill 需要环境变量（如 API 密钥、路径）时，有三种方式配置：</p>
+<p><em>1. 每次调用时传递（推荐自定义变量）</em></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;tool&quot;</span><span class="punctuation">:</span> <span class="string">&quot;exec&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;agent-browser open https://example.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;env&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;AGENT_BROWSER_HOME&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/home/hijirii/.openclaw/workspace/agent-browser&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;MY_API_KEY&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxx&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><em>2. 配置 PATH 预置目录</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw config <span class="built_in">set</span> tools.exec.pathPrepend <span class="string">&#x27;[&quot;/home/hijirii/.cargo/bin&quot;, &quot;/opt/bin&quot;]&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ 注意：exec 工具不会读取 <code>~/.bashrc</code> 或 <code>~/.profile</code>，需要使用上述方式配置。对于 <code>host=gateway</code>，<code>env.PATH</code> 会被拒绝（安全限制），请使用 <code>pathPrepend</code> 代替。</p>
+</blockquote>
+<hr>
+<h2 id="九、整体对照总结"><a href="#九、整体对照总结" class="headerlink" title="九、整体对照总结"></a>九、整体对照总结</h2><ul>
+<li>playwright-rs：适合『Rust 工程内的自动化测试』</li>
+<li>Accessibility Tree：是稳定自动化与 AI 操作的语义基础</li>
+<li>agent-browser：把可访问性语义变成可执行协议</li>
+<li>LLM + agent-browser：让浏览器自动化从『写 selector』升级为『做决策』</li>
+</ul>
+<hr>
+<h2 id="十、一句话收尾"><a href="#十、一句话收尾" class="headerlink" title="十、一句话收尾"></a>十、一句话收尾</h2><p>DOM 是给浏览器画页面用的，<br>Accessibility Tree 是给『人』理解页面用的，<br>而 agent-browser，是给 AI 操作页面用的。</p>
+<br />
+
+<p>这正是现代浏览器自动化正在发生的范式转移。</p>
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2026/02/07/Agent-Browser/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2026-01-16 </div>
 			<div class="article-title"><a href="/2026/01/16/LLM-Hallucination/" >LLM 幻觉</a></div>						
 		</h3>
@@ -205,7 +1272,6 @@
     "s-QxbywIP0g",
     "iVvzlBYeogQ",
     "SR7aLsMTE3U",
-    "zWj1afeU--E"
   ];
 
   let player;
@@ -3429,169 +4495,6 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2024-05-15 </div>
-			<div class="article-title"><a href="/2024/05/15/biobuilder/chapter-9/" >多么丰富多彩的世界</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <h1 id="第9章-多么丰富多彩的世界"><a href="#第9章-多么丰富多彩的世界" class="headerlink" title="第9章 多么丰富多彩的世界"></a>第9章 多么丰富多彩的世界</h1><p><img src="/biobuilder/159.png" alt="FIGURE"></p>
-<p>多么丰富多彩的世界强调设计-构建-测试周期的“构建”阶段。您将在此 BioBuilder 实验室活动中构建的合成生命系统是用紫色颜料或绿色颜料着色的细胞，具体取决于您选择运行的遗传程序。然而，颜色的强度很难提前预测。细胞会是苍白的还是军绿色的？深紫色还是浅紫色？让事情变得更加复杂的是，我们认识到每个基因回路可能会产生不同数量的颜色，具体取决于运行它的细菌菌株。组合组件产生的这种意想不到的、古怪的结果的正式术语是紧急行为。</p>
-<p>如果你倾向于像科学家一样思考，这种突发行为可能会让你问：“如何解释我观察到的结果？”如果您倾向于像工程师一样思考，这些行为可能会让您觉得“呃”，然后开始定义优化系统性能的最佳方法，希望避免此类意外行为。这两种方法都有优点，并且<strong>科学和工程方法共同应该在未来带来更可靠的设计，并最大限度地减少我们在构建新的生命系统时看到的令人惊讶的行为数量。</strong></p>
-<p>在这个实验室中，生成紫色或绿色色素的 DNA 程序已经为您编写和组装，但您将通过将编码程序的 DNA 插入到一些不同的细菌底盘中来完成最终的构建步骤。 DNA 程序来自 2009 年国际基因工程机器 (iGEM) 项目，名为“E. chromi”，剑桥大学的学生设计并改造了大肠杆菌来生产一系列颜料。 <strong>您将构建多个颜色生成系统，以探索底盘如何影响设计的遗传程序的输出</strong>。由于颜料是肉眼可见的，因此您可以轻松确定机箱之间的颜色输出是否不同。</p>
-<p>不过，在详细介绍实验之前，我们将对底盘设计和决策进行一般性讨论，并且我们将逐步介绍 E. chromi 项目，为您的调查提供一些背景信息。</p>
-<p><img src="/biobuilder/160.png" alt="FIGURE"></p>
-<h2 id="机箱简介"><a href="#机箱简介" class="headerlink" title="机箱简介"></a>机箱简介</h2><p>正如汽车制造商在设计发动机时必须考虑整个汽车一样，合成生物学家也必须考虑他们正在构建的整个系统，包括他们设计的基因程序将在其中执行的细胞环境。就像路上有各种各样的汽车一样，细胞的大小、形状、细胞器和基本代谢功能也有很大差异。因此，为任何工程遗传程序选择最好的宿主细胞或底盘是设计过程中的重要一步。许多参数都会影响底盘的选择，包括特定于某些应用的一些考虑因素。然而，普遍关注的是实用性和安全性，我们将在以下几节中对此进行探讨。</p>
-<p><img src="/biobuilder/161.png" alt="FIGURE"></p>
-<h3 id="实用程序以及如何设计它"><a href="#实用程序以及如何设计它" class="headerlink" title="实用程序以及如何设计它"></a>实用程序以及如何设计它</h3><p>在为合成生物学应用选择底盘时，研究人员会考虑通用实用性和利基实用性。一般效用是指具有普遍帮助性的品质；例如，在实验室环境中的快速增长。此外，普遍有用的底盘应该相对容易使用，这解释了为什么科学家依赖的许多常见模型生物（大肠杆菌、酿酒酵母等）对合成生物学家来说都是有吸引力的底盘。这些细胞拥有强大的工具，可以以合理且相当可靠的方式设计和操纵它们。</p>
-<p>另一方面，利基效用是指使单元适合特定应用的品质。利基效用的一个例子是 BioBuilder 的 Eau That Smell 基因程序的细菌宿主。如果您熟悉这个实验装置，您会记得该项目的合成生物学家希望让细菌散发出香蕉或冬青的宜人香气。为了实现这一目标，他们通过从细胞色氨酸生物合成途径中删除一个基因，消除了所使用的大肠杆菌宿主产生的自然臭味，从而产生了一个“无臭”底盘来运行其产生气味的基因程序。</p>
-<p><strong>有两种互补的方法可以为每个可以想象的目的找到合适的底盘</strong>。在第一种方法中，我们可以称之为“最近的野生型生物”方法（见图 9-1），底盘是根据其执行类似于合成生物学家想要完成的任务的能力从自然界中识别出来的。一个新的系统。野生型生物体具有其自然界中物种最典型的特征，在这种方法中，野生型细胞的自然功能得到改进，使现有细胞越来越接近新系统中所需的行为。为了说明这种最接近野生型生物的方法，请考虑劳伦斯伯克利国家实验室辛格研究小组的工作。该小组的目标是改造富养罗尔斯通氏菌（Ralstonia eutropica），以生产丁醇和烯烃等生物燃料，有朝一日可能会取代石油基化学燃料。富养罗氏菌自然地将二氧化碳转化为储能聚合物，因此这些工程师认为这是一个有吸引力的底盘，并正在实验性地修改其自然途径，以便细胞产生生物燃料，而不是它们通常制造的聚合物。</p>
-<p><img src="/biobuilder/162.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 9-1 底盘选择的“最近野生型生物体”方法。野生型生物体1可以被改造为相对相似的工程化生物体1，其具有与亲本生物体相同的整体形状和多个鞭毛。类似地，野生型生物体 N 的形状与野生型生物体 1 略有不同，并且没有鞭毛，可以修改为工程生物体 N。对于新的野生型生物体中的每个实质性差异，都需要重复此过程。工程生物体所需的特性。</p>
-</blockquote>
-<p>底盘设计的第二种方法从我们所说的“标准底盘”开始。在这种方法中，如图 9-2 所示，合成生物学家可能会选择更通用的底盘，该底盘要么具有最少数量的天然成分，要么易于理解且高度可工程化。简单的底盘本质上为合成生物学家提供了一块空白画布，并且至少在理论上可以成为具有完全不同的所需输出的各种工程系统的理想底盘。 Ginkgo Bioworks 的研究人员采用标准底盘方法，使用工程大肠杆菌来制造生物燃料。与我们之前考虑的例子不同，在该例子中，生物燃料生产是从天然聚合物工厂 R. eutropica 开始的，而大肠杆菌没有现有的人才可以推荐它们进行生物燃料生产。然而，大肠杆菌是该领域最接近标准细菌底盘的生物体。因此，Ginkgo Bioworks 的研究人员认为大肠杆菌是一个具有多种用途的有吸引力的平台，包括将二氧化碳和电能转化为异辛烷，异辛烷是一种非常适合美国现有运输燃料基础设施的液体燃料。</p>
-<p><img src="/biobuilder/163.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 9-2 “标准机箱”方法。标准起始底盘简单且易于设计，因此合成生物学家可以将其用作工程有机体 1、工程有机体 N 以及介于两者之间的所有产品的先驱。</p>
-</blockquote>
-<p>最近的野生型生物和标准底盘方法都有优点和缺点。例如，<strong>如果仅需要对现有生物体进行微小的改变即可获得所需的结果，则使用最接近的野生型生物体方法可能相对容易</strong>。然而，这种策略可能难以扩展，因为对于每个新的设计规范，设计人员都需要找到新的底盘。此外，使用现有生物体作为底盘可能会出乎意料地复杂，因为所有生物体都有自己的代谢途径和需求，其中任何一个都可能以令人惊讶的方式干扰所需的输出。</p>
-<p><strong>标准底盘方法避免了使用复杂生物体构建合成生命系统时出现的一些并发症</strong>。这种方法也比最接近的野生型生物方法更具可扩展性，因为它为设计者提供了一个通用的起点。借助通用的标准化机箱，设计人员可以将一种设计的工具重复用于另一种设计，至少在某种程度上是这样。天上掉馅饼的希望是“空白画布”细胞可以通过编程来生产药物、食品、组织或生物燃料，但目前这种希望相当牵强。目前，细胞还不能被抽象成一个不可知的画布来运行 DNA 程序。</p>
-<p>然而，合成生物学家对计算机编程的成功感到鼓舞，因为这种跨平台工具确实存在。例如，Java等软件平台定义了“虚拟机”，使程序可以在任何操作系统上运行。 Java 虚拟机采用 Java 字节码，以便无论操作系统如何，它都以相同的方式工作。在这个类比中，Java 字节码类似于 DNA 序列，我们可以将 Java 虚拟机（加上操作系统）视为将该代码转换为操作的细胞机器。换句话说，我们可以将合成生物学的标准底盘视为生物学的Java虚拟机。</p>
-<p>然而，想象每个合成生物学应用都有一个标准底盘还不现实，因此<strong>在最近的野生型和标准底盘方法之间达成了妥协</strong>。在这种妥协中，一个小的底盘菜单将作为合成生物学家的起点，他们可以为任何给定的应用领域从几种不同的细胞类型中进行选择。在这种情况下，可能存在一两个用于细菌应用的可靠标准底盘，以及另外一两个用于在哺乳动物细胞中运行的遗传程序的标准底盘。尽管该技术仍在开发中，但这种细胞底盘工程的混合方法也许更有可能为合成生物学家在短期内取得成功提供可用的工具。</p>
-<p><img src="/biobuilder/164.png" alt="FIGURE"></p>
-<h3 id="安全性以及如何设计它"><a href="#安全性以及如何设计它" class="headerlink" title="安全性以及如何设计它"></a>安全性以及如何设计它</h3><p>在选择用于运行工程 DNA 程序的机箱时，您必须始终考虑安全性。具体来说，<strong>研究人员必须考虑他们在使用合成生命系统时的个人安全、实验室环境的安全，以及如果他们的工程生物体进入更广阔的世界可能发生的任何伤害。</strong></p>
-<p>现有的指南和法规在很大程度上保护了研究人员及其工作所在实验室社区的人身安全。随着重组 DNA 技术的出现，这些法规于 20 世纪 70 年代开始实施。它们通常被认为是成功的，但当时引起了激烈的争论，这些争论为今天的合成生物学提供了许多相关的教训。有关指南及其发展的更详细说明，请参阅生物伦理学基础章节。</p>
-<p>除了从基因工程领域继承的监管工作之外，合成生物学家还必须仔细考虑将合成生命系统安全地引入我们复杂的环境中。理想情况下，应该有一种通用方法来最大限度地减少和遏制可能逃逸或故意部署到实验室外环境中的生物体造成的任何潜在损害。由于它们携带额外的遗传负担，大多数合成生物体相对于其天然竞争者来说适应性下降，这已经降低了工程生物体在野外持续存在或造成重大损害的可能性。然而，依赖这种不平等似乎是不明智的，并且在合成生物学家规划他们的系统时正在设计额外的安全措施。</p>
-<p>相反，合成生物学家正在尝试进行安全设计。 “设计安全”的一个根本例子是合成生物学研究，以设计与天然存在的 DNA 不同的解码方式的正交 DNA。由于DNA可以在生物体之间转移，而且这种转移相对常见，因此人们担心如果工程生物体从自然存在的生物体中获取DNA，反之亦然，可能会产生潜在的后果。然而，如果工程生物体表达的正交 DNA 无法在原始宿主之外正确解码，那么这些可能的危险就会最小化。任何使用改变的遗传密码的底盘都无法实现从外部环境获得的新的且具有潜在危险的遗传功能，并且如果将来自工程生物体的基因转移到自然存在的环境中，则无法实现它们有机体。</p>
-<p>合成生物学家仍处于此类研究的早期阶段，但 2011 年《科学》杂志上发表的一篇论文显示了一些有希望的结果。由哈佛大学 George Church 博士实验室领导的研究小组通过用同义 TAA 终止密码子替换他们在 460 万个碱基对基因组中发现的所有 TAG 终止密码子，对大肠杆菌进行了“重新编码”，如图 9 所示-3。将这组看似“无声”的变化结合起来是一项技术杰作，促使团队开发出新的、非常有用的基因组操作工具，称为“MAGE”和“CAGE”。然而，与本次讨论更相关的是，与天然菌株相比，所得底盘具有两个安全优势。首先，新菌株中的所有编码序列仍然可以转录和翻译，但因为它们都没有使用 TAG 密码子，所以可以重新调整该密码子，将替代氨基酸添加到新的 DNA 程序中。 <strong>然后可以通过使其依赖于研究人员提供的一些非天然氨基酸（而不是自然提供的）来设计新生物体以确保安全。</strong>其次，TAG密码子不再在重新编码的大肠杆菌中充当终止密码子。因为Church研究小组还删除了在任何TAG处终止翻译的释放因素。因此，<strong>如果重新设计的细菌拾取任何使用 TAG 终止密码子的外部 DNA，所得的多肽链将失去功能，因为核糖体将继续读取超过终止密码子的内容。</strong> 必须做进一步的工作才能使工程 DNA 真正成为现实。与自然发生的遗传物质正交，但“安全设计”的早期成功是一个值得考虑的很好的模型，随着努力的推进。</p>
-<p><img src="/biobuilder/166.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 9-3 一种生成正交 DNA 的方法。左侧天然存在的 DNA 序列编码四个氨基酸，由序列上方的蓝色和绿色球表示，以 TAG 终止密码子结尾。通过将 DNA 天然存在的 TAG 终止密码子（左）转换为 TAA 终止密码子（右），蛋白质产物不会发生变化，但表达该遗传密码的细胞可以通过将 TAG 密码子重新分配给非天然氨基酸来重新设计成正交基因组。</p>
-</blockquote>
-<h2 id="E-chromi-iGEM-项目的背景"><a href="#E-chromi-iGEM-项目的背景" class="headerlink" title="E. chromi iGEM 项目的背景"></a>E. chromi iGEM 项目的背景</h2><p><img src="/biobuilder/165.png" alt="FIGURE"></p>
-<p>剑桥大学团队在 2009 年的 iGEM 项目中设计、指定并构建了一套生物传感器，团队将其称为 E. chromi。鉴于生活世界中存在各种各样的自然颜色（橙色胡萝卜、紫色花朵等），该团队决定使用颜色作为其系统的输出。它还决定为特定金属化合物制造传感器，包括砷、汞和其他重金属，这些金属在一些国家一直是污染问题。 <strong>这些环境污染物输入将触发肉眼可见的基于颜料的输出</strong>，以便轻松、立即部署。该设计是对之前使用 pH、电导和荧光等输出的 iGEM 生物传感器项目的改进，因此需要额外的步骤来检测输出信号。这些颜料还提供了视觉多样性，激励团队构建一种活的“量油尺”，可以用一个样本拭子以彩色方式报告多种污染物，如图 9-4 所示。</p>
-<p><img src="/biobuilder/168.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 9-4 检测单个水样中多种污染物的量油尺。量油尺上会发现表达不同基因程序的细菌，这些基因程序能够感知污染物并产生颜色响应。当暴露在没有任何诱导剂的水中时（左），不会产生颜色。当暴露于含有两种污染物的混合物（中心）的水中时，会产生两种相应的颜色。如果水中含有四种污染物（右），就会产生四种颜色。</p>
-</blockquote>
-<p>除了检测特定污染物的存在之外，研究小组认为估算每种污染物的浓度也很有用。 <strong>通过开发一系列控制系统灵敏度的“调谐器”设备，该团队可以生成每个颜色生成系统的变体，以便系统仅当污染物存在于特定浓度范围内时才会改变颜色。</strong>砷浓度低的水样只会触发低灵敏度调谐器，并将信号传递到该变体中的颜色生成装置。含有高浓度砷的水样将触发低、中、高灵敏度调谐器，并触发所有三种变体的颜色。通过最终的系统（图 9-5），该团队可以将其收集的变体暴露于水样中，并根据哪些变体产生颜色、哪些不产生颜色，确定存在哪些污染物以及浓度。</p>
-<p><img src="/biobuilder/167.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 9-5 活体生物传感器的系统级设计。用于检测环境污染物并报告其浓度的电池的黑盒设计理念。</p>
-</blockquote>
-<h3 id="关于他们的设备"><a href="#关于他们的设备" class="headerlink" title="关于他们的设备"></a>关于他们的设备</h3><p><img src="/biobuilder/169.png" alt="FIGURE"></p>
-<p>为了找到编码鲜艳颜色的 DNA 序列，iGEM 团队挖掘了文献，最终确定了三种能够产生独特色素的自然存在的细菌系统。这些系统如表 9-1 所示。</p>
-<blockquote>
-<p>表 9-1 产生生动色彩的天然来源</p>
-</blockquote>
-<p><img src="/biobuilder/170.png" alt="FIGURE"></p>
-<p>由于该团队想要多种颜色，因此他们将所有这些来源作为潜在的设备，并发现其中一些更适合某些应用。例如，黑色素由单个基因编码，这使得通过已建立的基因调控方法相对容易控制输出，但该系统还需要在培养基中添加铜和酪氨酸，从而使菌株的生长条件变得复杂表达这种颜色。另外两个色素家族是通过多个基因产物的作用产生的，这使得它们的调节更加复杂，但产生这些色素的细胞更容易生长，因为颜色是在生长培养基中没有任何不寻常的化合物的情况下产生的。</p>
-<p><strong>为了部署系统的设备，iGEM 团队还必须考虑用于生产紫罗兰素和类胡萝卜素色素的不同机制</strong>。类胡萝卜素装置首先使用一种途径产生红色素，然后使用下游酶将红色素的一部分转化为橙色素。相比之下，紫罗兰素装置依靠分支代谢途径来产生绿色和紫色，如图 9-6 所示。</p>
-<p><img src="/biobuilder/171.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 9-6 色素生成代谢途径。左侧显示类胡萝卜素途径，右侧显示紫罗兰素途径。菱形代表不同的细胞中间体，圆圈代表负责化学反应的酶。有色化合物以其近似颜色表示。</p>
-</blockquote>
-<h3 id="零件和设备"><a href="#零件和设备" class="headerlink" title="零件和设备"></a>零件和设备</h3><p>BioBuilder 多彩世界活动使用紫罗兰素系统的成分，根据相对较小的基因变化，可以产生绿色或紫色色素。通常，该色素生成系统的输入是氨基酸色氨酸，通过五种酶（VioA、VioB、VioC、VioD 和 VioE，但不是按此顺序！）的作用，产生一种称为紫罗兰素的紫色色素。然而，当 vioC 基因被去除时，该途径分支被阻断，最终无法转化为紫草素，因此系统的终点反而变成了原紫草酸，一种深绿色的色素。 <strong>您可以通过检查代谢途径来推断去除 vioC 基因的效果（图 9-6）。这种行为也可以使用逻辑门和真值表的工程形式来说明，如图 9-7</strong> 所示。</p>
-<p><img src="/biobuilder/172.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 9-7 紫罗兰素相关系统的不同表示。逻辑门表示（左上）显示输入 X（VioA、B、D 和 E）和输入 Y (VioC) 必须如何存在才能生成紫色输出 Z。修改后的真值表（左下）显示输入 X单独可以创建绿色输出，而单独输入 Y 不会生成输出，输入 X 和输入 Y 生成紫色输出。右侧的遗传示意图显示，绿色生成装置（由 VioA、B、D 和 E 组成）上游的启动子产生绿色色素，紫色生成装置（由 VioA、B、D 和 E 组成）上游的启动子产生绿色色素。 B、C、D 和 E，产生紫色颜料。</p>
-</blockquote>
-<h2 id="额外阅读和资源"><a href="#额外阅读和资源" class="headerlink" title="额外阅读和资源"></a>额外阅读和资源</h2><ul>
-<li>Changhao, B. 等人开发用于富养罗尔斯通氏菌的广泛宿主合成生物学工具箱及其在工程碳氢化合物生物燃料生产中的应用。微生物细胞工厂 2013；12：107。</li>
-<li>Ginkgo Bioworks Foundry (<a target="_blank" rel="noopener" href="http://ginkgobioworks.com/foundry/">http://ginkgobioworks.com/foundry/</a> )。</li>
-<li>拉乔伊，MJ。等人。基因组重新编码的生物体扩展了生物功能。科学2013；342(6156):357-60。</li>
-<li>E. chromi 网站 (<a target="_blank" rel="noopener" href="http://www.echromi.com/">http://www.echromi.com/</a> )。</li>
-</ul>
-<p><img src="/biobuilder/Colorful_World_poster.jpg" alt="FIGURE"></p>
-<h2 id="多么丰富多彩的世界实验室"><a href="#多么丰富多彩的世界实验室" class="headerlink" title="多么丰富多彩的世界实验室"></a>多么丰富多彩的世界实验室</h2><p>在本实验室中，将使用细菌转化技术将一些质粒 DNA 引入两种细胞类型。通过比较两种不同大肠杆菌菌株中相同基因程序的功能，探索了底盘的工程概念。无菌技术和固态微生物培养是本实验室强调的生物技术技能。</p>
-<h3 id="设计选择"><a href="#设计选择" class="headerlink" title="设计选择"></a>设计选择</h3><p>在我们对 E. chromi 项目的讨论中，我们看到 iGEM 团队对系统的性能做出了一些假设。特别是，团队成员推测，当暴露于给定浓度的金属污染物时，颜色生成设备将可预测地生成可见的调色板。然而，研究小组意识到，每种色素生成装置都有其特殊性。例如，黑色素需要补充介质。为了解决这些特性，它对多种细菌菌株进行了实验，旨在找到运行每台设备的“最佳”菌株。</p>
-<p>在本实验中，您将了解 iGEM 团队项目的这方面内容。 <strong>您将比较两个不同机箱中的两个颜色生成设备，以研究是否可以获得可靠的颜色输出。</strong></p>
-<h3 id="实验问题"><a href="#实验问题" class="headerlink" title="实验问题"></a>实验问题</h3><p>您将在两种常见的实验室大肠杆菌菌株（K12 菌株和 B 菌株）中测试紫色和绿色颜色生成装置。这两种菌株通常用于研究细菌细胞的行为和执行分子生物学技术。它们在实验室环境中存在了很长时间，以至于它们的许多基因发生了突变，这些突变不再是它们在狭窄的条件下生存所必需的。结果，它们几乎失去了在实验室环境之外茁壮成长的能力。鉴于对这些细胞的描述，它们似乎为细菌合成生物学的标准底盘提供了开端，至少在安全方面是这样。在本实验室中，您将通过测试它们是否产生可靠、可重复的行为来调查它们是否也接近实现标准机箱的“实用”要求。</p>
-<p><strong>要进行此实验，您需要将携带紫色和绿色颜色生成装置的基因程序转换到每种细菌菌株中（图 9-8）</strong>。这个过程涉及的步骤包括修补菌株以培养您需要的细胞，然后用盐溶液处理细胞，以便它们能够吸收 DNA。您将感受态大肠杆菌菌株与编码颜色生成装置的 DNA 混合，然后将细胞暴露在高温下一小段时间。这种热休克有助于细胞从环境中吸收 DNA。在最后的实验步骤中，您将在转化混合物中添加一些新鲜培养基以帮助细胞恢复，然后将转化的细胞铺板到装有琼脂固化培养基的培养皿上，其中还含有抗生素氨苄青霉素。编码颜色生成装置的 DNA 也编码氨苄青霉素抗性基因，因此唯一可以在平板上生长的细胞是那些具有颜色生成装置的细胞。</p>
-<p><img src="/biobuilder/174.png" alt="FIGURE"></p>
-<blockquote>
-<p>图 9-8 不同机箱中的颜色生成设备。您将把相同的设备插入不同的机箱（左与右）并研究它们的行为。</p>
-</blockquote>
-<p><strong>作为阴性对照，您将在转化过程中加入不含质粒的样品</strong>。该阴性对照预计不会在含有氨苄青霉素的平板上生长，因为它不包含氨苄青霉素抗性基因。如果观察到生长，您就知道您的程序或材料存在某些问题，无法仅选择已成功用质粒转化的细胞。一个潜在的原因可能是平板中的氨苄青霉素随着时间的推移而降解。包含对照对于良好的实验设计至关重要，因为它使您可以隔离变量，并可以为以后尝试解决实验中遇到的问题提供信息。</p>
-<p>您收集的数据将基于对板的目视检查——您的眼睛是您需要的唯一精美的检测设备。经过一晚的生长，每个在转化和抗生素暴露中幸存下来的细胞都有时间生长成肉眼可见的细胞集落。您将对菌落进行计数以确定转化效率，并且您将记录不同板上菌落的颜色、形状和大小，以确定选择作为底盘的菌株是否会影响系统的输出。</p>
-<h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><p>表 9-2 详细介绍了“多彩世界”实验中比较的两种质粒。</p>
-<blockquote>
-<p>表 9-2 多么丰富多彩的世界质粒和菌株描述</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>质粒&nbsp;&nbsp;</th>
-<th>注册质粒#&nbsp;&nbsp;</th>
-<th>质粒描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>pPRL&nbsp;&nbsp;</td>
-<td>BBa_K274002&nbsp;&nbsp;</td>
-<td>pUC18 质粒骨架，AmpR</td>
-</tr>
-<tr>
-<td>pGRN&nbsp;&nbsp;</td>
-<td>BBa_K274004&nbsp;&nbsp;</td>
-<td>pSB1A2 质粒骨架，AmpR</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><strong>4-1:</strong> NEB 大肠杆菌 K12 ER2738：F’proA+B+ lacIq Δ(lacZ)M15 zzf::Tn10(TetR)&#x2F; fhuA2 glnV Δ(lac-proAB) thi-1 Δ(hsdS-mcrB )5</p>
-</blockquote>
-<blockquote>
-<p><strong>4-2:</strong> NEB 大肠杆菌 BL21 C2523：fhuA2 [lon] ompT gal sulA11 R(mcr-73::miniTn10– TetS)2 [dcm] R(zgb-210::Tn10–TetS) endA1 Δ(mcrC-mrr)114::IS10</p>
-</blockquote>
-<p>该实验室需要两种大肠杆菌菌株：4-1（K-12 型）和 4-2（B 型）。为了获得足够数量的细菌来进行转化，您需要将这些菌落重新接种为补片。每个贴片将为一个实验室小组提供足够的细菌，一个平板上最多可容纳六个贴片。</p>
-<ol>
-<li>使用无菌接种环或牙签，将细菌菌落从其中一个培养皿转移到新的 Luria Broth (LB) 琼脂（非 LB+amp）培养皿中，为每种菌株绘制 1 cm x 1 cm 的正方形。以这种方式绘制的每个正方形都会产生足够的细胞来用两个质粒进行转化。</li>
-<li>对转化实验室所需的每种菌株重复上述步骤。</li>
-<li>将培养皿置于 37°C 培养箱中过夜。</li>
-</ol>
-<h3 id="实验室协议"><a href="#实验室协议" class="headerlink" title="实验室协议"></a>实验室协议</h3><ol>
-<li>将两个小微量离心管标记为“4-1”和“4-2”。</li>
-<li>将 200 μl CaCl_2 转化溶液移入每个管中，然后将管置于冰上。</li>
-<li>使用无菌木钉或接种环刮起一整块标有“4-1”的细胞（不包括它们生长的琼脂！），然后将细胞旋入装有冷 CaCl_2 的管中少量琼脂可能会被转移，而不会影响您的实验。如果您有涡旋，您可以通过涡旋一分钟来使细胞重新悬浮。如果没有涡流，轻轻弹动并翻转管子。</li>
-<li>重复，使用不同的无菌木钉刮掉标记为“4-2”的细胞块。如果可能的话，短暂涡旋。一些细胞团保留在该溶液中是可以的。</li>
-<li>在准备用于转化的 DNA 时，将这些感受态细胞置于冰上。</li>
-<li>在每个质粒的微量离心管中取出两等份，总共四个样品（2x 紫色生成装置质粒，pPRL，2x 绿色生成装置质粒，pGRN）。每个等份含有 5 ul DNA。 DNA 的浓度为 0.04 μg&#x2F;μl。当您在实验结束时计算转化效率时，您将需要这些值。</li>
-<li>将其中一支 pPRL 管标记为“4-1”。将另一个 pPRL 管标记为“4-2”。确保标签可读。将管子放入冰桶中。</li>
-<li>将其中一支 pGRN 管标记为“4-1”。将另一个 pGRN 管标记为“4-2”。确保标签可读。将管子放入冰桶中。</li>
-<li>用感受态 4-1 菌株轻弹试管，然后将 100 μl 细菌移入标有“pPRL, 4-1”的试管中，再将 100 µl 细菌移入标有“pGRN, 4-1”的试管中。轻弹以混合管子并将其放回冰中。将剩余的少量 4-1 菌株保存在冰上。</li>
-<li>用感受态 4-2 菌株轻弹试管，然后将 100 μl 移液至标有“pPRL, 4-2”的试管中，再将 100 μl 移入标有“pGRN, 4-2”的试管中。轻弹混合并将它们以及剩余体积的感受态细胞储存在冰上。</li>
-<li>将 DNA 和细胞置于冰上 5 分钟。</li>
-<li>当您的 DNA 和细胞孵化时，您可以标记您需要的六个培养皿的底部（介质侧）。标签应标明您使用的菌株（“4-1”或“4-2”）以及转化它们所用的 DNA（“pPRL”、“pGRN”或“无 DNA 对照”）。</li>
-<li>将试管置于 42° 温度下精确热激 90 秒（使用计时器）。</li>
-<li>90 秒结束时，将管子移至室温下的架子上。</li>
-<li>将 0.5 ml 室温 LB 添加至试管中。盖上盖子，翻转试管以混合内容物。</li>
-<li>使用无菌涂布器或无菌珠子，将 200–250 μl 转化混合物涂布到 LB+氨苄青霉素琼脂培养皿的表面。</li>
-<li>盖上盘子并放置一分钟。然后，将盘子翻过来。培养皿将倒置存放，以防止冷凝水滴到细菌上。</li>
-<li>将培养皿琼脂面朝上，在 37°C 下孵育过夜。</li>
-</ol>
-<p><img src="/biobuilder/Quick_Guide_ColorfulWorld_1.png" alt="FIGURE"></p>
-<p><img src="/biobuilder/Quick_Guide_ColorfulWorld_2.png" alt="FIGURE"></p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2024/05/15/biobuilder/chapter-9/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -3630,45 +4533,45 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
-		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
 		
 			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
 		
 			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>22</span></a></li>
@@ -3684,6 +4587,10 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2026/02/07/Agent-Browser/" ><i class="fa fa-file-o"></i>从 Playwright 到 agent-browse...</a>
+      </li>
+    
+      <li>
         <a href="/2026/01/16/LLM-Hallucination/" ><i class="fa fa-file-o"></i>LLM 幻觉</a>
       </li>
     
@@ -3697,10 +4604,6 @@ $$ H_{\text{int}} = \sum_i \left( -e \phi(\mathbf{r}_i) + \frac{e}{m_e} \mathbf{
     
       <li>
         <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
-      </li>
-    
-      <li>
-        <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
       </li>
     
   </ul>
