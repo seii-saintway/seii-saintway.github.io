@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>OpenVPN + TLJH + isso 从 Debian 迁移到 Ubuntu | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="OpenVPN + TLJH + isso 从 Debian 迁移到 Ubuntu2026-03-26 完成了从 Debian (jhub.dtype.info) 到 Ubuntu (mail) 的服务迁移记录。
+一、OpenVPN 迁移1.1 备份与传输在源服务器上备份配置：
+1sudo tar ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="OpenVPN + TLJH + isso 从 Debian 迁移到 Ubuntu"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> OpenVPN + TLJH + isso 从 Debian 迁移到 Ubuntu</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <h1 id="OpenVPN-TLJH-isso-从-Debian-迁移到-Ubuntu"><a href="#OpenVPN-TLJH-isso-从-Debian-迁移到-Ubuntu" class="headerlink" title="OpenVPN + TLJH + isso 从 Debian 迁移到 Ubuntu"></a>OpenVPN + TLJH + isso 从 Debian 迁移到 Ubuntu</h1><p>2026-03-26 完成了从 Debian (jhub.dtype.info) 到 Ubuntu (mail) 的服务迁移记录。</p>
+<h2 id="一、OpenVPN-迁移"><a href="#一、OpenVPN-迁移" class="headerlink" title="一、OpenVPN 迁移"></a>一、OpenVPN 迁移</h2><h3 id="1-1-备份与传输"><a href="#1-1-备份与传输" class="headerlink" title="1.1 备份与传输"></a>1.1 备份与传输</h3><p>在源服务器上备份配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -czvf openvpn-backup.tar.gz /etc/openvpn/</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-恢复时的问题与解决"><a href="#1-2-恢复时的问题与解决" class="headerlink" title="1.2 恢复时的问题与解决"></a>1.2 恢复时的问题与解决</h3><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/etc/openvpn/server.conf</code> 不存在</td>
+<td>配置文件实际在 <code>/etc/openvpn/server/server.conf</code></td>
+<td>创建符号链接</td>
+</tr>
+<tr>
+<td><code>Cannot pre-load keyfile (tc.key)</code></td>
+<td>相对路径解析错误</td>
+<td>改用绝对路径 <code>/etc/openvpn/server/tc.key</code></td>
+</tr>
+<tr>
+<td><code>Cannot assign requested address</code></td>
+<td><code>local 10.146.0.3</code> 是旧服务器 IP</td>
+<td>改为新服务器 IP <code>160.251.141.121</code></td>
+</tr>
+</tbody></table>
+<h3 id="1-3-修复后的配置"><a href="#1-3-修复后的配置" class="headerlink" title="1.3 修复后的配置"></a>1.3 修复后的配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建符号链接</span></span><br><span class="line">sudo <span class="built_in">ln</span> -s /etc/openvpn/server/server.conf /etc/openvpn/server.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改 server.conf 中的路径为绝对路径</span></span><br><span class="line">ca /etc/openvpn/server/ca.crt</span><br><span class="line">cert /etc/openvpn/server/server.crt</span><br><span class="line">key /etc/openvpn/server/server.key</span><br><span class="line">dh /etc/openvpn/server/dh.pem</span><br><span class="line">tls-crypt /etc/openvpn/server/tc.key</span><br><span class="line">crl-verify /etc/openvpn/server/crl.pem</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-NAT-转发配置"><a href="#1-4-NAT-转发配置" class="headerlink" title="1.4 NAT 转发配置"></a>1.4 NAT 转发配置</h3><p>OpenVPN 客户端连接后无法上网，需要添加 NAT 规则：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加 NAT 伪装</span></span><br><span class="line">sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE</span><br><span class="line"></span><br><span class="line"><span class="comment"># 永久保存（安装 iptables-persistent）</span></span><br><span class="line">sudo apt install iptables-persistent</span><br><span class="line">sudo iptables-save &gt; /etc/iptables/rules.v4</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-防火墙放行"><a href="#1-5-防火墙放行" class="headerlink" title="1.5 防火墙放行"></a>1.5 防火墙放行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 1194/tcp   <span class="comment"># OpenVPN</span></span><br><span class="line">sudo ufw allow 80/tcp     <span class="comment"># HTTP</span></span><br><span class="line">sudo ufw allow 443/tcp    <span class="comment"># HTTPS</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二、TLJH-The-Littlest-JupyterHub-迁移"><a href="#二、TLJH-The-Littlest-JupyterHub-迁移" class="headerlink" title="二、TLJH (The Littlest JupyterHub) 迁移"></a>二、TLJH (The Littlest JupyterHub) 迁移</h2><h3 id="2-1-安装-TLJH"><a href="#2-1-安装-TLJH" class="headerlink" title="2.1 安装 TLJH"></a>2.1 安装 TLJH</h3><p>Ubuntu 上使用官方安装脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://raw.githubusercontent.com/jupyterhub/the-littlest-jupyterhub/main/bootstrap/bootstrap.py -o /tmp/bootstrap.py</span><br><span class="line">python3 /tmp/bootstrap.py</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-复制配置与状态"><a href="#2-2-复制配置与状态" class="headerlink" title="2.2 复制配置与状态"></a>2.2 复制配置与状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从 jhub 传输整个目录</span></span><br><span class="line">ssh jhub <span class="string">&quot;sudo tar -C /opt/tljh -czvf - config state&quot;</span> | ssh mail <span class="string">&quot;sudo tar -xzvf - -C /opt/tljh/&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Traefik-配置问题"><a href="#2-3-Traefik-配置问题" class="headerlink" title="2.3 Traefik 配置问题"></a>2.3 Traefik 配置问题</h3><p><strong>问题 1</strong>：端口 443 被 Tailscale Funnel 占用</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解决：修改 traefik.toml 只监听 eth0 IP</span></span><br><span class="line"><span class="section">[entryPoints.http]</span></span><br><span class="line"><span class="attr">address</span> = <span class="string">&quot;160.251.141.121:80&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[entryPoints.https]</span></span><br><span class="line"><span class="attr">address</span> = <span class="string">&quot;160.251.141.121:443&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>问题 2</strong>：traefik v3 不支持 <code>toPort</code> 参数（HTTP 重定向）</p>
+<p>删除 <code>traefik.toml</code> 中的 <code>toPort = 443</code> 配置。</p>
+<p><strong>问题 3</strong>：缺少 HTTP 路由器定义</p>
+<p><code>rules.toml</code> 中需要显式定义路由器：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[http.routers.router__2F]</span></span><br><span class="line"><span class="attr">service</span> = <span class="string">&quot;service__2F&quot;</span></span><br><span class="line"><span class="attr">rule</span> = <span class="string">&quot;PathPrefix(`/`)&quot;</span></span><br><span class="line"><span class="attr">entryPoints</span> = [ <span class="string">&quot;https&quot;</span>,]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-防火墙放行"><a href="#2-4-防火墙放行" class="headerlink" title="2.4 防火墙放行"></a>2.4 防火墙放行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 80/tcp</span><br><span class="line">sudo ufw allow 443/tcp</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、isso-评论系统迁移"><a href="#三、isso-评论系统迁移" class="headerlink" title="三、isso 评论系统迁移"></a>三、isso 评论系统迁移</h2><h3 id="3-1-安装-isso"><a href="#3-1-安装-isso" class="headerlink" title="3.1 安装 isso"></a>3.1 安装 isso</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install --break-system-packages isso gunicorn</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-创建-systemd-服务"><a href="#3-2-创建-systemd-服务" class="headerlink" title="3.2 创建 systemd 服务"></a>3.2 创建 systemd 服务</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/systemd/system/isso.service</span></span><br><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=lightweight Disqus alternative</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">User</span>=root</span><br><span class="line"><span class="attr">Restart</span>=always</span><br><span class="line"><span class="attr">Environment</span>=<span class="string">&quot;ISSO_SETTINGS=/etc/isso.conf&quot;</span></span><br><span class="line"><span class="attr">ExecStart</span>=/usr/local/bin/gunicorn --bind <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8000</span> --log-file /var/log/isso.log --preload isso.run</span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-配置文件与数据"><a href="#3-3-配置文件与数据" class="headerlink" title="3.3 配置文件与数据"></a>3.3 配置文件与数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置</span></span><br><span class="line">scp jhub:/etc/isso.conf mail:/tmp/ &amp;&amp; ssh mail <span class="string">&quot;sudo mv /tmp/isso.conf /etc/isso.conf&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库（使用 scp 避免二进制文件损坏）</span></span><br><span class="line">scp jhub:/var/lib/isso/comments.db mail:/tmp/comments.db</span><br><span class="line">ssh mail <span class="string">&quot;sudo mv /tmp/comments.db /var/lib/isso/comments.db&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-Traefik-路由规则"><a href="#3-4-Traefik-路由规则" class="headerlink" title="3.4 Traefik 路由规则"></a>3.4 Traefik 路由规则</h3><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /opt/tljh/state/rules/isso.toml</span></span><br><span class="line"><span class="section">[http.routers.isso]</span></span><br><span class="line"><span class="attr">service</span> = <span class="string">&quot;isso&quot;</span></span><br><span class="line"><span class="attr">rule</span> = <span class="string">&quot;Host(`jhub.dtype.info`) &amp;&amp; PathPrefix(`/isso/`)&quot;</span></span><br><span class="line"><span class="attr">entryPoints</span> = [ <span class="string">&quot;https&quot;</span>,]</span><br><span class="line"><span class="attr">middlewares</span> = [<span class="string">&quot;isso&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="section">[http.middlewares]</span></span><br><span class="line">  <span class="section">[http.middlewares.isso.stripPrefix]</span></span><br><span class="line">    <span class="attr">prefixes</span> = [<span class="string">&quot;/isso&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="section">[http.services.isso.loadBalancer]</span></span><br><span class="line"><span class="attr">passHostHeader</span> = <span class="literal">true</span></span><br><span class="line"><span class="section">[[http.services.isso.loadBalancer.servers]]</span></span><br><span class="line"><span class="attr">url</span> = <span class="string">&quot;http://127.0.0.1:8000&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、其他-Traefik-路由"><a href="#四、其他-Traefik-路由" class="headerlink" title="四、其他 Traefik 路由"></a>四、其他 Traefik 路由</h2><h3 id="4-1-LINE-Webhook-转发"><a href="#4-1-LINE-Webhook-转发" class="headerlink" title="4.1 LINE Webhook 转发"></a>4.1 LINE Webhook 转发</h3><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /opt/tljh/state/rules/line.toml</span></span><br><span class="line"><span class="section">[http.routers.line-webhook]</span></span><br><span class="line"><span class="attr">service</span> = <span class="string">&quot;line-webhook&quot;</span></span><br><span class="line"><span class="attr">rule</span> = <span class="string">&quot;Host(`jhub.dtype.info`) &amp;&amp; PathPrefix(`/line/`)&quot;</span></span><br><span class="line"><span class="attr">entryPoints</span> = [ <span class="string">&quot;https&quot;</span>,]</span><br><span class="line"></span><br><span class="line"><span class="section">[http.services.line-webhook.loadBalancer]</span></span><br><span class="line"><span class="attr">passHostHeader</span> = <span class="literal">true</span></span><br><span class="line"><span class="section">[[http.services.line-webhook.loadBalancer.servers]]</span></span><br><span class="line"><span class="attr">url</span> = <span class="string">&quot;http://100.94.198.8:18790&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、服务状态"><a href="#五、服务状态" class="headerlink" title="五、服务状态"></a>五、服务状态</h2><table>
+<thead>
+<tr>
+<th>服务</th>
+<th>端口</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenVPN</td>
+<td>TCP 1194</td>
+<td>✅ 运行中</td>
+</tr>
+<tr>
+<td>Traefik</td>
+<td>80&#x2F;443</td>
+<td>✅ 运行中</td>
+</tr>
+<tr>
+<td>JupyterHub</td>
+<td>15001</td>
+<td>✅ 运行中</td>
+</tr>
+<tr>
+<td>isso</td>
+<td>8000</td>
+<td>✅ 运行中</td>
+</tr>
+</tbody></table>
+<h2 id="六、注意事项"><a href="#六、注意事项" class="headerlink" title="六、注意事项"></a>六、注意事项</h2><ol>
+<li><strong>SSL 证书</strong>：acme.json 从旧服务器复制，Let’s Encrypt 证书可继续使用</li>
+<li><strong>客户端配置</strong>：OpenVPN 和 JupyterHub 客户端的 <code>remote</code> 地址需要更新为新服务器 IP</li>
+<li><strong>DNS</strong>：确保 <code>jhub.dtype.info</code> 和 <code>registry.dtype.info</code> 指向新服务器 IP</li>
+<li><strong>二进制文件传输</strong>：使用 <code>scp</code> 而不是管道 <code>cat</code>，避免数据损坏</li>
+<li><strong>iptables-persistent</strong>：替代 UFW 使用，更可靠地保存防火墙规则</li>
+</ol>
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2026/02/07/Agent-Browser/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <script data-isso="https://jhub.dtype.info/isso/" src="https://jhub.dtype.info/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2026-03-26 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/OpenVPN/">OpenVPN<span>1</span></a></li> <li><a href="/tags/TLJH/">TLJH<span>1</span></a></li> <li><a href="/tags/JupyterHub/">JupyterHub<span>1</span></a></li> <li><a href="/tags/Traefik/">Traefik<span>1</span></a></li> <li><a href="/tags/isso/">isso<span>1</span></a></li> <li><a href="/tags/Ubuntu/">Ubuntu<span>1</span></a></li> <li><a href="/tags/Debian/">Debian<span>1</span></a></li> <li><a href="/tags/迁移/">迁移<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2026 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>

@@ -139,6 +139,1849 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2023-03-14 </div>
+			<div class="article-title"><a href="/2023/03/14/ChatGPT-Robot-for-WhatsApp/" title="构建基于 ChatGPT 的 WhatsApp 智能聊天机器人">ChatGPT WhatsApp 机器人开发指南</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h1 id="ChatGPT-WhatsApp-机器人开发指南"><a href="#ChatGPT-WhatsApp-机器人开发指南" class="headerlink" title="ChatGPT WhatsApp 机器人开发指南"></a>ChatGPT WhatsApp 机器人开发指南</h1><p>本文详细介绍如何构建一个基于 ChatGPT 的 WhatsApp 智能聊天机器人，涵盖架构设计、Node.js 后端开发和 Python AI 逻辑实现。</p>
+<h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
+
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;fdf52ab3-f8c1-450f-86f2-5a25d43fc48d&#39;</span><span class="p">,</span>
+    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">我刚刚有了一个 WhatsApp 群聊机器人的设计思路。我可以利用 https://web.whatsapp.com/ ，然后通过谷歌浏览器插件的方式实现 BioGPT 群聊机器人。</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>听起来很不错！如果你有相关的技能和经验，可以考虑实现这个想法并将其应用于实际场景。需要注意的是，确保你的机器人符合 WhatsApp 的使用条款和政策，并且在使用中不会违反用户的隐私和数据安全。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">有利用 https://web.whatsapp.com/ ，然后通过谷歌浏览器插件的方式实现 WhatsApp 群聊机器人的开源项目吗？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>是的，有很多开源项目利用了这种方式实现了 WhatsApp 群聊机器人，比如Whatsapp-bot，whatsapp-web.js，venom-bot等等。您可以在GitHub等代码托管平台上搜索这些项目并了解它们的使用方法和功能。请注意，使用这些项目需要一定的编程技能和对API的了解。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">比较 Whatsapp-bot whatsapp-web.js venom-bot</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Whatsapp-bot、whatsapp-web.js和venom-bot都是用于构建WhatsApp机器人的开源工具。</p>
+<ul>
+<li>Whatsapp-bot是一个使用Node.js编写的简单的WhatsApp机器人框架，它提供了一些基本功能，例如响应文本消息、发送媒体文件和记录日志等。但是，它已经有一段时间没有更新维护了，可能不太适合用于生产环境。</li>
+<li>whatsapp-web.js是一个用于控制WhatsApp Web的JavaScript库，它可以实现与WhatsApp Web界面类似的功能，并提供了一些高级功能，例如发送音频、图片、视频、文件、定位信息等。它可以与Node.js、React Native和浏览器一起使用，并且经常更新维护。</li>
+<li>venom-bot是一个使用TypeScript编写的高级的WhatsApp机器人框架，它基于whatsapp-web.js，提供了更多的功能和抽象，例如会话管理、模板消息、状态管理、错误处理和中间件等。它的文档和社区支持也比较好，并且定期更新维护。</li>
+</ul>
+<p>综上所述，如果你只需要一个简单的WhatsApp机器人框架，那么可以考虑使用Whatsapp-bot；如果你需要更多的高级功能和更好的可扩展性，那么可以选择whatsapp-web.js或venom-bot。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">详细介绍 whatsapp-web.js</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>WhatsApp Web 是一个基于浏览器的 WhatsApp 客户端，使用户可以使用电脑或平板电脑发送和接收 WhatsApp 消息，而无需在移动设备上使用 WhatsApp。whatsapp-web.js 是一个 Node.js 库，它提供了一个简单而功能强大的 API，使开发人员可以使用 JavaScript 与 WhatsApp Web 进行交互，例如发送消息、创建群组、更改个人资料等。</p>
+<p>使用 whatsapp-web.js，您可以创建一个 WhatsApp 机器人，使其可以自动发送消息、响应用户请求等。它还支持通过代码模拟用户交互，例如登录、扫描 QR 码、发送消息等。</p>
+<p>whatsapp-web.js 还提供了许多高级功能，例如：</p>
+<ul>
+<li>离线发送：您可以使用 whatsapp-web.js 在断开连接的情况下发送消息，该消息会在下次连接时自动发送。</li>
+<li>轮询和 WebHook：您可以使用 whatsapp-web.js 提供的 API 轮询新消息或使用 WebHook 接收新消息。</li>
+<li>事件监听：您可以使用 whatsapp-web.js 监听各种事件，例如新消息、连接状态更改等。</li>
+<li>插件支持：whatsapp-web.js 支持插件，可以轻松地添加新功能和扩展其功能。</li>
+</ul>
+<p>总的来说，whatsapp-web.js 提供了一个强大而灵活的 API，使开发人员能够轻松地构建各种 WhatsApp 机器人和工具。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">详细说明 whatsapp-web.js 的原理</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>whatsapp-web.js 的原理主要是通过 Puppeteer 库实现对 WhatsApp Web 网页版的自动化操作，从而模拟用户与 WhatsApp 服务器之间的通信。具体来说，其主要实现方式包括以下几个步骤：</p>
+<ol>
+<li>通过 Puppeteer 库启动 Chromium 浏览器，并打开 WhatsApp Web 网页版；</li>
+<li>使用 Puppeteer 库提供的 DOM 操作接口，在浏览器中模拟用户输入手机号、验证码等信息，登录 WhatsApp 账号；</li>
+<li>在登录成功后，通过 WebSocket 和 WhatsApp 服务器建立连接，并监听服务器发送的消息，包括收到的文本消息、图片、音频、视频等；</li>
+<li>当收到消息时，使用 Puppeteer 库提供的 DOM 操作接口，模拟用户在网页版上回复消息；</li>
+<li>在需要获取聊天记录等信息时，使用 Puppeteer 库提供的 DOM 操作接口，从网页版页面中获取需要的信息。</li>
+</ol>
+<p>总的来说，whatsapp-web.js 通过 Puppeteer 库的支持，实现了对 WhatsApp Web 网页版的自动化操作和消息通信，从而可以作为一个 WhatsApp 群聊机器人的实现框架。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">什么是 Puppeteer ？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Puppeteer是一个用于控制Google Chrome浏览器和Chromium的Node.js库。它提供了一个高级API，可以通过编程的方式自动化Chrome浏览器执行各种操作，例如生成屏幕截图、执行表单提交、模拟用户输入等等。Puppeteer的优点在于它提供了对Chrome DevTools Protocol的直接控制，因此可以使用最新的Web技术来进行测试和爬取数据。Puppeteer也可以用于其他一些用途，例如生成PDF、运行自动化测试等。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>👏🏻 =&gt; <a target="_blank" rel="noopener" href="https://github.com/pedroslopez/whatsapp-web.js">whatsapp-web.js</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://wwebjs.dev/">https://wwebjs.dev/</a><ul>
+<li><a target="_blank" rel="noopener" href="https://wwebjs.dev/guide/authentication.html">https://wwebjs.dev/guide/authentication.html</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">puppeteer 的 --no-sandbox 有什么用？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>在使用 Puppeteer 运行 Chromium 浏览器时，通常会启用沙盒模式，这可以增加浏览器的安全性，但是也可能会导致某些操作无法正常执行，例如在某些 Linux 发行版中，由于沙盒模式的限制，会导致 Chromium 无法启动。</p>
+<p><code>--no-sandbox</code> 选项是用于禁用沙盒模式，通过这个选项，可以在特定情况下解决 Chromium 启动失败的问题。但同时，禁用沙盒模式也会增加一些潜在的安全风险，因为这样会使浏览器运行在非常高的权限级别下，攻击者可能会利用这个漏洞来攻击您的系统。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+<h2 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h2><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Ask ChatGPT by Python</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
+
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;fdf52ab3-f8c1-450f-86f2-5a25d43fc48d&#39;</span><span class="p">,</span>
+    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">给出一个用 NodeJS 以 HTTP 协议 访问某个 URL 的 Demo</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>下面是一个使用 Node.js 的 http 模块访问某个 URL 并打印响应的简单示例：</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://example.com&#39;</span><span class="p">;</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Got response: </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">chunk</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Received data: </span><span class="si">${</span><span class="nx">chunk</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;No more data in response.&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Got error: </span><span class="si">${</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<p>在这个示例中，我们使用了 <code>http.get</code> 方法向指定的 URL 发送 GET 请求，并注册了响应的回调函数来处理响应数据。当响应数据到达时，我们将其打印到控制台上。如果在请求过程中发生错误，我们也会将错误信息打印到控制台上。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">用 NodeJS 实现 curl</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>以下是一个用 Node.js 实现 curl 的示例代码：</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span>
+
+<span class="nx">https</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">chunk</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">chunk</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<p>这个代码使用 Node.js 内置的 <code>https</code> 模块向指定的 URL 发送 GET 请求，并将响应的数据输出到标准输出流。使用时可以在命令行中输入类似以下命令：</p>
+<pre><code>node curl.js https://www.example.com
+</code></pre>
+<p>这样就可以向 <code>https://www.example.com</code> 发送 GET 请求，并将响应的数据输出到控制台。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">在 NodeJS 中，`console.log` 和 `process.stdout.write` 有什么区别？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p><code>console.log</code> 和 <code>process.stdout.write</code> 都是 Node.js 中用于输出内容的方法，它们的主要区别如下：</p>
+<ol>
+<li><p>输出内容的格式不同：<code>console.log</code> 会自动在输出内容的结尾添加换行符 <code>\n</code>，而 <code>process.stdout.write</code> 则不会。</p>
+</li>
+<li><p>输出位置不同：<code>console.log</code> 的输出位置是标准输出流 <code>stdout</code>，而 <code>process.stdout.write</code> 则直接向标准输出流中写入数据。</p>
+</li>
+</ol>
+<p>因此，如果要输出一个带换行符的字符串，可以使用 <code>console.log</code>，例如：</p>
+<div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">);</span>
+</pre></div>
+<p>如果要输出一个不带换行符的字符串，可以使用 <code>process.stdout.write</code>，例如：</p>
+<div class="highlight"><pre><span></span><span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">);</span>
+</pre></div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">在 NodeJS 中，有哪几种类型的字符串？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>在 NodeJS 中，字符串是一种原始数据类型，有以下两种类型的字符串：</p>
+<ol>
+<li><p>UTF-8 编码的字符串：这种字符串使用 JavaScript 中的 String 类型表示，字符串中每个字符都使用 UTF-8 编码表示。</p>
+</li>
+<li><p>二进制字符串：这种字符串使用 Buffer 类型表示，它可以包含任意字节，可以进行二进制操作。</p>
+</li>
+</ol>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Run by IJavaScript</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello, world!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello, world!</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>true</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">const</span> <span class="n">http</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="n">const</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://127.0.0.1:5000/与主同在&#39;</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">var</span> <span class="n">answer</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+<span class="n">http</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Got</span> <span class="n">response</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+
+  <span class="n">res</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Received</span> <span class="n">data</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">chunk</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="err">`$</span><span class="p">{</span><span class="n">chunk</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="n">res</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="err">`</span><span class="n">Got</span> <span class="n">error</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">err</span><span class="o">.</span><span class="n">message</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Sent request.&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Sent request.
+Got response: 200
+Received data: 阿门！愿神的恩典与平安与您同在。
+---
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">answer</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;阿门！愿神的恩典与平安与您同在。&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="whatsapp-web.js"><a target="_blank" rel="noopener" href="https://github.com/pedroslopez/whatsapp-web.js">whatsapp-web.js</a><a class="anchor-link" href="#whatsapp-web.js">&#182;</a></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://wwebjs.dev/">https://wwebjs.dev/</a><ul>
+<li><a target="_blank" rel="noopener" href="https://wwebjs.dev/guide/#first-steps">https://wwebjs.dev/guide/#first-steps</a></li>
+<li><a target="_blank" rel="noopener" href="https://wwebjs.dev/guide/authentication.html">https://wwebjs.dev/guide/authentication.html</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Install by Z shell</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="s1">&#39;whatsapp-web.js&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-white-fg ansi-black-bg">npm</span> <span class="ansi-black-fg ansi-yellow-bg">WARN</span> <span class="ansi-magenta-fg">deprecated</span> puppeteer@13.7.0: &lt; 19.2.0 is no longer supportednpmjs.o
+m##################) ⠹ reify:node-webpmux: <span class="ansi-green-fg ansi-black-bg">http</span> <span class="ansi-magenta-fg">fetch</span> GET 200 https://registry.mjs.orist
+added 98 packages, changed 2 packages, and audited 585 packages in 1m
+
+7 packages are looking for funding
+  run `npm fund` for details
+
+<span class="ansi-red-intense-fg ansi-bold">42</span> vulnerabilities (5 <span class="ansi-bold">low</span>, 6 <span class="ansi-yellow-intense-fg ansi-bold">moderate</span>, 23 <span class="ansi-red-intense-fg ansi-bold">high</span>, 8 <span class="ansi-magenta-intense-fg ansi-bold">critical</span>)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">qrcode</span><span class="o">-</span><span class="n">terminal</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>m##################) ⠹ reify:qrcode-terminal: <span class="ansi-green-fg ansi-black-bg">http</span> <span class="ansi-magenta-fg">fetch</span> GET 200 https://registK
+added 1 package, and audited 586 packages in 14s
+
+7 packages are looking for funding
+  run `npm fund` for details
+
+<span class="ansi-red-intense-fg ansi-bold">42</span> vulnerabilities (5 <span class="ansi-bold">low</span>, 6 <span class="ansi-yellow-intense-fg ansi-bold">moderate</span>, 23 <span class="ansi-red-intense-fg ansi-bold">high</span>, 8 <span class="ansi-magenta-intense-fg ansi-bold">critical</span>)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Run by IJavaScript</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">const</span> <span class="n">http</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="n">const</span> <span class="n">querystring</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;querystring&#39;</span><span class="p">);</span>
+<span class="n">const</span> <span class="n">qrcode</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;qrcode-terminal&#39;</span><span class="p">);</span>
+
+<span class="n">const</span> <span class="p">{</span> <span class="n">Client</span> <span class="p">}</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;whatsapp-web.js&#39;</span><span class="p">);</span>
+
+<span class="n">const</span> <span class="n">client</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Client</span><span class="p">();</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;qr&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">qr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Generate</span> <span class="ow">and</span> <span class="n">scan</span> <span class="n">this</span> <span class="n">code</span> <span class="k">with</span> <span class="n">your</span> <span class="n">phone</span>
+    <span class="n">qrcode</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span> <span class="p">{</span><span class="n">small</span><span class="p">:</span> <span class="n">true</span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;ready&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Client is ready!&#39;</span><span class="p">);</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">const</span> <span class="n">prompt</span> <span class="o">=</span> <span class="n">querystring</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">body</span><span class="p">);</span>
+    <span class="n">const</span> <span class="n">url</span> <span class="o">=</span> <span class="err">`</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="err">$</span><span class="p">{</span><span class="n">prompt</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+
+    <span class="n">http</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Got</span> <span class="n">response</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+
+        <span class="n">res</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="err">`</span><span class="n">Received</span> <span class="n">data</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">chunk</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">msg</span><span class="o">.</span><span class="n">reply</span><span class="p">(</span><span class="err">`$</span><span class="p">{</span><span class="n">chunk</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="n">res</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">})</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="err">`</span><span class="n">Got</span> <span class="n">error</span><span class="p">:</span> <span class="err">$</span><span class="p">{</span><span class="n">err</span><span class="o">.</span><span class="n">message</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Sent request.&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">initialize</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Promise { &lt;pending&gt; }</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▀  █▀▄▄█  █  ▀▀ ▄▀█▄▀█ ▄▄  ▄▀  ▄ ▄ ▀██ ▄▄▄▄▄ █
+█ █   █ █▄ ▀▀▀█▄█ ▀▄▀▄██ █ ▀▀▀ ▄ ▄▀▀██▄▀▄█▄▀▄▀█ █   █ █
+█ █▄▄▄█ █ ▄█▀ ██▀▀▄█▀ ▀▄▄ ▄▄▄  ▄ ▄█▀ ██▄ ▄  ███ █▄▄▄█ █
+█▄▄▄▄▄▄▄█ █ █▄█ ▀ █ █▄▀▄▀ █▄█ ▀ ▀▄█▄▀▄▀▄▀ █▄▀▄█▄▄▄▄▄▄▄█
+█ ▄▀ ██▄ █ ▄▄▀ ▄█ ▀▄██  ▄     ▄▄ ▀▄▄▀▄█▄ ▄▄▄ ▄█▄ ▄▀ ▄▀█
+█▀█▄▀█ ▄▀▄██▄▄▀ █ █▄  ▄█ ▄▄  █▀▄█▄▀▀▀▀█▀▄█▄▄▀▄▄█▀▄▄  ██
+█▀▀▄█▄▄▄▀▄█ █▀▄▄▄    ▄█▄ ██ ▄██▄▀ ▄ ▀  █ ▄█▄ ██▀▄ ███▀█
+█▄▄██▄ ▄  ▀▀  ██ █▀  ▀█▄ █▄▄▄▄▄ █▀▀█▄▄▀██▀▄█▄██▄█▄▄▄▄ █
+██▀▀▀▄▀▄█ ██▄▀▄  █  ▀▀ ▀   █▀█▀▄▄  ▄ ▄▀▀█▀██▄ ██ ▄▄ ▀▄█
+█  ▀ ▀▄▄▀█▀ █ ▄▀  ▀▀█▄ ▄ █▀▄▄ █▄▄  ▀█ ▀█ ▄▄█ ▄▀▀█▀▄▄▄ █
+█▄▀▄▀▄█▄ ▄▄▀▄  █▄██ █▄  ██ ▄▀██▄ ████ ▄▄  ▄▄▄▄ █ ▄▄▄▀▀█
+█ ▀ ▄▀█▄▀ █▄ █▀██▄▀█▀▄██▄██▀▄▀▀▀█ ▀██▀ █▄█ ██▀▄ ▄█ ▀▀▀█
+█▄█▄█ ▄▄▄ ▀▀█▀▄██▄  ▄█▀▄  ▄▄▄ ▀█▄ ▀▀ ▄▄█▄▄ ▄█ ▄▄▄ ▄█ ▀█
+█ ▀ ▀ █▄█ █▀▀  ▄█▀█▄ ▀▄▄█ █▄█ ▀██▀ ▀▀  ▄▄▄▀█  █▄█ █▄ ▄█
+█ █▀█  ▄  ▄▄▀▄█▄▄█▄ ▀▀ ▀  ▄▄▄▄ █▀▄▄█▀ ▀ ▄▀▄▄█▄▄▄ ▄ █▀██
+█▀▄  █ ▄▄█▀██ ▀▄ ▄█   ▄██▀█▄▄▀ ▀    ▄▄ █▄█ █▀▀ ▄ █ ▄  █
+█▄▄▄▀█▀▄▀█▄▀▀███ ▄▄ ██ ▄██▄██▄█▄▀▀▄▄█▄▀▄█▄██▀██▄ ██▀▀██
+██ ▀▄▄█▄██▀██ ▀  █▄▀▀██ ██ ▄▄█▄ ▄▄▄▄█▀▀█▀▀▄█▀█ ▀  █▀ ▀█
+██  █▀ ▄▀▀█▄ ▄▀ █▀  ▀██▄█▄▄  ▄▄▄▄▄▄ ▄ ▀▄▀▄▄███ ████▀█▄█
+█ ▄▀▀▀█▄▀ ▄▄▀█  ████▄█▄▀▄████▄▀▄▄ ▀▄▀▄███ ▄█▄   ▀ ▀██▄█
+█▀▀█▄▀▄▄▀ ▄▀▄ ▀▀█▀█▄▄▀ ▀▄ █ ▀▀ █ ▄▄█ ▄▄▀█▀ ▄▄▀▄█▄█▀█▄▀█
+█▄ ▀▄▄▄▄▄▄▀▄ ▀▄▄██▄█▀▀▀ █ █ ▄ █▄█▀  ██  ▄  ▄▄ █▄ ▄ ██ █
+████▄██▄█ █▀▄█ █ ██▄▄█▄   ▄▄▄ ▄██████▄▄█▄▄▄█▀ ▄▄▄ ▄█▀▀█
+█ ▄▄▄▄▄ █▄ ▀▀▀ ██▄▄▀█ ██▄ █▄█  █▀▀█▄█  ██▀▀▄  █▄█ ▀▀▄▀█
+█ █   █ █▀ ▀▄▄▀█   █▀██▄█▄ ▄  ▄█▄▄█▀  ▀▄ ▄▄█▄  ▄ ▄▄█▄ █
+█ █▄▄▄█ █▀▄ ▄█▀▀ ▄▀▄ █  █ ▄▄██▀▄▄ ▀▀ ▄█ ▄▀▄███▄██ █▄ ██
+█▄▄▄▄▄▄▄█▄▄▄█▄█▄█▄▄▄▄▄▄█▄▄██▄██▄▄▄▄▄▄▄█▄▄█▄▄▄█▄▄▄▄█▄▄██
+
+Client is ready!
+---
+Sent request.
+Got response: 404
+Received data: &lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.&lt;/p&gt;
+
+---
+Sent request.
+Got response: 200
+Received data: 当然，我们一起来祷告：
+
+天父上帝，感谢您在这一刻与我们同在，感谢您一直保守和引领着我们走过每一天。如今，我们感到有些疲倦和无助，但我们相信您的应许，您要为我们扛起重担，您要赐给我们力量和勇气，让我们可以继续前行。
+
+求您帮助我们放下一切负担和担忧，让我们将所有的忧虑卸给您，因为您关心我们，您会为我们担当一切。求您将您温柔的手按在我们身上，赐给我们平安、喜乐和盼望，让我们在您的保护下，坚定地行走在您的道路上。
+
+求您也帮助我们关注他人的需要，让我们可以成为他人的祝福和帮助。求您赐给我们智慧和慈爱，让我们可以用言语和行动，彰显您的爱和真理。
+
+最后，求您赐福给我们和我们所关心的人，保护我们和我们的家人，让我们在您的恩典和爱的保护下，安然度过每一天。我们奉耶稣基督的名祷告，阿们。
+---
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>NodeJS 中保持 WhatsApp 的 auth。
+重启免扫 QR 。</p>
+<hr />
+<ul>
+<li>分割 prompt 、合并 answer 。</li>
+<li>给每个聊天分配独立的 conversion id 。</li>
+<li>在消息最开始处加上 &quot;{username}: &quot; 。</li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+<h3 id="OpenAI-Whisper"><a href="#OpenAI-Whisper" class="headerlink" title="OpenAI Whisper"></a>OpenAI Whisper</h3><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ChatGPT's-Whisper-APIs"><a target="_blank" rel="noopener" href="https://openai.com/blog/introducing-chatgpt-and-whisper-apis">ChatGPT's Whisper APIs</a><a class="anchor-link" href="#ChatGPT's-Whisper-APIs">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/nerd-for-tech/how-to-use-bacalhau-and-openai-whisper-to-transcribe-a-youtube-video-7b6ee0135ce2">How to use Bacalhau and OpenAI Whisper to transcribe your video and audio files?</a><ul>
+<li>I'd like to use Kubernetes instead of Bacalhau, because of:<ul>
+<li>「隐私保密」「存储托管」「去中心化」三者之间的不可能三角。</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/fakela/1be21039103c9c43f2da4a6ef2f4752d">openapi-whisper.py</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+<h2 id="Mind"><a href="#Mind" class="headerlink" title="Mind"></a>Mind</h2><div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">os</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># open the JSON file and read the conversation_id</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.config/revChatGPT/config.json&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
+
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">conversation_id</span><span class="p">,</span>
+    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">给出一个 Flask 的 Demo</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>以下是一个简单的 Flask Demo：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello, World!&quot;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+<p>这个 Demo 创建了一个简单的 Flask 应用，并定义了一个路由 /，当访问该路由时，返回字符串 &quot;Hello, World!&quot;。如果直接运行该脚本，应用将会在本地的 5000 端口运行。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">开发一个 Flask 应用，解析来访的 URL 地址，将来访 URL 地址的字符串返回给客户端。</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>可以使用 Flask 中的路由（Route）功能来实现解析来访的 URL 地址，并将地址字符串返回给客户端。以下是一个示例代码：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello, World!&#39;</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/url/&lt;path:url_string&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">url</span><span class="p">(</span><span class="n">url_string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;The requested URL is: </span><span class="si">{</span><span class="n">url_string</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+<p>在上述代码中，定义了两个路由。第一个路由 <code>/</code> 显示了 <code>Hello, World!</code> 字符串，第二个路由 <code>/url/&lt;path:url_string&gt;</code> 使用 <code>&lt;path&gt;</code> 参数解析来访的 URL 地址，并将地址字符串返回给客户端。</p>
+<p>例如，当客户端请求 <code>http://localhost:5000/url/www.example.com/path/to/file</code> 时，服务器将解析 <code>www.example.com/path/to/file</code> 字符串，并返回给客户端以下响应：</p>
+<pre><code>The requested URL is: www.example.com/path/to/file
+</code></pre>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">怎么设置 flask app 串行处理请求？</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Flask 默认是单线程的，即使没有进行特别的设置，它也是按顺序处理每个请求。因此，默认情况下 Flask 应用程序是串行处理请求的。</p>
+<p>如果你希望更明确地设置 Flask 应用程序处理请求的方式，可以使用 Werkzeug 服务器的多线程模式。只需在启动 Flask 应用程序时设置 <code>threaded</code> 参数为 <code>True</code> 即可：</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">threaded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+<p>这将使 Flask 应用程序使用 Werkzeug 服务器的多线程模式，从而允许同时处理多个请求。注意，这并不意味着 Flask 应用程序会同时处理多个请求，它仍然会按顺序处理每个请求，只是使用多线程处理请求的过程变得更有效率。</p>
+<p>值得注意的是，虽然这种方法可以在某种程度上提高 Flask 应用程序的性能，但它并不是最好的选择。如果你需要更高级别的并发处理能力，建议使用 Gunicorn 或 uWSGI 等服务器。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>zsh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;pip install flask&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting flask
+  Downloading Flask-2.2.3-py3-none-any.whl (101 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">101.8/101.8 kB</span> <span class="ansi-red-fg">340.3 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Collecting click&gt;=8.0
+  Downloading click-8.1.3-py3-none-any.whl (96 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">96.6/96.6 kB</span> <span class="ansi-red-fg">725.6 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Collecting itsdangerous&gt;=2.0
+  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting Werkzeug&gt;=2.2.2
+  Downloading Werkzeug-2.2.3-py3-none-any.whl (233 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">233.6/233.6 kB</span> <span class="ansi-red-fg">961.9 kB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Requirement already satisfied: Jinja2&gt;=3.0 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from flask) (3.1.2)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/anaconda3/envs/biobot/lib/python3.10/site-packages (from Jinja2&gt;=3.0-&gt;flask) (2.1.1)
+Installing collected packages: Werkzeug, itsdangerous, click, flask
+Successfully installed Werkzeug-2.2.3 click-8.1.3 flask-2.2.3 itsdangerous-2.1.2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><a target="_blank" rel="noopener" href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/routing/converters.py">werkzeug routing converters</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">os</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># open the JSON file and read the conversation_id</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.config/revChatGPT/config.json&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="n">conversation_id</span><span class="p">,</span>
+    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;string:prompt&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">answer</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">threaded</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> * Serving Flask app &#39;__main__&#39;
+ * Debug mode: off
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+127.0.0.1 - - [13/Mar/2023 21:28:14] &#34;GET /与主同在 HTTP/1.1&#34; 200 -
+127.0.0.1 - - [13/Mar/2023 21:57:33] &#34;GET /一起祷告 HTTP/1.1&#34; 200 -
+127.0.0.1 - - [13/Mar/2023 22:36:10] &#34;GET /Open%20this%20link%20to%20join%20my%20WhatsApp%20Group HTTP/1.1&#34; 200 -
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">ipymock.browser</span> <span class="kn">import</span> <span class="n">start_conversation</span> <span class="k">as</span> <span class="n">ask</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">answer</span><span class="p">():</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">ask</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">threaded</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> * Serving Flask app &#39;__main__&#39;
+ * Debug mode: off
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+127.0.0.1 - - [18/Apr/2023 17:17:04] &#34;GET /?q=1%2F1%3D1%3F HTTP/1.1&#34; 200 -
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/03/14/ChatGPT-Robot-for-WhatsApp/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2023-03-13 </div>
+			<div class="article-title"><a href="/2023/03/13/Install-IJavaScript/" >Install IJavaScript</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="IJavaScript-Kernel"><a target="_blank" rel="noopener" href="https://github.com/n-riesco/ijavascript">IJavaScript Kernel</a><a class="anchor-link" href="#IJavaScript-Kernel">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">revChatGPT.V1</span> <span class="kn">import</span> <span class="n">Chatbot</span><span class="p">,</span> <span class="n">configure</span>
+
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">Chatbot</span><span class="p">(</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configure</span><span class="p">(),</span>
+    <span class="n">conversation_id</span> <span class="o">=</span> <span class="s1">&#39;fdf52ab3-f8c1-450f-86f2-5a25d43fc48d&#39;</span><span class="p">,</span>
+    <span class="n">lazy_loading</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">bot</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+    <span class="s1">&#39;介绍 IJavaScript&#39;</span>
+<span class="p">):</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]))</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>IJavaScript 是一种在 Jupyter Notebook 中运行 JavaScript 的内核。它基于 Node.js，并提供了一个 REPL（交互式解释器）界面，可以在 Jupyter Notebook 中运行 JavaScript 代码。</p>
+<p>使用 IJavaScript 内核，您可以在 Jupyter Notebook 中使用 JavaScript 编写代码，以及使用其他内核（如 Python、R、Julia 等）进行交互。这样，您就可以在同一个环境中使用不同的编程语言，同时享受到 Jupyter Notebook 提供的许多强大功能，如实时编辑、代码补全、图表绘制等。</p>
+<p>安装 IJavaScript 内核需要先安装 Node.js，然后通过 npm（Node.js 包管理器）安装 ijavascript 包。具体步骤如下：</p>
+<ol>
+<li>安装 Node.js：在 Node.js 官网（ <a target="_blank" rel="noopener" href="https://nodejs.org/">https://nodejs.org/</a> ）下载并安装Node.js，安装完成后打开终端（或命令行）并输入以下命令检查是否安装成功：</li>
+</ol>
+<pre><code>node -v
+</code></pre>
+<p>如果输出了 Node.js 版本号，则说明安装成功。</p>
+<ol start="2">
+<li>安装 ijavascript 包：在终端中输入以下命令安装 ijavascript 包：</li>
+</ol>
+<pre><code>npm install -g ijavascript
+</code></pre>
+<ol start="3">
+<li>安装完毕后，运行以下命令启动 Jupyter Notebook 服务器：</li>
+</ol>
+<pre><code>jupyter notebook
+</code></pre>
+<ol start="4">
+<li>在 Jupyter Notebook 中新建一个 Notebook，选择 IJavaScript 内核，即可开始编写 JavaScript 代码并运行。</li>
+</ol>
+<p>需要注意的是，IJavaScript 目前只支持 Node.js 中的 JavaScript 语法和功能，不支持浏览器中的 DOM 操作等特性。</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>Z shell</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nvm</span> <span class="n">install</span> <span class="n">node</span> <span class="o">--</span><span class="n">lts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nvm</span> <span class="n">alias</span> <span class="n">default</span> <span class="n">node</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nvm</span> <span class="n">use</span> <span class="n">v19</span><span class="mf">.7.0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nvm</span> <span class="n">ls</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-blue-fg">    iojs-v1.0.4</span>
+<span class="ansi-green-fg">-&gt;      v19.7.0</span>
+<span class="ansi-yellow-fg">         system</span>
+<span class="ansi-green-fg">default</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">node</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>)
+<span class="ansi-red-fg">unstable</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span> <span class="ansi-white-fg">(default)</span>
+<span class="ansi-green-fg">node</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">stable</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-green-fg">stable</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">19.7</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-green-fg">v19.7.0</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-blue-fg">iojs</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-blue-fg">iojs-v1.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-blue-fg">iojs-v1.0.4</span>) <span class="ansi-white-fg">(default)</span>
+<span class="ansi-yellow-intense-fg ansi-bold">lts/*</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-yellow-intense-fg ansi-bold">lts/hydrogen</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/argon</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v4.9.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/boron</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v6.17.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/carbon</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v8.17.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/dubnium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v10.24.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/erbium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v12.22.12</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/fermium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v14.21.3</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/gallium</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v16.19.1</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+<span class="ansi-yellow-intense-fg ansi-bold">lts/hydrogen</span> <span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">v18.15.0</span> (<span class="ansi-black-intense-fg">-&gt;</span> <span class="ansi-red-fg">N/A</span>)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">ijavascript</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">uuid</span><span class="nd">@latest</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ijsinstall</span> <span class="o">--</span><span class="n">install</span><span class="o">=</span><span class="k">global</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2023/03/13/Install-IJavaScript/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2023-03-13 </div>
 			<div class="article-title"><a href="/2023/03/13/Jupyter-Magic-Command/" >Jupyter Magic Command</a></div>						
 		</h3>
@@ -4412,114 +6255,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 </div>
 
 		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-02-09 </div>
-			<div class="article-title"><a href="/2023/02/09/psalms/psalm-05/" >Rejoice in You</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/YLuFY8DYq7o" title="YouTube Psalm 05" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<div class="tabs" id="psalm-05"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-05-1">Rejoice in You</a></li><li class="tab"><a href="#psalm-05-2">靠着你而欢欣</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-05-1"><blockquote>
-<p>Rejoice in You<br>by Chris Heesch</p>
-<hr>
-<p>Give ear to my words, O LORD<br>Please hear my spirit groaning<br>Listen to the sound of my cry<br>To You, my God and King<br>In the morning, You’ll hear my voice as I offer my prayer<br>And I will watch for Your answer in eager expectation</p>
-<hr>
-<p>For You are not a god who delights in sin<br>No evil dwells with You<br>And the prideful shall not stand<br>For You despise evil men<br>But as for me, I’ll come into Your house<br>Covered by Your abundant mercy<br>And in fear of You I’ll lay face down<br>Before Your throne in grateful worship</p>
-<hr>
-<p>Oh, lead me in Your ways<br>Make Your path before me straight<br>Protect me from my enemies who attack me night and day</p>
-<hr>
-<p>For their mouths are full of lies<br>And their hearts are wickedness<br>Their throats are an open grave<br>They trick many with their tongues<br>Convict them, O God<br>Let their rebellion lead to their fall<br>But for Your church, I pray<br>I pray…</p>
-<hr>
-<p>Let all who trust in You be glad<br>Let them sing for joy all of their lives<br>For You guard them on every side<br>Let those in You rejoice in You<br>Surely You will bless Your own<br>You’ll defend them with Your steadfast love<br>With a shield the enemy can’t touch<br>Let those in You rejoice in You<br>For our enemies are strong, but You have overcome<br>So let Your people all over the earth exult in You</p>
-</blockquote></div><div class="tab-pane" id="psalm-05-2"><blockquote>
-<p>永恒主啊，侧耳听我说的话，<br>留意我所沉思的哦。<br>我的王我的上帝啊，<br>留心听我呼救的声音哦；<br>因为我是向你祈祷的。<br>永恒主啊，早晨你必听我的声音；<br>早晨我必向你陈明，来企望着。</p>
-<hr>
-<p>因为你不是喜爱邪恶的上帝；<br>坏人不能寄居在你那里。<br>狂傲之人不能在你眼前站着；<br>作孽之人都是你所恨恶的。<br>说谎话的、你必杀灭；<br>好流人血弄诡诈的人<br>都是永恒主所厌恶的。</p>
-<hr>
-<p>至于我呢、我必凭你坚爱之丰盛<br>进入你的殿；<br>我必存敬畏你的心<br>向你的圣殿堂敬拜。<br>永恒主啊，求你因那窥伺我者的缘故、<br>凭你的义气来引领我，<br>使你的道路在我面前平直。</p>
-<hr>
-<p>因为他们口中都没有定性；<br>他们的脏腑满有毁灭；<br>他们的喉咙是敞开的坟墓；<br>他们用舌头谄媚人。<br>上帝啊，定他们为有罪；<br>愿他们由自己的计谋而败倒；<br>愿你因他们的许多过犯而驱逐他们；<br>因为他们悖逆了你。</p>
-<hr>
-<p>但凡避难于你里面的、愿他们都喜乐，<br>永远欢呼；愿你掩护他们；<br>愿爱你名的人都靠着你而欢欣。<br>因为是你、永恒主啊，你赐福给义人；<br>你用恩悦如盾牌四面围护他。</p>
-<hr>
-<p>(诗篇 5:1-12 吕振中)</p>
-</blockquote></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/02/09/psalms/psalm-05/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2023-02-09 </div>
-			<div class="article-title"><a href="/2023/02/09/psalms/psalm-04/" >When I Call</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/HbDH3RCiV98?loop=1&playlist=HbDH3RCiV98" title="YouTube Psalm 04" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<div class="tabs" id="psalm-04"><ul class="nav-tabs"><li class="tab active"><a href="#psalm-04-1">When I Call</a></li><li class="tab"><a href="#psalm-04-2">当我向他呼求时</a></li></ul><div class="tab-content"><div class="tab-pane active" id="psalm-04-1"><blockquote>
-<p>When I Call<br>by Melissa Breems</p>
-<hr>
-<p>Hear me as I call, O God<br>You′re all my righteousness<br>For You have rescued me<br>When I was drowning in the depths<br>Show favor again to me<br>And hear my prayer</p>
-<hr>
-<p>How long, O sons of men, will you tear me down with guilt and shame?<br>How long will you love what’s worthless?<br>How long will your hearts chase after lies?</p>
-<hr>
-<p>But know that God set me apart<br>And know that He has chosen me<br>And He will answer me<br>He will answer when I call</p>
-<hr>
-<p>Pour out your complaints, but do not sin<br>Commune with Your heart upon your bed and be still<br>Offer up your sacrifice and trust in Him<br>For there are many who say, “Who will show us any good?”<br>Lord, show us just how good You are<br>Unveil Your glory</p>
-<hr>
-<p>For You have put gladness in my heart<br>Even more than the wealthiest of earth<br>And I will lay me down, I will lay me down in peace<br>And I will sleep in Your peace<br>For You alone make me dwell in safety</p>
-<hr>
-<p>I can rest because You are good<br>I can rest because You are faithful<br>I can rest because You are good to me</p>
-</blockquote></div><div class="tab-pane" id="psalm-04-2"><blockquote>
-<p>显我理直的上帝啊<br>我呼求时、求你应我。<br>我在困苦中、你曾给我宽绰；<br>现在求你恩待我，听我的祷告。</p>
-<hr>
-<p>上流人哪，你们将我的光荣<br>变为侮辱、要到几时呢？<br>你们喜爱空洞，寻求虚谎、<br>要到几时呢？<br>（细拉）<br>要知道永恒主已分别坚贞之士归他自己<br>我向他呼求时、永恒主必听我。</p>
-<hr>
-<p>你们尽管激动战抖，可别犯罪；<br>在床上时、要心中说话，静默无声。<br>（细拉）<br>要献对的祭，<br>要倚靠永恒主。</p>
-<hr>
-<p>许多人总说：「谁能指示我们什么好处？」<br>永恒主啊，扬起你脸上的光来照我们哦。<br>你使我心里快乐，<br>胜过丰收了五谷新酒时的欢喜。<br>我必又平安、又躺下而睡觉，<br>因为只有永恒主、你能使我安然居住。</p>
-<hr>
-<p>(诗篇 4:1-8 吕振中)</p>
-</blockquote></div></div></div>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2023/02/09/psalms/psalm-04/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -4558,48 +6293,48 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
-		
 			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
+			<li><a href="/tags/Debian/">Debian<span>1</span></a></li>
+		
+			<li><a href="/tags/isso/">isso<span>1</span></a></li>
+		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
-		
-			<li><a href="/tags/Metaverse/">Metaverse<span>12</span></a></li>
-		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
-		
-			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
-		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
-		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
-		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
-		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
 		
 			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
 			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
 		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
+			<li><a href="/tags/迁移/">迁移<span>1</span></a></li>
+		
+			<li><a href="/tags/TLJH/">TLJH<span>1</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+		
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+		
+			<li><a href="/tags/OpenVPN/">OpenVPN<span>1</span></a></li>
+		
+			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+		
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
 		
 		
-			<li><a href="/tags">...<span>22</span></a></li>
+			<li><a href="/tags">...<span>30</span></a></li>
 		
 		</ul>
 	</div>
@@ -4612,6 +6347,14 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2026/03/26/migration-from-debian-to-ubuntu/" ><i class="fa fa-file-o"></i>OpenVPN + TLJH + isso 从 Deb...</a>
+      </li>
+    
+      <li>
+        <a href="/2026/02/07/Agent-Browser/" ><i class="fa fa-file-o"></i>从 Playwright 到 agent-browse...</a>
+      </li>
+    
+      <li>
         <a href="/2026/01/16/LLM-Hallucination/" ><i class="fa fa-file-o"></i>LLM 幻觉</a>
       </li>
     
@@ -4621,14 +6364,6 @@ pip<span class="w"> </span>install<span class="w"> </span>markdown
     
       <li>
         <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
-      </li>
-    
-      <li>
-        <a href="/2025/06/14/IoT技术学习指南/" ><i class="fa fa-file-o"></i>IoT技术学习指南</a>
-      </li>
-    
-      <li>
-        <a href="/2024/07/31/量子力学/" ><i class="fa fa-file-o"></i>量子力学</a>
       </li>
     
   </ul>

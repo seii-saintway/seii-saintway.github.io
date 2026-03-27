@@ -193,7 +193,11 @@ graph TB
 <h2 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h2><ul>
 <li><strong>主服务器 (10.8.0.33)</strong>: Mailcow Docker化邮件服务器，运行在macOS</li>
 <li><strong>中继服务器 (10.8.0.34)</strong>: ConoHa.jp Ubuntu服务器，负责端口25流量转发</li>
-<li><strong>VPN网络</strong>: OpenVPN连接两台服务器，提供安全的内网通信</li>
+<li><strong>VPN网络</strong>: OpenVPN连接两台服务器，提供安全的内网通信<ul>
+<li><strong>WireGuard</strong> 是现代轻量级 VPN 协议，代码量极少（约 4000 行），内置于 Linux 内核，配置简单，速度快，延迟低，适合个人和高性能场景。</li>
+<li><strong>OpenVPN</strong> 是老牌成熟方案，代码庞大、配置复杂，但兼容性极强，能穿透各种防火墙（支持 TCP 443 伪装成 HTTPS），在企业环境和严格网络管控地区更可靠。</li>
+</ul>
+</li>
 </ul>
 <h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><h3 id="1-ConoHa中继服务器配置"><a href="#1-ConoHa中继服务器配置" class="headerlink" title="1. ConoHa中继服务器配置"></a>1. ConoHa中继服务器配置</h3><h4 id="1-1-安装OpenVPN-3客户端"><a href="#1-1-安装OpenVPN-3客户端" class="headerlink" title="1.1 安装OpenVPN 3客户端"></a>1.1 安装OpenVPN 3客户端</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加OpenVPN官方源</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/apt/keyrings &amp;&amp; curl -fsSL https://packages.openvpn.net/packages-repo.gpg | sudo <span class="built_in">tee</span> /etc/apt/keyrings/openvpn.asc</span><br><span class="line"></span><br><span class="line">DISTRO=$(lsb_release -c | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/etc/apt/keyrings/openvpn.asc] https://packages.openvpn.net/openvpn3/debian <span class="variable">$DISTRO</span> main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/openvpn-packages.list</span><br><span class="line"></span><br><span class="line">sudo apt update &amp;&amp; sudo apt install openvpn3</span><br></pre></td></tr></table></figure>
 
