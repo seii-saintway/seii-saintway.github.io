@@ -44,6 +44,22 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,.75);
 }
 
+/* Prevent long, unbroken words or URLs from causing horizontal overflow on small screens */
+@media (max-width: 480px) {
+  .content, .page, .post, .entry, .article, .tag_box, .container-narrow {
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Reduce negative margins/padding effect on very small screens */
+  .content {
+    margin: 10px -10px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
 #sidebar {
   margin-left: 5px;
   padding-left: 15px;

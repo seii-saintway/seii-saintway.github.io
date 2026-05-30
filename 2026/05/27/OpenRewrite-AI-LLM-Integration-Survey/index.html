@@ -1,0 +1,735 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>OpenRewrite と AI／LLM の統合調査 | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="OpenRewrite 与 AI／LLM 的整合调查执行摘要本次调查从四个角度技术性梳理了 OpenRewrite 与 AI&amp;#x2F;LLM 的整合：1) AI 辅助的 Recipe 编写（Moderne CLI 的 AI Skills），2) LLM → Recipe 的混合工作流（以 Java">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="OpenRewrite と AI／LLM の統合調査"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> OpenRewrite と AI／LLM の統合調査</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <h1 id="OpenRewrite-与-AI／LLM-的整合调查"><a href="#OpenRewrite-与-AI／LLM-的整合调查" class="headerlink" title="OpenRewrite 与 AI／LLM 的整合调查"></a>OpenRewrite 与 AI／LLM 的整合调查</h1><h2 id="执行摘要"><a href="#执行摘要" class="headerlink" title="执行摘要"></a>执行摘要</h2><p>本次调查从四个角度技术性梳理了 OpenRewrite 与 AI&#x2F;LLM 的整合：1) AI 辅助的 Recipe 编写（Moderne CLI 的 AI Skills），2) LLM → Recipe 的混合工作流（以 Java&#x2F;Spring 升级为例），3) 在 Recipe 执行中通过 sidecar 调用 LLM（Moderne 平台架构），4) Recipe → LLM 的辅助工具集合（rewrite-prethink）。主要结论：Moderne 提出以 Skill、LST（Lossless Semantic Trees）为核心、并通过 Python sidecar（使用 Gradio）在 CPU worker 上运行 Hugging Face 的 OSS 模型的实用架构[^1][^2]；OpenRewrite 负责确定性变换，LLM 用于补偿非确定性残差（如构建失败），Duolingo 的实践案例对此模式提供了实证支持[^3]；rewrite-prethink 提供生成可信上下文（CSV&#x2F;Markdown&#x2F;CALM JSON）并自动化代理配置的模块，适合作为 LLM 代理的上下文预处理层[^4]。</p>
+<h2 id="查询类型判定"><a href="#查询类型判定" class="headerlink" title="查询类型判定"></a>查询类型判定</h2><ul>
+<li>类型：技术深度调研（Query Type 3），重点是体系结构、实现细节和代码级引用。</li>
+</ul>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>AI 辅助的 Recipe 编写（Moderne CLI 的 AI Skills）</li>
+<li>LLM → Recipe 的混合工作流（Java&#x2F;Spring 升级示例）</li>
+<li>在 Recipe 执行中以 sidecar 调用 LLM 的设计（Moderne 平台）</li>
+<li>Recipe → LLM 的辅助工具：rewrite-prethink 深度分析</li>
+<li>结论与建议</li>
+<li>置信度评估</li>
+</ol>
+<hr>
+<h2 id="1-AI-辅助的-Recipe-编写（Moderne-CLI-的-AI-Skills）"><a href="#1-AI-辅助的-Recipe-编写（Moderne-CLI-的-AI-Skills）" class="headerlink" title="1. AI 辅助的 Recipe 编写（Moderne CLI 的 AI Skills）"></a>1. AI 辅助的 Recipe 编写（Moderne CLI 的 AI Skills）</h2><p>概述：Moderne 提供 “AI Skills”（例如 create-recipe、run-recipe、analyze-impact、以及文档中称作 create-organization 的 setup-target 对应功能），这些技能以面向代理的方式提供，通常在代理环境（如 Claude Code）中以斜杠命令调用，用来生成、运行和分析 OpenRewrite 的 recipe[^5][^6]。</p>
+<p>主要功能：</p>
+<ul>
+<li>create-recipe：建议使用何种 recipe 类型（声明式 YAML、Refaster、或 Java 实现），并能输出 recipe 模板与 RewriteTest 测试骨架[^6]。</li>
+<li>run-recipe：对已存在或开发中 recipe 的运行、调试和诊断支援（支持“已有 recipe 模式”与“开发模式”）[^6]。</li>
+<li>analyze-impact：聚合 recipe 运行数据并产出可视化与管理报告（例如 Sankey、treemap、以及基于 Marp 的 Markdown 报告）[^6]。</li>
+<li>setup-target&#x2F;create-organization：生成 repos.csv、按组织&#x2F;技术分组并指导同步（如 mod git sync csv）[^6]。</li>
+</ul>
+<p>架构与运行注记：</p>
+<ul>
+<li>Skills 以静态资源（如 SKILL.md）形式分发，CLI 将其安装到代理可读取的位置，代理在其运行环境中读取这些技能并按指令与 Moderne 后端（或本地 CLI）交互执行变换[^6]。</li>
+<li>博客中示例提到 <code>mod config moderne skills update</code> 作为技能更新的命令示例，但公开文档未提供完整的参数&#x2F;manifest 规范，需以实际 CLI 输出为准[^5][^6]。</li>
+</ul>
+<p>限制：</p>
+<ul>
+<li>关于 CLI 参数、manifest 架构等详细规范，公开文档并不完整；在实际部署前应以 <code>mod --help</code> 或官方 docs 为准验证具体字段与行为[^5]。</li>
+</ul>
+<h2 id="2-LLM-→-Recipe：混合工作流（以-Spring-Boot-Java-升级为例）"><a href="#2-LLM-→-Recipe：混合工作流（以-Spring-Boot-Java-升级为例）" class="headerlink" title="2. LLM → Recipe：混合工作流（以 Spring Boot &#x2F; Java 升级为例）"></a>2. LLM → Recipe：混合工作流（以 Spring Boot &#x2F; Java 升级为例）</h2><p>概述：实践中常采用“先用 OpenRewrite 执行能确定的变换，再把剩余的、难以确定的差异交由 LLM 解析并生成修正”的混合方法。Duolingo 的 Golden Path 升级案例是公开的代表性实例，描述了将 LLM 与 OpenRewrite 组合成端到端升级自动化流程的思路与经验教训[^3]。</p>
+<p>典型工作流：</p>
+<ol>
+<li>用 YAML 定义升级计划（按步骤列出要升级的组件及顺序）。</li>
+<li>对每一阶段执行 OpenRewrite recipe（recipeList），并运行构建&#x2F;测试进行验证。3) 对构建失败或不能用确定性规则修复的问题，调用 LLM 进行原因分析与补救建议；LLM 产出差分或具体修复建议后再次验证。4) 验证通过则由系统自动创建 PR 并进入下一步骤，失败则人工干预或回滚[^3]。</li>
+</ol>
+<p>优点与限制：</p>
+<ul>
+<li>优点：把可确定的改动交给 OpenRewrite，可减少 LLM 引入的错误面；OpenRewrite 的 recipeList 易于映射 LLM 生成的高层计划。 </li>
+<li>限制：LLM 生成的修复需要额外的自动化验证（测试覆盖与静态分析），且完整、公开的端到端 OSS 实现较少，多数为企业内部或 SaaS 实作（例如 Moderne）[^3]。</li>
+</ul>
+<p>引用示例：OpenRewrite 的 spring-boot-40.yml（含 recipeList）是把多个小变换串联的示例，说明 LLM 生成的计划能被映射为一系列 recipe 的事实[^7]。</p>
+<h2 id="3-Recipe-执行中通过-sidecar-调用-LLM-的架构（Moderne-平台）"><a href="#3-Recipe-执行中通过-sidecar-调用-LLM-的架构（Moderne-平台）" class="headerlink" title="3. Recipe 执行中通过 sidecar 调用 LLM 的架构（Moderne 平台）"></a>3. Recipe 执行中通过 sidecar 调用 LLM 的架构（Moderne 平台）</h2><p>架构要点（流程示意）：</p>
+<ul>
+<li>LST（Lossless Semantic Trees）在平台中被序列化并作为横向可扩展的工件存储；Recipe Worker 会读取并（短时间）解密 LST，然后在需要处抽取文本片段并把它们发送给本地运行的 Python sidecar（通过 Gradio 暴露的 HTTP 接口或类似 RPC）进行推理，返回结果后把修正合并回 LST，再生成 changeset 并通过 Connector&#x2F;Changeset 服务提交为 PR&#x2F;提交。</li>
+</ul>
+<p>Mermaid 示意图（Markdown 中可渲染）：</p>
+<pre class="mermaid">
+flowchart TD
+  U[用户/协调器] -->|请求| API[API 网关]
+  API --> Worker[Recipe Worker]
+  Worker -->|获取/解密| Connector["Connector / Artifact Repo"]
+  Worker -->|文本片段| Sidecar["Python sidecar (Gradio) + HF 模型"]
+  Sidecar -->|修正文本| Worker
+  Worker --> Changeset["Changeset 服务"] --> SCM["Git/PR"]
+</pre>
+
+<p>关键细节：</p>
+<ul>
+<li>Sidecar：文章明确指出以 Python（使用 Gradio）作为 sidecar 运行模型，模型从 Hugging Face 下载并部署在 CPU 的 worker 节点上；典型做法是在基础镜像中包含主进程与 sidecar，使 sidecar 在第一次调用时载入模型以减少后续延迟[^2]。</li>
+<li>LST 与密钥：Worker 会通过 Connector&#x2F;API Gateway 获取短期使用的对称密钥以解密 LST，处理完后销毁密钥，从而避免平台长期持有明文代码的设计（安全考量）[^2]。</li>
+<li>Sidecar API schema：博客说明“把文本发给 sidecar”，但并未公布确切的 JSON schema、HTTP 路径或错误代码，因此需要进一步获取示例实现或官方样式说明来完成生产级实现[^2]。</li>
+</ul>
+<p>运维注意：</p>
+<ul>
+<li>在 CPU 节点上运行模型需慎重选择模型大小（生成任务在 CPU 上常有高延迟），应结合批处理（batching）、轻量化模型或量化策略来满足吞吐&#x2F;延迟目标[^2][^6]。</li>
+</ul>
+<p>示例用例：fixMisencoded（修复误编码的法语注释）——流程包含注释提取、语言检测（如 xlm-roberta）、使用 SymSpell 生成纠错候选、再通过 sidecar 执行最终生成&#x2F;修正并写回 LST[^2][^5]。</p>
+<h2 id="4-Recipe-→-LLM：rewrite-prethink-深度分析"><a href="#4-Recipe-→-LLM：rewrite-prethink-深度分析" class="headerlink" title="4. Recipe → LLM：rewrite-prethink 深度分析"></a>4. Recipe → LLM：rewrite-prethink 深度分析</h2><p>概述：rewrite-prethink 是 OpenRewrite 的模块，负责把代码库中发现的结构化信息（DataTables）导出为 .moderne&#x2F;context&#x2F;*.csv 与说明 Markdown，并能生成符合 FINOS CALM 的架构 JSON，以及把这些上下文自动插入到代理配置文档（如 CLAUDE.md）中，从而为 LLM 编码代理生成可信上下文[^4]。</p>
+<p>主要实现要点（文件级引用）：</p>
+<ul>
+<li>ExportContext.java：聚合 DataTable 并生成 CSV&#x2F;Markdown。实现位于 openrewrite&#x2F;rewrite-prethink: src&#x2F;main&#x2F;java&#x2F;org&#x2F;openrewrite&#x2F;prethink&#x2F;ExportContext.java（含 CSV 导出与 Markdown 生成逻辑）[^4]。</li>
+<li>GenerateCalmArchitecture.java：从 DataTable 生成 CALM 规范的 JSON（calm-architecture.json），包含节点&#x2F;关系构建逻辑（CalmBuilder）[^4]。</li>
+<li>UpdateAgentConfig.java：读取 .moderne&#x2F;context&#x2F;*.md 并按模板生成或更新代理配置文档（例如 CLAUDE.md、.github&#x2F;copilot-instructions.md）[^4]。</li>
+</ul>
+<p>优点与局限：</p>
+<ul>
+<li>优点：将上下文结构化并标准化（CSV、CALM JSON），能显著降低传递给 LLM 的噪声并提高提示质量与可验证性。</li>
+<li>局限：rewrite-prethink 本身并不会直接调用 LLM；它依赖外部的“发现”Recipe 将行写入 DataTable，因此项目需提供相应的发现器&#x2F;producer recipe 来填充上下文数据；同时模板可能需针对具体代理进一步调整[^4]。</li>
+</ul>
+<h2 id="5-结论与建议"><a href="#5-结论与建议" class="headerlink" title="5. 结论与建议"></a>5. 结论与建议</h2><ol>
+<li>推荐采用“OpenRewrite（确定性）优先 → LLM（非确定性剩余问题）”的混合方法以平衡自动化规模与安全性（Duolingo 案例为参考）[^3]。</li>
+<li>Moderne 平台提供了 LST + sidecar 的可行架构用于在多仓库场景下对接 LLM，但公开文档缺少 API schema、Dockerfile &#x2F; k8s manifest 与 connector&#x2F;key 的序列图；部署前应索取这些实现细节或先做一轮原型验证（PoC）来量化延迟与成本[^2]。</li>
+<li>rewrite-prethink 值得作为为 LLM 生成“可信上下文”的前置层使用，但需要为目标代码库补充 discovery recipes 来填充 DataTables，且需对生成的代理模板进行适配与审阅[^4]。</li>
+</ol>
+<h2 id="6-置信度评估"><a href="#6-置信度评估" class="headerlink" title="6. 置信度评估"></a>6. 置信度评估</h2><ul>
+<li>高置信（直接有出处）：Moderne 博客关于 sidecar&#x2F;Gradio&#x2F;Hugging Face&#x2F;CPU 策略的描述[^2]；rewrite-prethink 的源码实现（ExportContext、GenerateCalmArchitecture、UpdateAgentConfig）[^4]；OpenRewrite 的 recipeList 与运行方式（官方文档）[^7]。</li>
+<li>中置信（基于文档推断）：CLI 的具体 flag&#x2F;manifest 细节（博客给出示例命令但未暴露完整规范）、sidecar 的精确 API schema 或公开的 Dockerfile&#x2F;k8s manifest（文档未包含）[^5][^2]。</li>
+<li>低置信（推测）：某些 CLI 名称或参数在公开 Web 上未找到 exact match，已用常见模式提供过渡性示例，应以真实 CLI&#x2F;帮助输出为准[^5]。</li>
+</ul>
+<hr>
+<h2 id="附注（主要参考）"><a href="#附注（主要参考）" class="headerlink" title="附注（主要参考）"></a>附注（主要参考）</h2><p>[^1]: Moderne 博客：”AI-Powered Recipe Authoring with Agent Skills and OpenRewrite” — <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill">https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill</a><br>[^2]: Moderne 博客：”AI-assisted refactoring in the Moderne Platform” — <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-assisted-refactoring-in-the-moderne-platform">https://www.moderne.ai/blog/ai-assisted-refactoring-in-the-moderne-platform</a><br>[^3]: Duolingo 博客：”Automating JVM Golden Path” — <a target="_blank" rel="noopener" href="https://blog.duolingo.com/automating-jvm-golden-path/">https://blog.duolingo.com/automating-jvm-golden-path/</a><br>[^4]: openrewrite&#x2F;rewrite-prethink 仓库：ExportContext、GenerateCalmArchitecture、UpdateAgentConfig 实现（参见 src&#x2F;main&#x2F;java&#x2F;org&#x2F;openrewrite&#x2F;prethink&#x2F;*） — <a target="_blank" rel="noopener" href="https://github.com/openrewrite/rewrite-prethink">https://github.com/openrewrite/rewrite-prethink</a><br>[^5]: moderneinc&#x2F;moderne-docs（agent tools &#x2F; skills） — <a target="_blank" rel="noopener" href="https://github.com/moderneinc/moderne-docs/blob/main/docs/user-documentation/agent-tools/skills.md">https://github.com/moderneinc/moderne-docs/blob/main/docs/user-documentation/agent-tools/skills.md</a><br>[^6]: Moderne 博客（关于 create-recipe&#x2F;run-recipe&#x2F;analyze-impact&#x2F;create-organization 的描述） — <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill">https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill</a><br>[^7]: OpenRewrite 文档 — Spring Boot 升级 recipe 列表示例: <a target="_blank" rel="noopener" href="https://docs.openrewrite.org/recipes/java/spring/boot4/upgradespringboot_4_0-community-edition">https://docs.openrewrite.org/recipes/java/spring/boot4/upgradespringboot_4_0-community-edition</a></p>
+<hr>
+<p><em>本文件由研究编排代理翻译并保存。如需进一步针对 sidecar API、connector&#x2F;key 流程或实际部署示例（Dockerfile&#x2F;k8s）做 PoC，我可以继续基于该方向发起后续调研或编写示例。</em></p>
+<hr>
+<p>To Copilot CLI:</p>
+<hr>
+<p>&#x2F;research OpenRewriteとAI&#x2F;LLMの統合について包括的に調査してください。以下の4つの側面をすべてカバーしてください：</p>
+<ol>
+<li><p>AI支援によるRecipe作成</p>
+<ul>
+<li>Moderne CLIに組み込まれた4つのAI Skills（&#x2F;moderne:create-recipe、&#x2F;moderne:run-recipe、&#x2F;moderne:analyze-impact、&#x2F;moderne:setup-target）</li>
+<li>Claude Code用のModerneプラグイン導入方法（mod config moderne skills update）</li>
+<li>公式ドキュメント：<a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill">https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill</a></li>
+</ul>
+</li>
+<li><p>LLM → Recipe：LLMが分析・計画を行い、Recipeが変換を実行する分工モデル</p>
+<ul>
+<li>Spring BootやJavaアップグレードにおけるLLMとOpenRewriteのハイブリッドアプローチ</li>
+<li>自然言語からの移行計画生成とRecipe実行の組み合わせ</li>
+</ul>
+</li>
+<li><p>Recipe実行中にsidecarでLLMを呼び出す方式</p>
+<ul>
+<li>Moderne PlatformにおけるPython sidecarとOSS LLMの統合アーキテクチャ</li>
+<li>RecipeがLSTからデータを取得し、LLMに渡し、結果をLSTに戻す処理フロー</li>
+<li>CPUワーカーノードでOSS LLM（Hugging Face）を実行する設計</li>
+<li>具体的なユースケース（misencoded French修復など）</li>
+<li>公式ドキュメント：<a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-assisted-refactoring-in-the-moderne-platform">https://www.moderne.ai/blog/ai-assisted-refactoring-in-the-moderne-platform</a></li>
+</ul>
+</li>
+<li><p>Recipe → LLM：rewrite-prethinkプロジェクト</p>
+<ul>
+<li>LLM coding agentsのための信頼できるコンテキスト生成ツール</li>
+<li>FINOS CALM Architectureによるアーキテクチャ図生成</li>
+<li>Data Tablesによるコード構造のCSV&#x2F;Markdownエクスポート</li>
+<li>エージェント設定ファイル（CLAUDE.md、.cursorrules等）の自動更新機能</li>
+<li>GitHub：<a target="_blank" rel="noopener" href="https://github.com/openrewrite/rewrite-prethink">https://github.com/openrewrite/rewrite-prethink</a></li>
+</ul>
+</li>
+</ol>
+<p>以上の4つの側面について、各技術のアーキテクチャ、主要な機能、具体的なユースケース、制限事項を含めて詳細に調査し、最後に調査結果を「OpenRewrite と AI／LLM の統合調査.md」という名前で Markdown ファイルとして出力してください。</p>
+<hr>
+<p>Best regards,<br>Andrew</p>
+<hr>
+<p>To Andrew:</p>
+<hr>
+<h1 id="OpenRewriteとAI／LLMの統合調査"><a href="#OpenRewriteとAI／LLMの統合調査" class="headerlink" title="OpenRewriteとAI／LLMの統合調査"></a>OpenRewriteとAI／LLMの統合調査</h1><h2 id="Executive-Summary"><a href="#Executive-Summary" class="headerlink" title="Executive Summary"></a>Executive Summary</h2><p>本調査は OpenRewrite と AI&#x2F;LLM を組み合わせた4つの観点（1. AI支援Recipe作成（Moderne CLIのAI Skills）、2. LLM→Recipeハイブリッド（Java&#x2F;Springアップグレード）、3. Recipe実行中のsidecarでのLLM呼び出し（Moderne Platform）、4. Recipe→LLMの補助ツール群（rewrite-prethink））を技術的に整理した。主要成果：Moderne はSkillベースのエージェント統合とLST（Lossless Semantic Trees）を核にサイドカー経由でOSSモデル（Hugging Face）をCPU上で運用するアーキテクチャを提示しており[^1][^2]。OpenRewrite は決定論的変換を担い、LLMは非決定論的残差（ビルドエラーなど）を補う役割で組み合わせる実例（Duolingo 事例）が確認できた[^3]。rewrite-prethink は LLM エージェント向けに信頼できるコンテキスト生成（CSV&#x2F;Markdown&#x2F;Calm JSON）とエージェント設定自動化を提供するモジュールである[^4].</p>
+<h2 id="Query-classification"><a href="#Query-classification" class="headerlink" title="Query classification"></a>Query classification</h2><ul>
+<li>タイプ: 技術的ディープダイブ（Query Type 3）。アーキテクチャ、実装箇所、コード参照を重視した分析を実施。</li>
+</ul>
+<hr>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li>AI支援によるRecipe作成（Moderne CLI AI Skills）</li>
+<li>LLM → Recipe ハイブリッドワークフロー（Java&#x2F;Spring 例）</li>
+<li>Recipe実行中のsidecarでLLMを呼ぶ設計（Moderne Platform）</li>
+<li>Recipe → LLM 補助ツール群（rewrite-prethink）</li>
+<li>結論と推奨</li>
+<li>Confidence Assessment</li>
+</ol>
+<hr>
+<h2 id="1-AI支援によるRecipe作成（Moderne-CLI-AI-Skills）"><a href="#1-AI支援によるRecipe作成（Moderne-CLI-AI-Skills）" class="headerlink" title="1. AI支援によるRecipe作成（Moderne CLI AI Skills）"></a>1. AI支援によるRecipe作成（Moderne CLI AI Skills）</h2><p>概要: Moderne は “AI Skills”（例: create-recipe, run-recipe, analyze-impact, create-organization&#x2F;setup-target 相当）をエージェント向けに提供し、エージェント（Claude Code 等）の中からスラッシュコマンドで呼び出してレシピ生成・実行・影響分析を行うワークフローを提供する[^5][^6].</p>
+<p>主な機能:</p>
+<ul>
+<li>create-recipe: レシピ雛形（YAML&#x2F;Refaster&#x2F;Java）、RewriteTest の骨格を生成する補助[^6].</li>
+<li>run-recipe: 既成レシピまたは開発中レシピの実行支援と診断出力の提供（開発&#x2F;既存モード）[^6].</li>
+<li>analyze-impact: 実行データの集約・可視化（Sankey等）とマネジメント用レポート生成の支援[^6].</li>
+<li>setup-target&#x2F;create-organization: 対象リポジトリ集合（repos.csv）作成・同期の支援[^6].</li>
+</ul>
+<p>運用&#x2F;アーキテクチャ注記:</p>
+<ul>
+<li>Skills は SKILL.md 等の静的リソースとして CLI が配布し、各エージェントの市場&#x2F;ディレクトリに配置される（エージェントがその場で読み解く）[^6].</li>
+<li>CLI 側でスキルのインストールや更新コマンド（ブログは <code>mod config moderne skills update</code> を例示）を示すが、実際のフラグや manifest 仕様は docs を参照する必要あり[^5][^6].</li>
+</ul>
+<p>制限事項:</p>
+<ul>
+<li>公開ドキュメントはコマンド例の全フラグ仕様や manifest スキーマを網羅していないため、正確な CLI 引数は実環境の <code>mod --help</code> 等で確認が必要[^5].</li>
+</ul>
+<h2 id="2-LLM-→-Recipe：ハイブリッドモデル（Spring-Boot-Java-アップグレード）"><a href="#2-LLM-→-Recipe：ハイブリッドモデル（Spring-Boot-Java-アップグレード）" class="headerlink" title="2. LLM → Recipe：ハイブリッドモデル（Spring Boot &#x2F; Java アップグレード）"></a>2. LLM → Recipe：ハイブリッドモデル（Spring Boot &#x2F; Java アップグレード）</h2><p>概要: OpenRewrite の決定的なレシピ群で可能な修正をまず適用し、残ったビルドエラーやサービス固有の問題を LLM が解析・修正するハイブリッド手法が実運用事例として確認された（Duolingo の Golden Path）[^3].</p>
+<p>典型ワークフロー:</p>
+<ol>
+<li>YAML でアップグレード計画（ステップ列）を定義（どのコンポーネントを何順で実行）[^3].</li>
+<li>各ステップで OpenRewrite レシピ（recipeList）を実行、ビルド検証を行う[^3][^7].</li>
+<li>ビルドエラーや手作業が必要なケースを LLM に渡して解析・差分生成 → 検証ループ（再ビルド）[^3].</li>
+<li>成功したら PR を作成して次ステップへ移行（段階的適用）[^3].</li>
+</ol>
+<p>利点・制約:</p>
+<ul>
+<li>利点: 決定論的変換を先に行うことで LLM の誤りリスクを限定できる。OpenRewrite の recipeList 構造は LLM の計画と自然にマッピング可能[^3][^7].</li>
+<li>制約: LLM の出力の妥当性検証（テストカバレッジ・静的解析との組合せ）、一貫性・hallucination の問題、完全自動化のOSS実装が少ない点（多くは社内ワークフロー）[^3].</li>
+</ul>
+<p>引用例（OpenRewrite recipe）: spring-boot-40.yml の recipeList を参照[^7].</p>
+<h2 id="3-Recipe実行中にsidecarでLLMを呼び出す方式（Moderne-Platform）"><a href="#3-Recipe実行中にsidecarでLLMを呼び出す方式（Moderne-Platform）" class="headerlink" title="3. Recipe実行中にsidecarでLLMを呼び出す方式（Moderne Platform）"></a>3. Recipe実行中にsidecarでLLMを呼び出す方式（Moderne Platform）</h2><p>アーキテクチャ要点（Mermaid 図）:</p>
+<pre class="mermaid">
+flowchart TD
+  U[User/Orchestrator] -->|request| API[API Gateway]
+  API --> Worker[Recipe Worker]
+  Worker -->|fetch / decrypt| Connector["Connector / Artifact Repo"]
+  Worker -->|text chunks| Sidecar["Python sidecar (Gradio) + HF model"]
+  Sidecar -->|predicted text| Worker
+  Worker --> Changeset["Changeset service"] --> SCM["Git/PR"]
+</pre>
+
+<p>詳細:</p>
+<ul>
+<li>LST（Lossless Semantic Trees）をアーティファクトとして保存・集約し、Worker が LST を復号して走査する。必要箇所のみを sidecar に渡し、返却された修正を LST に差し戻して changeset を生成する流れである[^2].</li>
+<li>Sidecar は Python（Gradio）でホストされ、Hugging Face からダウンロードしたOSSモデルを CPU ベースワーカーノードにデプロイする設計を明示している。モデルロードはコールドスタート対策として最初の呼び出しで行い、以降再利用するパターンが示唆される[^2].</li>
+</ul>
+<p>運用面の注意点:</p>
+<ul>
+<li>CPU上で動くモデルを選定する必要があり、生成系のレイテンシは高くなるためバッチ&#x2F;非同期処理が推奨される[^2][^6].</li>
+<li>Sidecar と Worker 間の JSON schema や認証・エンドポイント仕様は公開されておらず追跡が必要（記事は Gradio を言及するが API スキーマは not-found）[^2].</li>
+<li>セキュリティ：Worker は LST 復号用の鍵を短時間のみ取得して破棄する設計が明記されている（Moderne 管理ドキュメント）[^2].</li>
+</ul>
+<p>代表ユースケース: fixMisencoded（誤エンコードのフランス語コメント修正）—言語検出（xlm-roberta）→SymSpellで修正候補→sidecarで生成→差分適用の例が紹介されている[^2][^5].</p>
+<h2 id="4-Recipe-→-LLM：rewrite-prethink（OpenRewrite-の補助ツール群）"><a href="#4-Recipe-→-LLM：rewrite-prethink（OpenRewrite-の補助ツール群）" class="headerlink" title="4. Recipe → LLM：rewrite-prethink（OpenRewrite の補助ツール群）"></a>4. Recipe → LLM：rewrite-prethink（OpenRewrite の補助ツール群）</h2><p>概要: rewrite-prethink はソースコードから「信頼できる」「構造化された」コンテキストを生成して LLM に与えるためのモジュールで、DataTable（CSV）出力、CALM 準拠 JSON、エージェント設定（CLAUDE.md 等）の自動更新機能を備える[^4].</p>
+<p>主要コンポーネント（実装ファイル参照）:</p>
+<ul>
+<li>ExportContext.java — DataTable を集約し .moderne&#x2F;context&#x2F;*.csv と説明 Markdown を生成するレシピ[^4].<ul>
+<li>実装: openrewrite&#x2F;rewrite-prethink:src&#x2F;main&#x2F;java&#x2F;org&#x2F;openrewrite&#x2F;prethink&#x2F;ExportContext.java#L1-L220[^4].</li>
+</ul>
+</li>
+<li>GenerateCalmArchitecture.java — DataTable から FINOS CALM 準拠 JSON を生成するビルダを実装[^4].<ul>
+<li>実装: openrewrite&#x2F;rewrite-prethink:src&#x2F;main&#x2F;java&#x2F;org&#x2F;openrewrite&#x2F;prethink&#x2F;calm&#x2F;GenerateCalmArchitecture.java#L1-L740[^4].</li>
+</ul>
+</li>
+<li>UpdateAgentConfig.java — .moderne&#x2F;context&#x2F;*.md をテンプレートに差し込み、CLAUDE.md 等を自動更新する機能を提供[^4].<ul>
+<li>実装: openrewrite&#x2F;rewrite-prethink:src&#x2F;main&#x2F;java&#x2F;org&#x2F;openrewrite&#x2F;prethink&#x2F;UpdateAgentConfig.java#L1-L200[^4].</li>
+</ul>
+</li>
+</ul>
+<p>利点:</p>
+<ul>
+<li>LLM に渡すコンテキストが構造化され、不要なノイズを減らすことで精度向上と hallucination の低減が期待できる[^4].</li>
+</ul>
+<p>制限:</p>
+<ul>
+<li>rewrite-prethink 自体は LLM 呼び出しを行わず、DataTable の供給（発見用レシピ）は別途用意する必要がある（利用側で discovery recipes を作成）[^4].</li>
+</ul>
+<h2 id="5-結論と推奨"><a href="#5-結論と推奨" class="headerlink" title="5. 結論と推奨"></a>5. 結論と推奨</h2><ol>
+<li>実運用では “決定論的な OpenRewrite レシピ → LLM による残差修正” のハイブリッドが現実的で安全性と効率のバランスが良い（Duolingo 事例）[^3].</li>
+<li>Moderne のアプローチは LST と sidecar を組み合わせた実用的アーキテクチャを示しており、fixMisencoded のような具体例は参考になるが、実際の API schema &#x2F; Dockerfile &#x2F; k8s manifest 等は公開されていないため導入前に追加調査またはプロトタイプ検証が必要[^2][^5].</li>
+<li>rewrite-prethink を使えば LLM に与えるコンテキストの質・一貫性が高まり、エージェント設定の自動化まで繋げられるため、大規模横断リファクタリングプロジェクトの前段パイプラインとして有用である[^4].</li>
+</ol>
+<h2 id="Confidence-Assessment"><a href="#Confidence-Assessment" class="headerlink" title="Confidence Assessment"></a>Confidence Assessment</h2><ul>
+<li>高信頼（直接的出典あり）: Moderne の blog 記述（sidecar&#x2F;Gradio&#x2F;Hugging Face&#x2F;CPU方針）[^2]; rewrite-prethink の実装ファイル（ExportContext, GenerateCalmArchitecture, UpdateAgentConfig）[^4]; OpenRewrite recipeList と実行方法（公式 docs）[^7].</li>
+<li>中程度（推定・テンプレート）: CLI の正確なフラグ名や mod コマンドの全パラメータ（ブログは示唆するが manifest schema は未公開）、sidecar の API schema &#x2F; Dockerfile &#x2F; k8s マニフェスト（not found）[^5][^2].</li>
+<li>低信頼（憶測）: mod config moderne skills update の内部実装詳細（公開ソースから exact match が見つからないためテンプレートでの推定を含む）[^5].</li>
+</ul>
+<hr>
+<h2 id="付録-参考（抜粋フットノート）"><a href="#付録-参考（抜粋フットノート）" class="headerlink" title="付録: 参考（抜粋フットノート）"></a>付録: 参考（抜粋フットノート）</h2><p>[^1]: Moderne ブログ: “AI-Powered Recipe Authoring with Agent Skills and OpenRewrite” — <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill">https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill</a><br>[^2]: Moderne ブログ: “AI-assisted refactoring in the Moderne Platform” — <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-assisted-refactoring-in-the-moderne-platform">https://www.moderne.ai/blog/ai-assisted-refactoring-in-the-moderne-platform</a><br>[^3]: Duolingo ブログ: “Automating JVM Golden Path” — <a target="_blank" rel="noopener" href="https://blog.duolingo.com/automating-jvm-golden-path/">https://blog.duolingo.com/automating-jvm-golden-path/</a><br>[^4]: openrewrite&#x2F;rewrite-prethink repository — ExportContext, GenerateCalmArchitecture, UpdateAgentConfig implementations: <a target="_blank" rel="noopener" href="https://github.com/openrewrite/rewrite-prethink">https://github.com/openrewrite/rewrite-prethink</a> (see src&#x2F;main&#x2F;java&#x2F;org&#x2F;openrewrite&#x2F;prethink&#x2F;*)<br>[^5]: moderneinc&#x2F;moderne-docs (agent tools &#x2F; skills) — <a target="_blank" rel="noopener" href="https://github.com/moderneinc/moderne-docs/blob/main/docs/user-documentation/agent-tools/skills.md">https://github.com/moderneinc/moderne-docs/blob/main/docs/user-documentation/agent-tools/skills.md</a><br>[^6]: Moderne blog (create-recipe&#x2F;run-recipe&#x2F;analyze-impact&#x2F;create-organization descriptions) — <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill">https://www.moderne.ai/blog/ai-powered-openrewrite-recipe-authoring-with-claude-skill</a><br>[^7]: OpenRewrite docs — Spring Boot upgrader recipe list example: <a target="_blank" rel="noopener" href="https://docs.openrewrite.org/recipes/java/spring/boot4/upgradespringboot_4_0-community-edition">https://docs.openrewrite.org/recipes/java/spring/boot4/upgradespringboot_4_0-community-edition</a></p>
+<hr>
+<p><em>Report generated by research orchestration agent. 保存先パスは別途表示されます。</em></p>
+<hr>
+<p>Best regards,<br>Copilot CLI</p>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'default'
+  });
+</script>
+
+<hr>
+<p>To Claude Code:</p>
+<hr>
+<p>&#x2F;deep-research OpenRewriteとAI&#x2F;LLMの統合について包括的に調査してください。</p>
+<hr>
+<p>Best regards,<br>Andrew</p>
+<hr>
+<p>To Andrew:</p>
+<hr>
+<h2 id="追補：Deep-Research-検証レポート（2026-05-30）"><a href="#追補：Deep-Research-検証レポート（2026-05-30）" class="headerlink" title="追補：Deep Research 検証レポート（2026-05-30）"></a>追補：Deep Research 検証レポート（2026-05-30）</h2><p>本セクションは <code>/deep-research</code> ワークフロー（101エージェント、19ソース、25クレーム敵対的検証）による追加調査結果である。上記の手動調査で得られた4つの観点に加え、最新の動向と独立検証による信頼性評価を提供する。</p>
+<h3 id="検証手法"><a href="#検証手法" class="headerlink" title="検証手法"></a>検証手法</h3><ul>
+<li><strong>5角度分解</strong>: Broad overview &#x2F; 全体像, Research foundations &#x2F; 技術基盤, Recent developments &#x2F; 最新動向, Implementation guide &#x2F; 実装手法, Limitations &amp; critique &#x2F; 限界と批判</li>
+<li><strong>19ソース取得 → 82クレーム抽出 → 25クレーム検証</strong></li>
+<li><strong>3票制敵対的検証</strong>: 各クレームに対し3つの独立した検証エージェントが反証を試み、2&#x2F;3以上で棄却されたクレームは不採用（12件確認 &#x2F; 13件棄却）</li>
+</ul>
+<hr>
+<h3 id="✅-検証通過した追加の発見"><a href="#✅-検証通過した追加の発見" class="headerlink" title="✅ 検証通過した追加の発見"></a>✅ 検証通過した追加の発見</h3><h4 id="Finding-A-ハイブリッド戦略の定量的優位性（信頼度-High-Vote-3-0）"><a href="#Finding-A-ハイブリッド戦略の定量的優位性（信頼度-High-Vote-3-0）" class="headerlink" title="Finding A: ハイブリッド戦略の定量的優位性（信頼度: High, Vote: 3-0）"></a>Finding A: ハイブリッド戦略の定量的優位性（信頼度: High, Vote: 3-0）</h4><p>TalTech大学の修士論文（Karl-Erik Hein, 2025年5月）は、LLM単独・AST単独・ハイブリッドの3アプローチを定量比較した初の学術研究である：</p>
+<table>
+<thead>
+<tr>
+<th>指標&nbsp;</th>
+<th>&nbsp;手動ベースライン&nbsp;</th>
+<th>&nbsp;LLM単独 (o3-mini zero-shot)&nbsp;</th>
+<th>&nbsp;AST (OpenRewrite)&nbsp;</th>
+<th>&nbsp;ハイブリッド</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Overall Score&nbsp;</td>
+<td>&nbsp;100&nbsp;</td>
+<td>&nbsp;85.6&nbsp;</td>
+<td>&nbsp;—&nbsp;</td>
+<td>&nbsp;<strong>最適</strong></td>
+</tr>
+<tr>
+<td>ACS (正確性)&nbsp;</td>
+<td>&nbsp;—&nbsp;</td>
+<td>&nbsp;53.5%&nbsp;</td>
+<td>&nbsp;—&nbsp;</td>
+<td>&nbsp;<strong>高</strong></td>
+</tr>
+<tr>
+<td>初期依存関係完全性&nbsp;</td>
+<td>&nbsp;—&nbsp;</td>
+<td>&nbsp;30%&nbsp;</td>
+<td>&nbsp;—&nbsp;</td>
+<td>&nbsp;<strong>高</strong></td>
+</tr>
+</tbody></table>
+<br />
+
+<p>第7章結論（原文引用）:</p>
+<blockquote>
+<p>「最も成功するモダナイゼーションは、AST自動化を中核的反復的リファクタリングに、LLMを複雑な構文変換に、手動監視を検証に組み合わせる」</p>
+</blockquote>
+<p>Duolingo Engineering Blog（2025年12月）も同一の結論に到達している：</p>
+<blockquote>
+<p><em>“Don’t over-rely on AI. Learn to love determinism.”</em><br>「OpenRewriteレシピで強固な出発点に到達し、AIはギャップを埋めるためにのみ使用」</p>
+</blockquote>
+<p>🔗 <a target="_blank" rel="noopener" href="https://digikogu.taltech.ee/en/Download/f82f9ece-1f8f-409d-b171-4dc8e98dea3d">TalTech修士論文</a> · <a target="_blank" rel="noopener" href="https://blog.duolingo.com/automating-jvm-golden-path/">Duolingo Blog</a></p>
+<hr>
+<h4 id="Finding-B-Moderne-CLI-MCPサーバの6エージェント自動検出（信頼度-High-Vote-3-0）"><a href="#Finding-B-Moderne-CLI-MCPサーバの6エージェント自動検出（信頼度-High-Vote-3-0）" class="headerlink" title="Finding B: Moderne CLI MCPサーバの6エージェント自動検出（信頼度: High, Vote: 3-0）"></a>Finding B: Moderne CLI MCPサーバの6エージェント自動検出（信頼度: High, Vote: 3-0）</h4><p>Moderne CLIに内蔵された <strong>Model Context Protocol (MCP) サーバ</strong> は、以下の6つのAIコーディングエージェントの設定ディレクトリを自動検出し、MCPサーバ設定とAIスキルを自動インストールする：</p>
+<br />
+
+<table>
+<thead>
+<tr>
+<th>検出対象エージェント&nbsp;</th>
+<th>&nbsp;設定パス</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Claude Code</strong>&nbsp;</td>
+<td>&nbsp;<code>~/.claude/</code></td>
+</tr>
+<tr>
+<td><strong>Cursor</strong>&nbsp;</td>
+<td>&nbsp;<code>~/.cursor/</code></td>
+</tr>
+<tr>
+<td><strong>Windsurf</strong>&nbsp;</td>
+<td>&nbsp;<code>~/.codeium/</code></td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong>&nbsp;</td>
+<td>&nbsp;<code>~/.github/copilot/</code></td>
+</tr>
+<tr>
+<td><strong>OpenAI Codex</strong>&nbsp;</td>
+<td>&nbsp;<code>~/.openai/</code></td>
+</tr>
+<tr>
+<td><strong>Sourcegraph Amp</strong>&nbsp;</td>
+<td>&nbsp;<code>~/.sourcegraph/</code></td>
+</tr>
+</tbody></table>
+<br />
+
+<p>MCPサーバは **Lossless Semantic Tree (LST)**（型付きツリー表現）を構築し、コンパイラレベルのコード理解をAIエージェントに提供する。公開ツール：</p>
+<ul>
+<li><code>run_recipe</code> — リポジトリに対するOpenRewriteレシピの直接実行</li>
+<li><code>search_recipes</code> — 3,500以上のレシピカタログの意味的検索</li>
+<li><code>learn_recipe</code> — レシピの動作と使い方の説明取得</li>
+<li><code>query_datatable</code> — コードベースの構造化データへのクエリ</li>
+</ul>
+<blockquote>
+<p>Thoughtworks Technology Radar（2026年4月）もLSTベースのエージェントツーリングを「worth exploring」と評価。</p>
+</blockquote>
+<p>🔗 <a target="_blank" rel="noopener" href="https://docs.moderne.io/user-documentation/agent-tools/mcp/overview/">Moderne MCP Docs</a> · <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/local-moderne-mcp-deterministic-tools-coding-agents">Moderne Blog (2026&#x2F;04)</a></p>
+<hr>
+<h4 id="Finding-C-3つのAI-LLM統合アーキテクチャパターン（信頼度-Medium-Vote-2-1）"><a href="#Finding-C-3つのAI-LLM統合アーキテクチャパターン（信頼度-Medium-Vote-2-1）" class="headerlink" title="Finding C: 3つのAI&#x2F;LLM統合アーキテクチャパターン（信頼度: Medium, Vote: 2-1）"></a>Finding C: 3つのAI&#x2F;LLM統合アーキテクチャパターン（信頼度: Medium, Vote: 2-1）</h4><p>Moderne Platformは2024年から2025年にかけて3つの異なる統合パターンを実装・製品化した：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">パターン1: Human ↔ AI インタラクション</span><br><span class="line">  └─ 埋め込みベースのAI意味検索 (BAAI bge-small-en-v1.5 + FAISS)</span><br><span class="line">  └─ レシピカタログの知的探索（3,500+レシピ）</span><br><span class="line"></span><br><span class="line">パターン2: Computer → AI 呼び出し</span><br><span class="line">  └─ 決定論的OpenRewriteレシピがAIモデルをsidecar経由で呼び出す</span><br><span class="line">  └─ 例: メソッドクラスタリング、自然言語コメント修正（上記セクション3の内容と一致）</span><br><span class="line"></span><br><span class="line">パターン3: AI → Computer ツール使用</span><br><span class="line">  └─ AIチャットボットがOpenRewriteレシピを検証可能な「ツール」として使用</span><br><span class="line">  └─ ハルシネーション抑制 — AIの出力を決定論的レシピで検証・実行</span><br></pre></td></tr></table></figure>
+
+<p>⚠️ 信頼度 Medium の理由: 主要ソースがすべてModerne社ブログであり、独立した第三者検証が不足。また検証投票が2-1（1票が棄権相当）のクレームを含む。</p>
+<br />
+
+<p>🔗 <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/ai-automated-code-refactoring-and-analysis-at-mass-scale-with-moderne">Moderne AI Blog (2024&#x2F;04)</a> · <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/lossless-semantic-tree-the-complete-code-data-model-for-automated-code-refactoring-and-analysis">LST Blog (2024&#x2F;07)</a> · <a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/open-source-auto-refactoring-meets-ai-agent-to-modernize-fintech-software-at-scale">Fintech事例 (2025&#x2F;06)</a></p>
+<hr>
+<h4 id="Finding-D-rewrite-ai-モジュールの登場（信頼度-High-Vote-3-0）"><a href="#Finding-D-rewrite-ai-モジュールの登場（信頼度-High-Vote-3-0）" class="headerlink" title="Finding D: rewrite-ai モジュールの登場（信頼度: High, Vote: 3-0）"></a>Finding D: rewrite-ai モジュールの登場（信頼度: High, Vote: 3-0）</h4><p><strong>OpenRewrite 8.69.0</strong>（2025年12月16日リリース）で <code>rewrite-ai</code> モジュールがデビューした。これはOpenRewriteがAI対応をネイティブに組み込み始めた転換点である：</p>
+<ul>
+<li>Maven Central: <code>io.moderne.recipe:rewrite-ai</code> — v0.1.0 → v0.3.4（2026年5月現在、活発に開発中）</li>
+<li>コードベース内の <strong>AI&#x2F;LLMアセット（使用エージェント、ライブラリ、モデル）の発見・インベントリ</strong> 機能を提供</li>
+<li>前リリース8.68.1（2025-12-05）と8.67.0（2025-11-20）にはAI関連アーティファクトの言及なし</li>
+<li>チェンジログの「New Artifacts」セクションで唯一の新アーティファクトとして掲載</li>
+</ul>
+<blockquote>
+<p>⚠️ 正確な収載レシピ数や機能範囲については検証で棄却されたクレームがあり（後述）、詳細は未確定。</p>
+</blockquote>
+<p>🔗 <a target="_blank" rel="noopener" href="https://docs.openrewrite.org/changelog/8-69-0-Release">OpenRewrite 8.69.0 Changelog</a></p>
+<hr>
+<h3 id="❌-検証で棄却された主なクレーム"><a href="#❌-検証で棄却された主なクレーム" class="headerlink" title="❌ 検証で棄却された主なクレーム"></a>❌ 検証で棄却された主なクレーム</h3><p>以下のクレームは3票制の敵対的検証で2&#x2F;3以上の反証票を得たため、本レポートでは<strong>不採用</strong>とした：</p>
+<table>
+<thead>
+<tr>
+<th>棄却クレーム&nbsp;</th>
+<th>&nbsp;Vote&nbsp;</th>
+<th>&nbsp;ソース&nbsp;</th>
+<th>&nbsp;棄却理由（推定）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenRewrite AST移行が手動より6.86倍速い（3.5h vs 24h, Score 511.7）&nbsp;</td>
+<td>&nbsp;0-3&nbsp;</td>
+<td>&nbsp;TalTech論文&nbsp;</td>
+<td>&nbsp;オープンソース事例の特殊条件（純粋なSpring Boot 2→3でカスタムコード少）に依存。プロプライエタリコードでは再現不能</td>
+</tr>
+<tr>
+<td>rewrite-aiに正確に3つのレシピのみ存在&nbsp;</td>
+<td>&nbsp;1-2&nbsp;</td>
+<td>&nbsp;OpenRewrite Changelog&nbsp;</td>
+<td>&nbsp;チェンジログにレシピ数の明記なし。Maven Centralのバージョン進行（0.1.0→0.3.4）からレシピ追加を示唆</td>
+</tr>
+<tr>
+<td>AI（Claude Code）が2時間で完全なレシピをscaffold可能&nbsp;</td>
+<td>&nbsp;0-3&nbsp;</td>
+<td>&nbsp;Moderne Blog&nbsp;</td>
+<td>&nbsp;ブログの主張は特定の簡単なケースに限定され、一般的な再現性の証拠なし</td>
+</tr>
+<tr>
+<td>Moddyが「初のマルチリポジトリAIコードエージェント」&nbsp;</td>
+<td>&nbsp;0-3&nbsp;</td>
+<td>&nbsp;Moderne Press&nbsp;</td>
+<td>&nbsp;プレスリリースのマーケティング的主張。独立した検証・比較評価なし</td>
+</tr>
+<tr>
+<td>スキルなしだとAIエージェントは単一YAMLを出力&nbsp;</td>
+<td>&nbsp;0-3&nbsp;</td>
+<td>&nbsp;Moderne Hands-on&nbsp;</td>
+<td>&nbsp;検証エージェントが実際のAIエージェント出力と比較し、この主張を支持する証拠を見つけられず</td>
+</tr>
+<tr>
+<td>OpenRewriteの既存レシピが全JVMアップグレードをカバー&nbsp;</td>
+<td>&nbsp;0-3&nbsp;</td>
+<td>&nbsp;Duolingo Blog&nbsp;</td>
+<td>&nbsp;Duolingoの記事自体がカスタムレシピの必要性に言及しており、主張と矛盾</td>
+</tr>
+<tr>
+<td>OpenRewrite+AIの組み合わせで数週間の短縮&nbsp;</td>
+<td>&nbsp;0-3&nbsp;</td>
+<td>&nbsp;Duolingo Blog&nbsp;</td>
+<td>&nbsp;記事中に具体的な時間比較データの記載なし</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="⚠️-注意事項と限界"><a href="#⚠️-注意事項と限界" class="headerlink" title="⚠️ 注意事項と限界"></a>⚠️ 注意事項と限界</h3><ol>
+<li><strong>情報鮮度</strong>: MCPサーバ、rewrite-aiモジュール、エージェントスキルはいずれも2025年12月〜2026年の新機能であり、現在も活発に開発中。本レポートの記述は2026年5月時点のスナップショットである。</li>
+<li><strong>ソースの偏り</strong>: アーキテクチャパターン（Finding C）の主要ソースはModerne社ブログ。TalTech論文は学術的だがサンプルサイズが小規模（2サービス・1移行パス・1 LLMモデル）であり、一般化には注意が必要。</li>
+<li><strong>実運用データの欠如</strong>: Duolingo以外に、実運用環境での大規模なOpenRewrite+AIハイブリッド導入の定量的データは見つからなかった。多くの導入事例は社内限定またはModerne社のSaaS内で行われていると推測される。</li>
+</ol>
+<hr>
+<h3 id="🔮-未解決の研究課題"><a href="#🔮-未解決の研究課題" class="headerlink" title="🔮 未解決の研究課題"></a>🔮 未解決の研究課題</h3><ol>
+<li><strong>rewrite-aiの正確な機能範囲</strong>: <code>FindAgentsInUse</code>, <code>FindLibrariesInUse</code>, <code>FindModelsInUse</code> 以外のレシピは存在するか？AI駆動のコード変換機能は将来的に追加されるのか？</li>
+<li><strong>MCPサーバ経由のレシピ実行の品質評価</strong>: AIエージェントが誤ったレシピを選択・実行するケースの頻度と影響は定量化されているか？</li>
+<li><strong>決定論的優先アプローチの一般化可能性</strong>: Duolingoの手法は非JVM言語や小規模チームでも同様に有効か？</li>
+<li><strong>ハルシネーション低減の定量化</strong>: レシピをツールとして使用することでAIのハルシネーションは実際にどの程度減少するか？Moderne Platformのツール呼び出しアーキテクチャにおける定量的評価は？</li>
+</ol>
+<hr>
+<h3 id="📚-追加ソース一覧（品質評価付き）"><a href="#📚-追加ソース一覧（品質評価付き）" class="headerlink" title="📚 追加ソース一覧（品質評価付き）"></a>📚 追加ソース一覧（品質評価付き）</h3><table>
+<thead>
+<tr>
+<th>品質&nbsp;</th>
+<th>&nbsp;ソース</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🔵 Primary&nbsp;</td>
+<td>&nbsp;<a target="_blank" rel="noopener" href="https://digikogu.taltech.ee/en/Download/f82f9ece-1f8f-409d-b171-4dc8e98dea3d">TalTech修士論文</a>, <a target="_blank" rel="noopener" href="https://docs.openrewrite.org/changelog/8-69-0-Release">OpenRewrite 8.69.0 Changelog</a>, <a target="_blank" rel="noopener" href="https://docs.moderne.io/user-documentation/agent-tools/mcp/overview/">Moderne MCP Docs</a>, <a target="_blank" rel="noopener" href="https://docs.moderne.io/user-documentation/agent-tools/skills/">Moderne Skills Docs</a>, <a target="_blank" rel="noopener" href="https://docs.moderne.io/hands-on-learning/ai-recipes/module-1-plan/">Moderne Hands-on Learning</a></td>
+</tr>
+<tr>
+<td>🟠 Blog&nbsp;</td>
+<td>&nbsp;<a target="_blank" rel="noopener" href="https://www.moderne.ai/blog/">Moderne AI Blog (複数記事)</a>, <a target="_blank" rel="noopener" href="https://tianpan.co/zh/blog/2026-04-17-ai-codebase-migration-agents-scale/">Tian Pan — AI Codebase Migration</a>, <a target="_blank" rel="noopener" href="https://www.zartis.com/why-ai-modernisation-gets-faster-but-still-fails/">Zartis — Why AI Modernisation Fails</a>, <a target="_blank" rel="noopener" href="https://dev.to/jmontagne/aws-q-developer-agent-vs-openrewrite-an-architects-guide-to-realistic-migration-strategies-25f5">Dev.to — AWS Q vs OpenRewrite</a></td>
+</tr>
+<tr>
+<td>🟡 Secondary&nbsp;</td>
+<td>&nbsp;<a target="_blank" rel="noopener" href="https://devnexus.com/archive/devnexus2024/presentations/automated-software-refactoring-with-openrewrite-and-generative-ai">Devnexus 2024 Presentation</a>, <a target="_blank" rel="noopener" href="https://www.moderne.ai/press/moderne-unveils-moddy-the-first-multi-repository-ai-code-agent">Moderne Press — Moddy</a></td>
+</tr>
+<tr>
+<td>🔴 Unreliable&nbsp;</td>
+<td>&nbsp;<a target="_blank" rel="noopener" href="https://devops.com/moderne-adds-ai-agent-to-simplify-application-modernization-initiatives/">DevOps.com</a>, <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10336295">IEEE Xplore</a> — コンテンツ取得不可またはクレーム抽出不能</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="総合的な結論"><a href="#総合的な結論" class="headerlink" title="総合的な結論"></a>総合的な結論</h3><p>上記の手動調査（セクション1〜4）とDeep Research検証（本追補）の結果は<strong>高い一貫性を示している</strong>：</p>
+<ol>
+<li><strong>ハイブリッド戦略の優位性</strong>は学術研究（TalTech）と実運用（Duolingo）の両面から独立に確認された。これは上記セクション2・5の結論を強化する。</li>
+<li><strong>Moderne CLIのAI Skills（4つ）</strong> と <strong>MCPサーバ</strong> は、上記セクション1の内容をさらに具体化するものであり、6エージェント自動検出という運用面の詳細が追加された。</li>
+<li><strong>3つの統合パターン</strong>（Finding C）は、上記セクション3・4で個別に論じたsidecarアーキテクチャとrewrite-prethinkを統一的に位置づけるフレームワークを提供する。</li>
+<li><strong>rewrite-aiモジュール</strong>（2025年12月〜）は、OpenRewriteがAIを「使う側」から「検出・管理する側」へと進化していることを示す新たな展開である。</li>
+</ol>
+<blockquote>
+<p><strong>最終推奨</strong>: 決定論的OpenRewriteを基盤とし、LLMを残差修正に限定するハイブリッドアプローチが現時点で最も堅牢な戦略である。Moderne CLIのMCPサーバとAI Skillsはこの戦略を運用化する有力な手段だが、公開された定量的品質評価が不足しているため、導入前に自社コードベースでのPoC評価を推奨する。</p>
+</blockquote>
+<hr>
+<p><em>本セクションは &#x2F;deep-research ワークフロー（wf_954c675d-9f4, 2026-05-30実行）により生成・検証された。統計: 5角度 → 19ソース → 82クレーム抽出 → 25クレーム検証 → 12確認&#x2F;13棄却 → 5件に統合。エージェント101回呼出、実行時間約21分。</em></p>
+<hr>
+<p>Best regards,<br>Claude Code</p>
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2026/05/30/Quixer-Tutorial/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2026/04/13/Social-Structure/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <script data-isso="https://jhub.dtype.info/isso/" src="https://jhub.dtype.info/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2026-05-27 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2026 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>
