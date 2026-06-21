@@ -656,7 +656,9 @@ English中文The EMOTET group managed to take email as an attack vector to a nex
 <p><strong>最小 dnsdist 示例</strong></p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setLocal(<span class="string">&#x27;0.0.0.0:53&#x27;</span>)</span><br><span class="line">newServer(&#123;address=<span class="string">&quot;1.1.1.1&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">addAction(AllRule(), LuaAction(<span class="function"><span class="keyword">function</span><span class="params">(dq)</span></span></span><br><span class="line">  <span class="keyword">for</span> _, ip <span class="keyword">in</span> <span class="built_in">ipairs</span>(dq:getIPs() <span class="keyword">or</span> &#123;&#125;) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">os</span>.<span class="built_in">execute</span>(<span class="string">&quot;nft add element inet filter whitelist &#123; &quot;</span>..ip..<span class="string">&quot; &#125; 2&gt;/dev/null&quot;</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">return</span> DNSAction.None</span><br><span class="line"><span class="keyword">end</span>))</span><br></pre></td></tr></table></figure>
 
-<h2 id="圆周运动"><a href="#圆周运动" class="headerlink" title="圆周运动"></a>圆周运动</h2><div class="cell border-box-sizing code_cell rendered">
+<h2 id="圆周运动"><a href="#圆周运动" class="headerlink" title="圆周运动"></a>圆周运动</h2><p>To Copilot: 用 WSL + WSLg + misc + Rust + headless_chrome 打开一个有头的浏览器并让其中的虚拟鼠标在中间转圈；用空格键可以暂停和启动转圈；用 H 键切换无头和有头模式；持久化 Cookie 。</p>
+<hr>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">

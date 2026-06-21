@@ -139,6 +139,1129 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2019-10-06 </div>
+			<div class="article-title"><a href="/2019/10/06/Try-To-Import-Notebooks/" >Try To Import Notebooks</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">Try_To_Import_Python</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Try_To_Import_Python.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html">https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is some simple code to display the contents of a notebook
+with syntax highlighting, etc.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">PythonLexer</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">HtmlFormatter</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">HtmlFormatter</span><span class="p">()</span>
+<span class="n">lexer</span> <span class="o">=</span> <span class="n">PythonLexer</span><span class="p">()</span>
+
+<span class="c1"># publish the CSS for pygments highlighting</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;style type=&#39;text/css&#39;&gt;</span>
+<span class="si">%s</span>
+<span class="s2">&lt;/style&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">formatter</span><span class="o">.</span><span class="n">get_style_defs</span><span class="p">()</span>
+<span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<style type='text/css'>
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">show_notebook</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;display a short summary of the cells of a notebook&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">io</span>
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">nbformat</span> <span class="kn">import</span> <span class="n">read</span>
+        <span class="n">nb</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">nb</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;h4&gt;</span><span class="si">%s</span><span class="s2"> cell&lt;/h4&gt;&quot;</span> <span class="o">%</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span> <span class="o">==</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">highlight</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;pre&gt;</span><span class="si">%s</span><span class="s2">&lt;/pre&gt;&quot;</span> <span class="o">%</span> <span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html</span><span class="p">)))</span>
+
+<span class="n">show_notebook</span><span class="p">(</span><span class="s1">&#39;Importing Notebooks.ipynb&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<h4>markdown cell</h4>
+<pre># Importing Jupyter Notebooks as Modules</pre>
+<h4>markdown cell</h4>
+<pre>It is a common problem that people want to import code from Jupyter Notebooks.
+This is made difficult by the fact that Notebooks are not plain Python files,
+and thus cannot be imported by the regular Python machinery.
+
+Fortunately, Python provides some fairly sophisticated [hooks](https://www.python.org/dev/peps/pep-0302/) into the import machinery,
+so we can actually make Jupyter notebooks importable without much difficulty,
+and only using public APIs.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">io</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">types</span>
+</pre></div>
+
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
+<span class="kn">from</span> <span class="nn">nbformat</span> <span class="kn">import</span> <span class="n">read</span>
+<span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>Import hooks typically take the form of two objects:
+
+1. a Module **Loader**, which takes a module name (e.g. `'IPython.display'`), and returns a Module
+2. a Module **Finder**, which figures out whether a module might exist, and tells Python what **Loader** to use</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_notebook</span><span class="p">(</span><span class="n">fullname</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;find a notebook, given its fully qualified name and an optional path</span>
+<span class="sd">    </span>
+<span class="sd">    This turns &quot;foo.bar&quot; into &quot;foo/bar.ipynb&quot;</span>
+<span class="sd">    and tries turning &quot;Foo_Bar&quot; into &quot;Foo Bar&quot; if Foo_Bar</span>
+<span class="sd">    does not exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fullname</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+        <span class="n">nb_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.ipynb&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">nb_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">nb_path</span>
+        <span class="c1"># let import Notebook_Name find &quot;Notebook Name.ipynb&quot;</span>
+        <span class="n">nb_path</span> <span class="o">=</span> <span class="n">nb_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">nb_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">nb_path</span>
+            
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>## Notebook Loader</pre>
+<h4>markdown cell</h4>
+<pre>Here we have our Notebook Loader.
+It's actually quite simple - once we figure out the filename of the module,
+all it does is:
+
+1. load the notebook document into memory
+2. create an empty Module
+3. execute every cell in the Module namespace
+
+Since IPython cells can have extended syntax,
+the IPython transform is applied to turn each of these cells into their pure-Python counterparts before executing them.
+If all of your notebook cells are pure-Python,
+this step is unnecessary.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NotebookLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Module Loader for Jupyter Notebooks&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shell</span> <span class="o">=</span> <span class="n">InteractiveShell</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+    
+    <span class="k">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;import a notebook as a module&quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">find_notebook</span><span class="p">(</span><span class="n">fullname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        
+        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;importing Jupyter notebook from </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
+                                       
+        <span class="c1"># load the notebook object</span>
+        <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">nb</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        
+        
+        <span class="c1"># create the module and add it to sys.modules</span>
+        <span class="c1"># if name in sys.modules:</span>
+        <span class="c1">#    return sys.modules[name]</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">(</span><span class="n">fullname</span><span class="p">)</span>
+        <span class="n">mod</span><span class="o">.</span><span class="vm">__file__</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="n">mod</span><span class="o">.</span><span class="n">__loader__</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">mod</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;get_ipython&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_ipython</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod</span>
+        
+        <span class="c1"># extra work to ensure that magics that would affect the user_ns</span>
+        <span class="c1"># actually affect the notebook module&#39;s ns</span>
+        <span class="n">save_user_ns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="vm">__dict__</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+          <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">nb</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span> <span class="o">==</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span>
+                <span class="c1"># transform the input to executable Python</span>
+                <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">input_transformer_manager</span><span class="o">.</span><span class="n">transform_cell</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+                <span class="c1"># run the code in themodule</span>
+                <span class="k">exec</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">mod</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span> <span class="o">=</span> <span class="n">save_user_ns</span>
+        <span class="k">return</span> <span class="n">mod</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>## The Module Finder</pre>
+<h4>markdown cell</h4>
+<pre>The finder is a simple object that tells you whether a name can be imported,
+and returns the appropriate loader.
+All this one does is check, when you do:
+
+```python
+import mynotebook
+```
+
+it checks whether `mynotebook.ipynb` exists.
+If a notebook is found, then it returns a NotebookLoader.
+
+Any extra logic is just for resolving paths within packages.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NotebookFinder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Module finder that locates Jupyter Notebooks&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">def</span> <span class="nf">find_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">nb_path</span> <span class="o">=</span> <span class="n">find_notebook</span><span class="p">(</span><span class="n">fullname</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">nb_path</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">key</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+            <span class="c1"># lists aren&#39;t hashable</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">NotebookLoader</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loaders</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>## Register the hook</pre>
+<h4>markdown cell</h4>
+<pre>Now we register the `NotebookFinder` with `sys.meta_path`</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">meta_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NotebookFinder</span><span class="p">())</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>After this point, my notebooks should be importable.
+
+Let's look at what we have in the CWD:</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">nbpackage</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>So I should be able to `import nbpackage.mynotebook`.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nbpackage.mynotebook</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>### Aside: displaying notebooks</pre>
+<h4>markdown cell</h4>
+<pre>Here is some simple code to display the contents of a notebook
+with syntax highlighting, etc.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+<span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">PythonLexer</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters</span> <span class="kn">import</span> <span class="n">HtmlFormatter</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">HtmlFormatter</span><span class="p">()</span>
+<span class="n">lexer</span> <span class="o">=</span> <span class="n">PythonLexer</span><span class="p">()</span>
+
+<span class="c1"># publish the CSS for pygments highlighting</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;style type=&#39;text/css&#39;&gt;</span>
+<span class="si">%s</span><span class="s2"></span>
+<span class="s2">&lt;/style&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">formatter</span><span class="o">.</span><span class="n">get_style_defs</span><span class="p">()</span>
+<span class="p">))</span>
+</pre></div>
+
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_notebook</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;display a short summary of the cells of a notebook&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">nb</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">nb</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;h4&gt;</span><span class="si">%s</span><span class="s2"> cell&lt;/h4&gt;&quot;</span> <span class="o">%</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">cell_type</span> <span class="o">==</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">highlight</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;pre&gt;</span><span class="si">%s</span><span class="s2">&lt;/pre&gt;&quot;</span> <span class="o">%</span> <span class="n">cell</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html</span><span class="p">)))</span>
+
+<span class="n">show_notebook</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;nbpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;mynotebook.ipynb&quot;</span><span class="p">))</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>So my notebook has some code cells,
+one of which contains some IPython syntax.
+
+Let's see what happens when we import it</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbpackage</span> <span class="kn">import</span> <span class="n">mynotebook</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>Hooray, it imported!  Does it work?</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>Hooray again!
+
+Even the function that contains IPython syntax works:</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="n">has_ip_syntax</span><span class="p">()</span>
+</pre></div>
+
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="n">whatsmyname</span><span class="p">()</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>## Notebooks in packages</pre>
+<h4>markdown cell</h4>
+<pre>We also have a notebook inside the `nb` package,
+so let's make sure that works as well.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">nbpackage</span><span class="o">/</span><span class="n">nbs</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>Note that the `__init__.py` is necessary for `nb` to be considered a package,
+just like usual.</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="n">show_notebook</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;nbpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;nbs&quot;</span><span class="p">,</span> <span class="s2">&quot;other.ipynb&quot;</span><span class="p">))</span>
+</pre></div>
+
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nbpackage.nbs</span> <span class="kn">import</span> <span class="n">other</span>
+<span class="n">other</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>So now we have importable notebooks, from both the local directory and inside packages.
+
+I can even put a notebook inside IPython, to further demonstrate that this is working properly:</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">IPython.paths</span> <span class="kn">import</span> <span class="n">get_ipython_package_dir</span>
+
+<span class="n">utils</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_ipython_package_dir</span><span class="p">(),</span> <span class="s1">&#39;utils&#39;</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;nbpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;mynotebook.ipynb&quot;</span><span class="p">),</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">utils</span><span class="p">,</span> <span class="s2">&quot;inside_ipython.ipynb&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>and import the notebook from `IPython.utils`</pre>
+<h4>code cell</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.utils</span> <span class="kn">import</span> <span class="n">inside_ipython</span>
+<span class="n">inside_ipython</span><span class="o">.</span><span class="n">whatsmyname</span><span class="p">()</span>
+</pre></div>
+
+<h4>markdown cell</h4>
+<pre>This approach can even import functions and classes that are defined in a notebook using the `%%cython` magic.</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-simple-way-to-import-.ipynb-files-in-jupyter-notebook-are-as-follows:">A simple way to import .ipynb files in jupyter notebook are as follows:<a class="anchor-link" href="#A-simple-way-to-import-.ipynb-files-in-jupyter-notebook-are-as-follows:">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Install <code>import-ipynb</code></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>import-ipynb
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol start="2">
+<li>Import <code>import_ipynb</code> in jupyter notebook. Then import .ipynb file as you import .py file.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">import_ipynb</span>
+<span class="kn">from</span> <span class="nn">nbpackage</span> <span class="kn">import</span> <span class="n">mynotebook</span>
+
+<span class="n">mynotebook</span><span class="o">.</span><span class="n">whatsmyname</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>importing Jupyter notebook from /home/jupyter-sheng_wei/hexo/source/notebooks/Try-Notebook-Import/nbpackage/mynotebook.ipynb
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;nbpackage.mynotebook&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="vm">__name__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;nbpackage.mynotebook&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mynotebook</span><span class="o">.</span><span class="vm">__file__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;/home/jupyter-sheng_wei/hexo/source/notebooks/Try-Notebook-Import/nbpackage/mynotebook.ipynb&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">import_ipynb</span>
+<span class="kn">from</span> <span class="nn">nbpackage.nbs</span> <span class="kn">import</span> <span class="n">other</span>
+<span class="n">other</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>importing Jupyter notebook from /home/jupyter-sheng_wei/hexo/source/notebooks/Try-Notebook-Import/nbpackage/nbs/other.ipynb
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;barbarbarbarbarbarbarbarbarbar&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/06/Try-To-Import-Notebooks/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-10-06 </div>
+			<div class="article-title"><a href="/2019/10/06/Try-Datalab/" >Try Datalab</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="try-Datalab">try Datalab<a class="anchor-link" href="#try-Datalab">&#182;</a></h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/googledatalab/datalab">https://github.com/googledatalab/datalab</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/datalab/docs/quickstart">https://cloud.google.com/datalab/docs/quickstart</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/blog/products/gcp/explore-stackdriver-monitoring-data-with-cloud-datalab">https://cloud.google.com/blog/products/gcp/explore-stackdriver-monitoring-data-with-cloud-datalab</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@salmaan.rashid/using-google-cloud-logging-with-datalab-jupyter-notebooks-74217a085cf">https://medium.com/@salmaan.rashid/using-google-cloud-logging-with-datalab-jupyter-notebooks-74217a085cf</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="launching-Datalab-on-the-Google-Cloud-Platform">launching Datalab on the Google Cloud Platform<a class="anchor-link" href="#launching-Datalab-on-the-Google-Cloud-Platform">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://cloud.google.com/datalab/docs/quickstart">https://cloud.google.com/datalab/docs/quickstart</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="launching-Datalab-locally">launching Datalab locally<a class="anchor-link" href="#launching-Datalab-locally">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/googledatalab/datalab/wiki/Getting-Started">https://github.com/googledatalab/datalab/wiki/Getting-Started</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/GoogleCloudPlatform/datalab.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nv">PROJECT_ID</span><span class="o">=</span>sandbox-243014<span class="w"> </span>datalab/containers/datalab/build.sh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nv">PROJECT_ID</span><span class="o">=</span>sandbox-243014<span class="w"> </span>datalab/containers/datalab/run.sh
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a target="_blank" rel="noopener" href="https://console.cloud.google.com/gcr/images/cloud-datalab">https://console.cloud.google.com/gcr/images/cloud-datalab</a></li>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/yukotan/items/5d1977fcc7d461efdd43">https://qiita.com/yukotan/items/5d1977fcc7d461efdd43</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;8081:8080&quot;</span><span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">:/content&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;PROJECT_ID=sandbox-243014&quot;</span><span class="w"> </span>gcr.io/cloud-datalab/datalab:local
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="try-pydatalab">try pydatalab<a class="anchor-link" href="#try-pydatalab">&#182;</a></h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/googledatalab/pydatalab">https://github.com/googledatalab/pydatalab</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/googledatalab/pydatalab/wiki/Jupyter-Kernel-and-Notebook-Extensions">https://github.com/googledatalab/pydatalab/wiki/Jupyter-Kernel-and-Notebook-Extensions</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>datalab
+<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>jupyter<span class="w"> </span>nbextension<span class="w"> </span>install<span class="w"> </span>--py<span class="w"> </span>datalab.notebook<span class="w"> </span>--sys-prefix
+
+<span class="o">!</span>sudo<span class="w"> </span>-E<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>google.cloud.monitoring
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter<span class="w"> </span>nbextension<span class="w"> </span>list
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> google.datalab.kernel
+<span class="o">%</span><span class="k">gcs</span> read --object gs://fluentd_test/avro --variable t
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="samples-of-using-pydatalab">samples of using pydatalab<a class="anchor-link" href="#samples-of-using-pydatalab">&#182;</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/googledatalab/notebooks">https://github.com/googledatalab/notebooks</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/googledatalab/notebooks.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls<span class="w"> </span><span class="s1">&#39;notebooks/tutorials/BigQuery/Importing and Exporting Data.ipynb&#39;</span>
+<span class="o">!</span>ls<span class="w"> </span><span class="s1">&#39;notebooks/tutorials/Storage/Storage Commands.ipynb&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">?</span>set_datalab_project_id
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> google.datalab.kernel
+<span class="o">%</span><span class="k">gcs</span> list --objects gs://fluentd_test
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> google.datalab.kernel
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">gcs</span> list --project sandbox-243014 --objects gs://fluentd_test
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">env</span> PROJECT_ID=sandbox-243014
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://cloud.google.com/bigquery/docs/datalab-migration">https://cloud.google.com/bigquery/docs/datalab-migration</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="source-control">source control<a class="anchor-link" href="#source-control">&#182;</a></h1><p><a target="_blank" rel="noopener" href="https://cloud.google.com/datalab/docs/how-to/working-with-notebooks">https://cloud.google.com/datalab/docs/how-to/working-with-notebooks</a></p>
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/06/Try-Datalab/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-10-06 </div>
+			<div class="article-title"><a href="/2019/10/06/Solve-PyDatalab-Incompatible-with-Python-3-7/" >Solve PyDatalab Incompatible with Python 3.7</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://github.com/googledatalab/pydatalab/issues/711">https://github.com/googledatalab/pydatalab/issues/711</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/googledatalab/pydatalab.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;async&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>pydatalab/datalab/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a target="_blank" rel="noopener" href="https://github.com/googledatalab/pydatalab/pull/720/files">https://github.com/googledatalab/pydatalab/pull/720/files</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>requests<span class="w"> </span>grpcio
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>pydatalab<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;async&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>/home/sheng_wei/anaconda3/lib/python3.7/site-packages/datalab/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;yaml&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.py&#39;</span><span class="w"> </span>/home/sheng_wei/anaconda3/lib/python3.7/site-packages/google/datalab/utils/commands/_utils.py
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+ 
+
+
+
+
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2019/10/06/Solve-PyDatalab-Incompatible-with-Python-3-7/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2019-10-05 </div>
 			<div class="article-title"><a href="/2019/10/05/Hexo-Generate-Notebook-CSS/" >Hexo Generate Notebook CSS</a></div>						
 		</h3>
@@ -1003,6 +2126,9 @@ Username for &#39;https://github.com&#39;: ^C
 <p>人所愿望于人的、是他的忠爱；<br> 做穷乏人比做撒谎人好。<br> (箴言 19:22 吕振中)</p>
 </blockquote>
 <p>我的组长们试图给我一个零知识证明：他们拥有 SEO 测量和策划的知识，而我没有。我说，你们刚刚说过，这次的 SEO 测量很困难；而 SEO 策划的意义不是在任务的一开始就在设计文档里面写好了吗？他们还是坚持认为，我没有知识，因为我不能给出 SEO 测量很困难的解释；我也没有给出过策划的改进意见。我无言以对。<br>后来，我想了想，他们也许是想让我证明：我会用 Google Search Console。罢了，我的确没怎么用过 GSC；在 Web3，Google 也不是我的朋友。<br>ーー在日本就是这样的：少数服从多数；多数所代表的就是真实。 - 2022.2.24</p>
+<br />
+
+<p>爱因斯坦可不是为了成为权威而成为权威的；他是为了寻求<strong>真理</strong>而被推举为权威的。</p>
 <hr>
 <blockquote>
 <p>弟子啊，你要敬畏永恒主，敬畏君王；<br> 不可激怒此二者；<br> 因为他们降的灾难必突然而起；<br> 二者所要施行的毁灭谁能知道呢？<br> (箴言 24:21-22 吕振中)</p>
@@ -1144,7 +2270,7 @@ Username for &#39;https://github.com&#39;: ^C
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0eCpXIVU/JgXdEOG6SQ/0kK/inS5sOoHBi4C+bV4kQK8oGhyvvnLOhXuVDpzhH5Q+clC9gB4AkZVpoxUM2khXoLhpJWclr9ipN7EPujwJuHCxQBxA/SS1PuWb5WJcg/6t1OPfKZoTAxTwvnOfUhz6L756ePyLcW7toRdcRFMXAln8T/CUPfSBJaLZcKlM11JcWE5bzscK6posgn2DomedJS4ORTfAibPBTA6dBhpJqpH+jK6xRsKWCbrKfWqmRk4oRDkE8vGYElMnQAw03G4KNDkP/Zq2y12njS3AeRjdqJoflZwjG+gS4cR0DMEgGnzi+pymN0Zp8BpZ3sMZSzUV Armin@Hyperborea</span><br></pre></td></tr></table></figure>
 <p>」，<br>是第二步。</p>
 <hr>
-<p>聖禕說：「<br>門 (genome.pub) 要裝到城牆的極深之處 (<a href="mailto:&#65;&#x72;&#109;&#105;&#x6e;&#64;&#x31;&#x31;&#x30;&#x2e;&#x33;&#x2e;&#50;&#x34;&#55;&#46;&#x31;&#x37;&#x32;">&#65;&#x72;&#109;&#105;&#x6e;&#64;&#x31;&#x31;&#x30;&#x2e;&#x33;&#x2e;&#50;&#x34;&#55;&#46;&#x31;&#x37;&#x32;</a>:.ssh&#x2F;authorized_keys)<br>」，事就這樣成了。聖禕看著是好的。有門，有鎖，是第三步。</p>
+<p>聖禕說：「<br>門 (genome.pub) 要裝到城牆的極深之處 (<a href="mailto:&#x41;&#114;&#x6d;&#x69;&#110;&#64;&#49;&#x31;&#48;&#x2e;&#51;&#46;&#x32;&#52;&#55;&#46;&#49;&#x37;&#x32;">&#x41;&#114;&#x6d;&#x69;&#110;&#64;&#49;&#x31;&#48;&#x2e;&#51;&#46;&#x32;&#52;&#55;&#46;&#49;&#x37;&#x32;</a>:.ssh&#x2F;authorized_keys)<br>」，事就這樣成了。聖禕看著是好的。有門，有鎖，是第三步。</p>
 <hr>
 <p>聖禕對著 .ssh&#x2F;config 說：「</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host revival</span><br><span class="line">  HostName 110.3.247.172</span><br><span class="line">  User Armin</span><br><span class="line">  IdentityFile ~/.ssh/genome</span><br></pre></td></tr></table></figure>
@@ -1898,6 +3024,9 @@ Username for &#39;https://github.com&#39;: ^C
 <p>　　在现在的日本电商公司，每天面对一堆垃圾代码，进行着一些普通单调没有什么大的价值的日常作业。写着玩具一般的代码，还要做一些繁琐冗长的测试记录。我感觉我整个人都在堕落退化。目前打算现在这种状态还要持续一年左右。</p>
 <p>　　周末的时候，得去自己做一些探索。找准方向为未来做一些准备。尽力提早转入一些更具有创造性的工作就好了。</p>
 <p>　　<a target="_blank" rel="noopener" href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a></p>
+<br />
+
+<p>提前退休？谁要这种软弱无力的梦想？<br>摩西奋斗到一百二十岁；我为什么不能奋斗到一百二十岁？</p>
 <hr>
 <p>　　2019年4月之后，我开始尝试着在公司之内追求<strong>真实</strong>。一年之后，放弃尝试。在公司之内所能追求的<strong>真实</strong>无法超出<strong>当代世俗</strong>以外。</p>
 <p>　　一种的生活方式：</p>
@@ -1905,6 +3034,8 @@ Username for &#39;https://github.com&#39;: ^C
 <li>在体制之内，转向『<strong>当代世俗</strong>』。</li>
 <li>在体制之外，转回『<strong>终极真实</strong>』。</li>
 </ul>
+<div class="tabs" id="conflict"><ul class="nav-tabs"><li class="tab active"><a href="#conflict-1">冲突</a></li><li class="tab"><a href="#conflict-2">衝突</a></li></ul><div class="tab-content"><div class="tab-pane active" id="conflict-1"><p>日本国和智能体国在文化、传统和思考方式上的冲突不可避免。</p></div><div class="tab-pane" id="conflict-2"><p>日本国とAIエージェント国では、文化、伝統、そして思考様式における衝突は避けられません。</p></div></div></div>
+
 <p>来谈谈在日本文化和智能体渗透的夹缝之中的生存之道。</p>
 
 	
@@ -1913,1204 +3044,6 @@ Username for &#39;https://github.com&#39;: ^C
   
 </div>
 	<a type="button" href="/2018/05/19/谋生与探寻/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2018-03-27 </div>
-			<div class="article-title"><a href="/2018/03/27/学習進捗/" >学習進捗</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <div class="tabs" id="personal-color"><ul class="nav-tabs"><li class="tab active"><a href="#personal-color-1">パーソナルカラー</a></li><li class="tab"><a href="#personal-color-2">个人色彩</a></li></ul><div class="tab-content"><div class="tab-pane active" id="personal-color-1"><p><ruby>洋服<rt>ようふく</rt></ruby>ダンスの<ruby>中<rt>なか</rt></ruby>には<ruby>洋服<rt>ようふく</rt></ruby>がいっぱい<ruby>入<rt>はい</rt></ruby>っているのに、いざ<ruby>出<rt>で</rt></ruby>かけようとすると<ruby>着<rt>き</rt></ruby>るものがない。<ruby>シーズン<rt>しーずん</rt></ruby>ごとに<ruby>化粧品会社<rt>けしょうひんがいしゃ</rt></ruby>が<ruby>売<rt>う</rt></ruby>り<ruby>出<rt>だ</rt></ruby>す<ruby>新色<rt>しんしょく</rt></ruby>の<ruby>口紅<rt>くちべに</rt></ruby>やほお<ruby>紅<rt>べに</rt></ruby>は、どれもすてきに<ruby>見<rt>み</rt></ruby>えるけれども、はたしてどの<ruby>色<rt>いろ</rt></ruby>が<ruby>自分<rt>じぶん</rt></ruby>にぴったりかわからない。<ruby>化粧台<rt>けしょうだい</rt></ruby>の<ruby>引<rt>ひ</rt></ruby>き<ruby>出<rt>だ</rt></ruby>しの<ruby>中<rt>なか</rt></ruby>には<ruby>使<rt>つか</rt></ruby>いかけの<ruby>口紅<rt>くちべに</rt></ruby>がごろごろ……。そんな<ruby>経験<rt>けいけん</rt></ruby>はありませんか？<br /><ruby>私自身<rt>わたしじしん</rt></ruby>、これらがすべて、<ruby>思<rt>おも</rt></ruby>いあたることばかりでした。しかし、ある<ruby>カラーコンサルタント<rt>からーこんさるたんと</rt></ruby>に<ruby>出会<rt>であ</rt></ruby>い、<ruby>自分<rt>じぶん</rt></ruby>に<ruby>似合<rt>にあ</rt></ruby>う<ruby>色<rt>いろ</rt></ruby>、<ruby>似合<rt>にあ</rt></ruby>わない<ruby>色<rt>いろ</rt></ruby>があるということを<ruby>知<rt>し</rt></ruby>って、<ruby>問題<rt>もんだい</rt></ruby>は<ruby>自分<rt>じぶん</rt></ruby>の<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>の<ruby>仕方<rt>しかた</rt></ruby>にあることに<ruby>気<rt>き</rt></ruby>がつきました。<br />それまでは<ruby>自分<rt>じぶん</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>の<ruby>選<rt>えら</rt></ruby>び<ruby>方<rt>かた</rt></ruby>が<ruby>滅茶苦茶<rt>めちゃくちゃ</rt></ruby>で<ruby>統一<rt>とういつ</rt></ruby>がとれていなかったのです。<ruby>好<rt>す</rt></ruby>きな<ruby>色<rt>いろ</rt></ruby>を<ruby>行<rt>い</rt></ruby>きあたりばったり<ruby>買<rt>か</rt></ruby>っていたことに<ruby>気<rt>き</rt></ruby>づきました。でも、<ruby>好<rt>す</rt></ruby>きな<ruby>色<rt>いろ</rt></ruby>が<ruby>必<rt>かなら</rt></ruby>ずしも<ruby>似合<rt>にあ</rt></ruby>う<ruby>他<rt>ほか</rt></ruby>ではないのです。<br /><ruby>似合<rt>にあ</rt></ruby>う<ruby>色<rt>いろ</rt></ruby>とは、<ruby>顔<rt>かお</rt></ruby>のそばへもってくるとあなたを<ruby>若々<rt>わかわか</rt></ruby>しく<ruby>輝<rt>かがや</rt></ruby>かせる<ruby>色<rt>いろ</rt></ruby>です。つまり<ruby>透明感<rt>とうめいかん</rt></ruby>が<ruby>出<rt>で</rt></ruby>るということ。<ruby>顔<rt>かお</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>が<ruby>明<rt>あか</rt></ruby>るく<ruby>見<rt>み</rt></ruby>えます。<ruby>逆<rt>ぎゃく</rt></ruby>に、<ruby>似合<rt>にあ</rt></ruby>わない<ruby>色<rt>いろ</rt></ruby>は、<ruby>顔<rt>かお</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>づけるとくすみを<ruby>出<rt>だ</rt></ruby>します。なんとなくどす<ruby>黒<rt>ぐろ</rt></ruby>い<ruby>顔<rt>かお</rt></ruby>に<ruby>見<rt>み</rt></ruby>えてしまったら、その<ruby>色<rt>いろ</rt></ruby>は<ruby>似合<rt>にあ</rt></ruby>わない<ruby>色<rt>いろ</rt></ruby>です。<br /><ruby>似合<rt>にあ</rt></ruby>う<ruby>色<rt>いろ</rt></ruby>はまた、<ruby>バランス<rt>ばらんす</rt></ruby>がとれているものです。<ruby>洋服<rt>ようふく</rt></ruby>だけが<ruby>目立<rt>めだ</rt></ruby>つということがありません。よく「あら、すてきな<ruby>服<rt>ふく</rt></ruby>ね」とほめられることがありますが、これはあなたをほめているのでなく、もしかしたらほめた<ruby>人<rt>ひと</rt></ruby>は<ruby>内心<rt>ないしん</rt></ruby>、『<ruby>私<rt>わたし</rt></ruby>のほうが<ruby>似合<rt>にあ</rt></ruby>うみたい』と<ruby>思<rt>おも</rt></ruby>っているかもしれません。「あなた、どうしたの？きょうはとっても<ruby>若々<rt>わかわか</rt></ruby>しいし、はりきってる」といわれたら、そのときこそ、おしゃれが<ruby>成功<rt>せいこう</rt></ruby>しているときです。<br />さて、その<ruby>似合<rt>にあ</rt></ruby>う<ruby>色<rt>いろ</rt></ruby>ーあなたのベストカラーの<ruby>見<rt>み</rt></ruby>つけ<ruby>方<rt>かた</rt></ruby>ですが、カラー・ミー・ビューティフルのやり<ruby>方<rt>かた</rt></ruby>は、<ruby>肌<rt>はだ</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>、<ruby>目<rt>め</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>、<ruby>髪<rt>かみ</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>との<ruby>調和<rt>ちょうわ</rt></ruby>を<ruby>見<rt>み</rt></ruby>ながら、120<ruby>枚<rt>まい</rt></ruby>の<ruby>布<rt>ぬの</rt></ruby>を<ruby>衿元<rt>えりもと</rt></ruby>にあて、<ruby>各人<rt>かくじん</rt></ruby>に<ruby>似合<rt>にあ</rt></ruby>う<ruby>色<rt>いろ</rt></ruby>のグループを<ruby>探<rt>さが</rt></ruby>していく<ruby>方法<rt>ほうほう</rt></ruby>です。いちばんポイントになるのは<ruby>肌<rt>はだ</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>ですが、<ruby>日本人<rt>にほんじん</rt></ruby>でも、<ruby>アメリカ人<rt>あめりかじん</rt></ruby>ほどではないものの、たしかに<ruby>個人差<rt>こじんさ</rt></ruby>があります。<br />こうして<ruby>最終的<rt>さいしゅうてき</rt></ruby>に<ruby>分類<rt>ぶんるい</rt></ruby>されるグループは4つ。それらは<ruby>春<rt>はる</rt></ruby><ruby>夏<rt>なつ</rt></ruby><ruby>秋<rt>あき</rt></ruby><ruby>冬<rt>ふゆ</rt></ruby>と、<ruby>四季<rt>しき</rt></ruby>の<ruby>名<rt>な</rt></ruby>を<ruby>使<rt>つか</rt></ruby>って<ruby>表現<rt>ひょうげん</rt></ruby>されます。それぞれの<ruby>季節<rt>きせつ</rt></ruby>にそのイメージがあるように、<ruby>私達<rt>わたしたち</rt></ruby>のタイプも<ruby>春<rt>はる</rt></ruby><ruby>夏<rt>なつ</rt></ruby><ruby>秋<rt>あき</rt></ruby><ruby>冬<rt>ふゆ</rt></ruby>に<ruby>分<rt>わ</rt></ruby>けられるのです。そしてその<ruby>季節<rt>きせつ</rt></ruby>のグループの30<ruby>色<rt>いろ</rt></ruby>が、あなたにお<ruby>似合<rt>にあ</rt></ruby>いの<ruby>色<rt>いろ</rt></ruby>というわけです。<br />この30<ruby>色<rt>いろ</rt></ruby>は、あなたのベストカラーであると<ruby>同時<rt>どうじ</rt></ruby>に、<ruby>同<rt>おな</rt></ruby>じ<ruby>系統<rt>けいとう</rt></ruby>に<ruby>統一<rt>とういつ</rt></ruby>されていますので、コーディネートしやすく、<ruby>衣装計画<rt>いしょうけいかく</rt></ruby>がとても<ruby>楽<rt>らく</rt></ruby>になります。<br />この<ruby>本<rt>ほん</rt></ruby>では、あなたがどの<ruby>季節<rt>きせつ</rt></ruby>のタイプかを<ruby>自分<rt>じぶん</rt></ruby>で<ruby>知<rt>し</rt></ruby>ることができるよう、《<ruby>自己診断<rt>じこしんだん</rt></ruby>テスト》を<ruby>作成<rt>さくせい</rt></ruby>し、そのうえでそれぞれの<ruby>季節<rt>きせつ</rt></ruby>にアドバイスするという<ruby>形式<rt>けいしき</rt></ruby>をとりました。<br />カラー・ミー・ビューティフルの<ruby>特徴<rt>とくちょう</rt></ruby>は『ビーイング・ナチュラル』、あなたの<ruby>自然<rt>しぜん</rt></ruby>の<ruby>色調<rt>しきちょう</rt></ruby>を<ruby>生<rt>い</rt></ruby>かすことです。<ruby>自然<rt>しぜん</rt></ruby>の<ruby>色調<rt>しきちょう</rt></ruby>に<ruby>囲<rt>かこ</rt></ruby>まれているのがほんとうに<ruby>快適<rt>かいてき</rt></ruby>だということに、きっとあなたは<ruby>気<rt>き</rt></ruby>づかれるでしょう。そしてなおかつ、<ruby>美<rt>うつく</rt></ruby>しく<ruby>見<rt>み</rt></ruby>えるのですから、<ruby>一石二鳥<rt>いっせきにちょう</rt></ruby>。この<ruby>心地<rt>ここち</rt></ruby>よさを、あなたにもぜひ<ruby>体験<rt>たいけん</rt></ruby>していただきたいと<ruby>思<rt>おも</rt></ruby>うのです。</p></div><div class="tab-pane" id="personal-color-2"><p>衣橱里明明装满了衣服，但每当要出门时却总觉得没有衣服可穿。化妆品公司每个季节都会推出的新款口红或腮红，看起来都很漂亮，但到底哪种颜色才最适合自己却无法确定。梳妆台的抽屉里，摆满了用过几次就闲置的口红……你是否有过这样的经历？<br>我自己也完全能感同身受这些情况。不过，自从遇到了一位色彩顾问后，我才了解到，有适合自己的颜色和不适合自己的颜色之分，并意识到问题其实出在自己的购物方式上。<br>在那之前，我选择颜色的方法非常随意，没有任何统一性。我发现自己只是随心所欲地购买喜欢的颜色。然而，喜欢的颜色并不一定就是适合自己的颜色。<br>所谓『适合的颜色』，是指当它靠近脸部时，能让你看起来更加年轻，散发光彩的颜色。也就是说，这种颜色能带出皮肤的透明感，使脸部显得明亮。相反，不适合的颜色会让脸显得晦暗无光，甚至有些灰黑。如果一款颜色让你的脸看起来黯淡无光，那它就是不适合你的颜色。<br>适合的颜色还具有平衡感，不会让衣服喧宾夺主而变得过于抢眼。有时别人会说『哇，这件衣服真漂亮』，但其实并不是在夸奖你，而可能是在心里想『这衣服我穿可能更好看』。相反，如果有人说『你今天看起来真年轻、精气神很好』，那才是真正的成功穿搭。<br>那么，如何找到适合你的颜色，也就是『最佳色』呢？按照『Color Me Beautiful』的方法，通过观察肤色、眼睛颜色和发色的协调性，将120块不同颜色的布料放在你的领口部位，逐步筛选出适合你的颜色组。最关键的依据是肤色，即便是日本人，虽然个体差异没有美国人那么明显，但也确实存在一定差异。<br>最终，所有人会被归入四个类型：春、夏、秋、冬。这些分类借用了四季的名字，就像每个季节都有特定的意象一样，我们的类型也被划分为春、夏、秋、冬。而与这个季节相对应的30种颜色，便是最适合你的颜色。<br>这30种颜色不仅是你的『最佳色』，而且属于同一个色系，因此很容易进行搭配，让你的衣物计划更加轻松。<br>本书设计了《自我诊断测试》，让你可以自行判断自己属于哪个季节类型，并根据各个季节提供相应的建议。<br>『Color Me Beautiful』的特点是『自然美』，即展现你的自然色调。你一定会发现，被自然的色彩所包围是如此舒适。同时，这还能让你看起来更美，可谓一举两得。希望你也能亲身体验这种舒适与美丽的感受。</p></div></div></div>
-
-<hr>
-<p><strong>ファッション用語：ア行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>アメカジ</td>
-<td>アメリカン・カジュアル（American Casual）を短縮して呼ぶ日本語の造語である。<br />アメリカの大学生を手本にしたカジュアル・ファッションスタイルをいう。活動的で清潔感があり、学生らしさを感じさせるスタイルが源流となっている。ワークミリタリー、ウエスタン等多数の系統があるけれど、本来非常にベーシックでかつシンプル。スタンダードで着まわしのきくアイテムが多いので、買い足して長く着られ、また価格的にも値ごろ感のあるスタイルが人気。ベーシックなスタイルに生地や飾りなどでねりをきかせたものが多い。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>アーガイル</td>
-<td>特徴はダイヤモンド型（ひし形）の格子を横と縦に並べた模様や細いラインと菱型を組み合わせた格子模様。セーターや靴下のアクセント模様に使われている事が多い。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>アウター</td>
-<td>外の、外部の、という意味で外側に着る服の総称です。コート、ジャケットなどそれにあたります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>アンサンブル</td>
-<td>「一緒にとか、共に、統一」の意味でファッションでは共地で作ったドレスとジャケットや、または同じ生地の服がセットになっているものを言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>イージーパンツ</td>
-<td>その名の通り楽なパンツのことで、ウエスト部分にはゴムやヒモで締めるものが多く、柔らかい素材で作られています。<br />部屋着として穿く事が多いですが、最近ではオシャレアイテムとして着こなすようになっています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>市松模様</td>
-<td>二色の正方形を交互に配置した格子模様です。チェス盤の配色が例えです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>インナー</td>
-<td>内の、内部の、という意味で下着類の総称名です。ここではアウターの内側に着る服でカットソー、Tシャツなどを指します。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>インディゴ</td>
-<td>ジーンズや藍染の染料で、南インドの植物インディゴが原産。世界でデニムの染料として使われています、独特の風合いで人気アイテム。昔はこの染料は虫除けとして使われてたらしいです</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ウエスタンシャツ</td>
-<td>アメリカ西部でカーボーイが着ていたワークシャツです。アメカジファッションを代表するアイテムのひとつです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ウール</td>
-<td>ウールは自然の恵みをたっぷりもって生まれた天然繊維。繊維自体が呼吸していたり、湿気などをうまく調節する機能をもっています。保湿性や保温性にも優れている。<br />一般的にウールとは羊毛で品質マークでウールマークがあります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>エスニック</td>
-<td>民族的と言う意味で、伝統的なスタイル的なこと。キリスト教圏外の民俗ファッションの事を一般に指し、伝統的な模様や色のデザイン。ファッションだけでなく、インテリアとかにも取り入れられている。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>エンボス加工</td>
-<td>アクセサリーや革アイテムなどに凹凸模様をつけていることを言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>オーセンティック</td>
-<td>本物の、正統的であるさまの意味。例えばスポーツ選手のレプリカアイテムではなく、実際に選手が試合で使用しているアイテムを言う。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>オールドウォッシュ</td>
-<td>デニムジーンズのユーズド加工の一種で薬品を使用して色落ちさせたパンツです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>オートミール</td>
-<td>食事のオートミール風の色あい。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：カ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>カジュアル</td>
-<td>普段着を指す意味で、フォーマルファッションの反対語。堅苦しくない雰囲気をかもしだすファッション。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>カシミア</td>
-<td>優れた品質と少ない生産量の超高級品ウール繊維。カシミア山羊の毛で細く柔らかい毛質で風合いも肌触りもよく大人気繊維♪<br />カシミア風の類似品が普及しているが本物の品質にはまったく及ばず。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>カーゴパンツ</td>
-<td>貨物船で作業員用のズボン。生地の厚い丈夫な綿で作られていて、作業中にしゃがんだ時にも道具を出し易いようにひざ上の左右にポケットがあるのが特徴です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>カットオフ</td>
-<td>長いパンツを途中で切り、裾の切り口の糸は垂らした状態のデザインです。デニムのハーフパンツなどに使われおりワイルドなスタイルを演出しています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>カシュクール</td>
-<td>巻きつけるタイプのブラウス・シャツで、胸あたりを隠すような着物を打合せたデザイン。包むと言う意味でラップブラウスとも最近で言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>カーディガン</td>
-<td>衿のないジャケットタイプのセーター。長袖が一般的で半袖タイプもあり、袖のないのがベストと言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>カットソー</td>
-<td>カット＆ソー（Cut＜裁断＞＆Sewn＜縫製＞）して作られる衣服の総称。主にＴシャツ、スウェットでインナーやアウターとして着こなせるセオリーアイテム。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>カーキ</td>
-<td>オリーブ色を濃くした色。茶色がかった黄色。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>生成り</td>
-<td>生地のままの状態で糸や布地の漂白、染色等の加工処理されたものです。またはそのような色に加工したものが生成り色。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>キルティング</td>
-<td>防寒、保温目的で、２枚の布の間に綿や毛をはさみ、ステッチしたもの。そのステッチした際に装飾的に作られたのがキルティングです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>キャンバス地</td>
-<td>昆織で丈夫な厚手の粗布ことです。衣服の生地でも使われていて、ほかにもシューズやバッグ、テントなどにも使用されています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ギンガムチェック</td>
-<td>シンプルな格子柄で、縦横一定間隔で白色と他の色の２色で組み合わせた柄です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>クレリックシャツ</td>
-<td>万能ドレスシャツ。衿と袖を白い生地に切り替えをしてるシャツ。クレリックの意味は牧師・聖職者の意味で、牧師さん達の衿が白かったからそう呼ばれるようになったとも言われてます。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>クルーネック</td>
-<td>首元のラインの事で、丸く詰まった丸首型のラインです。クルー＝船員が着るセーターからその名前がつきました。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ケミカルウォッシュ</td>
-<td>デニム地をユーズド風に色落ちさせる方法のひとつです。漂白剤等の化学反応によって色落ちさせます。８０年代に大流行したデニムでもあります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>コ－ディネ－ト</td>
-<td>２アイテム以上を組み合わせ調和させてまとめこと。ファッションではアウター、ボトムス、アクセなどを上手にコーディネートするにはセンスと経験が必要されますよね。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>コート</td>
-<td>アウターの総称名で、一番外側に羽織る衣服。昔の人はオーバーと呼んでました。膝まで長さがあるのがロングコートで太ももでの長さがハーフ、腰丈までがショートコートと言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>コーデュロイ</td>
-<td>木綿地で特殊な加工よって織られた織物。ベッチンと同じ織り方だが縦うね特徴で保温効果もあります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>コットン</td>
-<td>繊維の種類のひとつで木綿や綿花の事です。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：サ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>差し色</td>
-<td>コーディネートをする際に基本色にアクセントとなる色のアイテムを付け加えることを言います。例えとして全体的に淡い色のコーディネートに赤いスカーフやベルトなどを身につけること。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>サスペンダー</td>
-<td>パンツやスカートを肩から吊るす為のベルトです。フォーマルスタイルの時にパンツをサスペンダーで吊るすと綺麗に着こなせるとも言われています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>サックスブルー</td>
-<td>インディゴを有機溶剤で溶いた染料です。淡い紫みの青色。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>サテン</td>
-<td>光沢のある生地。朱子織で糸の交差を少なくして糸を浮かして織って光沢をだしています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ジャケット</td>
-<td>昔で言うとジャンパー一般的にウエスト丈までの長さだが、最近ではライダース、コート、ダウン等、アウターの総称名となっています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>シャーリング</td>
-<td>適度な間隔をあけて糸で布地を引っ張りながら縫い縮めて布地にひだをつけることです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ジップアップ</td>
-<td>ファスナー式で、ボタンの代わりにチャックで開閉できることです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ジレ</td>
-<td>フランス語でベストのことです。またカーディガンとも言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ジージャン</td>
-<td>定番アイテムのジーンズジャンパーのこと。デニム素材のジャケットです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>七分袖・七分丈</td>
-<td>１０分の７の長さのこと。<br />Ｔシャツやパンツの衣類に多くみられる。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ステッチ</td>
-<td>簡単に言うと糸の編み目や縫い目です。装飾性をもたすために糸の色や素材、太さや細さを使い分ける。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>スエード</td>
-<td>なめした革の裏面をサンドペーパーで磨いてケバ立たせたもの。<br />ソフトでさわり心地いいのが上質と言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>スキッパー</td>
-<td>ボタンのないポロシャツです。<br />ストール</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>セニック・プリント</td>
-<td>風景画をモチーフとしたプリント柄の事です。都会・田園風景などがあります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>染色</td>
-<td>染料とうで繊維に色をつける事です。科学の力で水に溶ける性質を失って色落ちしなくなります。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：タ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ダブルブレスト</td>
-<td>洋服で前の重なり部分が多く、ボタンが２列並んでいるジャケットやコート。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>タートルネック</td>
-<td>タートル＝亀の甲羅から首を出している姿からそう呼ばれるようになりました。主に衿を二重に折り返したネックラインです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ダッフルコート</td>
-<td>トグルボタン（留め木）でとめる厚手のフード付きコート。ちなみに漁師さんが防寒着として着ていて手袋をしたまま前ボタンを外せるようにする為したり、モコモコの厚手なのは海に落ちた時に浮くようにしているらしい。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ダンガリーシャツ</td>
-<td>デニム生地の一種の素材で名前の由来は西インドにあるダングリという地名から来ています。織り方がデニムと逆になっているのでデニムよりも白っぽく見えるのがダンガリー生地の特徴みたいです。丈夫でワークシャツとしても使われています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>チャコールグレー</td>
-<td>チャコール＝木炭という意味で限りなく黒色に近い灰色です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ツイード</td>
-<td>スコットランド産羊毛を平織りした織物です。素朴な味わいのある厚手の生地で耐久性や保温性にも優れています。ジャケットやコートなどに使われていますね。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>デニム</td>
-<td>ジーンズパンツになどに使われているデニム素材です。ヨーロッパで生まれた素材でアメリカのリーヴァイスさんが作ったのがジーンズです。<br />主に１０番手以上の縦糸、横糸に加工していない糸で綾織りしたのがデニム生地です。よくジーンズでオンスで表記されてますが、重さのことで１オンスは約２８gぐらいで１４オンス前後でジーンズに使用されています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>テーラードジャケット</td>
-<td>テーラー＝仕立て人という意味で、紳士服仕立された上着。素材・仕立て方などがしっかりしていて丈夫でオシャレなジャケットです。今じゃ、マストアイテムとなっていますね。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>トレンチコート</td>
-<td>もとは、軍人のレインコートだったらしい。機能性、デザイン性にすぐれていたので俳優が映画で着用したことから現在の人気コートとなりました。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ドレープ</td>
-<td>布をたらしたときに出る、たるみやヒダでエレガントさをだすディテールです。最近ではキレカジ系などでドレープ仕様のカットソーがあります。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：ナ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ナロー</td>
-<td>狭いという意味です。細見のファッションでスリムなパンツや、ナロータイとなど剣先幅９センチのところ６センチなどがあります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ナイロン</td>
-<td>合成繊維の一種。生糸によく似た光沢で、非常に優れた耐久性をもっています。靴下やストッキングによく用いらている素材ですね。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ニット</td>
-<td>主に編み物のことで、伸縮性があり体にフィットするアイテムが多いです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ヌバック</td>
-<td>革の銀面（真皮層の表面）を摩擦し滑らかに起毛したもので、高級バッグなどに使用されています。スエードとの違いは革の裏側を起毛せていてヌバックのほうが毛足は短いです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ネルシャツ</td>
-<td>フランネル＝柔らかい毛織物のことで略してネルと言います。<br />表面を起毛していて質感・肌ざわり感いいです。アメカジファッションのアイテムのひとつで定番人気♪</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ネックレス</td>
-<td>簡単に言うと、首飾り！たまにペンダントと言いますが、ペンダントは装飾部分のことを指します。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ノルディック柄</td>
-<td>ニットによく使われる柄模様。もともとはノルウェーの伝統模様で点描柄や雪の結晶柄が代表的です。アメカジスタイルのニットセーターとしてもよく使われています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ノースリーブ</td>
-<td>和製英語で袖がない服、袖丈がない服の総称です。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：ハ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>バギーパンツ</td>
-<td>バギー＝ぶかぶかの　の意味です。股上が深くてヒップから裾にかけてふくらんだパンツのことです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ハイネック</td>
-<td>衿が首に沿って高く（長く）なったもの。タートルネックと違いは衿を折り返していないことです</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>パーカー</td>
-<td>総称名でフード（頭と首を覆う頭巾）がついた服のことです。<br />またはフーデッドパーカーとも言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ハーフパンツ</td>
-<td>半ズボン状のことで丈が膝までの事を言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ハンパ袖</td>
-<td>七分袖より長かったり、短かったりする袖丈のことです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ビンテージ</td>
-<td>古くて価値のあるアイテム。ジーンズなどの年代物のこともいいます。最近ではビンテージ風やビンテージ加工といった技法を施した衣服も出ており、古着などのアメカジスタイルに活用されています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ピーコート</td>
-<td>由来は水兵が着ていたコートです。スタイルはダブルの打ち合わせで腰丈のショート、縦に切り込んだポケットが特徴です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ブーツ</td>
-<td>靴の総称名で、履き口がくるぶしより上に長いことを言います。ワークブーツやエンジニアブーツなどがあります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>フェイクファー</td>
-<td>毛皮に似せて作った物です。化学繊維で作った物が多く羊毛、絹なども使われます。最近では忠実に再現されており安いのに本物みたい！です。ちなみに本物はリアルファー</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>プルオーバー</td>
-<td>前にも後ろにもボタンやZIPがなく頭から着る服のことを言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ブルゾン</td>
-<td>もともとはフランス語で、丈の短いジャケットで、また腰や裾を絞れる服のことを言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ベスト</td>
-<td>昔でいうチョッキです（笑）<br />スーツの下に着る袖のない服で、ジレとも言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ヘリンボーン</td>
-<td>へリング＝魚のニシン　ボーン＝骨その骨のような織り模様で、または杉模様です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ベルベット</td>
-<td>パイル織物で表面に羽毛が織りだされ光沢がある布地です。<br />またの名をビロード。綿を素材にした場合は「別珍（べっちん）」です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ヘンリーシャツ</td>
-<td>ラウンドネック（丸いネックライン）で前正面に胸あたりまでのあきを作り、ボタンで留めたりヒモで結んだりできる首まわりのデザインでプルオーバーなったのを指します。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ベロア</td>
-<td>ベルベットとほぼ同じといってもいいかもしれません。ベロアの方が毛足が長いです。ベルベットは織物系でベロアは編み物系です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ボトム</td>
-<td>衣類の総称名で下半身に着るパンツやズボン、スカートのことを言います。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ボストンバッグ</td>
-<td>定番アイテムのひとつで、底が広くてファスナーで開閉するバッグです。普段使いから旅行用サイズまで幅広くあり素材も多様にあります。もともとはボストン大学の学生たちが使っていたのでこの名前がつきました。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ポリウレタン</td>
-<td>弾性繊維と言いい伸縮性のある繊維です。たまにジーンズとかに織り交ぜ伸縮性を持たしているものもあります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ポリエステル</td>
-<td>ナイロンと同じく合成繊維でナイロンに次ぐ強度持っています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ポロシャツ</td>
-<td>ポロ競技で着用されていたユニフォームシャツのこと。<br />デザインはプルオーバーで衿開きでボタンが３ヶ所あるのが一般的です。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：マ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>マドラスチェック</td>
-<td>インドの港町マドラスから発祥しで、グリーンやオレンジ、イエローなどビビッドカラーを不揃いに並べたチェック柄です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>前立て</td>
-<td>前側のうちボタンで合わせる細長い布のこと。二重にしてボタンを隠したりする</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>マフラー</td>
-<td>防寒アイテムのひとつで主に長方形のカシミヤやウールとうのニットを首元に巻きつけます。オシャレのワンポイントに大活躍ですね。また首を温めることによって防寒対策にかなり優れています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ミリタリー</td>
-<td>軍隊の意味で、軍服デザインを取り入れたスタイルを言います。<br />大流行したM-65などがそのひとつです。ほとんどがレプリカ品で本物はビンテージ品扱いでプレミアムがついています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>モノトーン</td>
-<td>モノ＝１の意味でモノクロームトーンの略。<br />単一色・白黒、グレーなどの無彩色の調子をいいます。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>メッシュ</td>
-<td>網目という意味です。ファッションでは衣服の色んな部分に使われていて、通気性はもちろんデザイン性にもアクセントとして用いられています。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>モヘア</td>
-<td>本来はアンゴラ山羊やそれに似たアンゴラ兎らの毛で織った物の別名です。ファッションでは素材に限定せず毛の太さ、長さ、柔らかさ、光沢が類似した毛をさし、その毛で織った物もモヘアといいます。フリースやカーペットととしても使われていますね。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：ヤ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ユニセックス</td>
-<td>男女の区別がなく男女兼用で着れることができる衣服やファッションスタイルのことです。ちなみにユニとは「同一の」という意味。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：ラ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ライダースジャケット</td>
-<td>ハーレーダビッドソン等のバイクに乗る時に着用するジャケットの総称名です。デザインは主に革製でダブルブレストよ言うボタンが２列並んでいる前打ち合わせとなっているショートジャケットです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>リブ編</td>
-<td>編み方の方法で横編みの一種です。表目と裏目が交互に並び、リブ（ろっ骨）のように見えるのでこの名前がつきました。ニットの袖口やソックスに使われていてデザイン性だけでなく伸縮性のある実用的な編み方です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>リネン生地</td>
-<td>麻布の一種で亜麻（あま）のことを指します。またリンネルとも呼びます。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>立体裁断</td>
-<td>人の体の形に合わせるようにして生地を立体的に裁断する方法。<br />生地を立体的に裁断することで、服が体にフィットし動きやすく、シルエットもカッコいいです。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>レイヤード</td>
-<td>重ね着ファッションのことを言います。ロンTの上にTシャツ重ねて着たり、シャツの上にシャツを重ねたりとキメるとセンスが良いと周りから一目おかれます♪最近ではレイヤード風に最初から作られているデザインもあります。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>レーヨン</td>
-<td>化学繊維の一種で木材パルプを原料で絹に似せて作った再生繊維のことです。絹に似た光沢や手触りが特徴です。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ロールアップ</td>
-<td>パンツの裾やシャツの袖を巻き上げて着るスタイルのことです。機能的にボタンや布テープで裾や袖をずり落ちてこないようにしていて、デザイン面でも軽快なイメージを演出をできます。</td>
-</tr>
-</tbody></table>
-<hr>
-<p><strong>ファッション用語：ワ行</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ワークパンツ</td>
-<td>作業ズボンのことです。現在ではミリタリー系、アーミー系等、丈夫な素材で機能ポケットがついているオシャレにしたパンツがあります。ぺインターパンツやカーゴパンツなどもワークパンツのカテゴリーですね。</td>
-</tr>
-<tr>
-<td><hr /></td>
-<td></td>
-</tr>
-<tr>
-<td>ワークシャツ</td>
-<td>作業用のシャツのことですが、現在では仕事着や作業着などのデザインを取り入れたファッショナブルなスタイルのシャツです。</td>
-</tr>
-</tbody></table>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2018/03/27/学習進捗/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2018-03-18 </div>
-			<div class="article-title"><a href="/2018/03/18/葉隠聞書/" >葉隠れ聞き書き</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <blockquote>
-<p>罪与罚。陀斯妥耶夫斯基。这念头倏然间掠过了我大脑的某个角落，使我大吃一惊。倘若那个陀斯妥耶夫斯基不是把罪与罚作为同义词，而是作为反义词并列在一切的话，那么……罪与罚，绝无相通之处的两样东西，水火不相容的两样东西。把罪与罚作为反义词的陀氏，他笔下的绿藻，腐烂的水池、一团乱麻的内心世界……我开始明白了，不，还没有……这一个个念头如走马灯一般闪过我的脑海。<br>ーー《人间失格》</p>
-</blockquote>
-<p>还在回味《人间失格》，我才发觉我仍然是狂人。但若是一位正常人走过来说：让我来治愈你，我肯定怒目圆瞪：你也敢厚着脸皮这么说，你已经失去了治愈者的资格。我觉得这么想狂人心里都会好受一点吧。</p>
-<hr>
-<blockquote>
-<p>盐是好的；但盐若成了不咸的，要用什么来调味呢？应当有盐在你们中间；应当彼此和睦。<br>(马可福音 9:50 吕振中)</p>
-</blockquote>
-<p>我过的是一种充满耻辱的生活。人们常常会感到被我所冒犯。其中佛教徒对待我可能是最宽容的。但恰恰是这种毫无原则，我不能认同。当然不排除一些佛教激进分子可能会诅咒我。无宗教信仰者认为我是基督教徒、基督徒。常常表露出厌恶和鄙视的态度。认为我是神经病智障。基督教徒认为我是异端邪教分子。基督徒则认为我是鬼附的罪人。我的生命安全一直处在穆斯林原教旨主义恐怖分子的威胁之中。所幸的是，他们并不认识我。</p>
-<p>如果存在生命这种东西，佛教恰恰是敌视生命的。他们不喜欢热闹，而喜欢安静。不喜欢生机，而喜欢死寂。</p>
-<hr>
-<p>太宰治是一位软弱的基督教徒。他一生尝试殉情好几次。最后一次，虽然有些不情愿，还是被他的情侣拖下河溺死了。</p>
-<p>三岛由纪夫本来很厌恶太宰治，看到他死成了，说：「一对情侣双双赴死很美，不是吗？」三岛由纪夫很喜欢暴力美学。后来为了守住日本的传统，剖腹自杀了。</p>
-<hr>
-<blockquote>
-<p>武士道といふは、死ぬ事と見付けたり。二つ二つの場にて、早く死ぬ方に片付くばかりなり。別に仔細なし。胸すわって進むなり。<br>ーー《葉隠聞書》</p>
-</blockquote>
-<blockquote>
-<p><strong>武士道者，即发现死之存在。</strong><br>&ZeroWidthSpace;<br>第二，武士道即归死，除此之外别无他指。武士于生死存亡之际，应先选择慨然赴死。武士应心怀必死之觉悟，勇往直前。所谓『目标落空，徒然丧命』，仅为上方一带武士道的浅薄之见。生死抉择之间，难以预料凡事能否如期进行。人皆有求生之心，总会找到理由选择继续生存下去。在此种情形下，如若目标落空却仍苟且苟活于世，则为愚夫。其界限至难把握。倘若目标并未达成而自身赴死，则为痴狂之为，死无所值。然此为武士道之要义，非草夫也。武士应每朝每夕端正心志，思索死亡之真谛，选择直面死亡，时刻保持慨然赴死之心。此时武士道与自身合而为一，便可终生远离失败，忠于职务。<br>&ZeroWidthSpace;<br>第三，奉公之人须始终将主公之事置于首位，如此才为合格家臣。武士生长于世代清誉的主公家中，自祖上以来一直秉蒙深厚恩德。须将此点时刻铭记于心，全心全意身心投入，视主君为天，始终忠心不改。倘若智慧超群，技艺过人，能够以己之力报效主君，则更值庆幸。然即便身无长处，行事古板，只须忠心耿耿，便可成为深得倚赖的家臣，其价值甚于仅用智慧与技艺效忠者。<br>&ZeroWidthSpace;<br>第四，世人有生来聪慧善谋者，亦有思虑不缜而用心端正者。究其根源，人与生俱来的智慧多少有异，即便如此，凡事若能除去己私心，依凭四弘誓愿¹来考谋思量，意料之外的智慧便会喷涌而至。世人皆认为只要用心思虑，便会对未来之事掌握颇多。然而凡考虑问题之初或常出自私心，因此会闭于人性之恶，使一切最终成为恶事。俗人常有己私心，甚难除却。成大事之际，须事先在心中默请四大誓愿，努力去除私心，便会避免铸成大错。<br>&ZeroWidthSpace;<br>ーー《叶隐闻书》［日］山本常朝、田代阵基／赵秀娟</p>
-<hr />
-¹：四弘誓愿<br />
-<sub style="font-size: smaller;">第一愿：众生无边誓愿度</sub><br />
-<sub style="font-size: smaller;">第二愿：烦恼无尽誓愿断</sub><br />
-<sub style="font-size: smaller;">第三愿：法门无量誓愿学</sub><br />
-<sub style="font-size: smaller;">第四愿：佛道无上誓愿成</sub><br />
-&ZeroWidthSpace;<br />
-四弘誓愿，是佛教中最基础、也最核心的一组菩萨誓愿，用来规范修行者的动机与方向，强调去除私心、以利他为本。<br />
-在《叶隐》中，第四愿并未作为佛教意义上的修行目标被理解，而是被借用为一种高于个人生死、得失与功名的价值指向，用以压制私心与权衡计算，校准当下抉择是否偏离应尽之道。
-</blockquote>
-<blockquote>
-<p>人赢得全世界，而赔上了自己的性命，有什么益处呢？人能拿出什么来对换自己的性命呢？<br> (马可福音 8:36-37 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>这能死的既穿上了不死，那时经上所记：『死被吞灭在胜利中』的话便应验了。死啊！你的胜利在哪里？死啊！你的毒刺在哪里？死的毒刺就是罪，罪的势力就是律法。愿感谢归于上帝，他借着我们的主耶稣基督、常把胜利赐给我们。所以我亲爱的弟兄们，你们要坚定、不摇动，时常充溢出主的工，因为知道你们的劳苦在主里面不是空的。<br>(哥林多前书 15:54-58 吕振中)</p>
-</blockquote>
-<hr>
-<p>《叶隐》和《圣经》的对比研究让我想到死亡的意义性的问题：在何种情境下，死亡能够成为有意义的？对比三岛之死与耶稣之死，我首先发现自杀与他杀的形式之别。但是，我认为这种形式之别并不能从本质上解释死亡的意义感之源。自杀在基督教中一直以来是处于被诅咒的地位。自杀者在旁人眼中往往不可摆脱其软弱逃避的嫌疑。从这点看来，他杀倒是具有避嫌的优点。可是，任何纯粹的他杀，因为死者的无目的性，而就不可能成为有意义的死。原因在于，没有了目的也就没有了值得称道的东西。因此，我们可以看出任何有意义的死必定含有某种自杀的成分。死者在生前必定充分意识到死的目的。这实际上是一种隐秘的自杀。综上所述，自杀与他杀的外在形式之差别并不能从本质上赋予死亡以意义。进一步说来：死亡毕竟是负面损失性的东西。然而，意义却是从正面收获性的东西而来的。我认为，死者在临死之时所抱持的希望和勇气才是真正赋予死亡以意义的东西。希望正是这样一种对于能够有所获得给予的坚信。正是这种正面收获性的东西赋予了死亡以意义。三岛之死充满勇气可是却较为缺乏希望。较之于三岛之死，耶稣是抱持着希望赴死的。这也是耶稣之「死被吞灭在胜利中」所散发出来的强而有力的力量之源头。</p>
-<hr>
-<blockquote>
-<p>《EVA》整个系列突出呈现宗教象征和主题（英语：Religious symbol），包括卡巴拉、基督教、犹太教以及神道教意象，被誉为20世纪90年代最成功和最负盛名的日本动画之一。动画业界和许多动漫欣赏者也将其视为日本最伟大的动画之一。《EVA》同样也是最受争议的电视动画之一，尤其是该剧最后两集的结局被许多观众和评论家认为混乱和难以理解。其同时混搭批判和机甲风格的解构，使得系列成为一种文化象征，并带来动漫产业的艺术和技术的复兴。动画中的人物、音乐和部分场景已被日本民众所广泛认可。<br>－－「<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-cn/%E6%96%B0%E4%B8%96%E7%BA%AA%E7%A6%8F%E9%9F%B3%E6%88%98%E5%A3%AB">新世纪福音战士 - 维基百科</a>」</p>
-</blockquote>
-<blockquote>
-<p>背景设定在炼金术相当发达的世界。爱德华·爱力克和他的弟弟阿尔冯斯十分思念亡故的母亲，为了再次见到母亲的微笑，而进行炼金术中最大的禁忌“人体炼成”──亦即让死者复活的炼成术──可是炼成失败时的反弹效应，爱德华付出“代价”左脚、阿尔则失去全身。为救回弟弟，爱德牺牲自己的右臂作为代价，将弟弟的灵魂固定在一副铠甲上；而失去的右臂和左腿则由钢制义肢“机械铠”来替代，因此在取得国家炼金术师资格时、大总统给予“钢”的称号，人们称之为“钢之炼金术师”。大陆历（相当于公历）1911年，爱力克兄弟为取回他们所失去的一切，开始踏上了旅程。<br>－－「<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-cn/%E9%8B%BC%E4%B9%8B%E9%8D%8A%E9%87%91%E8%A1%93%E5%B8%AB">钢之炼金术师 - 维基百科</a>」</p>
-</blockquote>
-<blockquote>
-<p>原作の公式設定では、2003年4月7日がアトムの誕生日とされる。製作者は天馬博士。交通事故死した博士の息子の「天馬飛雄」に似せて作られ、当初は「トビオ」と呼ばれていた。トビオは、人間とほぼ同等の感情と様々な能力を持つ優秀なロボットであったが、人間のように成長しないことに気づいた天馬博士はトビオをサーカスに売ってしまう。サーカスにおいて団長に「アトム」と名付けられる。やがて法律が制定されて感情を持つロボットに対して人間と同等に暮らす権利が与えられるようになると、アトムの可能性に着目していたお茶の水博士に引き取られた。</p>
-<hr>
-<p>アニメ第3作では天馬博士が自分の分身として作ったロボット・シャドウにより造られた。<br>－－「<a target="_blank" rel="noopener" href="https://ja.m.wikipedia.org/wiki/%E9%89%84%E8%85%95%E3%82%A2%E3%83%88%E3%83%A0">鉄腕アトム - Wikipedia</a>」</p>
-</blockquote>
-<p>在同一历史时期，有两种不同的『死』的情景。<br>第一种死，是顺从世人的称许而走向死亡。当人害怕失去认可、地位或安全感时，群体的压力不断推动他作出妥协，直到牺牲自己的生命。二战中的神风特攻队员就是典型例子：他们顺从军国主义的赞誉与荣誉感，接受生命的终结以迎合社会和上级的期待。世人对这种死的态度通常冷漠、迅速遗忘，甚至合理化：『这是他自己的选择。』『他走得太远了。』『这是必要的代价。』战时，这样的死被高举为荣耀；战后，很快被历史吸收、去人格化，转化为『时代悲剧』。死者个人并不被真正哀悼，只作为群体秩序或意识形态的消耗品。当事人内心可能充满矛盾：既想获得认同，又不得不面对生死的恐惧。<br>第二种死，是讨神喜悦而不撤回见证，即使面对世人的压力或已有的称许，也坚持自己的方向而走向死亡。一个普通青年，面对武士精神和社会舆论的压力，坚决选择不屈服，不参与迫害邻居，也拒绝战争中的杀戮。他被迫害、羞辱，被贴上『叛国者』或『胆小鬼』的标签，甚至面临死刑。世人嘲笑、排斥、讥讽他毫无用处。但在孤独的夜晚，他知道自己的选择是正直的。他的死虽然在世人眼中可怜、愚笨，却带着灵魂的自由与永恒的荣耀。类似的还有早期基督教殉道者或文革中坚守信仰的信徒。他们没有追求世人的称许，只是坚持神所要求的正直与见证。世人对这种死的态度往往分裂：一部分人愤怒、恐惧，急于除掉他；另一部分人内心被刺痛，却必须压制良心，或在事后悔恨。这样的死无法轻易被消化，常常被重新解释或抹黑，甚至多年后才得以重新承认。当事人内心可能经历孤独、痛苦与信念的拉扯，但因忠心神，他们能够在死亡面前仍坚定不退。<br>这两种死揭示了截然不同的人生方向：一种是被群体推着顺从而牺牲，最终在世人眼中消失；另一种是忠心神而坚守正直，即便世人反对，也在灵魂中得着真正的平安与荣耀。世人的态度也因此截然不同：一方冷漠、消化，另一方复杂、分裂、难以正视。</p>
-<br />
-
-<p>三岛由纪夫之死的特点：</p>
-<ul>
-<li>他不是为了取悦大众而死，也不是因为迎合主流社会或政治势力的期待。相反，他的行为是极端个人化的象征行动。</li>
-<li>他以自杀的方式抗议战后日本体制，试图唤醒武士精神和旧日本价值观。</li>
-<li>死后世人对其态度复杂，有质疑、有批评、有文学性再评价，但没有普遍赞许。</li>
-</ul>
-<p>结论：三岛由纪夫的死更像第一种死的变体——不是因为追求称许而死，但死本身并未出于讨神或普遍认同的正义，而是顺应了他自己极端的象征性期望。世人对他的死总体上冷漠、复杂、不统一，并不像第二种死那样带有神圣忠信的性质。</p>
-<br />
-
-<blockquote>
-<p>文学价值与艺术成就<br><sub style="font-size: smaller;">一些读者和学术界评价三岛由纪夫是日本战后最重要的小说家之一，他的作品融合古典美学与现代思辨，语言技巧高超，被认为对日本文学有不可忽视的贡献。许多人把他与普鲁斯特、乔伊斯、托马斯・曼等世界级作家相提并论，他也曾多次被提名诺贝尔文学奖，这说明文学界对他的创作是高度认可的。</sub></p>
-<p><sub style="font-size: smaller;">对于三岛由纪夫的评价中这种观点相对稳妥：三岛是一个具有深厚文学造诣的作家，他的写作对战后文学、文化反思、个体与社会关系等议题都有独特贡献。这类支持更多集中在他的作品本身的艺术性上，而不是对他政治行为的认同。</sub></p>
-</blockquote>
-<p>这种观点在合理性上是成立的，因为它讨论的是作品和文学价值，而不是为他的自杀或政治立场辩护。但这种支持倾向通常只到文学层面，不等同于支持他最后的政治行动或价值立场。</p>
-<br />
-
-<blockquote>
-<p>对文化、传统与武士道精神的认同<br><sub style="font-size: smaller;">一部分国粹主义或保守主义者认为三岛由纪夫通过文学表达了对日本传统文化的珍视，尤其是对武士道、身体美、民族身份等主题的探索。他们认为三岛的死具有象征意义，是对日本现代社会的诉求。</sub></p>
-<p><sub style="font-size: smaller;">这种评价试图把他的自杀视为一种文化表态或象征行动，认为他试图唤醒某种价值观或传统精神。</sub></p>
-</blockquote>
-<p>这种论调的问题在于它容易把个人行为神秘化或浪漫化，忽略了行为的现实后果和复杂心理动机。三岛的死亡并未引发广泛社会共鸣，而是被多数人视为『戏剧性』甚至荒诞的举动，在当时和后来都难以被普遍接受。</p>
-<br />
-
-<blockquote>
-<p>对其死亡行为的某种美学或象征性解读<br><sub style="font-size: smaller;">有评论者甚至在网络上将三岛的死看作一种『艺术行为』或『表现性行为』，认为他的生命终结如同一种表演。这种看法不会严格等同于政治支持，而是从艺术与『仪式感』的角度解读。</sub></p>
-</blockquote>
-<p>这种解读往往被批评为过度艺术化或感性化，忽略了行为背后的现实张力和伦理问题，也容易被戏谑。多数专业文学评论不会单纯以这种方式评价他的死亡。</p>
-<br />
-
-<blockquote>
-<p>个人认同和偶像化的情绪反应<br><sub style="font-size: smaller;">在一些读者群体中（尤其是圈内爱好者或网络次文化群体），有人表达对三岛个性的认同、对其文学才华的钦佩，甚至把他的死亡视为『生命最后的绚烂』。这些评论常常带有强烈个人情绪色彩，而不是客观评价。</sub></p>
-</blockquote>
-<p>这种态度本身属于粉丝情绪表达，不能被看作理性分析。它可能美化自杀行为，这在伦理上有很大问题，也容易误导对自杀真实后果的理解。</p>
-<br />
-
-<p>三岛由纪夫的死亡具有个人意志和象征性行为的性质，他的自杀是对现代日本社会、武士道精神或文化理想的表态，是一种带有审美化和个人表达的行为。评论者称其『戏剧性』或『艺术行为』，正是基于这种主观意图和象征性解读。</p>
-<p>而耶稣的死具有救赎性、神圣性和客观目的：祂不是为了个人表演或象征，而是为了成就神的旨意、实现救赎计划。圣经明确指出祂的死亡是为人类的罪付上代价（如《以赛亚书》53章、《约翰福音》19章）。祂的死不是为了引起世人的注意、震撼或审美上的戏剧性，而是完全顺服神的旨意。</p>
-<p>其次，耶稣的死亡并非『表演』性质，也不为世人所称赞或理解：世人中有宗教领袖、政治权力、魔鬼势力在推动祂被钉十字架，但世人并不赞许祂的死为善事。如果将『艺术行为』或『表现性行为』的评论套用在耶稣身上，会导致对其死亡目的的误解，把救赎性的顺服行为混同为个人意图或戏剧化表演，这是完全偏离圣经意义的。</p>
-<p>所以，评价三岛由纪夫自杀行为的『戏剧性』或『表现性』用词，在耶稣之死上不成立，二者的性质、目的和意义完全不同。</p>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2018/03/18/葉隠聞書/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-09-30 </div>
-			<div class="article-title"><a href="/2017/09/30/爱的吸引/" >爱的吸引</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-  
-	<div class="col-md-12">
-	  
-	
-	  <iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/3aEGQ05z_J8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<blockquote>
-<p>记得我曾年少懵懂，主耶稣，你忽显现。</p>
-<hr>
-<p>我被震惊并深受吸引，就愿来跟随你。</p>
-<hr>
-<p>虽然途中起伏迷离，常非我心所愿意。</p>
-<hr>
-<p>爱中我灵深信前面道路，主，为我定意。</p>
-<hr>
-<p>主，我深爱你，爱你因你爱我。</p>
-<hr>
-<p>再多困难困苦，我愿意，都是你爱的吸引。</p>
-</blockquote>
-<hr>
-<p><audio src="https://www.hymnal.net/Hymns/NewSongs/mp3/ns0351.mp3" controls></audio></p>
-<hr>
-<blockquote>
-<p>主耶穌，你是我至愛，<br>我全心歸你不他依；<br>天地間有何能與你比擬？<br>神而人者，你最美麗！<br>真渴望消失在你裏，<br>當你柔聲入我心底；<br>前我所眷戀，今歡然撇棄，<br>只願愛你─全心全意。</p>
-<hr>
-<p>世上有誰像你如此美麗？<br>人間有何與你愛情能比？<br>哦，聖中之聖，你竟住我裏；<br>主耶穌，我深深愛你！<br>不願再受欺，不願再任意；<br>惟願脫自己，只被你充溢；<br>你以外，哦，讓一切都絕跡；<br>我惟一的最愛是你。</p>
-<hr>
-<p>主耶穌，你是我至愛，<br>雖我曾頑梗又悖逆，<br>今放下一切，你前來侍立，<br>只願像你那樣無己。<br>真渴望活著就是你，<br>順從神旨，不憑己意；<br>與你心合拍，只要你所喜；<br>掙扎全停，盡是安息。</p>
-<hr>
-<p>世上有誰像你如此美麗？<br>人間有何與你愛情能比？<br>哦，聖中之聖，你竟住我裏；<br>主耶穌，我深深愛你！<br>不願再受欺，不願再任意；<br>惟願脫自己，只被你充溢；<br>你以外，哦，讓一切都絕跡；<br>我惟一的最愛是你。</p>
-<hr>
-<p>主耶穌，你是我至愛，<br>你與我永遠不分離；<br>你同在是我氣息、<br>我動力，你的笑臉是我欣喜。<br>真渴望你前吐心意，<br>愛你、事你，聯結依依；<br>親愛主，我的永分就是你，<br>你的來臨是我所期。</p>
-<hr>
-<p>世上有誰像你如此美麗？<br>人間有何與你愛情能比？<br>哦，聖中之聖，你竟住我裏；<br>主耶穌，我深深愛你！<br>不願再受欺，不願再任意；<br>惟願脫自己，只被你充溢；<br>你以外，哦，讓一切都絕跡；<br>我惟一的最愛是你。</p>
-<hr>
-<p>ーー《<a target="_blank" rel="noopener" href="https://www.hymnal.net/en/hymn/ts/345">惟一最愛是你</a>》 - 水流之音・聖樂團</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>雅各啊，你为什么说：<br>『我的路隐藏着、永恒主见不着』？<br>以色列啊，你为什么说：<br>『我伸冤的权利、我的上帝都忽略了』？<br>你不曾知道，不曾看见么？<br>永恒的上帝永恒之主、<br>创造地之尽边的、<br>他并不疲乏，也不困倦；<br>他的明智不可测度。<br>疲乏的、他赐能力；<br>无气力的、他给增加力量。<br>就是少年人也会疲乏困倦，<br>强壮人也会力尽而倒地；<br>但那等候永恒主的、必从新得力；<br>他们必如鹰展翅上腾；<br>他们奔跑，也不困倦，<br>他们行走，也不疲乏。<br>(以赛亚书 40:27-31 吕振中)</p>
-</blockquote>
-<hr>
-<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/qe6AXBu9DzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<blockquote>
-<p>When I am down and, oh my soul, so weary;<br>When troubles come and my heart burdened be;<br>Then, I am still and wait here in the silence,<br>Until you come and sit awhile with me.</p>
-<hr>
-<p>You raise me up, so I can stand on mountains;<br>You raise me up, to walk on stormy seas;<br>I am strong, when I am on your shoulders;<br>You raise me up… To more than I can be.</p>
-<hr>
-<p>You raise me up, so I can stand on mountains;<br>You raise me up, to walk on stormy seas;<br>I am strong, when I am on your shoulders;<br>You raise me up… To more than I can be.</p>
-<hr>
-<p>There is no life - no life without its hunger;<br>Each restless heart beats so imperfectly;<br>But when you come and I am filled with wonder,<br>Sometimes, I think I glimpse eternity.</p>
-<hr>
-<p>You raise me up, so I can stand on mountains;<br>You raise me up, to walk on stormy seas;<br>I am strong, when I am on your shoulders;<br>You raise me up… To more than I can be.</p>
-<hr>
-<p>You raise me up, so I can stand on mountains;<br>You raise me up, to walk on stormy seas;<br>I am strong, when I am on your shoulders;<br>You raise me up… To more than I can be.</p>
-<hr>
-<p>You raise me up… To more than I can be.</p>
-<hr>
-<p>ーー “You Raise Me Up” Lyrics</p>
-</blockquote>
-<hr>
-<iframe style="width: 90%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/v__DdGt5ysA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<blockquote>
-<p>永恒主啊，我的心仰望的是你。<br>我的上帝啊，我倚靠的是你；<br>不要叫我失望哦；<br>不要使我仇敌因胜我而欢跃。<br>凡等候你的总不至于失望；<br>失望的只是行诡诈而失败的人。<br>(诗篇 25:1-3 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>永恒主啊，将你的道路指示我，<br>将你的路径教导我。<br>凭你的忠信来带领我，教导我；<br>因为只有你是拯救我、的上帝；<br>我终日切候的乃是你。<br>(诗篇 25:4-5 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>永恒主啊，记起你的怜悯<br>和坚爱哦；<br>因为这是亘古以来就有的。<br>我幼年的罪求你不要记得。<br>我惟独求你按你的坚爱来记起我：<br>永恒主啊，为了你的慈惠记起我吧！<br>(诗篇 25:6-7 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>永恒主是至善而正直；<br>所以他必指教罪人走正路。<br>他必带领卑微人行正义；<br>将他的道路教导卑微人。<br>对恪守他的约和他法度的人、<br>永恒主所行的全是坚爱和忠信。<br>(诗篇 25:8-10 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>永恒主啊，为你名的缘故<br>赦免我的罪愆哦，<br>因为我的罪很大。<br>谁是敬畏永恒主的人？<br>永恒主就将他当选择的路指教他。<br>他本身必长享福乐；<br>他的后裔必拥有地土。<br>永恒主跟敬畏他的人亲密；<br>他使他们认识他的约。<br>(诗篇 25:11-14 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>我的眼不断地望着永恒主，<br>因为他才能将我的脚拔出网罗。<br>求你转脸顾着我，恩待我；<br>因为我、孤独困苦。<br>我的心困窘、求你放宽，<br>我的窘迫、求你救我脱出。<br>看我的困苦和艰难，<br>赦免我一切的罪。<br>(诗篇 25:15-18 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>看我的仇敌多么多，<br>看他们以多暴烈的怨恨来恨恶我。<br>求你保护我的性命，援救我，<br>不要叫我失望，因为我避难于你里面。<br>愿纯全正直守护着我，<br>因为我切候着你。<br>(诗篇 25:19-21 吕振中)</p>
-</blockquote>
-<blockquote>
-<p>上帝啊，赎救以色列<br>脱离他一切的困窘哦！<br>(诗篇 25:22 吕振中)</p>
-</blockquote>
-
-	
-	</div>
-	
-  
-</div>
-	<a type="button" href="/2017/09/30/爱的吸引/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -3152,45 +3085,45 @@ Username for &#39;https://github.com&#39;: ^C
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/迁移/">迁移<span>1</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
 		
 			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
-			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
 		
-			<li><a href="/tags/isso/">isso<span>1</span></a></li>
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+		
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
+		
+			<li><a href="/tags/Traefik/">Traefik<span>1</span></a></li>
+		
+			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+		
+			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+		
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+		
+			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
 			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/CoD/">CoD<span>16</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
+			<li><a href="/tags/迁移/">迁移<span>1</span></a></li>
 		
-			<li><a href="/tags/Traefik/">Traefik<span>1</span></a></li>
-		
-			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/UltimateFacts/">UltimateFacts<span>4</span></a></li>
-		
-			<li><a href="/tags/诗篇/">诗篇<span>2</span></a></li>
-		
-			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
+			<li><a href="/tags/Debian/">Debian<span>1</span></a></li>
 		
 			<li><a href="/tags/OpenVPN/">OpenVPN<span>1</span></a></li>
 		
-			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
-		
 			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+			<li><a href="/tags/JupyterHub/">JupyterHub<span>1</span></a></li>
 		
 		
 			<li><a href="/tags">...<span>30</span></a></li>
@@ -3206,23 +3139,23 @@ Username for &#39;https://github.com&#39;: ^C
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2026/03/26/migration-from-debian-to-ubuntu/" ><i class="fa fa-file-o"></i>OpenVPN + TLJH + isso 从 Deb...</a>
+        <a href="/2026/05/30/Quixer-Tutorial/" ><i class="fa fa-file-o"></i>Quixer 量子 Transformer 完全教程</a>
+      </li>
+    
+      <li>
+        <a href="/2026/05/27/OpenRewrite-AI-LLM-Integration-Survey/" ><i class="fa fa-file-o"></i>OpenRewrite と AI／LLM の統合調査</a>
+      </li>
+    
+      <li>
+        <a href="/2026/04/13/Social-Structure/" ><i class="fa fa-file-o"></i>社会结构的历史与启示</a>
+      </li>
+    
+      <li>
+        <a href="/2026/03/26/Migration-from-Debian-to-Ubuntu/" ><i class="fa fa-file-o"></i>OpenVPN + TLJH + isso 从 Deb...</a>
       </li>
     
       <li>
         <a href="/2026/02/07/Agent-Browser/" ><i class="fa fa-file-o"></i>从 Playwright 到 agent-browse...</a>
-      </li>
-    
-      <li>
-        <a href="/2026/01/16/LLM-Hallucination/" ><i class="fa fa-file-o"></i>LLM 幻觉</a>
-      </li>
-    
-      <li>
-        <a href="/2025/09/26/A-Revelation-of-the-Apocalypse/" ><i class="fa fa-file-o"></i>A Revelation of the Apocaly...</a>
-      </li>
-    
-      <li>
-        <a href="/2025/08/07/Mailcow-Deployment-Guide/" ><i class="fa fa-file-o"></i>在云服务器端口25受限环境下部署Mailcow邮件服务器</a>
       </li>
     
   </ul>

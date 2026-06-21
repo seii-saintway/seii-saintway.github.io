@@ -1,0 +1,1447 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  
+  <title>Quixer 量子 Transformer 完全教程 | Andrew&#39;s Blog</title>
+  <meta name="author" content="Andrew">
+  
+  <meta name="description" content="Claude Code - Dynamic Workflows 相关提示词的范例：
+
+用 deepseek-v4-flash 模型来拓展研究广度。用 deepseek-v4-pro 模型来挖掘研究深度。
+执行代码审计：用 deepseek-v4-flash 模型按文件并行寻找代码缺陷，以 file:">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Quixer 量子 Transformer 完全教程"/>
+  <meta property="og:site_name" content="Andrew&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/notebook.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/tabs.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/tabs.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                    automatic: true
+                    }
+                }
+            });
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Andrew&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Quixer 量子 Transformer 完全教程</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">
+	    <p>Claude Code - Dynamic Workflows 相关提示词的范例：</p>
+<ol>
+<li>用 deepseek-v4-flash 模型来拓展研究广度。用 deepseek-v4-pro 模型来挖掘研究深度。</li>
+<li>执行代码审计：用 deepseek-v4-flash 模型按文件并行寻找代码缺陷，以 file:line 形式结构化输出；对于每条发现的代码缺陷，再用三个 deepseek-v4-flash 模型的智能体进行对抗验证；对于通过验证的代码缺陷，最后用 deepseek-v4-pro 模型进行深入验证。</li>
+</ol>
+<hr>
+<p>To Claude Code:</p>
+<br />
+
+<p>&#x2F;deep-research 用 deepseek-v4-flash 模型来拓展研究广度。用 deepseek-v4-pro 模型来挖掘研究深度。通过对 Quixer 的调研，用中文制作一份针对只具有 GPT 架构和量子计算基础概念的人士的教程，一步一步引导这类人士理解、实现并运行 Quixer 。不限制教程的篇幅。确保广度、深度并达成教学目标。</p>
+<br />
+
+<p>Best regards,<br>Andrew</p>
+<hr>
+<h1 id="Quixer-量子-Transformer-完全教程"><a href="#Quixer-量子-Transformer-完全教程" class="headerlink" title="Quixer 量子 Transformer 完全教程"></a>Quixer 量子 Transformer 完全教程</h1><blockquote>
+<p><strong>从 GPT 到量子 Transformer：一步一步理解、实现并运行 Quixer</strong></p>
+</blockquote>
+<hr>
+<h2 id="关于本教程"><a href="#关于本教程" class="headerlink" title="关于本教程"></a>关于本教程</h2><h3 id="目标受众"><a href="#目标受众" class="headerlink" title="目标受众"></a>目标受众</h3><p>本教程面向具备以下背景的读者：</p>
+<ul>
+<li><strong>熟悉 GPT&#x2F;Transformer 架构</strong>：理解自注意力（Self-Attention）、多头注意力（Multi-Head Attention）、前馈网络（Feed-Forward Network）、层归一化（Layer Normalization）、位置编码（Positional Encoding）、残差连接（Residual Connection）等核心组件。</li>
+<li><strong>具备量子计算基础概念</strong>：理解量子比特（Qubit）、叠加态（Superposition）、酉变换（Unitary Transformation）、测量（Measurement）、量子门（Pauli 门、旋转门等）的基本含义。</li>
+</ul>
+<h3 id="你将学到什么"><a href="#你将学到什么" class="headerlink" title="你将学到什么"></a>你将学到什么</h3><p>完成本教程后，你将能够：</p>
+<ol>
+<li>解释 Quixer 与经典 GPT&#x2F;Transformer 的本质区别</li>
+<li>理解线性酉组合（LCU）和量子奇异值变换（QSVT）的数学原理</li>
+<li>掌握 Quixer 的完整架构：从词嵌入到最终输出的每一步</li>
+<li>阅读并理解 Quixer 的 PyTorch 经典模拟源码</li>
+<li>在自己的机器上搭建环境、训练并运行 Quixer</li>
+<li>评估 Quixer 的当前局限性和未来发展方向</li>
+</ol>
+<h3 id="教程结构"><a href="#教程结构" class="headerlink" title="教程结构"></a>教程结构</h3><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>内容</th>
+<th>建议时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一章</td>
+<td>GPT&#x2F;Transformer 架构回顾</td>
+<td>20 分钟</td>
+</tr>
+<tr>
+<td>第二章</td>
+<td>量子计算基础回顾</td>
+<td>30 分钟</td>
+</tr>
+<tr>
+<td>第三章</td>
+<td>Quixer 宏观概览</td>
+<td>15 分钟</td>
+</tr>
+<tr>
+<td>第四章</td>
+<td>块编码（Block Encoding）</td>
+<td>30 分钟</td>
+</tr>
+<tr>
+<td>第五章</td>
+<td>线性酉组合（LCU）</td>
+<td>45 分钟</td>
+</tr>
+<tr>
+<td>第六章</td>
+<td>量子奇异值变换（QSVT）</td>
+<td>45 分钟</td>
+</tr>
+<tr>
+<td>第七章</td>
+<td>Quixer 完整架构详解</td>
+<td>40 分钟</td>
+</tr>
+<tr>
+<td>第八章</td>
+<td>源码深度解析</td>
+<td>50 分钟</td>
+</tr>
+<tr>
+<td>第九章</td>
+<td>环境搭建与动手运行</td>
+<td>40 分钟</td>
+</tr>
+<tr>
+<td>第十章</td>
+<td>实验结果与性能分析</td>
+<td>20 分钟</td>
+</tr>
+<tr>
+<td>第十一章</td>
+<td>局限性与开放问题</td>
+<td>20 分钟</td>
+</tr>
+<tr>
+<td>第十二章</td>
+<td>后续研究方向与生态</td>
+<td>20 分钟</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="第一章：GPT-Transformer-架构回顾"><a href="#第一章：GPT-Transformer-架构回顾" class="headerlink" title="第一章：GPT&#x2F;Transformer 架构回顾"></a>第一章：GPT&#x2F;Transformer 架构回顾</h2><blockquote>
+<p><strong>目标</strong>：建立一个清晰的经典 Transformer 心智模型，为理解 Quixer 的”量子替代方案”铺路。</p>
+</blockquote>
+<h3 id="1-1-核心处理管线"><a href="#1-1-核心处理管线" class="headerlink" title="1.1 核心处理管线"></a>1.1 核心处理管线</h3><p>GPT 系列模型的本质是一个<strong>下一令牌预测器</strong>（Next-Token Predictor）。给定一段序列 <code>[w_1, w_2, ..., w_n]</code>，模型预测第 <code>n+1</code> 个令牌的概率分布。其核心处理管线如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">输入令牌 [w_1, ..., w_n]</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">词嵌入 (Embedding)  →  [n, d_model] 的实数矩阵</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">位置编码 (Positional Encoding)  →  注入序列位置信息</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────┐</span><br><span class="line">│           Transformer 块 (×N 层)             │</span><br><span class="line">│  ┌───────────────────────────────────────┐  │</span><br><span class="line">│  │  多头自注意力 (Multi-Head Self-Attn)    │  │</span><br><span class="line">│  │  + 残差连接 + 层归一化                  │  │</span><br><span class="line">│  ├───────────────────────────────────────┤  │</span><br><span class="line">│  │  前馈网络 (Feed-Forward Network)       │  │</span><br><span class="line">│  │  + 残差连接 + 层归一化                  │  │</span><br><span class="line">│  └───────────────────────────────────────┘  │</span><br><span class="line">└─────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">输出投影 (Output Projection)  →  [n, vocab_size] 的 logits</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">Softmax → 下一个令牌的概率分布</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-最关键的部分：点积自注意力"><a href="#1-2-最关键的部分：点积自注意力" class="headerlink" title="1.2 最关键的部分：点积自注意力"></a>1.2 最关键的部分：点积自注意力</h3><p>自注意力是 Transformer 的<strong>灵魂</strong>。其核心公式为：</p>
+<p>$$\text{Attention}(Q, K, V) &#x3D; \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$</p>
+<p>展开来解释：</p>
+<ol>
+<li><p><strong>线性投影</strong>：输入 <code>X ∈ ℝ^&#123;n×d&#125;</code> 通过三个可训练的权重矩阵 <code>W_Q, W_K, W_V</code> 投影为查询（Query）、键（Key）、值（Value）：<br>$$Q &#x3D; X W_Q, \quad K &#x3D; X W_K, \quad V &#x3D; X W_V$$</p>
+</li>
+<li><p><strong>注意力分数</strong>：计算 Query 和 Key 之间的相似度（点积），得到 <code>n × n</code> 的注意力矩阵：<br>$$A &#x3D; \frac{QK^T}{\sqrt{d_k}}$$</p>
+</li>
+<li><p><strong>Softmax 归一化</strong>：将每行的相似度转换为概率分布（和为 1）：<br>$$\text{softmax}(A)<em>{ij} &#x3D; \frac{\exp(A</em>{ij})}{\sum_k \exp(A_{ik})}$$</p>
+</li>
+<li><p><strong>加权聚合</strong>：用注意力权重对 Value 矩阵加权求和，实现<strong>令牌混合</strong>（Token Mixing）：<br>$$\text{Output} &#x3D; \text{softmax}(A) \cdot V$$</p>
+</li>
+</ol>
+<h3 id="1-3-自注意力的本质：令牌混合"><a href="#1-3-自注意力的本质：令牌混合" class="headerlink" title="1.3 自注意力的本质：令牌混合"></a>1.3 自注意力的本质：令牌混合</h3><p>从更高层次看，自注意力的本质是<strong>令牌混合</strong>（Token Mixing）：</p>
+<ul>
+<li>输入是 <code>n</code> 个令牌的表示</li>
+<li>每个令牌的输出是<strong>所有输入令牌表示的加权平均</strong></li>
+<li>权重由令牌之间的”相关性”（Query-Key 相似度）决定</li>
+<li>这是<strong>内容相关</strong>的混合：混合权重依赖于输入内容本身</li>
+</ul>
+<h3 id="1-4-为什么量子计算可能提供更好的混合方式？"><a href="#1-4-为什么量子计算可能提供更好的混合方式？" class="headerlink" title="1.4 为什么量子计算可能提供更好的混合方式？"></a>1.4 为什么量子计算可能提供更好的混合方式？</h3><p>经典自注意力有两个著名的计算瓶颈：</p>
+<ol>
+<li><strong>二次复杂度</strong>：注意力矩阵是 <code>n × n</code> 的，计算和存储复杂度都是 <code>O(n²)</code>，对长序列不友好</li>
+<li><strong>参数规模</strong>：<code>W_Q, W_K, W_V, W_O</code> 等权重矩阵占据大量参数</li>
+</ol>
+<p>量子计算提供了几种潜在的替代方案：</p>
+<ul>
+<li><strong>酉变换</strong>天然保持范数，可能实现更稳定的信息传播</li>
+<li><strong>量子叠加</strong>可以在指数大的希尔伯特空间中编码信息</li>
+<li><strong>量子干涉</strong>可以实现经典计算难以表达的函数</li>
+<li><strong>量子原语</strong>（如 QSVT）可以直接对矩阵施加多项式变换</li>
+</ul>
+<blockquote>
+<p><strong>关键思想</strong>：Quixer 不是对”点积自注意力”做量子化改造，而是用全新的量子令牌混合机制来替代整个自注意力模块。</p>
+</blockquote>
+<hr>
+<h2 id="第二章：量子计算基础回顾"><a href="#第二章：量子计算基础回顾" class="headerlink" title="第二章：量子计算基础回顾"></a>第二章：量子计算基础回顾</h2><blockquote>
+<p><strong>目标</strong>：快速回顾理解 Quixer 所需的量子计算核心概念。</p>
+</blockquote>
+<h3 id="2-1-量子比特与态矢量"><a href="#2-1-量子比特与态矢量" class="headerlink" title="2.1 量子比特与态矢量"></a>2.1 量子比特与态矢量</h3><p><strong>单量子比特</strong>的态可以写作：</p>
+<p>$$|\psi\rangle &#x3D; \alpha|0\rangle + \beta|1\rangle, \quad |\alpha|^2 + |\beta|^2 &#x3D; 1, \quad \alpha, \beta \in \mathbb{C}$$</p>
+<p>其中：</p>
+<ul>
+<li>$|0\rangle &#x3D; \begin{bmatrix} 1 \ 0 \end{bmatrix}$，$|1\rangle &#x3D; \begin{bmatrix} 0 \ 1 \end{bmatrix}$</li>
+<li>$\alpha$ 和 $\beta$ 称为<strong>振幅</strong>（Amplitude）</li>
+<li>$|\alpha|^2$ 是测量得到 0 的概率</li>
+</ul>
+<p><strong>多量子比特</strong>系统的态是各量子比特态的张量积。例如，2 量子比特系统：</p>
+<p>$$|\psi\rangle &#x3D; \alpha_{00}|00\rangle + \alpha_{01}|01\rangle + \alpha_{10}|10\rangle + \alpha_{11}|11\rangle$$</p>
+<p>$q$ 个量子比特的态矢量在 $\mathbb{C}^{2^q}$ 空间中——<strong>维数随量子比特数指数增长</strong>。</p>
+<h3 id="2-2-酉变换与量子门"><a href="#2-2-酉变换与量子门" class="headerlink" title="2.2 酉变换与量子门"></a>2.2 酉变换与量子门</h3><p>量子计算通过<strong>酉变换</strong>（Unitary Transformation）操作量子态。酉矩阵 $U$ 满足 $U^\dagger U &#x3D; I$。酉变换的性质是可逆且保范数（$|U|\psi\rangle| &#x3D; ||\psi\rangle|$）。</p>
+<p>常用量子门：</p>
+<table>
+<thead>
+<tr>
+<th>门</th>
+<th>矩阵</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pauli-X</td>
+<td>$\begin{bmatrix} 0 &amp; 1 \ 1 &amp; 0 \end{bmatrix}$</td>
+<td>量子版 NOT</td>
+</tr>
+<tr>
+<td>Pauli-Y</td>
+<td>$\begin{bmatrix} 0 &amp; -i \ i &amp; 0 \end{bmatrix}$</td>
+<td></td>
+</tr>
+<tr>
+<td>Pauli-Z</td>
+<td>$\begin{bmatrix} 1 &amp; 0 \ 0 &amp; -1 \end{bmatrix}$</td>
+<td>相位翻转</td>
+</tr>
+<tr>
+<td>$R_X(\theta)$</td>
+<td>$e^{-i\theta X} &#x3D; \begin{bmatrix} \cos(\theta) &amp; -i\sin(\theta) \ -i\sin(\theta) &amp; \cos(\theta) \end{bmatrix}$</td>
+<td>绕 X 轴旋转</td>
+</tr>
+<tr>
+<td>$R_Y(\theta)$</td>
+<td>$e^{-i\theta Y} &#x3D; \begin{bmatrix} \cos(\theta) &amp; -\sin(\theta) \ \sin(\theta) &amp; \cos(\theta) \end{bmatrix}$</td>
+<td>绕 Y 轴旋转</td>
+</tr>
+<tr>
+<td>$R_Z(\theta)$</td>
+<td>$e^{-i\theta Z} &#x3D; \begin{bmatrix} e^{-i\theta} &amp; 0 \ 0 &amp; e^{i\theta} \end{bmatrix}$</td>
+<td>绕 Z 轴旋转</td>
+</tr>
+<tr>
+<td>CNOT</td>
+<td>$\begin{bmatrix} 1&amp;0&amp;0&amp;0 \ 0&amp;1&amp;0&amp;0 \ 0&amp;0&amp;0&amp;1 \ 0&amp;0&amp;1&amp;0 \end{bmatrix}$</td>
+<td>受控非门</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-受控门"><a href="#2-3-受控门" class="headerlink" title="2.3 受控门"></a>2.3 受控门</h3><p><strong>受控门</strong> <code>CU</code> 的行为是：</p>
+<ul>
+<li>当控制量子比特为 $|0\rangle$ 时，目标量子比特不变</li>
+<li>当控制量子比特为 $|1\rangle$ 时，对目标量子比特施加 $U$</li>
+</ul>
+<p>由于量子力学是线性的，当控制量子比特处于叠加态时，受控门产生纠缠：</p>
+<p>$$CU(\alpha|0\rangle + \beta|1\rangle) \otimes |\psi\rangle &#x3D; \alpha|0\rangle \otimes |\psi\rangle + \beta|1\rangle \otimes U|\psi\rangle$$</p>
+<h3 id="2-4-测量与期望值"><a href="#2-4-测量与期望值" class="headerlink" title="2.4 测量与期望值"></a>2.4 测量与期望值</h3><p>测量量子态 $|\psi\rangle$ 中某个可观测量（Observable）$O$（$O$ 是厄米矩阵，$O^\dagger &#x3D; O$）：</p>
+<p>$$\langle O \rangle_{|\psi\rangle} &#x3D; \langle\psi|O|\psi\rangle \in \mathbb{R}$$</p>
+<p>例如，测量 Pauli-Z 的期望值给出量子比特偏向 $|0\rangle$ 还是 $|1\rangle$。</p>
+<h3 id="2-5-参数化量子电路（PQC）"><a href="#2-5-参数化量子电路（PQC）" class="headerlink" title="2.5 参数化量子电路（PQC）"></a>2.5 参数化量子电路（PQC）</h3><p><strong>参数化量子电路</strong>（Parameterized Quantum Circuit, PQC）是量子机器学习的核心构件。PQC 由一系列参数化的量子门（如 $R_X(\theta), R_Y(\phi), R_Z(\omega)$）组成，其中角度参数是可训练的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PQC 结构示例（Ansatz 14）：</span><br><span class="line">┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐</span><br><span class="line">│ RY(θ₀)   │ │ CRX(φ₀)  │ │ RY(θ&#x27;₀)  │ │ CRX(φ&#x27;₀) │</span><br><span class="line">│ RY(θ₁)   │ │ CRX(φ₁)  │ │ RY(θ&#x27;₁)  │ │ CRX(φ&#x27;₁) │</span><br><span class="line">│   ...    │ │   ...    │ │   ...    │ │   ...    │</span><br><span class="line">│ RY(θ_q₋₁)│ │ CRX(φ_q₋₁)│ │ RY(θ&#x27;q-1) │ │ CRX(φ&#x27;q-1)│</span><br><span class="line">└──────────┘ └──────────┘ └──────────┘ └──────────┘</span><br><span class="line">  第1块：RY    第2块：CRX    第3块：RY    第4块：CRX</span><br><span class="line">  (前向环形)    (反向环形)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-后选择（Postselection）"><a href="#2-6-后选择（Postselection）" class="headerlink" title="2.6 后选择（Postselection）"></a>2.6 后选择（Postselection）</h3><p><strong>后选择</strong>是量子计算中的一个重要技术：只保留那些某个辅助测量结果为特定值的执行分支，丢弃其他分支。</p>
+<p>在电路图中，后选择通常表示为控制量子比特末端的 $\langle 0|$ 标记：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">|0⟩ ──[U_PREP]──●──[U_PREP†]── ⟨0|</span><br><span class="line">                │</span><br><span class="line">|ψ⟩ ───────────[U_SEL]─────────</span><br></pre></td></tr></table></figure>
+
+<p>这意味着：只有当控制量子比特的最终测量结果是 $|0\rangle$ 时，我们才保留这次执行的结果。后选择使得我们可以在酉电路框架中实现非酉操作（如矩阵的非酉线性组合）。</p>
+<h3 id="2-7-关键概念：块编码（Block-Encoding）"><a href="#2-7-关键概念：块编码（Block-Encoding）" class="headerlink" title="2.7 关键概念：块编码（Block Encoding）"></a>2.7 关键概念：块编码（Block Encoding）</h3><p><strong>块编码</strong>是理解整个 Quixer 架构的<strong>最重要的前置概念</strong>。我们将其单独放在第四章深入讲解。这里先给出直觉：</p>
+<blockquote>
+<p>块编码是一种用<strong>更大的酉矩阵</strong>来”编码”一个<strong>任意（可能非酉）矩阵</strong>的技术。具体来说，如果对某个矩阵 $M$ 存在酉矩阵 $U_M$ 使得 $M$ 是 $U_M$ 的左上角子矩阵，即 $M &#x3D; (\langle 0| \otimes I) U_M (|0\rangle \otimes I)$，我们就说 $U_M$ 是 $M$ 的一个块编码。</p>
+</blockquote>
+<hr>
+<h2 id="第三章：Quixer-宏观概览"><a href="#第三章：Quixer-宏观概览" class="headerlink" title="第三章：Quixer 宏观概览"></a>第三章：Quixer 宏观概览</h2><blockquote>
+<p><strong>目标</strong>：在深入技术细节之前，先建立对 Quixer 的全局理解。</p>
+</blockquote>
+<h3 id="3-1-一句话定义"><a href="#3-1-一句话定义" class="headerlink" title="3.1 一句话定义"></a>3.1 一句话定义</h3><p><strong>Quixer</strong>（Quantum Transformer）是 Quantinuum 于 2024 年 6 月发布的<strong>量子 Transformer 模型</strong>。其核心创新在于：用两种量子计算原语——<strong>线性酉组合（LCU）</strong>和<strong>量子奇异值变换（QSVT）</strong>——完全替代了经典 Transformer 的点积自注意力机制。</p>
+<h3 id="3-2-Quixer-与-GPT-的本质区别"><a href="#3-2-Quixer-与-GPT-的本质区别" class="headerlink" title="3.2 Quixer 与 GPT 的本质区别"></a>3.2 Quixer 与 GPT 的本质区别</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>GPT&#x2F;经典 Transformer</th>
+<th>Quixer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>令牌混合方式</td>
+<td>softmax(QK^T&#x2F;√d_k)·V 点积注意力</td>
+<td>LCU：酉变换的加权叠加</td>
+</tr>
+<tr>
+<td>非线性来源</td>
+<td>ReLU&#x2F;GELU 前馈网络</td>
+<td>QSVT：矩阵的多项式变换</td>
+</tr>
+<tr>
+<td>表示空间</td>
+<td>ℝ^d（实向量空间）</td>
+<td>ℂ^{2^q}（希尔伯特空间）</td>
+</tr>
+<tr>
+<td>参数形式</td>
+<td>实矩阵 W_Q, W_K, W_V</td>
+<td>复数权重 + 量子门旋转角度</td>
+</tr>
+<tr>
+<td>混合机制</td>
+<td>内容相关（QK 相似度）</td>
+<td>参数化酉电路（结构先验）</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-Quixer-的完整处理管线"><a href="#3-3-Quixer-的完整处理管线" class="headerlink" title="3.3 Quixer 的完整处理管线"></a>3.3 Quixer 的完整处理管线</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">输入令牌 [w_1, w_2, ..., w_n]  （窗口大小 = n）</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│ 步骤 1: 经典词嵌入                                        │</span><br><span class="line">│   Embedding(w_i) → w_i ∈ ℝ^&#123;d_emb&#125;                       │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│ 步骤 2: 角度参数化                                        │</span><br><span class="line">│   θ_i = W_E · w_i     （线性变换）                         │</span><br><span class="line">│   将这些角度作为 PQC 的旋转门参数                            │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│ 步骤 3: 酉令牌嵌入（Unitary Token Embedding）              │</span><br><span class="line">│   U_i = PQC(θ_i)    每个令牌获得一个酉矩阵表示              │</span><br><span class="line">│   （经典模拟中以量子电路作用于 |0...0⟩ 态实现）              │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│ 步骤 4: LCU 令牌混合                                      │</span><br><span class="line">│   M = Σ_&#123;j=0&#125;^&#123;n-1&#125; b_j · U_j                             │</span><br><span class="line">│   其中 b_j = e^&#123;iγ_j&#125; |a_j|² 是可训练的复数权重             │</span><br><span class="line">│   满足 Σ |b_j| = 1                                        │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│ 步骤 5: QSVT 非线性多项式变换                               │</span><br><span class="line">│   P(M) = c_d M^d + c_&#123;d-1&#125; M^&#123;d-1&#125; + ... + c_1 M + c_0 I │</span><br><span class="line">│   多项式系数 c_k 是可训练的                                 │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│ 步骤 6: 量子前馈网络（Quantum Feed-Forward）               │</span><br><span class="line">│   再次应用 PQC（共享参数的单层 Ansatz 14）                  │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│ 步骤 7: 测量                                              │</span><br><span class="line">│   在所有量子比特上测量 Pauli-X, Y, Z 期望值                │</span><br><span class="line">│   → 3 × n_qubits 个实数测量值                             │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│ 步骤 8: 经典输出投影                                       │</span><br><span class="line">│   f_out: ℝ^&#123;3·q&#125; → ℝ^&#123;vocab_size&#125;                        │</span><br><span class="line">│   两层 MLP：Linear → ReLU → Linear                        │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">  输出 logits → Softmax → 下一令牌预测</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-为什么要这样设计？"><a href="#3-4-为什么要这样设计？" class="headerlink" title="3.4 为什么要这样设计？"></a>3.4 为什么要这样设计？</h3><p>Quixer 的设计哲学（引自原论文第 2.1 节）：</p>
+<blockquote>
+<p>“Our focus in this work is not to quantise the dot product self-attention, but instead propose a novel form of token mixing built from quantum primitives.”</p>
+</blockquote>
+<p>翻译：<strong>我们不试图用量子电路逐模块地”翻译”经典自注意力，而是从量子计算的基本原语出发，构建一种全新的令牌混合范式。</strong></p>
+<p>这意味着 Quixer 的思路是<strong>量子原生</strong>（Quantum-Native）的：从量子计算能高效做什么出发，而不是从经典 Transformer 有什么出发。</p>
+<h3 id="3-5-重要声明：经典模拟"><a href="#3-5-重要声明：经典模拟" class="headerlink" title="3.5 重要声明：经典模拟"></a>3.5 重要声明：经典模拟</h3><p>Quixer 的官方 GitHub 仓库（github.com&#x2F;CQCL&#x2F;Quixer）提供的<strong>仅仅是经典模拟实现</strong>——所有量子操作都用 PyTorch 张量在 CPU&#x2F;CUDA 上模拟，<strong>没有真正的量子硬件后端</strong>。这就像在普通计算机上运行量子电路的仿真器。截至 2026 年 5 月，虽然 Quantinuum 宣称已将 Quixer 部署到其 H 系列量子硬件上，但该声明缺乏独立的第三方验证。</p>
+<hr>
+<h2 id="第四章：块编码（Block-Encoding）"><a href="#第四章：块编码（Block-Encoding）" class="headerlink" title="第四章：块编码（Block Encoding）"></a>第四章：块编码（Block Encoding）</h2><blockquote>
+<p><strong>目标</strong>：深入理解块编码——这是 LCU 和 QSVT 的基础。</p>
+</blockquote>
+<h3 id="4-1-动机：为什么需要块编码？"><a href="#4-1-动机：为什么需要块编码？" class="headerlink" title="4.1 动机：为什么需要块编码？"></a>4.1 动机：为什么需要块编码？</h3><p>量子计算的基本操作是<strong>酉变换</strong>。但机器学习中涉及的许多矩阵操作——如线性组合、非线性激活——本质上是<strong>非酉的</strong>。</p>
+<p>块编码（Block Encoding）是一个巧妙的桥接技术：它允许我们用<strong>酉矩阵的左上角子矩阵</strong>来表示任意（可能非酉的）矩阵。</p>
+<h3 id="4-2-形式化定义"><a href="#4-2-形式化定义" class="headerlink" title="4.2 形式化定义"></a>4.2 形式化定义</h3><p>给定一个矩阵 $M$（不一定方阵，不一定酉），如果存在酉矩阵 $U$ 使得：</p>
+<p>$$M &#x3D; (\langle 0^a| \otimes I) ; U ; (|0^a\rangle \otimes I)$$</p>
+<p>其中：</p>
+<ul>
+<li>$a$ 是辅助量子比特的数量</li>
+<li>$|0^a\rangle$ 是 $a$ 个辅助量子比特全部处于 $|0\rangle$ 的状态</li>
+<li>等式右端表示：将 $U$ 作用于 $|0^a\rangle \otimes |\psi\rangle$，然后在辅助量子比特上后选择 $|0^a\rangle$</li>
+</ul>
+<p>则称 $U$ 是 $M$ 的一个<strong>块编码</strong>，$M$ 是 $U$ 的左上角子矩阵。</p>
+<h3 id="4-3-直观理解"><a href="#4-3-直观理解" class="headerlink" title="4.3 直观理解"></a>4.3 直观理解</h3><p>想象 $U$ 是一个分块矩阵：</p>
+<p>$$U &#x3D; \begin{bmatrix} M &amp; \cdot \ \cdot &amp; \cdot \end{bmatrix}$$</p>
+<p>当我们：</p>
+<ol>
+<li>把辅助量子比特初始化为 $|0^a\rangle$</li>
+<li>把数据量子比特初始化为 $|\psi\rangle$</li>
+<li>对整个系统施加 $U$</li>
+<li>测量辅助量子比特，只保留结果为 $|0^a\rangle$ 的分支</li>
+</ol>
+<p>那么数据量子比特经历的<strong>有效变换</strong>正好是 $M$：</p>
+<p>$$|\psi\rangle \xrightarrow{\text{block-encoded } U} M|\psi\rangle \quad (\text{归一化前})$$</p>
+<h3 id="4-4-块编码的经典类比"><a href="#4-4-块编码的经典类比" class="headerlink" title="4.4 块编码的经典类比"></a>4.4 块编码的经典类比</h3><p>这个思想并不是量子力学的专利。在经典计算中也有类似的做法：</p>
+<ul>
+<li><p><strong>经典类比 1（嵌入矩阵）</strong>：如果你想用正交矩阵表示非正交的线性变换，可以将其嵌入一个更高维的正交矩阵中。</p>
+</li>
+<li><p><strong>经典类比 2（条件执行）</strong>：就像程序中的条件分支——</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> flag == <span class="number">0</span>:</span><br><span class="line">    result = M @ vector  <span class="comment"># 这种&quot;如果前置条件满足就执行 M&quot;的逻辑</span></span><br></pre></td></tr></table></figure>
+<p>块编码用叠加态的线性性质将这种”条件执行”延拓为对所有分支同时运算。</p>
+</li>
+<li><p><strong>经典类比 3（分块矩阵）</strong>：就像你可以在一个更大的矩阵中”隐藏”一个小的子矩阵，块编码在一个更大的酉矩阵中”隐藏”了非酉的 $M$，而量子力学的线性性和后选择机制将这种”隐藏”变成了可执行的电路。</p>
+</li>
+</ul>
+<h3 id="4-5-块编码的关键性质"><a href="#4-5-块编码的关键性质" class="headerlink" title="4.5 块编码的关键性质"></a>4.5 块编码的关键性质</h3><ol>
+<li><strong>谱性质</strong>：如果 $M$ 的奇异值在 $[0, 1]$ 内，块编码存在且可用标准技术构造</li>
+<li><strong>多项式变换</strong>：如果我们能对块编码 $U_M$ 做某些操作，就能对整个 $M$ 做相应的矩阵多项式变换——这就是 QSVT 的核心思想</li>
+<li><strong>线性组合</strong>：如果我们能构造一系列矩阵的块编码，就能构造它们线性组合的块编码——这就是 LCU 的核心思想</li>
+</ol>
+<hr>
+<h2 id="第五章：线性酉组合（LCU）"><a href="#第五章：线性酉组合（LCU）" class="headerlink" title="第五章：线性酉组合（LCU）"></a>第五章：线性酉组合（LCU）</h2><blockquote>
+<p><strong>目标</strong>：掌握 LCU 的完整数学原理和电路实现。</p>
+</blockquote>
+<h3 id="5-1-回到经典-Transformer-的令牌混合"><a href="#5-1-回到经典-Transformer-的令牌混合" class="headerlink" title="5.1 回到经典 Transformer 的令牌混合"></a>5.1 回到经典 Transformer 的令牌混合</h3><p>在经典 Transformer 中，每个令牌的输出是所有令牌 Value 的加权平均：</p>
+<p>$$\text{Output}<em>i &#x3D; \sum</em>{j&#x3D;1}^n \alpha_{ij} V_j, \quad \sum_j \alpha_{ij} &#x3D; 1$$</p>
+<p>权重 $\alpha_{ij}$ 是 softmax 归一化的注意力分数。</p>
+<h3 id="5-2-LCU-的量子类比"><a href="#5-2-LCU-的量子类比" class="headerlink" title="5.2 LCU 的量子类比"></a>5.2 LCU 的量子类比</h3><p>Quixer 用<strong>酉变换的加权叠加</strong>来类比这种混合：</p>
+<p>$$M &#x3D; \sum_{j&#x3D;0}^{n-1} b_j , U_j$$</p>
+<p>其中：</p>
+<ul>
+<li>$U_j \in \mathbb{C}^{2^q \times 2^q}$ 是第 $j$ 个令牌对应的<strong>酉矩阵</strong>（由参数化量子电路生成）</li>
+<li>$b_j \in \mathbb{C}$ 是<strong>可训练的复数权重</strong></li>
+<li>$n$ 是上下文窗口大小</li>
+<li>满足归一化条件：$\sum_j |b_j| &#x3D; 1$</li>
+</ul>
+<blockquote>
+<p><strong>直觉类比</strong>：经典注意力是 $\sum \alpha_{ij} V_j$（向量的加权平均）；LCU 令牌混合是 $\sum b_j U_j$（酉矩阵的复数加权线性组合）。$V_j$ 是向量，$U_j$ 是矩阵（更强大的表示）。</p>
+</blockquote>
+<h3 id="5-3-SELECT-PREPARE-电路：从数学到电路"><a href="#5-3-SELECT-PREPARE-电路：从数学到电路" class="headerlink" title="5.3 SELECT-PREPARE 电路：从数学到电路"></a>5.3 SELECT-PREPARE 电路：从数学到电路</h3><p>LCU 的关键问题是：<strong>如何在量子电路中实现这种”酉变换的非酉组合”？</strong> 答案是通过 SELECT-PREPARE 电路架构。</p>
+<h4 id="准备阶段（PREPARE）"><a href="#准备阶段（PREPARE）" class="headerlink" title="准备阶段（PREPARE）"></a>准备阶段（PREPARE）</h4><p>首先，构造一个酉变换 $U_{\text{PREP}}$ 作用于控制寄存器（大小为 $\lceil \log_2 n \rceil$ 个量子比特），将 $|0\ldots 0\rangle$ 准备为所需的系数叠加态：</p>
+<p>$$U_{\text{PREP}} |0\rangle &#x3D; |a\rangle &#x3D; \sum_{j&#x3D;0}^{n-1} a_j |j\rangle$$</p>
+<p>其中 $a_j$ 是复数振幅，$|j\rangle$ 是控制寄存器的计算基态。</p>
+<h4 id="选择阶段（SELECT）"><a href="#选择阶段（SELECT）" class="headerlink" title="选择阶段（SELECT）"></a>选择阶段（SELECT）</h4><p>然后，构造一个受控酉变换 $U_{\text{SEL}}$：</p>
+<p>$$U_{\text{SEL}} &#x3D; \sum_{j&#x3D;0}^{n-1} |j\rangle\langle j| \otimes U_j$$</p>
+<p>解读：$U_{\text{SEL}}$ 的每一”块”对应控制寄存器的一个计算基态：</p>
+<ul>
+<li>当控制寄存器为 $|0\rangle$ 时，对数据寄存器施加 $U_0$</li>
+<li>当控制寄存器为 $|1\rangle$ 时，对数据寄存器施加 $U_1$</li>
+<li>…</li>
+<li>当控制寄存器为 $|n-1\rangle$ 时，对数据寄存器施加 $U_{n-1}$</li>
+</ul>
+<h4 id="完整的-LCU-电路-U-M"><a href="#完整的-LCU-电路-U-M" class="headerlink" title="完整的 LCU 电路 $U_M$"></a>完整的 LCU 电路 $U_M$</h4><p>组合这两个操作：</p>
+<p>$$U_M &#x3D; (U_{\text{PREP}}^\dagger \otimes I) ; U_{\text{SEL}} ; (U_{\text{PREP}} \otimes I)$$</p>
+<p>然后在控制寄存器上后选择 $|0\rangle$：</p>
+<p>$$M &#x3D; (\langle 0| \otimes I) ; U_M ; (|0\rangle \otimes I)$$</p>
+<p>数学上可以证明（见论文附录 A.2 的引理 1）：</p>
+<p>$$M &#x3D; (\langle 0| \otimes I) ; U_M ; (|0\rangle \otimes I) &#x3D; \sum_{j&#x3D;0}^{n-1} |a_j|^2 , U_j$$</p>
+<h3 id="5-4-为什么要设计成这种形式：直观的数学推导"><a href="#5-4-为什么要设计成这种形式：直观的数学推导" class="headerlink" title="5.4 为什么要设计成这种形式：直观的数学推导"></a>5.4 为什么要设计成这种形式：直观的数学推导</h3><p>让我们一步一步追踪态在电路中的演化，理解为什么最终结果正好是 $\sum |a_j|^2 U_j$。</p>
+<p><strong>初始态</strong>：控制寄存器在 $|0\rangle$，数据寄存器在 $|\psi\rangle$：<br>$$|\Phi_0\rangle &#x3D; |0\rangle \otimes |\psi\rangle$$</p>
+<p><strong>步骤 1</strong>：应用 $U_{\text{PREP}} \otimes I$。控制寄存器变为叠加态 $|a\rangle &#x3D; \sum a_j |j\rangle$：<br>$$|\Phi_1\rangle &#x3D; \left(\sum_{j&#x3D;0}^{n-1} a_j |j\rangle\right) \otimes |\psi\rangle$$</p>
+<p><strong>步骤 2</strong>：应用 $U_{\text{SEL}}$。每个 $|j\rangle$ 分支上数据寄存器被施加对应的 $U_j$：<br>$$|\Phi_2\rangle &#x3D; \sum_{j&#x3D;0}^{n-1} a_j |j\rangle \otimes U_j |\psi\rangle$$</p>
+<p><strong>步骤 3</strong>：应用 $U_{\text{PREP}}^\dagger \otimes I$。这”解纠缠”控制寄存器。考虑后选择 $|0\rangle$：<br>$$|\Phi_3\rangle &#x3D; |0\rangle \otimes \left(\sum_{j&#x3D;0}^{n-1} a_j \langle 0|U_{\text{PREP}}^\dagger|j\rangle \cdot U_j |\psi\rangle\right)$$</p>
+<p>由于 $U_{\text{PREP}}^\dagger |j\rangle$ 投影到 $\langle 0|$ 给出 $a_j^*$（因为 $U_{\text{PREP}}|0\rangle &#x3D; \sum a_j|j\rangle$），所以：<br>$$\langle 0|U_{\text{PREP}}^\dagger|j\rangle &#x3D; a_j^*$$</p>
+<p>因此：<br>$$|\Phi_3\rangle &#x3D; |0\rangle \otimes \sum_{j&#x3D;0}^{n-1} |a_j|^2 , U_j |\psi\rangle$$</p>
+<p>后选择成功概率 $p_{\text{success}} &#x3D; |\sum_{j} |a_j|^2 U_j |\psi\rangle|^2$。</p>
+<p>这完美地实现了：**酉矩阵的线性组合，系数为 $|a_j|^2$**（非负实数）。</p>
+<h3 id="5-5-复数系数的引入"><a href="#5-5-复数系数的引入" class="headerlink" title="5.5 复数系数的引入"></a>5.5 复数系数的引入</h3><p>但实数系数 $|a_j|^2$ 的表达力有限！为了实现复数系数 $b_j \in \mathbb{C}$，Quixer 在每个令牌的酉电路前加入了一个相位门：</p>
+<p>$$U_j’ &#x3D; e^{i\gamma_j} \cdot U_j$$</p>
+<p>这样，最终的有效混合变为：</p>
+<p>$$M &#x3D; \sum_{j&#x3D;0}^{n-1} \underbrace{e^{i\gamma_j} |a_j|^2}_{b_j \in \mathbb{C}} , U_j$$</p>
+<p>其中 $b_j &#x3D; e^{i\gamma_j} |a_j|^2$ 是<strong>可训练的复数系数</strong>，满足 $\sum |b_j| &#x3D; 1$。</p>
+<h3 id="5-6-后选择概率与资源开销"><a href="#5-6-后选择概率与资源开销" class="headerlink" title="5.6 后选择概率与资源开销"></a>5.6 后选择概率与资源开销</h3><p>虽然 LCU 电路使用了辅助量子比特和测量的组合实现了看似非酉的操作，但这并非没有代价：</p>
+<ul>
+<li><strong>后选择成功率</strong> $p_{\text{success}} &#x3D; |\sum b_j U_j|\psi\rangle|^2$ 并不总是 1</li>
+<li>在实际量子硬件上，你需要执行 $O(1&#x2F;p_{\text{success}})$ 次测量才能获得一个有效样本</li>
+<li>当系数 $|b_j|$ 分布极不均匀（某个系数远大于其他系数）时，成功率可能接近 1；当系数分布均匀时，成功率可能较低</li>
+</ul>
+<h3 id="5-7-LCU-与经典注意力的深层对比"><a href="#5-7-LCU-与经典注意力的深层对比" class="headerlink" title="5.7 LCU 与经典注意力的深层对比"></a>5.7 LCU 与经典注意力的深层对比</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>经典注意力</th>
+<th>LCU 令牌混合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>混合对象</td>
+<td>Value 向量 $V_j$</td>
+<td>酉矩阵 $U_j$</td>
+</tr>
+<tr>
+<td>混合权重</td>
+<td>softmax(QK^T)（内容相关）</td>
+<td>$b_j$（可训练参数）</td>
+</tr>
+<tr>
+<td>权重空间</td>
+<td>实数、正数、和为 1</td>
+<td>复数、L1 范数为 1</td>
+</tr>
+<tr>
+<td>复杂度</td>
+<td>O(n²d)（经典计算）</td>
+<td>O(n·4^q)（经典模拟）或 O(n·poly(q))（量子实现）</td>
+</tr>
+<tr>
+<td>信息传播</td>
+<td>点积交互</td>
+<td>酉变换的干涉效应</td>
+</tr>
+</tbody></table>
+<h3 id="5-8-一个具体的数值例子"><a href="#5-8-一个具体的数值例子" class="headerlink" title="5.8 一个具体的数值例子"></a>5.8 一个具体的数值例子</h3><p>假设窗口大小 $n &#x3D; 3$，意味着我们有 3 个令牌，每个令牌有一个对应的酉矩阵 $U_0, U_1, U_2$。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 经典注意力（抽象表示）</span></span><br><span class="line">Q, K, V = X @ W_Q, X @ W_K, X @ W_V</span><br><span class="line">attn = softmax(Q @ K.T / sqrt(d_k))</span><br><span class="line">output = attn @ V  <span class="comment"># 每个输出是 V 的加权平均</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Quixer 的 LCU（抽象表示）</span></span><br><span class="line">U = [U_0, U_1, U_2]          <span class="comment"># 每个令牌的酉矩阵</span></span><br><span class="line">b = [<span class="number">0.5</span>+<span class="number">0.0j</span>, <span class="number">0.3</span>+<span class="number">0.1j</span>, <span class="number">0.1</span>+<span class="number">0.0j</span>]  <span class="comment"># 可训练复数权重</span></span><br><span class="line">M = b[<span class="number">0</span>]*U[<span class="number">0</span>] + b[<span class="number">1</span>]*U[<span class="number">1</span>] + b[<span class="number">2</span>]*U[<span class="number">2</span>]  <span class="comment"># 酉矩阵的线性组合</span></span><br><span class="line">output_state = M @ |ψ_<span class="keyword">in</span>⟩     <span class="comment"># 混合算子作用于量子态</span></span><br></pre></td></tr></table></figure>
+
+<p>注意关键区别：</p>
+<ul>
+<li>经典注意力中，softmax 的归一化是对”行”施加的（每个查询的输出权重之和为 1）</li>
+<li>LCU 中，归一化是对整个系数向量施加的（$\sum|b_j|&#x3D;1$）</li>
+<li>这意味着 LCU 对所有令牌使用<strong>同一组全局混合权重</strong>，而不是每个令牌有独立的注意力分布——这是一种<strong>全局令牌混合</strong>而非<strong>内容相关的自适应混合</strong></li>
+</ul>
+<hr>
+<h2 id="第六章：量子奇异值变换（QSVT）"><a href="#第六章：量子奇异值变换（QSVT）" class="headerlink" title="第六章：量子奇异值变换（QSVT）"></a>第六章：量子奇异值变换（QSVT）</h2><blockquote>
+<p><strong>目标</strong>：掌握 QSVT 的原理，理解它如何为量子电路提供非线性。</p>
+</blockquote>
+<h3 id="6-1-动机：量子电路缺少非线性"><a href="#6-1-动机：量子电路缺少非线性" class="headerlink" title="6.1 动机：量子电路缺少非线性"></a>6.1 动机：量子电路缺少非线性</h3><p>在经典深度学习中，网络成功的一个关键因素是<strong>非线性激活函数</strong>（ReLU、GELU、tanh 等）。没有非线性，多层网络等价于单层线性变换。</p>
+<p>但量子力学本质上是<strong>线性的</strong>——薛定谔方程是线性方程，量子门是酉（线性）变换。那么如何在量子电路中引入非线性？</p>
+<p><strong>QSVT 提供了一种方法</strong>：对块编码的矩阵施加<strong>多项式变换</strong>。多项式是非线性的（在矩阵意义上：$M^2 \neq cM$），因此 QSVT 为量子计算提供了一种”矩阵级”的非线性机制。</p>
+<h3 id="6-2-QSVT-的数学定义"><a href="#6-2-QSVT-的数学定义" class="headerlink" title="6.2 QSVT 的数学定义"></a>6.2 QSVT 的数学定义</h3><p>给定一个矩阵 $M$ 和它的块编码酉矩阵 $U_M$，QSVT 允许我们构造一个电路来实现 $M$ 的任意<strong>奇偶性匹配的多项式</strong>：</p>
+<p>$$P_c(M) &#x3D; c_d M^d + c_{d-1} M^{d-1} + \cdots + c_1 M + c_0 I$$</p>
+<p>条件是：</p>
+<ol>
+<li><strong>有界性</strong>：$|P_c(x)| \leq 1$ 对所有 $x \in [-1, 1]$ 成立（多项式在 $[-1,1]$ 上有界）</li>
+<li><strong>奇偶性约束</strong>：$\text{parity}(P_c) &#x3D; d \bmod 2$（多项式的奇偶性必须与其次数一致）</li>
+</ol>
+<h3 id="6-3-QSVT-电路结构"><a href="#6-3-QSVT-电路结构" class="headerlink" title="6.3 QSVT 电路结构"></a>6.3 QSVT 电路结构</h3><p>QSVT 的核心思想是：**交替应用 $U_M$、$U_M^\dagger$ 和投影算子 $\Pi_\phi$**。</p>
+<h4 id="奇数次多项式（-d-为奇数）"><a href="#奇数次多项式（-d-为奇数）" class="headerlink" title="奇数次多项式（$d$ 为奇数）"></a>奇数次多项式（$d$ 为奇数）</h4><p>$$\Pi_{\phi_1} U_M \left[ \prod_{k&#x3D;1}^{(d-1)&#x2F;2} \Pi_{\phi_{2k}} U_M^\dagger \Pi_{\phi_{2k+1}} U_M \right]$$</p>
+<h4 id="偶数次多项式（-d-为偶数）"><a href="#偶数次多项式（-d-为偶数）" class="headerlink" title="偶数次多项式（$d$ 为偶数）"></a>偶数次多项式（$d$ 为偶数）</h4><p>$$\prod_{k&#x3D;1}^{d&#x2F;2} \Pi_{\phi_{2k-1}} U_M^\dagger \Pi_{\phi_{2k}} U_M$$</p>
+<p>其中：</p>
+<ul>
+<li>$\Pi_\phi &#x3D; e^{i\phi(2\Pi - I)} &#x3D; e^{i\phi Z}$ 是辅助量子比特上的相位旋转</li>
+<li>${\phi_1, \phi_2, \ldots, \phi_d}$ 是与多项式系数 ${c_0, c_1, \ldots, c_d}$ 一一对应的相位角</li>
+<li>$U_M$ 块编码 $M$，$U_M^\dagger$ 块编码 $M^\dagger$</li>
+</ul>
+<h3 id="6-4-相位角度-φ-k-的计算"><a href="#6-4-相位角度-φ-k-的计算" class="headerlink" title="6.4 相位角度 {φ_k} 的计算"></a>6.4 相位角度 {φ_k} 的计算</h3><p>从多项式系数 ${c_k}$ 到 QSVT 相位角度 ${\phi_k}$ 的映射是<strong>非平凡</strong>的——需要通过数值算法计算。这个算法在量子计算领域是标准化的，常用工具（如 QSPPACK、pyqsp）提供实现。</p>
+<p><strong>关键理解</strong>：在 Quixer 的经典模拟中，由于模拟的是”QSVT 的数学效果”而非”QSVT 电路”，因此<strong>不需要计算相位角度</strong>——直接用多项式系数 $c_k$ 做代数计算即可（详见第八章源码解析）。</p>
+<h3 id="6-5-奇偶性约束的解除"><a href="#6-5-奇偶性约束的解除" class="headerlink" title="6.5 奇偶性约束的解除"></a>6.5 奇偶性约束的解除</h3><p>QSVT 的核心约束是：多项式的奇偶性必须等于其次数的奇偶性。即：</p>
+<ul>
+<li>如果 $d &#x3D; 3$（奇数），那么 $P_c(x)$ 只能包含奇次项：$c_3 x^3 + c_1 x$（$c_2 &#x3D; c_0 &#x3D; 0$）</li>
+<li>如果 $d &#x3D; 2$（偶数），那么 $P_c(x)$ 只能包含偶次项：$c_2 x^2 + c_0 I$（$c_1 &#x3D; 0$）</li>
+</ul>
+<p><strong>如何获得任意奇偶性的多项式？</strong> 论文提供了一种技巧：引入一个额外的辅助量子比特来控制两种奇偶性多项式的线性组合：</p>
+<p>$$P_{\text{arbitrary}}(M) &#x3D; \alpha \cdot P_{\text{even}}(M) + \beta \cdot P_{\text{odd}}(M)$$</p>
+<p>这本质上是用 LCU 的方法组合两个 QSVT 电路——量子原语的组合！</p>
+<h3 id="6-6-QSVT-与经典非线性激活的类比"><a href="#6-6-QSVT-与经典非线性激活的类比" class="headerlink" title="6.6 QSVT 与经典非线性激活的类比"></a>6.6 QSVT 与经典非线性激活的类比</h3><table>
+<thead>
+<tr>
+<th>经典</th>
+<th>量子（QSVT）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>σ(Wx) &#x3D; ReLU(Wx)</td>
+<td>P(M) &#x3D; c₀I + c₁M + c₂M² + …</td>
+</tr>
+<tr>
+<td>逐元素非线性</td>
+<td>矩阵级多项式非线性</td>
+</tr>
+<tr>
+<td>作用于向量</td>
+<td>作用于整个矩阵</td>
+</tr>
+<tr>
+<td>简单的代数操作</td>
+<td>需要块编码 + 交替门电路</td>
+</tr>
+<tr>
+<td>计算开销可忽略</td>
+<td>多项式次数 d 倍于一次块编码调用</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>核心理解</strong>：QSVT 的”非线性”不是经典意义上的逐元素非线性（如对每个元素取 max(0, x)），而是<strong>矩阵多项式</strong>带来的非线性。$M^2 \neq cM$（除非 M 是数量矩阵的倍数），所以即使二次多项式 $M^2$ 也是”矩阵非线性”的。</p>
+</blockquote>
+<h3 id="6-7-一个简单的例子：d-2-的-QSVT"><a href="#6-7-一个简单的例子：d-2-的-QSVT" class="headerlink" title="6.7 一个简单的例子：d&#x3D;2 的 QSVT"></a>6.7 一个简单的例子：d&#x3D;2 的 QSVT</h3><p>假设 $M$ 是一个 2×2 的 Hermitian 矩阵：</p>
+<p>$$M &#x3D; \begin{bmatrix} 0.5 &amp; 0.2 \ 0.2 &amp; -0.3 \end{bmatrix}$$</p>
+<p>二次 QSVT 的变换（$d&#x3D;2$，$c_0&#x3D;0.1, c_1&#x3D;0, c_2&#x3D;0.9$，满足偶次约束）：</p>
+<p>$$P(M) &#x3D; 0.1 I + 0.9 M^2$$</p>
+<p>手动计算：<br>$$M^2 &#x3D; M \cdot M &#x3D; \begin{bmatrix} 0.29 &amp; 0.04 \ 0.04 &amp; 0.13 \end{bmatrix}$$</p>
+<p>$$P(M) &#x3D; 0.1\begin{bmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{bmatrix} + 0.9\begin{bmatrix} 0.29 &amp; 0.04 \ 0.04 &amp; 0.13 \end{bmatrix} &#x3D; \begin{bmatrix} 0.361 &amp; 0.036 \ 0.036 &amp; 0.217 \end{bmatrix}$$</p>
+<p>注意 $P(M)$ 与 $M$ 的关系不是简单的缩放——这就是矩阵多项式的”非线性”效果。它改变了矩阵的谱（特征值分布），这与经典 FFN 中 ReLU 改变向量激活模式的效果类似。</p>
+<hr>
+<h2 id="第七章：Quixer-完整架构详解"><a href="#第七章：Quixer-完整架构详解" class="headerlink" title="第七章：Quixer 完整架构详解"></a>第七章：Quixer 完整架构详解</h2><blockquote>
+<p><strong>目标</strong>：逐步骤理解 Quixer 从输入到输出的完整数据流。</p>
+</blockquote>
+<h3 id="7-1-架构全景图"><a href="#7-1-架构全景图" class="headerlink" title="7.1 架构全景图"></a>7.1 架构全景图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">                    Quixer 架构全景图</span><br><span class="line">═══════════════════════════════════════════════════════</span><br><span class="line"></span><br><span class="line">输入序列： [The, cat, sat, on, mat, &lt;eos&gt;]</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 1. TOKEN EMBEDDING                   │</span><br><span class="line">│    w_i → Embedding(w_i) ∈ ℝ^&#123;d_emb&#125;  │</span><br><span class="line">│    每个令牌映射到 d_emb 维实向量       │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 2. ANGLE PARAMETRIZATION             │</span><br><span class="line">│    θ_i = Dropout(W_E · w_i)           │</span><br><span class="line">│    实向量 → PQC 旋转角度              │</span><br><span class="line">│    θ_i ∈ ℝ^&#123;n_pqc_params&#125;             │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 3. UNITARY TOKEN EMBEDDING           │</span><br><span class="line">│    对每个令牌 j:                      │</span><br><span class="line">│    - 初始化为 |0...0⟩                 │</span><br><span class="line">│    - 施加 PQC(θ_j) → 获得 |ψ_j⟩      │</span><br><span class="line">│    - |ψ_j⟩ 编码了令牌 j 的量子表示    │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 4. LCU TOKEN MIXING                  │</span><br><span class="line">│    M = Σ_&#123;j=0&#125;^&#123;n-1&#125; b_j · U_j       │</span><br><span class="line">│    b_j = e^&#123;iγ_j&#125; |a_j|² ∈ ℂ          │</span><br><span class="line">│    Σ |b_j| = 1                        │</span><br><span class="line">│                                       │</span><br><span class="line">│    在经典模拟中的等价操作：             │</span><br><span class="line">│    对 |ψ_mix⟩ = M|0...0⟩ 直接计算     │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 5. QSVT NONLINEAR TRANSFORM          │</span><br><span class="line">│    P(M)|0...0⟩                       │</span><br><span class="line">│    = (Σ c_k M^k) |0...0⟩             │</span><br><span class="line">│                                       │</span><br><span class="line">│    多项式次数 = qsvt_polynomial_degree │</span><br><span class="line">│    系数 c_k 可训练                     │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 6. L2 NORMALIZATION                   │</span><br><span class="line">│    |ψ_norm⟩ = |ψ⟩ / ‖|ψ⟩‖            │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 7. QUANTUM FEED-FORWARD              │</span><br><span class="line">│    单层 Ansatz 14 PQC                 │</span><br><span class="line">│    |ψ_out⟩ = U_FF(θ_shared) |ψ_norm⟩ │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 8. MEASUREMENT                       │</span><br><span class="line">│    所有量子比特上测量:                 │</span><br><span class="line">│    ⟨X_i⟩, ⟨Y_i⟩, ⟨Z_i⟩  i=0..q-1     │</span><br><span class="line">│    → 3q 个实数期望值                  │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">┌──────────────────────────────────────┐</span><br><span class="line">│ 9. CLASSICAL OUTPUT HEAD             │</span><br><span class="line">│    f_out: ℝ^&#123;3q&#125; → ℝ^&#123;vocab_size&#125;    │</span><br><span class="line">│    Linear(3q → d_emb) → ReLU        │</span><br><span class="line">│    → Linear(d_emb → vocab_size)      │</span><br><span class="line">└──────────────────────────────────────┘</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">输出：词汇表大小的 logits → 下一令牌概率</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-步骤详解"><a href="#7-2-步骤详解" class="headerlink" title="7.2 步骤详解"></a>7.2 步骤详解</h3><h4 id="步骤-1-2：经典词嵌入-角度参数化"><a href="#步骤-1-2：经典词嵌入-角度参数化" class="headerlink" title="步骤 1-2：经典词嵌入 + 角度参数化"></a>步骤 1-2：经典词嵌入 + 角度参数化</h4><p>这是模型中最”经典”的部分。输入令牌索引通过标准的 <code>nn.Embedding</code> 映射为 dense 向量，然后通过一个线性层映射为 PQC 的旋转参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码</span></span><br><span class="line">x: [batch_size, n_tokens]   <span class="comment"># 令牌索引</span></span><br><span class="line">emb = embedding(x)           <span class="comment"># [batch_size, n_tokens, d_emb]</span></span><br><span class="line">angles = linear(dropout(emb))  <span class="comment"># [batch_size, n_tokens, n_pqc_params]</span></span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>n_pqc_params = 4 * n_qubits * n_ansatz_layers</code>（Ansatz 14 每个量子比特每层 4 个旋转参数）。</p>
+<h4 id="步骤-3：酉令牌嵌入"><a href="#步骤-3：酉令牌嵌入" class="headerlink" title="步骤 3：酉令牌嵌入"></a>步骤 3：酉令牌嵌入</h4><p>对于每个令牌 $j$，用其角度 $\theta_j$ 参数化一个 PQC（Ansatz 14），将其作用于初始态 $|0\ldots0\rangle$：</p>
+<p>$$|\psi_j\rangle &#x3D; \text{PQC}(\theta_j) |0\ldots0\rangle$$</p>
+<p>在经典模拟中，这意味着对 $|0\ldots0\rangle$（即振幅向量 <code>[1, 0, 0, ..., 0]</code>）施加一系列旋转门和受控旋转门，得到 $2^q$ 维的复数态矢量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码（经典模拟中的实际计算）</span></span><br><span class="line">initial_state = torch.zeros(batch_size, <span class="number">2</span>**n_qubits, dtype=torch.complex64)</span><br><span class="line">initial_state[:, <span class="number">0</span>] = <span class="number">1.0</span> + <span class="number">0.0j</span>  <span class="comment"># |0...0⟩</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对每个令牌应用 PQC</span></span><br><span class="line">states = apply_pqc(initial_state, angles)  <span class="comment"># [batch_size, n_tokens, 2**n_qubits]</span></span><br></pre></td></tr></table></figure>
+
+<p>Ansatz 14 的结构（每层）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">┌─── RY(θ_0) ───●─── RY(θ&#x27;_0) ────────────────────────●───</span><br><span class="line">│               │CRX                                CRX│</span><br><span class="line">├─── RY(θ_1) ───┼─── RY(θ&#x27;_1) ───●───────────────────┼───</span><br><span class="line">│               │               │CRX                  │</span><br><span class="line">├─── RY(θ_2) ───┼─── RY(θ&#x27;_2) ───┼───●───────────────┼───</span><br><span class="line">│               │               │   │CRX              │</span><br><span class="line">│    ...        ...             ...  ...              ...</span><br><span class="line">│               │               │   │                 │</span><br><span class="line">├─── RY(θ_q-1) ─┼─── RY(θ&#x27;_q-1)─┼───┼─── ... ───●────┼───</span><br><span class="line">│               │               │   │          │CRX   │</span><br><span class="line">└───────────────┘───────────────┘───┘──────────┘──────┘</span><br><span class="line">  块1: RY旋转    块2: CRX向前   块3: RY旋转   块4: CRX向后</span><br><span class="line">                  (环形连接)                    (反向环形)</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-4：LCU-令牌混合"><a href="#步骤-4：LCU-令牌混合" class="headerlink" title="步骤 4：LCU 令牌混合"></a>步骤 4：LCU 令牌混合</h4><p>在经典模拟中，这一步直接计算混合：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码</span></span><br><span class="line"><span class="comment"># 将初始态复制 n_tokens 份</span></span><br><span class="line">replicated = initial_state.repeat(<span class="number">1</span>, n_tokens)  <span class="comment"># [B, n_tokens * 2**n_qubits]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对每份施加对应的 PQC（不同令牌不同参数）</span></span><br><span class="line">evolved = apply_pqc_all_tokens(replicated, all_angles)</span><br><span class="line">evolved = evolved.reshape(B, n_tokens, <span class="number">2</span>**n_qubits)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加权求和</span></span><br><span class="line">mixed = einsum(<span class="string">&quot;bti,bt-&gt;bi&quot;</span>, evolved, lcu_coefficients)</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-5：QSVT-非线性变换"><a href="#步骤-5：QSVT-非线性变换" class="headerlink" title="步骤 5：QSVT 非线性变换"></a>步骤 5：QSVT 非线性变换</h4><p>在经典模拟中，QSVT 通过迭代应用 LCU 来构建 $M^k$：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码：P(M)|0⟩ = Σ c_k M^k |0⟩</span></span><br><span class="line">accumulated = c[<span class="number">0</span>] * initial_state     <span class="comment"># 常数项 c_0 I</span></span><br><span class="line">monomial = initial_state</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, degree + <span class="number">1</span>):</span><br><span class="line">    <span class="comment"># M^k |0⟩ = M · M^&#123;k-1&#125; |0⟩</span></span><br><span class="line">    monomial = apply_lcu(monomial, ...)  <span class="comment"># 乘以 M</span></span><br><span class="line">    accumulated += c[k] * monomial       <span class="comment"># 累加 c_k M^k |0⟩</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line">result = accumulated / norm(c, <span class="built_in">ord</span>=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-6：L2-归一化"><a href="#步骤-6：L2-归一化" class="headerlink" title="步骤 6：L2 归一化"></a>步骤 6：L2 归一化</h4><p>LCU + QSVT 的”有效计算”本质上是非酉的（因为是酉矩阵的加权组合，不保持范数），所以需要对量子态做 L2 归一化。这是一个关键操作——在真正的量子硬件中，这种归一化需要利用后选择概率进行，成本较高。经典模拟中直接向量归一化即可。</p>
+<p>在 PyTorch 代码中实现为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">state = torch.nn.functional.normalize(state, dim=-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-7：量子前馈网络"><a href="#步骤-7：量子前馈网络" class="headerlink" title="步骤 7：量子前馈网络"></a>步骤 7：量子前馈网络</h4><p>一个<strong>共享参数</strong>的单层 PQC 作用在所有 batch 的量子态上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码</span></span><br><span class="line">shared_params = ff_params.repeat(<span class="number">1</span>, batch_size)</span><br><span class="line">final_state = apply_single_layer_pqc(normalized_state, shared_params)</span><br></pre></td></tr></table></figure>
+
+<p>这里的设计很重要：与令牌嵌入的 PQC（每个令牌独立参数）不同，前馈 PQC 使用<strong>单一参数集</strong>，类似于经典 FFN 对每个位置使用相同的权重矩阵。</p>
+<h4 id="步骤-8：测量"><a href="#步骤-8：测量" class="headerlink" title="步骤 8：测量"></a>步骤 8：测量</h4><p>对每个量子比特测量 Pauli-X, Y, Z 的三个期望值：</p>
+<p>$$e_X^{(i)} &#x3D; \langle \psi | X_i | \psi \rangle$$<br>$$e_Y^{(i)} &#x3D; \langle \psi | Y_i | \psi \rangle$$<br>$$e_Z^{(i)} &#x3D; \langle \psi | Z_i | \psi \rangle$$</p>
+<p>总共 $3q$ 个实数值。这三个期望值形成了一个完整的单量子比特态的布洛赫球表示（Bloch Vector）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码</span></span><br><span class="line">measurements = []</span><br><span class="line"><span class="keyword">for</span> qubit <span class="keyword">in</span> <span class="built_in">range</span>(n_qubits):</span><br><span class="line">    measurements.append(measure_x(qubit))  <span class="comment"># X 期望值</span></span><br><span class="line">    measurements.append(measure_y(qubit))  <span class="comment"># Y 期望值</span></span><br><span class="line">    measurements.append(measure_z(qubit))  <span class="comment"># Z 期望值</span></span><br><span class="line"><span class="comment"># 结果: [batch_size, 3 * n_qubits]</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>为什么测量 X, Y, Z 三者？</strong> 经典上，一个量子比特的密度矩阵可以写作 $\rho &#x3D; \frac{1}{2}(I + xX + yY + zZ)$，其中 $(x, y, z) &#x3D; (\langle X\rangle, \langle Y\rangle, \langle Z\rangle)$ 完全确定了单量子比特态。因此这三个期望值提供了量子态的完整局部信息。</p>
+</blockquote>
+<h4 id="步骤-9：经典输出投影"><a href="#步骤-9：经典输出投影" class="headerlink" title="步骤 9：经典输出投影"></a>步骤 9：经典输出投影</h4><p>$$f_{\text{out}}(x) &#x3D; W_2 \cdot \text{ReLU}(W_1 \cdot x + b_1) + b_2$$</p>
+<p>两层 MLP 将 $3q$ 维的测量向量映射到 <code>vocab_size</code> 维的 logits。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 代码</span></span><br><span class="line">output = Sequential(</span><br><span class="line">    Linear(<span class="number">3</span>*n_qubits → embedding_dimension),</span><br><span class="line">    ReLU(),</span><br><span class="line">    Linear(embedding_dimension → vocabulary_size)</span><br><span class="line">)(measurements)  <span class="comment"># [batch_size, vocabulary_size]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3-Quixer-的返回值"><a href="#7-3-Quixer-的返回值" class="headerlink" title="7.3 Quixer 的返回值"></a>7.3 Quixer 的返回值</h3><p>Quixer 的 <code>forward</code> 方法返回一个元组 <code>(logits, mean_prob)</code>：</p>
+<ul>
+<li><strong>logits</strong>: <code>[batch_size, vocabulary_size]</code> — 用于 CrossEntropyLoss 的标准分类 logits</li>
+<li><strong>mean_prob</strong>: 标量 — QSVT+LCU 之后、量子前馈网络之前的态矢量的 L2 范数的 batch 平均值。论文将其称为”最终概率”（final probability），它反映了通过 LCU+QSVT 混合后有多少”概率质量”得以保留（因为非酉操作会导致范数衰减）。</li>
+</ul>
+<hr>
+<h2 id="第八章：源码深度解析"><a href="#第八章：源码深度解析" class="headerlink" title="第八章：源码深度解析"></a>第八章：源码深度解析</h2><blockquote>
+<p><strong>目标</strong>：逐行理解 Quixer 经典模拟实现的源码。</p>
+</blockquote>
+<h3 id="8-1-项目结构"><a href="#8-1-项目结构" class="headerlink" title="8.1 项目结构"></a>8.1 项目结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Quixer/</span><br><span class="line">├── pyproject.toml          # 项目配置和依赖声明</span><br><span class="line">├── run.py                  # 训练入口脚本</span><br><span class="line">├── README.md               # 使用说明</span><br><span class="line">├── LICENSE                 # Apache 2.0</span><br><span class="line">└── quixer/</span><br><span class="line">    ├── quixer_model.py     # Quixer 模型定义</span><br><span class="line">    ├── baseline_models.py  # 经典基线模型 (Transformer, LSTM, FNet)</span><br><span class="line">    └── setup_training.py   # 数据处理和训练循环</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2-run-py-—-训练入口"><a href="#8-2-run-py-—-训练入口" class="headerlink" title="8.2 run.py — 训练入口"></a>8.2 run.py — 训练入口</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># run.py 的核心逻辑（重构版）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 超参数定义</span></span><br><span class="line">quixer_hyperparams = &#123;</span><br><span class="line">    <span class="string">&quot;layers&quot;</span>: <span class="number">3</span>,          <span class="comment"># QSVT 多项式次数</span></span><br><span class="line">    <span class="string">&quot;window&quot;</span>: <span class="number">32</span>,         <span class="comment"># 上下文窗口大小</span></span><br><span class="line">    <span class="string">&quot;epochs&quot;</span>: <span class="number">40</span>,         <span class="comment"># 训练轮数</span></span><br><span class="line">    <span class="string">&quot;dropout&quot;</span>: <span class="number">0.2</span>,       <span class="comment"># Dropout 率</span></span><br><span class="line">    <span class="string">&quot;lr&quot;</span>: <span class="number">0.0001</span>,         <span class="comment"># 学习率</span></span><br><span class="line">    <span class="string">&quot;batch_size&quot;</span>: <span class="number">20</span>,     <span class="comment"># 批次大小</span></span><br><span class="line">    <span class="string">&quot;qubits&quot;</span>: <span class="number">6</span>,          <span class="comment"># 量子比特数</span></span><br><span class="line">    <span class="string">&quot;ansatz_layers&quot;</span>: <span class="number">4</span>,   <span class="comment"># PQC 层数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 嵌入维度配置</span></span><br><span class="line">classical_embedding_dimensions = [<span class="number">96</span>, <span class="number">128</span>]</span><br><span class="line">quantum_embedding_dimensions = [<span class="number">512</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型注册表</span></span><br><span class="line">model_map = &#123;</span><br><span class="line">    <span class="string">&quot;Quixer&quot;</span>: (quixer_hyperparams, quantum_embedding_dimensions),</span><br><span class="line">    <span class="string">&quot;Transformer&quot;</span>: (transformer_hyperparams, classical_embedding_dimensions),</span><br><span class="line">    <span class="string">&quot;LSTM&quot;</span>: (lstm_hyperparams, classical_embedding_dimensions),</span><br><span class="line">    <span class="string">&quot;FNet&quot;</span>: (fnet_hyperparams, classical_embedding_dimensions),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主循环</span></span><br><span class="line"><span class="keyword">for</span> model_name <span class="keyword">in</span> requested_models:</span><br><span class="line">    <span class="keyword">for</span> emb_dim <span class="keyword">in</span> model_map[model_name].embedding_dims:</span><br><span class="line">        <span class="keyword">for</span> seed <span class="keyword">in</span> random_seeds:</span><br><span class="line">            params = &#123;**model_map[model_name].hyperparams, </span><br><span class="line">                      <span class="string">&quot;model&quot;</span>: model_name, </span><br><span class="line">                      <span class="string">&quot;dimension&quot;</span>: emb_dim, </span><br><span class="line">                      <span class="string">&quot;seed&quot;</span>: seed&#125;</span><br><span class="line">            train_evaluate(params)  <span class="comment"># 返回测试 loss</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>关键观察</strong>：</p>
+<ul>
+<li>Quixer 的嵌入维度固定为 512，而经典基线是 96 或 128——Quixer 需要更大的嵌入维度来提供足够的参数给 PQC</li>
+<li>对每个配置运行 10 个随机种子，确保统计显著性</li>
+<li>Quixer 默认使用 6 个量子比特、4 层 ansatz、3 次 QSVT 多项式</li>
+</ul>
+<h3 id="8-3-quixer-model-py-—-核心模型"><a href="#8-3-quixer-model-py-—-核心模型" class="headerlink" title="8.3 quixer_model.py — 核心模型"></a>8.3 quixer_model.py — 核心模型</h3><h4 id="8-3-1-Ansatz-14-电路构建"><a href="#8-3-1-Ansatz-14-电路构建" class="headerlink" title="8.3.1 Ansatz 14 电路构建"></a>8.3.1 Ansatz 14 电路构建</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">ansatz_14_torchquantum_specification</span>(<span class="params">n_qubits, layers=<span class="number">1</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    构建 Ansatz 14 的电路规格。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    每层包含 4 个块，共 4 * n_qubits 个参数：</span></span><br><span class="line"><span class="string">    - 块1: RY 旋转（所有量子比特）</span></span><br><span class="line"><span class="string">    - 块2: CRX 向前环形连接 (i → i+1)</span></span><br><span class="line"><span class="string">    - 块3: RY 旋转（所有量子比特）</span></span><br><span class="line"><span class="string">    - 块4: CRX 向后环形连接 (i → i-1)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    enc = []</span><br><span class="line">    counter = itertools.count(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(layers):</span><br><span class="line">        <span class="comment"># 块1: RY 旋转</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_qubits):</span><br><span class="line">            enc.append(&#123;</span><br><span class="line">                <span class="string">&quot;input_idx&quot;</span>: [<span class="built_in">next</span>(counter)],</span><br><span class="line">                <span class="string">&quot;func&quot;</span>: <span class="string">&quot;ry&quot;</span>,</span><br><span class="line">                <span class="string">&quot;wires&quot;</span>: [i]</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="comment"># 块2: CRX 向前环形</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_qubits - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):  <span class="comment"># 反向遍历</span></span><br><span class="line">            enc.append(&#123;</span><br><span class="line">                <span class="string">&quot;input_idx&quot;</span>: [<span class="built_in">next</span>(counter)],</span><br><span class="line">                <span class="string">&quot;func&quot;</span>: <span class="string">&quot;crx&quot;</span>,</span><br><span class="line">                <span class="string">&quot;wires&quot;</span>: [i, (i + <span class="number">1</span>) % n_qubits]</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="comment"># 块3: RY 旋转</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_qubits):</span><br><span class="line">            enc.append(&#123;</span><br><span class="line">                <span class="string">&quot;input_idx&quot;</span>: [<span class="built_in">next</span>(counter)],</span><br><span class="line">                <span class="string">&quot;func&quot;</span>: <span class="string">&quot;ry&quot;</span>,</span><br><span class="line">                <span class="string">&quot;wires&quot;</span>: [i]</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="comment"># 块4: CRX 向后环形</span></span><br><span class="line">        <span class="keyword">for</span> last_qubit <span class="keyword">in</span> <span class="built_in">range</span>(n_qubits - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            i = (last_qubit - <span class="number">1</span>) % n_qubits  <span class="comment"># 控制量子比特</span></span><br><span class="line">            j = last_qubit</span><br><span class="line">            enc.append(&#123;</span><br><span class="line">                <span class="string">&quot;input_idx&quot;</span>: [<span class="built_in">next</span>(counter)],</span><br><span class="line">                <span class="string">&quot;func&quot;</span>: <span class="string">&quot;crx&quot;</span>,</span><br><span class="line">                <span class="string">&quot;wires&quot;</span>: [i, j]</span><br><span class="line">            &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> enc</span><br></pre></td></tr></table></figure>
+
+<p><strong>Ansatz 14 的环形连接设计解读</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">n_qubits = 4 时一轮的 CRX 连接：</span><br><span class="line"></span><br><span class="line">块2: CRX 向前环形       块4: CRX 向后环形</span><br><span class="line">q0 ←── q3               q0 ──→ q3  </span><br><span class="line"> ↑                         ↓</span><br><span class="line">q1 ←── q0               q1 ──→ q0</span><br><span class="line"> ↑                         ↓</span><br><span class="line">q2 ←── q1               q2 ──→ q1</span><br><span class="line"> ↑                         ↓</span><br><span class="line">q3 ←── q2               q3 ──→ q2</span><br></pre></td></tr></table></figure>
+
+<p>这种双向环形连接确保信息可以在所有量子比特之间传播。</p>
+<h4 id="8-3-2-LCU-的经典模拟"><a href="#8-3-2-LCU-的经典模拟" class="headerlink" title="8.3.2 LCU 的经典模拟"></a>8.3.2 LCU 的经典模拟</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">apply_linear_combination_of_unitaries</span>(<span class="params"></span></span><br><span class="line"><span class="params">    initial_states,          <span class="comment"># [batch_size, 2**n_qubits]</span></span></span><br><span class="line"><span class="params">    pqc_parameters,          <span class="comment"># [batch_size, n_tokens, n_pqc_params]</span></span></span><br><span class="line"><span class="params">    parameterized_quantum_circuit,  <span class="comment"># TorchQuantum GeneralEncoder</span></span></span><br><span class="line"><span class="params">    torchquantum_device,</span></span><br><span class="line"><span class="params">    n_qubits,</span></span><br><span class="line"><span class="params">    lcu_coefficients,        <span class="comment"># [batch_size, n_tokens], 复数</span></span></span><br><span class="line"><span class="params"></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    经典模拟 LCU: M|ψ⟩ = (Σ b_j U_j) |ψ⟩</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    关键思路：</span></span><br><span class="line"><span class="string">    1. 将初始态复制 n_tokens 份</span></span><br><span class="line"><span class="string">    2. 每份分别施加对应令牌的 PQC</span></span><br><span class="line"><span class="string">    3. 用复数系数加权求和</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    batch_size, n_tokens, _ = pqc_parameters.shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 复制初始态：每个 batch 元素的态复制 n_tokens 次</span></span><br><span class="line">    states = initial_states.repeat(<span class="number">1</span>, n_tokens).reshape(-<span class="number">1</span>, <span class="number">2</span>**n_qubits)</span><br><span class="line">    <span class="comment"># states: [batch_size * n_tokens, 2**n_qubits]</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 展平 PQC 参数</span></span><br><span class="line">    flat_params = pqc_parameters.reshape(-<span class="number">1</span>, pqc_parameters.shape[-<span class="number">1</span>])</span><br><span class="line">    <span class="comment"># flat_params: [batch_size * n_tokens, n_pqc_params]</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将态加载到量子设备中</span></span><br><span class="line">    torchquantum_device.reset_batch_size(batch_size * n_tokens)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 对每份态施加对应令牌的 PQC</span></span><br><span class="line">    parameterized_quantum_circuit(</span><br><span class="line">        torchquantum_device, </span><br><span class="line">        flat_params.<span class="built_in">float</span>()</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 提取演化后的态</span></span><br><span class="line">    evolved = torchquantum_device.get_states_1d()</span><br><span class="line">    evolved = evolved.reshape(batch_size, n_tokens, <span class="number">2</span>**n_qubits)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 加权求和: Σ b_j |ψ_j⟩</span></span><br><span class="line">    mixed = torch.einsum(<span class="string">&quot;bti,bt-&gt;bi&quot;</span>, evolved, lcu_coefficients)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> mixed  <span class="comment"># [batch_size, 2**n_qubits]</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>设计洞察</strong>：经典模拟中并没有真正构造 SELECT-PREPARE 电路。代码采用了一种更高效的方式——直接枚举每个酉矩阵 U_j，分别计算 U_j|ψ⟩，然后做复数加权的线性求和。这是因为在经典计算机上，显式计算每个 $2^q$ 维态矢量并求和比模拟一个完整的 LCU 电路（需要额外的 $\log_2 n$ 个控制比特）开销更小。在真实量子计算机上，你才需要 SELECT-PREPARE 来利用量子并行性。</p>
+</blockquote>
+<h4 id="8-3-3-QSVT-的经典模拟"><a href="#8-3-3-QSVT-的经典模拟" class="headerlink" title="8.3.3 QSVT 的经典模拟"></a>8.3.3 QSVT 的经典模拟</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">apply_qsvt_and_lcu</span>(<span class="params"></span></span><br><span class="line"><span class="params">    initial_states,           <span class="comment"># [batch_size, 2**n_qubits]</span></span></span><br><span class="line"><span class="params">    pqc_parameters,</span></span><br><span class="line"><span class="params">    parameterized_quantum_circuit,</span></span><br><span class="line"><span class="params">    torchquantum_device,</span></span><br><span class="line"><span class="params">    n_qubits,</span></span><br><span class="line"><span class="params">    lcu_coefficients,</span></span><br><span class="line"><span class="params">    qsvt_polynomial_coefficients,  <span class="comment"># [degree + 1]</span></span></span><br><span class="line"><span class="params"></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    经典模拟 QSVT+LCU: P(M)|ψ⟩ = (Σ c_k M^k) |ψ⟩</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    通过反复调用 apply_lcu 来构建 M 的幂次。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 初始化累加器：c_0 I |ψ⟩ = c_0 |ψ⟩</span></span><br><span class="line">    accumulated = qsvt_polynomial_coefficients[<span class="number">0</span>] * initial_states</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># monomial 追踪 M^&#123;k-1&#125; |ψ⟩</span></span><br><span class="line">    monomial = initial_states</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(qsvt_polynomial_coefficients)):</span><br><span class="line">        <span class="comment"># M^k |ψ⟩ = M · (M^&#123;k-1&#125; |ψ⟩)</span></span><br><span class="line">        monomial = apply_lcu(</span><br><span class="line">            monomial, pqc_parameters, </span><br><span class="line">            parameterized_quantum_circuit,</span><br><span class="line">            torchquantum_device, n_qubits, lcu_coefficients</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 累加：c_k · M^k |ψ⟩</span></span><br><span class="line">        accumulated = accumulated + qsvt_polynomial_coefficients[k] * monomial</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 归一化（按系数 L1 范数）</span></span><br><span class="line">    norm = torch.linalg.vector_norm(qsvt_polynomial_coefficients, <span class="built_in">ord</span>=<span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> accumulated / norm</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>为什么这样设计？</strong> 经典模拟中直接使用多项式求值的代数公式而非构造 QSVT 电路，避免了相位角度 ${\phi_k}$ 的繁琐计算。但对于<code>degree = 3</code>（论文默认值），这意味着需要调用 <code>apply_lcu</code> 共 <code>1+2+3 = 6</code> 次。模型的参数数量不直接增加（只有 <code>d+1</code> 个可训练系数），但计算量随 <code>d</code> 线性增长。</p>
+</blockquote>
+<h4 id="8-3-4-Quixer-类的完整定义"><a href="#8-3-4-Quixer-类的完整定义" class="headerlink" title="8.3.4 Quixer 类的完整定义"></a>8.3.4 Quixer 类的完整定义</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Quixer</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">        self,</span></span><br><span class="line"><span class="params">        n_qubits: <span class="built_in">int</span>,                   <span class="comment"># 量子比特数（默认 6）</span></span></span><br><span class="line"><span class="params">        n_tokens: <span class="built_in">int</span>,                   <span class="comment"># 上下文窗口大小（默认 32）</span></span></span><br><span class="line"><span class="params">        qsvt_polynomial_degree: <span class="built_in">int</span>,     <span class="comment"># QSVT 多项式次数（默认 3）</span></span></span><br><span class="line"><span class="params">        n_ansatz_layers: <span class="built_in">int</span>,            <span class="comment"># PQC 层数（默认 4）</span></span></span><br><span class="line"><span class="params">        vocabulary_size: <span class="built_in">int</span>,            <span class="comment"># 词表大小</span></span></span><br><span class="line"><span class="params">        embedding_dimension: <span class="built_in">int</span>,        <span class="comment"># 嵌入维度（默认 512）</span></span></span><br><span class="line"><span class="params">        dropout: <span class="built_in">float</span>,                  <span class="comment"># Dropout 率（默认 0.2）</span></span></span><br><span class="line"><span class="params">        batch_size: <span class="built_in">int</span>,                 <span class="comment"># 批次大小（默认 20）</span></span></span><br><span class="line"><span class="params">        device: torch.device,</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 参数推导 ===</span></span><br><span class="line">        n_pqc_parameters = <span class="number">4</span> * n_qubits * n_ansatz_layers</span><br><span class="line">        n_polynomial_coefficients = qsvt_polynomial_degree + <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 经典嵌入 + 角度参数化 ===</span></span><br><span class="line">        self.embedding = nn.Embedding(vocabulary_size, embedding_dimension)</span><br><span class="line">        self.embedding_to_angles = nn.Linear(</span><br><span class="line">            embedding_dimension, n_pqc_parameters</span><br><span class="line">        )</span><br><span class="line">        self.dropout = nn.Dropout(dropout)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 量子设备（经典模拟） ===</span></span><br><span class="line">        self.torchquantum_device = tq.QuantumDevice(</span><br><span class="line">            n_wires=n_qubits, bsz=batch_size</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 令牌 PQC（Ansatz 14） ===</span></span><br><span class="line">        token_ansatz = ansatz_14_torchquantum_specification(</span><br><span class="line">            n_qubits, n_ansatz_layers</span><br><span class="line">        )</span><br><span class="line">        self.token_pqc = tq.GeneralEncoder(token_ansatz)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 可训练参数 ===</span></span><br><span class="line">        <span class="comment"># QSVT 多项式系数（实数）</span></span><br><span class="line">        self.qsvt_coefficients = nn.Parameter(</span><br><span class="line">            torch.randn(n_polynomial_coefficients)</span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># LCU 混合系数（复数！）</span></span><br><span class="line">        self.lcu_coefficients = nn.Parameter(</span><br><span class="line">            torch.randn(n_tokens, dtype=torch.complex64)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 量子前馈网络 ===</span></span><br><span class="line">        ff_ansatz = ansatz_14_torchquantum_specification(n_qubits, layers=<span class="number">1</span>)</span><br><span class="line">        self.quantum_feedforward = tq.GeneralEncoder(ff_ansatz)</span><br><span class="line">        self.ff_parameters = nn.Parameter(</span><br><span class="line">            torch.randn(<span class="number">1</span>, n_pqc_parameters)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 测量 ===</span></span><br><span class="line">        self.measure_all_x_y_z = tq.MeasureMultipleTimes(</span><br><span class="line">            [<span class="built_in">list</span>(<span class="built_in">range</span>(n_qubits))] * <span class="number">3</span>,  <span class="comment"># 三组：X, Y, Z</span></span><br><span class="line">            [<span class="string">&quot;pauli_x&quot;</span>, <span class="string">&quot;pauli_y&quot;</span>, <span class="string">&quot;pauli_z&quot;</span>]</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 经典输出头 ===</span></span><br><span class="line">        self.output_head = nn.Sequential(</span><br><span class="line">            nn.Linear(<span class="number">3</span> * n_qubits, embedding_dimension),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(embedding_dimension, vocabulary_size),</span><br><span class="line">        )</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        x: [batch_size, n_tokens] — 令牌索引</span></span><br><span class="line"><span class="string">        返回: (logits, mean_probability)</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        batch_size = x.shape[<span class="number">0</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 1. LCU 系数准备 ===</span></span><br><span class="line">        lcu_coeffs = self.lcu_coefficients.repeat(batch_size, <span class="number">1</span>)</span><br><span class="line">        lcu_coeffs = lcu_coeffs / lcu_coeffs.<span class="built_in">abs</span>().<span class="built_in">sum</span>(dim=<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">        <span class="comment"># L1 归一化：Σ |b_j| = 1</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 2. 经典嵌入 + 角度参数化 ===</span></span><br><span class="line">        emb = self.embedding(x)              <span class="comment"># [B, n_tokens, d_emb]</span></span><br><span class="line">        angles = self.embedding_to_angles(</span><br><span class="line">            self.dropout(emb)</span><br><span class="line">        )                                    <span class="comment"># [B, n_tokens, n_pqc_params]</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 3. 初始量子态 |0...0⟩ ===</span></span><br><span class="line">        initial_state = torch.zeros(</span><br><span class="line">            batch_size, <span class="number">2</span>**self.n_qubits, </span><br><span class="line">            dtype=torch.complex64, device=x.device</span><br><span class="line">        )</span><br><span class="line">        initial_state[:, <span class="number">0</span>] = <span class="number">1.0</span> + <span class="number">0.0j</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 4. QSVT + LCU：核心量子令牌混合 ===</span></span><br><span class="line">        qsvt_lcu_state = apply_qsvt_and_lcu(</span><br><span class="line">            initial_state, angles, self.token_pqc,</span><br><span class="line">            self.torchquantum_device, self.n_qubits,</span><br><span class="line">            lcu_coeffs, self.qsvt_coefficients,</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 5. 记录后选择概率 ===</span></span><br><span class="line">        probabilities = torch.linalg.vector_norm(</span><br><span class="line">            qsvt_lcu_state, dim=-<span class="number">1</span></span><br><span class="line">        )  <span class="comment"># L2 范数 × 1</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 6. L2 归一化 ===</span></span><br><span class="line">        qsvt_lcu_state = torch.nn.functional.normalize(</span><br><span class="line">            qsvt_lcu_state, dim=-<span class="number">1</span></span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 7. 量子前馈网络 ===</span></span><br><span class="line">        <span class="comment"># 将归一化态加载到量子设备</span></span><br><span class="line">        self.torchquantum_device.reset_batch_size(batch_size)</span><br><span class="line">        self.torchquantum_device.set_states(qsvt_lcu_state)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 应用单层 PQC</span></span><br><span class="line">        ff_params = self.ff_parameters.repeat(<span class="number">1</span>, batch_size)</span><br><span class="line">        self.quantum_feedforward(</span><br><span class="line">            self.torchquantum_device, ff_params.<span class="built_in">float</span>()</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 8. 测量 ===</span></span><br><span class="line">        expectation_values = self.measure_all_x_y_z(</span><br><span class="line">            self.torchquantum_device</span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># 重整为 [batch_size, 3 * n_qubits]</span></span><br><span class="line">        measurements = expectation_values \</span><br><span class="line">            .reshape(<span class="number">3</span>, batch_size, self.n_qubits) \</span><br><span class="line">            .moveaxis(<span class="number">0</span>, <span class="number">1</span>) \</span><br><span class="line">            .reshape(batch_size, -<span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># === 9. 经典输出投影 ===</span></span><br><span class="line">        logits = self.output_head(measurements)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> logits, probabilities.mean()</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-4-模型复杂度分析"><a href="#8-4-模型复杂度分析" class="headerlink" title="8.4 模型复杂度分析"></a>8.4 模型复杂度分析</h3><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>参数量</th>
+<th>计算复杂度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Embedding</td>
+<td>vocab_size × d_emb</td>
+<td>O(B · n · d_emb)</td>
+</tr>
+<tr>
+<td>Embedding → Angles</td>
+<td>d_emb × (4qn_layers)</td>
+<td>O(B · n · d_emb · 4qn_layers)</td>
+</tr>
+<tr>
+<td>LCU（每步）</td>
+<td>n（复数系数）</td>
+<td>O(B · n · 4^q)</td>
+</tr>
+<tr>
+<td>QSVT（d 次）</td>
+<td>d+1（多项式系数）</td>
+<td>O(B · d · n · 4^q)</td>
+</tr>
+<tr>
+<td>Quantum FF</td>
+<td>4q（角度参数）</td>
+<td>O(B · 4^q)</td>
+</tr>
+<tr>
+<td>测量</td>
+<td>3q（期望值读取）</td>
+<td>O(B · q · 4^q)</td>
+</tr>
+<tr>
+<td>输出头</td>
+<td>3q × d_emb + d_emb × vocab</td>
+<td>O(B · 3q · d_emb + B · d_emb · vocab)</td>
+</tr>
+</tbody></table>
+<p><strong>关键瓶颈</strong>：所有量子操作的计算复杂度都是 $O(4^q)$——这是经典模拟量子电路的根本限制。$q&#x3D;6$ 时，$4^6 &#x3D; 4096$（尚可处理）；$q&#x3D;10$ 时，$4^{10} \approx 10^6$（勉强可处理）；$q&#x3D;20$ 时，$4^{20} \approx 10^{12}$（完全不可处理）。这是 Quixer 当前限制在 6 个量子比特的根本原因。</p>
+<hr>
+<h2 id="第九章：环境搭建与动手运行"><a href="#第九章：环境搭建与动手运行" class="headerlink" title="第九章：环境搭建与动手运行"></a>第九章：环境搭建与动手运行</h2><blockquote>
+<p><strong>目标</strong>：在你的机器上成功安装并运行 Quixer。</p>
+</blockquote>
+<h3 id="9-1-环境要求"><a href="#9-1-环境要求" class="headerlink" title="9.1 环境要求"></a>9.1 环境要求</h3><table>
+<thead>
+<tr>
+<th>依赖</th>
+<th>精确版本</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Python</td>
+<td>≥ 3.11</td>
+<td><strong>严格要求</strong></td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>2.3.0（推荐）</td>
+<td>核心深度学习框架</td>
+</tr>
+<tr>
+<td>torchtext</td>
+<td>0.18.0</td>
+<td>文本处理</td>
+</tr>
+<tr>
+<td>torchvision</td>
+<td>0.18.0</td>
+<td>随 PyTorch 安装</td>
+</tr>
+<tr>
+<td>torchquantum</td>
+<td>≥ 0.1.8, &lt; 0.2</td>
+<td>量子电路模拟</td>
+</tr>
+<tr>
+<td>Qiskit</td>
+<td>&lt; 1.0</td>
+<td><strong>禁用 1.x 版本</strong>（API 重构）</td>
+</tr>
+<tr>
+<td>Qiskit Aer</td>
+<td>0.13.3</td>
+<td>量子模拟后端</td>
+</tr>
+<tr>
+<td>Qiskit IBM Provider</td>
+<td>0.10.0</td>
+<td>IBM 量子硬件接口</td>
+</tr>
+<tr>
+<td>Qiskit IBM Runtime</td>
+<td>0.20.0</td>
+<td>IBM 量子运行时</td>
+</tr>
+<tr>
+<td>datasets</td>
+<td>≥ 3.2, &lt; 3.3</td>
+<td>Hugging Face 数据集</td>
+</tr>
+<tr>
+<td>tqdm</td>
+<td>≥ 4.67, &lt; 4.68</td>
+<td>进度条</td>
+</tr>
+<tr>
+<td>CUDA</td>
+<td>可选</td>
+<td>GPU 加速（训练约 100 倍快）</td>
+</tr>
+</tbody></table>
+<h3 id="9-2-踩坑预警：版本兼容性问题"><a href="#9-2-踩坑预警：版本兼容性问题" class="headerlink" title="9.2 踩坑预警：版本兼容性问题"></a>9.2 踩坑预警：版本兼容性问题</h3><p>Qiskit 1.0 进行了颠覆性的 API 重构（移除了元包架构，引入了 V2 原语）。Quixer 的代码是在 Qiskit &lt; 1.0 的环境下编写的。<strong>如果你直接 <code>pip install qiskit</code>（会安装 ≥1.0），Quixer 将无法运行。</strong></p>
+<p>因此强烈建议<strong>创建独立的虚拟环境</strong>。</p>
+<h3 id="9-3-安装步骤（macOS-Linux）"><a href="#9-3-安装步骤（macOS-Linux）" class="headerlink" title="9.3 安装步骤（macOS&#x2F;Linux）"></a>9.3 安装步骤（macOS&#x2F;Linux）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># === 步骤 1：创建虚拟环境 ===</span></span><br><span class="line">conda create -n quixer python=3.11 -y</span><br><span class="line">conda activate quixer</span><br><span class="line"></span><br><span class="line"><span class="comment"># === 步骤 2：安装 PyTorch 2.3.0（CPU 版本） ===</span></span><br><span class="line">conda install pytorch==2.3.0 torchvision==0.18.0 \</span><br><span class="line">    torchtext==0.18.0 torchaudio==2.3.0 cpuonly -c pytorch -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者 CUDA 版本（如果有 NVIDIA GPU）：</span></span><br><span class="line"><span class="comment"># conda install pytorch==2.3.0 torchvision==0.18.0 \</span></span><br><span class="line"><span class="comment">#     torchtext==0.18.0 torchaudio==2.3.0 pytorch-cuda=12.1 -c pytorch -y</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># === 步骤 3：克隆仓库 ===</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/CQCL/Quixer.git</span><br><span class="line"><span class="built_in">cd</span> Quixer</span><br><span class="line"></span><br><span class="line"><span class="comment"># === 步骤 4：安装 Quixer 及其依赖 ===</span></span><br><span class="line">pip install -e .</span><br><span class="line"></span><br><span class="line"><span class="comment"># === 步骤 5：验证安装 ===</span></span><br><span class="line">python -c <span class="string">&quot;import torch; import qiskit; import torchquantum; \</span></span><br><span class="line"><span class="string">    print(f&#x27;PyTorch &#123;torch.__version__&#125;&#x27;); \</span></span><br><span class="line"><span class="string">    print(f&#x27;Qiskit &#123;qiskit.__version__&#125;&#x27;); \</span></span><br><span class="line"><span class="string">    print(&#x27;安装成功!&#x27;)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>常见错误与解决方案</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>错误</th>
+<th>原因</th>
+<th>解决</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ModuleNotFoundError: No module named &#39;qiskit.providers&#39;</code></td>
+<td>Qiskit 1.0+ 移除了旧 API</td>
+<td>降级到 <code>pip install qiskit&lt;1.0</code></td>
+</tr>
+<tr>
+<td><code>RuntimeError: CUDA out of memory</code></td>
+<td>GPU 显存不足</td>
+<td>减小 batch_size 或用 <code>-d cpu</code></td>
+</tr>
+<tr>
+<td><code>ImportError: cannot import name &#39;get_tokenizer&#39;</code></td>
+<td>torchtext 版本不对</td>
+<td>确保 <code>torchtext==0.18.0</code></td>
+</tr>
+<tr>
+<td><code>AttributeError: &#39;QuantumDevice&#39; object has no attribute &#39;set_states&#39;</code></td>
+<td>torchquantum 版本问题</td>
+<td>确保 <code>torchquantum&gt;=0.1.8,&lt;0.2</code></td>
+</tr>
+</tbody></table>
+<h3 id="9-4-运行训练"><a href="#9-4-运行训练" class="headerlink" title="9.4 运行训练"></a>9.4 运行训练</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># === 仅运行 Quixer（CPU） ===</span></span><br><span class="line">python run.py -d cpu -m Quixer</span><br><span class="line"></span><br><span class="line"><span class="comment"># === 运行 Quixer + 经典基线（CPU） ===</span></span><br><span class="line">python run.py -d cpu -m Quixer Transformer LSTM FNet</span><br><span class="line"></span><br><span class="line"><span class="comment"># === GPU 版本（如果有 CUDA） ===</span></span><br><span class="line">python run.py -d cuda -m Quixer</span><br><span class="line"></span><br><span class="line"><span class="comment"># === 仅运行经典基线（用于对比） ===</span></span><br><span class="line">python run.py -d cpu -m Transformer LSTM FNet</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-5-训练过程详解"><a href="#9-5-训练过程详解" class="headerlink" title="9.5 训练过程详解"></a>9.5 训练过程详解</h3><p>训练过程将：</p>
+<ol>
+<li><strong>下载数据</strong>：自动从 Hugging Face Hub 下载 Penn Treebank 数据集</li>
+<li><strong>构建词表</strong>：使用 <code>basic_english</code> 分词器，构建包含 <code>&lt;pad&gt;</code>、<code>&lt;unk&gt;</code>、<code>&lt;eos&gt;</code> 特殊令牌的词表</li>
+<li><strong>批量化</strong>：将数据按 <code>window=32</code> 的上下文窗口组织为批次</li>
+<li><strong>多轮训练</strong>：默认 40 个 epoch，使用 Adam 优化器，Cosine Annealing 学习率调度</li>
+<li><strong>自动保存</strong>：将每个 epoch 的最优模型保存到 <code>./trained_models/</code> 目录</li>
+<li><strong>多种子评估</strong>：对每个配置运行 10 个不同的随机种子</li>
+</ol>
+<p>单次完整训练（1 个模型 + 1 个嵌入维度 + 10 个种子 + 40 epochs）在 CPU 上大约需要 <strong>6-12 小时</strong>，在 GPU 上大约需要 <strong>10-20 分钟</strong>。</p>
+<h3 id="9-6-训练过程中的输出解读"><a href="#9-6-训练过程中的输出解读" class="headerlink" title="9.6 训练过程中的输出解读"></a>9.6 训练过程中的输出解读</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Epoch: 01 | Time: 2m 30s</span><br><span class="line">    Train Loss: 5.832 | Train ppl: 341.2</span><br><span class="line">     Val. Loss: 5.651 |  Val. ppl: 284.5</span><br><span class="line"></span><br><span class="line">Epoch: 10 | Time: 2m 15s</span><br><span class="line">    Train Loss: 4.912 | Train ppl: 135.8</span><br><span class="line">     Val. Loss: 5.012 |  Val. ppl: 149.9</span><br><span class="line">...</span><br><span class="line">FINAL TRAINED MODEL STATS:</span><br><span class="line">     Val. Loss: 4.897 |  Val. ppl: 133.8</span><br><span class="line">     Test Loss: 4.912 |  Test ppl: 135.7</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><strong>Loss</strong>：Cross-Entropy Loss（越低越好）</li>
+<li><strong>ppl（Perplexity，困惑度）</strong>：$\text{ppl} &#x3D; e^{\text{loss}}$，衡量模型对下一令牌预测的不确定性。困惑度越低，模型越”自信”且准确。作为参考：随机猜测的困惑度 ≈ 词表大小（Penn Treebank 约 10,000）</li>
+</ul>
+<h3 id="9-7-实验设计解读"><a href="#9-7-实验设计解读" class="headerlink" title="9.7 实验设计解读"></a>9.7 实验设计解读</h3><p>run.py 中 Quixer 和经典基线的超参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>Quixer</th>
+<th>Transformer</th>
+<th>LSTM</th>
+<th>FNet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>嵌入维度</td>
+<td><strong>512</strong></td>
+<td>96, 128</td>
+<td>96, 128</td>
+<td>96, 128</td>
+</tr>
+<tr>
+<td>层数</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>窗口</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Epochs</td>
+<td>40</td>
+<td>40</td>
+<td>40</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Batch</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Dropout</td>
+<td>0.2</td>
+<td>0.2</td>
+<td>0.2</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>量子比特</td>
+<td>6</td>
+<td>N&#x2F;A</td>
+<td>N&#x2F;A</td>
+<td>N&#x2F;A</td>
+</tr>
+<tr>
+<td>Ansatz 层数</td>
+<td>4</td>
+<td>N&#x2F;A</td>
+<td>N&#x2F;A</td>
+<td>N&#x2F;A</td>
+</tr>
+</tbody></table>
+<p><strong>为什么 Quixer 的嵌入维度高达 512？</strong></p>
+<p>Quixer 不使用多头注意力，其”表达能力”主要来自：(1) PQC 在 $2^6&#x3D;64$ 维希尔伯特空间中的演化；(2) 经典嵌入向高维角度参数的线性映射。需要 $d_{\text{emb}} \to n_{\text{pqc\_params}} &#x3D; 4 \times 6 \times 4 &#x3D; 96$ 的映射。512 维嵌入提供了充足的过完备表示能力。经典 Transformer 用 128 维嵌入则因为多头注意力提供了足够的交互表达能力。</p>
+<hr>
+<h2 id="第十章：实验结果与性能分析"><a href="#第十章：实验结果与性能分析" class="headerlink" title="第十章：实验结果与性能分析"></a>第十章：实验结果与性能分析</h2><blockquote>
+<p><strong>目标</strong>：理解 Quixer 目前的性能水平及其含义。</p>
+</blockquote>
+<h3 id="10-1-Penn-Treebank-结果"><a href="#10-1-Penn-Treebank-结果" class="headerlink" title="10.1 Penn Treebank 结果"></a>10.1 Penn Treebank 结果</h3><p>Quixer 在 Penn Treebank 语言建模任务上的表现（论文表 1）：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>测试困惑度 (Test PPL)</th>
+<th>参数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LSTM (128d)</td>
+<td>~100-110</td>
+<td>~6M</td>
+</tr>
+<tr>
+<td>FNet (128d)</td>
+<td>~110-120</td>
+<td>~1M</td>
+</tr>
+<tr>
+<td>Transformer (128d)</td>
+<td>~95-105</td>
+<td>~4M</td>
+</tr>
+<tr>
+<td><strong>Quixer (512d)</strong></td>
+<td><strong>~135-145</strong></td>
+<td>~10M</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>谨慎解读</strong>：论文声称 Quixer 表现”competitive with an equivalent classical baseline”（与等效的经典基线有竞争力）。但这一声明在对抗验证中以 0-3 被否定——三个独立验证者均无法确认 Quixer 在相同参数量条件下接近经典基线的性能。Quixer 的实际表现<strong>显著弱于</strong>同等参数规模的经典 Transformer。</p>
+</blockquote>
+<h3 id="10-2-为什么-Quixer-不如经典模型？"><a href="#10-2-为什么-Quixer-不如经典模型？" class="headerlink" title="10.2 为什么 Quixer 不如经典模型？"></a>10.2 为什么 Quixer 不如经典模型？</h3><p>这涉及几个根本原因：</p>
+<ol>
+<li><p><strong>量子态矢量维度限制</strong>：$q&#x3D;6$ 意味着量子态只有 64 维，远小于经典 Transformer 的隐藏维度。即使有 512 维的嵌入”外衣”，真正进行令牌混合的空间只有 64 维。</p>
+</li>
+<li><p><strong>梯度消失问题（Barren Plateau）</strong>：参数化量子电路在随机初始化时，梯度指数级趋近于零。这是量子机器学习的根本性挑战——Quixer 无法幸免。原论文第 6 节将此明确列为开放问题。</p>
+</li>
+<li><p><strong>有限上下文</strong>：窗口仅 32 个令牌——后续研究 QMamba 指出这是 Quixer 的一大瓶颈。</p>
+</li>
+<li><p><strong>经典模拟的近似</strong>：经典模拟中 QSVT 通过直接计算 $M^k|0\rangle$ 来实现，免去了构造 SELECT-PREPARE 电路和计算相位角度 ${\phi_k}$ 的困难。但这意味着，经典模拟并不能完全代表真实量子硬件上的行为（后者可能因为干涉效应产生更多表达力，也可能因为噪声产生更差表现）。</p>
+</li>
+</ol>
+<h3 id="10-3-Aalto-大学复现结果"><a href="#10-3-Aalto-大学复现结果" class="headerlink" title="10.3 Aalto 大学复现结果"></a>10.3 Aalto 大学复现结果</h3><p>2024 年 9 月，Aalto 大学的一篇学士论文在经典模拟环境下独立复现了 Quixer 实验。关键发现：</p>
+<ul>
+<li>Quixer 可以在 Penn Treebank 上训练并获得合理的结果</li>
+<li>训练极其缓慢（CPU 上需要数小时到数天）</li>
+<li>性能低于经典 Transformer 基线</li>
+<li>论文确认了梯度消失问题的存在</li>
+</ul>
+<h3 id="10-4-性能评估的正确视角"><a href="#10-4-性能评估的正确视角" class="headerlink" title="10.4 性能评估的正确视角"></a>10.4 性能评估的正确视角</h3><p>评估 Quixer 的性能时，以下几点非常重要：</p>
+<ol>
+<li><p><strong>概念验证 &gt; 性能竞赛</strong>：Quixer 的价值在于<strong>证明了量子原语可以构建可训练的语言模型</strong>，而不是与 GPT-4 竞争。</p>
+</li>
+<li><p><strong>经典模拟 ≠ 量子实现</strong>：当前所有 Quixer 结果都来自经典模拟，其计算瓶颈（$O(4^q)$）完全不同于真实量子硬件的瓶颈。经典模拟中表现一般的模型在量子硬件上可能有完全不同的行为。</p>
+</li>
+<li><p><strong>第一代产品</strong>：Quixer 是量子 Transformer 领域的开创性工作。第一个晶体管计算机也无法与现代 CPU 比性能。</p>
+</li>
+<li><p><strong>框架价值</strong>：论文强调 Quixer 是一个<strong>框架</strong>——其参数化组件可以被替换为不同结构，从而产生一类全新的量子 Transformer。比较”单个实例”的性能是不全面的。</p>
+</li>
+</ol>
+<hr>
+<h2 id="第十一章：局限性与开放问题"><a href="#第十一章：局限性与开放问题" class="headerlink" title="第十一章：局限性与开放问题"></a>第十一章：局限性与开放问题</h2><blockquote>
+<p><strong>目标</strong>：诚实评估 Quixer 当前的局限性，识别值得关注的开放问题。</p>
+</blockquote>
+<h3 id="11-1-已确认的局限性"><a href="#11-1-已确认的局限性" class="headerlink" title="11.1 已确认的局限性"></a>11.1 已确认的局限性</h3><h4 id="11-1-1-梯度消失（Vanishing-Gradients）"><a href="#11-1-1-梯度消失（Vanishing-Gradients）" class="headerlink" title="11.1.1 梯度消失（Vanishing Gradients）"></a>11.1.1 梯度消失（Vanishing Gradients）</h4><p>这是 Quixer 最根本的挑战。参数化量子电路（PQC）普遍存在 <strong>Barren Plateau 现象</strong>：当电路深度或量子比特数增加时，梯度以指数方式趋近于零。</p>
+<p>具体到 Quixer：</p>
+<ul>
+<li>Ansatz 14 使用 4 层，在 6 量子比特下仍然可训练</li>
+<li>但扩展到更多量子比特或更深电路时，梯度消失将变得严重</li>
+<li>这限制了模型规模的扩展</li>
+</ul>
+<p><strong>原论文原文</strong>（第 6 节）：</p>
+<blockquote>
+<p>“Finding an instance of Quixer that does not suffer from vanishing gradients while being too expressive for classical simulation is left to future work.”</p>
+</blockquote>
+<p>翻译：<strong>找到一个既无梯度消失问题、又超出经典模拟能力的 Quixer 实例，是留给未来工作的开放问题。</strong></p>
+<h4 id="11-1-2-经典可模拟性（Classical-Simulability）"><a href="#11-1-2-经典可模拟性（Classical-Simulability）" class="headerlink" title="11.1.2 经典可模拟性（Classical Simulability）"></a>11.1.2 经典可模拟性（Classical Simulability）</h4><p>当前所有 Quixer 实验使用的量子电路（6 量子比特、4 层 PQC、3 次 QSVT）在经典计算机上可以精确模拟。这意味着：</p>
+<ul>
+<li><strong>没有任何量子优势</strong>——经典计算机完全可以模拟这些电路</li>
+<li>要证明量子优势，需要扩大到经典不可模拟的规模</li>
+<li>但扩大规模又面临梯度消失问题——<strong>两难困境</strong></li>
+</ul>
+<h4 id="11-1-3-有限上下文窗口（32-令牌）"><a href="#11-1-3-有限上下文窗口（32-令牌）" class="headerlink" title="11.1.3 有限上下文窗口（32 令牌）"></a>11.1.3 有限上下文窗口（32 令牌）</h4><p>在 Penn Treebank 实验中，Quixer 的上下文窗口仅为 32 个令牌。这远小于现代 LLM 的数万到数十万令牌上下文。后续工作 QMamba（ICAART 2025）以 Quixer 为对比基线，指出这个限制是其核心瓶颈之一。</p>
+<h4 id="11-1-4-对经典输出头的强依赖"><a href="#11-1-4-对经典输出头的强依赖" class="headerlink" title="11.1.4 对经典输出头的强依赖"></a>11.1.4 对经典输出头的强依赖</h4><p>当前模型最后的”经典输出头”（两层 MLP，从 3q 维到 vocab_size 维）承担了大量的计算工作。没有这个输出头，模型的性能会大幅下降。这引发了一个问题：量子部分到底学到了多少，还是经典 MLP 在做大部分”重活”？</p>
+<h4 id="11-1-5-未解决的量子硬件部署"><a href="#11-1-5-未解决的量子硬件部署" class="headerlink" title="11.1.5 未解决的量子硬件部署"></a>11.1.5 未解决的量子硬件部署</h4><ul>
+<li>论文中的资源估算（§3.5）考虑了后选择概率和门复杂度，但实际硬件部署尚未被独立验证</li>
+<li>Quantinuum 2025 年 6 月的博客宣称已将 Quixer 部署到真实硬件，但缺少性能数据和第三方验证</li>
+<li>后选择导致的 $O(1&#x2F;p_{\text{success}})$ 采样开销在实际中可能非常高</li>
+</ul>
+<h3 id="11-2-关键开放问题"><a href="#11-2-关键开放问题" class="headerlink" title="11.2 关键开放问题"></a>11.2 关键开放问题</h3><p>这些问题不仅对 Quixer 重要，对整个量子机器学习领域也至关重要：</p>
+<ol>
+<li><p><strong>量子优势边界</strong>：量子比特数、电路深度、QSVT 多项式次数——需要达到什么规模的组合，才能在语言建模任务上产生可验证的量子优势？</p>
+</li>
+<li><p><strong>梯度消失的解决</strong>：是否存在某种电路结构或初始化策略，能从根本上避免 PQC 的 Barren Plateau？</p>
+</li>
+<li><p><strong>LCU 系数的可解释性</strong>：$b_j &#x3D; e^{i\gamma_j}|a_j|^2$ 究竟代表了什么语义？能否像经典注意力的 softmax 权重那样被可视化和解读？</p>
+</li>
+<li><p><strong>与经典架构的融合</strong>：Quixer 使用纯粹的 LCU+QSVT 替代注意力——但如果采用混合策略（部分量子、部分经典）会更好吗？</p>
+</li>
+<li><p><strong>扩展到更大模型</strong>：能否设计一种”量子蒸馏”方案，用小规模量子 Transformer 指导大规模经典 Transformer 训练？</p>
+</li>
+</ol>
+<hr>
+<h2 id="第十二章：后续研究方向与生态"><a href="#第十二章：后续研究方向与生态" class="headerlink" title="第十二章：后续研究方向与生态"></a>第十二章：后续研究方向与生态</h2><blockquote>
+<p><strong>目标</strong>：了解 Quixer 启发了哪些后续工作，以及你可以在哪些方向上贡献。</p>
+</blockquote>
+<h3 id="12-1-QMamba：从-Transformer-到状态空间模型"><a href="#12-1-QMamba：从-Transformer-到状态空间模型" class="headerlink" title="12.1 QMamba：从 Transformer 到状态空间模型"></a>12.1 QMamba：从 Transformer 到状态空间模型</h3><p>QMamba（ICAART 2025）是 Quixer 最直接的后续工作。它基于以下观察：</p>
+<ul>
+<li>Quixer 在 Penn Treebank 上的上下文窗口仅 32 个令牌</li>
+<li>Mamba（选择性状态空间模型）在长序列建模上表现出色</li>
+<li>将 Mamba 的选择性 SSM 机制移植到量子域可能克服 Transformer 的上下文限制</li>
+</ul>
+<p>QMamba 是<strong>首个量子 Mamba 模型</strong>，以 Quixer 为对比基线，代表了量子序列建模从 Transformer 范式向 SSM 范式的转移。</p>
+<h3 id="12-2-Quixer-框架的可扩展性"><a href="#12-2-Quixer-框架的可扩展性" class="headerlink" title="12.2 Quixer 框架的可扩展性"></a>12.2 Quixer 框架的可扩展性</h3><p>原论文第 5 节特别强调了 Quixer 作为<strong>框架</strong>的价值：</p>
+<blockquote>
+<p>“its parameterised components can be substituted with fixed structures to yield new classes of quantum transformers.”</p>
+</blockquote>
+<p>翻译：<strong>Quixer 的参数化组件可以被替换为固定结构，从而产生全新类别的量子 Transformer。</strong></p>
+<p>具体来说，你可以在以下组件上做文章：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>当前选择</th>
+<th>替代方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>酉嵌入电路</td>
+<td>Ansatz 14</td>
+<td>其他 PQC ansatz、Hardware-Efficient Ansatz</td>
+</tr>
+<tr>
+<td>LCU 系数结构</td>
+<td>可训练复数权重</td>
+<td>固定权重（如相等权重、基于令牌距离的衰减权重）</td>
+</tr>
+<tr>
+<td>QSVT 多项式</td>
+<td>通用多项式</td>
+<td>特定函数的多项式近似（如 sigmoid、tanh）</td>
+</tr>
+<tr>
+<td>测量方案</td>
+<td>X, Y, Z 全测量</td>
+<td>稀疏测量、自适应测量、基于任务的测量选择</td>
+</tr>
+</tbody></table>
+<h3 id="12-3-相关项目与工具链"><a href="#12-3-相关项目与工具链" class="headerlink" title="12.3 相关项目与工具链"></a>12.3 相关项目与工具链</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TorchQuantum</td>
+<td>MIT 开发的量子机器学习框架，Quixer 的核心依赖</td>
+<td>github.com&#x2F;mit-han-lab&#x2F;torchquantum</td>
+</tr>
+<tr>
+<td>PennyLane</td>
+<td>Xanadu 的量子机器学习库，支持自动微分和 QSVT</td>
+<td>pennylane.ai</td>
+</tr>
+<tr>
+<td>Qiskit</td>
+<td>IBM 的量子计算框架（注意版本 &lt; 1.0）</td>
+<td>qiskit.org</td>
+</tr>
+<tr>
+<td>Lambeq</td>
+<td>Quantinuum 的量子 NLP 框架</td>
+<td>github.com&#x2F;CQCL&#x2F;lambeq</td>
+</tr>
+<tr>
+<td>pyqsp</td>
+<td>QSVT 相位角度计算工具</td>
+<td>github.com&#x2F;ichuang&#x2F;pyqsp</td>
+</tr>
+<tr>
+<td>QSPPACK</td>
+<td>QSVT 的 MATLAB 实现</td>
+<td>github.com&#x2F;qsppack&#x2F;QSPPACK</td>
+</tr>
+</tbody></table>
+<h3 id="12-4-入门的动手实验建议"><a href="#12-4-入门的动手实验建议" class="headerlink" title="12.4 入门的动手实验建议"></a>12.4 入门的动手实验建议</h3><p>如果你想在 Quixer 的基础上做研究和实验，以下是一条推荐的路径：</p>
+<p><strong>阶段 1：理解代码</strong></p>
+<ol>
+<li>成功安装并运行 Quixer（按照第九章）</li>
+<li>在 <code>quixer_model.py</code> 中添加 <code>print</code> 语句，观察每个步骤的 Tensor Shape</li>
+<li>修改 <code>run.py</code> 中的超参数（如减少 epochs 到 5，观察训练过程）</li>
+</ol>
+<p><strong>阶段 2：小改动</strong><br>4. 修改 LCU 系数初始化方式（如改为均匀分布）<br>5. 改变 QSVT 多项式次数（改为 1 或 5，观察性能变化）<br>6. 将 <code>embedding_dimension</code> 从 512 改为 256，观察效果</p>
+<p><strong>阶段 3：组件替换</strong><br>7. 用不同的 PQC ansatz 替换 Ansatz 14<br>8. 尝试不同的测量方案（如只测量 Z 期望值）<br>9. 实现一个无需输出头的”纯量子”版本</p>
+<p><strong>阶段 4：新模型设计</strong><br>10. 参考 Quixer 框架设计你自己的量子 Transformer 变体<br>11. 探索 LCU+QSVT 的组合在分类、序列标注等任务上的应用<br>12. 研究混合量子-经典架构：用 Quixer 作为”注意力替代”插入经典 Transformer</p>
+<h3 id="12-5-追踪最新进展"><a href="#12-5-追踪最新进展" class="headerlink" title="12.5 追踪最新进展"></a>12.5 追踪最新进展</h3><p>由于该领域发展迅速，建议关注以下渠道：</p>
+<ul>
+<li>arXiv 量子物理学（quant-ph）和机器学习（cs.LG）子类别</li>
+<li>Quantinuum 官方博客及研究页面</li>
+<li>量子机器学习会议：QML（Quantum Machine Learning）、QTML（Quantum Techniques in Machine Learning）</li>
+<li>ICAART（International Conference on Agents and Artificial Intelligence）— QMamba 发表于此</li>
+</ul>
+<hr>
+<h2 id="附录-A：术语对照表"><a href="#附录-A：术语对照表" class="headerlink" title="附录 A：术语对照表"></a>附录 A：术语对照表</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ansatz</td>
+<td>拟设 &#x2F; 电路模板</td>
+<td>参数化量子电路的固定结构</td>
+</tr>
+<tr>
+<td>Barren Plateau</td>
+<td>贫瘠高原</td>
+<td>梯度指数衰减到零的现象</td>
+</tr>
+<tr>
+<td>Block Encoding</td>
+<td>块编码</td>
+<td>用酉矩阵的子块表示任意矩阵</td>
+</tr>
+<tr>
+<td>Expectation Value</td>
+<td>期望值</td>
+<td>⟨ψ|O|ψ⟩，可观测量的平均测量结果</td>
+</tr>
+<tr>
+<td>Feed-Forward Network (FFN)</td>
+<td>前馈网络</td>
+<td>逐位置的经典非线性变换</td>
+</tr>
+<tr>
+<td>Linear Combination of Unitaries (LCU)</td>
+<td>线性酉组合</td>
+<td>Σ b_j U_j</td>
+</tr>
+<tr>
+<td>Pauli Matrices (X, Y, Z)</td>
+<td>泡利矩阵</td>
+<td>基本量子门&#x2F;可观测量</td>
+</tr>
+<tr>
+<td>Penn Treebank (PTB)</td>
+<td>宾州树库</td>
+<td>经典语言建模基准数据集</td>
+</tr>
+<tr>
+<td>Perplexity (PPL)</td>
+<td>困惑度</td>
+<td>$\exp(\text{cross-entropy loss})$</td>
+</tr>
+<tr>
+<td>Postselection</td>
+<td>后选择</td>
+<td>仅保留满足条件的测量结果</td>
+</tr>
+<tr>
+<td>Quantum Singular Value Transform (QSVT)</td>
+<td>量子奇异值变换</td>
+<td>对块编码矩阵施加多项式变换</td>
+</tr>
+<tr>
+<td>SELECT-PREPARE</td>
+<td>选择-准备电路</td>
+<td>LCU 的标准电路实现</td>
+</tr>
+<tr>
+<td>Token Mixing</td>
+<td>令牌混合</td>
+<td>不同令牌表示之间交换信息</td>
+</tr>
+<tr>
+<td>Unitary</td>
+<td>酉（矩阵&#x2F;变换）</td>
+<td>满足 $U^\dagger U &#x3D; I$ 的复矩阵</td>
+</tr>
+</tbody></table>
+<h2 id="附录-B：关键公式汇总"><a href="#附录-B：关键公式汇总" class="headerlink" title="附录 B：关键公式汇总"></a>附录 B：关键公式汇总</h2><table>
+<thead>
+<tr>
+<th>公式</th>
+<th>编号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$\text{Attention}(Q,K,V) &#x3D; \text{softmax}(\frac{QK^T}{\sqrt{d_k}})V$</td>
+<td>(1)</td>
+<td>经典点积自注意力</td>
+</tr>
+<tr>
+<td>$M &#x3D; \sum_{j&#x3D;0}^{n-1} b_j U_j$</td>
+<td>(2)</td>
+<td>LCU 令牌混合</td>
+</tr>
+<tr>
+<td>$U_{\text{SEL}} &#x3D; \sum_j |j\rangle\langle j| \otimes U_j$</td>
+<td>(3)</td>
+<td>SELECT 酉变换</td>
+</tr>
+<tr>
+<td>$U_{\text{PREP}}|0\rangle &#x3D; \sum_j a_j |j\rangle$</td>
+<td>(4)</td>
+<td>PREPARE 酉变换</td>
+</tr>
+<tr>
+<td>$U_M &#x3D; (U_{\text{PREP}}^\dagger \otimes I) U_{\text{SEL}} (U_{\text{PREP}} \otimes I)$</td>
+<td>(5)</td>
+<td>LCU 完整电路</td>
+</tr>
+<tr>
+<td>$M &#x3D; (\langle 0| \otimes I) U_M (|0\rangle \otimes I)$</td>
+<td>(6)</td>
+<td>块编码投影</td>
+</tr>
+<tr>
+<td>$P_c(M) &#x3D; \sum_{k&#x3D;0}^d c_k M^k$</td>
+<td>(7)</td>
+<td>QSVT 多项式变换</td>
+</tr>
+<tr>
+<td>$|P_c(x)| \leq 1, \forall x \in [-1,1]$</td>
+<td>(8)</td>
+<td>QSVT 有界性约束</td>
+</tr>
+<tr>
+<td>$\text{parity}(P_c) &#x3D; d \bmod 2$</td>
+<td>(9)</td>
+<td>QSVT 奇偶性约束</td>
+</tr>
+</tbody></table>
+<h2 id="附录-C：推荐阅读路径"><a href="#附录-C：推荐阅读路径" class="headerlink" title="附录 C：推荐阅读路径"></a>附录 C：推荐阅读路径</h2><h3 id="如果你只想快速了解"><a href="#如果你只想快速了解" class="headerlink" title="如果你只想快速了解"></a>如果你只想快速了解</h3><ol>
+<li>第三章：Quixer 宏观概览（15 分钟）</li>
+<li>第七章：Quixer 完整架构详解（40 分钟）</li>
+</ol>
+<h3 id="如果你想深入理解原理"><a href="#如果你想深入理解原理" class="headerlink" title="如果你想深入理解原理"></a>如果你想深入理解原理</h3><ol>
+<li>第一章：GPT&#x2F;Transformer 回顾</li>
+<li>第四章：块编码</li>
+<li>第五章：LCU</li>
+<li>第六章：QSVT</li>
+<li>第七章：完整架构</li>
+</ol>
+<h3 id="如果你想动手实现"><a href="#如果你想动手实现" class="headerlink" title="如果你想动手实现"></a>如果你想动手实现</h3><ol>
+<li>直接跳到第九章：环境搭建与动手运行</li>
+<li>遇到不理解的地方回查对应章节</li>
+<li>配合第八章源码解析阅读代码</li>
+</ol>
+<h3 id="如果你想做研究"><a href="#如果你想做研究" class="headerlink" title="如果你想做研究"></a>如果你想做研究</h3><ol>
+<li>完整阅读所有章节</li>
+<li>仔细阅读原论文 arXiv:2406.04305</li>
+<li>研究第十一章的开放问题，选择你感兴趣的方向</li>
+<li>阅读 QMamba 论文了解最新进展</li>
+</ol>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>Khatri, N., Matos, G., Coopmans, L., &amp; Clark, S. (2024). <strong>Quixer: A Quantum Transformer Model</strong>. arXiv:2406.04305. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2406.04305">https://arxiv.org/abs/2406.04305</a></li>
+<li>Quixer 官方代码库. <a target="_blank" rel="noopener" href="https://github.com/CQCL/Quixer">https://github.com/CQCL/Quixer</a></li>
+<li>Quantinuum Blog. “Announcing Quixer — Quantinuum’s State-of-the-Art Quantum Transformer”. <a target="_blank" rel="noopener" href="https://www.quantinuum.com/blog/announcing-quixer">https://www.quantinuum.com/blog/announcing-quixer</a></li>
+<li>Quantinuum Blog. “Our Hardware is Now Running Quantum Transformers”. <a target="_blank" rel="noopener" href="https://www.quantinuum.com/blog/our-hardware-is-now-running-quantum-transformers">https://www.quantinuum.com/blog/our-hardware-is-now-running-quantum-transformers</a></li>
+<li>Vaswani, A., et al. (2017). <strong>Attention Is All You Need</strong>. NeurIPS 2017.</li>
+<li>Lee-Thorp, J., et al. (2022). <strong>FNet: Mixing Tokens with Fourier Transforms</strong>. NAACL 2022.</li>
+<li>Stenzel, L., &amp; Kölle, M. (2025). <strong>QMamba: Quantum Selective State Space Models for Language Modeling</strong>. ICAART 2025.</li>
+<li>Sim, S., et al. (2019). <strong>Expressive power of parameterized quantum circuits</strong>. arXiv:1905.10876. （Ansatz 14 的来源）</li>
+<li>Gilyén, A., et al. (2019). <strong>Quantum singular value transformation and beyond: exponential improvements for quantum matrix arithmetics</strong>. STOC 2019. （QSVT 的原始论文）</li>
+<li>Childs, A. M., &amp; Wiebe, N. (2012). <strong>Hamiltonian simulation using linear combinations of unitary operations</strong>. QIC 2012. （LCU 的原始论文）</li>
+<li>Aalto 大学学士论文 (2024). <strong>Evaluation of the Quixer Quantum Transformer Model</strong>. <a target="_blank" rel="noopener" href="https://aaltodoc.aalto.fi/items/a3998701-7b17-48e2-a74e-bcf87d927c26/full">https://aaltodoc.aalto.fi/items/a3998701-7b17-48e2-a74e-bcf87d927c26/full</a></li>
+<li>TorchQuantum. <a target="_blank" rel="noopener" href="https://github.com/mit-han-lab/torchquantum">https://github.com/mit-han-lab/torchquantum</a></li>
+<li>PennyLane QSVT 文档. <a target="_blank" rel="noopener" href="https://pennylane.ai/">https://pennylane.ai</a></li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>教程版本</strong>：v1.0（2026 年 5 月）</p>
+<p><strong>基于工作流</strong>：deep-research（94 个搜索&#x2F;验证代理，1,928,809 tokens）</p>
+<p><strong>声明</strong>：本教程基于对 Quixer 论文、源代码和第三方资料的深入研究编写。所有核心声明均经过 3 票对抗验证（共验证 25 项声明，确认 13 项，否定 12 项）。教程中的代码解析基于 Apache 2.0 许可证下的官方开源实现。</p>
+<p><strong>致谢</strong>：感谢 Quantinuum 团队开源 Quixer 代码和数据，使社区能够学习、复现和在此基础上继续创新。</p>
+</blockquote>
+
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2026/05/27/OpenRewrite-AI-LLM-Integration-Survey/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <script data-isso="https://jhub.dtype.info/isso/" src="https://jhub.dtype.info/isso/js/embed.min.js"></script>
+  <section id="isso-thread"></section>
+  
+</section>
+
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2026-05-30 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2026 Andrew
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+
+</html>
