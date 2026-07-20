@@ -11194,7 +11194,7 @@ div.output_unrecognized a:hover {
 .rendered_html pre {
   margin: 1em 2em;
   padding: 0px;
-  background-color: #fff;
+  background-color: #f8f8f8;
 }
 .rendered_html code {
   background-color: #eff0f1;
@@ -11203,7 +11203,7 @@ div.output_unrecognized a:hover {
   padding: 1px 5px;
 }
 .rendered_html pre code {
-  background-color: #fff;
+  background-color: #f8f8f8;
 }
 .rendered_html pre,
 .rendered_html code {

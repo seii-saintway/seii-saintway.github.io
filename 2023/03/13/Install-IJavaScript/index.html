@@ -95,7 +95,12 @@ from revChatGPT.V1 import Chatbot, c">
                 displayAlign: 'center',
                 CommonHTML: {
                     linebreaks: {
-                    automatic: true
+                        automatic: true
+                    },
+                    styles: {
+                        ".mjx-full-width": {
+                            "width": "auto !important"
+                        }
                     }
                 }
             });
