@@ -851,20 +851,32 @@ Bacalhau CLI 是一个用于在 Bacalhau 平台上运行任务的命令行工具
 <p>最后推荐苏·科金 2002 年在《自然神经科学评论》上发表的文章，以深入了解这一里程碑式的案例。</p>
 <hr>
 <p><strong>问题 1：尽管 H.M. 的工作记忆完好，但『只要他的注意力一转移，遗忘就会瞬间发生』。在缺乏内侧颞叶（MTL）的情况下，究竟是哪些具体的神经生理机制（尤其是海马体-前额叶皮层 (PFC) 的振荡耦合机制）发生了故障，从而阻碍了工作记忆痕迹向长期存储的短暂稳定化？</strong></p>
+<br />
+
 <p><strong>背景：</strong><br>文章突显了 H.M. 认知特征中的一个深刻悖论：他的工作记忆（例如数字广度测试）完全完好，这意味着只要他保持主动注意，就能在脑海中维持信息。然而，一旦他的注意力转移，记忆痕迹就会瞬间消失。这表明 MTL 并非信息临时维持所必需，但对于在注意力重新分配之前对这些信息进行<em>稳定</em>或<em>转移</em>却是绝对关键的。</p>
+<br />
+
 <p><strong>文献与机制：</strong><br>为了理解这种『瞬间遗忘』，我们必须超越静态的解剖学模型，去考察海马体与新皮层之间动态的、振荡的对话。根据人类记忆振荡同步的框架，分布式皮层表征的绑定严重依赖于相位同步，尤其是在 theta (4–8 Hz) 和 gamma (30–100 Hz) 频段 (Fell &amp; Axmacher, 2011)。</p>
 <p>在健康大脑中，当新刺激进入工作记忆（由背外侧 PFC 的持续放电维持）时，海马体会迅速参与以『索引』这些信息。这是通过海马体和 PFC 之间精确的 theta-gamma 跨频率耦合 (cross-frequency coupling) 来实现的。海马体本质上提供了一个时间支架，使相关皮层神经元的放电与相位锁定 (phase-locking)，以确保在 PFC 有限的注意力资源被重新定向到新感觉输入之前，记忆痕迹被牢固地编码。</p>
 <p>在 H.M. 的案例中，MTL 的双侧切除切断了这座振荡桥梁。虽然他的 PFC 仍可通过持续的神经放电暂时维持信息（解释了他完好的数字广度），但由于缺乏海马体，没有机制能够快速『印刻』或相位同步这种皮层活动。因此，当他的注意力转移时——这一过程本质上涉及 PFC 更新其表征状态以适应新刺激——脆弱的、未同步的皮层痕迹会立即被覆盖或衰减。这种现象是计算神经科学家所说的『灾难性干扰 (catastrophic interference)』的行为表现，即在缺乏快速学习索引系统的网络中，新输入会迅速擦除未巩固的表征。</p>
+<br />
+
 <p><strong>讨论与推测：</strong><br>尽管我们无法在死后测量 H.M. 大脑中这种故障的精确毫秒级动态，但现代啮齿动物研究支持这一推测。对清醒状态下海马体尖波涟漪 (sharp-wave ripples, SWRs) 的研究表明，即使是注意力或行为的短暂停顿，也会触发快速的海马体-皮层重放，从而稳定先前的体验 (Jadhav et al., 2016)。我们可以推测，H.M. 的『瞬间遗忘』之所以发生，是因为在没有海马体的情况下，他的大脑缺乏进行这些快速微观巩固事件的能力。他的新皮层本质上是一个『漏水的水桶』：只要他主动用手捧着（注意力），它就能装水（信息），但一旦他松手去做别的事，水就会瞬间流光，因为没有海马体机制将其转移到稳定的长期水库中。这将我们对 H.M. 的理解从简单的『长期记忆缺陷』提升到了动态、跨脑区网络同步特定故障的层面。</p>
 <hr>
 <p><strong>问题 2：H.M. 对术前词汇表现出完好的启动效应，但对 1950 年代后的新概念（如『个人电脑』）表现受损。从计算神经科学的角度来看，MTL 的切除是如何破坏『互补学习系统 (Complementary Learning Systems, CLS)』框架的，特别是关于新语义特征逐渐整合到新皮层网络的过程？</strong></p>
+<br />
+
 <p><strong>背景：</strong><br>文章详细描述了 H.M. 内隐记忆中一个微妙的解离现象。虽然他对术前认识的单词（例如完成『蘑菇』的词干）表现出正常的启动效应，但他对 1950 年代以后出现的新概念（如『个人电脑』或『分形』）的表现显著下降。这表明，尽管他既有的语义网络保持功能完好，但他获取或内隐整合<em>新</em>语义知识的能力受到了严重损害，尽管启动任务本身具有程序性特征。</p>
+<br />
+
 <p><strong>文献与机制：</strong><br>这一特定缺陷可以通过<strong>互补学习系统 (Complementary Learning Systems, CLS) 理论</strong>得到优雅的解释。该理论最初由 McClelland, McNaughton 和 O’Reilly (1995) 提出，并在现代计算神经科学中不断完善。CLS 理论认为，大脑利用两个不同的学习系统来避免『灾难性干扰』（即在学习新事物时覆盖旧记忆）。</p>
 <ol>
 <li><strong>新皮层</strong>是一个慢速学习系统。它通过多次重复，逐渐提取经验的统计规律和共享特征，构建一个结构化的、泛化的语义网络。</li>
 <li><strong>海马体 (MTL)</strong> 是一个快速学习系统。它迅速将新经验的各个元素绑定成一个连贯的痕迹，充当新皮层的临时『导师』。</li>
 </ol>
 <p>当 H.M. 遇到像『个人电脑』这样的 1950 年代后的新概念时，他完好的新皮层可以处理该单词的视觉或听觉特征。然而，由于他的海马体缺失，没有快速学习系统能够将这些新特征迅速绑定成临时的高保真表征。在 CLS 框架中，新皮层需要在新海马体的指导下，通过重复、交替的暴露 (interleaved exposure) 来缓慢调整其突触权重，以免破坏既有知识（如『打字机』的概念）。没有 MTL 提供这种结构化的快速索引，『个人电脑』的新语义特征就无法整合到他的新皮层网络中，即使是内隐层面也是如此。因此，当后来呈现词干线索时，新皮层网络缺乏产生启动效应所需的强化连接，导致表现受损。</p>
+<br />
+
 <p><strong>讨论与推测：</strong><br>这种计算视角为 H.M. 『完好』的旧记忆的本质提供了一个深刻的推测。它表明，他对 1950 年代前词汇的启动能力根本不是主动的『学习』过程，而仅仅是对一个已完全巩固、不再需要海马体支持的静态新皮层网络的激活。他的大脑本质上被冻结在了 1950 年代初期的语义景观中。</p>
 <p>此外，这引发了关于 CLS 框架中语义记忆和情景记忆边界的有趣问题。虽然文章侧重于启动（通常被认为是内隐的），但获取像『个人电脑』这样的新概念的<em>含义</em>，本质上需要某种程度的关系绑定（例如，将『电脑』与『机器』、『电子』、『新事物』联系起来）。我们可以推测，MTL 不仅仅是情景记忆的门户，它从根本上也是<em>任何</em>快速关系绑定所必需的，包括新语义节点的最初形成。因此，H.M. 无法对新概念产生启动效应，直接反映了一个失去了『导师』的新皮层，使其无法调整其内部世界模型以适应 1950 年代后的现实。</p>
 
@@ -2443,48 +2455,48 @@ Then I know we will surely meet again…
 		<h4 style="margin-top: 18px;">Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
 		
-			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+			<li><a href="/tags/Pharisee/">Pharisee<span>2</span></a></li>
 		
 			<li><a href="/tags/Imaging/">Imaging<span>3</span></a></li>
 		
-			<li><a href="/tags/Neuro/">Neuro<span>5</span></a></li>
+			<li><a href="/tags/启示录/">启示录<span>3</span></a></li>
 		
-			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
-		
-			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
-		
-			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
-		
-			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
+			<li><a href="/tags/Syt-7/">Syt-7<span>1</span></a></li>
 		
 			<li><a href="/tags/isso/">isso<span>1</span></a></li>
 		
-			<li><a href="/tags/迁移/">迁移<span>1</span></a></li>
+			<li><a href="/tags/箴言/">箴言<span>2</span></a></li>
+		
+			<li><a href="/tags/TLJH/">TLJH<span>1</span></a></li>
 		
 			<li><a href="/tags/Traefik/">Traefik<span>1</span></a></li>
 		
-			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
+			<li><a href="/tags/Typography/">Typography<span>4</span></a></li>
 		
-			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+			<li><a href="/tags/Nietzsche/">Nietzsche<span>3</span></a></li>
 		
-			<li><a href="/tags/Metaverse/">Metaverse<span>13</span></a></li>
-		
-			<li><a href="/tags/Notebooks/">Notebooks<span>13</span></a></li>
+			<li><a href="/tags/Lyrics/">Lyrics<span>4</span></a></li>
 		
 			<li><a href="/tags/OpenVPN/">OpenVPN<span>1</span></a></li>
 		
-			<li><a href="/tags/Debian/">Debian<span>1</span></a></li>
-		
-			<li><a href="/tags/Bot-Development/">Bot Development<span>1</span></a></li>
+			<li><a href="/tags/Music/">Music<span>31</span></a></li>
 		
 			<li><a href="/tags/BioBuilder/">BioBuilder<span>12</span></a></li>
 		
-			<li><a href="/tags/JupyterHub/">JupyterHub<span>1</span></a></li>
+			<li><a href="/tags/Psalms/">Psalms<span>11</span></a></li>
+		
+			<li><a href="/tags/雅歌/">雅歌<span>2</span></a></li>
+		
+			<li><a href="/tags/Bible/">Bible<span>2</span></a></li>
+		
+			<li><a href="/tags/Logotherapy/">Logotherapy<span>3</span></a></li>
+		
+			<li><a href="/tags/自分を休ませる/">自分を休ませる<span>3</span></a></li>
 		
 		
-			<li><a href="/tags">...<span>30</span></a></li>
+			<li><a href="/tags">...<span>31</span></a></li>
 		
 		</ul>
 	</div>
