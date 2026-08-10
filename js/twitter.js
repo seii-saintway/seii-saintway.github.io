@@ -17,7 +17,7 @@ var twitter = (function() {
       $.ajax({
           url: 'https://jhub.dtype.info/tweets/?tweet.fields=created_at&max_results=' + options.count
         , dataType: 'json'
-        , error: function (err) { $(options.target + ' li.loading').addClass('error').text('Error loading feed'); }
+        , error: function (err) { $(options.target + ' li.loading').addClass('error').text('Tweets are hidden because X now charges too much to fetch them'); }
         , success: function (data) {
           if (!data ) { return; }
           var tweets = [];
