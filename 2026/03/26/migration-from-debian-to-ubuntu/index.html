@@ -247,6 +247,182 @@
 <li><strong>二进制文件传输</strong>：使用 <code>scp</code> 而不是管道 <code>cat</code>，避免数据损坏</li>
 <li><strong>iptables-persistent</strong>：替代 UFW 使用，更可靠地保存防火墙规则</li>
 </ol>
+<hr>
+<h1 id="Ubuntu-Server-BCM4360-Wi-Fi-SSH-Tailscale-Claude-Code-免密-sudo"><a href="#Ubuntu-Server-BCM4360-Wi-Fi-SSH-Tailscale-Claude-Code-免密-sudo" class="headerlink" title="Ubuntu Server + BCM4360 Wi-Fi + SSH + Tailscale + Claude Code + 免密 sudo"></a>Ubuntu Server + BCM4360 Wi-Fi + SSH + Tailscale + Claude Code + 免密 sudo</h1><p>针对我的 MacBook Pro (Retina, 13-inch, Late 2013 &#x2F; A1502) 按这次实际操作的顺序，整理成一份完整的关键命令清单。</p>
+<h2 id="1-在-macOS-上确认机器和-USB"><a href="#1-在-macOS-上确认机器和-USB" class="headerlink" title="1. 在 macOS 上确认机器和 USB"></a>1. 在 macOS 上确认机器和 USB</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system_profiler SPHardwareDataType</span><br><span class="line">diskutil list</span><br><span class="line">diskutil info /dev/disk4</span><br></pre></td></tr></table></figure>
+
+<p>我的机器确认是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MacBookPro11,1</span><br><span class="line">MacBook Pro (Retina, 13-inch, Late 2013)</span><br><span class="line">Model A1502</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Ubuntu-安装后确认网络接口"><a href="#2-Ubuntu-安装后确认网络接口" class="headerlink" title="2. Ubuntu 安装后确认网络接口"></a>2. Ubuntu 安装后确认网络接口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip <span class="built_in">link</span></span><br><span class="line"><span class="built_in">ls</span> /sys/class/net</span><br></pre></td></tr></table></figure>
+
+<p>最初只有：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lo</span><br></pre></td></tr></table></figure>
+
+<p>连接手机 USB 网络共享后出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enxXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-用手机-USB-网络临时联网"><a href="#3-用手机-USB-网络临时联网" class="headerlink" title="3. 用手机 USB 网络临时联网"></a>3. 用手机 USB 网络临时联网</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip <span class="built_in">link</span> <span class="built_in">set</span> enxXXXXXXXXXXXX up</span><br><span class="line">sudo dhcpcd enxXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+
+<p>确认 IPv4：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip -4 addr show enxXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+
+<p>确认路由：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route</span><br></pre></td></tr></table></figure>
+
+<p>测试 Internet：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 4 8.8.8.8</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-安装-BCM4360-驱动"><a href="#4-安装-BCM4360-驱动" class="headerlink" title="4. 安装 BCM4360 驱动"></a>4. 安装 BCM4360 驱动</h2><p>确认内核：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">uname</span> -r</span><br></pre></td></tr></table></figure>
+
+<p>这次是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6.8.0-100-generic</span><br></pre></td></tr></table></figure>
+
+<p>确认驱动版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt policy bcmwl-kernel-source | grep Candidate</span><br></pre></td></tr></table></figure>
+
+<p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install bcmwl-kernel-source</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-让-wl-接管-BCM4360"><a href="#5-让-wl-接管-BCM4360" class="headerlink" title="5. 让 wl 接管 BCM4360"></a>5. 让 <code>wl</code> 接管 BCM4360</h2><p>这台 Mac 的 BCM4360 最初被 <code>b43</code>&#x2F;<code>bcma</code> 路径占用。</p>
+<p>卸载 <code>b43</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe -r b43</span><br></pre></td></tr></table></figure>
+
+<p>加载 Broadcom 专有驱动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe wl</span><br></pre></td></tr></table></figure>
+
+<p>确认：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep <span class="string">&#x27;^wl&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>最终出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wl 6438064 0</span><br></pre></td></tr></table></figure>
+
+<p>并且内核日志出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wlan0: Broadcom BCM43a0 B02.11 Hybrid Wireless Controller 6.30.223.271</span><br><span class="line">wl 0000:03:00.0 wlp3s0: renamed from wlan0</span><br></pre></td></tr></table></figure>
+
+<p>说明成功。</p>
+<h2 id="6-启用-Wi-Fi"><a href="#6-启用-Wi-Fi" class="headerlink" title="6. 启用 Wi-Fi"></a>6. 启用 Wi-Fi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip <span class="built_in">link</span> <span class="built_in">set</span> wlp3s0 up</span><br></pre></td></tr></table></figure>
+
+<p>确认：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip <span class="built_in">link</span> show wlp3s0</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-扫描-Wi-Fi"><a href="#7-扫描-Wi-Fi" class="headerlink" title="7. 扫描 Wi-Fi"></a>7. 扫描 Wi-Fi</h2><p>如果没有 <code>iw</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install iw</span><br></pre></td></tr></table></figure>
+
+<p>扫描：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iw dev wlp3s0 scan | grep SSID</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-配置-NetworkManager"><a href="#8-配置-NetworkManager" class="headerlink" title="8. 配置 NetworkManager"></a>8. 配置 NetworkManager</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install network-manager</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> --now NetworkManager</span><br></pre></td></tr></table></figure>
+
+<p>查看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device status</span><br></pre></td></tr></table></figure>
+
+<p>连接 Wi-Fi：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device wifi connect <span class="string">&quot;我的SSID&quot;</span> password <span class="string">&quot;我的WiFi密码&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>确认：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device status</span><br></pre></td></tr></table></figure>
+
+<p>以及：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 4 8.8.8.8</span><br></pre></td></tr></table></figure>
+
+<p>此时就可以拔掉手机 USB 网络共享。</p>
+<h2 id="9-安装并启动-SSH"><a href="#9-安装并启动-SSH" class="headerlink" title="9. 安装并启动 SSH"></a>9. 安装并启动 SSH</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> --now ssh</span><br></pre></td></tr></table></figure>
+
+<p>确认：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-active ssh</span><br></pre></td></tr></table></figure>
+
+<p>应该得到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">active</span><br></pre></td></tr></table></figure>
+
+<p>查看 Wi-Fi&#x2F;LAN IP：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname -I</span><br></pre></td></tr></table></figure>
+
+<p>从另一台电脑：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh seii@192.168.1.8</span><br></pre></td></tr></table></figure>
+
+<p>如果因为重装系统出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</span><br></pre></td></tr></table></figure>
+
+<p>执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -R 192.168.1.8</span><br></pre></td></tr></table></figure>
+
+<p>然后重新：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh seii@192.168.1.8</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-安装-Tailscale"><a href="#10-安装-Tailscale" class="headerlink" title="10. 安装 Tailscale"></a>10. 安装 Tailscale</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://tailscale.com/install.sh | sh</span><br></pre></td></tr></table></figure>
+
+<p>登录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tailscale up</span><br></pre></td></tr></table></figure>
+
+<p>查看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tailscale status</span><br><span class="line">tailscale ip</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-安装-Claude-Code"><a href="#11-安装-Claude-Code" class="headerlink" title="11. 安装 Claude Code"></a>11. 安装 Claude Code</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://claude.ai/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>确认：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude --version</span><br></pre></td></tr></table></figure>
+
+<p>启动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude</span><br></pre></td></tr></table></figure>
+
+<h2 id="12-设置-seii-免密-sudo"><a href="#12-设置-seii-免密-sudo" class="headerlink" title="12. 设置 seii 免密 sudo"></a>12. 设置 <code>seii</code> 免密 sudo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo -f /etc/sudoers.d/seii</span><br></pre></td></tr></table></figure>
+
+<p>加入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seii ALL=(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+
+<p>保存时如果看到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File Name to Write: /etc/sudoers.d/seii.tmp</span><br></pre></td></tr></table></figure>
+
+<p>直接按：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter</span><br></pre></td></tr></table></figure>
+
+<p>然后：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + X</span><br></pre></td></tr></table></figure>
+
+<p>检查：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo -c</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -k</span><br><span class="line">sudo <span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+
+<p>应该直接输出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root</span><br></pre></td></tr></table></figure>
+
+<p>现在这台 A1502 的状态已经是：<strong>Ubuntu Server + BCM4360 Wi-Fi + SSH + Tailscale + Claude Code + 免密 sudo</strong>。后续就可以基本脱离 HDMI 外接显示器，通过 SSH&#x2F;Tailscale 管理这台 MacBook。</p>
+<hr>
+<h1 id="MacBook-WiFi-服务器-SSH-断连排查与修复"><a href="#MacBook-WiFi-服务器-SSH-断连排查与修复" class="headerlink" title="MacBook WiFi 服务器 SSH 断连排查与修复"></a>MacBook WiFi 服务器 SSH 断连排查与修复</h1><p>适用机器：<code>macbook-a1502</code>（老款 MacBook，Broadcom BCM4360 无线网卡，用 WiFi 连接当服务器使用）。</p>
+<h2 id="症状"><a href="#症状" class="headerlink" title="症状"></a>症状</h2><p>机器作为服务器运行时，NetworkManager 偶发进入异常状态，直接导致 SSH 断开。手动 <code>sudo systemctl restart NetworkManager</code> 可以恢复。</p>
+<h2 id="诊断方法"><a href="#诊断方法" class="headerlink" title="诊断方法"></a>诊断方法</h2><p>直接翻日志找证据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 该 wifi 连接自身的活动/状态变化</span></span><br><span class="line">journalctl -u NetworkManager --no-pager -p warning</span><br><span class="line"></span><br><span class="line"><span class="comment"># wpa_supplicant 的关联/断线细节（deauth reason code 在这里看）</span></span><br><span class="line">journalctl -u wpa_supplicant --no-pager</span><br><span class="line"></span><br><span class="line"><span class="comment"># 内核层驱动/固件报错</span></span><br><span class="line">journalctl -k --no-pager | grep -iE <span class="string">&quot;wl0|brcm|firmware|wlp3s0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当前 powersave 是否生效</span></span><br><span class="line">nmcli -f 802-11-wireless.powersave connection show <span class="string">&quot;&lt;连接名&gt;&quot;</span></span><br><span class="line"><span class="built_in">cat</span> /etc/NetworkManager/conf.d/*.conf</span><br></pre></td></tr></table></figure>
+
+<h2 id="根因"><a href="#根因" class="headerlink" title="根因"></a>根因</h2><ol>
+<li><p><strong>网卡驱动本身不稳定</strong>：这颗 BCM4360（PCI ID <code>14e4:43a0</code>）用的是专有闭源 <code>wl</code>（broadcom-sta，DKMS 编译）驱动，跟现代内核 + wpa_supplicant 的 nl80211 接口配合不好。日志里能看到周期性（约 10~15 分钟一次）的<strong>本机自发</strong> deauth：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CTRL-EVENT-DISCONNECTED bssid=... reason=3 locally_generated=1</span><br><span class="line">nl80211: deinit ifname=wlp3s0 ...</span><br><span class="line">（几秒后自动重新关联）</span><br></pre></td></tr></table></figure>
+
+<p><code>reason=3</code> + <code>locally_generated=1</code> &#x3D; 驱动自己主动断开重连，不是路由器或信号问题。多数情况下几秒内自愈。</p>
+</li>
+<li><p><strong>偶发不能自愈的两种情况</strong>（这是需要手动重启 NM 的真正原因）：</p>
+<ul>
+<li><code>wpa_supplicant</code> 直接从 D-Bus 掉线：<code>Couldn&#39;t initialize supplicant interface: Failed to D-Bus activate wpa_supplicant service</code> &#x2F; <code>Name owner lost</code></li>
+<li>关联彻底超时：<code>link timed out</code> &#x2F; <code>Activation: failed</code></li>
+</ul>
+<p>这两种情况下 NetworkManager 状态机卡死，不会自己恢复。</p>
+</li>
+<li><p><strong>次要因素</strong>：<code>/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf</code>（<code>network-manager</code> 包自带）全局开着 <code>wifi.powersave = 3</code>，对这颗本就不稳的驱动可能是加剧因素。</p>
+</li>
+</ol>
+<h2 id="已实施的缓解措施"><a href="#已实施的缓解措施" class="headerlink" title="已实施的缓解措施"></a>已实施的缓解措施</h2><h3 id="1-关闭-WiFi-省电模式"><a href="#1-关闭-WiFi-省电模式" class="headerlink" title="1. 关闭 WiFi 省电模式"></a>1. 关闭 WiFi 省电模式</h3><p>包自带的 <code>default-wifi-powersave-on.conf</code> 是 dpkg 管理的 conffile，不要直接改，加一个文件名排在它后面（按字母序覆盖）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">tee</span> /etc/NetworkManager/conf.d/zz-disable-wifi-powersave.conf &gt; /dev/null &lt;&lt;<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">[connection]</span><br><span class="line">wifi.powersave = 2</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p><code>2</code> &#x3D; 禁用省电（<code>0</code>&#x3D;用驱动默认，<code>1</code>&#x3D;不改，<code>3</code>&#x3D;启用）。</p>
+<h3 id="2-自动看门狗"><a href="#2-自动看门狗" class="headerlink" title="2. 自动看门狗"></a>2. 自动看门狗</h3><p><code>/usr/local/bin/network-watchdog.sh</code>：每次被调用时 ping 默认网关，连续 3 次失败（间隔 5 秒，共约 15 秒）才判定为真掉线，5 分钟内不重复触发（防抖动）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">set</span> -euo pipefail</span><br><span class="line">STATE_FILE=<span class="string">&quot;/run/network-watchdog.last-restart&quot;</span></span><br><span class="line">LOG_TAG=<span class="string">&quot;network-watchdog&quot;</span></span><br><span class="line">COOLDOWN_SECS=300</span><br><span class="line">RETRIES=3</span><br><span class="line">RETRY_INTERVAL=5</span><br><span class="line"></span><br><span class="line">GATEWAY=$(ip route show default 0.0.0.0/0 2&gt;/dev/null | awk <span class="string">&#x27;/default/ &#123;print $3; exit&#125;&#x27;</span>)</span><br><span class="line">[ -z <span class="string">&quot;<span class="variable">$GATEWAY</span>&quot;</span> ] &amp;&amp; &#123; logger -t <span class="string">&quot;<span class="variable">$LOG_TAG</span>&quot;</span> <span class="string">&quot;no default gateway found&quot;</span>; <span class="built_in">exit</span> 0; &#125;</span><br><span class="line"></span><br><span class="line">fail_count=0</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> $(<span class="built_in">seq</span> 1 <span class="string">&quot;<span class="variable">$RETRIES</span>&quot;</span>); <span class="keyword">do</span></span><br><span class="line">    ping -c1 -W2 <span class="string">&quot;<span class="variable">$GATEWAY</span>&quot;</span> &gt;/dev/null 2&gt;&amp;1 &amp;&amp; <span class="built_in">exit</span> 0</span><br><span class="line">    fail_count=$((fail_count + <span class="number">1</span>)); <span class="built_in">sleep</span> <span class="string">&quot;<span class="variable">$RETRY_INTERVAL</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">now=$(<span class="built_in">date</span> +%s)</span><br><span class="line">last_restart=0</span><br><span class="line">[ -f <span class="string">&quot;<span class="variable">$STATE_FILE</span>&quot;</span> ] &amp;&amp; last_restart=$(<span class="built_in">cat</span> <span class="string">&quot;<span class="variable">$STATE_FILE</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> [ $((now - last_restart)) -lt <span class="string">&quot;<span class="variable">$COOLDOWN_SECS</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    logger -t <span class="string">&quot;<span class="variable">$LOG_TAG</span>&quot;</span> <span class="string">&quot;unreachable but restarted recently, skip&quot;</span>; <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">logger -t <span class="string">&quot;<span class="variable">$LOG_TAG</span>&quot;</span> <span class="string">&quot;gateway <span class="variable">$GATEWAY</span> unreachable after <span class="variable">$fail_count</span> attempts, restarting NetworkManager&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$now</span>&quot;</span> &gt; <span class="string">&quot;<span class="variable">$STATE_FILE</span>&quot;</span></span><br><span class="line">systemctl restart NetworkManager</span><br></pre></td></tr></table></figure>
+
+<p>配套 <code>network-watchdog.service</code>（oneshot）+ <code>network-watchdog.timer</code>（每 2 分钟跑一次），<code>sudo systemctl enable --now network-watchdog.timer</code> 启用。</p>
+<p>查看日志：<code>journalctl -t network-watchdog -f</code></p>
+<p><strong>局限</strong>：ping 网关是反应式检测，测的是『本机到 AP 这一跳』，测不到自愈型的短暂 deauth（通常等不到检测窗口就已经好了），但恰好能抓住那两种真正需要重启才能恢复的情况。更精确的判据可以直接查 <code>nmcli device status</code> 里 <code>wlp3s0</code> 的状态或 <code>busctl status fi.w1.wpa_supplicant1</code> 看 wpa_supplicant 是否还在 D-Bus 上，比纯 ping 更贴近症状本身。</p>
 
 	</div>
 
@@ -316,7 +492,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/OpenVPN/">OpenVPN<span>1</span></a></li> <li><a href="/tags/TLJH/">TLJH<span>1</span></a></li> <li><a href="/tags/JupyterHub/">JupyterHub<span>1</span></a></li> <li><a href="/tags/Traefik/">Traefik<span>1</span></a></li> <li><a href="/tags/isso/">isso<span>1</span></a></li> <li><a href="/tags/Ubuntu/">Ubuntu<span>1</span></a></li> <li><a href="/tags/Debian/">Debian<span>1</span></a></li> <li><a href="/tags/迁移/">迁移<span>1</span></a></li>
+  <li><a href="/tags/Claude-Code/">Claude Code<span>1</span></a></li>
     </ul>
 	</div>
 		
