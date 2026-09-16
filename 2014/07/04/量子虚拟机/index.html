@@ -162,7 +162,7 @@
 </ol>
 <ul>
 <li>量子计算模拟器：<ul>
-<li>量子计算模拟器通常专注于模拟量子计算机的具体行为，例如量子比特的状态、量子门操作和量子算法执行等。它通常模拟的是量子计算过程的核心部分，即量子电路的运行。</li>
+<li>量子计算模拟器通常专注于模拟量子计算机的具体行为，例如量子比特的状态、量子门操作和量子算法执行等。它通常模拟的是量子计算过程的核心部分，即量子线路的运行。</li>
 <li>由于其主要模拟量子比特的操作和量子算法，它的应用范围更多集中于小规模的量子系统，因为随着量子比特数量的增加，计算复杂度也会快速增长。</li>
 </ul>
 </li>
@@ -278,7 +278,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State |0⟩:&quot;</span><span class="p">)</span>
     <span class="n">dump_machine</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
 
-    <span class="c1"># 创建量子电路</span>
+    <span class="c1"># 创建量子线路</span>
     <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># 应用 X 门</span>
@@ -338,7 +338,7 @@
 <span class="c1"># 加载随机态</span>
 <span class="n">state</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">random_vector</span><span class="p">)</span>
 
-<span class="c1"># 创建一个量子电路并添加 X 门</span>
+<span class="c1"># 创建一个量子线路并添加 X 门</span>
 <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">X</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># 对量子比特 0 施加 X 门</span>
 
@@ -346,7 +346,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;应用 X 门前的状态:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">get_vector</span><span class="p">())</span>
 
-<span class="c1"># 运行电路</span>
+<span class="c1"># 运行线路</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">update_quantum_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
 
 <span class="c1"># 在应用 X 门后打印状态</span>
@@ -524,7 +524,7 @@
 </ul>
 <p>应用场景：</p>
 <ul>
-<li>小规模量子电路模拟（适合 10-20 量子比特）。</li>
+<li>小规模量子线路模拟（适合 10-20 量子比特）。</li>
 <li>教学和算法验证。</li>
 </ul>
 <ol start="2">
@@ -538,7 +538,7 @@
 <p>特点：</p>
 <ul>
 <li>跨平台支持：通过 OpenCL，支持多种硬件平台（CPU、GPU）。</li>
-<li>科学计算：适用于材料科学中的量子力学模拟，而不是量子电路的模拟。</li>
+<li>科学计算：适用于材料科学中的量子力学模拟，而不是量子线路的模拟。</li>
 </ul>
 <p>应用场景：</p>
 <ul>
@@ -561,7 +561,7 @@
 </ul>
 <p>应用场景：</p>
 <ul>
-<li>模拟量子电路运行（如量子算法的测试）。</li>
+<li>模拟量子线路运行（如量子算法的测试）。</li>
 <li>支持中型规模的量子比特模拟（20-30 量子比特）。</li>
 </ul>
 <ol start="4">
@@ -570,7 +570,7 @@
 <p>简介：</p>
 <ul>
 <li>ProjectQ 是一个高层次的量子计算框架，支持多种后端，包括基于 OpenCL 的经典模拟器。</li>
-<li>开发者可以使用 Python 编写量子程序，并通过 OpenCL 加速量子电路模拟。</li>
+<li>开发者可以使用 Python 编写量子程序，并通过 OpenCL 加速量子线路模拟。</li>
 </ul>
 <p>特点：</p>
 <ul>
@@ -580,8 +580,8 @@
 </ul>
 <p>应用场景：</p>
 <ul>
-<li>量子电路的快速原型开发。</li>
-<li>小规模量子电路和算法测试。</li>
+<li>量子线路的快速原型开发。</li>
+<li>小规模量子线路和算法测试。</li>
 </ul>
 <ol start="5">
 <li>Density Matrix Renormalization Group（DMRG）工具</li>
@@ -652,9 +652,9 @@
 </ul>
 <p>示例应用：</p>
 <ul>
-<li>NVIDIA cuQuantum：一个基于 CUDA 的高性能库，用于加速量子电路模拟。它包含了针对量子态向量和张量网络模拟的优化函数。</li>
-<li>cuStateVec：加速基于状态向量的量子电路模拟。</li>
-<li>cuTensorNet：加速基于张量网络的量子电路模拟，适用于大规模量子比特系统的模拟。</li>
+<li>NVIDIA cuQuantum：一个基于 CUDA 的高性能库，用于加速量子线路模拟。它包含了针对量子态向量和张量网络模拟的优化函数。</li>
+<li>cuStateVec：加速基于状态向量的量子线路模拟。</li>
+<li>cuTensorNet：加速基于张量网络的量子线路模拟，适用于大规模量子比特系统的模拟。</li>
 </ul>
 <p>性能优势：</p>
 <ul>
@@ -693,7 +693,7 @@
 </ul>
 <p>示例应用：</p>
 <ul>
-<li>噪声模拟与误差分析：在模拟有噪声的量子电路时，CUDA 加速蒙特卡罗抽样，评估不同噪声模型下的量子计算性能。</li>
+<li>噪声模拟与误差分析：在模拟有噪声的量子线路时，CUDA 加速蒙特卡罗抽样，评估不同噪声模型下的量子计算性能。</li>
 </ul>
 <p>二、CUDA 在量子计算中的优势</p>
 <ol>
@@ -718,7 +718,7 @@
 <li>灵活性和可扩展性：</li>
 </ol>
 <ul>
-<li>CUDA 可以在多种应用场景下使用，从简单的量子电路模拟到复杂的混合量子-经典计算。</li>
+<li>CUDA 可以在多种应用场景下使用，从简单的量子线路模拟到复杂的混合量子-经典计算。</li>
 </ul>
 <p>三、CUDA 在量子计算中的挑战</p>
 <ol>
@@ -743,7 +743,7 @@
 <ul>
 <li>CUDA 在量子计算中的核心应用是加速量子计算模拟，使得开发者可以在经典计算机上更高效地验证和测试量子算法。</li>
 <li>混合量子-经典计算中，CUDA 提供了数据处理和优化计算的加速能力。</li>
-<li>NVIDIA cuQuantum 是一个典型的 CUDA 在量子计算中的应用实例，为量子电路模拟提供了高性能支持。</li>
+<li>NVIDIA cuQuantum 是一个典型的 CUDA 在量子计算中的应用实例，为量子线路模拟提供了高性能支持。</li>
 </ul>
 <p>尽管量子计算技术还在发展中，CUDA 已经成为量子算法开发和模拟过程中不可或缺的工具之一，为量子计算研究提供了强大的经典计算支持。</p>
 
@@ -1095,10 +1095,12 @@ $$ \frac{1}{\tau_{Tn}} = \frac{2\pi}{\hbar} \sum_{N,N'} P_N |\langle \Psi_{D0N} 
 $$ \frac{1}{\tau_{Tn}} = \frac{2\pi}{\hbar} t^2 \frac{\sigma_n}{\sqrt{4\pi k_B T \lambda}} \exp \left( -\frac{(\epsilon_n - \lambda)^2}{4k_B T \lambda} \right) $$
 其中
 $$ \sigma_n = \exp(-S) \frac{S^n}{n!}, $$
-$$ S = (u_D - u_A)^2 $$（这是一个Huang-Rhys因子），
+$$ S = (u_D - u_A)^2 $$
+（这是一个Huang-Rhys因子），
 $$ \epsilon_n = \varepsilon_D - \varepsilon_A - n \hbar \omega_o, $$
 $$ \beta = \frac{1}{k_B T}, $$
-$$ \lambda = \sum_q S_q \hbar \omega_q $$（重组能量），
+$$ \lambda = \sum_q S_q \hbar \omega_q $$
+（重组能量），
 $$ S_q = (u_{qD} - u_{qA})^2. $$</p>
 
 </div>
@@ -1378,7 +1380,7 @@ $$ k_{ET} = \frac{V^2}{h} \sqrt{\frac{\pi}{\lambda k_B T}} \exp\left( -\frac{(\l
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Quantum/">Quantum<span>5</span></a></li>
+  <li><a href="/tags/Quantum/">Quantum<span>6</span></a></li>
     </ul>
 	</div>
 		
